@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Mexico Test Suite">
+    <parameter name="appURLSauce" value="http://www.almundo.com"/>
+    <parameter name="countrySauce" value="MEXICO"/>
+
+    <test name="Saucelabs Tests Mexico">
+        <classes>
+            <class name="com.almundo.browser.automation.tests.SauceLandingPageTest"/>
+            <class name="com.almundo.browser.automation.tests.SauceHomePageTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.SauceHotelesPageTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.SauceVuelosPageTest"/>-->
+
+            <!-- Only for ARGENTINA currently -->
+            <!--<class name="com.almundo.browser.automation.tests.SauceLoginPageTest"/>-->
+        </classes>
+    </test>
+</suite>

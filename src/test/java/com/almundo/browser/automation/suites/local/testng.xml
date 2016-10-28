@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Local Testing">
+    <parameter name="appURL" value="http://www.almundo.com"/>
+    <parameter name="browserType" value="chrome"/>
+    <parameter name="country" value="ARGENTINA"/>
+
+    <test name="Local Tests">
+        <classes>
+            <class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>
+        </classes>
+    </test>
+</suite>

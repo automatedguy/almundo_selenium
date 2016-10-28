@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.almundo.browser.automation</groupId>
+    <artifactId>selenium-testsuites</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <dependencies>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.9.10</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.saucelabs</groupId>
+            <artifactId>sauce_testng</artifactId>
+            <version>2.1.21</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <threadCount>20</threadCount>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>2</value>
+                        </property>
+                    </properties>
+                    <suiteXmlFiles>
+                        <!--Argentina-->
+                        <file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/argentina/testng.xml</file>
+
+                        <!--Colombia-->
+                        <file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/colombia/testng.xml</file>
+
+                        <!--Mexico-->
+                        <file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/mexico/testng.xml</file>
+
+                        <!--Local-->
+                        <!--<file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/local/testng.xml</file>-->
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
