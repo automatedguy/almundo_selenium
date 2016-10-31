@@ -1,7 +1,7 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.SauceTestBaseSetup;
-import com.almundo.browser.automation.locators.HomePageMap;
+import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.InvalidElementStateException;

@@ -1,7 +1,7 @@
 package com.almundo.browser.automation.pages;
 
-import com.almundo.browser.automation.locators.HomePageMap;
-import com.almundo.browser.automation.locators.HotelesPageMap;
+import com.almundo.browser.automation.locators.pages.HomePageMap;
+import com.almundo.browser.automation.locators.pages.HotelesPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -52,36 +52,36 @@ public class HotelesPage {
 
     public static void doHotelReservationFlow(WebDriver driver) throws InterruptedException {
         try {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.VER_HOTEL_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.VER_HOTEL_BTN.getBy());
             HotelesPage.verHotelBtn(driver).click();
             PageUtils.waitForSaucePicture(10000);
         }
         catch (TimeoutException timeOut) {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.VER_HABITACIONES_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.VER_HABITACIONES_BTN.getBy());
             HotelesPage.verHabitacionesBtn(driver).click();
             PageUtils.waitForSaucePicture(10000);
         }
 
         try {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.VER_HABITACIONES_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.VER_HABITACIONES_BTN.getBy());
             HotelesPage.verHabitacionesBtn(driver).click();
             PageUtils.waitForSaucePicture(10000);
         }
         catch (TimeoutException timeOut) {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.RESERVAR_AHORA_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.RESERVAR_AHORA_BTN.getBy());
             HotelesPage.reservarAhoraBtn(driver).click();
             PageUtils.waitForSaucePicture(10000);
         }
 
         try {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.RESERVAR_AHORA_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.RESERVAR_AHORA_BTN.getBy());
             HotelesPage.reservarAhoraBtn(driver).click();
             PageUtils.waitForSaucePicture(10000);
         }
         catch (TimeoutException timeOut) {
             System.out.println("The other reservation flow :)");
             try{
-                PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.RESERVAR_AHORA2_BTN.getBy());
+                PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.RESERVAR_AHORA2_BTN.getBy());
                 HotelesPage.reservarAhora2Btn(driver).click();
                 PageUtils.waitForSaucePicture(10000);
             }

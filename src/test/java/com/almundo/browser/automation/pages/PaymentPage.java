@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.pages;
 
-import com.almundo.browser.automation.locators.PaymentPageMap;
+import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;

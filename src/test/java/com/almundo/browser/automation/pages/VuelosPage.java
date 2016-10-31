@@ -1,7 +1,7 @@
 package com.almundo.browser.automation.pages;
 
-import com.almundo.browser.automation.locators.HomePageMap;
-import com.almundo.browser.automation.locators.VuelosPageMap;
+import com.almundo.browser.automation.locators.pages.HomePageMap;
+import com.almundo.browser.automation.locators.pages.VuelosPageMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,4 +27,8 @@ public class VuelosPage {
         return element;
     }
 
+    public static WebElement tipoVueloDdl(WebDriver driver){
+        element = driver.findElement(VuelosPageMap.TIPO_DE_VUELO.getBy());
+        return element;
+    }
 }

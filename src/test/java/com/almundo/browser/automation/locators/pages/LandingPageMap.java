@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.locators;
+package com.almundo.browser.automation.locators.pages;
 
 import org.openqa.selenium.By;
 

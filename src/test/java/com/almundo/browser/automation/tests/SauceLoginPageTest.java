@@ -1,7 +1,7 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.SauceTestBaseSetup;
-import com.almundo.browser.automation.config.UserCredential;
+import com.almundo.browser.automation.components.UserCredential;
 import com.almundo.browser.automation.locators.loginmaps.FacebookLoginPageMap;
 import com.almundo.browser.automation.locators.loginmaps.GoogleLoginPageMap;
 import com.almundo.browser.automation.pages.LoginPage;

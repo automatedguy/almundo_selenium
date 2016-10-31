@@ -1,13 +1,12 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.locators.HomePageMap;
-import com.almundo.browser.automation.locators.HotelesPageMap;
-import com.almundo.browser.automation.locators.testsmaps.HotelesTestMap;
+import com.almundo.browser.automation.components.CalendarComponent;
+import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.pages.HomePage;
-import com.almundo.browser.automation.pages.HotelesPage;
-import com.almundo.browser.automation.pages.PaymentPage;
+import com.almundo.browser.automation.pages.VuelosPage;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -25,21 +24,38 @@ public class LocalMultiBrowserTest extends TestBaseSetup {
     }
 
     @Test
-    public void hotelesReservationHappyPathTest() throws InterruptedException {
+    public void vuelosReservationHappyPathTest() throws InterruptedException {
         PageUtils.waitForVisibilityOfElementLocated(driver, 10, HomePageMap.HOTELES_ICO.getBy());
 
-        HomePage.hotelesTab(driver).click();
+        PageUtils.waitForVisibilityOfElementLocated(driver, 30, HomePageMap.VUELOS_ICO.getBy());
+        HomePage.vuelosTab(driver).click();
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HotelesPageMap.DESTINATION_TXT.getBy());
+        VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys("Buenos Aires, Buenos Aires, Argentina");
+        PageUtils.waitForSaucePicture(2000);
+        VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys(Keys.RETURN);
 
-        HotelesPage.hotelDestinationTxtBox(driver).sendKeys("Rio");
+        VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys("Las Vegas, Nevada, Estados Unidos de América");
+        PageUtils.waitForSaucePicture(2000);
+        VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys(Keys.RETURN);
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+        VuelosPage.tipoVueloDdl(driver).click();
 
-        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+        CalendarComponent.salidaCalendar(driver).click();
+        CalendarComponent.salidaTriangleCalendar(driver).click();
+        PageUtils.waitForSaucePicture(3000);
+        CalendarComponent.salidaDateCalendar(driver).click();
+        PageUtils.waitForSaucePicture(3000);
 
-        HotelesPage.buscarBtn(driver).click();
+        CalendarComponent.regresoCalendar(driver).click();
+        CalendarComponent.regresoTriangleCalendar(driver).click();
+        PageUtils.waitForSaucePicture(3000);
+        CalendarComponent.regresoDateCalendar(driver).click();
+        PageUtils.waitForSaucePicture(3000);
 
+        VuelosPage.vuelosPageBuscarBtn(driver).click();
+
+        PageUtils.waitForSaucePicture(30000);
+/*
         HotelesPage.doHotelReservationFlow(driver);
 
         PaymentPage.populateCreditCardPayments(driver);
@@ -52,6 +68,6 @@ public class LocalMultiBrowserTest extends TestBaseSetup {
 
         PaymentPage.comprarBtn(driver).click();
 
-        PageUtils.waitForSaucePicture(20000);
+        PageUtils.waitForSaucePicture(20000);*/
     }
 }

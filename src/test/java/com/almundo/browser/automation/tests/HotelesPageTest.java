@@ -1,8 +1,8 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.locators.HomePageMap;
-import com.almundo.browser.automation.locators.HotelesPageMap;
+import com.almundo.browser.automation.locators.pages.HomePageMap;
+import com.almundo.browser.automation.locators.pages.HotelesPageMap;
 import com.almundo.browser.automation.locators.testsmaps.HotelesTestMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.HotelesPage;
@@ -25,15 +25,15 @@ public class HotelesPageTest extends TestBaseSetup {
 
     @Test
     public void hotelesReservationHappyPathTest() throws InterruptedException {
-        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HomePageMap.HOTELES_ICO.getBy());
+        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HomePageMap.HOTELES_ICO.getBy());
 
         HomePage.hotelesTab(driver).click();
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HotelesPageMap.DESTINATION_TXT.getBy());
+        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HotelesPageMap.DESTINATION_TXT.getBy());
 
         HotelesPage.hotelDestinationTxtBox(driver).sendKeys("Rio");
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
 
         HotelesPage.selectCityFromAutoCompleteSuggestions(driver, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
 

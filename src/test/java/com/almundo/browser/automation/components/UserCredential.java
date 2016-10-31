@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.config;
+package com.almundo.browser.automation.components;
 
 /**
  * Created by gabrielcespedes on 19/10/16.

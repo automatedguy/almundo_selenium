@@ -1,8 +1,8 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.SauceTestBaseSetup;
-import com.almundo.browser.automation.locators.HomePageMap;
-import com.almundo.browser.automation.locators.HotelesPageMap;
+import com.almundo.browser.automation.locators.pages.HomePageMap;
+import com.almundo.browser.automation.locators.pages.HotelesPageMap;
 import com.almundo.browser.automation.locators.testsmaps.HotelesTestMap;
 import com.almundo.browser.automation.locators.testsmaps.TestInputs;
 import com.almundo.browser.automation.pages.HomePage;

@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.pages;
 
-import com.almundo.browser.automation.locators.HomePageMap;
+import com.almundo.browser.automation.locators.pages.HomePageMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
