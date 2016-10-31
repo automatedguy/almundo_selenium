@@ -8,8 +8,11 @@ import org.openqa.selenium.By;
 public enum HotelesPageMap {
 
     DESTINATION_TXT(By.id("destination-hotels")),
-    VER_HOTEL_BTN(By.xpath("/html/body/div[1]/main/section/hotel[1]/article/div[2]/div/a")),
-    RESERVAR_AHORA_BTN(By.xpath("/html/body/main/header-detail/div[2]/div/div/div[2]/div/best-room-pricebox/div/div/div[2]/button"));
+    BUSCAR_BTN(By.xpath("//*[@id=\"main-content\"]/div[1]/am-searchbox/div/div/div[2]/div/button")),
+    VER_HOTEL_BTN(By.cssSelector("a.button.button--lg.button--secondary.button--block.button-detail")),
+    VER_HABITACIONES_BTN(By.cssSelector("a.button.button--lg.button--secondary.ng-scope")),
+    RESERVAR_AHORA_BTN(By.cssSelector("button.button.button--lg.button--secondary.ng-scope")),
+    RESERVAR_AHORA2_BTN(By.cssSelector("span.button.button--secondary.button--lg.button--block"));
 
     private By name;
     HotelesPageMap(By locator) {this.name = locator; }

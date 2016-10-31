@@ -27,8 +27,18 @@ public class HotelesPage {
         return element;
     }
 
+    public static WebElement verHabitacionesBtn(WebDriver driver){
+        element = driver.findElement(HotelesPageMap.VER_HABITACIONES_BTN.getBy());
+        return element;
+    }
+
     public static WebElement reservarAhoraBtn(WebDriver driver){
         element = driver.findElement(HotelesPageMap.RESERVAR_AHORA_BTN.getBy());
+        return element;
+    }
+
+    public static WebElement reservarAhora2Btn(WebDriver driver){
+        element = driver.findElement(HotelesPageMap.RESERVAR_AHORA2_BTN.getBy());
         return element;
     }
 
@@ -37,4 +47,6 @@ public class HotelesPage {
         selectedCity.click();
         return element;
     }
+
+
 }
