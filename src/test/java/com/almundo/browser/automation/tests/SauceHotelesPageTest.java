@@ -7,6 +7,7 @@ import com.almundo.browser.automation.locators.testsmaps.HotelesTestMap;
 import com.almundo.browser.automation.locators.testsmaps.TestInputs;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.HotelesPage;
+import com.almundo.browser.automation.pages.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.Keys;
@@ -72,5 +73,41 @@ public class SauceHotelesPageTest extends SauceTestBaseSetup {
         PageUtils.assertElementIsPresent(driver, HotelesPageMap.VER_HOTEL_BTN.getBy(), String.valueOf(TestInputs.HOTEL_VER_HOTEL_BTN));
 
         PageUtils.waitForSaucePicture(10000);
+    }
+
+    @org.testng.annotations.Test(dataProvider = "hardCodedBrowsers")
+    public void hotelesPageHappyReservationTest(String browser, String version, String os, Method method)
+            throws MalformedURLException, InvalidElementStateException, UnexpectedException, InterruptedException
+    {
+        this.createDriver(browser, version, os, method.getName());
+        WebDriver driver = this.getWebDriver();
+
+        PageUtils.waitForVisibilityOfElementLocated(driver, 30, HomePageMap.HOTELES_ICO.getBy());
+
+        HomePage.hotelesTab(driver).click();
+
+        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HotelesPageMap.DESTINATION_TXT.getBy());
+
+        HotelesPage.hotelDestinationTxtBox(driver).sendKeys("Rio");
+
+        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+
+        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+
+        HotelesPage.buscarBtn(driver).click();
+
+        HotelesPage.doHotelReservationFlow(driver);
+
+        PaymentPage.populateCreditCardPayments(driver);
+
+        PaymentPage.populateCreditCardOwnerData(driver);
+
+        PaymentPage.populateBillingInformation(driver);
+
+        PaymentPage.acceptTermsConditions(driver);
+
+        PaymentPage.comprarBtn(driver).click();
+
+        PageUtils.waitForSaucePicture(20000);
     }
 }
