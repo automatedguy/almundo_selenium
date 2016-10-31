@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages;
 
 import com.almundo.browser.automation.locators.PaymentPageMap;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,17 +50,17 @@ public class PaymentPage {
     }
 
     public static WebElement ver15BancosMasLnk(WebDriver driver){
-        element = driver.findElement(PaymentPageMap.VER_15_BANCOS_MAS_LNK.getBy());
+        element = driver.findElement(PaymentPageMap.VER_BANCOS_LNK.getBy());
         return element;
     }
 
     public static WebElement ver15BancosMasLnkCkl(WebDriver driver){
-        element = driver.findElement(PaymentPageMap.VER_15_BANCOS_MAS_LNK_CLK.getBy());
+        element = driver.findElement(PaymentPageMap.VER_BANCOS_LNK_CLK.getBy());
         return element;
     }
 
-    public static WebElement amexPagoUnaCuota(WebDriver driver){
-        element = driver.findElement(PaymentPageMap.AMEX_01_CUOTAS_RDO.getBy());
+    public static WebElement pagoUnaCuota(WebDriver driver){
+        element = driver.findElement(PaymentPageMap.TARJETA_RDO.getBy());
         return element;
     }
 
@@ -174,4 +175,57 @@ public class PaymentPage {
         element = driver.findElement(PaymentPageMap.COMPRAR_BTN.getBy());
         return element;
     }
+
+    public static void populateCreditCardPayments(WebDriver driver){
+
+        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_LNK.getBy());
+        ver15BancosMasLnk(driver).click();
+
+        PageUtils.moveToElement(driver, PaymentPageMap.TARJETA_RDO.getBy());
+        pagoUnaCuota(driver).click();
+
+        PageUtils.moveToElement(driver, PaymentPageMap.TARJETA_RDO.getBy());
+        pagoUnaCuota(driver).click();
+    }
+
+    public static void populatedCreditCardPayment24(WebDriver driver){
+
+        PageUtils.moveToElement(driver, PaymentPageMap.TARJETA_DDL.getBy());
+        seleccionaTarjetaDdl(driver).click();
+
+        seleccionarTarjeta(driver, PaymentPageMap.AMERICAN_EXPRESS_INP.getBy()).click();
+        cantidadCuotasDdl(driver).click();
+
+        SeleccionarCantidadCuotas(driver, PaymentPageMap.CUOTAS_24.getBy());
+    }
+
+    public static void populateCreditCardOwnerData(WebDriver driver){
+
+        PageUtils.moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
+
+        titularDeLaTarjetaTxt(driver).sendKeys("Nombre");
+        numeroDeTarjetaTxt(driver).sendKeys("999999999999");
+        fechaDeVencimientoTxt(driver).sendKeys("07/17");
+        codigoSeguridadTxt(driver).sendKeys("777");
+    }
+
+    public static void populateBillingInformation(WebDriver driver){
+        cuilTxt(driver).sendKeys("20285494568");
+        domicilioTxt(driver).sendKeys("Domicilio");
+        numeroTxt(driver).sendKeys("7570");
+        pisoTxt(driver).sendKeys("75");
+        departamentTxt(driver).sendKeys("A");
+        codigoPostalTxt(driver).sendKeys("7525");
+        provinciaTxt(driver).sendKeys("Provincia");
+        ciudadTxt(driver).sendKeys("Ciudad");
+        emailTxt(driver).sendKeys("email@sarasa.cuak");
+        repEmailTxt(driver).sendKeys("email@sarasa.cuak");
+        codAreaTelefTxt(driver).sendKeys("098");
+        numeroTelefTxt(driver).sendKeys("20279456548");
+    }
+
+    public static void acceptTermsConditions(WebDriver driver){
+        leiAceptoCbx(driver).click();
+    }
+
 }

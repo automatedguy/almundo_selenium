@@ -4,6 +4,15 @@
     <parameter name="browserType" value="chrome"/>
     <parameter name="country" value="ARGENTINA"/>
 
+    <parameter name="searchAutoComplete" value="Lon"/>
+    <parameter name="searchFull" value="Londres, sadfaakl oijddkajs"/>
+
+    <parameter name="startDate" value="4"/>
+    <parameter name="endDate" value="24"/>
+
+    <parameter name="adults" value="24"/>
+    <parameter name="childs" value="24"/>
+
     <test name="Local Tests">
         <classes>
             <class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>

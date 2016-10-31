@@ -6,11 +6,11 @@ import com.almundo.browser.automation.locators.HotelesPageMap;
 import com.almundo.browser.automation.locators.testsmaps.HotelesTestMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.HotelesPage;
+import com.almundo.browser.automation.pages.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.openqa.selenium.TimeoutException;
 
 /**
  * Created by gabrielcespedes on 26/10/16.
@@ -40,48 +40,18 @@ public class LocalMultiBrowserTest extends TestBaseSetup {
 
         HotelesPage.buscarBtn(driver).click();
 
-        try {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.VER_HOTEL_BTN.getBy());
-            HotelesPage.verHotelBtn(driver).click();
-            PageUtils.waitForSaucePicture(10000);
-        }
-        catch (TimeoutException timeOut) {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.VER_HABITACIONES_BTN.getBy());
-            HotelesPage.verHabitacionesBtn(driver).click();
-            PageUtils.waitForSaucePicture(10000);
-        }
+        HotelesPage.doHotelReservationFlow(driver);
 
-        try {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.VER_HABITACIONES_BTN.getBy());
-            HotelesPage.verHabitacionesBtn(driver).click();
-            PageUtils.waitForSaucePicture(10000);
-        }
-        catch (TimeoutException timeOut) {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.RESERVAR_AHORA_BTN.getBy());
-            HotelesPage.reservarAhoraBtn(driver).click();
-            PageUtils.waitForSaucePicture(10000);
-        }
+        PaymentPage.populateCreditCardPayments(driver);
 
-        try {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.RESERVAR_AHORA_BTN.getBy());
-            HotelesPage.reservarAhoraBtn(driver).click();
-            PageUtils.waitForSaucePicture(10000);
-        }
-        catch (TimeoutException timeOut) {
-            System.out.println("The other reservation flow :)");
-            try{
-                PageUtils.waitForVisibilityOfElementLocated(driver, 5, HotelesPageMap.RESERVAR_AHORA2_BTN.getBy());
-                HotelesPage.reservarAhora2Btn(driver).click();
-                PageUtils.waitForSaucePicture(10000);
-            }
-            catch (TimeoutException timeOut2) {
-                System.out.println("Something is wrong in the test flow");
-            }
-        }
-        finally {
-            PaymentPage.populatePassenger(driver, 2);
-            PageUtils.waitForSaucePicture(10000);
-        }
+        PaymentPage.populateCreditCardOwnerData(driver);
 
+        PaymentPage.populateBillingInformation(driver);
+
+        PaymentPage.acceptTermsConditions(driver);
+
+        PaymentPage.comprarBtn(driver).click();
+
+        PageUtils.waitForSaucePicture(20000);
     }
 }
