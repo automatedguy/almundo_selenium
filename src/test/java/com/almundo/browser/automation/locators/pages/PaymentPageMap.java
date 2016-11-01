@@ -7,9 +7,8 @@ import org.openqa.selenium.By;
 public enum PaymentPageMap {
     TARJETA_DDL(By.id("cardselect")),
     CANT_CUOTAS_DDL(By.id("cantselect")),
-    VER_BANCOS_LNK(By.xpath("//*[@id=\"ng-app\"]/div/div[4]/form/div[3]/fieldset/div[2]/div/div/div/div[1]/div[1]/div[2]/div/div/p[1]/span/span[1]")),
-
-    // VER_BANCOS_LNK(By.xpath("//*[@id=\"ng-app\"]/div/div[4]/form/div[3]/fieldset/div[2]/div/div/div/div[2]/div[1]/div[2]/div/div/p[1]/span/span[1]")),
+    VER_BANCOS_01CUOTAS_LNK(By.xpath("//*[@id=\"ng-app\"]/div/div[4]/form/div[3]/fieldset/div[2]/div/div/div/div[1]/div[1]/div[2]/div/div/p[1]/span/span[1]")),
+    VER_BANCOS_02CUOTAS_LNK(By.xpath("//*[@id=\"ng-app\"]/div/div[4]/form/div[3]/fieldset/div[2]/div/div/div/div[2]/div[1]/div[2]/div/div/p[2]/span")),
     VER_BANCOS_LNK_CLK(By.xpath("//input[contains(@class,'epp-space-right-8')]")),
     AMERICAN_EXPRESS_INP(By.xpath("//option[contains(.,'American Express')]")),
     CUOTAS_24(By.xpath("//option[contains(.,'24')]")),

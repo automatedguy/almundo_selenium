@@ -68,7 +68,7 @@ public class LocalMultiBrowserTest extends TestBaseSetup {
 
         PageUtils.waitForSaucePicture(20000);
 
-        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_LNK.getBy());
+        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
 
         PaymentPage.populateCreditCardPayments(driver);
 

@@ -68,7 +68,7 @@ public class VuelosPageTest extends TestBaseSetup {
 
         PageUtils.waitForSaucePicture(20000);
 
-        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_LNK.getBy());
+        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_02CUOTAS_LNK.getBy());
 
         PaymentPage.populateCreditCardPayments(driver);
 

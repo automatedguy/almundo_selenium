@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -64,6 +67,52 @@ public class PageUtils {
             System.out.println("Object text: " + elementToAssert.getText() + " - label is wrong or changed.");
             System.out.println("StackTrace: "+ uhOh.getStackTrace());
             Assert.fail();
+        }
+    }
+
+    public static WebElement selectFromAutoCompleteSuggestions(WebDriver driver, By city){
+        WebElement selectedCity = driver.findElement(city);
+        selectedCity.click();
+        return element;
+    }
+
+    public static void selectDateFromCalendar(WebDriver driver, String idCalendar, int daysAhead) throws InterruptedException {
+
+
+        Calendar c = Calendar.getInstance();
+        int maxDaysCurrentMonth = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        DateFormat dateFormat = new SimpleDateFormat("dd");
+        Calendar cal = Calendar.getInstance();
+        int currentDateDay = Integer.parseInt(dateFormat.format(cal.getTime()));
+
+        int actualDayDate = currentDateDay + daysAhead;
+
+        System.out.println("Cantidad de dias en el mes actual... " + maxDaysCurrentMonth);
+        System.out.println("Fecha del dia de hoy ................ " + currentDateDay);
+        System.out.println("Fecha del dia a marcar............... " + actualDayDate);
+
+        if(actualDayDate <= maxDaysCurrentMonth){
+            System.out.println("La Fecha es aceptable");
+
+            driver.findElement(By.id(idCalendar)).click();
+            PageUtils.waitForSaucePicture(3000);
+
+            String string = String.format("//a[text()='%s']", actualDayDate );
+            driver.findElement(By.xpath(string)).click();
+
+            PageUtils.waitForSaucePicture(3000);
+
+        }
+        else {
+            System.out.println("La Fecha es NO aceptable");
+            actualDayDate = actualDayDate - maxDaysCurrentMonth;
+            System.out.println("La Fecha nueva es del proximo mes es: " + actualDayDate);
+
+            driver.findElement(By.id(idCalendar)).click();
+            driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-circle-triangle-e']")).click();
+            String string = String.format("//a[text()='%s']", actualDayDate );
+            driver.findElement(By.xpath(string)).click();
         }
     }
 

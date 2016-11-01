@@ -6,19 +6,24 @@
 
     <parameter name="passengers" value="1"/>
 
-    <parameter name="searchAutoComplete" value="Mia"/>
-    <parameter name="searchFullText" value="Miami, Estados Unidos de América"/>
+    <parameter name="originAuto" value="Bue"/>
+    <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
 
-    <parameter name="startDate" value="7"/>
-    <parameter name="endDate" value="24"/>
+    <parameter name="destinationAuto" value="Mia"/>
+    <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
 
-    <parameter name="childs" value="2"/>
+    <parameter name="startDate" value="10"/>
+    <parameter name="endDate" value="17"/>
+
+    <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
 
     <test name="Local Tests">
         <classes>
-            <class name="com.almundo.browser.automation.tests.HotelesPageTest"/>
-            <class name="com.almundo.browser.automation.tests.VuelosPageTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.HotelesPageTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.VuelosPageTest"/>-->
+            <class name="com.almundo.browser.automation.tests.VueloHotelPageTest"/>
+
             <!--<class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>-->
         </classes>
     </test>

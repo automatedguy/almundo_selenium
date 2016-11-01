@@ -19,6 +19,18 @@ public class TestBaseSetup {
 
     public static String numPassengers;
 
+    public static String originAutoComplete;
+    static String originFullText;
+    public static String originFullTextStr;
+
+    public static String destinationAutoComplete;
+    static String destinationFullText;
+    public static String destinationFullTextStr;
+
+    public static int departureflight;
+    public static int returnFlight;
+
+
     public WebDriver getDriver() {
         return driver;
     }
@@ -62,9 +74,14 @@ public class TestBaseSetup {
         return driver;
     }
 
-    @Parameters({ "browserType", "appURL" , "country" , "passengers" })
+    @Parameters({ "browserType", "appURL" , "country" , "passengers" ,
+    "originAuto" , "originFull" , "destinationAuto" , "destinationFull",
+    "startDate", "endDate" })
     @BeforeClass
-    public void initializeTestBaseSetup(String browserType, String appURL, String country, String passengers) {
+    public void initializeTestBaseSetup(String browserType, String appURL, String country, String passengers,
+                                        String originAuto, String originFull,
+                                        String destinationAuto , String destinationFull,
+                                        int startDate, int endDate) {
         try {
             setDriver(browserType, appURL, country);
 
@@ -72,8 +89,20 @@ public class TestBaseSetup {
             System.out.println("Error....." + e.getStackTrace());
         }
 
-        /* Initialize Number of passengers */
+        /* Initialize Test Global Parameters */
         numPassengers = passengers;
+
+        originAutoComplete = originAuto;
+        originFullText = originFull;
+        originFullTextStr = String.format("//span[contains(.,'%s')]", originFullText );
+
+        destinationAutoComplete = destinationAuto;
+        destinationFullText = destinationFull ;
+        destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText );
+
+        departureflight = startDate;
+        returnFlight = endDate;
+
 
     }
 

@@ -50,7 +50,7 @@ public class PaymentPage {
     }
 
     public static WebElement ver15BancosMasLnk(WebDriver driver){
-        element = driver.findElement(PaymentPageMap.VER_BANCOS_LNK.getBy());
+        element = driver.findElement(PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
         return element;
     }
 
@@ -178,7 +178,7 @@ public class PaymentPage {
 
     public static void populateCreditCardPayments(WebDriver driver){
 
-        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_LNK.getBy());
+        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
         ver15BancosMasLnk(driver).click();
 
         PageUtils.moveToElement(driver, PaymentPageMap.TARJETA_RDO.getBy());
