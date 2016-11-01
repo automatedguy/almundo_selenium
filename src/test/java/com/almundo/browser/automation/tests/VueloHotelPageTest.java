@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.locators.pages.VueloHotelPageMap;
 import com.almundo.browser.automation.pages.HomePage;
+import com.almundo.browser.automation.pages.PaymentPage;
 import com.almundo.browser.automation.pages.VueloHotelPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
@@ -25,31 +26,10 @@ public class VueloHotelPageTest extends TestBaseSetup {
         driver=getDriver();
     }
 
-
-   /* @Test
-    public void calendarTestSample() throws InterruptedException {
-        driver.findElement(By.id("checkin-hotels")).click();
-        PageUtils.waitForSaucePicture(7000);
-
-        String dayDate = "20";
-
-        String string = String.format("//a[text()='%s']", dayDate );
-
-        System.out.println(string);
-
-        // driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-circle-triangle-e']")).click();
-
-        PageUtils.waitForSaucePicture(7000);
-
-        driver.findElement(By.xpath(string)).click();
-
-        PageUtils.waitForSaucePicture(7000);
-    }*/
-
     @Test
     public void vueloHotelReservationHappyPathTest() throws InterruptedException {
-        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HomePageMap.VUELO_HOTEL_ICO.getBy());
 
+        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HomePageMap.VUELO_HOTEL_ICO.getBy());
         HomePage.vueloHotelTab(driver).click();
 
         VueloHotelPage.originFlightTxt(driver).sendKeys(TestBaseSetup.originAutoComplete);
@@ -64,11 +44,31 @@ public class VueloHotelPageTest extends TestBaseSetup {
         PageUtils.waitForSaucePicture(1000);
 
         PageUtils.selectDateFromCalendar(driver, TRIPS_FECHA_REGRESO_CAL, returnFlight);
-        PageUtils.waitForSaucePicture(1000);
 
         VueloHotelPage.buscarBtn(driver).click();
 
-        PageUtils.waitForSaucePicture(10000);
+        PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.CONTINUAR_BTN.getBy());
+        VueloHotelPage.continuarBtn(driver).click();
+
+        PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.VER_HABITACION_BTN.getBy());
+        VueloHotelPage.verHabitacionBtn(driver).click();
+
+        PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.COMPRAR_BTN.getBy());
+        VueloHotelPage.comprarBtn(driver).click();
+
+
+
+        PaymentPage.populatePassenger(driver, 2);
+
+        PaymentPage.populateCreditCardOwnerData(driver);
+
+        PaymentPage.populateBillingInformation(driver);
+
+        PaymentPage.acceptTermsConditions(driver);
+
+        // PaymentPage.comprarBtn(driver).click();
+
+        PageUtils.waitForSaucePicture(1000);
 
     }
 }

@@ -22,6 +22,9 @@ public class PaymentPage {
             passengers.add(new Passenger(idNum));
         }
 
+        // This is nasty but could work for now.... :)
+        PageUtils.waitForVisibilityOfElementLocated(driver, 30 ,PaymentPageMap.FIRST_NAME_TXT.getBy());
+
         /* Then populate passengers */
         for(final Passenger passengerToPopulate : passengers){
             WebElement firstName, lastName, documentNumber;

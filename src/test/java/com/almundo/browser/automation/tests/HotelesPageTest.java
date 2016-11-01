@@ -51,6 +51,6 @@ public class HotelesPageTest extends TestBaseSetup {
 
         PaymentPage.comprarBtn(driver).click();
 
-        PageUtils.waitForSaucePicture(20000);
+        PageUtils.waitForSaucePicture(1000);
     }
 }

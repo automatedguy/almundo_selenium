@@ -3,7 +3,6 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.components.CalendarComponent;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
-import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.PaymentPage;
 import com.almundo.browser.automation.pages.VuelosPage;
@@ -68,9 +67,9 @@ public class VuelosPageTest extends TestBaseSetup {
 
         PageUtils.waitForSaucePicture(20000);
 
-        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_02CUOTAS_LNK.getBy());
+        // PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_02CUOTAS_LNK.getBy());
 
-        PaymentPage.populateCreditCardPayments(driver);
+        // PaymentPage.populateCreditCardPayments(driver);
 
         PaymentPage.populateCreditCardOwnerData(driver);
 
@@ -78,8 +77,8 @@ public class VuelosPageTest extends TestBaseSetup {
 
         PaymentPage.acceptTermsConditions(driver);
 
-        PaymentPage.comprarBtn(driver).click();
+        // PaymentPage.comprarBtn(driver).click();
 
-        PageUtils.waitForSaucePicture(20000);
+        PageUtils.waitForSaucePicture(1000);
     }
 }

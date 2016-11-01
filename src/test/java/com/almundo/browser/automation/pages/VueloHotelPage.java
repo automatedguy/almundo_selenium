@@ -26,4 +26,19 @@ public class VueloHotelPage {
         element = driver.findElement(HomePageMap.BUSCAR_BTN.getBy());
         return element;
     }
+
+    public static WebElement continuarBtn(WebDriver driver){
+        element = driver.findElement(VueloHotelPageMap.CONTINUAR_BTN.getBy());
+        return element;
+    }
+
+    public static WebElement verHabitacionBtn(WebDriver driver){
+        element = driver.findElement(VueloHotelPageMap.VER_HABITACION_BTN.getBy());
+        return element;
+    }
+
+    public static WebElement comprarBtn(WebDriver driver){
+        element = driver.findElement(VueloHotelPageMap.COMPRAR_BTN.getBy());
+        return element;
+    }
 }

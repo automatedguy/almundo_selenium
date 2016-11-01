@@ -20,8 +20,8 @@
 
     <test name="Local Tests">
         <classes>
-            <!--<class name="com.almundo.browser.automation.tests.HotelesPageTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.VuelosPageTest"/>-->
+            <class name="com.almundo.browser.automation.tests.HotelesPageTest"/>
+            <class name="com.almundo.browser.automation.tests.VuelosPageTest"/>
             <class name="com.almundo.browser.automation.tests.VueloHotelPageTest"/>
 
             <!--<class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>-->

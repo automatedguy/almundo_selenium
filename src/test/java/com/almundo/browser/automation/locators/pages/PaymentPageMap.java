@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
  * Created by gabrielcespedes on 31/10/16.
  */
 public enum PaymentPageMap {
+    FIRST_NAME_TXT(By.id("first_name0")),
     TARJETA_DDL(By.id("cardselect")),
     CANT_CUOTAS_DDL(By.id("cantselect")),
     VER_BANCOS_01CUOTAS_LNK(By.xpath("//*[@id=\"ng-app\"]/div/div[4]/form/div[3]/fieldset/div[2]/div/div/div/div[1]/div[1]/div[2]/div/div/p[1]/span/span[1]")),
