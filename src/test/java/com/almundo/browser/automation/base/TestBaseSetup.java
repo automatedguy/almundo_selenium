@@ -17,6 +17,8 @@ public class TestBaseSetup {
     static String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
     static String firefoxDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/gecko/geckodriver";
 
+    public static String numPassengers;
+
     public WebDriver getDriver() {
         return driver;
     }
@@ -60,15 +62,19 @@ public class TestBaseSetup {
         return driver;
     }
 
-    @Parameters({ "browserType", "appURL" , "country" })
+    @Parameters({ "browserType", "appURL" , "country" , "passengers" })
     @BeforeClass
-    public void initializeTestBaseSetup(String browserType, String appURL, String country) {
+    public void initializeTestBaseSetup(String browserType, String appURL, String country, String passengers) {
         try {
             setDriver(browserType, appURL, country);
 
         } catch (Exception e) {
             System.out.println("Error....." + e.getStackTrace());
         }
+
+        /* Initialize Number of passengers */
+        numPassengers = passengers;
+
     }
 
     @AfterClass

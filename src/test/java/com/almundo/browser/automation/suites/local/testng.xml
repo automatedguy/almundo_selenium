@@ -4,19 +4,22 @@
     <parameter name="browserType" value="chrome"/>
     <parameter name="country" value="ARGENTINA"/>
 
-    <parameter name="searchAutoComplete" value="Lon"/>
-    <parameter name="searchFullText" value="Londres, sadfaakl oijddkajs"/>
+    <parameter name="passengers" value="1"/>
 
-    <parameter name="startDate" value="4"/>
+    <parameter name="searchAutoComplete" value="Mia"/>
+    <parameter name="searchFullText" value="Miami, Estados Unidos de América"/>
+
+    <parameter name="startDate" value="7"/>
     <parameter name="endDate" value="24"/>
 
-    <parameter name="adults" value="2"/>
+    <parameter name="childs" value="2"/>
     <parameter name="childs" value="2"/>
 
     <test name="Local Tests">
         <classes>
-            <!--<class name="com.almundo.browser.automation.tests.HotelesPageTest"/>-->
-            <class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>
+            <class name="com.almundo.browser.automation.tests.HotelesPageTest"/>
+            <class name="com.almundo.browser.automation.tests.VuelosPageTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>-->
         </classes>
     </test>
 </suite>

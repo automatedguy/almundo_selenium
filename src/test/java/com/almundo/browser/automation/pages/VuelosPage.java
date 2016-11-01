@@ -28,7 +28,28 @@ public class VuelosPage {
     }
 
     public static WebElement tipoVueloDdl(WebDriver driver){
-        element = driver.findElement(VuelosPageMap.TIPO_DE_VUELO.getBy());
+        element = driver.findElement(VuelosPageMap.TIPO_DE_VUELO_DDL.getBy());
         return element;
+    }
+
+    public static WebElement idaRdb(WebDriver driver){
+        element = driver.findElement(VuelosPageMap.TICKET_IDA_RDB.getBy());
+        return element;
+    }
+
+    public static WebElement vueltaRdb(WebDriver driver){
+        element = driver.findElement(VuelosPageMap.TICKET_VUELTA_RDB.getBy());
+        return element;
+    }
+
+    public static WebElement comprarBtn(WebDriver driver){
+        element = driver.findElement(VuelosPageMap.COMPRAR_BTN.getBy());
+        return element;
+    }
+
+    public static void comprarTickets(WebDriver driver){
+        idaRdb(driver).click();
+        vueltaRdb(driver).click();
+        comprarBtn(driver).click();
     }
 }

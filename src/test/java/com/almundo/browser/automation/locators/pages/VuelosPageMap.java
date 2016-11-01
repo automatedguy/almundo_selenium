@@ -8,7 +8,10 @@ import org.openqa.selenium.By;
 public enum VuelosPageMap {
     ORIGIN_FLIGHTS_TXT(By.id("origin-flights")),
     DESTINATION_FLIGHTS_TXT(By.id("destination-flights")),
-    TIPO_DE_VUELO(By.xpath("//select[@name='type-flights']"));
+    TIPO_DE_VUELO_DDL(By.xpath("//select[@name='type-flights']")),
+    TICKET_IDA_RDB(By.id("option-inbound-00")),
+    TICKET_VUELTA_RDB(By.id("option-inbound-01")),
+    COMPRAR_BTN(By.xpath("//*[@id=\"main-content\"]/div[3]/div[2]/div/p/span"));
     private By name;
     VuelosPageMap(By locator) {this.name = locator; }
     public By getBy() { return name; }
