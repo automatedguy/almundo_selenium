@@ -49,9 +49,11 @@ public class VueloHotelPageTest extends TestBaseSetup {
         VueloHotelPage.continuarBtn(driver).click();
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.VER_HABITACION_BTN.getBy());
+        PageUtils.waitForElementToBeClickcable(driver, 10, VueloHotelPageMap.VER_HABITACION_BTN.getBy());
         VueloHotelPage.verHabitacionBtn(driver).click();
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.COMPRAR_BTN.getBy());
+        // PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.COMPRAR_BTN.getBy());
+        PageUtils.waitForElementToBeClickcable(driver, 10, VueloHotelPageMap.COMPRAR_BTN.getBy());
         VueloHotelPage.comprarBtn(driver).click();
 
         PaymentPage.populatePassenger(driver, 2);

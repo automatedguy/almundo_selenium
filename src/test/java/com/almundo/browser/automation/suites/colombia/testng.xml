@@ -1,17 +1,29 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Colombia Test Suite">
-    <parameter name="appURLSauce" value="http://www.almundo.com"/>
-    <parameter name="countrySauce" value="COLOMBIA"/>
+    <parameter name="appURL" value="http://www.almundo.com"/>
+    <parameter name="browserType" value="chrome"/>
+    <parameter name="country" value="COLOMBIA"/>
 
-    <test name="Saucelabs Tests Colombia">
+    <parameter name="passengers" value="1"/>
+
+    <parameter name="originAuto" value="Bue"/>
+    <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
+
+    <parameter name="destinationAuto" value="Mia"/>
+    <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
+
+    <parameter name="startDate" value="10"/>
+    <parameter name="endDate" value="17"/>
+
+    <parameter name="adults" value="2"/>
+    <parameter name="childs" value="2"/>
+
+    <test name="Local Tests">
         <classes>
-            <class name="com.almundo.browser.automation.tests.SauceLandingPageTest"/>
-            <class name="com.almundo.browser.automation.tests.SauceHomePageTest"/>
-            <!--<class name="com.almundo.browser.automation.tests.SauceHotelesPageTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.SauceVuelosPageTest"/>-->
-
-            <!-- Only for ARGENTINA currently -->
-            <!--<class name="com.almundo.browser.automation.tests.SauceLoginPageTest"/>-->
+            <class name="com.almundo.browser.automation.tests.HotelesPageTest"/>
+            <class name="com.almundo.browser.automation.tests.VuelosPageTest"/>
+            <class name="com.almundo.browser.automation.tests.VueloHotelPageTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>-->
         </classes>
     </test>
 </suite>
