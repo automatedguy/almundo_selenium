@@ -1,10 +1,10 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.SauceTestBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.locators.pages.HotelesPageMap;
-import com.almundo.browser.automation.locators.testsmaps.HotelesTestMap;
-import com.almundo.browser.automation.locators.testsmaps.TestInputs;
+import com.almundo.browser.automation.locators.testsmaps.TestInputMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.HotelesPage;
 import com.almundo.browser.automation.pages.PaymentPage;
@@ -35,15 +35,12 @@ public class SauceHotelesPageTest extends SauceTestBaseSetup {
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.DESTINATION_TXT.getBy());
 
-        HotelesPage.hotelDestinationTxtBox(driver).sendKeys(String.valueOf(TestInputs.FULL_DESTINATION1_INP));
+        HotelesPage.hotelDestinationTxtBox(driver).sendKeys(String.valueOf(TestBaseSetup.destinationFullTextStr));
         HotelesPage.hotelDestinationTxtBox(driver).sendKeys(Keys.RETURN);
 
         HotelesPage.buscarBtn(driver).click();
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.VER_HOTEL_BTN.getBy());
-
-        PageUtils.assertElementIsPresent(driver, HotelesPageMap.VER_HOTEL_BTN.getBy(), String.valueOf(TestInputs.HOTEL_VER_HOTEL_BTN));
-
         PageUtils.waitForSaucePicture(10000);
     }
 
@@ -60,17 +57,15 @@ public class SauceHotelesPageTest extends SauceTestBaseSetup {
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.DESTINATION_TXT.getBy());
 
-        HotelesPage.hotelDestinationTxtBox(driver).sendKeys(String.valueOf(TestInputs.AUTOCOMPLETE_INP));
+        HotelesPage.hotelDestinationTxtBox(driver).sendKeys(String.valueOf(TestBaseSetup.destinationAutoComplete));
 
         PageUtils.waitForSaucePicture(10000);
 
-        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, TestInputMap.DESTINATION_FULL_PAR.getBy());
 
         HotelesPage.buscarBtn(driver).click();
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.VER_HOTEL_BTN.getBy());
-
-        PageUtils.assertElementIsPresent(driver, HotelesPageMap.VER_HOTEL_BTN.getBy(), String.valueOf(TestInputs.HOTEL_VER_HOTEL_BTN));
 
         PageUtils.waitForSaucePicture(10000);
     }
@@ -90,9 +85,9 @@ public class SauceHotelesPageTest extends SauceTestBaseSetup {
 
         HotelesPage.hotelDestinationTxtBox(driver).sendKeys("Rio");
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 10, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+        PageUtils.waitForVisibilityOfElementLocated(driver, 10, TestInputMap.DESTINATION_FULL_PAR.getBy());
 
-        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, TestInputMap.DESTINATION_FULL_PAR.getBy());
 
         HotelesPage.buscarBtn(driver).click();
 

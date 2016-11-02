@@ -3,7 +3,7 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.locators.pages.HotelesPageMap;
-import com.almundo.browser.automation.locators.testsmaps.HotelesTestMap;
+import com.almundo.browser.automation.locators.testsmaps.TestInputMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.HotelesPage;
 import com.almundo.browser.automation.pages.PaymentPage;
@@ -25,28 +25,26 @@ public class HotelesPageTest extends TestBaseSetup {
 
     @Test
     public void hotelesReservationHappyPathTest() throws InterruptedException {
-        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HomePageMap.HOTELES_ICO.getBy());
 
+        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HomePageMap.HOTELES_ICO.getBy());
         HomePage.hotelesTab(driver).click();
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 20, HotelesPageMap.DESTINATION_TXT.getBy());
+        HotelesPage.hotelDestinationTxtBox(driver).sendKeys(TestBaseSetup.destinationAutoComplete);
 
-        HotelesPage.hotelDestinationTxtBox(driver).sendKeys("Rio");
+        PageUtils.waitForVisibilityOfElementLocated(driver, 20, TestInputMap.DESTINATION_FULL_PAR.getBy());
+        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, TestInputMap.DESTINATION_FULL_PAR.getBy());
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 20, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
-
-        HotelesPage.selectCityFromAutoCompleteSuggestions(driver, HotelesTestMap.DESTINATION_CITY_SUG.getBy());
+        PageUtils.selectDateFromCalendar(driver, HotelesPage.HOTELES_FECHA_SALIDA_CAL, departureDate);
+        PageUtils.selectDateFromCalendar(driver, HotelesPage.HOTELES_FECHA_REGRESO_CAL, returnDate);
 
         HotelesPage.buscarBtn(driver).click();
 
         HotelesPage.doHotelReservationFlow(driver);
 
         PaymentPage.populateCreditCardPayments(driver);
-
         PaymentPage.populateCreditCardOwnerData(driver);
-
         PaymentPage.populateBillingInformation(driver);
-
         PaymentPage.acceptTermsConditions(driver);
 
         PaymentPage.comprarBtn(driver).click();

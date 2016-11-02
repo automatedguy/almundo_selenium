@@ -12,6 +12,9 @@ public class VuelosPage {
 
     private static WebElement element = null;
 
+    public static String VUELOS_FECHA_SALIDA_CAL = "departure-flights";
+    public static String VUELOS_FECHA_REGRESO_CAL = "arrival-flights";
+
     public static WebElement vuelosPageOriginFlightsTxtBox(WebDriver driver){
         element = driver.findElement(VuelosPageMap.ORIGIN_FLIGHTS_TXT.getBy());
         return element;

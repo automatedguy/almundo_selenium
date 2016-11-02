@@ -1,13 +1,12 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.components.CalendarComponent;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
+import com.almundo.browser.automation.locators.testsmaps.TestInputMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.PaymentPage;
 import com.almundo.browser.automation.pages.VuelosPage;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -31,29 +30,16 @@ public class VuelosPageTest extends TestBaseSetup {
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, HomePageMap.VUELOS_ICO.getBy());
         HomePage.vuelosTab(driver).click();
 
-        VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys("Buenos Aires, Buenos Aires, Argentina");
+        VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys(TestBaseSetup.originAutoComplete);
         PageUtils.waitForSaucePicture(2000);
-        VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys(Keys.RETURN);
+        PageUtils.selectFromAutoCompleteSuggestions(driver, TestInputMap.ORIGIN_FULL_PAR.getBy());
 
-        VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys("Las Vegas, Nevada, Estados Unidos de América");
+        VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys(TestBaseSetup.destinationAutoComplete);
         PageUtils.waitForSaucePicture(2000);
-        VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys(Keys.RETURN);
+        PageUtils.selectFromAutoCompleteSuggestions(driver, TestInputMap.DESTINATION_FULL_PAR.getBy());
 
-        VuelosPage.tipoVueloDdl(driver).click();
-
-        /* Normalize in one method Seleccionar IDA */
-        CalendarComponent.salidaCalendar(driver).click();
-        CalendarComponent.salidaTriangleCalendar(driver).click();
-        PageUtils.waitForSaucePicture(3000);
-        CalendarComponent.salidaDateCalendar(driver).click();
-        PageUtils.waitForSaucePicture(3000);
-
-        /* Normalize in one method Seleccionar VUELTA */
-        CalendarComponent.regresoCalendar(driver).click();
-        CalendarComponent.regresoTriangleCalendar(driver).click();
-        PageUtils.waitForSaucePicture(3000);
-        CalendarComponent.regresoDateCalendar(driver).click();
-        PageUtils.waitForSaucePicture(3000);
+        PageUtils.selectDateFromCalendar(driver, VuelosPage.VUELOS_FECHA_SALIDA_CAL, departureDate);
+        PageUtils.selectDateFromCalendar(driver, VuelosPage.VUELOS_FECHA_REGRESO_CAL, returnDate);
 
         VuelosPage.vuelosPageBuscarBtn(driver).click();
 
@@ -67,8 +53,8 @@ public class VuelosPageTest extends TestBaseSetup {
 
         PageUtils.waitForSaucePicture(20000);
 
+        // Enable once we have credit card
         // PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_02CUOTAS_LNK.getBy());
-
         // PaymentPage.populateCreditCardPayments(driver);
 
         PaymentPage.populateCreditCardOwnerData(driver);
@@ -77,6 +63,7 @@ public class VuelosPageTest extends TestBaseSetup {
 
         PaymentPage.acceptTermsConditions(driver);
 
+        // Enable once we have credit card
         // PaymentPage.comprarBtn(driver).click();
 
         PageUtils.waitForSaucePicture(1000);

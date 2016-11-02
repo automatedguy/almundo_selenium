@@ -14,6 +14,9 @@ import org.openqa.selenium.WebElement;
 public class HotelesPage {
     private static WebElement element = null;
 
+    public static String HOTELES_FECHA_SALIDA_CAL = "checkin-hotels";
+    public static String HOTELES_FECHA_REGRESO_CAL = "checkout-hotels";
+
     public static WebElement hotelDestinationTxtBox(WebDriver driver){
         element = driver.findElement(HotelesPageMap.DESTINATION_TXT.getBy());
         return element;

@@ -3,6 +3,7 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.locators.pages.VueloHotelPageMap;
+import com.almundo.browser.automation.locators.testsmaps.TestInputMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.PaymentPage;
 import com.almundo.browser.automation.pages.VueloHotelPage;
@@ -18,9 +19,6 @@ public class VueloHotelPageTest extends TestBaseSetup {
 
     private WebDriver driver;
 
-    String TRIPS_FECHA_SALIDA_CAL = "departure-trips";
-    String TRIPS_FECHA_REGRESO_CAL = "arrival-trips";
-
     @BeforeClass
     public void setUp() {
         driver=getDriver();
@@ -34,16 +32,16 @@ public class VueloHotelPageTest extends TestBaseSetup {
 
         VueloHotelPage.originFlightTxt(driver).sendKeys(TestBaseSetup.originAutoComplete);
         PageUtils.waitForSaucePicture(1000);
-        PageUtils.selectFromAutoCompleteSuggestions(driver, VueloHotelPageMap.ORIGIN_FULL_PAR.getBy());
+        PageUtils.selectFromAutoCompleteSuggestions(driver, TestInputMap.ORIGIN_FULL_PAR.getBy());
 
         VueloHotelPage.destinationFlightTxt(driver).sendKeys(TestBaseSetup.destinationAutoComplete);
         PageUtils.waitForSaucePicture(1000);
-        PageUtils.selectFromAutoCompleteSuggestions(driver, VueloHotelPageMap.DESTINATION_FULL_PAR.getBy());
+        PageUtils.selectFromAutoCompleteSuggestions(driver, TestInputMap.DESTINATION_FULL_PAR.getBy());
 
-        PageUtils.selectDateFromCalendar(driver, TRIPS_FECHA_SALIDA_CAL, departureflight);
+        PageUtils.selectDateFromCalendar(driver, VueloHotelPage.TRIPS_FECHA_SALIDA_CAL, departureDate);
         PageUtils.waitForSaucePicture(1000);
 
-        PageUtils.selectDateFromCalendar(driver, TRIPS_FECHA_REGRESO_CAL, returnFlight);
+        PageUtils.selectDateFromCalendar(driver, VueloHotelPage.TRIPS_FECHA_REGRESO_CAL, returnDate);
 
         VueloHotelPage.buscarBtn(driver).click();
 
@@ -55,8 +53,6 @@ public class VueloHotelPageTest extends TestBaseSetup {
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.COMPRAR_BTN.getBy());
         VueloHotelPage.comprarBtn(driver).click();
-
-
 
         PaymentPage.populatePassenger(driver, 2);
 

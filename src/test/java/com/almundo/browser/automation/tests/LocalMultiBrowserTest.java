@@ -32,11 +32,11 @@ public class LocalMultiBrowserTest extends TestBaseSetup {
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, HomePageMap.VUELOS_ICO.getBy());
         HomePage.vuelosTab(driver).click();
 
-        VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys("Buenos Aires, Buenos Aires, Argentina");
+        VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys(TestBaseSetup.originFullText);
         PageUtils.waitForSaucePicture(2000);
         VuelosPage.vuelosPageOriginFlightsTxtBox(driver).sendKeys(Keys.RETURN);
 
-        VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys("Las Vegas, Nevada, Estados Unidos de América");
+        VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys(TestBaseSetup.destinationFullText);
         PageUtils.waitForSaucePicture(2000);
         VuelosPage.vuelosPageDestinationFlightsTxtBox(driver).sendKeys(Keys.RETURN);
 

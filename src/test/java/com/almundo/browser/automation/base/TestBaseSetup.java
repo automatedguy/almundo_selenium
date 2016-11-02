@@ -20,15 +20,15 @@ public class TestBaseSetup {
     public static String numPassengers;
 
     public static String originAutoComplete;
-    static String originFullText;
+    public static String originFullText;
     public static String originFullTextStr;
 
     public static String destinationAutoComplete;
-    static String destinationFullText;
+    public static String destinationFullText;
     public static String destinationFullTextStr;
 
-    public static int departureflight;
-    public static int returnFlight;
+    public static int departureDate;
+    public static int returnDate;
 
 
     public WebDriver getDriver() {
@@ -100,8 +100,8 @@ public class TestBaseSetup {
         destinationFullText = destinationFull ;
         destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText );
 
-        departureflight = startDate;
-        returnFlight = endDate;
+        departureDate = startDate;
+        returnDate = endDate;
 
 
     }
