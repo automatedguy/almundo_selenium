@@ -52,12 +52,17 @@ public class PaymentPage {
         }
     }
 
-    public static WebElement ver15BancosMasLnk(WebDriver driver){
+    public static WebElement verMasBancos01Lnk(WebDriver driver){
         element = driver.findElement(PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
         return element;
     }
 
-    public static WebElement ver15BancosMasLnkCkl(WebDriver driver){
+    public static WebElement verMasBancos02Lnk(WebDriver driver){
+        element = driver.findElement(PaymentPageMap.VER_BANCOS_02CUOTAS_LNK.getBy());
+        return element;
+    }
+
+    public static WebElement verMasBancosCkl(WebDriver driver){
         element = driver.findElement(PaymentPageMap.VER_BANCOS_LNK_CLK.getBy());
         return element;
     }
@@ -181,12 +186,6 @@ public class PaymentPage {
 
     public static void populateCreditCardPayments(WebDriver driver){
 
-        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
-        ver15BancosMasLnk(driver).click();
-
-        PageUtils.moveToElement(driver, PaymentPageMap.TARJETA_RDO.getBy());
-        pagoUnaCuota(driver).click();
-
         PageUtils.moveToElement(driver, PaymentPageMap.TARJETA_RDO.getBy());
         pagoUnaCuota(driver).click();
     }
@@ -213,14 +212,20 @@ public class PaymentPage {
     }
 
     public static void populateBillingInformation(WebDriver driver){
-        cuilTxt(driver).sendKeys("20285494568");
-        domicilioTxt(driver).sendKeys("Domicilio");
-        numeroTxt(driver).sendKeys("7570");
-        pisoTxt(driver).sendKeys("75");
-        departamentTxt(driver).sendKeys("A");
-        codigoPostalTxt(driver).sendKeys("7525");
-        provinciaTxt(driver).sendKeys("Provincia");
-        ciudadTxt(driver).sendKeys("Ciudad");
+
+        if(!driver.findElements(By.id("billing_fiscal_document")).isEmpty()){
+            cuilTxt(driver).sendKeys("20285494568");
+            domicilioTxt(driver).sendKeys("Domicilio");
+            numeroTxt(driver).sendKeys("7570");
+            pisoTxt(driver).sendKeys("75");
+            departamentTxt(driver).sendKeys("A");
+            codigoPostalTxt(driver).sendKeys("7525");
+            provinciaTxt(driver).sendKeys("Provincia");
+            ciudadTxt(driver).sendKeys("Ciudad");
+        }
+        else{
+            System.out.println("CUI info");
+        }
         emailTxt(driver).sendKeys("email@sarasa.cuak");
         repEmailTxt(driver).sendKeys("email@sarasa.cuak");
         codAreaTelefTxt(driver).sendKeys("098");

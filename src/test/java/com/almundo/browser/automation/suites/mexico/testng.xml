@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Mexico Test Suite">
+<suite name="MexicoTestSuite">
     <parameter name="appURL" value="http://www.almundo.com"/>
     <parameter name="browserType" value="chrome"/>
     <parameter name="country" value="MEXICO"/>
@@ -18,11 +18,11 @@
     <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
 
-    <test name="Local Tests">
+    <test name="TestsResults">
         <classes>
             <class name="com.almundo.browser.automation.tests.HotelesPageTest"/>
-            <class name="com.almundo.browser.automation.tests.VuelosPageTest"/>
-            <class name="com.almundo.browser.automation.tests.VueloHotelPageTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.VuelosPageTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.VueloHotelPageTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>-->
         </classes>
     </test>

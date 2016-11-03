@@ -55,7 +55,7 @@ public class HotelesPage {
 
     public static void doHotelReservationFlow(WebDriver driver) throws InterruptedException {
         try {
-            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelesPageMap.VER_HOTEL_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 60, HotelesPageMap.VER_HOTEL_BTN.getBy());
             HotelesPage.verHotelBtn(driver).click();
             PageUtils.waitForSaucePicture(10000);
         }

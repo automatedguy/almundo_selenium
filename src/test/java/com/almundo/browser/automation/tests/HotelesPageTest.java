@@ -3,6 +3,7 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.locators.pages.HotelesPageMap;
+import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.locators.testsmaps.TestInputMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.HotelesPage;
@@ -42,13 +43,23 @@ public class HotelesPageTest extends TestBaseSetup {
 
         HotelesPage.doHotelReservationFlow(driver);
 
+        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
+        PaymentPage.verMasBancos01Lnk(driver).click();
+
+        PaymentPage.pagoUnaCuota(driver).click();
         PaymentPage.populateCreditCardPayments(driver);
+
         PaymentPage.populateCreditCardOwnerData(driver);
+
+        // Mexico is not using Billing info today.
+
         PaymentPage.populateBillingInformation(driver);
+
+
         PaymentPage.acceptTermsConditions(driver);
 
-        PaymentPage.comprarBtn(driver).click();
+        //PaymentPage.comprarBtn(driver).click();
 
-        PageUtils.waitForSaucePicture(1000);
+        PageUtils.waitForSaucePicture(10000);
     }
 }

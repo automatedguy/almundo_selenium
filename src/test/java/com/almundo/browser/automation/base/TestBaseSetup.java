@@ -30,6 +30,8 @@ public class TestBaseSetup {
     public static int departureDate;
     public static int returnDate;
 
+    public static String countryPar;
+
 
     public WebDriver getDriver() {
         return driver;
@@ -103,6 +105,7 @@ public class TestBaseSetup {
         departureDate = startDate;
         returnDate = endDate;
 
+        countryPar = country;
 
     }
 

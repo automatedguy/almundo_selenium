@@ -75,7 +75,7 @@
                         <file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/mexico/testng.xml</file>
 
                         <!--Local-->
-                        <file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/local/testng.xml</file>
+                        <!--<file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/local/testng.xml</file>-->
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
