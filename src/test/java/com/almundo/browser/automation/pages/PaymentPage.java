@@ -224,7 +224,7 @@ public class PaymentPage {
             ciudadTxt(driver).sendKeys("Ciudad");
         }
         else{
-            System.out.println("CUI info");
+            System.out.println("No CUIL info");
         }
         emailTxt(driver).sendKeys("email@sarasa.cuak");
         repEmailTxt(driver).sendKeys("email@sarasa.cuak");

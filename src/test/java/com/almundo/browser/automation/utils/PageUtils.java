@@ -122,4 +122,13 @@ public class PageUtils {
         }
     }
 
+    public static boolean nothingFound(WebDriver driver){
+        if(!driver.findElements(By.linkText("Ver listado de sucursales")).isEmpty()){
+            return true;
+        }
+        else{
+            System.out.println("No Resulsts found - acercate a nuestras sucursales");
+            return false;
+        }
+    }
 }

@@ -26,6 +26,7 @@ public class VuelosPageTest extends TestBaseSetup {
 
     @Test
     public void vuelosReservationHappyPathTest() throws InterruptedException {
+
         PageUtils.waitForVisibilityOfElementLocated(driver, 10, HomePageMap.HOTELES_ICO.getBy());
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, HomePageMap.VUELOS_ICO.getBy());
@@ -43,37 +44,32 @@ public class VuelosPageTest extends TestBaseSetup {
         PageUtils.selectDateFromCalendar(driver, VuelosPage.VUELOS_FECHA_REGRESO_CAL, returnDate);
 
         VuelosPage.vuelosPageBuscarBtn(driver).click();
+        PageUtils.waitForSaucePicture(10000);
 
-        PageUtils.waitForSaucePicture(20000);
+        if(PageUtils.nothingFound(driver)){
+            System.out.println("Nothing Found");
+        }
+        else {
+            VuelosPage.comprarTickets(driver);
+            PageUtils.waitForSaucePicture(20000);
 
-        VuelosPage.comprarTickets(driver);
+            PaymentPage.populatePassenger(driver, Integer.valueOf(TestBaseSetup.numPassengers));
+            PageUtils.waitForSaucePicture(20000);
 
-        PageUtils.waitForSaucePicture(20000);
+            // Enable once we have credit card
+            PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
+            PaymentPage.verMasBancos01Lnk(driver).click();
 
-        PaymentPage.populatePassenger(driver, Integer.valueOf(TestBaseSetup.numPassengers));
+            PaymentPage.pagoUnaCuota(driver).click();
+            PaymentPage.populateCreditCardPayments(driver);
 
-        PageUtils.waitForSaucePicture(20000);
+            PaymentPage.populateCreditCardOwnerData(driver);
+            PaymentPage.populateBillingInformation(driver);
+            PaymentPage.acceptTermsConditions(driver);
 
-        // Enable once we have credit card
-        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_02CUOTAS_LNK.getBy());
-
-        PageUtils.waitForSaucePicture(2000);
-
-        PaymentPage.verMasBancosCkl(driver).click();
-
-        PageUtils.waitForSaucePicture(2000);
-
-        PaymentPage.populateCreditCardPayments(driver);
-
-        PaymentPage.populateCreditCardOwnerData(driver);
-
-        PaymentPage.populateBillingInformation(driver);
-
-        PaymentPage.acceptTermsConditions(driver);
-
-        // Enable once we have credit card
-        // PaymentPage.comprarBtn(driver).click();
-
+            // Enable once we have credit card
+            // PaymentPage.comprarBtn(driver).click();
+        }
         PageUtils.waitForSaucePicture(1000);
     }
 }
