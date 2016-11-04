@@ -40,6 +40,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         }
         else {
 
+            // TODO: move this to public VueloHotelFlow doVueloHotelReservationFlow
             vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
             vueloHotelFlow.clickOn(driver, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
 
