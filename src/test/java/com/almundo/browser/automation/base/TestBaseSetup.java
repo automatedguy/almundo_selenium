@@ -1,7 +1,6 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.LandingPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,27 +10,29 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
+
 public class TestBaseSetup {
 
-    private WebDriver driver;
+    public WebDriver driver;
     static String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
     static String firefoxDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/gecko/geckodriver";
 
-    public static String numPassengers;
+    public LandingPage landingPage = new LandingPage(driver);
 
-    public static String originAutoComplete;
-    public static String originFullText;
+    public String numPassengers;
+
+    public String originAutoComplete;
+    public String originFullText;
     public static String originFullTextStr;
 
-    public static String destinationAutoComplete;
-    public static String destinationFullText;
+    public String destinationAutoComplete;
+    public String destinationFullText;
     public static String destinationFullTextStr;
 
-    public static int departureDate;
-    public static int returnDate;
+    public int departureDate;
+    public int returnDate;
 
     public static String countryPar;
-
 
     public WebDriver getDriver() {
         return driver;
@@ -52,18 +53,22 @@ public class TestBaseSetup {
         }
     }
 
-    private static WebDriver initChromeDriver(String appURL, String country) throws InterruptedException {
+    public WebDriver selectCountry(WebDriver driver, String selectedCountry){
+        landingPage.selectCountryPage(driver, selectedCountry);
+        return driver;
+    }
+
+    private WebDriver initChromeDriver(String appURL, String country) throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
-        LandingPage.selectCountryPage(driver, country);
-        PageUtils.waitForSaucePicture(10000);
+        selectCountry(driver, country);
         return driver;
     }
 
-    private static WebDriver initFirefoxDriver(String appURL, String country) throws InterruptedException {
+    private WebDriver initFirefoxDriver(String appURL, String country) throws InterruptedException {
         System.out.println("Launching Firefox browser..");
         System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
@@ -71,8 +76,7 @@ public class TestBaseSetup {
         WebDriver driver = new FirefoxDriver(capabilities);
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
-        LandingPage.selectCountryPage(driver, country);
-        PageUtils.waitForSaucePicture(10000);
+        selectCountry(driver, country);
         return driver;
     }
 
@@ -91,7 +95,7 @@ public class TestBaseSetup {
             System.out.println("Error....." + e.getStackTrace());
         }
 
-        /* Initialize Test Global Parameters */
+        /* Initialize Global Test Parameters */
         numPassengers = passengers;
 
         originAutoComplete = originAuto;
@@ -106,7 +110,6 @@ public class TestBaseSetup {
         returnDate = endDate;
 
         countryPar = country;
-
     }
 
     @AfterClass

@@ -1,11 +1,11 @@
-package com.almundo.browser.automation.locators.pages;
+package com.almundo.browser.automation.locators.flows;
 
 import org.openqa.selenium.By;
 
 /**
  * Created by gabrielcespedes on 01/11/16.
  */
-public enum VueloHotelPageMap {
+public enum VueloHotelFlowMap {
     ORIGIN_FLIGHTS_TXT(By.id("origin-trips")),
     DESTINATION_FLIGHTS_TXT(By.id("destination-trips")),
 
@@ -15,7 +15,7 @@ public enum VueloHotelPageMap {
     COMPRAR_BTN(By.cssSelector("button.select-room-button.button.button--md.button--secondary"));
 
     private By name;
-    VueloHotelPageMap(By locator) {this.name = locator; }
+    VueloHotelFlowMap(By locator) {this.name = locator; }
     public By getBy() { return name; }
 
 }

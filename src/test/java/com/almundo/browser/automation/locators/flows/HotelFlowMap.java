@@ -1,19 +1,19 @@
-package com.almundo.browser.automation.locators.pages;
+package com.almundo.browser.automation.locators.flows;
 
 import org.openqa.selenium.By;
 
 /**
  * Created by gabrielcespedes on 20/10/16.
  */
-public enum HotelesPageMap {
+public enum HotelFlowMap {
 
     DESTINATION_TXT(By.id("destination-hotels")),
     VER_HOTEL_BTN(By.cssSelector("a.button.button--lg.button--secondary.button--block.button-detail")),
     VER_HABITACIONES_BTN(By.cssSelector("a.button.button--lg.button--secondary.ng-scope")),
-    RESERVAR_AHORA_BTN(By.cssSelector("button.button.button--lg.button--secondary.ng-scope")),
-    RESERVAR_AHORA2_BTN(By.cssSelector("span.button.button--secondary.button--lg.button--block"));
+    // RESERVAR_BTN(By.xpath("//span[contains(.,'Reservar')]")),
+    RESERVAR_AHORA_BTN(By.xpath("//span[contains(.,'Reservar')]"));
 
     private By name;
-    HotelesPageMap(By locator) {this.name = locator; }
+    HotelFlowMap(By locator) {this.name = locator; }
     public By getBy() { return name; }
 }

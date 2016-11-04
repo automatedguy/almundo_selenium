@@ -1,11 +1,11 @@
-package com.almundo.browser.automation.locators.pages;
+package com.almundo.browser.automation.locators.flows;
 
 import org.openqa.selenium.By;
 
 /**
  * Created by gabrielcespedes on 20/10/16.
  */
-public enum VuelosPageMap {
+public enum VuelosFlowMap {
     ORIGIN_FLIGHTS_TXT(By.id("origin-flights")),
     DESTINATION_FLIGHTS_TXT(By.id("destination-flights")),
     TIPO_DE_VUELO_DDL(By.xpath("//select[@name='type-flights']")),
@@ -14,6 +14,6 @@ public enum VuelosPageMap {
     // COMPRAR_BTN(By.xpath("//*[@id=\"main-content\"]/div[3]/div[2]/div/p/span"));
     COMPRAR_BTN(By.xpath("//span[contains(.,'Comprar')]"));
     private By name;
-    VuelosPageMap(By locator) {this.name = locator; }
+    VuelosFlowMap(By locator) {this.name = locator; }
     public By getBy() { return name; }
 }

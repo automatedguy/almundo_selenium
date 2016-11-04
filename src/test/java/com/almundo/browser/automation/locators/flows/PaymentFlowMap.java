@@ -1,10 +1,10 @@
-package com.almundo.browser.automation.locators.pages;
+package com.almundo.browser.automation.locators.flows;
 import org.openqa.selenium.By;
 
 /**
  * Created by gabrielcespedes on 31/10/16.
  */
-public enum PaymentPageMap {
+public enum PaymentFlowMap {
     FIRST_NAME_TXT(By.id("first_name0")),
     TARJETA_DDL(By.id("cardselect")),
     CANT_CUOTAS_DDL(By.id("cantselect")),
@@ -34,6 +34,6 @@ public enum PaymentPageMap {
     COMPRAR_BTN(By.xpath("//input[@class='button button--lg button--secondary']"));
 
     private By name;
-    PaymentPageMap(By locator) {this.name = locator; }
+    PaymentFlowMap(By locator) {this.name = locator; }
     public By getBy() { return name; }
 }
