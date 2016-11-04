@@ -1,9 +1,8 @@
 package com.almundo.browser.automation.utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -124,11 +123,23 @@ public class PageUtils {
 
     public static boolean nothingFound(WebDriver driver){
         if(!driver.findElements(By.linkText("Ver listado de sucursales")).isEmpty()){
+            System.out.println("No Results found - acercate a nuestras sucursales");
             return true;
         }
         else{
-            System.out.println("No Resulsts found - acercate a nuestras sucursales");
             return false;
         }
     }
+
+    public static void waitForLoad(WebDriver driver) {
+        try {
+            new WebDriverWait(driver, 60).until((ExpectedCondition<Boolean>) wd ->
+                    ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+
+        }
+        catch (TimeoutException Ouch){
+            driver.navigate().refresh();
+        }
+    }
+
 }

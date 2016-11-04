@@ -94,7 +94,8 @@ public class HotelesPage {
             }
         }
         finally {
-            PaymentPage.populatePassenger(driver, 2);
+            // PaymentPage.populatePassenger(driver, 2);
+            driver.navigate().refresh();
             PageUtils.waitForSaucePicture(10000);
         }
     }

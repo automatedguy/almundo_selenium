@@ -18,12 +18,11 @@
     <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
 
-    <test name="TestsResults">
+    <test name="MEXICO-TestsResults">
         <classes>
             <class name="com.almundo.browser.automation.tests.HotelesPageTest"/>
-            <!--<class name="com.almundo.browser.automation.tests.VuelosPageTest"/>-->
+            <class name="com.almundo.browser.automation.tests.VuelosPageTest"/>
             <!--<class name="com.almundo.browser.automation.tests.VueloHotelPageTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.LocalMultiBrowserTest"/>-->
         </classes>
     </test>
 </suite>

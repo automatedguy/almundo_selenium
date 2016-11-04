@@ -3,7 +3,6 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
 import com.almundo.browser.automation.locators.pages.HotelesPageMap;
-import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.locators.testsmaps.TestInputMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.HotelesPage;
@@ -40,22 +39,16 @@ public class HotelesPageTest extends TestBaseSetup {
         PageUtils.selectDateFromCalendar(driver, HotelesPage.HOTELES_FECHA_REGRESO_CAL, returnDate);
 
         HotelesPage.buscarBtn(driver).click();
-
         HotelesPage.doHotelReservationFlow(driver);
+        PaymentPage.populatePassenger(driver, 2);
 
-        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
+/*        PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
         PaymentPage.verMasBancos01Lnk(driver).click();
-
         PaymentPage.pagoUnaCuota(driver).click();
-        PaymentPage.populateCreditCardPayments(driver);
+        PaymentPage.populateCreditCardPayments(driver);*/
 
         PaymentPage.populateCreditCardOwnerData(driver);
-
-        // Mexico is not using Billing info today.
-
         PaymentPage.populateBillingInformation(driver);
-
-
         PaymentPage.acceptTermsConditions(driver);
 
         //PaymentPage.comprarBtn(driver).click();

@@ -2,7 +2,6 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.HomePageMap;
-import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.locators.testsmaps.TestInputMap;
 import com.almundo.browser.automation.pages.HomePage;
 import com.almundo.browser.automation.pages.PaymentPage;
@@ -47,21 +46,24 @@ public class VuelosPageTest extends TestBaseSetup {
         PageUtils.waitForSaucePicture(10000);
 
         if(PageUtils.nothingFound(driver)){
-            System.out.println("Nothing Found");
+            System.out.println("Nothing Found: VUELOS");
         }
         else {
             VuelosPage.comprarTickets(driver);
-            PageUtils.waitForSaucePicture(20000);
+
+//            PageUtils.waitForSaucePicture(10000);
+//            driver.navigate().refresh();
+//            PageUtils.waitForSaucePicture(10000);
+
+            PageUtils.waitForLoad(driver);
 
             PaymentPage.populatePassenger(driver, Integer.valueOf(TestBaseSetup.numPassengers));
-            PageUtils.waitForSaucePicture(20000);
 
             // Enable once we have credit card
-            PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
-            PaymentPage.verMasBancos01Lnk(driver).click();
-
-            PaymentPage.pagoUnaCuota(driver).click();
-            PaymentPage.populateCreditCardPayments(driver);
+            // PageUtils.moveToElement(driver, PaymentPageMap.VER_BANCOS_01CUOTAS_LNK.getBy());
+            // PaymentPage.verMasBancos01Lnk(driver).click();
+            // PaymentPage.pagoUnaCuota(driver).click();
+            // PaymentPage.populateCreditCardPayments(driver);
 
             PaymentPage.populateCreditCardOwnerData(driver);
             PaymentPage.populateBillingInformation(driver);

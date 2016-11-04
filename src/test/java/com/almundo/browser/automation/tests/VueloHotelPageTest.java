@@ -42,31 +42,36 @@ public class VueloHotelPageTest extends TestBaseSetup {
         PageUtils.waitForSaucePicture(1000);
 
         PageUtils.selectDateFromCalendar(driver, VueloHotelPage.TRIPS_FECHA_REGRESO_CAL, returnDate);
+        PageUtils.waitForSaucePicture(1000);
 
         VueloHotelPage.buscarBtn(driver).click();
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.CONTINUAR_BTN.getBy());
-        VueloHotelPage.continuarBtn(driver).click();
+        PageUtils.waitForLoad(driver);
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.VER_HABITACION_BTN.getBy());
-        PageUtils.waitForElementToBeClickcable(driver, 10, VueloHotelPageMap.VER_HABITACION_BTN.getBy());
-        VueloHotelPage.verHabitacionBtn(driver).click();
+        if(PageUtils.nothingFound(driver)){
+            System.out.println("Nothing Found: VUELO + HOTEL");
+        }
+        else {
 
-        // PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.COMPRAR_BTN.getBy());
-        PageUtils.waitForElementToBeClickcable(driver, 10, VueloHotelPageMap.COMPRAR_BTN.getBy());
-        VueloHotelPage.comprarBtn(driver).click();
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelPageMap.CONTINUAR_BTN.getBy());
+            VueloHotelPage.continuarBtn(driver).click();
 
-        PaymentPage.populatePassenger(driver, 2);
+            PageUtils.waitForSaucePicture(7000);
+            VueloHotelPage.verHabitacionBtn(driver).click();
 
-        PaymentPage.populateCreditCardOwnerData(driver);
+            PageUtils.waitForSaucePicture(7000);
+            VueloHotelPage.comprarBtn(driver).click();
 
-        PaymentPage.populateBillingInformation(driver);
+            PageUtils.waitForLoad(driver);
 
-        PaymentPage.acceptTermsConditions(driver);
+            PaymentPage.populatePassenger(driver, 2);
+            PaymentPage.populateCreditCardOwnerData(driver);
+            PaymentPage.populateBillingInformation(driver);
+            PaymentPage.acceptTermsConditions(driver);
 
-        // PaymentPage.comprarBtn(driver).click();
+            // PaymentPage.comprarBtn(driver).click();
 
-        PageUtils.waitForSaucePicture(1000);
-
+            PageUtils.waitForSaucePicture(1000);
+        }
     }
 }
