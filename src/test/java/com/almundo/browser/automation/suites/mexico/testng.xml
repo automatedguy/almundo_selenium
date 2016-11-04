@@ -20,9 +20,9 @@
 
     <test name="MEXICO-TestsResults">
         <classes>
-            <class name="com.almundo.browser.automation.tests.HotelesPageTest"/>
-            <class name="com.almundo.browser.automation.tests.VuelosPageTest"/>
-            <!--<class name="com.almundo.browser.automation.tests.VueloHotelPageTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.HotelFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.VueloFlowTest"/>-->
+            <class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>
         </classes>
     </test>
 </suite>

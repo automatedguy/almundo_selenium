@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.components;
+package com.almundo.browser.automation.locators.testsmaps;
 
 /**
  * Created by gabrielcespedes on 19/10/16.

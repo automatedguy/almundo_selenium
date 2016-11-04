@@ -10,7 +10,6 @@ public enum HotelFlowMap {
     DESTINATION_TXT(By.id("destination-hotels")),
     VER_HOTEL_BTN(By.cssSelector("a.button.button--lg.button--secondary.button--block.button-detail")),
     VER_HABITACIONES_BTN(By.cssSelector("a.button.button--lg.button--secondary.ng-scope")),
-    // RESERVAR_BTN(By.xpath("//span[contains(.,'Reservar')]")),
     RESERVAR_AHORA_BTN(By.xpath("//span[contains(.,'Reservar')]"));
 
     private By name;

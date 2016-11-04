@@ -7,9 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -18,12 +15,6 @@ import java.util.Set;
  */
 public class PageUtils {
     private static WebElement element = null;
-
-    public static WebElement waitForVisibilityOfElementLocated(WebDriver driver, long timeout, By elementToLocate){
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
-        return element;
-    }
 
     public static WebElement waitForElementToBeClickcable(WebDriver driver, long timeout,By elementToClick){
         WebDriverWait wait = new WebDriverWait(driver, timeout);
@@ -45,10 +36,6 @@ public class PageUtils {
         String child=win1.next();
         driver.switchTo().window(child);
         return element;
-    }
-
-    public static void waitForSaucePicture(long waiting) throws InterruptedException {
-        Thread.sleep(waiting);
     }
 
     public static void assertElementIsPresent(WebDriver driver, By assertedElement, String textToCompare){
@@ -75,52 +62,6 @@ public class PageUtils {
         }
     }
 
-    public static WebElement selectFromAutoCompleteSuggestions(WebDriver driver, By city){
-        WebElement selectedCity = driver.findElement(city);
-        selectedCity.click();
-        return element;
-    }
-
-    public static void selectDateFromCalendar(WebDriver driver, String idCalendar, int daysAhead) throws InterruptedException {
-
-
-        Calendar c = Calendar.getInstance();
-        int maxDaysCurrentMonth = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        DateFormat dateFormat = new SimpleDateFormat("dd");
-        Calendar cal = Calendar.getInstance();
-        int currentDateDay = Integer.parseInt(dateFormat.format(cal.getTime()));
-
-        int actualDayDate = currentDateDay + daysAhead;
-
-        System.out.println("Cantidad de dias en el mes actual... " + maxDaysCurrentMonth);
-        System.out.println("Fecha del dia de hoy ................ " + currentDateDay);
-        System.out.println("Fecha del dia a marcar............... " + actualDayDate);
-
-        if(actualDayDate <= maxDaysCurrentMonth){
-            System.out.println("La Fecha es aceptable");
-
-            driver.findElement(By.id(idCalendar)).click();
-            PageUtils.waitForSaucePicture(3000);
-
-            String string = String.format("//a[text()='%s']", actualDayDate );
-            driver.findElement(By.xpath(string)).click();
-
-            PageUtils.waitForSaucePicture(3000);
-
-        }
-        else {
-            System.out.println("La Fecha es NO aceptable");
-            actualDayDate = actualDayDate - maxDaysCurrentMonth;
-            System.out.println("La Fecha nueva es del proximo mes es: " + actualDayDate);
-
-            driver.findElement(By.id(idCalendar)).click();
-            driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-circle-triangle-e']")).click();
-            String string = String.format("//a[text()='%s']", actualDayDate );
-            driver.findElement(By.xpath(string)).click();
-        }
-    }
-
     public static boolean nothingFound(WebDriver driver){
         if(!driver.findElements(By.linkText("Ver listado de sucursales")).isEmpty()){
             System.out.println("No Results found - acercate a nuestras sucursales");
@@ -141,5 +82,4 @@ public class PageUtils {
             driver.navigate().refresh();
         }
     }
-
 }

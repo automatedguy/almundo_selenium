@@ -12,8 +12,7 @@ public class VueloHotelPage {
 
     private static WebElement element = null;
 
-    public static String TRIPS_FECHA_SALIDA_CAL = "departure-trips";
-    public static String TRIPS_FECHA_REGRESO_CAL = "arrival-trips";
+
 
     public static WebElement originFlightTxt(WebDriver driver){
         element = driver.findElement(VueloHotelFlowMap.ORIGIN_FLIGHTS_TXT.getBy());

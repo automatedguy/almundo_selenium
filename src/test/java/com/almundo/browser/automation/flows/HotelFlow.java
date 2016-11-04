@@ -9,6 +9,10 @@ import org.openqa.selenium.WebDriver;
  * Created by gabrielcespedes on 04/11/16.
  */
 public class HotelFlow extends PageBaseSetup {
+
+    public String HOTEL_FECHA_SALIDA_CAL = "checkin-hotels";
+    public String HOTEL_FECHA_REGRESO_CAL = "checkout-hotels";
+
     public HotelFlow(WebDriver driver) {
         super.driver = driver;
     }
@@ -33,6 +37,7 @@ public class HotelFlow extends PageBaseSetup {
             clickOn(driver, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
         }
 
+        // TODO play a bit more with this as in some cases is failing
         do {
             try {
                 waitForVisibilityOfElementLocated(driver, 20, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());

@@ -1,8 +1,8 @@
-package com.almundo.browser.automation.locators.pages;
+package com.almundo.browser.automation.pages;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
-import com.almundo.browser.automation.locators.flows.PaymentFlowMap;
+import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,8 +23,8 @@ public class PaymentPage extends PageBaseSetup {
             passengers.add(new Passenger(idNum));
         }
 
-        driver.navigate().refresh();
-        waitForVisibilityOfElementLocated(driver, 60 , PaymentFlowMap.FIRST_NAME_TXT.getBy());
+        // driver.navigate().refresh();
+        waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
 
         /*  Populate passengers */
         for(final Passenger passengerToPopulate : passengers){
@@ -56,35 +56,35 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage populateCreditCardOwnerData(WebDriver driver){
 
-        moveToElement(driver, PaymentFlowMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
+        moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
 
-        enterText(driver, "Nombre", PaymentFlowMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
-        enterText(driver, "999999999999", PaymentFlowMap.NUMERO_DE_TARJETA_TXT.getBy());
-        enterText(driver, "07/17", PaymentFlowMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
-        enterText(driver, "777", PaymentFlowMap.CODIGO_DE_SEGURIDAD_TXT.getBy());
+        enterText(driver, "Nombre", PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
+        enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
+        enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
+        enterText(driver, "777", PaymentPageMap.CODIGO_DE_SEGURIDAD_TXT.getBy());
         // TODO agregar Cedula para Colombia
         return this;
     }
 
     public PaymentPage populateBillingInformation(WebDriver driver){
 
-        if(!driver.findElements(PaymentFlowMap.CUIL_TXT.getBy()).isEmpty()){
-            enterText(driver, "20285494568", PaymentFlowMap.CUIL_TXT.getBy());
-            enterText(driver, "Domicilio", PaymentFlowMap.DOMICILIO_TXT.getBy());
-            enterText(driver, "7570", PaymentFlowMap.NUMERO_TXT.getBy());
-            enterText(driver, "75", PaymentFlowMap.PISO_TXT.getBy());
-            enterText(driver, "A", PaymentFlowMap.DEPARTAMENTO_TXT.getBy());
-            enterText(driver, "7525", PaymentFlowMap.CODIGO_POSTAL_TXT.getBy());
-            enterText(driver, "Provincia", PaymentFlowMap.PROVINCIA_TXT.getBy());
-            enterText(driver, "Ciudad", PaymentFlowMap.CIUDAD_TXT.getBy());
+        if(!driver.findElements(PaymentPageMap.CUIL_TXT.getBy()).isEmpty()){
+            enterText(driver, "20285494568", PaymentPageMap.CUIL_TXT.getBy());
+            enterText(driver, "Domicilio", PaymentPageMap.DOMICILIO_TXT.getBy());
+            enterText(driver, "7570", PaymentPageMap.NUMERO_TXT.getBy());
+            enterText(driver, "75", PaymentPageMap.PISO_TXT.getBy());
+            enterText(driver, "A", PaymentPageMap.DEPARTAMENTO_TXT.getBy());
+            enterText(driver, "7525", PaymentPageMap.CODIGO_POSTAL_TXT.getBy());
+            enterText(driver, "Provincia", PaymentPageMap.PROVINCIA_TXT.getBy());
+            enterText(driver, "Ciudad", PaymentPageMap.CIUDAD_TXT.getBy());
         }
         else{
             System.out.println("No CUIL info");
         }
-        enterText(driver, "email@sarasa.cuak", PaymentFlowMap.EMAIL_TXT.getBy());
-        enterText(driver, "email@sarasa.cuak", PaymentFlowMap.REPETI_TU_EMAIL_TXT.getBy());
-        enterText(driver, "011", PaymentFlowMap.CODIGO_DE_AREA_TELEF_TXT.getBy());
-        enterText(driver, "20279456548", PaymentFlowMap.NUMERO_TELEF_TXT.getBy());
+        enterText(driver, "email@sarasa.cuak", PaymentPageMap.EMAIL_TXT.getBy());
+        enterText(driver, "email@sarasa.cuak", PaymentPageMap.REPETI_TU_EMAIL_TXT.getBy());
+        enterText(driver, "011", PaymentPageMap.CODIGO_DE_AREA_TELEF_TXT.getBy());
+        enterText(driver, "20279456548", PaymentPageMap.NUMERO_TELEF_TXT.getBy());
         return this;
     }
 
@@ -97,7 +97,7 @@ public class PaymentPage extends PageBaseSetup {
     }
 
     public PaymentPage leiAceptoCbx(WebDriver driver){
-        clickOn(driver, PaymentFlowMap.LEI_ACEPTO_CBX.getBy());
+        clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
         // TODO add Additional check box for Colombia
         return this;
     }
