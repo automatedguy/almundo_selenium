@@ -11,5 +11,5 @@ public class LoginPage extends PageBaseSetup {
     public LoginPage(WebDriver driver){
         super.driver = driver;
     }
-    
+
 }
