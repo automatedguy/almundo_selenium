@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import org.openqa.selenium.By;
@@ -23,6 +24,7 @@ public class PaymentPage extends PageBaseSetup {
             passengers.add(new Passenger(idNum));
         }
 
+        // TODO: come up with a solution for the case when the payment page is not loaded.
         // driver.navigate().refresh();
         waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
 
@@ -62,7 +64,7 @@ public class PaymentPage extends PageBaseSetup {
         enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
         enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
         enterText(driver, "777", PaymentPageMap.CODIGO_DE_SEGURIDAD_TXT.getBy());
-        // TODO agregar Cedula para Colombia
+        // TODO: agregar Cedula para Colombia
         return this;
     }
 
@@ -89,7 +91,7 @@ public class PaymentPage extends PageBaseSetup {
     }
 
     public PaymentPage populatePaymentInfo(WebDriver driver){
-        populatePassenger(driver, 2);
+        populatePassenger(driver, TestBaseSetup.numPassengers);
         populateCreditCardOwnerData(driver);
         populateBillingInformation(driver);
         acceptTermsConditions(driver);
@@ -98,7 +100,7 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage leiAceptoCbx(WebDriver driver){
         clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
-        // TODO add Additional check box for Colombia
+        // TODO: add Additional check box for Colombia
         return this;
     }
 

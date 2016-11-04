@@ -19,7 +19,7 @@ public class TestBaseSetup {
 
     public LandingPage landingPage = new LandingPage(driver);
 
-    public String numPassengers;
+    public static int numPassengers;
 
     public String originAutoComplete;
     public String originFullText;
@@ -84,7 +84,7 @@ public class TestBaseSetup {
     "originAuto" , "originFull" , "destinationAuto" , "destinationFull",
     "startDate", "endDate" })
     @BeforeClass
-    public void initializeTestBaseSetup(String browserType, String appURL, String country, String passengers,
+    public void initializeTestBaseSetup(String browserType, String appURL, String country, int passengers,
                                         String originAuto, String originFull,
                                         String destinationAuto , String destinationFull,
                                         int startDate, int endDate) {

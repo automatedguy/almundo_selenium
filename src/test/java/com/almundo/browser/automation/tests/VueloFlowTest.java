@@ -35,6 +35,8 @@ public class VueloFlowTest extends TestBaseSetup {
 
         vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
+        TestBaseSetup.numPassengers = TestBaseSetup.numPassengers - 1;
+
         if(PageUtils.nothingFound(driver)){
             System.out.println("Nothing Found: VUELOS");
         }
@@ -43,6 +45,7 @@ public class VueloFlowTest extends TestBaseSetup {
             PaymentPage paymentPage = new PaymentPage(driver);
             paymentPage.populatePaymentInfo(driver);
         }
+
         Thread.sleep(7000);
     }
 }

@@ -37,7 +37,7 @@ public class HotelFlow extends PageBaseSetup {
             clickOn(driver, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
         }
 
-        // TODO play a bit more with this as in some cases is failing
+        // TODO: play a bit more with this as in some cases still failing
         do {
             try {
                 waitForVisibilityOfElementLocated(driver, 20, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());

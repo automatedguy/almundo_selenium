@@ -5,6 +5,8 @@ import com.almundo.browser.automation.flows.VueloHotelFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloHotelFlowMap;
 import com.almundo.browser.automation.locators.testsmaps.testParametersMap;
+import com.almundo.browser.automation.pages.PaymentPage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.testng.annotations.Test;
 
 /**
@@ -32,6 +34,27 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         vueloHotelFlow.selectDateFromCalendar(driver, vueloHotelFlow.TRIPS_FECHA_REGRESO_CAL, returnDate);
 
         vueloHotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
+
+        if(PageUtils.nothingFound(driver)){
+            System.out.println("Nothing Found: VUELO + HOTEL");
+        }
+        else {
+
+            vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
+            vueloHotelFlow.clickOn(driver, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
+
+            vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
+            Thread.sleep(7000);
+            vueloHotelFlow.clickOn(driver, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
+
+            vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.COMPRAR_BTN.getBy());
+            Thread.sleep(1000);
+            vueloHotelFlow.clickOn(driver, VueloHotelFlowMap.COMPRAR_BTN.getBy());
+
+            PaymentPage paymentPage = new PaymentPage(driver);
+            paymentPage.populatePaymentInfo(driver);
+
+        }
 
         Thread.sleep(7000);
     }

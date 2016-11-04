@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="ArgentinaTestSuite">
     <parameter name="appURL" value="http://www.almundo.com"/>
-    <parameter name="browserType" value="chrome"/>
+    <parameter name="browserType" value="firefox"/>
     <parameter name="country" value="ARGENTINA"/>
 
-    <parameter name="passengers" value="1"/>
+    <parameter name="passengers" value="2"/>
 
     <parameter name="originAuto" value="Bue"/>
     <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
@@ -20,8 +20,8 @@
 
     <test name="ARGENTINA-TestsResults">
         <classes>
-            <!--<class name="com.almundo.browser.automation.tests.HotelFlowTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.VueloFlowTest"/>-->
+            <class name="com.almundo.browser.automation.tests.HotelFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.VueloFlowTest"/>
             <class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>
         </classes>
     </test>
