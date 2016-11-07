@@ -3,6 +3,7 @@ package com.almundo.browser.automation.flows;
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -16,9 +17,12 @@ public class VueloFlow extends PageBaseSetup {
         super.driver = driver;
     }
 
-    public VueloFlow doVueloReservationFlow(WebDriver driver){
+    public VueloFlow doVueloReservationFlow(WebDriver driver) throws InterruptedException {
 
         waitForVisibilityOfElementLocated(driver, 10,VueloFlowMap.TICKET_IDA_RDB.getBy());
+
+        WebElement ticketsRadioButton = driver.findElement(VueloFlowMap.TICKET_IDA_RDB.getBy());
+        waitForElement(ticketsRadioButton, 30, 1000);
 
         clickOn(driver, VueloFlowMap.TICKET_IDA_RDB.getBy());
         clickOn(driver, VueloFlowMap.TICKET_VUELTA_RDB.getBy());

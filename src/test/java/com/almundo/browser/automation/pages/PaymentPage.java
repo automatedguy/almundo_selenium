@@ -90,7 +90,11 @@ public class PaymentPage extends PageBaseSetup {
         return this;
     }
 
-    public PaymentPage populatePaymentInfo(WebDriver driver){
+    public PaymentPage populatePaymentInfo(WebDriver driver) throws InterruptedException {
+
+//        WebElement firstPassengerTxt = driver.findElement(PaymentPageMap.FIRST_NAME_TXT.getBy());
+//        waitForElement(firstPassengerTxt, 10, 1000);
+
         populatePassenger(driver, TestBaseSetup.numPassengers);
         populateCreditCardOwnerData(driver);
         populateBillingInformation(driver);

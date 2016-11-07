@@ -1,8 +1,10 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,6 +34,42 @@ public class PageBaseSetup {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
         return this;
+    }
+
+
+    public void waitForElement(WebElement element,
+                               int timeToWaitInSeconds, int pollingIntervalInMilliSeconds) throws InterruptedException {
+        System.out.println("NOW TRYING TO FIND WEB ELEMENT....LOOP");
+        for (int i = 0; i < timeToWaitInSeconds; i++)
+        {
+            if (!element.isDisplayed())
+            {
+                continue;
+            }
+            Thread.sleep(pollingIntervalInMilliSeconds);
+        }
+
+    }
+
+    public boolean verifyElementPresent(WebElement element) throws InterruptedException {
+        for (int second = 0; ; second++)
+        {
+            if (second >= 60) Assert.fail();
+
+            try
+            {
+                if (element != null)
+                {
+                    break;
+                }
+            }
+            catch (Exception someException)
+            {
+                return false;
+            }
+            Thread.sleep(100);
+        }
+        return true;
     }
 
     public PageBaseSetup selectFromAutoCompleteSuggestions(WebDriver driver, By autoComplete){

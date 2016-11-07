@@ -39,24 +39,9 @@ public class VueloHotelFlowTest extends TestBaseSetup {
             System.out.println("Nothing Found: VUELO + HOTEL");
         }
         else {
-
-            // TODO: move this to public VueloHotelFlow doVueloHotelReservationFlow
-            vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
-            vueloHotelFlow.clickOn(driver, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
-
-            vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
-            Thread.sleep(7000);
-            vueloHotelFlow.clickOn(driver, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
-
-            vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.COMPRAR_BTN.getBy());
-            Thread.sleep(1000);
-            vueloHotelFlow.clickOn(driver, VueloHotelFlowMap.COMPRAR_BTN.getBy());
-
+            vueloHotelFlow.doVueloHotelReservationFlow(driver);
             PaymentPage paymentPage = new PaymentPage(driver);
             paymentPage.populatePaymentInfo(driver);
-
         }
-
-        Thread.sleep(7000);
     }
 }
