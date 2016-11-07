@@ -41,7 +41,7 @@ public class TestBaseSetup {
         return driver;
     }
 
-    private void setDriver(String browserType, String appURL, String country) throws InterruptedException {
+    public void setDriver(String browserType, String appURL, String country) throws InterruptedException {
         switch (browserType) {
             case "chrome":
                 driver = initChromeDriver(appURL, country);
@@ -61,7 +61,7 @@ public class TestBaseSetup {
         return driver;
     }
 
-    private WebDriver initChromeDriver(String appURL, String country) throws InterruptedException {
+    public WebDriver initChromeDriver(String appURL, String country) throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         WebDriver driver = new ChromeDriver();
@@ -71,7 +71,7 @@ public class TestBaseSetup {
         return driver;
     }
 
-    private WebDriver initFirefoxDriver(String appURL, String country) throws InterruptedException {
+    public WebDriver initFirefoxDriver(String appURL, String country) throws InterruptedException {
         System.out.println("Launching Firefox browser..");
         System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
