@@ -2,8 +2,10 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.LandingPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
@@ -11,8 +13,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
+import java.io.File;
 
-public class TestBaseSetup {
+/**
+ * Created by gabrielcespedes on 07/11/16.
+ */
+public class TestBaseSetupHeader {
 
     public WebDriver driver;
     static String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
@@ -20,11 +26,11 @@ public class TestBaseSetup {
 
     public LandingPage landingPage = new LandingPage(driver);
 
-    public int numPassengers;
+    public static int numPassengers;
 
     public String originAutoComplete;
     public String originFullText;
-    public String originFullTextStr;
+    public static String originFullTextStr;
     public By ORIGIN_FULL_PAR;
 
     public String destinationAutoComplete;
@@ -35,7 +41,7 @@ public class TestBaseSetup {
     public int departureDate;
     public int returnDate;
 
-    public String countryPar;
+    public static String countryPar;
 
     public WebDriver getDriver() {
         return driver;
@@ -64,11 +70,30 @@ public class TestBaseSetup {
     private WebDriver initChromeDriver(String appURL, String country) throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-        WebDriver driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addExtensions(new File("/home/gabrielcespedes/Downloads/extension_2_1_1.crx"));
+
+
+        WebDriver driver = new ChromeDriver(options);
+
         driver.manage().window().maximize();
+        driver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/settings.tmpl.html");
+
+        ((JavascriptExecutor)driver).executeScript(
+                "localStorage.setItem('profiles', JSON.stringify([{                " +
+                        "  title: 'Selenium', hideComment: true, appendMode: '',           " +
+                        "  headers: [                                                      " +
+                        "    {enabled: true, name: 'X-Debug', value: 'True', comment: ''}  " +
+                        "  ],                                                              " +
+                        "  respHeaders: [],                                                " +
+                        "  filters: []                                                     " +
+                        "}]));                                                             " );
+
         driver.navigate().to(appURL);
         selectCountry(driver, country);
         return driver;
+
     }
 
     private WebDriver initFirefoxDriver(String appURL, String country) throws InterruptedException {
@@ -84,8 +109,8 @@ public class TestBaseSetup {
     }
 
     @Parameters({ "browserType", "appURL" , "country" , "passengers" ,
-    "originAuto" , "originFull" , "destinationAuto" , "destinationFull",
-    "startDate", "endDate" })
+            "originAuto" , "originFull" , "destinationAuto" , "destinationFull",
+            "startDate", "endDate" })
     @BeforeClass
     public void initializeTestBaseSetup(String browserType, String appURL, String country, int passengers,
                                         String originAuto, String originFull,
@@ -126,4 +151,5 @@ public class TestBaseSetup {
     public void quit(){
         driver.quit();
     }
+
 }

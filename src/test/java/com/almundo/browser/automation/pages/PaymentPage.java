@@ -1,7 +1,6 @@
 package com.almundo.browser.automation.pages;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
-import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import org.openqa.selenium.By;
@@ -90,12 +89,12 @@ public class PaymentPage extends PageBaseSetup {
         return this;
     }
 
-    public PaymentPage populatePaymentInfo(WebDriver driver) throws InterruptedException {
+    public PaymentPage populatePaymentInfo(WebDriver driver, int numPassengers) throws InterruptedException {
 
 //        WebElement firstPassengerTxt = driver.findElement(PaymentPageMap.FIRST_NAME_TXT.getBy());
 //        waitForElement(firstPassengerTxt, 10, 1000);
 
-        populatePassenger(driver, TestBaseSetup.numPassengers);
+        populatePassenger(driver, numPassengers);
         populateCreditCardOwnerData(driver);
         populateBillingInformation(driver);
         acceptTermsConditions(driver);

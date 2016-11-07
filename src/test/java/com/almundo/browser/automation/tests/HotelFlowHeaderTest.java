@@ -1,26 +1,27 @@
 package com.almundo.browser.automation.tests;
 
-import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetupHeader;
 import com.almundo.browser.automation.flows.HotelFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
-import com.almundo.browser.automation.pages.PaymentPage;
 import org.testng.annotations.Test;
 
 /**
- * Created by gabrielcespedes on 04/11/16.
+ * Created by gabrielcespedes on 07/11/16.
  */
-public class HotelFlowTest extends TestBaseSetup {
-
-    public HotelFlow hotelFlow = new HotelFlow(driver);
+public class HotelFlowHeaderTest extends TestBaseSetupHeader {
 
     @Test
-    public void hotelReservationFirstOptionFlow() throws InterruptedException {
+    public void hotelReservationFirstOptionWithHeaderFlow() throws InterruptedException {
+
+        HotelFlow hotelFlow = new HotelFlow(driver);
 
         hotelFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.HOTELES_ICO.getBy());
         hotelFlow.clickOn(driver, BaseFlowMap.HOTELES_ICO.getBy());
 
+
         hotelFlow.enterText(driver, destinationAutoComplete, HotelFlowMap.DESTINATION_TXT.getBy());
+
         hotelFlow.waitForVisibilityOfElementLocated(driver, 10, DESTINATION_FULL_PAR);
         hotelFlow.selectFromAutoCompleteSuggestions(driver, DESTINATION_FULL_PAR);
 
@@ -30,7 +31,9 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         hotelFlow.doHotelReservationFlow(driver);
-        PaymentPage paymentPage = new PaymentPage(driver);
-        paymentPage.populatePaymentInfo(driver, numPassengers);
+
+        // PaymentPage paymentPage = new PaymentPage(driver);
+
+        Thread.sleep(10000);
     }
 }

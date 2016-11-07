@@ -5,7 +5,6 @@ import com.almundo.browser.automation.flows.VueloFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage;
-import com.almundo.browser.automation.locators.testsmaps.testParametersMap;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.testng.annotations.Test;
 
@@ -23,19 +22,19 @@ public class VueloFlowTest extends TestBaseSetup {
         vueloFlow.clickOn(driver, BaseFlowMap.VUELOS_ICO.getBy());
 
         vueloFlow.enterText(driver, originAutoComplete, VueloFlowMap.ORIGIN_FLIGHTS_TXT.getBy());
-        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, testParametersMap.ORIGIN_FULL_PAR.getBy());
-        vueloFlow.selectFromAutoCompleteSuggestions(driver, testParametersMap.ORIGIN_FULL_PAR.getBy());
+        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, ORIGIN_FULL_PAR);
+        vueloFlow.selectFromAutoCompleteSuggestions(driver, ORIGIN_FULL_PAR);
 
         vueloFlow.enterText(driver, destinationAutoComplete, VueloFlowMap.DESTINATION_FLIGHTS_TXT.getBy());
-        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, testParametersMap.DESTINATION_FULL_PAR.getBy());
-        vueloFlow.selectFromAutoCompleteSuggestions(driver, testParametersMap.DESTINATION_FULL_PAR.getBy());
+        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, DESTINATION_FULL_PAR);
+        vueloFlow.selectFromAutoCompleteSuggestions(driver, DESTINATION_FULL_PAR);
 
         vueloFlow.selectDateFromCalendar(driver, vueloFlow.VUELO_FECHA_SALIDA_CAL, departureDate);
         vueloFlow.selectDateFromCalendar(driver, vueloFlow.VUELO_FECHA_REGRESO_CAL, returnDate);
 
         vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
-        TestBaseSetup.numPassengers = TestBaseSetup.numPassengers - 1;
+        numPassengers = numPassengers - 1;
 
         if(PageUtils.nothingFound(driver)){
             System.out.println("Nothing Found: VUELOS");
@@ -43,7 +42,7 @@ public class VueloFlowTest extends TestBaseSetup {
         else {
             vueloFlow.doVueloReservationFlow(driver);
             PaymentPage paymentPage = new PaymentPage(driver);
-            paymentPage.populatePaymentInfo(driver);
+            paymentPage.populatePaymentInfo(driver, numPassengers);
         }
     }
 }
