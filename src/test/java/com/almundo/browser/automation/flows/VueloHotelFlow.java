@@ -27,11 +27,12 @@ public class VueloHotelFlow extends PageBaseSetup {
 
         WebElement verHabitacionBtn = driver.findElement(VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
         waitForElement(verHabitacionBtn, 10, 1000);
-
         verHabitacionBtn.click();
 
         //waitForVisibilityOfElementLocated(driver, 60, VueloHotelFlowMap.COMPRAR_BTN.getBy());
 
+        WebElement comprarBtn = driver.findElement(VueloHotelFlowMap.COMPRAR_BTN.getBy());
+        waitForElement(comprarBtn, 10, 1000);
         clickOn(driver, VueloHotelFlowMap.COMPRAR_BTN.getBy());
 
         return this;

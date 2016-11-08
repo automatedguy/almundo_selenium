@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
@@ -117,20 +116,15 @@ public class TestBaseSetup {
         countryPar = country;
     }
 
+    /* This is not generating null session */
     @AfterClass
     public void tearDown() {
         driver.quit();
     }
 
-    @AfterMethod
+    /* This is not generating null session commenting for now */
+/*    @AfterMethod
     public void quit(){
         driver.quit();
-    }
-
-    /*@BeforeSuite(alwaysRun = true)
-    public void beforeSuite(ITestContext context) {
-        for (ITestNGMethod method : context.getAllTestMethods()) {
-            method.setRetryAnalyzer(new RetryAnalyzer());
-        }
     }*/
 }
