@@ -5,17 +5,22 @@ import com.almundo.browser.automation.flows.VueloFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage;
+import com.almundo.browser.automation.utils.MyRetryAnalyzer;
+import com.almundo.browser.automation.utils.MyTestListenerAdapter;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
+
+@Listeners({MyTestListenerAdapter.class})
 public class VueloFlowTest extends TestBaseSetup {
 
     public VueloFlow vueloFlow = new VueloFlow(driver);
 
-    @Test
+    @Test(retryAnalyzer=MyRetryAnalyzer.class)
     public void vueloReservationFirstOptionFlow() throws InterruptedException {
 
         vueloFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.VUELOS_ICO.getBy());

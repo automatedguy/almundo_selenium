@@ -4,14 +4,19 @@ import com.almundo.browser.automation.base.TestBaseSetupHeader;
 import com.almundo.browser.automation.flows.HotelFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
+import com.almundo.browser.automation.utils.MyRetryAnalyzer;
+import com.almundo.browser.automation.utils.MyTestListenerAdapter;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 /**
  * Created by gabrielcespedes on 07/11/16.
  */
+
+@Listeners({MyTestListenerAdapter.class})
 public class HotelFlowHeaderTest extends TestBaseSetupHeader {
 
-    @Test
+    @Test(retryAnalyzer=MyRetryAnalyzer.class)
     public void hotelReservationFirstOptionWithHeaderFlow() throws InterruptedException {
 
         HotelFlow hotelFlow = new HotelFlow(driver);
