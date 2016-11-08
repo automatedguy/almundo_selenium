@@ -36,8 +36,13 @@ public class PageBaseSetup {
         return this;
     }
 
+    public PageBaseSetup waitForElementToBeClickcable(WebDriver driver, long timeout,By elementToClick){
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        wait.until(ExpectedConditions.elementToBeClickable(elementToClick));
+        return this;
+    }
 
-    public void waitForElement(WebElement element,
+    public PageBaseSetup waitForElement(WebElement element,
                                int timeToWaitInSeconds, int pollingIntervalInMilliSeconds) throws InterruptedException {
         System.out.println("NOW TRYING TO FIND WEB ELEMENT....LOOP");
         for (int i = 0; i < timeToWaitInSeconds; i++)
@@ -48,7 +53,7 @@ public class PageBaseSetup {
             }
             Thread.sleep(pollingIntervalInMilliSeconds);
         }
-
+        return this;
     }
 
     public boolean verifyElementPresent(WebElement element) throws InterruptedException {
@@ -112,4 +117,5 @@ public class PageBaseSetup {
         actions.moveToElement(driver.findElement(elementToLocate));
         return this;
     }
+
 }

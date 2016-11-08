@@ -16,11 +16,7 @@ import java.util.Set;
 public class PageUtils {
     private static WebElement element = null;
 
-    public static WebElement waitForElementToBeClickcable(WebDriver driver, long timeout,By elementToClick){
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        wait.until(ExpectedConditions.elementToBeClickable(elementToClick));
-        return element;
-    }
+
 
     public static WebElement moveToElement(WebDriver driver,  By elementToLocate){
         element = driver.findElement(elementToLocate);

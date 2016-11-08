@@ -30,6 +30,7 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         hotelFlow.doHotelReservationFlow(driver);
+
         PaymentPage paymentPage = new PaymentPage(driver);
         paymentPage.populatePaymentInfo(driver, numPassengers);
     }

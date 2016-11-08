@@ -22,14 +22,13 @@ public class VueloHotelFlow extends PageBaseSetup {
         waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
         clickOn(driver, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
 
-        // waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
-        //clickOn(driver, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
+        waitForVisibilityOfElementLocated(driver, 60, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
+        waitForElementToBeClickcable(driver, 60, VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
 
         WebElement verHabitacionBtn = driver.findElement(VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
         verHabitacionBtn.click();
 
-        waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.COMPRAR_BTN.getBy());
-        Thread.sleep(1000);
+        waitForVisibilityOfElementLocated(driver, 60, VueloHotelFlowMap.COMPRAR_BTN.getBy());
         clickOn(driver, VueloHotelFlowMap.COMPRAR_BTN.getBy());
 
         return this;

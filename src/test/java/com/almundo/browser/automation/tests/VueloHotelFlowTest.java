@@ -35,12 +35,17 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         vueloHotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         if(PageUtils.nothingFound(driver)){
+
             System.out.println("Nothing Found: VUELO + HOTEL");
+
         }
         else {
+
             vueloHotelFlow.doVueloHotelReservationFlow(driver);
+
             PaymentPage paymentPage = new PaymentPage(driver);
             paymentPage.populatePaymentInfo(driver, numPassengers);
+
         }
     }
 }

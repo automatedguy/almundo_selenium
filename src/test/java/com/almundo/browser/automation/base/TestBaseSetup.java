@@ -15,8 +15,8 @@ import org.testng.annotations.Parameters;
 public class TestBaseSetup {
 
     public WebDriver driver;
-    static String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
-    static String firefoxDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/gecko/geckodriver";
+    final String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
+    final String firefoxDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/gecko/geckodriver";
 
     public LandingPage landingPage = new LandingPage(driver);
 
@@ -126,4 +126,11 @@ public class TestBaseSetup {
     public void quit(){
         driver.quit();
     }
+
+    /*@BeforeSuite(alwaysRun = true)
+    public void beforeSuite(ITestContext context) {
+        for (ITestNGMethod method : context.getAllTestMethods()) {
+            method.setRetryAnalyzer(new RetryAnalyzer());
+        }
+    }*/
 }
