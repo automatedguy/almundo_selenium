@@ -38,10 +38,21 @@ public class TestBaseSetup {
     public String appUrl;
     public String countryPar;
 
-    /* We need to move parameters initizalization into the contructor below */
-    public TestBaseSetup(){
+    /* TODO: We need to move parameters initizalization into the contructor below */
+ /*   public TestBaseSetup(String appURL, String country, int numPassengers, String originAutoComplete, By ORIGIN_FULL_PAR,
+                         String destinationAutoComplete, By DESTINATION_FULL_PAR, int departureDate, int returnDate){
 
-    }
+        this.appUrl = appURL;
+        this.countryPar = country;
+        this.numPassengers = ;
+        this.originAutoComplete = ;
+        this.ORIGIN_FULL_PAR = ;
+        this.destinationAutoComplete = ;
+        this.DESTINATION_FULL_PAR = ;
+        this.departureDate = ;
+        this.returnDate = ;
+
+    }*/
 
     public WebDriver getDriver() {
         return driver;
@@ -104,8 +115,8 @@ public class TestBaseSetup {
                 System.out.println("Error....." + e.getStackTrace());
             }
 
-        /* Initialize Global Test Parameters */
-        /* We need to move parameters initizalization into the TestBaseSetup constructor */
+        /* TODO Initialize Global Test Parameters */
+        /* TODO We need to move parameters initizalization into the TestBaseSetup constructor */
 
             numPassengers = passengers;
 
