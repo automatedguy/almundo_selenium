@@ -4,7 +4,6 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.HotelFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
-import com.almundo.browser.automation.pages.PaymentPage;
 import org.testng.annotations.Test;
 
 /**
@@ -32,8 +31,6 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         hotelFlow.doHotelReservationFlow(driver);
-
-        PaymentPage paymentPage = new PaymentPage(driver);
-        paymentPage.populatePaymentInfo(driver, numPassengers);
+        hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
     }
 }

@@ -12,18 +12,17 @@ import java.io.File;
  */
 public class TestBaseSetupHeader extends TestBaseSetup {
 
-    /* Overloading Chrome method in order to setup Http Header */
-    public WebDriver initChromeDriver(String appURL, String country) throws InterruptedException {
+    /* Overloading initChromeDriver method in order to setup Http Header */
+    public WebDriver initChromeDriver() throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("/home/gabrielcespedes/Downloads/extension_2_1_1.crx"));
 
-
         WebDriver driver = new ChromeDriver(options);
-
         driver.manage().window().maximize();
+
         driver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/settings.tmpl.html");
 
         ((JavascriptExecutor)driver).executeScript(

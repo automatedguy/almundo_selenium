@@ -2,6 +2,7 @@ package com.almundo.browser.automation.flows;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.VueloHotelFlowMap;
+import com.almundo.browser.automation.pages.PaymentPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -10,12 +11,11 @@ import org.openqa.selenium.WebElement;
  */
 public class VueloHotelFlow extends PageBaseSetup {
 
-//    public String TRIPS_FECHA_SALIDA_CAL = "departure-trips";
-//    public String TRIPS_FECHA_REGRESO_CAL = "arrival-trips";
-
     public VueloHotelFlow(WebDriver driver) {
         super.driver = driver;
     }
+
+    public PaymentPage paymentPage = new PaymentPage(driver);
 
     public VueloHotelFlow doVueloHotelReservationFlow(WebDriver driver) throws InterruptedException {
 
@@ -28,8 +28,6 @@ public class VueloHotelFlow extends PageBaseSetup {
         WebElement verHabitacionBtn = driver.findElement(VueloHotelFlowMap.VER_HABITACION_BTN.getBy());
         waitForElement(verHabitacionBtn, 60, 1000);
         verHabitacionBtn.click();
-
-        //waitForVisibilityOfElementLocated(driver, 60, VueloHotelFlowMap.COMPRAR_BTN.getBy());
 
         WebElement comprarBtn = driver.findElement(VueloHotelFlowMap.COMPRAR_BTN.getBy());
         waitForElement(comprarBtn, 10, 1000);

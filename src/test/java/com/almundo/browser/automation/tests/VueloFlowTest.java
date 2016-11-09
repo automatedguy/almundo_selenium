@@ -4,14 +4,11 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
-import com.almundo.browser.automation.pages.PaymentPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.testng.annotations.Test;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
-
 
 public class VueloFlowTest extends TestBaseSetup {
 
@@ -38,16 +35,11 @@ public class VueloFlowTest extends TestBaseSetup {
 
         numPassengers = numPassengers - 1;
 
-        if (PageUtils.nothingFound(driver)) {
-
+        if (vueloFlow.nothingFound(driver)) {
             System.out.println("Nothing Found: VUELOS");
-
         } else {
-
             vueloFlow.doVueloReservationFlow(driver);
-
-            PaymentPage paymentPage = new PaymentPage(driver);
-            paymentPage.populatePaymentInfo(driver, numPassengers);
+            vueloFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
         }
     }
 

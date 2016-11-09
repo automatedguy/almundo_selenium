@@ -2,6 +2,7 @@ package com.almundo.browser.automation.flows;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
+import com.almundo.browser.automation.pages.PaymentPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -10,12 +11,11 @@ import org.openqa.selenium.WebElement;
  */
 public class VueloFlow extends PageBaseSetup {
 
-//    public String VUELO_FECHA_SALIDA_CAL = "departure-flights";
-//    public String VUELO_FECHA_REGRESO_CAL = "arrival-flights";
-
     public VueloFlow(WebDriver driver) {
         super.driver = driver;
     }
+
+    public PaymentPage paymentPage = new PaymentPage(driver);
 
     public VueloFlow doVueloReservationFlow(WebDriver driver) throws InterruptedException {
 
@@ -30,5 +30,4 @@ public class VueloFlow extends PageBaseSetup {
 
         return this;
     }
-
 }

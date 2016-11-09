@@ -23,8 +23,6 @@ public class PaymentPage extends PageBaseSetup {
             passengers.add(new Passenger(idNum));
         }
 
-        // TODO: come up with a solution for the case when the payment page is not loaded.
-        // driver.navigate().refresh();
         waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
 
         /*  Populate passengers */
@@ -37,7 +35,7 @@ public class PaymentPage extends PageBaseSetup {
             lastName = driver.findElement(By.id(passengerToPopulate.lastName));
             lastName.sendKeys("Apellido");
 
-            /*  This must be available for Argentina only ????? */
+            /*  This must be available for Argentina only apparently */
             if(!driver.findElements(By.id(passengerToPopulate.documentNumber)).isEmpty()){
                 documentNumber = driver.findElement(By.id(passengerToPopulate.documentNumber));
                 documentNumber.sendKeys("123456789");
@@ -90,10 +88,6 @@ public class PaymentPage extends PageBaseSetup {
     }
 
     public PaymentPage populatePaymentInfo(WebDriver driver, int numPassengers) throws InterruptedException {
-
-//        WebElement firstPassengerTxt = driver.findElement(PaymentPageMap.FIRST_NAME_TXT.getBy());
-//        waitForElement(firstPassengerTxt, 10, 1000);
-
         populatePassenger(driver, numPassengers);
         populateCreditCardOwnerData(driver);
         populateBillingInformation(driver);

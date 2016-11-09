@@ -14,11 +14,6 @@ public class LandingPage extends PageBaseSetup {
         super.driver = driver;
     }
 
-    public LandingPage goToBaseUrl(WebDriver driver, String appURL){
-        driver.get(appURL);
-        return this;
-    }
-
     public LandingPage clickArgentinaLink(WebDriver driver){
         driver.findElement(LandingPageMap.ARGENTINA_LINK.getBy()).click();
         return this;

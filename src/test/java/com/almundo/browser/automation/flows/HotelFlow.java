@@ -2,6 +2,7 @@ package com.almundo.browser.automation.flows;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
+import com.almundo.browser.automation.pages.PaymentPage;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,12 +12,11 @@ import org.openqa.selenium.WebElement;
  */
 public class HotelFlow extends PageBaseSetup {
 
-//    public String HOTEL_FECHA_SALIDA_CAL = "checkin-hotels";
-//    public String HOTEL_FECHA_REGRESO_CAL = "checkout-hotels";
-
     public HotelFlow(WebDriver driver) {
         super.driver = driver;
     }
+
+    public PaymentPage paymentPage = new PaymentPage(driver);
 
     boolean exit = false;
 
@@ -40,12 +40,11 @@ public class HotelFlow extends PageBaseSetup {
 
         WebElement reservarAhora = driver.findElement(HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
 
-        // TODO: play a bit more with this as in some cases still failing
         do {
             try {
-                System.out.println("NOW TRYING TO FIND RESERVAR...........");
+                System.out.println("Now trying to find reservar button ...........");
                 waitForElement(reservarAhora, 10, 1000);
-                System.out.println("NOW TRYING TO FIND RESERVAR....found");
+                System.out.println("Now clicking on reservar.......................");
                 reservarAhora.click();
 
             } catch (Exception someException) {
@@ -53,8 +52,6 @@ public class HotelFlow extends PageBaseSetup {
                 exit = true;
             }
         } while (!exit);
-
-        // driver.navigate().refresh();
         return this;
     }
 }

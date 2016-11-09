@@ -24,10 +24,10 @@
 
     <test name="LOCAL-TestsResults">
         <classes>
-            <class name="com.almundo.browser.automation.tests.HotelFlowTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.HotelFlowTest"/>-->
             <class name="com.almundo.browser.automation.tests.HotelFlowHeaderTest"/>
-            <class name="com.almundo.browser.automation.tests.VueloFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.VueloFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>-->
         </classes>
     </test>
 </suite>

@@ -32,5 +32,6 @@ public class HotelFlowHeaderTest extends TestBaseSetupHeader {
 
         hotelFlow.doHotelReservationFlow(driver);
 
+        Thread.sleep(5000);
     }
 }

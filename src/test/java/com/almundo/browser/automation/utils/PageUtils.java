@@ -3,7 +3,6 @@ package com.almundo.browser.automation.utils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -16,7 +15,7 @@ import java.util.Set;
 public class PageUtils {
     private static WebElement element = null;
 
-
+    // TODO: we can probably define generic methods here.
 
     public static WebElement moveToElement(WebDriver driver,  By elementToLocate){
         element = driver.findElement(elementToLocate);
@@ -55,16 +54,6 @@ public class PageUtils {
             System.out.println("Object text: " + elementToAssert.getText() + " - label is wrong or changed.");
             System.out.println("StackTrace: "+ uhOh.getStackTrace());
             Assert.fail();
-        }
-    }
-
-    public static boolean nothingFound(WebDriver driver){
-        if(!driver.findElements(By.linkText("Ver listado de sucursales")).isEmpty()){
-            System.out.println("No Results found - acercate a nuestras sucursales");
-            return true;
-        }
-        else{
-            return false;
         }
     }
 

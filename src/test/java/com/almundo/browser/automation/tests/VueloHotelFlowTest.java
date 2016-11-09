@@ -4,8 +4,6 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloHotelFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloHotelFlowMap;
-import com.almundo.browser.automation.pages.PaymentPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.testng.annotations.Test;
 
 /**
@@ -35,15 +33,12 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
         vueloHotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
-        if(PageUtils.nothingFound(driver)){
+        if(vueloHotelFlow.nothingFound(driver)){
             System.out.println("Nothing Found: VUELO + HOTEL");
         }
         else {
             vueloHotelFlow.doVueloHotelReservationFlow(driver);
-
-            PaymentPage paymentPage = new PaymentPage(driver);
-            paymentPage.populatePaymentInfo(driver, numPassengers);
-
+            vueloHotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
         }
     }
 }
