@@ -58,18 +58,18 @@ public class TestBaseSetup {
         return driver;
     }
 
-    public void setDriver(String browserType, String appURL, String country) throws InterruptedException {
+    public void setDriver(String browserType) throws InterruptedException {
         switch (browserType) {
             case "chrome":
-                driver = initChromeDriver(appURL, country);
+                driver = initChromeDriver();
                 break;
             case "firefox":
-                driver = initFirefoxDriver(appURL, country);
+                driver = initFirefoxDriver();
                 break;
             default:
                 System.out.println("browser : " + browserType
                         + " is invalid, Launching Firefox as browser of choice..");
-                driver = initFirefoxDriver(appURL, country);
+                driver = initFirefoxDriver();
         }
     }
 
@@ -78,25 +78,19 @@ public class TestBaseSetup {
         return driver;
     }
 
-    public WebDriver initChromeDriver(String appURL, String country) throws InterruptedException {
+    public WebDriver initChromeDriver() throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.navigate().to(appURL);
-        selectCountry(driver, country);
         return driver;
     }
 
-    public WebDriver initFirefoxDriver(String appURL, String country) throws InterruptedException {
+    public WebDriver initFirefoxDriver() throws InterruptedException {
         System.out.println("Launching Firefox browser..");
         System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability("marionette", true);
         WebDriver driver = new FirefoxDriver(capabilities);
-        driver.manage().window().maximize();
-        driver.navigate().to(appURL);
-        selectCountry(driver, country);
         return driver;
     }
 
@@ -109,7 +103,7 @@ public class TestBaseSetup {
                                         String destinationAuto , String destinationFull,
                                         int startDate, int endDate) {
             try {
-                setDriver(browserType, appURL, country);
+                setDriver(browserType);
 
             } catch (Exception e) {
                 System.out.println("Error....." + e.getStackTrace());
