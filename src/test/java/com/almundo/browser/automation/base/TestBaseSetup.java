@@ -38,6 +38,11 @@ public class TestBaseSetup {
     public String appUrl;
     public String countryPar;
 
+    /* We need to move parameters initizalization into the contructor below */
+    public TestBaseSetup(){
+
+    }
+
     public WebDriver getDriver() {
         return driver;
     }
@@ -100,6 +105,8 @@ public class TestBaseSetup {
             }
 
         /* Initialize Global Test Parameters */
+        /* We need to move parameters initizalization into the TestBaseSetup constructor */
+
             numPassengers = passengers;
 
             originAutoComplete = originAuto;
