@@ -30,18 +30,15 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 10, DESTINATION_FULL_PAR);
         vueloHotelFlow.selectFromAutoCompleteSuggestions(driver, DESTINATION_FULL_PAR);
 
-        vueloHotelFlow.selectDateFromCalendar(driver, vueloHotelFlow.TRIPS_FECHA_SALIDA_CAL, departureDate);
-        vueloHotelFlow.selectDateFromCalendar(driver, vueloHotelFlow.TRIPS_FECHA_REGRESO_CAL, returnDate);
+        vueloHotelFlow.selectDateFromCalendar(driver, VueloHotelFlowMap.TRIPS_FECHA_SALIDA_CAL.getBy(), departureDate);
+        vueloHotelFlow.selectDateFromCalendar(driver, VueloHotelFlowMap.TRIPS_FECHA_REGRESO_CAL.getBy(), returnDate);
 
         vueloHotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         if(PageUtils.nothingFound(driver)){
-
             System.out.println("Nothing Found: VUELO + HOTEL");
-
         }
         else {
-
             vueloHotelFlow.doVueloHotelReservationFlow(driver);
 
             PaymentPage paymentPage = new PaymentPage(driver);

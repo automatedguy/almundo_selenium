@@ -10,7 +10,9 @@ public enum VueloFlowMap {
     DESTINATION_FLIGHTS_TXT(By.id("destination-flights")),
     TICKET_IDA_RDB(By.id("option-inbound-00")),
     TICKET_VUELTA_RDB(By.id("option-inbound-01")),
-    COMPRAR_BTN(By.xpath("//span[contains(.,'Comprar')]"));
+    COMPRAR_BTN(By.xpath("//span[contains(.,'Comprar')]")),
+    VUELO_FECHA_SALIDA_CAL(By.id("departure-flights")),
+    VUELO_FECHA_REGRESO_CAL(By.id("arrival-flights"));
     private By name;
     VueloFlowMap(By locator) {this.name = locator; }
     public By getBy() { return name; }

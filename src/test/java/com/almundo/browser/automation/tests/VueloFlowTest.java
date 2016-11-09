@@ -31,8 +31,8 @@ public class VueloFlowTest extends TestBaseSetup {
         vueloFlow.waitForVisibilityOfElementLocated(driver, 10, DESTINATION_FULL_PAR);
         vueloFlow.selectFromAutoCompleteSuggestions(driver, DESTINATION_FULL_PAR);
 
-        vueloFlow.selectDateFromCalendar(driver, vueloFlow.VUELO_FECHA_SALIDA_CAL, departureDate);
-        vueloFlow.selectDateFromCalendar(driver, vueloFlow.VUELO_FECHA_REGRESO_CAL, returnDate);
+        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_SALIDA_CAL.getBy(), departureDate);
+        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_REGRESO_CAL.getBy(), returnDate);
 
         vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 

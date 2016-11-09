@@ -38,22 +38,6 @@ public class TestBaseSetup {
     public String appUrl;
     public String countryPar;
 
-    /* TODO: We need to move parameters initizalization into the contructor below */
- /*   public TestBaseSetup(String appURL, String country, int numPassengers, String originAutoComplete, By ORIGIN_FULL_PAR,
-                         String destinationAutoComplete, By DESTINATION_FULL_PAR, int departureDate, int returnDate){
-
-        this.appUrl = appURL;
-        this.countryPar = country;
-        this.numPassengers = ;
-        this.originAutoComplete = ;
-        this.ORIGIN_FULL_PAR = ;
-        this.destinationAutoComplete = ;
-        this.DESTINATION_FULL_PAR = ;
-        this.departureDate = ;
-        this.returnDate = ;
-
-    }*/
-
     public WebDriver getDriver() {
         return driver;
     }
@@ -71,11 +55,6 @@ public class TestBaseSetup {
                         + " is invalid, Launching Firefox as browser of choice..");
                 driver = initFirefoxDriver();
         }
-    }
-
-    public WebDriver selectCountry(WebDriver driver, String selectedCountry){
-        landingPage.selectCountryPage(driver, selectedCountry);
-        return driver;
     }
 
     public WebDriver initChromeDriver() throws InterruptedException {
@@ -109,30 +88,33 @@ public class TestBaseSetup {
                 System.out.println("Error....." + e.getStackTrace());
             }
 
-        /* TODO Initialize Global Test Parameters */
-        /* TODO We need to move parameters initizalization into the TestBaseSetup constructor */
+        /* Note: Parameters are initialized inside Before Class probably best option for now. */
+        /* as @BeforeClass methods are invoked after test class instantiation and parameters for each test may differ */
 
-            numPassengers = passengers;
+            this.appUrl = appURL;
+            this.countryPar = country;
 
-            originAutoComplete = originAuto;
-            originFullText = originFull;
-            originFullTextStr = String.format("//span[contains(.,'%s')]", originFullText);
-            ORIGIN_FULL_PAR = By.xpath(originFullTextStr);
+            this.numPassengers = passengers;
 
-            destinationAutoComplete = destinationAuto;
-            destinationFullText = destinationFull;
-            destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText);
-            DESTINATION_FULL_PAR = By.xpath(destinationFullTextStr);
+            this.originAutoComplete = originAuto;
+            this.originFullText = originFull;
+            this.originFullTextStr = String.format("//span[contains(.,'%s')]", originFullText);
+            this.ORIGIN_FULL_PAR = By.xpath(originFullTextStr);
 
-            departureDate = startDate;
-            returnDate = endDate;
+            this.destinationAutoComplete = destinationAuto;
+            this.destinationFullText = destinationFull;
+            this.destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText);
+            this.DESTINATION_FULL_PAR = By.xpath(destinationFullTextStr);
 
-            appUrl = appURL;
-            countryPar = country;
-
+            this.departureDate = startDate;
+            this.returnDate = endDate;
     }
 
-    /* This is not generating null session */
+    public WebDriver selectCountry(WebDriver driver, String selectedCountry){
+        landingPage.selectCountryPage(driver, selectedCountry);
+        return driver;
+    }
+
     @AfterClass
     public void tearDown() {
         driver.quit();
@@ -141,7 +123,7 @@ public class TestBaseSetup {
     @BeforeMethod
     public void beforeMethod(){
         driver.manage().window().maximize();
-        System.out.println("Before Methodd NOWWWWWWW");
+        System.out.println("Running Before Method");
         driver.navigate().to(appUrl);
         selectCountry(driver, countryPar);
     }

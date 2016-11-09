@@ -11,8 +11,8 @@ import org.openqa.selenium.WebElement;
  */
 public class HotelFlow extends PageBaseSetup {
 
-    public String HOTEL_FECHA_SALIDA_CAL = "checkin-hotels";
-    public String HOTEL_FECHA_REGRESO_CAL = "checkout-hotels";
+//    public String HOTEL_FECHA_SALIDA_CAL = "checkin-hotels";
+//    public String HOTEL_FECHA_REGRESO_CAL = "checkout-hotels";
 
     public HotelFlow(WebDriver driver) {
         super.driver = driver;

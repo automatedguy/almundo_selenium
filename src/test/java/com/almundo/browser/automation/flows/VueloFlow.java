@@ -10,8 +10,8 @@ import org.openqa.selenium.WebElement;
  */
 public class VueloFlow extends PageBaseSetup {
 
-    public String VUELO_FECHA_SALIDA_CAL = "departure-flights";
-    public String VUELO_FECHA_REGRESO_CAL = "arrival-flights";
+//    public String VUELO_FECHA_SALIDA_CAL = "departure-flights";
+//    public String VUELO_FECHA_REGRESO_CAL = "arrival-flights";
 
     public VueloFlow(WebDriver driver) {
         super.driver = driver;

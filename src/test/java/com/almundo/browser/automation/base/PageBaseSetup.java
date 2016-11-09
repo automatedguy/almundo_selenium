@@ -82,7 +82,7 @@ public class PageBaseSetup {
         return this;
     }
 
-    public PageBaseSetup selectDateFromCalendar(WebDriver driver, String idCalendar, int daysAhead) throws InterruptedException {
+    public PageBaseSetup selectDateFromCalendar(WebDriver driver, By idCalendar, int daysAhead) throws InterruptedException {
         Calendar c = Calendar.getInstance();
         int maxDaysCurrentMonth = c.getActualMaximum(Calendar.DAY_OF_MONTH);
 
@@ -97,14 +97,14 @@ public class PageBaseSetup {
         System.out.println("Fecha del dia a marcar............... " + actualDayDate);
 
         if(actualDayDate <= maxDaysCurrentMonth){
-            driver.findElement(By.id(idCalendar)).click();
+            driver.findElement(idCalendar).click();
             waitForVisibilityOfElementLocated(driver, 10, BaseFlowMap.CALENDAR_CAL.getBy());
             String string = String.format("//a[text()='%s']", actualDayDate );
             driver.findElement(By.xpath(string)).click();
         }
         else {
             actualDayDate = actualDayDate - maxDaysCurrentMonth;
-            driver.findElement(By.id(idCalendar)).click();
+            driver.findElement(idCalendar).click();
             driver.findElement(BaseFlowMap.CALENDAR_NEXT_CAL.getBy()).click();
             String string = String.format("//a[text()='%s']", actualDayDate );
             driver.findElement(By.xpath(string)).click();
