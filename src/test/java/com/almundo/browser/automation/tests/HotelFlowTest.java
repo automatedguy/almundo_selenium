@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
  * Created by gabrielcespedes on 04/11/16.
  */
 
-
 public class HotelFlowTest extends TestBaseSetup {
 
     public HotelFlow hotelFlow = new HotelFlow(driver);
