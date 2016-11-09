@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.pages.LandingPageMap;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -34,16 +35,22 @@ public class LandingPage extends PageBaseSetup {
     }
 
     public LandingPage selectCountryPage(WebDriver driver, String country){
-        switch(country) {
-            case "ARGENTINA":
-                clickArgentinaLink(driver);
-                break;
-            case "COLOMBIA":
-                clickColombiaLink(driver);
-                break;
-            case "MEXICO":
-                clickMexicoLink(driver);
-                break;
+        try {
+            switch (country) {
+                case "ARGENTINA":
+                    clickArgentinaLink(driver);
+                    break;
+                case "COLOMBIA":
+                    clickColombiaLink(driver);
+                    break;
+                case "MEXICO":
+                    clickMexicoLink(driver);
+                    break;
+            }
+        }catch(NoSuchElementException ouch){
+            /* If the test retries will be redirected to the corresponding country page */
+            /* Hence no need to select country this time */
+            System.out.println("Already been here.....");
         }
         return this;
     }

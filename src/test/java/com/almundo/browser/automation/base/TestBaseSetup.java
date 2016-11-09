@@ -1,14 +1,15 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.LandingPage;
+import com.almundo.browser.automation.utils.RetryAnalyzer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
+import org.testng.annotations.*;
 
 
 public class TestBaseSetup {
@@ -34,6 +35,7 @@ public class TestBaseSetup {
     public int departureDate;
     public int returnDate;
 
+    public String appUrl;
     public String countryPar;
 
     public WebDriver getDriver() {
@@ -90,30 +92,32 @@ public class TestBaseSetup {
                                         String originAuto, String originFull,
                                         String destinationAuto , String destinationFull,
                                         int startDate, int endDate) {
-        try {
-            setDriver(browserType, appURL, country);
+            try {
+                setDriver(browserType, appURL, country);
 
-        } catch (Exception e) {
-            System.out.println("Error....." + e.getStackTrace());
-        }
+            } catch (Exception e) {
+                System.out.println("Error....." + e.getStackTrace());
+            }
 
         /* Initialize Global Test Parameters */
-        numPassengers = passengers;
+            numPassengers = passengers;
 
-        originAutoComplete = originAuto;
-        originFullText = originFull;
-        originFullTextStr = String.format("//span[contains(.,'%s')]", originFullText );
-        ORIGIN_FULL_PAR = By.xpath(originFullTextStr);
+            originAutoComplete = originAuto;
+            originFullText = originFull;
+            originFullTextStr = String.format("//span[contains(.,'%s')]", originFullText);
+            ORIGIN_FULL_PAR = By.xpath(originFullTextStr);
 
-        destinationAutoComplete = destinationAuto;
-        destinationFullText = destinationFull ;
-        destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText );
-        DESTINATION_FULL_PAR = By.xpath(destinationFullTextStr);
+            destinationAutoComplete = destinationAuto;
+            destinationFullText = destinationFull;
+            destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText);
+            DESTINATION_FULL_PAR = By.xpath(destinationFullTextStr);
 
-        departureDate = startDate;
-        returnDate = endDate;
+            departureDate = startDate;
+            returnDate = endDate;
 
-        countryPar = country;
+            appUrl = appURL;
+            countryPar = country;
+
     }
 
     /* This is not generating null session */
@@ -122,9 +126,19 @@ public class TestBaseSetup {
         driver.quit();
     }
 
-    /* This is not generating null session commenting for now */
-/*    @AfterMethod
-    public void quit(){
-        driver.quit();
-    }*/
+    @BeforeMethod
+    public void beforeMethod(){
+        driver.manage().window().maximize();
+        System.out.println("Before Methodd NOWWWWWWW");
+        driver.navigate().to(appUrl);
+        selectCountry(driver, countryPar);
+    }
+
+    /* This is to run retry analyzer for all the suites / tests  */
+    @BeforeSuite(alwaysRun = true)
+    public void beforeSuite(ITestContext context) {
+        for (ITestNGMethod method : context.getAllTestMethods()) {
+            method.setRetryAnalyzer(new RetryAnalyzer());
+        }
+    }
 }

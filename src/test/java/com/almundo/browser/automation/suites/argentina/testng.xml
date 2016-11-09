@@ -18,6 +18,10 @@
     <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
 
+    <listeners>
+        <listener class-name="com.almundo.browser.automation.utils.RetryListener" />
+    </listeners>
+
     <test name="ARGENTINA-TestsResults">
         <classes>
             <class name="com.almundo.browser.automation.tests.HotelFlowTest"/>
