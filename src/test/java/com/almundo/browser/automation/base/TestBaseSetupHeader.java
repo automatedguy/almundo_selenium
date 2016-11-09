@@ -35,10 +35,6 @@ public class TestBaseSetupHeader extends TestBaseSetup {
                         "  respHeaders: [],                                                " +
                         "  filters: []                                                     " +
                         "}]));                                                             " );
-
-        driver.navigate().to(appURL);
-        selectCountry(driver, country);
         return driver;
-
     }
 }
