@@ -35,7 +35,7 @@ public class TestBaseSetup {
     public int departureDate;
     public int returnDate;
 
-    public String appUrl;
+    public static String appUrl;
     public String countryPar;
 
     public WebDriver getDriver() {

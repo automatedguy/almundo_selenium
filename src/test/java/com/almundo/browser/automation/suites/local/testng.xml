@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="LocalTestSuite">
-    <parameter name="appURL" value="http://staging.almundo.com"/>
+    <parameter name="appURL" value="http://www.almundo.com"/>
     <parameter name="browserType" value="chrome"/>
     <parameter name="country" value="ARGENTINA"/>
 

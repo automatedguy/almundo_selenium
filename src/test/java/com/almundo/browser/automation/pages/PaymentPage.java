@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import org.openqa.selenium.By;
@@ -59,7 +60,14 @@ public class PaymentPage extends PageBaseSetup {
 
         enterText(driver, "Nombre", PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
         enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
-        enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
+
+        if(TestBaseSetup.appUrl == "http://www.almundo.com"){
+            enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
+        }else
+        {
+         // select from drop down list.
+        }
+
         enterText(driver, "777", PaymentPageMap.CODIGO_DE_SEGURIDAD_TXT.getBy());
         // TODO: agregar Cedula para Colombia
         return this;
