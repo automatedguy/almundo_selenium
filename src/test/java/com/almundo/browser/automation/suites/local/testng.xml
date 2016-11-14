@@ -13,7 +13,7 @@
     <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
 
     <parameter name="startDate" value="10"/>
-    <parameter name="endDate" value="17"/>
+    <parameter name="endDate" value="27"/>
 
     <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
@@ -25,9 +25,9 @@
     <test name="LOCAL-TestsResults">
         <classes>
             <class name="com.almundo.browser.automation.tests.HotelFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.HotelFlowHeaderTest"/>
+<!--            <class name="com.almundo.browser.automation.tests.HotelFlowHeaderTest"/>
             <class name="com.almundo.browser.automation.tests.VueloFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>-->
         </classes>
     </test>
 </suite>

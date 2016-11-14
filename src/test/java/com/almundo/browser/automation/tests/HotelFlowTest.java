@@ -27,9 +27,9 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_SALIDA_CAL.getBy(), departureDate);
         hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_REGRESO_CAL.getBy(), returnDate);
 
-        hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
+/*        hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         hotelFlow.doHotelReservationFlow(driver);
-        hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+        hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);*/
     }
 }
