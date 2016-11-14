@@ -104,14 +104,13 @@ public class PageBaseSetup {
         }
         else {
             actualDayDate = actualDayDate - maxDaysCurrentMonth;
+            if(actualDayDate <= 9) actualDayDate = actualDayDate + 10;
             driver.findElement(idCalendar).click();
             waitForVisibilityOfElementLocated(driver, 10, BaseFlowMap.CALENDAR_NEXT_CAL.getBy());
             driver.findElement(BaseFlowMap.CALENDAR_NEXT_CAL.getBy()).click();
-            Thread.sleep(6000);
             System.out.println("Nueva fecha del dia a marcar............... " + actualDayDate);
             String string = String.format("//a[text()='%s']", actualDayDate );
             driver.findElement(By.xpath(string)).click();
-            Thread.sleep(6000);
         }
         return this;
     }
