@@ -1,13 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="MexicoTestSuite">
     <parameter name="appURL" value="http://www.almundo.com"/>
-    <parameter name="browserType" value="firefox"/>
+    <parameter name="browserType" value="chrome"/>
     <parameter name="country" value="MEXICO"/>
 
     <parameter name="passengers" value="2"/>
 
-    <parameter name="originAuto" value="Bue"/>
-    <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
+    <parameter name="originAuto" value="Dis"/>
+    <parameter name="originFull" value="Ciudad de México, Distrito Federal, México"/>
 
     <parameter name="destinationAuto" value="Mia"/>
     <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
