@@ -40,7 +40,7 @@ public class TestBaseSetup {
     public static String appUrl;
     public String countryPar;
 
-    private String os = System.getProperty("os.name").toLowerCase();
+    public String os = System.getProperty("os.name").toLowerCase();
 
     public WebDriver getDriver() {
         return driver;
