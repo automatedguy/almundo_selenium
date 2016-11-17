@@ -15,7 +15,14 @@ public class TestBaseSetupHeader extends TestBaseSetup {
     /* Overloading initChromeDriver method in order to setup Http Header */
     public WebDriver initChromeDriver() throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
-        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (os.contains("windows")){
+            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
+        }
 
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("/home/gabrielcespedes/Downloads/extension_2_1_1.crx"));

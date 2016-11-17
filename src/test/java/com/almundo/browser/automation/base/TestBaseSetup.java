@@ -15,8 +15,10 @@ import org.testng.annotations.*;
 public class TestBaseSetup {
 
     public WebDriver driver;
-    final String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
-    final String firefoxDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/gecko/geckodriver";
+    final String driverPath = "src/test/resources/";
+
+    //final String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
+    //final String firefoxDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/gecko/geckodriver";
 
     public LandingPage landingPage = new LandingPage(driver);
 
@@ -37,6 +39,8 @@ public class TestBaseSetup {
 
     public static String appUrl;
     public String countryPar;
+
+    private String os = System.getProperty("os.name").toLowerCase();
 
     public WebDriver getDriver() {
         return driver;
@@ -59,14 +63,26 @@ public class TestBaseSetup {
 
     public WebDriver initChromeDriver() throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
-        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+
+        if (os.contains("windows")){
+            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
+        }
+
         WebDriver driver = new ChromeDriver();
         return driver;
     }
 
     public WebDriver initFirefoxDriver() throws InterruptedException {
         System.out.println("Launching Firefox browser..");
-        System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
+
+        if (os.contains("windows")){
+            System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
+        } else {
+            System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver");
+        }
+
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability("marionette", true);
         WebDriver driver = new FirefoxDriver(capabilities);
