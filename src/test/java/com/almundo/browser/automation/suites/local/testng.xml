@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="LocalTestSuite">
     <parameter name="appURL" value="http://www.almundo.com"/>
-    <parameter name="browserType" value="chrome"/>
+    <parameter name="browserType" value="firefox"/>
     <parameter name="country" value="ARGENTINA"/>
 
     <parameter name="passengers" value="2"/>

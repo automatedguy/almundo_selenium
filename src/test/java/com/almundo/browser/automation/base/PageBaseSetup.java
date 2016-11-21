@@ -5,6 +5,7 @@ import com.almundo.browser.automation.locators.flows.HotelFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -178,11 +179,13 @@ public class PageBaseSetup {
     }
 
     public boolean noVacancy(WebDriver driver){
-        if(driver.getPageSource().contains("Lo sentimos. No encontramos disponibilidad para tu búsqueda")){
-            return true;
+        try {
+            By noVacancyMsg = By.xpath("//span[contains(.,'Lo sentimos. No encontramos disponibilidad para tu búsqueda')]");
+            waitForVisibilityOfElementLocated(driver, 5, noVacancyMsg);
+
+        } catch (TimeoutException timeOut){
+                return false;
         }
-        else{
-            return false;
-        }
+        return true;
     }
 }
