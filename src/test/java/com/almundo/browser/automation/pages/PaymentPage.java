@@ -3,12 +3,14 @@ package com.almundo.browser.automation.pages;
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
+import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -28,25 +30,33 @@ public class PaymentPage extends PageBaseSetup {
 
         /*  Populate passengers */
         for(final Passenger passengerToPopulate : passengers){
-            WebElement firstName, lastName, documentNumber;
+            WebElement elementToPopulate;
+            String typePassenger;
 
-            firstName = driver.findElement(By.id(passengerToPopulate.firstName));
-            firstName.sendKeys("Nombre");
+            elementToPopulate = driver.findElement(By.id(passengerToPopulate.firstName));
+            elementToPopulate.sendKeys("Nombre");
 
-            lastName = driver.findElement(By.id(passengerToPopulate.lastName));
-            lastName.sendKeys("Apellido");
+            elementToPopulate = driver.findElement(By.id(passengerToPopulate.lastName));
+            elementToPopulate.sendKeys("Apellido");
 
             /*  This must be available for Argentina only apparently */
             if(!driver.findElements(By.id(passengerToPopulate.documentNumber)).isEmpty()){
-                documentNumber = driver.findElement(By.id(passengerToPopulate.documentNumber));
-                documentNumber.sendKeys("123456789");
+                elementToPopulate = driver.findElement(By.id(passengerToPopulate.documentNumber));
+                elementToPopulate.sendKeys("123456789");
             }else{
                 System.out.println("Document number");
             }
 
             if(!driver.findElements(By.id(passengerToPopulate.fechaNacimiento)).isEmpty()){
-                documentNumber = driver.findElement(By.id(passengerToPopulate.fechaNacimiento));
-                documentNumber.sendKeys("09/09/1979");
+                elementToPopulate = driver.findElement(By.id(passengerToPopulate.fechaNacimiento));
+                typePassenger = driver.findElement(By.cssSelector(".passenger-ctn:nth-of-type(" + passengerToPopulate.numeroPasajero + ")>.passenger__info__detail>div:nth-of-type(1)>h3>span:nth-of-type(2)")).getText();
+                if (typePassenger.equals("Adulto")){
+                    elementToPopulate.sendKeys("09/09/1979");
+                } else if (typePassenger.equals("Niño")){
+                    elementToPopulate.sendKeys("09/09/2010");
+                } else {
+                    elementToPopulate.sendKeys("09/09/2015");
+                }
             }else{
                 System.out.println("Birthday");
             }

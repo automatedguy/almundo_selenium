@@ -31,9 +31,9 @@ public class VueloFlowTest extends TestBaseSetup {
         vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_SALIDA_CAL.getBy(), departureDate);
         vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_REGRESO_CAL.getBy(), returnDate);
 
-        vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
+        numPassengers = vueloFlow.selectPassenger(driver, numAdults, numChilds);
 
-        numPassengers = numPassengers - 1;
+        vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         if (vueloFlow.nothingFound(driver)) {
             System.out.println("Nothing Found: VUELOS");

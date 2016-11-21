@@ -17,12 +17,12 @@ public class TestBaseSetup {
     public WebDriver driver;
     final String driverPath = "src/test/resources/";
 
-    //final String chromeDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/chrome/chromedriver";
-    //final String firefoxDriverPath = "/home/gabrielcespedes/idea-IC-162.2032.8/gecko/geckodriver";
-
     public LandingPage landingPage = new LandingPage(driver);
 
+    public int numAdults;
+    public int numChilds;
     public int numPassengers;
+    public int rooms;
 
     public String originAutoComplete;
     public String originFullText;
@@ -89,12 +89,12 @@ public class TestBaseSetup {
         return driver;
     }
 
-    @Parameters({ "browserType", "appURL" , "country" , "passengers" ,
+    @Parameters({ "browserType", "appURL" , "country" , "adults", "childs", "passengers" ,
     "originAuto" , "originFull" , "destinationAuto" , "destinationFull",
     "startDate", "endDate" })
     @BeforeClass
-    public void initializeTestBaseSetup(String browserType, String appURL, String country, int passengers,
-                                        String originAuto, String originFull,
+    public void initializeTestBaseSetup(String browserType, String appURL, String country, int adults, int childs,
+                                        int passengers, String originAuto, String originFull,
                                         String destinationAuto , String destinationFull,
                                         int startDate, int endDate) {
             try {
@@ -110,6 +110,8 @@ public class TestBaseSetup {
             this.appUrl = appURL;
             this.countryPar = country;
 
+            this.numAdults = adults;
+            this.numChilds= childs;
             this.numPassengers = passengers;
 
             this.originAutoComplete = originAuto;
