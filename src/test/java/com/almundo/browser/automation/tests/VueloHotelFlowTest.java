@@ -31,6 +31,8 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         vueloHotelFlow.selectDateFromCalendar(driver, VueloHotelFlowMap.TRIPS_FECHA_SALIDA_CAL.getBy(), departureDate);
         vueloHotelFlow.selectDateFromCalendar(driver, VueloHotelFlowMap.TRIPS_FECHA_REGRESO_CAL.getBy(), returnDate);
 
+        numPassengers = vueloHotelFlow.selectPassenger(driver, numAdults, numChilds, numRooms);
+
         vueloHotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         if(vueloHotelFlow.nothingFound(driver)){
