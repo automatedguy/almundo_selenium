@@ -27,6 +27,8 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_SALIDA_CAL.getBy(), departureDate);
         hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_REGRESO_CAL.getBy(), returnDate);
 
+        numPassengers = hotelFlow.selectPassenger(driver, numAdults, numChilds, rooms);
+
         hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         hotelFlow.doHotelReservationFlow(driver);

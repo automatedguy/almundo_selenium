@@ -1,6 +1,8 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
+import com.almundo.browser.automation.locators.flows.HotelFlowMap;
+import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -113,6 +115,50 @@ public class PageBaseSetup {
             driver.findElement(By.xpath(string)).click();
         }
         return this;
+    }
+
+    public int selectPassenger(WebDriver driver, int adults, int childs) {
+        driver.findElement(BaseFlowMap.PERSONAS_TXT.getBy()).click();
+
+        if (adults>1){
+            for(int i=1; i<adults; i++) {
+                System.out.println("Adding 1 adult");
+                driver.findElement(VueloFlowMap.ADD_ADULT_BTN.getBy()).click();
+            }
+        }
+
+        if (childs>0){
+            for(int i=0; i<childs; i++) {
+                System.out.println("Adding 1 child");
+                driver.findElement(VueloFlowMap.ADD_CHILD_BTN.getBy()).click();
+            }
+        }
+
+        driver.findElement(BaseFlowMap.LISTO_BTN.getBy()).click();
+
+        return adults + childs;
+    }
+
+    public int selectPassenger(WebDriver driver, int adults, int childs, int rooms) {
+        driver.findElement(BaseFlowMap.PERSONAS_TXT.getBy()).click();
+
+        if (adults>2){
+            for(int i=1; i<adults; i++) {
+                System.out.println("Adding 1 adult");
+                driver.findElement(HotelFlowMap.ADD_ADULT_BTN.getBy()).click();
+            }
+        }
+
+        if (childs>0){
+            for(int i=0; i<childs; i++) {
+                System.out.println("Adding 1 child");
+                driver.findElement(HotelFlowMap.ADD_CHILD_BTN.getBy()).click();
+            }
+        }
+
+        driver.findElement(BaseFlowMap.LISTO_BTN.getBy()).click();
+
+        return adults + childs;
     }
 
     public PageBaseSetup moveToElement(WebDriver driver, By elementToLocate){
