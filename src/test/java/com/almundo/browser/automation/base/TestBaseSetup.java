@@ -22,7 +22,7 @@ public class TestBaseSetup {
     public int numAdults;
     public int numChilds;
     public int numPassengers;
-    public int rooms;
+    public int numRooms;
 
     public String originAutoComplete;
     public String originFullText;
@@ -89,14 +89,14 @@ public class TestBaseSetup {
         return driver;
     }
 
-    @Parameters({ "browserType", "appURL" , "country" , "adults", "childs", "passengers" ,
+    @Parameters({ "browserType", "appURL" , "country" , "adults", "childs", "rooms",
     "originAuto" , "originFull" , "destinationAuto" , "destinationFull",
     "startDate", "endDate" })
     @BeforeClass
     public void initializeTestBaseSetup(String browserType, String appURL, String country, int adults, int childs,
-                                        int passengers, String originAuto, String originFull,
-                                        String destinationAuto , String destinationFull,
-                                        int startDate, int endDate) {
+                                        int rooms, String originAuto, String originFull,
+                                        String destinationAuto , String destinationFull, int startDate, int endDate) {
+
             try {
                 setDriver(browserType);
 
@@ -112,7 +112,7 @@ public class TestBaseSetup {
 
             this.numAdults = adults;
             this.numChilds= childs;
-            this.numPassengers = passengers;
+            this.numRooms = rooms;
 
             this.originAutoComplete = originAuto;
             this.originFullText = originFull;

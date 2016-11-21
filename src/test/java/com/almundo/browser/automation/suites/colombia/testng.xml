@@ -4,8 +4,6 @@
     <parameter name="browserType" value="chrome"/>
     <parameter name="country" value="COLOMBIA"/>
 
-    <parameter name="passengers" value="2"/>
-
     <parameter name="originAuto" value="Bue"/>
     <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
 
@@ -17,6 +15,8 @@
 
     <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
+
+    <parameter name="rooms" value="1"/>
 
     <listeners>
         <listener class-name="com.almundo.browser.automation.utils.RetryListener" />
