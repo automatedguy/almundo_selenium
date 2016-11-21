@@ -6,8 +6,8 @@
 
     <parameter name="passengers" value="2"/>
 
-    <parameter name="originAuto" value="Bue"/>
-    <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
+    <parameter name="originAuto" value="Dis"/>
+    <parameter name="originFull" value="Ciudad de México, Distrito Federal, México"/>
 
     <parameter name="destinationAuto" value="Mia"/>
     <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
