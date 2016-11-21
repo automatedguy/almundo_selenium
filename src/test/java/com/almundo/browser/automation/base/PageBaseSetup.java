@@ -177,4 +177,12 @@ public class PageBaseSetup {
         }
     }
 
+    public boolean noVacancy(WebDriver driver){
+        if(driver.getPageSource().contains("Lo sentimos. No encontramos disponibilidad para tu búsqueda")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

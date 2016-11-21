@@ -31,7 +31,12 @@ public class HotelFlowTest extends TestBaseSetup {
 
         hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
-        hotelFlow.doHotelReservationFlow(driver);
-        hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+        if(hotelFlow.noVacancy(driver)) {
+            System.out.println("No Vacancy");
+        }
+        else {
+            hotelFlow.doHotelReservationFlow(driver);
+            hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+        }
     }
 }
