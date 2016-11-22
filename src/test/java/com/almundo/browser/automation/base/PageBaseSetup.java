@@ -90,14 +90,14 @@ public class PageBaseSetup {
         int totalAvailableDates = availableDates.size();
 
         if(totalAvailableDates >= daysAhead){
-            // System.out.println("Fecha Seleccionada: " + availableDates.get(daysAhead-1).getText());
+            System.out.println("Fecha Seleccionada: " + availableDates.get(daysAhead-1).getText());
             availableDates.get(daysAhead-1).click();
         }
         else{
             daysAhead = daysAhead - totalAvailableDates;
             driver.findElement(BaseFlowMap.CALENDAR_NEXT_CAL.getBy()).click();
             List<WebElement> availableDatesNextCal = driver.findElements(BaseFlowMap.AVAILABLE_DATES_CAL.getBy());
-            // System.out.println("Fecha Seleccionada: " + availableDates.get(daysAhead-1).getText());
+            System.out.println("Fecha Seleccionada: " + availableDatesNextCal.get(daysAhead-1).getText());
             availableDatesNextCal.get(daysAhead-1).click();
         }
         return this;
