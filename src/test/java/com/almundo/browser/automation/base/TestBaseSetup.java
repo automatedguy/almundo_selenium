@@ -175,9 +175,10 @@ public class TestBaseSetup {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         // set desired capabilities to launch appropriate browser on Sauce
+        capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
         capabilities.setCapability(CapabilityType.VERSION, browserVersion);
-        capabilities.setCapability(CapabilityType.PLATFORM, os);
+
         capabilities.setCapability("name", methodName);
 
         if (buildTag != null) {
