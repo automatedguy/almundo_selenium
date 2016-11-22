@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.LandingPage;
+import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
 import org.openqa.selenium.By;
@@ -22,7 +23,6 @@ import java.rmi.UnexpectedException;
 public class TestBaseSetup {
 
     public WebDriver driver;
-    final String driverPath = "src/test/resources/";
 
     public static String baseURL = null;
     private static String os = null;
@@ -60,7 +60,7 @@ public class TestBaseSetup {
     @Parameters({ "appURL" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
             "destinationAuto" , "destinationFull", "startDate", "endDate" })
     @BeforeClass
-    public void initializeTestBaseSetup(@Optional("http://www.almundo.com") String appURL,
+    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String appURL,
                                         //@Optional() String osType,
                                         @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
@@ -143,9 +143,9 @@ public class TestBaseSetup {
         System.out.println("Launching google chrome with new profile..");
 
         if (osProperty.contains("windows")){
-            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
         } else {
-            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
+            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
         }
 
         return new ChromeDriver();
@@ -155,9 +155,9 @@ public class TestBaseSetup {
         System.out.println("Launching Firefox browser..");
 
         if (osProperty.contains("windows")){
-            System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver.exe");
         } else {
-            System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver");
+            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver");
         }
 
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();

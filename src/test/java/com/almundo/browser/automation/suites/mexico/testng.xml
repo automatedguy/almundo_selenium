@@ -10,8 +10,8 @@
     <parameter name="destinationAuto" value="Mia"/>
     <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
 
-    <parameter name="startDate" value="10"/>
-    <parameter name="endDate" value="17"/>
+    <parameter name="startDate" value="5"/>
+    <parameter name="endDate" value="10"/>
 
     <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
