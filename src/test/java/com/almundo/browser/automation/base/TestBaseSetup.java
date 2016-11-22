@@ -34,6 +34,9 @@ public class TestBaseSetup {
     public int numPassengers;
     public int numRooms;
 
+    public String claseVuelo;
+
+
     public String originAutoComplete;
     public String originFullText;
     public String originFullTextStr;
@@ -58,12 +61,12 @@ public class TestBaseSetup {
     public static String buildTag = null;
 
     @Parameters({ "env" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
-            "destinationAuto" , "destinationFull", "startDate", "endDate" })
+            "destinationAuto" , "destinationFull", "startDate", "endDate", "clase" })
     @BeforeClass
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         //@Optional() String osType,
                                         @Optional("Windows 10") String osType,
-                                        @Optional("firefox") String browserType,
+                                        @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         int adults,
@@ -74,7 +77,7 @@ public class TestBaseSetup {
                                         String destinationAuto,
                                         String destinationFull,
                                         int startDate,
-                                        int endDate) {
+                                        int endDate, String clase) {
 
          /* Note: Parameters are initialized inside Before Class probably best option for now. */
         /* as @BeforeClass methods are invoked after test class instantiation and parameters for each test may differ */
@@ -89,6 +92,7 @@ public class TestBaseSetup {
         this.numAdults = adults;
         this.numChilds= childs;
         this.numRooms = rooms;
+        this.claseVuelo = clase;
 
         this.originAutoComplete = originAuto;
         this.originFullText = originFull;

@@ -18,6 +18,8 @@
 
     <parameter name="rooms" value="1"/>
 
+    <parameter name="clase" value="Turista"/>
+
     <listeners>
         <listener class-name="com.almundo.browser.automation.utils.RetryListener" />
     </listeners>

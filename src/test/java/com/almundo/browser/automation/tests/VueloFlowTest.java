@@ -33,6 +33,15 @@ public class VueloFlowTest extends TestBaseSetup {
 
         numPassengers = vueloFlow.selectPassenger(driver, numAdults, numChilds);
 
+
+
+        //Select claseVueloDdl = new Select(driver.findElement(VueloFlowMap.CLASE_DDL.getBy()));
+        driver.findElement(VueloFlowMap.CLASE_DDL.getBy()).sendKeys(claseVuelo);
+
+        // vueloFlow.clickOn(driver, VueloFlowMap.CLASE_DDL.getBy());
+
+        // claseVueloDdl.selectByVisibleText(claseVuelo);
+
         vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
         if (vueloFlow.nothingFound(driver)) {

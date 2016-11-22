@@ -14,6 +14,9 @@ public enum VueloFlowMap {
     VUELO_FECHA_SALIDA_CAL(By.id("departure-flights")),
     VUELO_FECHA_REGRESO_CAL(By.id("arrival-flights")),
 
+    // flight class options dll
+    CLASE_DDL(By.name("class-flights")),
+
     //passengers-distribution
     SUB_ADULT_BTN(By.cssSelector(".row-adults>.sub")),
     ADD_ADULT_BTN(By.cssSelector(".row-adults>.add")),
