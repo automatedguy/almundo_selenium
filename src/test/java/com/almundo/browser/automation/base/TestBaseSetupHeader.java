@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.base;
 
+import com.almundo.browser.automation.utils.Constants;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,9 +18,9 @@ public class TestBaseSetupHeader extends TestBaseSetup {
         System.out.println("Launching google chrome with new profile..");
 
         if (osProperty.contains("windows")){
-            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
         } else {
-            System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
+            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
         }
 
         ChromeOptions options = new ChromeOptions();

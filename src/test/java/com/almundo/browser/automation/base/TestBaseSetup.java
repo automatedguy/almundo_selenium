@@ -57,10 +57,10 @@ public class TestBaseSetup {
     public static String seleniumURI = null;
     public static String buildTag = null;
 
-    @Parameters({ "appURL" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
+    @Parameters({ "env" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
             "destinationAuto" , "destinationFull", "startDate", "endDate" })
     @BeforeClass
-    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String appURL,
+    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         //@Optional() String osType,
                                         @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
@@ -79,7 +79,7 @@ public class TestBaseSetup {
          /* Note: Parameters are initialized inside Before Class probably best option for now. */
         /* as @BeforeClass methods are invoked after test class instantiation and parameters for each test may differ */
 
-        this.baseURL = appURL;
+        this.baseURL = env_url;
         this.os = osType;
         this.browser = browserType;
         this.browserVersion = browserTypeVersion;
