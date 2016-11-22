@@ -71,7 +71,7 @@ public class PaymentPage extends PageBaseSetup {
         enterText(driver, "Nombre", PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
         enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
 
-        if(TestBaseSetup.appUrl == "http://www.almundo.com"){
+        if(TestBaseSetup.baseURL == "http://www.almundo.com"){
             enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
         }else
         {

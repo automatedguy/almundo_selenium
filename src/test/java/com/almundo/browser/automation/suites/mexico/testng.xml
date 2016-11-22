@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="MexicoTestSuite">
-    <parameter name="appURL" value="http://www.almundo.com"/>
-    <parameter name="browserType" value="chrome"/>
-    <parameter name="country" value="MEXICO"/>
+    <!--<parameter name="appURL" value="http://www.almundo.com"/>-->
+    <!--<parameter name="browserType" value="chrome"/>-->
+    <!--<parameter name="country" value="MEXICO"/>-->
 
     <parameter name="originAuto" value="Dis"/>
     <parameter name="originFull" value="Ciudad de México, Distrito Federal, México"/>
