@@ -16,7 +16,7 @@ public class TestBaseSetupHeader extends TestBaseSetup {
     public WebDriver initChromeDriver() throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
 
-        if (os.contains("windows")){
+        if (osProperty.contains("windows")){
             System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
         } else {
             System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");

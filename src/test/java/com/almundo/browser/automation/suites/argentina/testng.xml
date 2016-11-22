@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="ArgentinaTestSuite">
-    <parameter name="appURL" value="http://www.almundo.com"/>
-    <parameter name="browserType" value="firefox"/>
-    <parameter name="country" value="ARGENTINA"/>
+    <!--<parameter name="appURL" value="http://www.almundo.com"/>-->
+    <!--<parameter name="browserType" value="firefox"/>-->
+    <!--<parameter name="country" value="ARGENTINA"/>-->
 
     <parameter name="originAuto" value="Bue"/>
     <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
@@ -10,8 +10,8 @@
     <parameter name="destinationAuto" value="Mia"/>
     <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
 
-    <parameter name="startDate" value="10"/>
-    <parameter name="endDate" value="17"/>
+    <parameter name="startDate" value="5"/>
+    <parameter name="endDate" value="10"/>
 
     <parameter name="adults" value="2"/>
     <parameter name="childs" value="2"/>
