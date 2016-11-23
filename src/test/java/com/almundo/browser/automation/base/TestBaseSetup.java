@@ -6,6 +6,7 @@ import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -28,29 +29,28 @@ public class TestBaseSetup {
     private static String os = null;
     private static String browser = null;
     private static String browserVersion = null;
+    private static String osName = null;
 
     public int numAdults;
     public int numChilds;
     public int numPassengers;
     public int numRooms;
-
     public String claseVuelo;
 
+    public static String originAutoComplete;
+    public static String originFullText;
+    public static String originFullTextStr;
+    public static By ORIGIN_FULL_PAR;
 
-    public String originAutoComplete;
-    public String originFullText;
-    public String originFullTextStr;
-    public By ORIGIN_FULL_PAR;
+    public static String destinationAutoComplete;
+    public static String destinationFullText;
+    public static String destinationFullTextStr;
+    public static By DESTINATION_FULL_PAR;
 
-    public String destinationAutoComplete;
-    public String destinationFullText;
-    public String destinationFullTextStr;
-    public By DESTINATION_FULL_PAR;
+    public static int departureDate;
+    public static int returnDate;
 
-    public int departureDate;
-    public int returnDate;
-
-    public String countryPar;
+    public static String countryPar;
 
     public LandingPage landingPage = new LandingPage(driver);
 
@@ -60,15 +60,15 @@ public class TestBaseSetup {
     public static String seleniumURI = null;
     public static String buildTag = null;
 
-    @Parameters({ "env" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
+    @Parameters({"env" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
             "destinationAuto" , "destinationFull", "startDate", "endDate", "clase" })
-    @BeforeClass
+    @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
-                                        //@Optional() String osType,
-                                        @Optional("Windows 10") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional() String osType,
+                                        //@Optional("Windows 10") String osType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("COLOMBIA") String country,
                                         int adults,
                                         int childs,
                                         int rooms,
@@ -77,7 +77,8 @@ public class TestBaseSetup {
                                         String destinationAuto,
                                         String destinationFull,
                                         int startDate,
-                                        int endDate, String clase) {
+                                        int endDate,
+                                        String clase) {
 
          /* Note: Parameters are initialized inside Before Class probably best option for now. */
         /* as @BeforeClass methods are invoked after test class instantiation and parameters for each test may differ */
@@ -86,6 +87,7 @@ public class TestBaseSetup {
         this.os = osType;
         this.browser = browserType;
         this.browserVersion = browserTypeVersion;
+        osName = System.getProperty("os.name");
 
         this.countryPar = country;
 
@@ -108,28 +110,50 @@ public class TestBaseSetup {
         this.returnDate = endDate;
 
         try {
-            setDriver(browser);
+            if (os == null || browserVersion == null) {
+                System.out.println("OS: [" + osName + "]");
+                System.out.println("Browser: [" + browser + "]");
+                System.out.println("Environment: [" + baseURL + "]");
 
+            } else {
+                System.out.println("OS: [" + os + "]");
+                System.out.println("Browser: [" + browser + " " + browserVersion + "]");
+                System.out.println("Environment: [" + baseURL + "]");
+            }
         } catch (Exception e) {
-            System.out.println("Error....." + e.getStackTrace());
+            e.printStackTrace();
         }
 
     }
 
-    public void setDriver(String browser) throws InterruptedException {
+    @BeforeMethod
+    public void setDriver() throws InterruptedException {
         try {
             if (os == null || browserVersion == null) {
                 switch (browser) {
                     case "chrome":
-                        driver = initChromeDriver();
+                        if (osProperty.contains("windows")){
+                            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
+                        } else {
+                            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
+                        }
+                        driver = new ChromeDriver();
                         break;
+
                     case "firefox":
-                        driver = initFirefoxDriver();
+                        if (osProperty.contains("windows")){
+                            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver.exe");
+                        } else {
+                            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver");
+                        }
+
+                        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+                        capabilities.setCapability("marionette", true);
+                        driver = new FirefoxDriver(capabilities);
                         break;
+
                     default:
-                        System.out.println("browser : " + browser
-                                + " is invalid, Launching Firefox as browser of choice..");
-                        driver = initFirefoxDriver();
+                        throw new Exception("Browser [" + browser + "] not well defined. Allowed values are: 'firefox', 'chrome' or  'internet explorer'. WebDriver cannot be initialized!");
                 }
             } else {
 
@@ -141,39 +165,18 @@ public class TestBaseSetup {
                 System.out.println("Metodo: " + method);
                 this.initSauceLabsDriver(method);
             }
+
+            driver.manage().window().maximize();
+            System.out.println("Running Before Method");
+            driver.navigate().to(baseURL);
+            landingPage.selectCountryPage(driver, countryPar);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private WebDriver initChromeDriver() throws InterruptedException {
-        System.out.println("Launching google chrome with new profile..");
-
-        if (osProperty.contains("windows")){
-            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
-        } else {
-            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
-        }
-
-        return new ChromeDriver();
-    }
-
-    private WebDriver initFirefoxDriver() throws InterruptedException {
-        System.out.println("Launching Firefox browser..");
-
-        if (osProperty.contains("windows")){
-            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver.exe");
-        } else {
-            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver");
-        }
-
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("marionette", true);
-
-        return new FirefoxDriver(capabilities);
-    }
-
-    private WebDriver initSauceLabsDriver (String methodName) throws MalformedURLException, UnexpectedException {
+    private void initSauceLabsDriver (String methodName) throws MalformedURLException, UnexpectedException {
 
         String USERNAME = "phidodrecr";
         String ACCESS_KEY = "ac3c7da6-5b2b-482e-b685-7e1a64e4374a";
@@ -185,7 +188,6 @@ public class TestBaseSetup {
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
         capabilities.setCapability(CapabilityType.VERSION, browserVersion);
-        capabilities.setCapability("screenResolution", "1280x960");
 
         capabilities.setCapability("name", methodName);
 
@@ -204,21 +206,18 @@ public class TestBaseSetup {
         sessionId.set(id);
 
         driver = this.getWebDriver();
-        return driver;
     }
 
-
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
-        driver.quit();
-    }
-
-    @BeforeMethod
-    public void beforeMethod(){
-        driver.manage().window().maximize();
-        System.out.println("Running Before Method");
-        driver.navigate().to(baseURL);
-        landingPage.selectCountryPage(driver, countryPar);
+        try {
+            driver.manage().deleteAllCookies();
+            driver.quit();
+        } catch (WebDriverException exception){
+            System.out.println(exception.getMessage());
+        } catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
     }
 
     /* This is to run retry analyzer for all the suites / tests  */
@@ -256,6 +255,5 @@ public class TestBaseSetup {
     public WebDriver getDriver() {
         return driver;
     }
-
 
 }

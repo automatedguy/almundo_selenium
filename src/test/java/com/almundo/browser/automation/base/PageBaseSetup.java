@@ -90,14 +90,14 @@ public class PageBaseSetup {
         int totalAvailableDates = availableDates.size();
 
         if(totalAvailableDates >= daysAhead){
-            System.out.println("Fecha Seleccionada: " + availableDates.get(daysAhead-1).getText());
+            System.out.println("Date: " + availableDates.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
             availableDates.get(daysAhead-1).click();
         }
         else{
             daysAhead = daysAhead - totalAvailableDates;
             driver.findElement(BaseFlowMap.CALENDAR_NEXT_CAL.getBy()).click();
             List<WebElement> availableDatesNextCal = driver.findElements(BaseFlowMap.AVAILABLE_DATES_CAL.getBy());
-            System.out.println("Fecha Seleccionada: " + availableDatesNextCal.get(daysAhead-1).getText());
+            System.out.println("Date: " + availableDatesNextCal.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
             availableDatesNextCal.get(daysAhead-1).click();
         }
         return this;
@@ -121,7 +121,6 @@ public class PageBaseSetup {
         }
 
         driver.findElement(BaseFlowMap.LISTO_BTN.getBy()).click();
-
         return adults + childs;
     }
 
