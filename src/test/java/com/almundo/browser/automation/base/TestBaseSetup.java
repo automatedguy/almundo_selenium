@@ -4,6 +4,7 @@ import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,6 +22,8 @@ import java.rmi.UnexpectedException;
 
 
 public class TestBaseSetup {
+
+    private final Logger logger = Logger.getLogger(TestBaseSetup.class);
 
     public WebDriver driver;
 
@@ -215,10 +218,18 @@ public class TestBaseSetup {
 
     @BeforeMethod
     public void beforeMethod(){
+        logger.info("Starting @BeforeMethod...");
+
+        logger.info("Maximizing Window...");
         driver.manage().window().maximize();
-        System.out.println("Running Before Method");
+
+        logger.info("Navigating to baseURL: " + baseURL);
         driver.navigate().to(baseURL);
+
+        logger.info("Selecting country page: " + countryPar);
         landingPage.selectCountryPage(driver, countryPar);
+
+        logger.info("@BeforeMethod ended...");
     }
 
     /* This is to run retry analyzer for all the suites / tests  */
