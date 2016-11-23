@@ -135,6 +135,9 @@ public class TestBaseSetup {
 
                 String method = this.getClass().getName().substring(37) + " - " + countryPar;
 
+                if(baseURL.contains("staging")){method = method + " - STG";}
+                else{method = method + " - PROD";}
+
                 System.out.println("Metodo: " + method);
                 this.initSauceLabsDriver(method);
             }
