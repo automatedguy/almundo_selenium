@@ -35,5 +35,19 @@
 				"childs": 0,
 				"rooms": 1
 			}
+	},
+
+	"vueloHotel": {
+			"miami_10days_2adults_2childs_1room": {
+				"originAuto": "Bue",
+				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"destinationAuto": "Mia",
+				"destinationFull": "Miami, Estados Unidos de América",
+				"startDate": 7,
+				"endDate": 10,
+				"adults": 2,
+				"childs": 2,
+				"rooms": 1
+			}
 	}
 }

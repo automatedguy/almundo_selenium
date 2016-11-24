@@ -1,39 +1,53 @@
 {
-  "vuelos": {
-    "miami_10days_2adults_2childs_turista": {
-      "originAuto": "Bog",
-      "originFull": "Bogotá, Bogotá D.C., Colombia",
-      "destinationAuto": "Mia",
-      "destinationFull": "Miami, Estados Unidos de América",
-      "startDate": 7,
-      "endDate": 10,
-      "adults": 2,
-      "childs": 2,
-      "flightClass": "Turista"
+    "vuelos": {
+            "miami_10days_2adults_2childs_turista": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 7,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 2,
+                "flightClass": "Turista"
+            },
+
+            "miami_2adults_1week": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 7,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "flightClass": "Turista"
+            }
     },
 
-    "miami_2adults_1week": {
-      "originAuto": "Bog",
-      "originFull": "Bogotá, Bogotá D.C., Colombia",
-      "destinationAuto": "Mia",
-      "destinationFull": "Miami, Estados Unidos de América",
-      "startDate": 7,
-      "endDate": 10,
-      "adults": 2,
-      "childs": 0,
-      "flightClass": "Turista"
-    }
-  },
+    "hoteles": {
+            "local_10days_2adults_1room": {
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 7,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "rooms": 1
+            }
+    },
 
-  "hoteles": {
-    "local_10days_2adults_1room": {
-      "destinationAuto": "Mia",
-      "destinationFull": "Miami, Estados Unidos de América",
-      "startDate": 7,
-      "endDate": 10,
-      "adults": 2,
-      "childs": 0,
-      "rooms": 1
+    "vueloHotel": {
+            "miami_10days_2adults_2childs_1room": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 7,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 2,
+                "rooms": 1
+            }
     }
-  }
 }

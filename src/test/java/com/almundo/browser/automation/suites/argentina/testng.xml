@@ -4,21 +4,21 @@
     <!--<parameter name="browserType" value="firefox"/>-->
     <!--<parameter name="country" value="ARGENTINA"/>-->
 
-    <parameter name="originAuto" value="Bue"/>
-    <parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>
+    <!--<parameter name="originAuto" value="Bue"/>-->
+    <!--<parameter name="originFull" value="Buenos Aires, Buenos Aires, Argentina"/>-->
 
-    <parameter name="destinationAuto" value="Mia"/>
-    <parameter name="destinationFull" value="Miami, Estados Unidos de América"/>
+    <!--<parameter name="destinationAuto" value="Mia"/>-->
+    <!--<parameter name="destinationFull" value="Miami, Estados Unidos de América"/>-->
 
-    <parameter name="startDate" value="7"/>
-    <parameter name="endDate" value="10"/>
+    <!--<parameter name="startDate" value="7"/>-->
+    <!--<parameter name="endDate" value="10"/>-->
 
-    <parameter name="adults" value="2"/>
-    <parameter name="childs" value="2"/>
+    <!--<parameter name="adults" value="2"/>-->
+    <!--<parameter name="childs" value="2"/>-->
 
-    <parameter name="rooms" value="1"/>
+    <!--<parameter name="rooms" value="1"/>-->
 
-    <parameter name="clase" value="Turista"/>
+    <!--<parameter name="clase" value="Turista"/>-->
 
     <listeners>
         <listener class-name="com.almundo.browser.automation.utils.RetryListener" />
@@ -28,7 +28,7 @@
         <classes>
             <class name="com.almundo.browser.automation.tests.HotelFlowTest"/>
             <class name="com.almundo.browser.automation.tests.VueloFlowTest"/>
-            <!--<class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>-->
+            <class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>
         </classes>
     </test>
 </suite>
