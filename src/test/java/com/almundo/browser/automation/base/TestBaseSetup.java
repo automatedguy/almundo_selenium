@@ -102,6 +102,7 @@ public class TestBaseSetup {
 
     }
 
+
     @BeforeMethod
     public void setDriver() throws InterruptedException {
         try {
