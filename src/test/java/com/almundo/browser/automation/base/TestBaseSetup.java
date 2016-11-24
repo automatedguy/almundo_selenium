@@ -56,7 +56,7 @@ public class TestBaseSetup {
 
     public LandingPage landingPage = new LandingPage(driver);
 
-    public JSONObject dataTestObject = null;
+    public static JSONObject dataTestObject = null;
 
     public String osProperty = System.getProperty("os.name").toLowerCase();
 
