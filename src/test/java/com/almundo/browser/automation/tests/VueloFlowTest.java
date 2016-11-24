@@ -59,7 +59,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
     @Test
     public void vueloReservationFirstOptionFlow() throws InterruptedException {
-        getVueloDataObject("miami_1adult_1week");
+        getVueloDataObject("miami_10days_2adults_2childs_turista");
 
         vueloFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.VUELOS_ICO.getBy());
         vueloFlow.clickOn(driver, BaseFlowMap.VUELOS_ICO.getBy());
