@@ -10,7 +10,7 @@ public class Constants extends TestBaseSetup {
     public static final String STAGING_URL = "http://staging.almundo.com/";
     public static final String PROD_URL = "http://almundo.com/";
 
-    public static final String DRIVERS_PATH = "src/test/resources/";
+    public static final String RESOURCES_PATH = "src/test/resources/";
 
 
 }

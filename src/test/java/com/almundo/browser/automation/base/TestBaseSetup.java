@@ -4,6 +4,8 @@ import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
+import com.almundo.browser.automation.utils.JsonRead;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -54,6 +56,8 @@ public class TestBaseSetup {
 
     public LandingPage landingPage = new LandingPage(driver);
 
+    public JSONObject dataTestObject = null;
+
     public String osProperty = System.getProperty("os.name").toLowerCase();
 
     // Selenium URI -- static same for everyone.
@@ -68,7 +72,7 @@ public class TestBaseSetup {
                                         //@Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         int adults,
                                         int childs,
                                         int rooms,
@@ -78,10 +82,33 @@ public class TestBaseSetup {
                                         String destinationFull,
                                         int startDate,
                                         int endDate,
-                                        String clase) {
+                                        String clase) throws Exception {
 
          /* Note: Parameters are initialized inside Before Class probably best option for now. */
         /* as @BeforeClass methods are invoked after test class instantiation and parameters for each test may differ */
+
+        //Get data from json file
+        try {
+            switch (country) {
+                case "ARGENTINA":
+                    dataTestObject = JsonRead.getJsonFile("argentina_data.json");
+                    break;
+
+                case "COLOMBIA":
+                    dataTestObject = JsonRead.getJsonFile("colombia_data.json");
+                    break;
+
+                case "MEXICO":
+                    dataTestObject = JsonRead.getJsonFile("mexico_data.json");
+                    break;
+
+                default:
+                    throw new Exception("Country [" + country + "] not well defined. Allowed values are: 'ARGENTINA', 'COLOMBIA' or  'MEXICO'.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         this.baseURL = env_url;
         this.os = osType;
@@ -133,18 +160,18 @@ public class TestBaseSetup {
                 switch (browser) {
                     case "chrome":
                         if (osProperty.contains("windows")){
-                            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
+                            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver.exe");
                         } else {
-                            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
+                            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");
                         }
                         driver = new ChromeDriver();
                         break;
 
                     case "firefox":
                         if (osProperty.contains("windows")){
-                            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver.exe");
+                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver.exe");
                         } else {
-                            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver");
+                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver");
                         }
 
                         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
@@ -255,5 +282,7 @@ public class TestBaseSetup {
     public WebDriver getDriver() {
         return driver;
     }
+
+
 
 }

@@ -18,9 +18,9 @@ public class TestBaseSetupHeader extends TestBaseSetup {
         System.out.println("Launching google chrome with new profile..");
 
         if (osProperty.contains("windows")){
-            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver.exe");
         } else {
-            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
+            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");
         }
 
         ChromeOptions options = new ChromeOptions();
