@@ -33,25 +33,7 @@ public class TestBaseSetup {
     private static String browserVersion = null;
     private static String osName = null;
 
-    public int numAdults;
-    public int numChilds;
     public int numPassengers;
-    public int numRooms;
-    public String claseVuelo;
-
-    public static String originAutoComplete;
-    public static String originFullText;
-    public static String originFullTextStr;
-    public static By ORIGIN_FULL_PAR;
-
-    public static String destinationAutoComplete;
-    public static String destinationFullText;
-    public static String destinationFullTextStr;
-    public static By DESTINATION_FULL_PAR;
-
-    public static int departureDate;
-    public static int returnDate;
-
     public static String countryPar;
 
     public LandingPage landingPage = new LandingPage(driver);
@@ -64,30 +46,22 @@ public class TestBaseSetup {
     public static String seleniumURI = null;
     public static String buildTag = null;
 
-//    @Parameters({"env" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
-//            "destinationAuto" , "destinationFull", "startDate", "endDate", "clase" })
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country
-//                                        int adults,
-//                                        int childs,
-//                                        int rooms,
-//                                        String originAuto,
-//                                        String originFull,
-//                                        String destinationAuto,
-//                                        String destinationFull,
-//                                        int startDate,
-//                                        int endDate,
-//                                        String clase
-    ) throws Exception {
+                                        @Optional("ARGENTINA") String country) throws Exception {
 
-         /* Note: Parameters are initialized inside Before Class probably best option for now. */
-        /* as @BeforeClass methods are invoked after test class instantiation and parameters for each test may differ */
+        this.baseURL = env_url;
+        this.os = osType;
+        this.browser = browserType;
+        this.browserVersion = browserTypeVersion;
+        osName = System.getProperty("os.name");
+
+        this.countryPar = country;
 
         //Get data from json file
         try {
@@ -110,33 +84,6 @@ public class TestBaseSetup {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        this.baseURL = env_url;
-        this.os = osType;
-        this.browser = browserType;
-        this.browserVersion = browserTypeVersion;
-        osName = System.getProperty("os.name");
-
-        this.countryPar = country;
-
-//        this.numAdults = adults;
-//        this.numChilds= childs;
-//        this.numRooms = rooms;
-//        this.claseVuelo = clase;
-//
-//        this.originAutoComplete = originAuto;
-//        this.originFullText = originFull;
-//        this.originFullTextStr = String.format("//span[contains(.,'%s')]", originFullText);
-//        this.ORIGIN_FULL_PAR = By.xpath(originFullTextStr);
-//
-//        this.destinationAutoComplete = destinationAuto;
-//        this.destinationFullText = destinationFull;
-//        this.destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText);
-//        this.DESTINATION_FULL_PAR = By.xpath(destinationFullTextStr);
-//
-//        this.departureDate = startDate;
-//        this.returnDate = endDate;
 
         try {
             if (os == null || browserVersion == null) {

@@ -65,6 +65,7 @@
                     <parallel>methods</parallel>
                     <threadCount>20</threadCount>
                     <properties>
+                        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                         <property>
                             <name>dataproviderthreadcount</name>
                             <value>2</value>
