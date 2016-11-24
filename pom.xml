@@ -66,9 +66,6 @@
                     <threadCount>20</threadCount>
                     <properties>
                         <property>
-                            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                        </property>
-                        <property>
                             <name>dataproviderthreadcount</name>
                             <value>2</value>
                         </property>
