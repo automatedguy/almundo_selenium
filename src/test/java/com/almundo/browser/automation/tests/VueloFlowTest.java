@@ -68,7 +68,7 @@ public class VueloFlowTest extends TestBaseSetup {
         vueloFlow.waitForVisibilityOfElementLocated(driver, 10, originFullFinal);
         vueloFlow.selectFromAutoCompleteSuggestions(driver, originFullFinal);
 
-        vueloFlow.enterText(driver, destinationAutoComplete, VueloFlowMap.DESTINATION_FLIGHTS_TXT.getBy());
+        vueloFlow.enterText(driver, destinationAuto, VueloFlowMap.DESTINATION_FLIGHTS_TXT.getBy());
         vueloFlow.waitForVisibilityOfElementLocated(driver, 10, destinationFullFinal);
         vueloFlow.selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
 

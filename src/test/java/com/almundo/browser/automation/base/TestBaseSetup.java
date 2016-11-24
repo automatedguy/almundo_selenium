@@ -215,6 +215,7 @@ public class TestBaseSetup {
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
         capabilities.setCapability(CapabilityType.VERSION, browserVersion);
+        capabilities.setCapability("screenResolution", "1280x960");
 
         capabilities.setCapability("name", methodName);
 
