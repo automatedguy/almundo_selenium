@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -33,11 +34,11 @@ public class VueloFlow extends PageBaseSetup {
     public VueloFlow selectFlightClass(WebDriver driver, String flightClass){
 
         // commented the Select approach as it is not working on firefox
-        // Select claseVueloDdl = new Select(driver.findElement(VueloFlowMap.CLASE_DDL.getBy()));
-        // vueloFlow.clickOn(driver, VueloFlowMap.CLASE_DDL.getBy());
-        // claseVueloDdl.selectByVisibleText(flightClass);
+         Select claseVueloDdl = new Select(driver.findElement(VueloFlowMap.CLASE_DDL.getBy()));
+         //clickOn(driver, VueloFlowMap.CLASE_DDL.getBy());
+         claseVueloDdl.selectByVisibleText(flightClass);
 
-        driver.findElement(VueloFlowMap.CLASE_DDL.getBy()).sendKeys(flightClass);
+        //driver.findElement(VueloFlowMap.CLASE_DDL.getBy()).sendKeys(flightClass);
         return this;
     }
 }
