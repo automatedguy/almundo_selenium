@@ -85,7 +85,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         }
         else {
             vueloHotelFlow.doVueloHotelReservationFlow(driver);
-            vueloHotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+            vueloHotelFlow.paymentPage.passengersSection.populatePassenger(driver, numPassengers);
         }
     }
 }

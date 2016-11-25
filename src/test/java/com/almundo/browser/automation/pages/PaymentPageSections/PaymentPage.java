@@ -1,14 +1,9 @@
-package com.almundo.browser.automation.pages;
+package com.almundo.browser.automation.pages.PaymentPageSections;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.locators.dynamic.Passenger;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -17,50 +12,8 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
-    public PaymentPage populatePassenger(WebDriver driver, int numPassengers){
-        /* create passengers */
-        ArrayList<Passenger> passengers = new ArrayList<Passenger>();
-        for (int idNum = 0; idNum < numPassengers; idNum++) {
-            passengers.add(new Passenger(idNum));
-        }
+    public PassengersSection passengersSection = new PassengersSection();
 
-        waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
-
-        /*  Populate passengers */
-        for(final Passenger passengerToPopulate : passengers){
-            WebElement elementToPopulate;
-            String typePassenger;
-
-            elementToPopulate = driver.findElement(By.id(passengerToPopulate.firstName));
-            elementToPopulate.sendKeys("Nombre");
-
-            elementToPopulate = driver.findElement(By.id(passengerToPopulate.lastName));
-            elementToPopulate.sendKeys("Apellido");
-
-            /*  This must be available for Argentina only apparently */
-            if(!driver.findElements(By.id(passengerToPopulate.documentNumber)).isEmpty()){
-                elementToPopulate = driver.findElement(By.id(passengerToPopulate.documentNumber));
-                elementToPopulate.sendKeys("123456789");
-            }else{
-                logger.info("Document number is not requiered.");
-            }
-
-            if(!driver.findElements(By.id(passengerToPopulate.fechaNacimiento)).isEmpty()){
-                elementToPopulate = driver.findElement(By.id(passengerToPopulate.fechaNacimiento));
-                typePassenger = driver.findElement(By.cssSelector(".passenger-ctn:nth-of-type(" + passengerToPopulate.numeroPasajero + ")>.passenger__info__detail>div:nth-of-type(1)>h3>span:nth-of-type(2)")).getText();
-                if (typePassenger.equals("Adulto")){
-                    elementToPopulate.sendKeys("09/09/1979");
-                } else if (typePassenger.equals("Niño")){
-                    elementToPopulate.sendKeys("09/09/2010");
-                } else {
-                    elementToPopulate.sendKeys("09/09/2015");
-                }
-            }else{
-                logger.info("Birthday field is not requiered.");
-            }
-        }
-        return this;
-    }
 
     public PaymentPage populateCreditCardOwnerData(WebDriver driver){
 
@@ -104,7 +57,6 @@ public class PaymentPage extends PageBaseSetup {
     }
 
     public PaymentPage populatePaymentInfo(WebDriver driver, int numPassengers) throws InterruptedException {
-        populatePassenger(driver, numPassengers);
         populateCreditCardOwnerData(driver);
         populateBillingInformation(driver);
         acceptTermsConditions(driver);

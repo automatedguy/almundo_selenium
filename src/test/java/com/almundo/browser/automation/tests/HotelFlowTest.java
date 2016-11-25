@@ -73,8 +73,10 @@ public class HotelFlowTest extends TestBaseSetup {
             System.out.println("No Vacancy");
         }
         else {
+
             hotelFlow.doHotelReservationFlow(driver);
-            hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+            hotelFlow.paymentPage.passengersSection.populatePassenger(driver, numPassengers);
+
         }
     }
 }

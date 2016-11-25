@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.pages.PaymentPage;
+package com.almundo.browser.automation.pages.PaymentPageSections;
 
 /**
  * Created by leandro.efron on 25/11/2016.
