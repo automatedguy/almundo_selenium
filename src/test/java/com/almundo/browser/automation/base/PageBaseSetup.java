@@ -171,7 +171,7 @@ public class PageBaseSetup {
             waitForVisibilityOfElementLocated(driver, 5, noVacancyMsg);
 
         } catch (TimeoutException timeOut){
-            logger.warn("There is no vacancy.");
+            logger.info("There is vacancy.");
             return false;
         }
         return true;
