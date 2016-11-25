@@ -3,14 +3,12 @@ package com.almundo.browser.automation.pages;
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.dynamic.Passenger;
-import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -44,7 +42,7 @@ public class PaymentPage extends PageBaseSetup {
                 elementToPopulate = driver.findElement(By.id(passengerToPopulate.documentNumber));
                 elementToPopulate.sendKeys("123456789");
             }else{
-                System.out.println("Document number");
+                logger.info("Document number is not requiered.");
             }
 
             if(!driver.findElements(By.id(passengerToPopulate.fechaNacimiento)).isEmpty()){
@@ -58,7 +56,7 @@ public class PaymentPage extends PageBaseSetup {
                     elementToPopulate.sendKeys("09/09/2015");
                 }
             }else{
-                System.out.println("Birthday");
+                logger.info("Birthday field is not requiered.");
             }
         }
         return this;
@@ -96,7 +94,7 @@ public class PaymentPage extends PageBaseSetup {
             enterText(driver, "Ciudad", PaymentPageMap.CIUDAD_TXT.getBy());
         }
         else{
-            System.out.println("No CUIL info");
+            logger.info("CUIL info is not required.");
         }
         enterText(driver, "email@sarasa.cuak", PaymentPageMap.EMAIL_TXT.getBy());
         enterText(driver, "email@sarasa.cuak", PaymentPageMap.REPETI_TU_EMAIL_TXT.getBy());

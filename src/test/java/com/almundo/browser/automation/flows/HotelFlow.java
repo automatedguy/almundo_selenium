@@ -3,7 +3,6 @@ package com.almundo.browser.automation.flows;
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,13 +42,13 @@ public class HotelFlow extends PageBaseSetup {
 
         do {
             try {
-                System.out.println("Now trying to find reservar button ...........");
+                logger.info("Waiting for RESERVAR button...");
                 waitForElement(reservarAhora, 10, 1000);
-                System.out.println("Now clicking on reservar.......................");
+                logger.info("clicking on RESERVAR button...");
                 reservarAhora.click();
 
             } catch (Exception someException) {
-                System.out.println("The other reservation flow :)");
+                logger.warn("RESERVAR not found.");
                 exit = true;
             }
         } while (!exit);
