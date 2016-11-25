@@ -53,7 +53,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     @Test
     public void hotelReservationFirstOptionFlow() throws InterruptedException {
-        getHotelDataObject("local_10days_2adults_1room");
+        getHotelDataObject("miami_10days_2adults_2childs_1room");
 
         hotelFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.HOTELES_ICO.getBy());
         hotelFlow.clickOn(driver, BaseFlowMap.HOTELES_ICO.getBy());

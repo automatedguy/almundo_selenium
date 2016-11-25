@@ -12,13 +12,13 @@
 				"flightClass": "Turista"
 			},
 
-			"miami_2adults_1week": {
+			"miami_7days_2adults_turista": {
 				"originAuto": "Bue",
 				"originFull": "Buenos Aires, Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
 				"startDate": 7,
-				"endDate": 10,
+				"endDate": 7,
 				"adults": 2,
 				"childs": 0,
 				"flightClass": "Turista"
@@ -26,13 +26,13 @@
 	},
 
 	"hoteles": {
-			"local_10days_2adults_1room": {
+			"miami_10days_2adults_2childs_1room": {
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
 				"startDate": 7,
 				"endDate": 10,
 				"adults": 2,
-				"childs": 0,
+				"childs": 2,
 				"rooms": 1
 			}
 	},

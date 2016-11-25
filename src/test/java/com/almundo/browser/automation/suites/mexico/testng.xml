@@ -1,24 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="MexicoTestSuite">
-    <!--<parameter name="appURL" value="http://www.almundo.com"/>-->
-    <!--<parameter name="browserType" value="chrome"/>-->
-    <!--<parameter name="country" value="MEXICO"/>-->
-
-    <!--<parameter name="originAuto" value="Dis"/>-->
-    <!--<parameter name="originFull" value="Ciudad de México, Distrito Federal, México"/>-->
-
-    <!--<parameter name="destinationAuto" value="Mia"/>-->
-    <!--<parameter name="destinationFull" value="Miami, Estados Unidos de América"/>-->
-
-    <!--<parameter name="startDate" value="7"/>-->
-    <!--<parameter name="endDate" value="10"/>-->
-
-    <!--<parameter name="adults" value="2"/>-->
-    <!--<parameter name="childs" value="2"/>-->
-
-    <!--<parameter name="rooms" value="1"/>-->
-
-    <!--<parameter name="clase" value="Turista"/>-->
 
     <listeners>
         <listener class-name="com.almundo.browser.automation.utils.RetryListener" />
