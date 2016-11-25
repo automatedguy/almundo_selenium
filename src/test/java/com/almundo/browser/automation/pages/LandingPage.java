@@ -45,7 +45,7 @@ public class LandingPage extends PageBaseSetup {
         }catch(NoSuchElementException ouch){
             /* If the test retries will be redirected to the corresponding country page */
             /* Hence no need to select country this time */
-            System.out.println("Already been here.....");
+            logger.warn("Landing page not available.");
         }
         return this;
     }
