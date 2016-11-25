@@ -107,6 +107,7 @@ public class TestBaseSetup {
 
     @BeforeMethod
     public void setDriver() throws InterruptedException {
+        System.out.println();
         logger.info("Starting @BeforeMethod...");
         try {
             if (os == null || browserVersion == null) {
