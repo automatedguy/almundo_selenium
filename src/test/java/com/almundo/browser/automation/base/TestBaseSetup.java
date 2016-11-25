@@ -89,14 +89,14 @@ public class TestBaseSetup {
 
         try {
             if (os == null || browserVersion == null) {
-                System.out.println("OS: [" + osName + "]");
-                System.out.println("Browser: [" + browser + "]");
-                System.out.println("Environment: [" + baseURL + "]");
+                logger.info("OS: [" + osName + "]");
+                logger.info("Browser: [" + browser + "]");
+                logger.info("Environment: [" + baseURL + "]");
 
             } else {
-                System.out.println("OS: [" + os + "]");
-                System.out.println("Browser: [" + browser + " " + browserVersion + "]");
-                System.out.println("Environment: [" + baseURL + "]");
+                logger.info("OS: [" + os + "]");
+                logger.info("Browser: [" + browser + " " + browserVersion + "]");
+                logger.info("Environment: [" + baseURL + "]");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,7 +142,7 @@ public class TestBaseSetup {
                 if(baseURL.contains("staging")){method = method + " - STG";}
                 else{method = method + " - PROD";}
 
-                System.out.println("Metodo: " + method);
+                logger.info("Metodo: " + method);
                 this.initSauceLabsDriver(method);
             }
 
@@ -156,10 +156,6 @@ public class TestBaseSetup {
             landingPage.selectCountryPage(driver, countryPar);
 
             logger.info("Finishing @BeforeMethod...");
-
-            logger.info("Here is some INFO");
-            logger.warn("Here is some WARN");
-            logger.error("Here is some ERROR");
 
         } catch (Exception e) {
             e.printStackTrace();
