@@ -2,11 +2,11 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.utils.Constants;
+import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
-import com.almundo.browser.automation.utils.JsonRead;
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +26,8 @@ import java.rmi.UnexpectedException;
 public class TestBaseSetup {
 
     public WebDriver driver;
+
+    private static Logger logger = Logger.getLogger( TestBaseSetup.class );
 
     public static String baseURL = null;
     private static String os = null;
@@ -105,6 +107,7 @@ public class TestBaseSetup {
 
     @BeforeMethod
     public void setDriver() throws InterruptedException {
+        logger.info("Starting @BeforeMethod...");
         try {
             if (os == null || browserVersion == null) {
                 switch (browser) {
@@ -143,10 +146,20 @@ public class TestBaseSetup {
                 this.initSauceLabsDriver(method);
             }
 
+            logger.info("Maximizing Window...");
             driver.manage().window().maximize();
-            System.out.println("Running Before Method");
+
+            logger.info("Navigating to baseURL: " + baseURL);
             driver.navigate().to(baseURL);
+
+            logger.info("Selecting country page: " + countryPar);
             landingPage.selectCountryPage(driver, countryPar);
+
+            logger.info("Finishing @BeforeMethod...");
+
+            logger.info("Here is some INFO");
+            logger.warn("Here is some WARN");
+            logger.error("Here is some ERROR");
 
         } catch (Exception e) {
             e.printStackTrace();
