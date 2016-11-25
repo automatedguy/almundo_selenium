@@ -94,7 +94,7 @@ public class PaymentPage extends PageBaseSetup {
             enterText(driver, "Ciudad", PaymentPageMap.CIUDAD_TXT.getBy());
         }
         else{
-            System.out.println("No CUIL info");
+            logger.info("CUIL info is not required.");
         }
         enterText(driver, "email@sarasa.cuak", PaymentPageMap.EMAIL_TXT.getBy());
         enterText(driver, "email@sarasa.cuak", PaymentPageMap.REPETI_TU_EMAIL_TXT.getBy());
