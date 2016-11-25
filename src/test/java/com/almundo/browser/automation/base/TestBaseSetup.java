@@ -142,7 +142,7 @@ public class TestBaseSetup {
                 if(baseURL.contains("staging")){method = method + " - STG";}
                 else{method = method + " - PROD";}
 
-                logger.info("Metodo: " + method);
+                logger.info("============ Method: " + method + " ============");
                 this.initSauceLabsDriver(method);
             }
 

@@ -3,8 +3,7 @@ package com.almundo.browser.automation.base;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -14,7 +13,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.FileReader;
 import java.util.List;
 
 /**
@@ -23,6 +21,8 @@ import java.util.List;
 public class PageBaseSetup {
 
     protected WebDriver driver;
+
+    public static Logger logger = Logger.getLogger( TestBaseSetup.class );
 
     public PageBaseSetup clickOn(WebDriver driver, By elementToClick){
         driver.findElement(elementToClick).click();
@@ -48,7 +48,7 @@ public class PageBaseSetup {
 
     public PageBaseSetup waitForElement(WebElement element,
                                int timeToWaitInSeconds, int pollingIntervalInMilliSeconds) throws InterruptedException {
-        System.out.println("NOW TRYING TO FIND WEB ELEMENT....LOOP");
+        logger.info("Waiting for WebElement: " + element);
         for (int i = 0; i < timeToWaitInSeconds; i++)
         {
             if (!element.isDisplayed())
@@ -93,14 +93,14 @@ public class PageBaseSetup {
         int totalAvailableDates = availableDates.size();
 
         if(totalAvailableDates >= daysAhead){
-            System.out.println("Date: " + availableDates.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
+            logger.info("Selected date: " + availableDates.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
             availableDates.get(daysAhead-1).click();
         }
         else{
             daysAhead = daysAhead - totalAvailableDates;
             driver.findElement(BaseFlowMap.CALENDAR_NEXT_CAL.getBy()).click();
             List<WebElement> availableDatesNextCal = driver.findElements(BaseFlowMap.AVAILABLE_DATES_CAL.getBy());
-            System.out.println("Date: " + availableDatesNextCal.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
+            logger.info("Selected date: " + availableDatesNextCal.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
             availableDatesNextCal.get(daysAhead-1).click();
         }
         return this;
@@ -111,14 +111,14 @@ public class PageBaseSetup {
 
         if (adults>1){
             for(int i=1; i<adults; i++) {
-                System.out.println("Adding 1 adult");
+                logger.info("Adding 1 adult");
                 driver.findElement(VueloFlowMap.ADD_ADULT_BTN.getBy()).click();
             }
         }
 
         if (childs>0){
             for(int i=0; i<childs; i++) {
-                System.out.println("Adding 1 child");
+                logger.info("Adding 1 child");
                 driver.findElement(VueloFlowMap.ADD_CHILD_BTN.getBy()).click();
             }
         }
@@ -132,14 +132,14 @@ public class PageBaseSetup {
 
         if (adults>2){
             for(int i=1; i<adults; i++) {
-                System.out.println("Adding 1 adult");
+                logger.info("Adding 1 adult");
                 driver.findElement(HotelFlowMap.ADD_ADULT_BTN.getBy()).click();
             }
         }
 
         if (childs>0){
             for(int i=0; i<childs; i++) {
-                System.out.println("Adding 1 child");
+                logger.info("Adding 1 child");
                 driver.findElement(HotelFlowMap.ADD_CHILD_BTN.getBy()).click();
             }
         }
@@ -157,7 +157,7 @@ public class PageBaseSetup {
 
     public boolean nothingFound(WebDriver driver){
         if(!driver.findElements(By.linkText("Ver listado de sucursales")).isEmpty()){
-            System.out.println("No Results found - acercate a nuestras sucursales");
+            logger.warn("No Results found - acercate a nuestras sucursales");
             return true;
         }
         else{
@@ -171,7 +171,8 @@ public class PageBaseSetup {
             waitForVisibilityOfElementLocated(driver, 5, noVacancyMsg);
 
         } catch (TimeoutException timeOut){
-                return false;
+            logger.warn("There is no vacancy.");
+            return false;
         }
         return true;
     }
