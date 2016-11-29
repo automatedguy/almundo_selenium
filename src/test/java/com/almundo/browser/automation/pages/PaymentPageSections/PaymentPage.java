@@ -57,6 +57,8 @@ public class PaymentPage extends PageBaseSetup {
     }
 
     public PaymentPage populatePaymentInfo(WebDriver driver, int numPassengers) throws InterruptedException {
+        passengersSection.populatePassenger(driver, numPassengers);
+
         populateCreditCardOwnerData(driver);
         populateBillingInformation(driver);
         acceptTermsConditions(driver);
