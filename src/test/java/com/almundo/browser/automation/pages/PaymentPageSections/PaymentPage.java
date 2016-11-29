@@ -60,6 +60,7 @@ public class PaymentPage extends PageBaseSetup {
 
         populateCreditCardOwnerData(driver);
 
+        // TODO: check if the Billing Info Section actually exists.
         BillingInfoSection billingInfoSection = new BillingInfoSection(driver);
         billingInfoSection.populateBillingInfo();
 
