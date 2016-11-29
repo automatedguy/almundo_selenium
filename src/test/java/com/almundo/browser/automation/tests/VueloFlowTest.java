@@ -85,7 +85,7 @@ public class VueloFlowTest extends TestBaseSetup {
             System.out.println("Nothing Found: VUELOS");
         } else {
             vueloFlow.doVueloReservationFlow(driver);
-            vueloFlow.paymentPage.passengersSection.populatePassenger(driver, numPassengers);
+            vueloFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
         }
     }
 

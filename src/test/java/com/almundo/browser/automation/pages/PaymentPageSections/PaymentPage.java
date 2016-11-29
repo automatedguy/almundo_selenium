@@ -12,9 +12,6 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
-    public PassengersSection passengersSection = new PassengersSection();
-
-
     public PaymentPage populateCreditCardOwnerData(WebDriver driver){
 
         moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
@@ -57,10 +54,15 @@ public class PaymentPage extends PageBaseSetup {
     }
 
     public PaymentPage populatePaymentInfo(WebDriver driver, int numPassengers) throws InterruptedException {
+
+        PassengersSection passengersSection = new PassengersSection();
         passengersSection.populatePassenger(driver, numPassengers);
 
         populateCreditCardOwnerData(driver);
-        populateBillingInformation(driver);
+
+        BillingInfoSection billingInfoSection = new BillingInfoSection(driver);
+        billingInfoSection.populateBillingInfo();
+
         acceptTermsConditions(driver);
         return this;
     }
