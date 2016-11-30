@@ -26,15 +26,15 @@ public class BillingInfoSection extends PageBaseSetup {
     BillingInfoSection(WebDriver driver){
         if(!driver.findElements(By.id("billing_fiscal_document")).isEmpty()){
             CUIL = driver.findElement(By.id("billing_fiscal_document"));
-            logger.info("Billing Fiscal information is requiered.");
+            logger.info("Billing Fiscal Document (CUIL) information is requiered.");
 
             logger.info("Trying to find whether Razon Social is requiered or not...");
             if(!driver.findElements(By.id("fiscal_name")).isEmpty()){
                 NOMBRE_O_RAZON_SOCIAL = driver.findElement(By.id("fiscal_name"));
-                logger.info("Nombre o Razon Social is requiered.");
+                logger.info("Billing Fiscal Name (Nombre o Razon Social) is requiered.");
             }
             else{
-                logger.info("Nombre o Razon Social is not requiered.");
+                logger.info("Billing Fiscal Name (Nombre o Razon Social) is not requiered.");
                 NOMBRE_O_RAZON_SOCIAL = null;
             }
 

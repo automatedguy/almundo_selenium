@@ -3,7 +3,9 @@ package com.almundo.browser.automation.pages.PaymentPageSections;
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -12,6 +14,7 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
+    WebElement billingInfo;
 
     public PaymentPage populateCreditCardOwnerData(WebDriver driver){
 
@@ -31,6 +34,22 @@ public class PaymentPage extends PageBaseSetup {
         // TODO: agregar Cedula para Colombia
         return this;
     }
+
+    public boolean isBillingInfoRequiered(WebDriver driver){
+
+        billingInfo = driver.findElement(By.cssSelector("div:nth-child(4)>fieldset>div.container__title>h2"));
+
+        System.out.println("This is the text....: " + billingInfo.getText());
+
+        if(billingInfo.getText().equals("3.¿A nombre de quién emitimos la factura?")){
+            logger.info("Billing information is requiered.");
+            return true;
+        }
+        else{
+            logger.info("Billing information is not requiered.");
+            return false;
+        }
+    }
     
     public PaymentPage populatePaymentInfo(WebDriver driver, int numPassengers) throws InterruptedException {
 
@@ -42,9 +61,10 @@ public class PaymentPage extends PageBaseSetup {
         populateCreditCardOwnerData(driver);
 
         // AQ-43
-
-        BillingInfoSection billingInfoSection = new BillingInfoSection(driver);
-        billingInfoSection.populateBillingInfo();
+        if(isBillingInfoRequiered(driver)) {
+            BillingInfoSection billingInfoSection = new BillingInfoSection(driver);
+            billingInfoSection.populateBillingInfo();
+        }
 
         // AQ-44
         acceptTermsConditions(driver);
