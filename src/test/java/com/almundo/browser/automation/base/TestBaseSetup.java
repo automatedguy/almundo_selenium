@@ -165,8 +165,8 @@ public class TestBaseSetup {
 
     private void initSauceLabsDriver (String methodName) throws MalformedURLException, UnexpectedException {
 
-        String USERNAME = "phidodrecr";
-        String ACCESS_KEY = "ac3c7da6-5b2b-482e-b685-7e1a64e4374a";
+        String USERNAME = "cleslafrob";
+        String ACCESS_KEY = "5a52a7a7-1680-4deb-84e3-36a07e8b252e";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
