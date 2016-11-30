@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -38,6 +40,13 @@ public class PaymentPage extends PageBaseSetup {
     public boolean isBillingInfoRequiered(WebDriver driver){
 
         billingInfo = driver.findElement(By.cssSelector("div:nth-child(4)>fieldset>div.container__title>h2"));
+
+
+        List<WebElement> paymentPageSectionTittles = driver.findElements(By.cssSelector("h2.text--lg"));
+
+        for(WebElement paymentPageSectionTittlesToPrint : paymentPageSectionTittles){
+            System.out.println("Printing Paymentpage Sections Tittles... " + paymentPageSectionTittlesToPrint.getText());
+        }
 
         System.out.println("This is the text....: " + billingInfo.getText());
 
