@@ -27,7 +27,7 @@ public class TestBaseSetup {
 
     public WebDriver driver;
 
-    private static Logger logger = Logger.getLogger( TestBaseSetup.class );
+    public static Logger logger = Logger.getLogger( TestBaseSetup.class );
 
     public static String baseURL = null;
     private static String os = null;

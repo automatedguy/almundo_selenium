@@ -22,6 +22,11 @@ public class PaymentPage extends PageBaseSetup {
 
         moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
 
+        TypeOfPaymentSection typeOfPaymentSection = new TypeOfPaymentSection(driver);
+
+        typeOfPaymentSection.selectPaymentQtyOption(0);
+        typeOfPaymentSection.selectBankOption("American Express");
+
         enterText(driver, "Nombre", PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
         enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
 
