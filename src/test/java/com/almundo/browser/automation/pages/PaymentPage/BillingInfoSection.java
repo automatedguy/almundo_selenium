@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.pages.PaymentPageSections;
+package com.almundo.browser.automation.pages.PaymentPage;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import org.openqa.selenium.By;

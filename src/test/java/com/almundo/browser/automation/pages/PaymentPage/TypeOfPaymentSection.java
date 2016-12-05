@@ -1,6 +1,5 @@
-package com.almundo.browser.automation.pages.PaymentPageSections;
+package com.almundo.browser.automation.pages.PaymentPage;
 
-import com.almundo.browser.automation.base.TestBaseSetup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,18 +10,16 @@ import java.util.List;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class TypeOfPaymentSection extends TestBaseSetup {
+public class TypeOfPaymentSection extends PaymentPage {
 
-    public WebDriver driver;
-
-    public TypeOfPaymentSection(WebDriver iDriver) {
-        this.driver = iDriver;
+    public TypeOfPaymentSection(WebDriver driver) {
+        super(driver);
     }
 
     //############################################### Locators ##############################################
 
     @FindBy(id = "card_holder")
-    private WebElement card_holder;
+    public WebElement card_holder;
 
     @FindBy(id = "card_number")
     private WebElement card_number;

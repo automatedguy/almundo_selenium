@@ -4,9 +4,11 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.HotelFlow;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -28,6 +30,8 @@ public class HotelFlowTest extends TestBaseSetup {
     private int adults;
     private int childs;
     private int rooms;
+
+    private BaseFlowMap baseFlowMap = null;
 
     @BeforeClass
     private void getHotelesListDataObject() {
@@ -51,9 +55,16 @@ public class HotelFlowTest extends TestBaseSetup {
 
     }
 
+    @BeforeMethod
+    private void init() {
+
+    }
+
     @Test
     public void hotelReservationFirstOptionFlow() throws InterruptedException {
         getHotelDataObject("miami_10days_2adults_2childs_1room");
+
+        PageUtils.waitElementForVisibility(driver, );
 
         hotelFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.HOTELES_ICO.getBy());
         hotelFlow.clickOn(driver, BaseFlowMap.HOTELES_ICO.getBy());

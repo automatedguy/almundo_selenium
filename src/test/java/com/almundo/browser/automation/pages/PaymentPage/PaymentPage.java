@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.pages.PaymentPageSections;
+package com.almundo.browser.automation.pages.PaymentPage;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.base.TestBaseSetup;
@@ -6,6 +6,7 @@ import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import com.almundo.browser.automation.utils.PageUtils;
 
 import java.util.List;
 
@@ -16,28 +17,32 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
+    TypeOfPaymentSection typeOfPaymentSection = null;
+
     WebElement billingInfo;
 
     public PaymentPage populateCreditCardOwnerData(WebDriver driver){
 
         moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
 
-        TypeOfPaymentSection typeOfPaymentSection = new TypeOfPaymentSection(driver);
+        typeOfPaymentSection = initTypeOfPaymentSection(driver);
 
         typeOfPaymentSection.selectPaymentQtyOption(0);
         typeOfPaymentSection.selectBankOption("American Express");
 
-        enterText(driver, "Nombre", PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
-        enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
+        typeOfPaymentSection.setCardHolder("Nombre Apellido");
+
+        PageUtils.enterText(driver, "Nombre", PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
+        PageUtils.enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
 
         if(TestBaseSetup.baseURL == "http://www.almundo.com"){
-            enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
+            PageUtils.enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
         }else
         {
          // select from drop down list.
         }
 
-        enterText(driver, "777", PaymentPageMap.CODIGO_DE_SEGURIDAD_TXT.getBy());
+        PageUtils.enterText(driver, "777", PaymentPageMap.CODIGO_DE_SEGURIDAD_TXT.getBy());
         // TODO: agregar Cedula para Colombia
         return this;
     }
@@ -86,7 +91,7 @@ public class PaymentPage extends PageBaseSetup {
     }
 
     public PaymentPage leiAceptoCbx(WebDriver driver){
-        clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
+        PageUtils.clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
         // TODO: add Additional check box for Colombia
         return this;
     }

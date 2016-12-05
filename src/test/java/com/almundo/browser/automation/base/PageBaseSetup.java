@@ -3,13 +3,12 @@ package com.almundo.browser.automation.base;
 import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
+import com.almundo.browser.automation.pages.PaymentPage.TypeOfPaymentSection;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -58,6 +57,11 @@ public class PageBaseSetup {
             Thread.sleep(pollingIntervalInMilliSeconds);
         }
         return this;
+    }
+
+    public static void scrollToElement(WebDriver driver, WebElement element) {
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,"+element.getLocation().y+")");
+
     }
 
     public boolean verifyElementPresent(WebElement element) throws InterruptedException {
@@ -177,4 +181,11 @@ public class PageBaseSetup {
         return true;
     }
 
+    protected TypeOfPaymentSection initTypeOfPaymentSection(WebDriver driver) {
+        return PageFactory.initElements(driver, TypeOfPaymentSection.class);
+    }
+
+    protected BaseFlowMap initBaseFlowMap(WebDriver driver) {
+        return PageFactory.initElements(driver, BaseFlowMap.class);
+    }
 }

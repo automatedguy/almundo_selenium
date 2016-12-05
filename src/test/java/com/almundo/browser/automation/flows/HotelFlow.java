@@ -2,7 +2,7 @@ package com.almundo.browser.automation.flows;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
-import com.almundo.browser.automation.pages.PaymentPageSections.PaymentPage;
+import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
