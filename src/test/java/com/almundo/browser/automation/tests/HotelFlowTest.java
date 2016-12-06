@@ -90,7 +90,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
         numPassengers = basePage.hotelesDataTrip().selectPassenger(driver, adults, childs, rooms);
 
-        basePage.hotelesDataTrip().buscarBtn.click();
+
 
         //hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 

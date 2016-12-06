@@ -1,11 +1,10 @@
 package com.almundo.browser.automation.pages.BasePage;
 
-import org.openqa.selenium.By;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by gabrielcespedes on 05/12/16.
@@ -13,11 +12,8 @@ import java.util.List;
 public class VuelosDataTrip extends BasePage{
 
     public VuelosDataTrip(WebDriver driver) {
-        super.driver = driver;
+        super(driver);
     }
-
-//    TICKET_IDA_RDB(By.id("option-inbound-00")),
-//    TICKET_VUELTA_RDB(By.id("option-inbound-01")),
 
     //############################################### Locators ##############################################
 
@@ -32,6 +28,9 @@ public class VuelosDataTrip extends BasePage{
 
     @FindBy(id = "arrival-flights")
     public WebElement arrivalFlightsCalendar;
+
+    @FindBy(css = ".search__input")
+    public WebElement personasTxt;
 
     @FindBy(id = "class-flights")
     public WebElement classFlightsDdl;
@@ -48,11 +47,59 @@ public class VuelosDataTrip extends BasePage{
     @FindBy(css = ".row-youngers>.add")
     public WebElement addChildBtn;
 
+    @FindBy(css = ".button.button--sm")
+    public WebElement listoBtn;
+
+    @FindBy(name = "class-flights")
+    public WebElement classFlightDdl;
+
+
+
     //############################################### Actions ###############################################
 
-    public void selectFlightOption(int index, String idFlightOption) {
-        List<WebElement> flight = driver.findElements(By.id(idFlightOption));
-        flight.get(index).click();
+
+    public VuelosDataTrip setOrigin(String origin) {
+        PageUtils.waitElementForVisibility(driver, originFlightsTxt, 10, "Origin text field");
+        logger.info("Entering Flight Origin: [" + origin + "]");
+        originFlightsTxt.clear();
+        originFlightsTxt.sendKeys(origin);
+        return this;
     }
 
+    public VuelosDataTrip setDestination(String destination) {
+        PageUtils.waitElementForVisibility(driver, destinationFlightsTxt, 10, "Destination text field");
+        logger.info("Entering Destination: [" + destination + "]");
+        destinationFlightsTxt.clear();
+        destinationFlightsTxt.sendKeys(destination);
+        return this;
+    }
+
+    public int selectPassenger(int adults, int childs) {
+        personasTxt.click();
+
+        if (adults>1){
+            for(int i=1; i<adults; i++) {
+                logger.info("Adding 1 adult");
+                addAdultBtn.click();
+            }
+        }
+
+        if (childs>0){
+            for(int i=0; i<childs; i++) {
+                logger.info("Adding 1 child");
+                addChildBtn.click();
+            }
+        }
+        listoBtn.click();
+
+        return adults + childs;
+    }
+
+
+    public VuelosDataTrip selectClass(String flightClass) {
+        Select claseVueloDdl = new Select(classFlightDdl);
+        logger.info("Selecting Flight Class: [" + flightClass + "]");
+        claseVueloDdl.selectByVisibleText(flightClass);
+        return this;
+    }
 }

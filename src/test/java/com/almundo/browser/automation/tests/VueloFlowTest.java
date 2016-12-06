@@ -2,11 +2,12 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloFlow;
-import com.almundo.browser.automation.locators.flows.BaseFlowMap;
-import com.almundo.browser.automation.locators.flows.VueloFlowMap;
+import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -16,6 +17,8 @@ import org.testng.annotations.Test;
 public class VueloFlowTest extends TestBaseSetup {
 
     public VueloFlow vueloFlow = new VueloFlow(driver);
+
+    private BasePage basePage = null;
 
     private JSONObject vuelosList = null;
     private JSONObject vuelo = null;
@@ -34,6 +37,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void getVuelosListDataObject() {
+
         vuelosList = (JSONObject) dataTestObject.get("vuelos");
     }
 
@@ -57,36 +61,41 @@ public class VueloFlowTest extends TestBaseSetup {
         flightClass = vuelo.get("flightClass").toString();
     }
 
-//    @Test
-//    public void vueloReservationFirstOptionFlow() throws InterruptedException {
-//        getVueloDataObject("miami_10days_2adults_2childs_turista");
-//
-//        vueloFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.VUELOS_ICO.getBy());
-//        vueloFlow.clickOn(driver, BaseFlowMap.VUELOS_ICO.getBy());
-//
-//        vueloFlow.enterText(driver, originAuto, VueloFlowMap.ORIGIN_FLIGHTS_TXT.getBy());
-//        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, originFullFinal);
-//        vueloFlow.selectFromAutoCompleteSuggestions(driver, originFullFinal);
-//
-//        vueloFlow.enterText(driver, destinationAuto, VueloFlowMap.DESTINATION_FLIGHTS_TXT.getBy());
-//        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, destinationFullFinal);
-//        vueloFlow.selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
-//
-//        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_SALIDA_CAL.getBy(), startDate);
-//        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_REGRESO_CAL.getBy(), endDate);
-//
-//        numPassengers = vueloFlow.selectPassenger(driver, adults, childs);
-//
-//        vueloFlow.selectFlightClass(driver, flightClass);
-//
-//        vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
-//
-//        if (vueloFlow.nothingFound(driver)) {
-//            System.out.println("Nothing Found: VUELOS");
-//        } else {
-//            vueloFlow.doVueloReservationFlow(driver);
-//            vueloFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
-//        }
-//    }
+    @BeforeMethod
+    private void initBasePageObject() {
+        basePage = initBasePage();
+    }
+
+
+    @Test
+    public void vueloReservationFirstOptionFlow() throws InterruptedException {
+        getVueloDataObject("miami_10days_2adults_2childs_turista");
+
+        PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
+        basePage.vuelosIcon.click();
+
+        basePage.vuelosDataTrip().setOrigin(originAuto);
+        basePage.vuelosDataTrip().selectFromAutoCompleteSuggestions(driver, originFullFinal);
+
+        basePage.vuelosDataTrip().setDestination(destinationAuto);
+        basePage.vuelosDataTrip().selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
+
+        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().departureFlightsCalendar, startDate);
+        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().arrivalFlightsCalendar, endDate);
+
+
+        numPassengers = basePage.vuelosDataTrip().selectPassenger(adults, childs);
+
+        basePage.vuelosDataTrip().selectClass(flightClass);
+
+        basePage.vuelosDataTrip().buscarBtn.click();
+
+      if (vueloFlow.nothingFound(driver)) {
+            System.out.println("Nothing Found: VUELOS");
+        } else {
+           vueloFlow.doVueloReservationFlow(driver);
+            vueloFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+        }
+    }
 
 }
