@@ -1,71 +1,68 @@
-{ "ARGENTINA":
-    {
-      "MODULES": {
-          "hoteles": "true",
-          "vuelos": "true",
-          "trips": "true",
-          "paquetes": "true",
-          "disney": "true",
-          "seguros": "true",
-          "autos": "true",
-          "actividades": "true",
-          "trenes": "true"
+{
+  "ARGENTINA":{
+    "MODULES":{
+      "hoteles":"true",
+      "vuelos":"true",
+      "trips":"true",
+      "paquetes":"true",
+      "disney":"true",
+      "seguros":"true",
+      "autos":"true",
+      "actividades":"true",
+      "trenes":"true"
     },
-      "PaymentPage": {
-          "BillingInfoSection": "true",
-          "document_emisor": "false",
-          "document_expiration": "false",
-          "documentType": "false",
-          "document_number": "false",
-          "fiscal_name": "false",
-          "accepted": "false"
+    "PaymentPage":{
+      "BillingInfoSection":"true",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"false",
+      "document_number":"false",
+      "fiscal_name":"false",
+      "accepted":"false"
     }
   },
-
- "COLOMBIA": {
-   "MODULES": {
-     "hoteles": "true",
-     "vuelos": "true",
-     "trips": "true",
-     "paquetes": "true",
-     "disney": "true",
-     "seguros": "true",
-     "autos": "true",
-     "actividades": "false",
-     "trenes": "false"
-   },
-   "PaymentPage": {
-     "BillingInfoSection": "true",
-     "document_emisor": "false",
-     "document_expiration": "false",
-     "documentType": "true",
-     "document_number": "true",
-     "fiscal_name": "true",
-     "accepted": "true"
-   }
- },
-
-
-   "MEXICO": {
-     "MODULES": {
-       "hoteles": "true",
-       "vuelos": "true",
-       "trips": "true",
-       "paquetes": "true",
-       "disney": "true",
-       "seguros": "true",
-       "autos": "true",
-       "actividades": "true",
-       "trenes": "false"
-     },
-     "PaymentPage": {
-       "BillingInfoSection": "false",
-       "document_emisor": "false",
-       "document_expiration": "false",
-       "documentType": "true",
-       "document_number": "true",
-       "fiscal_name": "false",
-       "accepted": "false"
-     }
-   }
- }
+  "COLOMBIA":{
+    "MODULES":{
+      "hoteles":"true",
+      "vuelos":"true",
+      "trips":"true",
+      "paquetes":"true",
+      "disney":"true",
+      "seguros":"true",
+      "autos":"true",
+      "actividades":"false",
+      "trenes":"false"
+    },
+    "PaymentPage":{
+      "BillingInfoSection":"true",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"true",
+      "document_number":"true",
+      "fiscal_name":"true",
+      "accepted":"true"
+    }
+  },
+  "MEXICO":{
+    "MODULES":{
+      "hoteles":"true",
+      "vuelos":"true",
+      "trips":"true",
+      "paquetes":"true",
+      "disney":"true",
+      "seguros":"true",
+      "autos":"true",
+      "actividades":"true",
+      "trenes":"false"
+    },
+    "PaymentPage":{
+      "BillingInfoSection":"false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"true",
+      "document_number":"true",
+      "fiscal_name":"false",
+      "accepted":"false"
+    }
+  }
+}
