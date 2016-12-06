@@ -53,10 +53,7 @@ public class VuelosDataTrip extends BasePage{
     @FindBy(name = "class-flights")
     public WebElement classFlightDdl;
 
-
-
     //############################################### Actions ###############################################
-
 
     public VuelosDataTrip setOrigin(String origin) {
         PageUtils.waitElementForVisibility(driver, originFlightsTxt, 10, "Origin text field");
@@ -79,14 +76,14 @@ public class VuelosDataTrip extends BasePage{
 
         if (adults>1){
             for(int i=1; i<adults; i++) {
-                logger.info("Adding 1 adult");
+                logger.info("Adding: [1 adult]");
                 addAdultBtn.click();
             }
         }
 
         if (childs>0){
             for(int i=0; i<childs; i++) {
-                logger.info("Adding 1 child");
+                logger.info("Adding: [1 child]");
                 addChildBtn.click();
             }
         }
@@ -94,7 +91,6 @@ public class VuelosDataTrip extends BasePage{
 
         return adults + childs;
     }
-
 
     public VuelosDataTrip selectClass(String flightClass) {
         Select claseVueloDdl = new Select(classFlightDdl);

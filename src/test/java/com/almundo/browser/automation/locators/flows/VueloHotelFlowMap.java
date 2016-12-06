@@ -11,7 +11,6 @@ public enum VueloHotelFlowMap {
     VER_HABITACION_BTN(By.xpath("//button[contains(.,'Ver habitación')]")),
     COMPRAR_BTN(By.cssSelector("button.select-room-button.button.button--md.button--secondary"));
 
-
     private By name;
     VueloHotelFlowMap(By locator) {this.name = locator; }
     public By getBy() { return name; }

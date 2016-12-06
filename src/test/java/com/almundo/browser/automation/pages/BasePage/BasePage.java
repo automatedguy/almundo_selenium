@@ -28,13 +28,14 @@ public class BasePage extends TestBaseSetup {
         return initHotelesDataTrip();
     }
 
-    public VueloHotelDataTrip vueloHotelDataTrip() {
-        return initVueloHotelDataTrip();
-    }
     public VuelosDataTrip vuelosDataTrip() {
         return initVuelosDataTrip();
     }
-    
+
+    public VueloHotelDataTrip vueloHotelDataTrip() {
+        return initVueloHotelDataTrip();
+    }
+
     //############################################### Locators ##############################################
 
     @FindBy(css = ".icon.hotels")
@@ -107,11 +108,12 @@ public class BasePage extends TestBaseSetup {
         return PageFactory.initElements(driver, HotelesDataTrip.class);
     }
 
+    protected VuelosDataTrip initVuelosDataTrip () {
+        return PageFactory.initElements(driver, VuelosDataTrip.class);
+    }
+
     protected VueloHotelDataTrip initVueloHotelDataTrip() {
         return PageFactory.initElements(driver, VueloHotelDataTrip.class);
     }
 
-    protected VuelosDataTrip initVuelosDataTrip () {
-        return PageFactory.initElements(driver, VuelosDataTrip.class);
-    }
 }

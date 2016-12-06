@@ -1,15 +1,16 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
-import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+
+import static com.almundo.browser.automation.base.TestBaseSetup.baseURL;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -33,17 +34,16 @@ public class PaymentPage extends PageBaseSetup {
 
         typeOfPaymentSection.setCardHolder("Nombre Apellido");
 
-        PageUtils.enterText(driver, "Nombre", PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
-        PageUtils.enterText(driver, "999999999999", PaymentPageMap.NUMERO_DE_TARJETA_TXT.getBy());
+        typeOfPaymentSection.setCardNumber("4242424242424242");
 
-        if(TestBaseSetup.baseURL == "http://www.almundo.com"){
-            PageUtils.enterText(driver, "07/17", PaymentPageMap.FECHA_DE_VENCIMIENTO_TXT.getBy());
-        }else
-        {
+        if(baseURL.equals("http://almundo.com/")){
+            typeOfPaymentSection.setCardExpiration("07/17");
+        }else {
          // select from drop down list.
         }
 
-        PageUtils.enterText(driver, "777", PaymentPageMap.CODIGO_DE_SEGURIDAD_TXT.getBy());
+        typeOfPaymentSection.setSecurityCode("777");
+
         // TODO: agregar Cedula para Colombia
         return this;
     }
