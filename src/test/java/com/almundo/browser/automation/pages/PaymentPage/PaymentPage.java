@@ -82,7 +82,7 @@ public class PaymentPage extends PageBaseSetup {
 
         // AQ-43
         if(isBillingInfoRequiered(driver)) {
-            BillingInfoSection billingInfoSection = new BillingInfoSection(driver);
+            BillingInfoSection billingInfoSection = initBillingInfoSection(driver);
             billingInfoSection.populateBillingInfo();
         }
 
@@ -104,6 +104,10 @@ public class PaymentPage extends PageBaseSetup {
 
     protected TypeOfPaymentSection initTypeOfPaymentSection(WebDriver driver) {
         return PageFactory.initElements(driver, TypeOfPaymentSection.class);
+    }
+
+    protected BillingInfoSection initBillingInfoSection(WebDriver driver) {
+        return PageFactory.initElements(driver, BillingInfoSection.class);
     }
 
 }

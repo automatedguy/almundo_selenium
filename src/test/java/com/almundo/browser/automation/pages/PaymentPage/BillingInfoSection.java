@@ -1,99 +1,150 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by gabrielcespedes on 29/11/16.
  */
-public class BillingInfoSection extends PageBaseSetup {
+public class BillingInfoSection extends PaymentPage {
 
-    WebElement CUIL,
-            SITUACION_FISCAL,
-            TIPO_DE_DOCUMENTO,
-            NOMBRE_O_RAZON_SOCIAL,
-            DOMICILIO,
-            NUMERO,
-            PISO,
-            DEPARTAMENTO,
-            CODIGO_POSTAL,
-            PROVINCIA,
-            CIUDAD;
-
-    BillingInfoSection(WebDriver driver){
-        if(!driver.findElements(By.id("billing_fiscal_document")).isEmpty()){
-            CUIL = driver.findElement(By.id("billing_fiscal_document"));
-            logger.info("Billing Fiscal Document (CUIL) information is requiered.");
-
-            logger.info("Trying to find whether Razon Social is requiered or not...");
-            if(!driver.findElements(By.id("fiscal_name")).isEmpty()){
-                NOMBRE_O_RAZON_SOCIAL = driver.findElement(By.id("fiscal_name"));
-                logger.info("Billing Fiscal Name (Nombre o Razon Social) is requiered.");
-            }
-            else{
-                logger.info("Billing Fiscal Name (Nombre o Razon Social) is not requiered.");
-                NOMBRE_O_RAZON_SOCIAL = null;
-            }
-
-            SITUACION_FISCAL = driver.findElement(By.id("billing_fiscal_type"));
-            TIPO_DE_DOCUMENTO = driver.findElement(By.id("billing_document_type"));
-            DOMICILIO = driver.findElement(By.id("billing_address"));
-            NUMERO = driver.findElement(By.id("address_number"));
-            PISO = driver.findElement(By.id("address_floor"));
-            DEPARTAMENTO = driver.findElement(By.id("address_department"));
-            CODIGO_POSTAL = driver.findElement(By.id("address_postal_code"));
-            PROVINCIA = driver.findElement(By.id("address_state"));
-            CIUDAD = driver.findElement(By.id("address_city"));
-        }
-        else{
-            logger.info("Billing Fiscal information not requiered at all.");
-            CUIL = null;
-        }
-
+    public BillingInfoSection(WebDriver driver) {
+        super(driver);
     }
 
-    public BillingInfoSection selectSituacionFiscal(){
+    //############################################### Locators ##############################################
+
+    @FindBy(id = "billing_fiscal_document")
+    private WebElement billing_fiscal_document;
+
+    @FindBy(id = "fiscal_name")
+    private WebElement fiscal_name;
+
+    @FindBy(id = "billing_fiscal_type")
+    private WebElement billing_fiscal_type;
+
+    @FindBy(id = "billing_document_type")
+    private WebElement billing_document_type;
+
+    @FindBy(id = "billing_address")
+    private WebElement billing_address;
+
+    @FindBy(id = "address_number")
+    private WebElement address_number;
+
+    @FindBy(id = "address_floor")
+    private WebElement address_floor;
+
+    @FindBy(id = "address_department")
+    private WebElement address_department;
+
+    @FindBy(id = "address_postal_code")
+    private WebElement address_postal_code;
+
+    @FindBy(id = "address_state")
+    private WebElement address_state;
+
+    @FindBy(id = "address_city")
+    private WebElement address_city;
+
+
+    //############################################### Actions ##############################################
+
+    public BillingInfoSection selectBillingFiscalType(String billingFiscalType) {
         logger.info("Situación fiscal drop down list is enabled, selecting...");
-        Select SITUACION_FISCAL_SELECT = new Select(SITUACION_FISCAL);
-        SITUACION_FISCAL_SELECT.selectByVisibleText("Persona juridica");
+        Select SITUACION_FISCAL_SELECT = new Select(billing_fiscal_type);
+        SITUACION_FISCAL_SELECT.selectByVisibleText(billingFiscalType);
         return this;
     }
 
-    public BillingInfoSection selectTipoDeDocumento(){
+    public BillingInfoSection selectBillingDocumentType(String billingDocumentType){
         logger.info("Tipo de Documento drop down list is enabled, selecting...");
-        Select TIPO_DE_DOCUMENTO_SELECT = new Select(TIPO_DE_DOCUMENTO);
-        TIPO_DE_DOCUMENTO_SELECT.selectByVisibleText("Tarjeta de Identidad");
+        Select TIPO_DE_DOCUMENTO_SELECT = new Select(billing_document_type);
+        TIPO_DE_DOCUMENTO_SELECT.selectByVisibleText(billingDocumentType);
         return this;
     }
+
+    public BillingInfoSection setBillingFiscalDocument(String cuil) {
+        logger.info("Entering CUIL/CUIT number: [" + cuil + "]");
+        billing_fiscal_document.clear();
+        billing_fiscal_document.sendKeys(cuil);
+        return this;
+    }
+
+    public BillingInfoSection setBillingFiscalName(String billingFiscalName) {
+        logger.info("Entering Nombre o Razon Social: [" + billingFiscalName + "]");
+        fiscal_name.clear();
+        fiscal_name.sendKeys(billingFiscalName);
+        return this;
+    }
+
+    BillingInfoSection setBillingAddress(String billingAddress) {
+        logger.info("Entering Nombre o Razon Social: [" + billingAddress + "]");
+        billing_address.clear();
+        billing_address.sendKeys(billingAddress);
+        return this;
+    }
+
+    BillingInfoSection setAddressNumber(String addressNumber) {
+        logger.info("Entering Nombre o Razon Social: [" + addressNumber + "]");
+        address_number.clear();
+        address_number.sendKeys(addressNumber);
+        return this;
+    }
+
+    BillingInfoSection setAddressFloor(String addressFloor) {
+        logger.info("Entering Nombre o Razon Social: [" + addressFloor + "]");
+        address_floor.clear();
+        address_floor.sendKeys(addressFloor);
+        return this;
+    }
+
+    BillingInfoSection setAddressDepartment(String addressDepartment) {
+        logger.info("Entering Nombre o Razon Social: [" + addressDepartment + "]");
+        address_department.clear();
+        address_department.sendKeys(addressDepartment);
+        return this;
+    }
+
+    BillingInfoSection setAddressPostalCode(String addressPostalCcode) {
+        logger.info("Entering Nombre o Razon Social: [" + addressPostalCcode + "]");
+        address_postal_code.clear();
+        address_postal_code.sendKeys(addressPostalCcode);
+        return this;
+    }
+
+    BillingInfoSection setAddressState(String addressState) {
+        logger.info("Entering Nombre o Razon Social: [" + addressState + "]");
+        address_state.clear();
+        address_state.sendKeys(addressState);
+        return this;
+    }
+
+    BillingInfoSection setAddressCity(String addressCity) {
+        logger.info("Entering Nombre o Razon Social: [" + addressCity + "]");
+        address_city.clear();
+        address_city.sendKeys(addressCity);
+        return this;
+    }
+
 
     public BillingInfoSection populateBillingInfo(){
-        if(CUIL != null) {
-            logger.info("Populating billing information fields requiered...");
 
-            if (NOMBRE_O_RAZON_SOCIAL != null) {
-                NOMBRE_O_RAZON_SOCIAL.sendKeys("Nombre o Razon Social");
-            }
+        logger.info("Populating billing information fields requiered...");
 
-            if(SITUACION_FISCAL.isEnabled()) {
-                selectSituacionFiscal();
-            }
-
-            if(TIPO_DE_DOCUMENTO.isEnabled()) {
-                selectTipoDeDocumento();
-            }
-
-            CUIL.sendKeys("20285494568");
-            DOMICILIO.sendKeys("Domicilo");
-            NUMERO.sendKeys("7550");
-            PISO.sendKeys("10");
-            DEPARTAMENTO.sendKeys("A");
-            CODIGO_POSTAL.sendKeys("1009");
-            PROVINCIA.sendKeys("Buenos Aires");
-            CIUDAD.sendKeys("CABA");
-        }
+        setBillingFiscalName("Nombre o Razon Social");
+        selectBillingFiscalType("Persona natural");
+        selectBillingDocumentType("Cédula de Ciudadanía");
+        setBillingFiscalDocument("20285494568");
+        setBillingAddress("Domicilo");
+        setAddressNumber("7550");
+        setAddressFloor("10");
+        setAddressDepartment("A");
+        setAddressPostalCode("1009");
+        setAddressState("Buenos Aires");
+        setAddressCity("CABA");
         return this;
     }
 }
