@@ -80,49 +80,49 @@ public class BillingInfoSection extends PaymentPage {
         return this;
     }
 
-    BillingInfoSection setBillingAddress(String billingAddress) {
+    public BillingInfoSection setBillingAddress(String billingAddress) {
         logger.info("Entering Nombre o Razon Social: [" + billingAddress + "]");
         billing_address.clear();
         billing_address.sendKeys(billingAddress);
         return this;
     }
 
-    BillingInfoSection setAddressNumber(String addressNumber) {
+    public BillingInfoSection setAddressNumber(String addressNumber) {
         logger.info("Entering Nombre o Razon Social: [" + addressNumber + "]");
         address_number.clear();
         address_number.sendKeys(addressNumber);
         return this;
     }
 
-    BillingInfoSection setAddressFloor(String addressFloor) {
+    public BillingInfoSection setAddressFloor(String addressFloor) {
         logger.info("Entering Nombre o Razon Social: [" + addressFloor + "]");
         address_floor.clear();
         address_floor.sendKeys(addressFloor);
         return this;
     }
 
-    BillingInfoSection setAddressDepartment(String addressDepartment) {
+    public BillingInfoSection setAddressDepartment(String addressDepartment) {
         logger.info("Entering Nombre o Razon Social: [" + addressDepartment + "]");
         address_department.clear();
         address_department.sendKeys(addressDepartment);
         return this;
     }
 
-    BillingInfoSection setAddressPostalCode(String addressPostalCcode) {
+    public BillingInfoSection setAddressPostalCode(String addressPostalCcode) {
         logger.info("Entering Nombre o Razon Social: [" + addressPostalCcode + "]");
         address_postal_code.clear();
         address_postal_code.sendKeys(addressPostalCcode);
         return this;
     }
 
-    BillingInfoSection setAddressState(String addressState) {
+    public BillingInfoSection setAddressState(String addressState) {
         logger.info("Entering Nombre o Razon Social: [" + addressState + "]");
         address_state.clear();
         address_state.sendKeys(addressState);
         return this;
     }
 
-    BillingInfoSection setAddressCity(String addressCity) {
+    public BillingInfoSection setAddressCity(String addressCity) {
         logger.info("Entering Nombre o Razon Social: [" + addressCity + "]");
         address_city.clear();
         address_city.sendKeys(addressCity);

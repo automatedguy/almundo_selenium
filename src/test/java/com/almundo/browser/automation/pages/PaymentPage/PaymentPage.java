@@ -19,39 +19,67 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
-    TypeOfPaymentSection typeOfPaymentSection = null;
-
     WebElement billingInfo;
 
-    public PaymentPage populateCreditCardOwnerData(WebDriver driver){
+    public PaymentPage populatePaymentPage(WebDriver driver, int numPassengers) throws InterruptedException {
+
+        // AQ-41
+        populatePassengerInfo(driver, numPassengers);
+
+        // AQ-42
+        populatePaymentInfo(driver);
+
+        // AQ-43
+        popupateBillingInfo(driver);
+
+        populateContactInfo(driver);
+
+        // AQ-44
+        acceptTermsConditions(driver);
+        return this;
+    }
+
+    public void populatePassengerInfo(WebDriver driver, int numPassengers) {
+
+        PassengersSection passengersSection = new PassengersSection();
+        passengersSection.populatePassenger(driver, numPassengers);
+
+    }
+
+    public void populatePaymentInfo(WebDriver driver){
 
         PageUtils.moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
 
-        typeOfPaymentSection = initTypeOfPaymentSection(driver);
+        PaymentInfoSection paymentInfoSection = initPaymentInfoSection(driver);
 
-        typeOfPaymentSection.selectPaymentQtyOption(0);
-        typeOfPaymentSection.selectBankOption("American Express");
+        paymentInfoSection.selectPaymentQtyOption(0);
+        paymentInfoSection.selectBankOption("American Express");
 
-        typeOfPaymentSection.setCardHolder("Nombre Apellido");
+        paymentInfoSection.setCardHolder("Nombre Apellido");
 
-        typeOfPaymentSection.setCardNumber("4242424242424242");
+        paymentInfoSection.setCardNumber("4242424242424242");
 
         if(baseURL.equals("http://almundo.com/")){
-            typeOfPaymentSection.setCardExpiration("07/17");
+            paymentInfoSection.setCardExpiration("07/17");
         }else {
          // select from drop down list.
         }
 
-        typeOfPaymentSection.setSecurityCode("777");
+        paymentInfoSection.setSecurityCode("777");
 
         // TODO: agregar Cedula para Colombia
-        return this;
+    }
+
+    public void popupateBillingInfo(WebDriver driver) {
+        if(isBillingInfoRequiered(driver)) {
+            BillingInfoSection billingInfoSection = initBillingInfoSection(driver);
+            billingInfoSection.populateBillingInfo();
+        }
     }
 
     public boolean isBillingInfoRequiered(WebDriver driver){
 
         billingInfo = driver.findElement(By.cssSelector("div:nth-child(4)>fieldset>div.container__title>h2"));
-
 
         List<WebElement> paymentPageSectionTittles = driver.findElements(By.cssSelector("h2.text--lg"));
 
@@ -70,26 +98,26 @@ public class PaymentPage extends PageBaseSetup {
             return false;
         }
     }
-    
-    public PaymentPage populatePaymentInfo(WebDriver driver, int numPassengers) throws InterruptedException {
 
-        // AQ-41
-        PassengersSection passengersSection = new PassengersSection();
-        passengersSection.populatePassenger(driver, numPassengers);
+    public void populateContactInfo(WebDriver driver) {
 
-        // AQ-42
-        populateCreditCardOwnerData(driver);
+        ContactInfoSection contactInfoSection = initContactInfoSection(driver);
 
-        // AQ-43
-        if(isBillingInfoRequiered(driver)) {
-            BillingInfoSection billingInfoSection = initBillingInfoSection(driver);
-            billingInfoSection.populateBillingInfo();
-        }
+        contactInfoSection.setEmail("testing@almundo.com");
 
-        // AQ-44
-        acceptTermsConditions(driver);
-        return this;
+        contactInfoSection.setRepEmail("testing@almundo.com");
+
+        contactInfoSection.selectPhoneType("Teléfono");
+
+        contactInfoSection.setCountryCode("0054");
+
+        contactInfoSection.setAreaCode("11");
+
+        contactInfoSection.setPhoneNumber("44448888");
+
     }
+    
+
 
     public PaymentPage leiAceptoCbx(WebDriver driver){
         PageUtils.clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
@@ -102,12 +130,18 @@ public class PaymentPage extends PageBaseSetup {
         return this;
     }
 
-    protected TypeOfPaymentSection initTypeOfPaymentSection(WebDriver driver) {
-        return PageFactory.initElements(driver, TypeOfPaymentSection.class);
+
+    //Inits
+
+    protected PaymentInfoSection initPaymentInfoSection(WebDriver driver) {
+        return PageFactory.initElements(driver, PaymentInfoSection.class);
     }
 
     protected BillingInfoSection initBillingInfoSection(WebDriver driver) {
         return PageFactory.initElements(driver, BillingInfoSection.class);
     }
 
+    protected ContactInfoSection initContactInfoSection(WebDriver driver) {
+        return PageFactory.initElements(driver, ContactInfoSection.class);
+    }
 }

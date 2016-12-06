@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class TypeOfPaymentSection extends PaymentPage {
+public class PaymentInfoSection extends PaymentPage {
 
-    public TypeOfPaymentSection(WebDriver driver) {
+    public PaymentInfoSection(WebDriver driver) {
         super(driver);
     }
 
