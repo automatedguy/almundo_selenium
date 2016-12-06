@@ -33,14 +33,9 @@ public class BaseFlowMap extends PageBaseSetup {
 
 
 
-    @FindBy(css = ".ui-datepicker-month")
-    public WebElement monthLbl;
 
-    @FindBy(css = ".ui-datepicker-year")
-    public WebElement yearLbl;
 
-    @FindBy(css = ".ui-icon.ui-icon-circle-triangle-e")
-    public WebElement nextCalBtn;
+
 
     @FindBy(css = ".search__input")
     public WebElement personasTxt;

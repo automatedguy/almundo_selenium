@@ -1,6 +1,8 @@
 package com.almundo.browser.automation.base;
 
+import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.LandingPage;
+import com.almundo.browser.automation.pages.PaymentPage.TypeOfPaymentSection;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -14,6 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.*;
@@ -25,7 +28,7 @@ import java.rmi.UnexpectedException;
 
 public class TestBaseSetup {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
     public static Logger logger = Logger.getLogger( TestBaseSetup.class );
 
@@ -245,6 +248,8 @@ public class TestBaseSetup {
     }
 
 
-
+    protected BasePage initBasePage () {
+        return PageFactory.initElements(driver, BasePage.class);
+    }
 
 }

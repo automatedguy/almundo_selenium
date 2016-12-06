@@ -57,36 +57,36 @@ public class VueloFlowTest extends TestBaseSetup {
         flightClass = vuelo.get("flightClass").toString();
     }
 
-    @Test
-    public void vueloReservationFirstOptionFlow() throws InterruptedException {
-        getVueloDataObject("miami_10days_2adults_2childs_turista");
-
-        vueloFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.VUELOS_ICO.getBy());
-        vueloFlow.clickOn(driver, BaseFlowMap.VUELOS_ICO.getBy());
-
-        vueloFlow.enterText(driver, originAuto, VueloFlowMap.ORIGIN_FLIGHTS_TXT.getBy());
-        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, originFullFinal);
-        vueloFlow.selectFromAutoCompleteSuggestions(driver, originFullFinal);
-
-        vueloFlow.enterText(driver, destinationAuto, VueloFlowMap.DESTINATION_FLIGHTS_TXT.getBy());
-        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, destinationFullFinal);
-        vueloFlow.selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
-
-        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_SALIDA_CAL.getBy(), startDate);
-        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_REGRESO_CAL.getBy(), endDate);
-
-        numPassengers = vueloFlow.selectPassenger(driver, adults, childs);
-
-        vueloFlow.selectFlightClass(driver, flightClass);
-
-        vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
-
-        if (vueloFlow.nothingFound(driver)) {
-            System.out.println("Nothing Found: VUELOS");
-        } else {
-            vueloFlow.doVueloReservationFlow(driver);
-            vueloFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
-        }
-    }
+//    @Test
+//    public void vueloReservationFirstOptionFlow() throws InterruptedException {
+//        getVueloDataObject("miami_10days_2adults_2childs_turista");
+//
+//        vueloFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.VUELOS_ICO.getBy());
+//        vueloFlow.clickOn(driver, BaseFlowMap.VUELOS_ICO.getBy());
+//
+//        vueloFlow.enterText(driver, originAuto, VueloFlowMap.ORIGIN_FLIGHTS_TXT.getBy());
+//        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, originFullFinal);
+//        vueloFlow.selectFromAutoCompleteSuggestions(driver, originFullFinal);
+//
+//        vueloFlow.enterText(driver, destinationAuto, VueloFlowMap.DESTINATION_FLIGHTS_TXT.getBy());
+//        vueloFlow.waitForVisibilityOfElementLocated(driver, 10, destinationFullFinal);
+//        vueloFlow.selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
+//
+//        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_SALIDA_CAL.getBy(), startDate);
+//        vueloFlow.selectDateFromCalendar(driver, VueloFlowMap.VUELO_FECHA_REGRESO_CAL.getBy(), endDate);
+//
+//        numPassengers = vueloFlow.selectPassenger(driver, adults, childs);
+//
+//        vueloFlow.selectFlightClass(driver, flightClass);
+//
+//        vueloFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
+//
+//        if (vueloFlow.nothingFound(driver)) {
+//            System.out.println("Nothing Found: VUELOS");
+//        } else {
+//            vueloFlow.doVueloReservationFlow(driver);
+//            vueloFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+//        }
+//    }
 
 }

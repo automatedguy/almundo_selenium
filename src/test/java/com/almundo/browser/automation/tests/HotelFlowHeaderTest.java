@@ -49,20 +49,20 @@ public class HotelFlowHeaderTest extends TestBaseSetupHeader {
     @Test
     public void hotelReservationFirstOptionWithHeaderFlow() throws InterruptedException {
 
-        hotelFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.HOTELES_ICO.getBy());
-        hotelFlow.clickOn(driver, BaseFlowMap.HOTELES_ICO.getBy());
-
-        hotelFlow.enterText(driver, destinationAuto, HotelFlowMap.DESTINATION_TXT.getBy());
-        hotelFlow.waitForVisibilityOfElementLocated(driver, 10, destinationFullFinal);
-        hotelFlow.selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
-
-        hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_SALIDA_CAL.getBy(), startDate);
-        hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_REGRESO_CAL.getBy(), endDate);
-
-        hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
-
-        hotelFlow.doHotelReservationFlow(driver);
-
-        Thread.sleep(5000);
+//        hotelFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.HOTELES_ICO.getBy());
+//        hotelFlow.clickOn(driver, BaseFlowMap.HOTELES_ICO.getBy());
+//
+//        hotelFlow.enterText(driver, destinationAuto, HotelFlowMap.DESTINATION_TXT.getBy());
+//        hotelFlow.waitForVisibilityOfElementLocated(driver, 10, destinationFullFinal);
+//        hotelFlow.selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
+//
+//        hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_SALIDA_CAL.getBy(), startDate);
+//        hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_REGRESO_CAL.getBy(), endDate);
+//
+//        hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
+//
+//        hotelFlow.doHotelReservationFlow(driver);
+//
+//        Thread.sleep(5000);
     }
 }

@@ -4,6 +4,7 @@ import com.almundo.browser.automation.locators.flows.BaseFlowMap;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage.TypeOfPaymentSection;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -86,72 +87,73 @@ public class PageBaseSetup {
     }
 
     public PageBaseSetup selectFromAutoCompleteSuggestions(WebDriver driver, By autoComplete){
+        PageUtils.waitForVisibilityOfElementLocated(driver, 10, autoComplete);
         driver.findElement(autoComplete).click();
         return this;
     }
 
-    public PageBaseSetup selectDateFromCalendar(WebDriver driver, By idCalendar, int daysAhead){
+//    public PageBaseSetup selectDateFromCalendar(WebDriver driver, By idCalendar, int daysAhead){
+//
+//        driver.findElement(idCalendar).click();
+//        List<WebElement> availableDates = driver.findElements(BaseFlowMap.AVAILABLE_DATES_CAL.getBy());
+//        int totalAvailableDates = availableDates.size();
+//
+//        if(totalAvailableDates >= daysAhead){
+//            logger.info("Selected date: " + availableDates.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
+//            availableDates.get(daysAhead-1).click();
+//        }
+//        else{
+//            daysAhead = daysAhead - totalAvailableDates;
+//            driver.findElement(BaseFlowMap.CALENDAR_NEXT_CAL.getBy()).click();
+//            List<WebElement> availableDatesNextCal = driver.findElements(BaseFlowMap.AVAILABLE_DATES_CAL.getBy());
+//            logger.info("Selected date: " + availableDatesNextCal.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
+//            availableDatesNextCal.get(daysAhead-1).click();
+//        }
+//        return this;
+//    }
 
-        driver.findElement(idCalendar).click();
-        List<WebElement> availableDates = driver.findElements(BaseFlowMap.AVAILABLE_DATES_CAL.getBy());
-        int totalAvailableDates = availableDates.size();
+//    public int selectPassenger(WebDriver driver, int adults, int childs) {
+//        driver.findElement(BaseFlowMap.PERSONAS_TXT.getBy()).click();
+//
+//        if (adults>1){
+//            for(int i=1; i<adults; i++) {
+//                logger.info("Adding 1 adult");
+//                driver.findElement(VueloFlowMap.ADD_ADULT_BTN.getBy()).click();
+//            }
+//        }
+//
+//        if (childs>0){
+//            for(int i=0; i<childs; i++) {
+//                logger.info("Adding 1 child");
+//                driver.findElement(VueloFlowMap.ADD_CHILD_BTN.getBy()).click();
+//            }
+//        }
+//
+//        driver.findElement(BaseFlowMap.LISTO_BTN.getBy()).click();
+//        return adults + childs;
+//    }
 
-        if(totalAvailableDates >= daysAhead){
-            logger.info("Selected date: " + availableDates.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
-            availableDates.get(daysAhead-1).click();
-        }
-        else{
-            daysAhead = daysAhead - totalAvailableDates;
-            driver.findElement(BaseFlowMap.CALENDAR_NEXT_CAL.getBy()).click();
-            List<WebElement> availableDatesNextCal = driver.findElements(BaseFlowMap.AVAILABLE_DATES_CAL.getBy());
-            logger.info("Selected date: " + availableDatesNextCal.get(daysAhead-1).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_MONTH.getBy()).getText() + " " + driver.findElement(BaseFlowMap.CALENDAR_YEAR.getBy()).getText());
-            availableDatesNextCal.get(daysAhead-1).click();
-        }
-        return this;
-    }
-
-    public int selectPassenger(WebDriver driver, int adults, int childs) {
-        driver.findElement(BaseFlowMap.PERSONAS_TXT.getBy()).click();
-
-        if (adults>1){
-            for(int i=1; i<adults; i++) {
-                logger.info("Adding 1 adult");
-                driver.findElement(VueloFlowMap.ADD_ADULT_BTN.getBy()).click();
-            }
-        }
-
-        if (childs>0){
-            for(int i=0; i<childs; i++) {
-                logger.info("Adding 1 child");
-                driver.findElement(VueloFlowMap.ADD_CHILD_BTN.getBy()).click();
-            }
-        }
-
-        driver.findElement(BaseFlowMap.LISTO_BTN.getBy()).click();
-        return adults + childs;
-    }
-
-    public int selectPassenger(WebDriver driver, int adults, int childs, int rooms) {
-        driver.findElement(BaseFlowMap.PERSONAS_TXT.getBy()).click();
-
-        if (adults>2){
-            for(int i=1; i<adults; i++) {
-                logger.info("Adding 1 adult");
-                driver.findElement(HotelFlowMap.ADD_ADULT_BTN.getBy()).click();
-            }
-        }
-
-        if (childs>0){
-            for(int i=0; i<childs; i++) {
-                logger.info("Adding 1 child");
-                driver.findElement(HotelFlowMap.ADD_CHILD_BTN.getBy()).click();
-            }
-        }
-
-        driver.findElement(BaseFlowMap.LISTO_BTN.getBy()).click();
-
-        return adults + childs;
-    }
+//    public int selectPassenger(WebDriver driver, int adults, int childs, int rooms) {
+//        driver.findElement(BaseFlowMap.PERSONAS_TXT.getBy()).click();
+//
+//        if (adults>2){
+//            for(int i=1; i<adults; i++) {
+//                logger.info("Adding 1 adult");
+//                driver.findElement(HotelFlowMap.ADD_ADULT_BTN.getBy()).click();
+//            }
+//        }
+//
+//        if (childs>0){
+//            for(int i=0; i<childs; i++) {
+//                logger.info("Adding 1 child");
+//                driver.findElement(HotelFlowMap.ADD_CHILD_BTN.getBy()).click();
+//            }
+//        }
+//
+//        driver.findElement(BaseFlowMap.LISTO_BTN.getBy()).click();
+//
+//        return adults + childs;
+//    }
 
     public PageBaseSetup moveToElement(WebDriver driver, By elementToLocate){
         Actions actions = new Actions(driver);
@@ -185,7 +187,5 @@ public class PageBaseSetup {
         return PageFactory.initElements(driver, TypeOfPaymentSection.class);
     }
 
-    protected BaseFlowMap initBaseFlowMap(WebDriver driver) {
-        return PageFactory.initElements(driver, BaseFlowMap.class);
-    }
+
 }

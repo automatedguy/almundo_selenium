@@ -1,7 +1,5 @@
 package com.almundo.browser.automation.utils;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
-import com.almundo.browser.automation.base.TestBaseSetup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -92,6 +90,11 @@ public class PageUtils {
             logger.error(message + " is not displayed");
             throw exception;
         }
+    }
+
+    public static void waitForVisibilityOfElementLocated(WebDriver driver, long timeout, By elementToLocate){
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
     }
 
 }
