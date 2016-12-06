@@ -1,0 +1,53 @@
+{ "ARGENTINA":
+    {
+      "MODULES": {
+          "hoteles": "true",
+          "vuelos": "true",
+          "trips": "true",
+          "paquetes": "true",
+          "disney": "true",
+          "seguros": "true",
+          "autos": "true",
+          "actividades": "true",
+          "trenes": "true"
+    },
+      "PAGE_COMPONENTS": {
+          "payment_billing_info": "true"
+    }
+  },
+
+
+ "COLOMBIA": {
+   "MODULES": {
+     "hoteles": "false",
+     "vuelos": "true",
+     "trips": "true",
+     "paquetes": "true",
+     "disney": "true",
+     "seguros": "true",
+     "autos": "true",
+     "actividades": "true",
+     "trenes": "true"
+   },
+   "PAGE_COMPONENTS": {
+     "payment_billing_info": "true"
+   }
+ },
+
+   "MEXICO": {
+     "MODULES": {
+       "hoteles": "false",
+       "vuelos": "true",
+       "trips": "true",
+       "paquetes": "true",
+       "disney": "true",
+       "seguros": "true",
+       "autos": "true",
+       "actividades": "true",
+       "trenes": "true"
+     },
+     "PAGE_COMPONENTS": {
+       "payment_billing_info": "true"
+     }
+   }
+ }
