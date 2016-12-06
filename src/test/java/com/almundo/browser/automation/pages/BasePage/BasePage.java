@@ -31,6 +31,9 @@ public class BasePage extends TestBaseSetup {
     public VueloHotelDataTrip vueloHotelDataTrip() {
         return initVueloHotelDataTrip();
     }
+    public VuelosDataTrip vuelosDataTrip() {
+        return initVuelosDataTrip();
+    }
     
     //############################################### Locators ##############################################
 
@@ -108,5 +111,7 @@ public class BasePage extends TestBaseSetup {
         return PageFactory.initElements(driver, VueloHotelDataTrip.class);
     }
 
-
+    protected VuelosDataTrip initVuelosDataTrip () {
+        return PageFactory.initElements(driver, VuelosDataTrip.class);
+    }
 }
