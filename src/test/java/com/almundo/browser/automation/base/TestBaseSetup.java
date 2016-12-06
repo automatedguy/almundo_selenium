@@ -2,7 +2,6 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.LandingPage;
-import com.almundo.browser.automation.pages.PaymentPage.TypeOfPaymentSection;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -56,7 +55,7 @@ public class TestBaseSetup {
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) throws Exception {
 
