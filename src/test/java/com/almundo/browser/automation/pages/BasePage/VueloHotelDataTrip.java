@@ -5,26 +5,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-
 /**
- * Created by leandro.efron on 5/12/2016.
+ * Created by leandro.efron on 6/12/2016.
  */
-public class HotelesDataTrip extends BasePage {
+public class VueloHotelDataTrip extends BasePage {
 
-    public HotelesDataTrip(WebDriver driver) {
+    public VueloHotelDataTrip(WebDriver driver) {
         super(driver);
     }
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "destination-hotels")
-    public WebElement destinationTxt;
+    @FindBy(id = "origin-trips")
+    public WebElement originTripsTxt;
 
-    @FindBy(id = "checkin-hotels")
-    public WebElement checkinCalendar;
+    @FindBy(id = "destination-trips")
+    public WebElement destinationTripsTxt;
 
-    @FindBy(id = "checkout-hotels")
-    public WebElement checkoutCalendar;
+    @FindBy(id = "departure-trips")
+    public WebElement departureCalendar;
+
+    @FindBy(id = "arrival-trips")
+    public WebElement arrivalCalendar;
 
     @FindBy(css = ".ui-datepicker-month")
     public WebElement monthLbl;
@@ -61,11 +63,20 @@ public class HotelesDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public HotelesDataTrip setDestination(String destination) {
-        PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
+    public VueloHotelDataTrip setOrigin(String origin) {
+        PageUtils.waitElementForVisibility(driver, originTripsTxt, 10, "Origin text field");
+        logger.info("Entering Origin: [" + origin + "]");
+        originTripsTxt.clear();
+        originTripsTxt.sendKeys(origin);
+
+        return this;
+    }
+
+    public VueloHotelDataTrip setDestination(String destination) {
+        PageUtils.waitElementForVisibility(driver, destinationTripsTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destination + "]");
-        destinationTxt.clear();
-        destinationTxt.sendKeys(destination);
+        destinationTripsTxt.clear();
+        destinationTripsTxt.sendKeys(destination);
 
         return this;
     }
@@ -90,4 +101,5 @@ public class HotelesDataTrip extends BasePage {
 
         return adults + childs;
     }
+
 }

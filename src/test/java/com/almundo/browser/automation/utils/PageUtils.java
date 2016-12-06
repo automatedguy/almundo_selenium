@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.utils;
 
+import com.almundo.browser.automation.base.PageBaseSetup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -30,11 +31,25 @@ public class PageUtils {
         driver.findElement(textBox).sendKeys(text);
     }
 
-    public static WebElement moveToElement(WebDriver driver,  By elementToLocate){
-        element = driver.findElement(elementToLocate);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        return element;
+    public boolean verifyElementPresent(WebElement element) throws InterruptedException {
+        for (int second = 0; ; second++)
+        {
+            if (second >= 60) org.junit.Assert.fail();
+
+            try
+            {
+                if (element != null)
+                {
+                    break;
+                }
+            }
+            catch (Exception someException)
+            {
+                return false;
+            }
+            Thread.sleep(100);
+        }
+        return true;
     }
 
     public static WebElement setFocusOnChildWindow(WebDriver driver){
@@ -70,6 +85,8 @@ public class PageUtils {
         }
     }
 
+
+
     public static void waitForLoad(WebDriver driver) {
         try {
             new WebDriverWait(driver, 60).until((ExpectedCondition<Boolean>) wd ->
@@ -95,6 +112,42 @@ public class PageUtils {
     public static void waitForVisibilityOfElementLocated(WebDriver driver, long timeout, By elementToLocate){
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
+    }
+
+    public static void waitForElementToBeClickcable(WebDriver driver, long timeout,By elementToClick){
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        wait.until(ExpectedConditions.elementToBeClickable(elementToClick));
+    }
+
+    public static void waitForElement(WebElement element,
+                                        int timeToWaitInSeconds, int pollingIntervalInMilliSeconds) throws InterruptedException {
+        logger.info("Waiting for WebElement: " + element);
+        for (int i = 0; i < timeToWaitInSeconds; i++)
+        {
+            if (!element.isDisplayed())
+            {
+                continue;
+            }
+            Thread.sleep(pollingIntervalInMilliSeconds);
+        }
+    }
+
+
+    public static WebElement moveToElement(WebDriver driver,  By elementToLocate){
+        element = driver.findElement(elementToLocate);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        return element;
+    }
+
+    public static void moveToElement2(WebDriver driver, By elementToLocate){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(elementToLocate));
+    }
+
+    public static void scrollToElement(WebDriver driver, WebElement element) {
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,"+element.getLocation().y+")");
+
     }
 
 }

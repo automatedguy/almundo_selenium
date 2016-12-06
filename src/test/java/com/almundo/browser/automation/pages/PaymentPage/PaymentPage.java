@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage populateCreditCardOwnerData(WebDriver driver){
 
-        moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
+        PageUtils.moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
 
         typeOfPaymentSection = initTypeOfPaymentSection(driver);
 
@@ -99,6 +100,10 @@ public class PaymentPage extends PageBaseSetup {
     public PaymentPage acceptTermsConditions(WebDriver driver){
         leiAceptoCbx(driver);
         return this;
+    }
+
+    protected TypeOfPaymentSection initTypeOfPaymentSection(WebDriver driver) {
+        return PageFactory.initElements(driver, TypeOfPaymentSection.class);
     }
 
 }

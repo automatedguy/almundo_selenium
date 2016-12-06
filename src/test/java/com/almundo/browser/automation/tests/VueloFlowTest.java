@@ -57,7 +57,7 @@ public class VueloFlowTest extends TestBaseSetup {
         flightClass = vuelo.get("flightClass").toString();
     }
 
-//    @Test
+  //  @Test
 //    public void vueloReservationFirstOptionFlow() throws InterruptedException {
 //        getVueloDataObject("miami_10days_2adults_2childs_turista");
 //
@@ -87,6 +87,6 @@ public class VueloFlowTest extends TestBaseSetup {
 //            vueloFlow.doVueloReservationFlow(driver);
 //            vueloFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
 //        }
-//    }
+//   }
 
 }

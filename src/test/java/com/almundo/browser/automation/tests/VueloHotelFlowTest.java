@@ -2,11 +2,12 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloHotelFlow;
-import com.almundo.browser.automation.locators.flows.BaseFlowMap;
-import com.almundo.browser.automation.locators.flows.VueloHotelFlowMap;
+import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -16,6 +17,7 @@ import org.testng.annotations.Test;
 public class VueloHotelFlowTest extends TestBaseSetup {
 
     public VueloHotelFlow vueloHotelFlow = new VueloHotelFlow(driver);
+    private BasePage basePage = null;
 
     private JSONObject vueloHotelList = null;
     private JSONObject vueloHotel = null;
@@ -37,7 +39,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         vueloHotelList = (JSONObject) dataTestObject.get("vueloHotel");
     }
 
-    private void getVueloDataObject(String combination) {
+    private void getVueloHotelDataObject(String combination) {
         vueloHotel = (JSONObject) vueloHotelList.get(combination);
 
         originAuto = vueloHotel.get("originAuto").toString();
@@ -58,34 +60,37 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     }
 
-//    @Test
-//    public void vueloHotelReservationFirstOptionFlow() throws InterruptedException {
-//        getVueloDataObject("miami_10days_2adults_2childs_1room");
-//
-//        vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 15, BaseFlowMap.VUELO_HOTEL_ICO.getBy());
-//        vueloHotelFlow.clickOn(driver, BaseFlowMap.VUELO_HOTEL_ICO.getBy());
-//
-//        vueloHotelFlow.enterText(driver, originAuto, VueloHotelFlowMap.ORIGIN_FLIGHTS_TXT.getBy());
-//        vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 10, originFullFinal);
-//        vueloHotelFlow.selectFromAutoCompleteSuggestions(driver, originFullFinal);
-//
-//        vueloHotelFlow.enterText(driver, destinationAuto, VueloHotelFlowMap.DESTINATION_FLIGHTS_TXT.getBy());
-//        vueloHotelFlow.waitForVisibilityOfElementLocated(driver, 10, destinationFullFinal);
-//        vueloHotelFlow.selectFromAutoCompleteSuggestions(driver, destinationFullFinal);
-//
-//        vueloHotelFlow.selectDateFromCalendar(driver, VueloHotelFlowMap.TRIPS_FECHA_SALIDA_CAL.getBy(), startDate);
-//        vueloHotelFlow.selectDateFromCalendar(driver, VueloHotelFlowMap.TRIPS_FECHA_REGRESO_CAL.getBy(), endDate);
-//
-//        numPassengers = vueloHotelFlow.selectPassenger(driver, adults, childs, rooms);
-//
-//        vueloHotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
-//
-//        if(vueloHotelFlow.nothingFound(driver)){
-//            System.out.println("Nothing Found: VUELO + HOTEL");
-//        }
-//        else {
-//            vueloHotelFlow.doVueloHotelReservationFlow(driver);
-//            vueloHotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
-//        }
-//    }
+    @BeforeMethod
+    private void initBasePageObject() {
+        basePage = initBasePage();
+    }
+
+    @Test
+    public void vueloHotelReservationFirstOptionFlow() throws InterruptedException {
+        getVueloHotelDataObject("miami_10days_2adults_2childs_1room");
+
+        PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
+        basePage.vueloHotelIcon.click();
+
+        basePage.vueloHotelDataTrip().setOrigin(originAuto);
+        basePage.vueloHotelDataTrip().selectFromAutoCompleteSuggestions(originFullFinal);
+
+        basePage.vueloHotelDataTrip().setDestination(destinationAuto);
+        basePage.vueloHotelDataTrip().selectFromAutoCompleteSuggestions(destinationFullFinal);
+
+        basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().departureCalendar, startDate);
+        basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().arrivalCalendar, endDate);
+
+        numPassengers = basePage.vueloHotelDataTrip().selectPassenger(adults, childs, rooms);
+
+        basePage.vueloHotelDataTrip().buscarBtn.click();
+
+        if(vueloHotelFlow.nothingFound(driver)){
+            System.out.println("Nothing Found: VUELO + HOTEL");
+        }
+        else {
+            vueloHotelFlow.doVueloHotelReservationFlow(driver);
+            vueloHotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+        }
+    }
 }

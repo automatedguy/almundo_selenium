@@ -3,6 +3,7 @@ package com.almundo.browser.automation.flows;
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,19 +24,19 @@ public class HotelFlow extends PageBaseSetup {
     public HotelFlow doHotelReservationFlow(WebDriver driver) throws InterruptedException {
 
         try {
-            waitForVisibilityOfElementLocated(driver, 30, HotelFlowMap.VER_HOTEL_BTN.getBy());
-            clickOn(driver, HotelFlowMap.VER_HOTEL_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelFlowMap.VER_HOTEL_BTN.getBy());
+            PageUtils.clickOn(driver, HotelFlowMap.VER_HOTEL_BTN.getBy());
         } catch (TimeoutException timeOut) {
-            waitForVisibilityOfElementLocated(driver, 30, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
-            clickOn(driver, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
+            PageUtils.clickOn(driver, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
         }
 
         try {
-            waitForVisibilityOfElementLocated(driver, 30, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
-            clickOn(driver, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
+            PageUtils.clickOn(driver, HotelFlowMap.VER_HABITACIONES_BTN.getBy());
         } catch (TimeoutException timeOut) {
-            waitForVisibilityOfElementLocated(driver, 20, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
-            clickOn(driver, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
+            PageUtils.waitForVisibilityOfElementLocated(driver, 20, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
+            PageUtils.clickOn(driver, HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
         }
 
         WebElement reservarAhora = driver.findElement(HotelFlowMap.RESERVAR_AHORA_BTN.getBy());
@@ -43,7 +44,7 @@ public class HotelFlow extends PageBaseSetup {
         do {
             try {
                 logger.info("Waiting for RESERVAR button...");
-                waitForElement(reservarAhora, 10, 1000);
+                PageUtils.waitForElement(reservarAhora, 10, 1000);
                 logger.info("clicking on RESERVAR button...");
                 reservarAhora.click();
 

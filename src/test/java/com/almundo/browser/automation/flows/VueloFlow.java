@@ -3,6 +3,7 @@ package com.almundo.browser.automation.flows;
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -19,11 +20,11 @@ public class VueloFlow extends PageBaseSetup {
 
     public VueloFlow doVueloReservationFlow(WebDriver driver) throws InterruptedException {
 
-        waitForVisibilityOfElementLocated(driver, 60,VueloFlowMap.TICKET_IDA_RDB.getBy());
+        PageUtils.waitForVisibilityOfElementLocated(driver, 60,VueloFlowMap.TICKET_IDA_RDB.getBy());
 
-        clickOn(driver, VueloFlowMap.TICKET_IDA_RDB.getBy());
-        clickOn(driver, VueloFlowMap.TICKET_VUELTA_RDB.getBy());
-        clickOn(driver, VueloFlowMap.COMPRAR_BTN.getBy());
+        PageUtils.clickOn(driver, VueloFlowMap.TICKET_IDA_RDB.getBy());
+        PageUtils.clickOn(driver, VueloFlowMap.TICKET_VUELTA_RDB.getBy());
+        PageUtils.clickOn(driver, VueloFlowMap.COMPRAR_BTN.getBy());
 
         return this;
     }

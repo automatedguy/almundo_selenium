@@ -27,6 +27,10 @@ public class BasePage extends TestBaseSetup {
     public HotelesDataTrip hotelesDataTrip() {
         return initHotelesDataTrip();
     }
+
+    public VueloHotelDataTrip vueloHotelDataTrip() {
+        return initVueloHotelDataTrip();
+    }
     
     //############################################### Locators ##############################################
 
@@ -62,38 +66,46 @@ public class BasePage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead){
+    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
 
         calendar.click();
-        List<WebElement> availableDates = hotelesDataTrip().getAvailableDatesList();
+        List<WebElement> availableDates = getAvailableDatesList();
         int totalAvailableDates = availableDates.size();
 
         if(totalAvailableDates >= daysAhead){
-            logger.info("Selected date: " + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText());
+            logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
 
             availableDates.get(daysAhead-1).click();
         }
         else{
             daysAhead = daysAhead - totalAvailableDates;
             hotelesDataTrip().nextCalBtn.click();
-            List<WebElement> availableDatesNextCal = hotelesDataTrip().getAvailableDatesList();
-            logger.info("Selected date: " + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText());
+            List<WebElement> availableDatesNextCal = getAvailableDatesList();
+            logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
             availableDatesNextCal.get(daysAhead-1).click();
         }
         return this;
     }
 
-    public BasePage selectFromAutoCompleteSuggestions(WebDriver driver, By autoComplete){
+    public List<WebElement> getAvailableDatesList () {
+        List<WebElement> results = driver.findElements(By.cssSelector(".ui-datepicker-calendar>tbody>tr>td>a"));
+        return  results;
+    }
+
+    public BasePage selectFromAutoCompleteSuggestions(By autoComplete) {
         PageUtils.waitForVisibilityOfElementLocated(driver, 10, autoComplete);
         driver.findElement(autoComplete).click();
         return this;
     }
-    
 
     //################################################ Inits ################################################
     
-    protected HotelesDataTrip initHotelesDataTrip () {
+    protected HotelesDataTrip initHotelesDataTrip() {
         return PageFactory.initElements(driver, HotelesDataTrip.class);
+    }
+
+    protected VueloHotelDataTrip initVueloHotelDataTrip() {
+        return PageFactory.initElements(driver, VueloHotelDataTrip.class);
     }
 
 

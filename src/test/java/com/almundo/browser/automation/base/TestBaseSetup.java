@@ -2,7 +2,6 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.LandingPage;
-import com.almundo.browser.automation.pages.PaymentPage.TypeOfPaymentSection;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -251,5 +250,7 @@ public class TestBaseSetup {
     protected BasePage initBasePage () {
         return PageFactory.initElements(driver, BasePage.class);
     }
+
+
 
 }

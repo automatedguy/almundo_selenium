@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.PaymentPage;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,7 +42,7 @@ public class PassengersSection extends PageBaseSetup{
 
         ArrayList<Passenger> passengers = createPassenger(numPassengers);
 
-        waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
+        PageUtils.waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
 
         for(Passenger passengerToPopulate : passengers){
             WebElement elementToPopulate;

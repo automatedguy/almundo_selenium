@@ -1,11 +1,7 @@
 package com.almundo.browser.automation.locators.flows;
 
 import com.almundo.browser.automation.base.PageBaseSetup;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
 
 /**
  * Created by gabrielcespedes on 13/10/16.
@@ -29,30 +25,6 @@ public class BaseFlowMap extends PageBaseSetup {
 //    public By getBy() { return name; }
 
 
-    //############################################### Locators ##############################################
-
-
-
-
-
-
-
-    @FindBy(css = ".search__input")
-    public WebElement personasTxt;
-
-    @FindBy(css = ".button.button--sm")
-    public WebElement listoBtn;
-
-    @FindBy(css = ".button")
-    public WebElement buscarBtn;
-
-
-    //############################################### Actions ###############################################
-
-    public List<WebElement> getAvailableDatesList () {
-        List<WebElement> results = driver.findElements(By.cssSelector(".ui-datepicker-calendar>tbody>tr>td>a"));
-    return  results;
-    }
 
 
 }
