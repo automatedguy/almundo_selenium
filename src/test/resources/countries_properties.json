@@ -20,8 +20,6 @@
       "documentType":"false",
       "document_number":"false",
       "fiscal_name":"false",
-      "document_emisor":"false",
-      "document_expiration":"false",
       "accepted":"false"
     }
   },
@@ -46,8 +44,6 @@
       "documentType":"true",
       "document_number":"true",
       "fiscal_name":"true",
-      "document_emisor":"false",
-      "document_expiration":"false",
       "accepted":"true"
     }
   },
@@ -67,13 +63,11 @@
       "BillingInfoSection":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
-      "document_emisor":"false",
-      "document_expiration":"false",
+      "document_emisor":"true",
+      "document_expiration":"true",
       "documentType":"false",
       "document_number":"false",
       "fiscal_name":"false",
-      "document_emisor":"true",
-      "document_expiration":"true",
       "accepted":"false"
     }
   }
