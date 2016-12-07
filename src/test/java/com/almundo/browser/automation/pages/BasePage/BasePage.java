@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -97,6 +98,31 @@ public class BasePage extends TestBaseSetup {
         PageUtils.waitForVisibilityOfElementLocated(driver, 10, autoComplete);
         driver.findElement(autoComplete).click();
         return this;
+    }
+
+
+    //TODO: Move to results page object class
+    public boolean nothingFound(){
+        if(!driver.findElements(By.linkText("Ver listado de sucursales")).isEmpty()){
+            logger.warn("No Results found - acercate a nuestras sucursales");
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    //TODO: Move to results page object class
+    public boolean noVacancy(){
+        try {
+            By noVacancyMsg = By.xpath("//span[contains(.,'Lo sentimos. No encontramos disponibilidad para tu búsqueda')]");
+            PageUtils.waitForVisibilityOfElementLocated(driver, 5, noVacancyMsg);
+
+        } catch (TimeoutException timeOut){
+            logger.info("There is vacancy.");
+            return false;
+        }
+        return true;
     }
 
 

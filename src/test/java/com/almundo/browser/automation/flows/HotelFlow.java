@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.flows;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.flows.HotelFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -11,17 +11,14 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
-public class HotelFlow extends PageBaseSetup {
+public class HotelFlow extends TestBaseSetup {
 
     public HotelFlow(WebDriver driver) {
         super.driver = driver;
     }
 
-    public PaymentPage paymentPage = new PaymentPage(driver);
-
-    boolean exit = false;
-
-    public HotelFlow doHotelReservationFlow(WebDriver driver) throws InterruptedException {
+    public PaymentPage doHotelReservationFlow(WebDriver driver) throws InterruptedException {
+        boolean exit = false;
 
         try {
             PageUtils.waitForVisibilityOfElementLocated(driver, 30, HotelFlowMap.VER_HOTEL_BTN.getBy());
@@ -53,6 +50,7 @@ public class HotelFlow extends PageBaseSetup {
                 exit = true;
             }
         } while (!exit);
-        return this;
+        return new PaymentPage(driver);
     }
+
 }

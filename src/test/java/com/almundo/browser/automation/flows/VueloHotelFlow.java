@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.flows;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.flows.VueloHotelFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -10,15 +10,13 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
-public class VueloHotelFlow extends PageBaseSetup {
+public class VueloHotelFlow extends TestBaseSetup {
 
     public VueloHotelFlow(WebDriver driver) {
         super.driver = driver;
     }
 
-    public PaymentPage paymentPage = new PaymentPage(driver);
-
-    public VueloHotelFlow doVueloHotelReservationFlow(WebDriver driver) throws InterruptedException {
+    public PaymentPage doVueloHotelReservationFlow(WebDriver driver) throws InterruptedException {
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 30, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
         PageUtils.clickOn(driver, VueloHotelFlowMap.CONTINUAR_BTN.getBy());
@@ -34,7 +32,7 @@ public class VueloHotelFlow extends PageBaseSetup {
         PageUtils.waitForElement(comprarBtn, 10, 1000);
         PageUtils.clickOn(driver, VueloHotelFlowMap.COMPRAR_BTN.getBy());
 
-        return this;
+        return new PaymentPage(driver);
     }
 
 }

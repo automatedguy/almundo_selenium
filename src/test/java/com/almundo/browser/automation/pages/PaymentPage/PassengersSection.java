@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
@@ -12,7 +11,11 @@ import java.util.ArrayList;
 /**
  * Created by gabrielcespedes on 31/10/16.
  */
-public class PassengersSection extends PageBaseSetup{
+public class PassengersSection extends PaymentPage{
+
+    public PassengersSection(WebDriver driver) {
+        super(driver);
+    }
 
     public class Passenger {
         public String firstName;

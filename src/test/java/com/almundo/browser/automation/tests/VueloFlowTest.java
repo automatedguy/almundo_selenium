@@ -3,6 +3,7 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloFlow;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -90,11 +91,11 @@ public class VueloFlowTest extends TestBaseSetup {
 
         basePage.vuelosDataTrip().buscarBtn.click();
 
-      if (vueloFlow.nothingFound(driver)) {
-            System.out.println("Nothing Found: VUELOS");
+      if (basePage.nothingFound()) {
+          System.out.println("Nothing Found: VUELOS");
         } else {
-           vueloFlow.doVueloReservationFlow(driver);
-            vueloFlow.paymentPage.populatePaymentPage(driver, numPassengers);
+          PaymentPage paymentPage = vueloFlow.doVueloReservationFlow(driver);
+          paymentPage.populatePaymentPage(driver, numPassengers);
         }
     }
 

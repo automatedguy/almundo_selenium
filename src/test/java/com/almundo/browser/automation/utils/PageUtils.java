@@ -25,10 +25,6 @@ public class PageUtils {
         driver.findElement(elementToClick).click();
     }
 
-    public static void enterText(WebDriver driver, String text, By textBox){
-        driver.findElement(textBox).sendKeys(text);
-    }
-
     public boolean verifyElementPresent(WebElement element) throws InterruptedException {
         for (int second = 0; ; second++)
         {

@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.flows;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -10,15 +10,13 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
-public class VueloFlow extends PageBaseSetup {
+public class VueloFlow extends TestBaseSetup {
 
     public VueloFlow(WebDriver driver) {
         super.driver = driver;
     }
 
-    public PaymentPage paymentPage = new PaymentPage(driver);
-
-    public VueloFlow doVueloReservationFlow(WebDriver driver) throws InterruptedException {
+    public PaymentPage doVueloReservationFlow(WebDriver driver) throws InterruptedException {
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 60,VueloFlowMap.TICKET_IDA_RDB.getBy());
 
@@ -26,7 +24,7 @@ public class VueloFlow extends PageBaseSetup {
         PageUtils.clickOn(driver, VueloFlowMap.TICKET_VUELTA_RDB.getBy());
         PageUtils.clickOn(driver, VueloFlowMap.COMPRAR_BTN.getBy());
 
-        return this;
+        return new PaymentPage(driver);
     }
 
     public VueloFlow selectFlightClass(WebDriver driver, String flightClass){

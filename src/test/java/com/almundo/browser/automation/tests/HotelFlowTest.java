@@ -2,6 +2,7 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.HotelFlow;
+import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -69,13 +70,12 @@ public class HotelFlowTest extends TestBaseSetup {
 
         basePage.hotelesDataTrip().buscarBtn.click();
 
-        if(hotelFlow.noVacancy(driver)) {
+        if(basePage.noVacancy()) {
             System.out.println("No Vacancy");
         }
         else {
-
-            hotelFlow.doHotelReservationFlow(driver);
-            hotelFlow.paymentPage.populatePaymentPage(driver, numPassengers);
+            PaymentPage paymentPage = hotelFlow.doHotelReservationFlow(driver);
+            paymentPage.populatePaymentPage(driver, numPassengers);
         }
     }
 }
