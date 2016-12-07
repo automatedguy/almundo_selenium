@@ -80,10 +80,10 @@ public class TestBaseSetup {
         }
 
         try{
-            logger.info("Reading country properties JSON file: countries_properties.json");
+            logger.info("Reading JSON properties file: countries_properties.json");
             propertiesFileObject = JsonRead.getJsonFile("countries_properties.json");
 
-            logger.info("Reading country properties JSON file: countries_properties.json");
+            logger.info("Reading country properties JSON file for: " + countryPar);
             countryPropertyObject = (JSONObject) propertiesFileObject.get(countryPar);
 
         }catch(Exception e){
