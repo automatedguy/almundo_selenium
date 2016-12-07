@@ -65,8 +65,8 @@
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
-      "documentType":"true",
-      "document_number":"true",
+      "documentType":"false",
+      "document_number":"false",
       "fiscal_name":"false",
       "accepted":"false"
     }
