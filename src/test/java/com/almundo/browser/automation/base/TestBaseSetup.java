@@ -44,6 +44,8 @@ public class TestBaseSetup {
 
     public static JSONObject dataTestObject = null;
 
+    public static JSONObject countryPropertyObject = null;
+
     public String osProperty = System.getProperty("os.name").toLowerCase();
 
     // Selenium URI -- static same for everyone.
@@ -69,24 +71,10 @@ public class TestBaseSetup {
 
         //Get data from json file
         try {
-            switch (country) {
-                case "ARGENTINA":
-                    dataTestObject = JsonRead.getJsonFile("argentina_data.json");
-                    break;
-
-                case "COLOMBIA":
-                    dataTestObject = JsonRead.getJsonFile("colombia_data.json");
-                    break;
-
-                case "MEXICO":
-                    dataTestObject = JsonRead.getJsonFile("mexico_data.json");
-                    break;
-
-                default:
-                    throw new Exception("Country [" + country + "] not well defined. Allowed values are: 'ARGENTINA', 'COLOMBIA' or  'MEXICO'.");
-            }
+            dataTestObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
         } catch (Exception e) {
             e.printStackTrace();
+            logger.error("Country [" + country + "] not well defined. Allowed values are: 'ARGENTINA', 'COLOMBIA' or  'MEXICO'.");
         }
 
         try {
