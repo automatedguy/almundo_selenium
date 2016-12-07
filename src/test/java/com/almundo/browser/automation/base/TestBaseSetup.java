@@ -43,6 +43,7 @@ public class TestBaseSetup {
     public LandingPage landingPage = new LandingPage(driver);
 
     public static JSONObject dataTestObject = null;
+    public static JSONObject propertiesFileObject = null;
     public static JSONObject countryPropertyObject = null;
 
     public String osProperty = System.getProperty("os.name").toLowerCase();
@@ -58,7 +59,7 @@ public class TestBaseSetup {
                                         //@Optional("OS X 10.11") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country) throws Exception {
+                                        @Optional("COLOMBIA") String country) throws Exception {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -80,7 +81,11 @@ public class TestBaseSetup {
 
         try{
             logger.info("Reading country properties JSON file: countries_properties.json");
-            countryPropertyObject = JsonRead.getJsonFile("countries_properties.json");
+            propertiesFileObject = JsonRead.getJsonFile("countries_properties.json");
+
+            logger.info("Reading country properties JSON file: countries_properties.json");
+            countryPropertyObject = (JSONObject) propertiesFileObject.get(countryPar);
+
         }catch(Exception e){
             logger.error("Check the path for countries properties");
         }
