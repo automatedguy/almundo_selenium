@@ -148,8 +148,6 @@ public class PaymentPage extends TestBaseSetup {
         contactInfoSection.setPhoneNumber("44448888");
 
     }
-    
-
 
     public PaymentPage leiAceptoCbx(WebDriver driver){
         PageUtils.clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
