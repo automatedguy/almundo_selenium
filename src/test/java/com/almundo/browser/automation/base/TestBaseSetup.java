@@ -49,6 +49,7 @@ public class TestBaseSetup {
     public static String countryPar;
 
     public static JSONObject dataTestObject = null;
+    public static JSONObject countryPropertyObject = null;
 
     public String osProperty = System.getProperty("os.name").toLowerCase();
 
@@ -63,7 +64,7 @@ public class TestBaseSetup {
                                         //@Optional("OS X 10.11") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country) throws Exception {
+                                        @Optional("MEXICO") String country) throws Exception {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -75,24 +76,19 @@ public class TestBaseSetup {
 
         //Get data from json file
         try {
-            switch (country) {
-                case "ARGENTINA":
-                    dataTestObject = JsonRead.getJsonFile("argentina_data.json");
-                    break;
-
-                case "COLOMBIA":
-                    dataTestObject = JsonRead.getJsonFile("colombia_data.json");
-                    break;
-
-                case "MEXICO":
-                    dataTestObject = JsonRead.getJsonFile("mexico_data.json");
-                    break;
-
-                default:
-                    throw new Exception("Country [" + country + "] not well defined. Allowed values are: 'ARGENTINA', 'COLOMBIA' or  'MEXICO'.");
-            }
+            logger.info("Reading test data JSON file: " + countryPar.toLowerCase() + "_data.json");
+            dataTestObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
         } catch (Exception e) {
             e.printStackTrace();
+            logger.error("Country [" + country + "] not well defined. Allowed values are: 'ARGENTINA', 'COLOMBIA' or  'MEXICO'.");
+
+        }
+
+        try{
+            logger.info("Reading country properties JSON file: countries_properties.json");
+            countryPropertyObject = JsonRead.getJsonFile("countries_properties.json");
+        }catch(Exception e){
+            logger.error("Check the path for countries properties");
         }
 
         try {
