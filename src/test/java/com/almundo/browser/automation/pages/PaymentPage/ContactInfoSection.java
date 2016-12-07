@@ -79,11 +79,4 @@ public class ContactInfoSection extends PaymentPage {
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);
     }
-
-
-
-
-
-
-
 }

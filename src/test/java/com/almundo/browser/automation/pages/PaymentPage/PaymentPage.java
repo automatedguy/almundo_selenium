@@ -45,7 +45,7 @@ public class PaymentPage extends TestBaseSetup {
         populateContactInfo(driver);
 
         // AQ-44
-        acceptTermsConditions(driver);
+        checkConditions(driver);
         return this;
     }
 
@@ -219,16 +219,17 @@ public class PaymentPage extends TestBaseSetup {
     }
 
 
-    public PaymentPage leiAceptoCbx(WebDriver driver){
-        PageUtils.clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
-        // TODO: add Additional check box for Colombia
+    public PaymentPage checkConditions(WebDriver driver){
+        FooterSection footerSection = initFooterSection(driver);
+        footerSection.acceptTermsAndConditions();
+        if(isElementRequiered(paymentPageElements, "accepted")) {
+            footerSection.acceptItinerary();
+            footerSection.confirmarClick();
+        }
         return this;
     }
 
-    public PaymentPage acceptTermsConditions(WebDriver driver){
-        leiAceptoCbx(driver);
-        return this;
-    }
+    // inits
 
     protected PaymentInfoSection initPaymentInfoSection(WebDriver driver) {
         return PageFactory.initElements(driver, PaymentInfoSection.class);
@@ -241,4 +242,9 @@ public class PaymentPage extends TestBaseSetup {
     protected ContactInfoSection initContactInfoSection(WebDriver driver) {
         return PageFactory.initElements(driver, ContactInfoSection.class);
     }
+
+    protected FooterSection initFooterSection(WebDriver driver) {
+        return PageFactory.initElements(driver, FooterSection.class);
+    }
+
 }

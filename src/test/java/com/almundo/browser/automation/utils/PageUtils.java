@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.utils;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -100,6 +99,7 @@ public class PageUtils {
 
     public static void waitElementForVisibility(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
+            logger.info("Waiting for: " + message );
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
             wait.until(ExpectedConditions.visibilityOf(element));
