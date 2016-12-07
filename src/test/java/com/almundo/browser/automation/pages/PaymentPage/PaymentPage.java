@@ -93,10 +93,10 @@ public class PaymentPage extends TestBaseSetup {
             }
 
             if (isElementRequiered(paymentPageElements, "billing_fiscal_type")){
-                billingInfoSection.selectBillingFiscalType("Persona natural");
+                billingInfoSection.selectBillingFiscalType("Persona juridica");
             }
             if (isElementRequiered(paymentPageElements, "billing_document_type")){
-                billingInfoSection.selectBillingDocumentType("Cédula de Ciudadanía");
+                billingInfoSection.selectBillingDocumentType("Tarjeta de Identidad");
             }
 
             billingInfoSection.setBillingFiscalDocument("20285494568");
