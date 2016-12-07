@@ -4,8 +4,13 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -29,7 +34,7 @@ public class PaymentPage extends TestBaseSetup {
 
         getPaymentPageElements();
         // AQ-41
-        populatePassengerInfo(driver, numPassengers);
+        populatePassengers(driver, numPassengers);
 
         // AQ-42
         populatePaymentInfo(driver);
@@ -42,13 +47,6 @@ public class PaymentPage extends TestBaseSetup {
         // AQ-44
         acceptTermsConditions(driver);
         return this;
-    }
-
-    public void populatePassengerInfo(WebDriver driver, int numPassengers) {
-
-        PassengersSection passengersSection = new PassengersSection();
-        passengersSection.populatePassenger(driver, numPassengers);
-
     }
 
     public void populatePaymentInfo(WebDriver driver){
@@ -149,6 +147,78 @@ public class PaymentPage extends TestBaseSetup {
 
     }
 
+    public ArrayList<Passenger> createPassenger(int numPassengers){
+        ArrayList<Passenger> passengers = new ArrayList<>();
+        for (int idNum = 0; idNum < numPassengers; idNum++) {
+            passengers.add(new Passenger(idNum));
+        }
+        return passengers;
+    }
+
+    public PaymentPage populatePassengers(WebDriver driver, int numPassengers){
+
+        ArrayList<Passenger> passengers = createPassenger(numPassengers);
+
+        PageUtils.waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
+
+        for(Passenger passengerToPopulate : passengers){
+            WebElement elementToPopulate;
+            String typePassenger;
+
+            elementToPopulate = driver.findElement(By.id(passengerToPopulate.firstName));
+            elementToPopulate.sendKeys("Nombre");
+
+            elementToPopulate = driver.findElement(By.id(passengerToPopulate.lastName));
+            elementToPopulate.sendKeys("Apellido");
+
+            elementToPopulate = driver.findElement(By.id(passengerToPopulate.documentType));
+            Select tipoDeDocumento = new Select(elementToPopulate);
+            tipoDeDocumento.selectByVisibleText("Pasaporte");
+
+            if(!driver.findElements(By.id(passengerToPopulate.documentNumber)).isEmpty()){
+                elementToPopulate = driver.findElement(By.id(passengerToPopulate.documentNumber));
+                elementToPopulate.sendKeys("123456789");
+            }else{
+                logger.info("Document number is not requiered.");
+            }
+
+            if(isElementRequiered(paymentPageElements, "document_emisor")) {
+                elementToPopulate = driver.findElement(By.id(passengerToPopulate.document_emisor));
+                Select paisEmisorDelPasaporte = new Select(elementToPopulate);
+                paisEmisorDelPasaporte.selectByVisibleText("Argentina");
+            }
+
+            if(isElementRequiered(paymentPageElements, "document_expiration")) {
+                elementToPopulate = driver.findElement(By.id(passengerToPopulate.document_expiration));
+                elementToPopulate.sendKeys("25/12/2017");
+            }
+
+            if(!driver.findElements(By.id(passengerToPopulate.birthday)).isEmpty()){
+                elementToPopulate = driver.findElement(By.id(passengerToPopulate.birthday));
+                typePassenger = driver.findElement(By.cssSelector(".passenger-ctn:nth-of-type(" + passengerToPopulate.numeroPasajero + ")>.passenger__info__detail>div:nth-of-type(1)>h3>span:nth-of-type(2)")).getText();
+                if (typePassenger.equals("Adulto")){
+                    elementToPopulate.sendKeys("09/09/1979");
+                } else if (typePassenger.equals("Niño")){
+                    elementToPopulate.sendKeys("09/09/2010");
+                } else {
+                    elementToPopulate.sendKeys("09/09/2015");
+                }
+            }else{
+                logger.info("Birthday field is not requiered.");
+            }
+
+            elementToPopulate = driver.findElement(By.id(passengerToPopulate.gender));
+            Select sexo = new Select(elementToPopulate);
+            sexo.selectByVisibleText("Femenino");
+
+            elementToPopulate = driver.findElement(By.id(passengerToPopulate.nationality));
+            Select nacionalidad = new Select(elementToPopulate);
+            nacionalidad.selectByVisibleText("Argentina");
+        }
+        return this;
+    }
+
+
     public PaymentPage leiAceptoCbx(WebDriver driver){
         PageUtils.clickOn(driver, PaymentPageMap.LEI_ACEPTO_CBX.getBy());
         // TODO: add Additional check box for Colombia
@@ -159,9 +229,6 @@ public class PaymentPage extends TestBaseSetup {
         leiAceptoCbx(driver);
         return this;
     }
-
-
-    //Inits
 
     protected PaymentInfoSection initPaymentInfoSection(WebDriver driver) {
         return PageFactory.initElements(driver, PaymentInfoSection.class);
