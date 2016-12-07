@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -83,6 +84,18 @@ public class PaymentInfoSection extends PaymentPage {
         logger.info("Entering Security Code: [" + code + "]");
         security_code.clear();
         security_code.sendKeys(code);
+    }
+
+    public void selectDocumentType(String documentTypeSelected) {
+        logger.info("Selecting Document Type: [" + documentType + "]");
+        Select documentTypeSelect = new Select(documentType);
+        documentTypeSelect.selectByVisibleText(documentTypeSelected);
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        logger.info("Entering Document Number: [" + documentNumber + "]");
+        document_number.clear();
+        document_number.sendKeys(documentNumber);
     }
 
 }

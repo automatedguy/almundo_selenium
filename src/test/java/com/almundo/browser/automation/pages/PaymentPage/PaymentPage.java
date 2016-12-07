@@ -14,7 +14,7 @@ public class PaymentPage extends TestBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
-    private JSONObject paymentPageElements = null;
+    public JSONObject paymentPageElements = null;
 
     private void getPaymentPageElements()  {
         logger.info("Elements from properties file...");
@@ -35,7 +35,7 @@ public class PaymentPage extends TestBaseSetup {
         populatePaymentInfo(driver);
 
         // AQ-43
-        popupateBillingInfo(driver);
+        populateBillingInfo(driver);
 
         populateContactInfo(driver);
 
@@ -72,13 +72,41 @@ public class PaymentPage extends TestBaseSetup {
 
         paymentInfoSection.setSecurityCode("777");
 
-        // TODO: agregar Cedula para Colombia
+        if(isElementRequiered(paymentPageElements, "documentType")) {
+            paymentInfoSection.selectDocumentType("Pasaporte");
+        }
+
+        if(isElementRequiered(paymentPageElements, "document_number")) {
+            paymentInfoSection.setDocumentNumber("2078709888");
+        }
     }
 
-    public void popupateBillingInfo(WebDriver driver) {
-        if(isElementRequiered(paymentPageElements, "BillingInfoSection")) {
+    public void populateBillingInfo(WebDriver driver) {
+        if (isElementRequiered(paymentPageElements, "BillingInfoSection")) {
+
+            logger.info("Populating billing information fields requiered...");
+
             BillingInfoSection billingInfoSection = initBillingInfoSection(driver);
-            billingInfoSection.populateBillingInfo();
+
+            if (isElementRequiered(paymentPageElements, "fiscal_name")) {
+                billingInfoSection.setBillingFiscalName("Nombre o Razon Social");
+            }
+
+            if (isElementRequiered(paymentPageElements, "billing_fiscal_type")){
+                billingInfoSection.selectBillingFiscalType("Persona natural");
+            }
+            if (isElementRequiered(paymentPageElements, "billing_document_type")){
+                billingInfoSection.selectBillingDocumentType("Cédula de Ciudadanía");
+            }
+
+            billingInfoSection.setBillingFiscalDocument("20285494568");
+            billingInfoSection.setBillingAddress("Domicilo");
+            billingInfoSection.setAddressNumber("7550");
+            billingInfoSection.setAddressFloor("10");
+            billingInfoSection.setAddressDepartment("A");
+            billingInfoSection.setAddressPostalCode("1009");
+            billingInfoSection.setAddressState("Buenos Aires");
+            billingInfoSection.setAddressCity("CABA");
         }
     }
 
@@ -94,10 +122,10 @@ public class PaymentPage extends TestBaseSetup {
         }
 
         if(isRequiered){
-            logger.info("Billing information is requiered.");
+            logger.info(element + " information is requiered.");
         }
         else{
-            logger.info("Billing information is requiered.");
+            logger.info(element + " information is not requiered.");
 
         }
         return isRequiered;

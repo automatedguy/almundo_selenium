@@ -61,8 +61,8 @@ public class BillingInfoSection extends PaymentPage {
 
     public BillingInfoSection selectBillingDocumentType(String billingDocumentType){
         logger.info("Tipo de Documento drop down list is enabled, selecting...");
-        Select TIPO_DE_DOCUMENTO_SELECT = new Select(billing_document_type);
-        TIPO_DE_DOCUMENTO_SELECT.selectByVisibleText(billingDocumentType);
+        Select tipoDeDocumento = new Select(billing_document_type);
+        tipoDeDocumento.selectByVisibleText(billingDocumentType);
         return this;
     }
 
@@ -126,25 +126,6 @@ public class BillingInfoSection extends PaymentPage {
         logger.info("Entering Nombre o Razon Social: [" + addressCity + "]");
         address_city.clear();
         address_city.sendKeys(addressCity);
-        return this;
-    }
-
-
-    public BillingInfoSection populateBillingInfo(){
-
-        logger.info("Populating billing information fields requiered...");
-
-        setBillingFiscalName("Nombre o Razon Social");
-        selectBillingFiscalType("Persona natural");
-        selectBillingDocumentType("Cédula de Ciudadanía");
-        setBillingFiscalDocument("20285494568");
-        setBillingAddress("Domicilo");
-        setAddressNumber("7550");
-        setAddressFloor("10");
-        setAddressDepartment("A");
-        setAddressPostalCode("1009");
-        setAddressState("Buenos Aires");
-        setAddressCity("CABA");
         return this;
     }
 }
