@@ -1,9 +1,7 @@
 package com.almundo.browser.automation.utils;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -132,18 +130,6 @@ public class PageUtils {
         }
     }
 
-
-    public static WebElement moveToElement(WebDriver driver,  By elementToLocate){
-        element = driver.findElement(elementToLocate);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        return element;
-    }
-
-    public static void moveToElement2(WebDriver driver, By elementToLocate){
-        Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(elementToLocate));
-    }
 
     public static void scrollToElement(WebDriver driver, WebElement element) {
         ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,"+element.getLocation().y+")");

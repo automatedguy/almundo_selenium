@@ -46,8 +46,6 @@ public class PaymentPage extends TestBaseSetup {
 
     public void populatePaymentInfo(WebDriver driver){
 
-        PageUtils.moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
-
         PaymentInfoSection paymentInfoSection = initPaymentInfoSection();
 
         paymentInfoSection.selectPaymentQtyOption(0);
