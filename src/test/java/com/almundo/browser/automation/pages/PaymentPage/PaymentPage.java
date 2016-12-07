@@ -1,20 +1,16 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import static com.almundo.browser.automation.base.TestBaseSetup.baseURL;
-import static com.almundo.browser.automation.base.TestBaseSetup.countryPropertyObject;
-
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
-public class PaymentPage extends PageBaseSetup {
+public class PaymentPage extends TestBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
