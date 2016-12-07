@@ -18,7 +18,7 @@ public class PaymentPage extends PageBaseSetup {
 
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
-    public static JSONObject paymentPageElements = null;
+    private JSONObject paymentPageElements = null;
 
     private void getPaymentPageElements()  {
         logger.info("Elements from properties file...");
