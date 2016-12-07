@@ -1,26 +1,37 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
-import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.openqa.selenium.By;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
+import static com.almundo.browser.automation.base.TestBaseSetup.baseURL;
+import static com.almundo.browser.automation.base.TestBaseSetup.countryPropertyObject;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
-public class PaymentPage extends TestBaseSetup {
+public class PaymentPage extends PageBaseSetup {
 
-    public PaymentPage(WebDriver iDriver) {
-        this.driver = iDriver;
+    public PaymentPage(WebDriver driver) { super.driver = driver; }
+
+    private JSONObject paymentPageElements = null;
+
+    private void getPaymentPageElements()  {
+        logger.info("Elements from properties file...");
+        logger.info(countryPropertyObject);
+
+        logger.info("Reading PaymentPage enabled elements from properties file...");
+        paymentPageElements = (JSONObject) countryPropertyObject.get("PaymentPage");
+        logger.info(paymentPageElements);
     }
-
 
     public PaymentPage populatePaymentPage(WebDriver driver, int numPassengers) throws InterruptedException {
 
+        getPaymentPageElements();
         // AQ-41
         populatePassengerInfo(driver, numPassengers);
 
@@ -46,7 +57,9 @@ public class PaymentPage extends TestBaseSetup {
 
     public void populatePaymentInfo(WebDriver driver){
 
-        PaymentInfoSection paymentInfoSection = initPaymentInfoSection();
+        PageUtils.moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
+
+        PaymentInfoSection paymentInfoSection = initPaymentInfoSection(driver);
 
         paymentInfoSection.selectPaymentQtyOption(0);
         paymentInfoSection.selectBankOption("American Express");
@@ -67,37 +80,36 @@ public class PaymentPage extends TestBaseSetup {
     }
 
     public void popupateBillingInfo(WebDriver driver) {
-        if(isBillingInfoRequiered(driver)) {
-            BillingInfoSection billingInfoSection = initBillingInfoSection();
+        if(isElementRequiered(paymentPageElements, "BillingInfoSection")) {
+            BillingInfoSection billingInfoSection = initBillingInfoSection(driver);
             billingInfoSection.populateBillingInfo();
         }
     }
 
-    public boolean isBillingInfoRequiered(WebDriver driver){
+    public boolean isElementRequiered(JSONObject JSONElementsRead, String element){
 
-        WebElement billingInfo = driver.findElement(By.cssSelector("div:nth-child(4)>fieldset>div.container__title>h2"));
+        boolean isRequiered = false;
+        logger.info("Checking whether Billing Information will be requiered or not...");
 
-        List<WebElement> paymentPageSectionTittles = driver.findElements(By.cssSelector("h2.text--lg"));
-
-        for(WebElement paymentPageSectionTittlesToPrint : paymentPageSectionTittles){
-            System.out.println("Printing Paymentpage Sections Tittles... " + paymentPageSectionTittlesToPrint.getText());
+        try {
+            isRequiered = Boolean.parseBoolean(JSONElementsRead.get(element).toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        System.out.println("This is the text....: " + billingInfo.getText());
-
-        if(billingInfo.getText().equals("3.¿A nombre de quién emitimos la factura?")){
+        if(isRequiered){
             logger.info("Billing information is requiered.");
-            return true;
         }
         else{
-            logger.info("Billing information is not requiered.");
-            return false;
+            logger.info("Billing information is requiered.");
+
         }
+        return isRequiered;
     }
 
     public void populateContactInfo(WebDriver driver) {
 
-        ContactInfoSection contactInfoSection = initContactInfoSection();
+        ContactInfoSection contactInfoSection = initContactInfoSection(driver);
 
         contactInfoSection.setEmail("testing@almundo.com");
 
@@ -127,7 +139,17 @@ public class PaymentPage extends TestBaseSetup {
     }
 
 
-    //################################################ Inits ################################################
+    //Inits
 
+    protected PaymentInfoSection initPaymentInfoSection(WebDriver driver) {
+        return PageFactory.initElements(driver, PaymentInfoSection.class);
+    }
 
+    protected BillingInfoSection initBillingInfoSection(WebDriver driver) {
+        return PageFactory.initElements(driver, BillingInfoSection.class);
+    }
+
+    protected ContactInfoSection initContactInfoSection(WebDriver driver) {
+        return PageFactory.initElements(driver, ContactInfoSection.class);
+    }
 }
