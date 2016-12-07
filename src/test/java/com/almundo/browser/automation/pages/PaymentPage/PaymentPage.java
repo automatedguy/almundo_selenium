@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.PageBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -93,7 +93,7 @@ public class PaymentPage extends PageBaseSetup {
 
         try {
             isRequiered = Boolean.parseBoolean(JSONElementsRead.get(element).toString());
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
