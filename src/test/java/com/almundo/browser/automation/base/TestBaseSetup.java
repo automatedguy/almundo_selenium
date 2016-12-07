@@ -1,7 +1,13 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
+import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
+import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.LandingPage;
+import com.almundo.browser.automation.pages.PaymentPage.BillingInfoSection;
+import com.almundo.browser.automation.pages.PaymentPage.ContactInfoSection;
+import com.almundo.browser.automation.pages.PaymentPage.PaymentInfoSection;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -27,9 +33,11 @@ import java.rmi.UnexpectedException;
 
 public class TestBaseSetup {
 
+    public static Logger logger = Logger.getLogger( TestBaseSetup.class );
+
     public static WebDriver driver;
 
-    public static Logger logger = Logger.getLogger( TestBaseSetup.class );
+    public BasePage basePage = null;
 
     public static String baseURL = null;
     private static String os = null;
@@ -39,8 +47,6 @@ public class TestBaseSetup {
 
     public int numPassengers;
     public static String countryPar;
-
-    public LandingPage landingPage = new LandingPage(driver);
 
     public static JSONObject dataTestObject = null;
 
@@ -149,14 +155,16 @@ public class TestBaseSetup {
                 this.initSauceLabsDriver(method);
             }
 
+
             logger.info("Maximizing Window...");
             driver.manage().window().maximize();
 
-            logger.info("Navigating to baseURL: " + baseURL);
+            logger.info("Navigating to baseURL: [" + baseURL + "]");
             driver.navigate().to(baseURL);
 
-            logger.info("Selecting country page: " + countryPar);
-            landingPage.selectCountryPage(driver, countryPar);
+            LandingPage landingPage = initLandingPage();
+            logger.info("Selecting country page: [" + countryPar + "]");
+            basePage = landingPage.selectCountryPage(countryPar);
 
             logger.info("Finishing @BeforeMethod...");
 
@@ -247,10 +255,39 @@ public class TestBaseSetup {
     }
 
 
+    //################################################ Inits ################################################
+
+    protected LandingPage initLandingPage () {
+        return PageFactory.initElements(driver, LandingPage.class);
+    }
+
     protected BasePage initBasePage () {
         return PageFactory.initElements(driver, BasePage.class);
     }
 
+    protected HotelesDataTrip initHotelesDataTrip() {
+        return PageFactory.initElements(driver, HotelesDataTrip.class);
+    }
+
+    protected VuelosDataTrip initVuelosDataTrip () {
+        return PageFactory.initElements(driver, VuelosDataTrip.class);
+    }
+
+    protected VueloHotelDataTrip initVueloHotelDataTrip() {
+        return PageFactory.initElements(driver, VueloHotelDataTrip.class);
+    }
+
+    protected PaymentInfoSection initPaymentInfoSection() {
+        return PageFactory.initElements(driver, PaymentInfoSection.class);
+    }
+
+    protected BillingInfoSection initBillingInfoSection() {
+        return PageFactory.initElements(driver, BillingInfoSection.class);
+    }
+
+    protected ContactInfoSection initContactInfoSection() {
+        return PageFactory.initElements(driver, ContactInfoSection.class);
+    }
 
 
 }

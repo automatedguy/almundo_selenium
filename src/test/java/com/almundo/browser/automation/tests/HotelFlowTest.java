@@ -2,12 +2,10 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.HotelFlow;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -17,7 +15,6 @@ import org.testng.annotations.Test;
 public class HotelFlowTest extends TestBaseSetup {
 
     public HotelFlow hotelFlow = new HotelFlow(driver);
-    private BasePage basePage = null;
 
     private JSONObject hotelesList = null;
     private JSONObject hotel = null;
@@ -54,10 +51,6 @@ public class HotelFlowTest extends TestBaseSetup {
 
     }
 
-    @BeforeMethod
-    private void initBasePageObject() {
-        basePage = initBasePage();
-    }
 
     @Test
     public void hotelReservationFirstOptionFlow() throws InterruptedException {

@@ -1,25 +1,23 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
+import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-
-import static com.almundo.browser.automation.base.TestBaseSetup.baseURL;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
-public class PaymentPage extends PageBaseSetup {
+public class PaymentPage extends TestBaseSetup {
 
-    public PaymentPage(WebDriver driver) { super.driver = driver; }
+    public PaymentPage(WebDriver iDriver) {
+        this.driver = iDriver;
+    }
 
-    WebElement billingInfo;
 
     public PaymentPage populatePaymentPage(WebDriver driver, int numPassengers) throws InterruptedException {
 
@@ -50,7 +48,7 @@ public class PaymentPage extends PageBaseSetup {
 
         PageUtils.moveToElement(driver, PaymentPageMap.TITULAR_DE_LA_TARJETA_TXT.getBy());
 
-        PaymentInfoSection paymentInfoSection = initPaymentInfoSection(driver);
+        PaymentInfoSection paymentInfoSection = initPaymentInfoSection();
 
         paymentInfoSection.selectPaymentQtyOption(0);
         paymentInfoSection.selectBankOption("American Express");
@@ -72,14 +70,14 @@ public class PaymentPage extends PageBaseSetup {
 
     public void popupateBillingInfo(WebDriver driver) {
         if(isBillingInfoRequiered(driver)) {
-            BillingInfoSection billingInfoSection = initBillingInfoSection(driver);
+            BillingInfoSection billingInfoSection = initBillingInfoSection();
             billingInfoSection.populateBillingInfo();
         }
     }
 
     public boolean isBillingInfoRequiered(WebDriver driver){
 
-        billingInfo = driver.findElement(By.cssSelector("div:nth-child(4)>fieldset>div.container__title>h2"));
+        WebElement billingInfo = driver.findElement(By.cssSelector("div:nth-child(4)>fieldset>div.container__title>h2"));
 
         List<WebElement> paymentPageSectionTittles = driver.findElements(By.cssSelector("h2.text--lg"));
 
@@ -101,7 +99,7 @@ public class PaymentPage extends PageBaseSetup {
 
     public void populateContactInfo(WebDriver driver) {
 
-        ContactInfoSection contactInfoSection = initContactInfoSection(driver);
+        ContactInfoSection contactInfoSection = initContactInfoSection();
 
         contactInfoSection.setEmail("testing@almundo.com");
 
@@ -131,17 +129,7 @@ public class PaymentPage extends PageBaseSetup {
     }
 
 
-    //Inits
+    //################################################ Inits ################################################
 
-    protected PaymentInfoSection initPaymentInfoSection(WebDriver driver) {
-        return PageFactory.initElements(driver, PaymentInfoSection.class);
-    }
 
-    protected BillingInfoSection initBillingInfoSection(WebDriver driver) {
-        return PageFactory.initElements(driver, BillingInfoSection.class);
-    }
-
-    protected ContactInfoSection initContactInfoSection(WebDriver driver) {
-        return PageFactory.initElements(driver, ContactInfoSection.class);
-    }
 }

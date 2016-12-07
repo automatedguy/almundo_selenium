@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -17,8 +16,6 @@ import java.util.List;
 public class BasePage extends TestBaseSetup {
 
     public static Logger logger = Logger.getLogger(PageUtils.class);
-
-    public final WebDriver driver;
 
     public BasePage(WebDriver iDriver) {
         this.driver = iDriver;
@@ -102,18 +99,5 @@ public class BasePage extends TestBaseSetup {
         return this;
     }
 
-    //################################################ Inits ################################################
-    
-    protected HotelesDataTrip initHotelesDataTrip() {
-        return PageFactory.initElements(driver, HotelesDataTrip.class);
-    }
-
-    protected VuelosDataTrip initVuelosDataTrip () {
-        return PageFactory.initElements(driver, VuelosDataTrip.class);
-    }
-
-    protected VueloHotelDataTrip initVueloHotelDataTrip() {
-        return PageFactory.initElements(driver, VueloHotelDataTrip.class);
-    }
 
 }

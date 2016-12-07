@@ -80,10 +80,4 @@ public class ContactInfoSection extends PaymentPage {
         phoneNumberTxt.sendKeys(phoneNumber);
     }
 
-
-
-
-
-
-
 }

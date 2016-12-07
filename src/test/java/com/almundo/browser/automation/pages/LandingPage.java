@@ -1,45 +1,45 @@
 package com.almundo.browser.automation.pages;
 
-import com.almundo.browser.automation.base.PageBaseSetup;
-import com.almundo.browser.automation.locators.pages.LandingPageMap;
+import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.BasePage.BasePage;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by gabrielcespedes on 13/10/16.
  */
-public class LandingPage extends PageBaseSetup {
+public class LandingPage extends TestBaseSetup {
 
-    public LandingPage(WebDriver driver){
-        super.driver = driver;
+    public LandingPage(WebDriver iDriver) {
+        this.driver = iDriver;
     }
 
-    public LandingPage clickArgentinaLink(WebDriver driver){
-        driver.findElement(LandingPageMap.ARGENTINA_LINK.getBy()).click();
-        return this;
-    }
+    //############################################### Locators ##############################################
 
-    public LandingPage clickColombiaLink(WebDriver driver){
-        driver.findElement(LandingPageMap.COLOMBIA_LINK.getBy()).click();
-        return this;
-    }
+    @FindBy(linkText = "Argentina")
+    private WebElement argentinaLnk;
 
-    public LandingPage clickMexicoLink(WebDriver driver){
-        driver.findElement(LandingPageMap.MEXICO_LINK.getBy()).click();
-        return this;
-    }
+    @FindBy(linkText = "Colombia")
+    private WebElement colombiaLnk;
 
-    public LandingPage selectCountryPage(WebDriver driver, String country){
+    @FindBy(linkText = "Mexico")
+    private WebElement mexicoLnk;
+
+    //############################################### Actions ###############################################
+
+    public BasePage selectCountryPage(String country){
         try {
             switch (country) {
                 case "ARGENTINA":
-                    clickArgentinaLink(driver);
+                    argentinaLnk.click();
                     break;
                 case "COLOMBIA":
-                    clickColombiaLink(driver);
+                    colombiaLnk.click();
                     break;
                 case "MEXICO":
-                    clickMexicoLink(driver);
+                    mexicoLnk.click();
                     break;
             }
         }catch(NoSuchElementException ouch){
@@ -47,6 +47,6 @@ public class LandingPage extends PageBaseSetup {
             /* Hence no need to select country this time */
             logger.warn("Landing page not available.");
         }
-        return this;
+        return initBasePage();
     }
 }
