@@ -62,10 +62,8 @@ public class ContactInfoSection extends PaymentPage {
 
     public void setCountryCode(String countryCode) {
         logger.info("Entering country code: [" + countryCode + "]");
-
-        if (countryCodeTxt.getText().isEmpty()) {
-            countryCodeTxt.sendKeys(countryCode);
-        }
+        countryCodeTxt.clear();
+        countryCodeTxt.sendKeys(countryCode);
     }
 
     public void setAreaCode(String areaCode) {

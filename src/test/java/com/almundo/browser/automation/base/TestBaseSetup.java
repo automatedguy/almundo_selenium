@@ -5,9 +5,7 @@ import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.LandingPage;
-import com.almundo.browser.automation.pages.PaymentPage.BillingInfoSection;
-import com.almundo.browser.automation.pages.PaymentPage.ContactInfoSection;
-import com.almundo.browser.automation.pages.PaymentPage.PaymentInfoSection;
+import com.almundo.browser.automation.pages.PaymentPage.*;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -65,7 +63,7 @@ public class TestBaseSetup {
                                         //@Optional("OS X 10.11") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country) throws Exception {
+                                        @Optional("ARGENTINA") String country) throws Exception {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -289,6 +287,15 @@ public class TestBaseSetup {
     protected ContactInfoSection initContactInfoSection() {
         return PageFactory.initElements(driver, ContactInfoSection.class);
     }
+
+    protected PassengerInfoSection initPassengeInfoSection() {
+        return PageFactory.initElements(driver, PassengerInfoSection.class);
+    }
+
+    protected FooterSection initFooterSection() {
+        return PageFactory.initElements(driver, FooterSection.class);
+    }
+
 
 
 }
