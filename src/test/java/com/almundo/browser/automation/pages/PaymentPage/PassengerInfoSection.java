@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class PassengerInfoSection extends PaymentPage {
     //############################################### Actions ###############################################
 
     public PassengerInfoSection setFirstName(String firstName){
+        PageUtils.waitForVisibilityOfElementLocated(driver, 6000, By.id(firstName));
         WebElement elementToPopulate = driver.findElement(By.id(firstName));
         elementToPopulate.sendKeys("Nombre");
         return this;

@@ -79,8 +79,6 @@ public class PaymentPage extends TestBaseSetup {
 
         ArrayList<Passenger> passengers = createPassenger(numPassengers);
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
-
         PassengerInfoSection passengerInfoSection = initPassengeInforSection(driver);
 
         for(Passenger passengerToPopulate : passengers){
