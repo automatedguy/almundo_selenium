@@ -2,13 +2,9 @@ package com.almundo.browser.automation.utils;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  * Created by gabrielcespedes on 20/10/16.
@@ -16,8 +12,6 @@ import java.util.Set;
 public class PageUtils {
 
     public static Logger logger = Logger.getLogger(PageUtils.class);
-
-    private static WebElement element = null;
 
     // TODO: we can probably define generic methods here.
 
@@ -46,15 +40,6 @@ public class PageUtils {
         return true;
     }
 
-    public static WebElement setFocusOnChildWindow(WebDriver driver){
-        Set<String> set1=driver.getWindowHandles();
-        Iterator<String> win1=set1.iterator();
-        String parent=win1.next();
-        String child=win1.next();
-        driver.switchTo().window(child);
-        return element;
-    }
-
     public static void assertElementIsPresent(WebDriver driver, By assertedElement, String textToCompare){
         WebElement elementToAssert = driver.findElement(assertedElement);
 
@@ -80,23 +65,22 @@ public class PageUtils {
     }
 
 
-
-    public static void waitForLoad(WebDriver driver) {
-        try {
-            new WebDriverWait(driver, 60).until((ExpectedCondition<Boolean>) wd ->
-                    ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
-
-        }
-        catch (TimeoutException Ouch){
-            driver.navigate().refresh();
-        }
-    }
-
     public static void waitElementForVisibility(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
             wait.until(ExpectedConditions.visibilityOf(element));
+        }catch (TimeoutException exception) {
+            logger.error(message + " is not displayed");
+            throw exception;
+        }
+    }
+
+    public static void waitElementForClickable(WebDriver driver, By element, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not displayed");
             throw exception;
@@ -113,8 +97,7 @@ public class PageUtils {
         wait.until(ExpectedConditions.elementToBeClickable(elementToClick));
     }
 
-    public static void waitForElement(WebElement element,
-                                        int timeToWaitInSeconds, int pollingIntervalInMilliSeconds) throws InterruptedException {
+    public static void waitForElement(WebElement element, int timeToWaitInSeconds, int pollingIntervalInMilliSeconds) throws InterruptedException {
         logger.info("Waiting for WebElement: " + element);
         for (int i = 0; i < timeToWaitInSeconds; i++)
         {
@@ -126,10 +109,10 @@ public class PageUtils {
         }
     }
 
-
     public static void scrollToElement(WebDriver driver, WebElement element) {
         ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,"+element.getLocation().y+")");
 
     }
+
 
 }
