@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Semaphores">
+
+    <listeners>
+        <listener class-name="com.almundo.browser.automation.utils.RetryListener" />
+    </listeners>
+
+    <test name="SemaphoresTestsResults">
+        <classes>
+            <!--<class name="com.almundo.browser.automation.tests.HotelFlowTest"/>-->
+            <class name="com.almundo.browser.automation.tests.VueloFlowTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>-->
+        </classes>
+    </test>
+</suite>
