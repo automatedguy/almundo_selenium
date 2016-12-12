@@ -13,6 +13,8 @@
     },
     "PaymentPage":{
       "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
       "documentType":"false",
@@ -35,6 +37,8 @@
     },
     "PaymentPage":{
       "BillingInfoSection":"true",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "true",
       "document_emisor":"false",
       "document_expiration":"false",
       "documentType":"true",
@@ -57,10 +61,12 @@
     },
     "PaymentPage":{
       "BillingInfoSection":"false",
-      "document_emisor":"false",
-      "document_expiration":"false",
-      "documentType":"true",
-      "document_number":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"true",
+      "document_expiration":"true",
+      "documentType":"false",
+      "document_number":"false",
       "fiscal_name":"false",
       "accepted":"false"
     }
