@@ -4,11 +4,8 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.locators.pages.PaymentPageMap;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 
@@ -84,59 +81,33 @@ public class PaymentPage extends TestBaseSetup {
 
         PageUtils.waitForVisibilityOfElementLocated(driver, 60 , PaymentPageMap.FIRST_NAME_TXT.getBy());
 
+        PassengerInfoSection passengerInfoSection = initPassengeInforSection(driver);
+
         for(Passenger passengerToPopulate : passengers){
-            WebElement elementToPopulate;
-            String typePassenger;
 
-            elementToPopulate = driver.findElement(By.id(passengerToPopulate.firstName));
-            elementToPopulate.sendKeys("Nombre");
+            passengerInfoSection.setFirstName(passengerToPopulate.firstName);
 
-            elementToPopulate = driver.findElement(By.id(passengerToPopulate.lastName));
-            elementToPopulate.sendKeys("Apellido");
+            passengerInfoSection.setlastName(passengerToPopulate.lastName);
 
-            elementToPopulate = driver.findElement(By.id(passengerToPopulate.documentType));
-            Select tipoDeDocumento = new Select(elementToPopulate);
-            tipoDeDocumento.selectByVisibleText("Pasaporte");
+            passengerInfoSection.setDocumentType(passengerToPopulate.documentType);
 
-            if(!driver.findElements(By.id(passengerToPopulate.documentNumber)).isEmpty()){
-                elementToPopulate = driver.findElement(By.id(passengerToPopulate.documentNumber));
-                elementToPopulate.sendKeys("123456789");
-            }else{
-                logger.info("Document number is not requiered.");
+            if(isElementRequiered(paymentPageElements, "document_number")){
+                passengerInfoSection.setDocumentNumber(passengerToPopulate.documentNumber);
             }
 
             if(isElementRequiered(paymentPageElements, "document_emisor")) {
-                elementToPopulate = driver.findElement(By.id(passengerToPopulate.document_emisor));
-                Select paisEmisorDelPasaporte = new Select(elementToPopulate);
-                paisEmisorDelPasaporte.selectByVisibleText("Argentina");
+                passengerInfoSection.setDocumentEmisor(passengerToPopulate.document_emisor);
             }
 
             if(isElementRequiered(paymentPageElements, "document_expiration")) {
-                elementToPopulate = driver.findElement(By.id(passengerToPopulate.document_expiration));
-                elementToPopulate.sendKeys("25/12/2017");
+                passengerInfoSection.setDocumentExpiration(passengerToPopulate.document_expiration);
             }
 
-            if(!driver.findElements(By.id(passengerToPopulate.birthday)).isEmpty()){
-                elementToPopulate = driver.findElement(By.id(passengerToPopulate.birthday));
-                typePassenger = driver.findElement(By.cssSelector(".passenger-ctn:nth-of-type(" + passengerToPopulate.numeroPasajero + ")>.passenger__info__detail>div:nth-of-type(1)>h3>span:nth-of-type(2)")).getText();
-                if (typePassenger.equals("Adulto")){
-                    elementToPopulate.sendKeys("09/09/1979");
-                } else if (typePassenger.equals("Niño")){
-                    elementToPopulate.sendKeys("09/09/2010");
-                } else {
-                    elementToPopulate.sendKeys("09/09/2015");
-                }
-            }else{
-                logger.info("Birthday field is not requiered.");
-            }
+            passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
 
-            elementToPopulate = driver.findElement(By.id(passengerToPopulate.gender));
-            Select sexo = new Select(elementToPopulate);
-            sexo.selectByVisibleText("Femenino");
+            passengerInfoSection.setGender(passengerToPopulate.gender);
 
-            elementToPopulate = driver.findElement(By.id(passengerToPopulate.nationality));
-            Select nacionalidad = new Select(elementToPopulate);
-            nacionalidad.selectByVisibleText("Argentina");
+            passengerInfoSection.setNationality(passengerToPopulate.nationality);
         }
         return this;
     }
@@ -244,6 +215,10 @@ public class PaymentPage extends TestBaseSetup {
 
     protected FooterSection initFooterSection(WebDriver driver) {
         return PageFactory.initElements(driver, FooterSection.class);
+    }
+
+    protected PassengerInfoSection initPassengeInforSection(WebDriver driver) {
+        return PageFactory.initElements(driver, PassengerInfoSection.class);
     }
 
 }
