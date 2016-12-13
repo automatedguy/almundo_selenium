@@ -6,7 +6,11 @@ import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PaymentPage.*;
-import com.almundo.browser.automation.utils.*;
+import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
+import com.almundo.browser.automation.utils.Constants;
+import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.RetryAnalyzer;
+import com.almundo.browser.automation.utils.SauceHelpers;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
@@ -271,6 +275,10 @@ public class TestBaseSetup {
 
     protected FooterSection initFooterSection() {
         return PageFactory.initElements(driver, FooterSection.class);
+    }
+
+    protected VuelosResultsPage initVuelosResultsPage() {
+        return PageFactory.initElements(driver, VuelosResultsPage.class);
     }
 
 }
