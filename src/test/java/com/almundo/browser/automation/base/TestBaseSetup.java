@@ -265,7 +265,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, ContactInfoSection.class);
     }
 
-    protected PassengerInfoSection initPassengeInfoSection() {
+    protected PassengerInfoSection initPassengerInfoSection() {
         return PageFactory.initElements(driver, PassengerInfoSection.class);
     }
 
