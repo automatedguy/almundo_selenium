@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -18,6 +19,7 @@ public class VueloFlowTest extends TestBaseSetup {
     private JSONObject vuelo = null;
 
     VuelosResultsPage vuelosResultsPage = null;
+    PaymentPage paymentPage = null;
 
     private String originAuto;
     private String originFull;
@@ -76,9 +78,10 @@ public class VueloFlowTest extends TestBaseSetup {
         if (basePage.vuelosDataTrip().nothingFound()) {
           System.out.println("Nothing Found: VUELOS");
         } else {
-             vuelosResultsPage.ticketIdaRdbClick();
-             vuelosResultsPage.ticketVueltaClick();
-             vuelosResultsPage.comprarBtnClick();
+            vuelosResultsPage.ticketIdaRdbClick();
+            vuelosResultsPage.ticketVueltaClick();
+            paymentPage = vuelosResultsPage.comprarBtnClick(1);
+            paymentPage.populatePaymentPage(numPassengers);
         }
     }
 

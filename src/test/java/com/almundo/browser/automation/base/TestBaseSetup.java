@@ -281,4 +281,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, VuelosResultsPage.class);
     }
 
+    protected PaymentPage initPaymentPage() {
+        return PageFactory.initElements(driver, PaymentPage.class);
+    }
 }

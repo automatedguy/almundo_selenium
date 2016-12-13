@@ -1,9 +1,14 @@
 package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 /**
  * Created by gabrielcespedes on 13/12/16.
@@ -22,8 +27,8 @@ public class VuelosResultsPage extends TestBaseSetup {
     @FindBy(id = "option-inbound-01")
     private WebElement ticketVueltaRdb;
 
-    @FindBy(xpath = "//span[contains(.,'Comprar')]")
-    private WebElement comprarBtn;
+//    @FindBy(xpath = "//span[contains(.,'Comprar')]")
+//    private WebElement comprarBtn;
 
     //############################################### Actions ##############################################
 
@@ -37,12 +42,10 @@ public class VuelosResultsPage extends TestBaseSetup {
         return this;
     }
 
-    public VuelosResultsPage comprarBtnClick() {
-        comprarBtn.click();
-        return this;
+    public PaymentPage comprarBtnClick(int index) {
+        PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.epp-space-bottom-16", 0);
+        List<WebElement> comprarBtn = driver.findElements(By.cssSelector("button.button--lg.button--secondary.button--block.epp-space-bottom-16"));
+        comprarBtn.get(index).click();
+        return initPaymentPage();
     }
-
-
-
-
 }
