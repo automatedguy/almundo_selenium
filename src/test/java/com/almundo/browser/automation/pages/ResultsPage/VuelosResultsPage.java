@@ -27,9 +27,6 @@ public class VuelosResultsPage extends TestBaseSetup {
     @FindBy(id = "option-inbound-01")
     private WebElement ticketVueltaRdb;
 
-//    @FindBy(xpath = "//span[contains(.,'Comprar')]")
-//    private WebElement comprarBtn;
-
     //############################################### Actions ##############################################
 
     public VuelosResultsPage ticketIdaRdbClick() {
@@ -45,6 +42,7 @@ public class VuelosResultsPage extends TestBaseSetup {
     public PaymentPage comprarBtnClick(int index) {
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.epp-space-bottom-16", 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector("button.button--lg.button--secondary.button--block.epp-space-bottom-16"));
+        PageUtils.scrollToElement(driver, comprarBtn.get(index));
         comprarBtn.get(index).click();
         return initPaymentPage();
     }
