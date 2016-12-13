@@ -42,7 +42,8 @@ public class VuelosResultsPage extends TestBaseSetup {
     public PaymentPage comprarBtnClick(int index) {
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.epp-space-bottom-16", 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector("button.button--lg.button--secondary.button--block.epp-space-bottom-16"));
-        PageUtils.scrollToElement(driver, comprarBtn.get(index));
+        //TODO: investigate how to click on comprar button.
+        //PageUtils.scrollToElement(driver, comprarBtn.get(index));
         comprarBtn.get(index).click();
         return initPaymentPage();
     }
