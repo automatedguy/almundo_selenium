@@ -2,7 +2,6 @@ package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -15,8 +14,6 @@ import java.util.List;
  * Created by leandro.efron on 5/12/2016.
  */
 public class BasePage extends TestBaseSetup {
-
-    public static Logger logger = Logger.getLogger(PageUtils.class);
 
     public BasePage(WebDriver iDriver) {
         this.driver = iDriver;
@@ -68,15 +65,18 @@ public class BasePage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
+    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) throws InterruptedException {
 
         calendar.click();
+        PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
+
         List<WebElement> availableDates = getAvailableDatesList();
         int totalAvailableDates = availableDates.size();
 
+        PageUtils.waitElementClickable(driver, availableDates.get(daysAhead-1), 5, "Available dates");
+
         if(totalAvailableDates >= daysAhead){
             logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
-
             availableDates.get(daysAhead-1).click();
         }
         else{
@@ -94,9 +94,16 @@ public class BasePage extends TestBaseSetup {
         return  results;
     }
 
-    public BasePage selectFromAutoCompleteSuggestions(By autoComplete) {
-        PageUtils.waitForVisibilityOfElementLocated(driver, 10, autoComplete);
-        driver.findElement(autoComplete).click();
+    public BasePage selectAutoCompleteOption(String value) {
+        PageUtils.waitListContainResults(driver, ".ellipsis.ng-binding", 1);
+        List <WebElement> autoCompleteList = driver.findElements(By.cssSelector(".ellipsis.ng-binding"));
+
+        for (WebElement autoCompleteOption : autoCompleteList) {
+            if (autoCompleteOption.getText().equals(value)) {
+                autoCompleteOption.click();
+                break;
+            }
+        }
         return this;
     }
 
@@ -116,7 +123,7 @@ public class BasePage extends TestBaseSetup {
     public boolean noVacancy(){
         try {
             By noVacancyMsg = By.xpath("//span[contains(.,'Lo sentimos. No encontramos disponibilidad para tu búsqueda')]");
-            PageUtils.waitForVisibilityOfElementLocated(driver, 5, noVacancyMsg);
+            PageUtils.waitElementLocatedforVisibility(driver, noVacancyMsg, 5, "No Vacancy message");
 
         } catch (TimeoutException timeOut){
             logger.info("There is vacancy.");

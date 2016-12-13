@@ -61,12 +61,12 @@ public class HotelesDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public HotelesDataTrip setDestination(String destination) {
+    public HotelesDataTrip setDestination(String destination, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destination + "]");
         destinationTxt.clear();
         destinationTxt.sendKeys(destination);
-
+        selectAutoCompleteOption(destinationFull);
         return this;
     }
 

@@ -4,9 +4,9 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloHotelFlow;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,10 +25,8 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     private String originAuto;
     private String originFull;
-    private By originFullFinal;
     private String destinationAuto;
     private String destinationFull;
-    private By destinationFullFinal;
     private int startDate;
     private int endDate;
     private int adults;
@@ -37,19 +35,17 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void getVuelosListDataObject() {
-        vueloHotelList = (JSONObject) dataTestObject.get("vueloHotel");
+        vueloHotelList = JsonRead.getJsonDataObject(jsonDataObject, "vueloHotel", countryPar.toLowerCase() + "_data.json");
     }
 
     private void getVueloHotelDataObject(String combination) {
-        vueloHotel = (JSONObject) vueloHotelList.get(combination);
+        vueloHotel = JsonRead.getJsonDataObject(vueloHotelList, combination, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vueloHotel.get("originAuto").toString();
         originFull = vueloHotel.get("originFull").toString();
-        originFullFinal = By.xpath(String.format("//span[contains(.,'%s')]", originFull));
 
         destinationAuto = vueloHotel.get("destinationAuto").toString();
         destinationFull = vueloHotel.get("destinationFull").toString();
-        destinationFullFinal = By.xpath(String.format("//span[contains(.,'%s')]", destinationFull));
 
         startDate = Integer.parseInt(vueloHotel.get("startDate").toString());
         endDate = Integer.parseInt(vueloHotel.get("endDate").toString());
@@ -73,11 +69,8 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
 
-        basePage.vueloHotelDataTrip().setOrigin(originAuto);
-        basePage.vueloHotelDataTrip().selectFromAutoCompleteSuggestions(originFullFinal);
-
-        basePage.vueloHotelDataTrip().setDestination(destinationAuto);
-        basePage.vueloHotelDataTrip().selectFromAutoCompleteSuggestions(destinationFullFinal);
+        basePage.vueloHotelDataTrip().setOrigin(originAuto, originFull);
+        basePage.vueloHotelDataTrip().setDestination(destinationAuto, destinationFull);
 
         basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().departureCalendar, startDate);
         basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().arrivalCalendar, endDate);
@@ -91,7 +84,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         }
         else {
             PaymentPage paymentPage = vueloHotelFlow.doVueloHotelReservationFlow(driver);
-            paymentPage.populatePaymentPage(driver, numPassengers);
+            paymentPage.populatePaymentPage(numPassengers);
         }
     }
 }

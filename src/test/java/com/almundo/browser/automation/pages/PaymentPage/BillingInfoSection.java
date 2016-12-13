@@ -53,77 +53,77 @@ public class BillingInfoSection extends PaymentPage {
     //############################################### Actions ##############################################
 
     public BillingInfoSection selectBillingFiscalType(String billingFiscalType) {
-        logger.info("Situación fiscal drop down list is enabled, selecting...");
+        logger.info("Selecting Situación: [" + billingFiscalType + "]");
         Select SITUACION_FISCAL_SELECT = new Select(billing_fiscal_type);
         SITUACION_FISCAL_SELECT.selectByVisibleText(billingFiscalType);
         return this;
     }
 
     public BillingInfoSection selectBillingDocumentType(String billingDocumentType){
-        logger.info("Tipo de Documento drop down list is enabled, selecting...");
+        logger.info("Selecting Tipo de Documento: [" + billingDocumentType + "]");
         Select tipoDeDocumento = new Select(billing_document_type);
         tipoDeDocumento.selectByVisibleText(billingDocumentType);
         return this;
     }
 
     public BillingInfoSection setBillingFiscalDocument(String cuil) {
-        logger.info("Entering CUIL/CUIT number: [" + cuil + "]");
+        logger.info("Entering CUIL/CUIT: [" + cuil + "]");
         billing_fiscal_document.clear();
         billing_fiscal_document.sendKeys(cuil);
         return this;
     }
 
     public BillingInfoSection setBillingFiscalName(String billingFiscalName) {
-        logger.info("Entering Nombre o Razon Social: [" + billingFiscalName + "]");
+        logger.info("Entering Nombre o Razón Social: [" + billingFiscalName + "]");
         fiscal_name.clear();
         fiscal_name.sendKeys(billingFiscalName);
         return this;
     }
 
     public BillingInfoSection setBillingAddress(String billingAddress) {
-        logger.info("Entering Nombre o Razon Social: [" + billingAddress + "]");
+        logger.info("Entering Domicilio: [" + billingAddress + "]");
         billing_address.clear();
         billing_address.sendKeys(billingAddress);
         return this;
     }
 
     public BillingInfoSection setAddressNumber(String addressNumber) {
-        logger.info("Entering Nombre o Razon Social: [" + addressNumber + "]");
+        logger.info("Entering Número: [" + addressNumber + "]");
         address_number.clear();
         address_number.sendKeys(addressNumber);
         return this;
     }
 
     public BillingInfoSection setAddressFloor(String addressFloor) {
-        logger.info("Entering Nombre o Razon Social: [" + addressFloor + "]");
+        logger.info("Entering Piso: [" + addressFloor + "]");
         address_floor.clear();
         address_floor.sendKeys(addressFloor);
         return this;
     }
 
     public BillingInfoSection setAddressDepartment(String addressDepartment) {
-        logger.info("Entering Nombre o Razon Social: [" + addressDepartment + "]");
+        logger.info("Entering Departamento: [" + addressDepartment + "]");
         address_department.clear();
         address_department.sendKeys(addressDepartment);
         return this;
     }
 
     public BillingInfoSection setAddressPostalCode(String addressPostalCcode) {
-        logger.info("Entering Nombre o Razon Social: [" + addressPostalCcode + "]");
+        logger.info("Entering Código Postal: [" + addressPostalCcode + "]");
         address_postal_code.clear();
         address_postal_code.sendKeys(addressPostalCcode);
         return this;
     }
 
     public BillingInfoSection setAddressState(String addressState) {
-        logger.info("Entering Nombre o Razon Social: [" + addressState + "]");
+        logger.info("Entering Provincia: [" + addressState + "]");
         address_state.clear();
         address_state.sendKeys(addressState);
         return this;
     }
 
     public BillingInfoSection setAddressCity(String addressCity) {
-        logger.info("Entering Nombre o Razon Social: [" + addressCity + "]");
+        logger.info("Entering Ciudad: [" + addressCity + "]");
         address_city.clear();
         address_city.sendKeys(addressCity);
         return this;

@@ -18,7 +18,7 @@ public class VueloFlow extends TestBaseSetup {
 
     public PaymentPage doVueloReservationFlow(WebDriver driver) throws InterruptedException {
 
-        PageUtils.waitForVisibilityOfElementLocated(driver, 60,VueloFlowMap.TICKET_IDA_RDB.getBy());
+        PageUtils.waitElementLocatedforVisibility(driver, VueloFlowMap.TICKET_IDA_RDB.getBy(), 60, "Ticket Ida radio button");
 
         PageUtils.clickOn(driver, VueloFlowMap.TICKET_IDA_RDB.getBy());
         PageUtils.clickOn(driver, VueloFlowMap.TICKET_VUELTA_RDB.getBy());

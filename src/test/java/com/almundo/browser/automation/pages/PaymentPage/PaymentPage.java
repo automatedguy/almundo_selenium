@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.PaymentPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 
@@ -16,15 +17,10 @@ public class PaymentPage extends TestBaseSetup {
     public JSONObject paymentPageElements = null;
 
     private void getPaymentPageElements()  {
-        logger.info("Elements from properties file...");
-        logger.info(countryPropertyObject);
-
-        logger.info("Reading PaymentPage enabled elements from properties file...");
-        paymentPageElements = (JSONObject) countryPropertyObject.get("PaymentPage");
-        logger.info(paymentPageElements);
+        paymentPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "PaymentPage", "countries_properties.json");
     }
 
-    public PaymentPage populatePaymentPage(WebDriver driver, int numPassengers) throws InterruptedException {
+    public PaymentPage populatePaymentPage(int numPassengers) throws InterruptedException {
 
         getPaymentPageElements();
         // AQ-41
@@ -40,10 +36,12 @@ public class PaymentPage extends TestBaseSetup {
 
         // AQ-44
         checkConditions();
+
         return this;
     }
 
-    public ArrayList<Passenger> createPassenger(int numPassengers){
+
+    private ArrayList<Passenger> createPassenger(int numPassengers){
         ArrayList<Passenger> passengers = new ArrayList<>();
         for (int idNum = 0; idNum < numPassengers; idNum++) {
             passengers.add(new Passenger(idNum));
@@ -51,10 +49,10 @@ public class PaymentPage extends TestBaseSetup {
         return passengers;
     }
 
-    public boolean isElementRequiered(JSONObject JSONElementsRead, String element){
+    private boolean isElementRequiered(JSONObject JSONElementsRead, String element){
 
         boolean isRequiered = false;
-        logger.info("Checking whether Billing Information will be requiered or not...");
+        //logger.info("Checking whether Billing Information will be requiered or not...");
 
         try {
             isRequiered = Boolean.parseBoolean(JSONElementsRead.get(element).toString());
@@ -72,11 +70,12 @@ public class PaymentPage extends TestBaseSetup {
         return isRequiered;
     }
 
-    public PaymentPage populatePassengers(int numPassengers){
+    private PaymentPage populatePassengers(int numPassengers){
 
         ArrayList<Passenger> passengers = createPassenger(numPassengers);
 
         PassengerInfoSection passengerInfoSection = initPassengeInfoSection();
+        logger.info("---------- Filling Passenger Info Section ----------");
 
         for(Passenger passengerToPopulate : passengers){
 
@@ -107,9 +106,10 @@ public class PaymentPage extends TestBaseSetup {
         return this;
     }
 
-    public void populatePaymentInfo(){
+    private PaymentPage populatePaymentInfo(){
 
         PaymentInfoSection paymentInfoSection = initPaymentInfoSection();
+        logger.info("---------- Filling Payment Info Section ----------");
 
         paymentInfoSection.selectPaymentQtyOption(0);
         paymentInfoSection.selectBankOption("American Express");
@@ -118,11 +118,7 @@ public class PaymentPage extends TestBaseSetup {
 
         paymentInfoSection.setCardNumber("4242424242424242");
 
-        if(baseURL.equals("http://almundo.com/")){
-            paymentInfoSection.setCardExpiration("07/17");
-        }else {
-         // select from drop down list.
-        }
+        paymentInfoSection.setCardExpiration("07/17");
 
         paymentInfoSection.setSecurityCode("777");
 
@@ -133,14 +129,14 @@ public class PaymentPage extends TestBaseSetup {
         if(isElementRequiered(paymentPageElements, "document_number")) {
             paymentInfoSection.setDocumentNumber("2078709888");
         }
+        return this;
     }
 
-    public void populateBillingInfo() {
+    private PaymentPage populateBillingInfo() {
         if (isElementRequiered(paymentPageElements, "BillingInfoSection")) {
 
-            logger.info("Populating billing information fields requiered...");
-
             BillingInfoSection billingInfoSection = initBillingInfoSection();
+            logger.info("---------- Filling Billing Info Section ----------");
 
             if (isElementRequiered(paymentPageElements, "fiscal_name")) {
                 billingInfoSection.setBillingFiscalName("Nombre o Razon Social");
@@ -162,11 +158,13 @@ public class PaymentPage extends TestBaseSetup {
             billingInfoSection.setAddressState("Buenos Aires");
             billingInfoSection.setAddressCity("CABA");
         }
+        return this;
     }
 
-    public void populateContactInfo() {
+    private PaymentPage populateContactInfo() {
 
         ContactInfoSection contactInfoSection = initContactInfoSection();
+        logger.info("---------- Filling Contact Info Section ----------");
 
         contactInfoSection.setEmail("testing@almundo.com");
 
@@ -180,10 +178,13 @@ public class PaymentPage extends TestBaseSetup {
 
         contactInfoSection.setPhoneNumber("44448888");
 
+        return this;
     }
 
-    public PaymentPage checkConditions(){
+    private PaymentPage checkConditions(){
         FooterSection footerSection = initFooterSection();
+        logger.info("---------- Checking options Footer Section ----------");
+
         footerSection.acceptTermsAndConditions();
         if(isElementRequiered(paymentPageElements, "accepted")) {
             footerSection.acceptItinerary();

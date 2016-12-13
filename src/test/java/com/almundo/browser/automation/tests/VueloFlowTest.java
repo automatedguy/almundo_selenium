@@ -4,9 +4,9 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloFlow;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,10 +26,8 @@ public class VueloFlowTest extends TestBaseSetup {
 
     private String originAuto;
     private String originFull;
-    private By originFullFinal;
     private String destinationAuto;
     private String destinationFull;
-    private By destinationFullFinal;
     private int startDate;
     private int endDate;
     private int adults;
@@ -38,20 +36,17 @@ public class VueloFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void getVuelosListDataObject() {
-
-        vuelosList = (JSONObject) dataTestObject.get("vuelos");
+        vuelosList = JsonRead.getJsonDataObject(jsonDataObject, "vuelos", countryPar.toLowerCase() + "_data.json");
     }
 
     private void getVueloDataObject(String combination) {
-        vuelo = (JSONObject) vuelosList.get(combination);
+        vuelo = JsonRead.getJsonDataObject(vuelosList, combination, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vuelo.get("originAuto").toString();
         originFull = vuelo.get("originFull").toString();
-        originFullFinal = By.xpath(String.format("//span[contains(.,'%s')]", originFull));
 
         destinationAuto = vuelo.get("destinationAuto").toString();
         destinationFull = vuelo.get("destinationFull").toString();
-        destinationFullFinal = By.xpath(String.format("//span[contains(.,'%s')]", destinationFull));
 
         startDate = Integer.parseInt(vuelo.get("startDate").toString());
         endDate = Integer.parseInt(vuelo.get("endDate").toString());
@@ -75,15 +70,11 @@ public class VueloFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
 
-        basePage.vuelosDataTrip().setOrigin(originAuto);
-        basePage.vuelosDataTrip().selectFromAutoCompleteSuggestions(originFullFinal);
-
-        basePage.vuelosDataTrip().setDestination(destinationAuto);
-        basePage.vuelosDataTrip().selectFromAutoCompleteSuggestions(destinationFullFinal);
+        basePage.vuelosDataTrip().setOrigin(originAuto, originFull);
+        basePage.vuelosDataTrip().setDestination(destinationAuto, destinationFull);
 
         basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().departureFlightsCalendar, startDate);
         basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().arrivalFlightsCalendar, endDate);
-
 
         numPassengers = basePage.vuelosDataTrip().selectPassenger(adults, childs);
 
@@ -95,7 +86,7 @@ public class VueloFlowTest extends TestBaseSetup {
           System.out.println("Nothing Found: VUELOS");
         } else {
           PaymentPage paymentPage = vueloFlow.doVueloReservationFlow(driver);
-          paymentPage.populatePaymentPage(driver, numPassengers);
+          paymentPage.populatePaymentPage(numPassengers);
         }
     }
 

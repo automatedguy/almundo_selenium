@@ -17,7 +17,7 @@ public class PassengerInfoSection extends PaymentPage {
     //############################################### Actions ###############################################
 
     public PassengerInfoSection setFirstName(String firstName){
-        PageUtils.waitForVisibilityOfElementLocated(driver, 6000, By.id(firstName));
+        PageUtils.waitElementLocatedforVisibility(driver, By.id(firstName), 15, "First Name text box");
         WebElement elementToPopulate = driver.findElement(By.id(firstName));
         elementToPopulate.sendKeys("Nombre");
         return this;

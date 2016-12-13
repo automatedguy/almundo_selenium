@@ -63,21 +63,21 @@ public class VueloHotelDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public VueloHotelDataTrip setOrigin(String origin) {
+    public VueloHotelDataTrip setOrigin(String origin, String originFull) {
         PageUtils.waitElementForVisibility(driver, originTripsTxt, 10, "Origin text field");
         logger.info("Entering Origin: [" + origin + "]");
         originTripsTxt.clear();
         originTripsTxt.sendKeys(origin);
-
+        selectAutoCompleteOption(originFull);
         return this;
     }
 
-    public VueloHotelDataTrip setDestination(String destination) {
+    public VueloHotelDataTrip setDestination(String destination, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTripsTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destination + "]");
         destinationTripsTxt.clear();
         destinationTripsTxt.sendKeys(destination);
-
+        selectAutoCompleteOption(destinationFull);
         return this;
     }
 

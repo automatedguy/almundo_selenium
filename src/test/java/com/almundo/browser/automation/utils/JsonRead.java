@@ -15,21 +15,35 @@ import java.io.IOException;
 public class JsonRead extends TestBaseSetup {
 
 
-    public static JSONObject getJsonFile(String dataFileName) {
+    public static JSONObject getJsonFile(String jsonFileName) {
 
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = null;
         try {
 
-            Object data = parser.parse(new FileReader(Constants.RESOURCES_PATH + dataFileName));
+            Object data = parser.parse(new FileReader(Constants.RESOURCES_PATH + jsonFileName));
+            logger.info("Getting JSON file: [" + jsonFileName + "]");
             jsonObject = (JSONObject) data;
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            logger.error("Error reading: [" + jsonFileName + "]");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
+        }
+        return jsonObject;
+    }
+
+    public static JSONObject getJsonDataObject (JSONObject jsonDataObject, String value, String jsonFileName) {
+        JSONObject jsonObject = null;
+        try {
+            logger.info("Getting JSON data object/value: [" + jsonFileName + "/" + value + "]");
+            jsonObject = (JSONObject) jsonDataObject.get(value);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("Error reading Object/Value: [" + value + "]");
         }
         return jsonObject;
     }

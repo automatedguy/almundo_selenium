@@ -6,10 +6,7 @@ import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PaymentPage.*;
-import com.almundo.browser.automation.utils.Constants;
-import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.RetryAnalyzer;
-import com.almundo.browser.automation.utils.SauceHelpers;
+import com.almundo.browser.automation.utils.*;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
@@ -46,9 +43,9 @@ public class TestBaseSetup {
     public int numPassengers;
     public static String countryPar;
 
-    public static JSONObject dataTestObject = null;
-    public static JSONObject propertiesFileObject = null;
-    public static JSONObject countryPropertyObject = null;
+    public static JSONObject jsonDataObject = null;
+    public static JSONObject jsonPropertiesObject = null;
+    public static JSONObject jsonCountryPropertyObject = null;
 
     public String osProperty = System.getProperty("os.name").toLowerCase();
 
@@ -70,29 +67,7 @@ public class TestBaseSetup {
         this.browser = browserType;
         this.browserVersion = browserTypeVersion;
         osName = System.getProperty("os.name");
-
         this.countryPar = country;
-
-        //Get data from json file
-        try {
-            logger.info("Reading test data JSON file: " + countryPar.toLowerCase() + "_data.json");
-            dataTestObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
-        } catch (Exception e) {
-            e.printStackTrace();
-            logger.error("Country [" + country + "] not well defined. Allowed values are: 'ARGENTINA', 'COLOMBIA' or  'MEXICO'.");
-
-        }
-
-        try{
-            logger.info("Reading JSON properties file: countries_properties.json");
-            propertiesFileObject = JsonRead.getJsonFile("countries_properties.json");
-
-            logger.info("Reading country properties JSON file for: " + countryPar);
-            countryPropertyObject = (JSONObject) propertiesFileObject.get(countryPar);
-
-        }catch(Exception e){
-            logger.error("Check the path for countries properties");
-        }
 
         try {
             if (os == null || browserVersion == null) {
@@ -109,6 +84,9 @@ public class TestBaseSetup {
             e.printStackTrace();
         }
 
+        jsonDataObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
+        jsonPropertiesObject = JsonRead.getJsonFile("countries_properties.json");
+        jsonCountryPropertyObject = JsonRead.getJsonDataObject(jsonPropertiesObject, countryPar, "countries_properties.json");
     }
 
 
@@ -253,7 +231,6 @@ public class TestBaseSetup {
         return driver;
     }
 
-
     //################################################ Inits ################################################
 
     protected LandingPage initLandingPage () {
@@ -295,7 +272,5 @@ public class TestBaseSetup {
     protected FooterSection initFooterSection() {
         return PageFactory.initElements(driver, FooterSection.class);
     }
-
-
 
 }
