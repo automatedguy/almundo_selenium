@@ -74,7 +74,7 @@ public class PaymentPage extends TestBaseSetup {
 
         ArrayList<Passenger> passengers = createPassenger(numPassengers);
 
-        PassengerInfoSection passengerInfoSection = initPassengeInfoSection();
+        PassengerInfoSection passengerInfoSection = initPassengerInfoSection();
         logger.info("---------- Filling Passenger Info Section ----------");
 
         for(Passenger passengerToPopulate : passengers){
@@ -126,7 +126,7 @@ public class PaymentPage extends TestBaseSetup {
             paymentInfoSection.selectDocumentType("Pasaporte");
         }
 
-        if(isElementRequiered(paymentPageElements, "document_number")) {
+        if(isElementRequiered(paymentPageElements, "document_number_card")) {
             paymentInfoSection.setDocumentNumber("2078709888");
         }
         return this;

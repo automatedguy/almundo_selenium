@@ -18,7 +18,8 @@
       "document_emisor":"false",
       "document_expiration":"false",
       "documentType":"false",
-      "document_number":"false",
+      "document_number":"true",
+      "document_number_card":"false",
       "fiscal_name":"false",
       "accepted":"false"
     }
@@ -43,6 +44,7 @@
       "document_expiration":"false",
       "documentType":"true",
       "document_number":"true",
+      "document_number_card":"true",
       "fiscal_name":"true",
       "accepted":"true"
     }
@@ -66,7 +68,8 @@
       "document_emisor":"true",
       "document_expiration":"true",
       "documentType":"false",
-      "document_number":"false",
+      "document_number":"true",
+      "document_number_card":"false",
       "fiscal_name":"false",
       "accepted":"false"
     }
