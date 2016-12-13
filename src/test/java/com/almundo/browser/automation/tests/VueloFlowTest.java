@@ -2,13 +2,11 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloFlow;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -18,8 +16,6 @@ import org.testng.annotations.Test;
 public class VueloFlowTest extends TestBaseSetup {
 
     public VueloFlow vueloFlow = new VueloFlow(driver);
-
-    private BasePage basePage = null;
 
     private JSONObject vuelosList = null;
     private JSONObject vuelo = null;
@@ -57,11 +53,7 @@ public class VueloFlowTest extends TestBaseSetup {
         flightClass = vuelo.get("flightClass").toString();
     }
 
-    @BeforeMethod
-    private void initBasePageObject() {
-        basePage = initBasePage();
-    }
-
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void vueloReservationFirstOptionFlow() throws InterruptedException {
@@ -82,7 +74,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
         basePage.vuelosDataTrip().buscarBtn.click();
 
-      if (basePage.nothingFound()) {
+        if (basePage.nothingFound()) {
           System.out.println("Nothing Found: VUELOS");
         } else {
           PaymentPage paymentPage = vueloFlow.doVueloReservationFlow(driver);

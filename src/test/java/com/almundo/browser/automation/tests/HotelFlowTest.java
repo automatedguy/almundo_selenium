@@ -28,11 +28,9 @@ public class HotelFlowTest extends TestBaseSetup {
     private int childs;
     private int rooms;
 
-
     @BeforeClass
     private void getHotelesListDataObject() {
         hotelesList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
-
     }
 
     private void getHotelDataObject(String combination) {
@@ -50,6 +48,7 @@ public class HotelFlowTest extends TestBaseSetup {
         rooms = Integer.parseInt(hotel.get("rooms").toString());
     }
 
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void hotelReservationFirstOptionFlow() throws InterruptedException {

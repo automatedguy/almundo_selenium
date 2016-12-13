@@ -5,7 +5,6 @@ import com.almundo.browser.automation.locators.flows.VueloFlowMap;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -27,11 +26,4 @@ public class VueloFlow extends TestBaseSetup {
         return new PaymentPage(driver);
     }
 
-    public VueloFlow selectFlightClass(WebDriver driver, String flightClass){
-
-         Select claseVueloDdl = new Select(driver.findElement(VueloFlowMap.CLASE_DDL.getBy()));
-         claseVueloDdl.selectByVisibleText(flightClass);
-
-        return this;
-    }
 }

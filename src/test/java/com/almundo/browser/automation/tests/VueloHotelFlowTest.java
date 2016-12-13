@@ -2,13 +2,11 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.flows.VueloHotelFlow;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -18,7 +16,6 @@ import org.testng.annotations.Test;
 public class VueloHotelFlowTest extends TestBaseSetup {
 
     public VueloHotelFlow vueloHotelFlow = new VueloHotelFlow(driver);
-    private BasePage basePage = null;
 
     private JSONObject vueloHotelList = null;
     private JSONObject vueloHotel = null;
@@ -57,10 +54,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     }
 
-    @BeforeMethod
-    private void initBasePageObject() {
-        basePage = initBasePage();
-    }
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void vueloHotelReservationFirstOptionFlow() throws InterruptedException {
@@ -87,4 +81,5 @@ public class VueloHotelFlowTest extends TestBaseSetup {
             paymentPage.populatePaymentPage(numPassengers);
         }
     }
+
 }
