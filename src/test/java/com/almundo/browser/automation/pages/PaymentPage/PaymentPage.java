@@ -126,7 +126,7 @@ public class PaymentPage extends TestBaseSetup {
             paymentInfoSection.selectDocumentType("Pasaporte");
         }
 
-        if(isElementRequiered(paymentPageElements, "document_number")) {
+        if(isElementRequiered(paymentPageElements, "document_number_card")) {
             paymentInfoSection.setDocumentNumber("2078709888");
         }
         return this;
