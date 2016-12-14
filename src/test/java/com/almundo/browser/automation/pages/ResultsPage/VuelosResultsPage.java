@@ -30,18 +30,20 @@ public class VuelosResultsPage extends TestBaseSetup {
     //############################################### Actions ##############################################
 
     public VuelosResultsPage ticketIdaRdbClick() {
+        PageUtils.waitElementForVisibility(driver,ticketIdaRdb,30, "Ticket Ida Radio Button");
         ticketIdaRdb.click();
         return this;
     }
 
     public VuelosResultsPage ticketVueltaClick() {
+        PageUtils.waitElementForVisibility(driver,ticketVueltaRdb,30, "Ticket Ida Radio Button");
         ticketVueltaRdb.click();
         return this;
     }
 
     public PaymentPage comprarBtnClick(int index) {
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.epp-space-bottom-16", 0);
-        List<WebElement> comprarBtn = driver.findElements(By.cssSelector("button.button--lg.button--secondary.button--block.epp-space-bottom-16"));
+        List<WebElement> comprarBtn = driver.findElements(By.cssSelector(".button.button--lg.button--secondary.button--block.epp-space-bottom-16"));
         //TODO: investigate how to click on comprar button.
         //PageUtils.scrollToElement(driver, comprarBtn.get(index));
         comprarBtn.get(index).click();
