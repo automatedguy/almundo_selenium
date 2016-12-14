@@ -65,7 +65,7 @@ public class VueloHotelDataTrip extends BasePage {
 
     public VueloHotelDataTrip setOrigin(String origin, String originFull) {
         PageUtils.waitElementForVisibility(driver, originTripsTxt, 10, "Origin text field");
-        logger.info("Entering Origin: [" + origin + "]");
+        logger.info("Entering Origin: [" + originFull + "]");
         originTripsTxt.clear();
         originTripsTxt.sendKeys(origin);
         selectAutoCompleteOption(originFull);
@@ -74,7 +74,7 @@ public class VueloHotelDataTrip extends BasePage {
 
     public VueloHotelDataTrip setDestination(String destination, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTripsTxt, 10, "Destination text field");
-        logger.info("Entering Destination: [" + destination + "]");
+        logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTripsTxt.clear();
         destinationTripsTxt.sendKeys(destination);
         selectAutoCompleteOption(destinationFull);

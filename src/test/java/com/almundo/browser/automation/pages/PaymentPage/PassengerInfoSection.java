@@ -17,7 +17,7 @@ public class PassengerInfoSection extends PaymentPage {
     //############################################### Actions ###############################################
 
     public PassengerInfoSection setFirstName(String firstName){
-        PageUtils.waitElementLocatedforVisibility(driver, By.id(firstName), 15, "First Name text box");
+        PageUtils.waitElementLocatedforVisibility(driver, By.id(firstName), 45, "First Name text box");
         WebElement elementToPopulate = driver.findElement(By.id(firstName));
         elementToPopulate.sendKeys("Nombre");
         return this;
@@ -29,10 +29,10 @@ public class PassengerInfoSection extends PaymentPage {
         return this;
     }
 
-    public PassengerInfoSection setDocumentType(String documentType){
-        WebElement elementToPopulate = driver.findElement(By.id(documentType));
+    public PassengerInfoSection setDocumentType(String documentTypeElement, String documentType){
+        WebElement elementToPopulate = driver.findElement(By.id(documentTypeElement));
         Select tipoDeDocumento = new Select(elementToPopulate);
-        tipoDeDocumento.selectByVisibleText("Pasaporte");
+        tipoDeDocumento.selectByVisibleText(documentType);
         return this;
     }
 

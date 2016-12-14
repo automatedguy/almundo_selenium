@@ -83,7 +83,7 @@ public class PaymentPage extends TestBaseSetup {
 
             passengerInfoSection.setlastName(passengerToPopulate.lastName);
 
-            passengerInfoSection.setDocumentType(passengerToPopulate.documentType);
+            passengerInfoSection.setDocumentType(passengerToPopulate.documentType, "Pasaporte");
 
             if(isElementRequiered(paymentPageElements, "document_number")){
                 passengerInfoSection.setDocumentNumber(passengerToPopulate.documentNumber);

@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
+import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -63,7 +64,7 @@ public class HotelesDataTrip extends BasePage {
 
     public HotelesDataTrip setDestination(String destination, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
-        logger.info("Entering Destination: [" + destination + "]");
+        logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTxt.clear();
         destinationTxt.sendKeys(destination);
         selectAutoCompleteOption(destinationFull);
@@ -90,4 +91,10 @@ public class HotelesDataTrip extends BasePage {
 
         return adults + childs;
     }
+
+    public HotelesResultsPage clickBuscarBtn() {
+        buscarBtn.click();
+        return initHotelesResultsPage();
+    }
+
 }

@@ -19,27 +19,6 @@ public class PageUtils {
         driver.findElement(elementToClick).click();
     }
 
-    public boolean verifyElementPresent(WebElement element) throws InterruptedException {
-        for (int second = 0; ; second++)
-        {
-            if (second >= 60) org.junit.Assert.fail();
-
-            try
-            {
-                if (element != null)
-                {
-                    break;
-                }
-            }
-            catch (Exception someException)
-            {
-                return false;
-            }
-            Thread.sleep(100);
-        }
-        return true;
-    }
-
     public static void assertElementIsPresent(WebDriver driver, By assertedElement, String textToCompare){
         WebElement elementToAssert = driver.findElement(assertedElement);
 
@@ -64,7 +43,6 @@ public class PageUtils {
         }
     }
 
-
     public static void waitElementForVisibility(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -74,6 +52,28 @@ public class PageUtils {
             logger.error(message + " is not displayed");
             throw exception;
         }
+    }
+
+    public static void waitElementForInvisibility(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.invisibilityOfElementWithText(elementToLocate, Constants.NO_DISPONIBILIDAD_MSG));
+        }catch (TimeoutException exception) {
+            logger.error(message + " is displayed");
+            throw exception;
+        }
+    }
+
+    public static void waitForNoVacancy(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
+        }catch (TimeoutException exception) {
+            throw exception;
+        }
+        logger.error(message + " is displayed");
     }
 
     public static void waitElementClickable(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
@@ -87,12 +87,12 @@ public class PageUtils {
         }
     }
 
-    public static void waitElementForClickable(WebDriver driver, By element, int timeOutInSeconds, String message){
+    public static void waitElementForClickable(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
-            logger.info("Waiting for: [" + message + "]");
-            wait.until(ExpectedConditions.elementToBeClickable(element));
+            logger.info("Waiting clickable for: [" + elementToLocate.toString() + "]");
+            wait.until(ExpectedConditions.elementToBeClickable(elementToLocate));
         }catch (TimeoutException exception) {
             logger.error(message + " is not clickable");
             throw exception;
@@ -103,7 +103,7 @@ public class PageUtils {
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
-            logger.info("Waiting for: [" + elementToLocate.toString() + "]");
+            logger.info("Waiting visibility for: [" + elementToLocate.toString() + "]");
             wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
         }catch (TimeoutException exception) {
             logger.error(message + " is not displayed");
@@ -111,31 +111,14 @@ public class PageUtils {
         }
     }
 
-    public static void waitForElementToBeClickcable(WebDriver driver, long timeout,By elementToClick){
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        wait.until(ExpectedConditions.elementToBeClickable(elementToClick));
-    }
-
     public static void waitListContainResults(WebDriver driver, String element, int number){
         try {
-            WebDriverWait wait = new WebDriverWait(driver,5);
+            WebDriverWait wait = new WebDriverWait(driver,30);
             wait.withMessage("Incorrect number of results");
             wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(element), number));
         }catch (TimeoutException exception) {
             logger.error("Incorrect number of results");
             throw exception;
-        }
-    }
-
-    public static void waitForElement(WebElement element, int timeToWaitInSeconds, int pollingIntervalInMilliSeconds) throws InterruptedException {
-        logger.info("Waiting for WebElement: " + element);
-        for (int i = 0; i < timeToWaitInSeconds; i++)
-        {
-            if (!element.isDisplayed())
-            {
-                continue;
-            }
-            Thread.sleep(pollingIntervalInMilliSeconds);
         }
     }
 

@@ -1,11 +1,13 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.flows.HotelFlow;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
+import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -15,7 +17,9 @@ import org.testng.annotations.Test;
 
 public class HotelFlowTest extends TestBaseSetup {
 
-    public HotelFlow hotelFlow = new HotelFlow(driver);
+    private HotelesResultsPage hotelesResultsPage = null;
+    private HotelesDetailPage hotelesDetailPage = null;
+    private PaymentPage paymentPage = null;
 
     private JSONObject hotelesList = null;
     private JSONObject hotel = null;
@@ -64,14 +68,14 @@ public class HotelFlowTest extends TestBaseSetup {
 
         numPassengers = basePage.hotelesDataTrip().selectPassenger(adults, childs, rooms);
 
-        basePage.hotelesDataTrip().buscarBtn.click();
+        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
 
-        if(basePage.noVacancy()) {
-            System.out.println("No Vacancy");
-        }
-        else {
-            PaymentPage paymentPage = hotelFlow.doHotelReservationFlow(driver);
-            paymentPage.populatePaymentPage(numPassengers);
-        }
+        Assert.assertTrue(hotelesResultsPage.vacancy());
+
+        hotelesDetailPage = hotelesResultsPage.clickVerHotelButton(0);
+        hotelesDetailPage.clickVerHabitacionesButton();
+        paymentPage = hotelesDetailPage.clickReservarAhoraButton();
+        paymentPage.populatePaymentPage(numPassengers);
+
     }
 }

@@ -3,7 +3,6 @@ package com.almundo.browser.automation.pages.BasePage;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,7 +65,6 @@ public class BasePage extends TestBaseSetup {
     //############################################### Actions ###############################################
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) throws InterruptedException {
-
         calendar.click();
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
 
@@ -89,7 +87,7 @@ public class BasePage extends TestBaseSetup {
         return this;
     }
 
-    public List<WebElement> getAvailableDatesList () {
+    public List<WebElement> getAvailableDatesList() {
         List<WebElement> results = driver.findElements(By.cssSelector(".ui-datepicker-calendar>tbody>tr>td>a"));
         return  results;
     }
@@ -118,19 +116,4 @@ public class BasePage extends TestBaseSetup {
             return false;
         }
     }
-
-    //TODO: Move to results page object class
-    public boolean noVacancy(){
-        try {
-            By noVacancyMsg = By.xpath("//span[contains(.,'Lo sentimos. No encontramos disponibilidad para tu búsqueda')]");
-            PageUtils.waitElementLocatedforVisibility(driver, noVacancyMsg, 5, "No Vacancy message");
-
-        } catch (TimeoutException timeOut){
-            logger.info("There is vacancy.");
-            return false;
-        }
-        return true;
-    }
-
-
 }
