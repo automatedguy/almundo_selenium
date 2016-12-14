@@ -23,7 +23,7 @@ public class HotelesResultsPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public HotelesDetailPage clickVerHotelButton (int index) {
+    public HotelesDetailPage clickVerHotelBtn(int index) {
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.button-detail", 0);
 
         List<WebElement> verHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary.button--block.button-detail"));

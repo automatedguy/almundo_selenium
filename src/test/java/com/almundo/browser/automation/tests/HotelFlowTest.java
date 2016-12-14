@@ -72,9 +72,9 @@ public class HotelFlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 
-        hotelesDetailPage = hotelesResultsPage.clickVerHotelButton(0);
-        hotelesDetailPage.clickVerHabitacionesButton();
-        paymentPage = hotelesDetailPage.clickReservarAhoraButton();
+        hotelesDetailPage = hotelesResultsPage.clickVerHotelBtn(0);
+        hotelesDetailPage.clickVerHabitacionesBtn();
+        paymentPage = hotelesDetailPage.clickReservarAhoraBtn();
         paymentPage.populatePaymentPage(numPassengers);
 
     }

@@ -78,9 +78,9 @@ public class VueloFlowTest extends TestBaseSetup {
         if (basePage.vuelosDataTrip().nothingFound()) {
           System.out.println("Nothing Found: VUELOS");
         } else {
-            vuelosResultsPage.ticketIdaRdbClick();
-            vuelosResultsPage.ticketVueltaClick();
-            paymentPage = vuelosResultsPage.comprarBtnClick(0);
+            vuelosResultsPage.clickTicketIdaRdb();
+            vuelosResultsPage.clickTicketVuelta();
+            paymentPage = vuelosResultsPage.clickComprarBtn(0);
             paymentPage.populatePaymentPage(numPassengers);
         }
     }

@@ -26,7 +26,7 @@ public class HotelesDetailPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public HotelesDetailPage clickVerHabitacionesButton () throws InterruptedException {
+    public HotelesDetailPage clickVerHabitacionesBtn() throws InterruptedException {
         PageUtils.waitElementLocatedforVisibility(driver, By.cssSelector(".price-total--ctn"), 30, "Price Total Section");
 
         List<WebElement> verHabitacionesButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary"));
@@ -35,7 +35,7 @@ public class HotelesDetailPage extends TestBaseSetup {
         return this;
     }
 
-    public PaymentPage clickReservarAhoraButton () {
+    public PaymentPage clickReservarAhoraBtn() {
         List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary"));
         PageUtils.waitElementClickable(driver, detailHotelButtonResults.get(1), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");

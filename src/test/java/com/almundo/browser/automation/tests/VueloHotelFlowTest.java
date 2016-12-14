@@ -80,10 +80,10 @@ public class VueloHotelFlowTest extends TestBaseSetup {
             System.out.println("Nothing Found: VUELO + HOTEL");
         }
         else {
-            vueloHotelResultsPage.elegirBtnClick(0);
-            vueloHotelDetailPage = vueloHotelResultsPage.continuarBtnClick();
-            vueloHotelDetailPage.verHabitacionBtnClick();
-            paymentPage = vueloHotelDetailPage.comprarBtnClick(0);
+            vueloHotelResultsPage.clickElegirBtn(0);
+            vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
+            vueloHotelDetailPage.clickVerHabitacionBtn();
+            paymentPage = vueloHotelDetailPage.clickComprarBtn(0);
             paymentPage.populatePaymentPage(numPassengers);
         }
     }

@@ -21,7 +21,7 @@ public class VueloHotelDetailPage extends TestBaseSetup {
 
     //############################################### Actions ##############################################
 
-    public VueloHotelDetailPage verHabitacionBtnClick() {
+    public VueloHotelDetailPage clickVerHabitacionBtn() {
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
         PageUtils.waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");
@@ -29,7 +29,7 @@ public class VueloHotelDetailPage extends TestBaseSetup {
         return this;
     }
 
-    public PaymentPage comprarBtnClick(int index) {
+    public PaymentPage clickComprarBtn(int index) {
         String cssSelectorName = ".select-room-button.button.button--md.button--secondary";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         PageUtils.waitElementForClickable(driver,By.cssSelector(cssSelectorName), 30, "Comprar Button");

@@ -26,14 +26,14 @@ public class VueloHotelResultsPage extends TestBaseSetup {
 
     //############################################### Actions ##############################################
 
-    public VueloHotelDetailPage continuarBtnClick() {
+    public VueloHotelDetailPage clickContinuarBtn() {
         PageUtils.waitElementForVisibility(driver,continuarBtn,30, "Continuar Button");
         logger.info("Clicking on Continuar button");
         continuarBtn.click();
         return initVueloHotelDetailPage();
     }
 
-    public VueloHotelResultsPage elegirBtnClick(int index) {
+    public VueloHotelResultsPage clickElegirBtn(int index) {
         String cssSelectorNameElegir = ".button.button--secondary.button--block.button--md";
         PageUtils.waitListContainResults(driver, cssSelectorNameElegir, 0);
         List<WebElement> elegirBtn = driver.findElements(By.cssSelector(cssSelectorNameElegir));
