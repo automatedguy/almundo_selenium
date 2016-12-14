@@ -21,18 +21,20 @@ public class VueloHotelDetailPage extends TestBaseSetup {
 
     //############################################### Actions ##############################################
 
-    public VueloHotelDetailPage clickVerHabitacionBtn() {
+    public VueloHotelDetailPage clickVerHabitacionBtn() throws InterruptedException {
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
         PageUtils.waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");
         verHabitacionBtn.click();
+        //TODO: we can try to make this explicit.
+        Thread.sleep(1000);
         return this;
     }
 
     public PaymentPage clickComprarBtn(int index) {
         String cssSelectorName = ".select-room-button.button.button--md.button--secondary";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
-        PageUtils.waitElementForClickable(driver,By.cssSelector(cssSelectorName), 30, "Comprar Button");
+
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
         logger.info("Clicking on Comprar button index: " + index);
         comprarBtn.get(index).click();
