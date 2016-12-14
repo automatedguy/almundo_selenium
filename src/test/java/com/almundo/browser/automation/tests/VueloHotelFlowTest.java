@@ -7,6 +7,7 @@ import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -76,15 +77,12 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
         vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
 
-        if(basePage.nothingFound()){
-            System.out.println("Nothing Found: VUELO + HOTEL");
-        }
-        else {
-            vueloHotelResultsPage.elegirBtnClick(0);
-            vueloHotelDetailPage = vueloHotelResultsPage.continuarBtnClick();
-            vueloHotelDetailPage.verHabitacionBtnClick();
-            paymentPage = vueloHotelDetailPage.comprarBtnClick(0);
-            paymentPage.populatePaymentPage(numPassengers);
-        }
+        Assert.assertTrue(vueloHotelResultsPage.vacancy());
+
+        vueloHotelResultsPage.clickElegirBtn(0);
+        vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
+        vueloHotelDetailPage.clickVerHabitacionBtn();
+        paymentPage = vueloHotelDetailPage.clickComprarBtn(0);
+        paymentPage.populatePaymentPage(numPassengers);
     }
 }

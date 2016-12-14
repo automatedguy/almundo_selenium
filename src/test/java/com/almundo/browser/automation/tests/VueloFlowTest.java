@@ -6,6 +6,7 @@ import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -75,14 +76,12 @@ public class VueloFlowTest extends TestBaseSetup {
 
         vuelosResultsPage = basePage.vuelosDataTrip().clickBuscarBtn();
 
-        if (basePage.vuelosDataTrip().nothingFound()) {
-          System.out.println("Nothing Found: VUELOS");
-        } else {
-            vuelosResultsPage.ticketIdaRdbClick();
-            vuelosResultsPage.ticketVueltaClick();
-            paymentPage = vuelosResultsPage.comprarBtnClick(0);
-            paymentPage.populatePaymentPage(numPassengers);
-        }
+        Assert.assertTrue(vuelosResultsPage.vacancy());
+
+        vuelosResultsPage.clickTicketIdaRdb();
+        vuelosResultsPage.clickTicketVuelta();
+        paymentPage = vuelosResultsPage.clickComprarBtn(0);
+        paymentPage.populatePaymentPage(numPassengers);
     }
 
 }

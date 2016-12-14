@@ -104,16 +104,4 @@ public class BasePage extends TestBaseSetup {
         }
         return this;
     }
-
-
-    //TODO: Move to results page object class
-    public boolean nothingFound(){
-        if(!driver.findElements(By.linkText("Ver listado de sucursales")).isEmpty()){
-            logger.warn("No Results found - acercate a nuestras sucursales");
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 }

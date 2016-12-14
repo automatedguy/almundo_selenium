@@ -103,6 +103,7 @@ public class VuelosDataTrip extends BasePage{
     }
 
     public VuelosResultsPage clickBuscarBtn() {
+        logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initVuelosResultsPage();
     }
