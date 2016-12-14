@@ -53,9 +53,9 @@ public class VuelosResultsPage extends TestBaseSetup {
         return initPaymentPage();
     }
 
-    public boolean flightsFound(){
+    public boolean vacancy(){
         try {
-            PageUtils.waitForNoFlights(driver, By.cssSelector("div:nth-child(4) > div > div > div.alert__text > p:nth-child(5) > a"), 5, "[" + Constants.LISTADO_DE_SUCURSALES_MSG + "] link");
+            PageUtils.waitForNoVacancy(driver, By.cssSelector("div:nth-child(4) > div > div > div.alert__text > p:nth-child(5) > a"), 5, "[" + Constants.LISTADO_DE_SUCURSALES_LNK + "] link");
         } catch (Exception ex){
             return true;
         }

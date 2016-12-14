@@ -14,7 +14,7 @@ public class Constants extends TestBaseSetup {
 
     public static final String NO_DISPONIBILIDAD_MSG = "Lo sentimos. No encontramos disponibilidad para tu búsqueda\nPor favor intentá una nueva busqueda";
 
-    public static final String LISTADO_DE_SUCURSALES_MSG = "Ver listado de sucursales";
+    public static final String LISTADO_DE_SUCURSALES_LNK = "Ver listado de sucursales";
 
     public static final String VOLVE_A_INTENTARLO_MSG = "No pudimos procesar la consulta. Volvé a intentarlo en unos minutos.";
 

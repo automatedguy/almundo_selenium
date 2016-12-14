@@ -76,7 +76,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
         vuelosResultsPage = basePage.vuelosDataTrip().clickBuscarBtn();
 
-        Assert.assertTrue(vuelosResultsPage.flightsFound());
+        Assert.assertTrue(vuelosResultsPage.vacancy());
 
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
