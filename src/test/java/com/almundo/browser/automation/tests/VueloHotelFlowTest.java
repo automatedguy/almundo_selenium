@@ -1,8 +1,9 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.flows.VueloHotelFlow;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
+import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
@@ -15,7 +16,9 @@ import org.testng.annotations.Test;
 
 public class VueloHotelFlowTest extends TestBaseSetup {
 
-    public VueloHotelFlow vueloHotelFlow = new VueloHotelFlow(driver);
+    VueloHotelResultsPage vueloHotelResultsPage = null;
+    VueloHotelDetailPage vueloHotelDetailPage = null;
+    PaymentPage paymentPage = null;
 
     private JSONObject vueloHotelList = null;
     private JSONObject vueloHotel = null;
@@ -71,15 +74,17 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
         numPassengers = basePage.vueloHotelDataTrip().selectPassenger(adults, childs, rooms);
 
-        basePage.vueloHotelDataTrip().buscarBtn.click();
+        vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
 
         if(basePage.nothingFound()){
             System.out.println("Nothing Found: VUELO + HOTEL");
         }
         else {
-            PaymentPage paymentPage = vueloHotelFlow.doVueloHotelReservationFlow(driver);
+            vueloHotelResultsPage.elegirBtnClick(0);
+            vueloHotelDetailPage = vueloHotelResultsPage.continuarBtnClick();
+            vueloHotelDetailPage.verHabitacionBtnClick();
+            paymentPage = vueloHotelDetailPage.comprarBtnClick(0);
             paymentPage.populatePaymentPage(numPassengers);
         }
     }
-
 }

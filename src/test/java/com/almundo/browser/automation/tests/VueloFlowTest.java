@@ -1,8 +1,8 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.flows.VueloFlow;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
@@ -15,10 +15,11 @@ import org.testng.annotations.Test;
 
 public class VueloFlowTest extends TestBaseSetup {
 
-    public VueloFlow vueloFlow = new VueloFlow(driver);
-
     private JSONObject vuelosList = null;
     private JSONObject vuelo = null;
+
+    VuelosResultsPage vuelosResultsPage = null;
+    PaymentPage paymentPage = null;
 
     private String originAuto;
     private String originFull;
@@ -72,13 +73,15 @@ public class VueloFlowTest extends TestBaseSetup {
 
         basePage.vuelosDataTrip().selectClass(flightClass);
 
-        basePage.vuelosDataTrip().buscarBtn.click();
+        vuelosResultsPage = basePage.vuelosDataTrip().clickBuscarBtn();
 
-        if (basePage.nothingFound()) {
+        if (basePage.vuelosDataTrip().nothingFound()) {
           System.out.println("Nothing Found: VUELOS");
         } else {
-          PaymentPage paymentPage = vueloFlow.doVueloReservationFlow(driver);
-          paymentPage.populatePaymentPage(numPassengers);
+            vuelosResultsPage.ticketIdaRdbClick();
+            vuelosResultsPage.ticketVueltaClick();
+            paymentPage = vuelosResultsPage.comprarBtnClick(0);
+            paymentPage.populatePaymentPage(numPassengers);
         }
     }
 

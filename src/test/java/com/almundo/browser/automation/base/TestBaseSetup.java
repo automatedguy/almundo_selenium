@@ -6,8 +6,9 @@ import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PaymentPage.*;
-import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
-import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
+import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -63,9 +64,9 @@ public class TestBaseSetup {
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country) throws Exception {
+                                        @Optional("ARGENTINA") String country) throws Exception {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -258,10 +259,6 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, VueloHotelDataTrip.class);
     }
 
-    protected PaymentPage initPaymentPage() {
-        return PageFactory.initElements(driver, PaymentPage.class);
-    }
-
     protected PaymentInfoSection initPaymentInfoSection() {
         return PageFactory.initElements(driver, PaymentInfoSection.class);
     }
@@ -282,12 +279,19 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, FooterSection.class);
     }
 
-    protected HotelesResultsPage initHotelesResultsPage() {
-        return PageFactory.initElements(driver, HotelesResultsPage.class);
+    protected VuelosResultsPage initVuelosResultsPage() {
+        return PageFactory.initElements(driver, VuelosResultsPage.class);
     }
 
-    protected HotelesDetailPage initHotelesDetailPage() {
-        return PageFactory.initElements(driver, HotelesDetailPage.class);
+    protected PaymentPage initPaymentPage() {
+        return PageFactory.initElements(driver, PaymentPage.class);
     }
 
+    protected VueloHotelResultsPage initVueloHotelResultsPage() {
+        return PageFactory.initElements(driver, VueloHotelResultsPage.class);
+    }
+
+    protected VueloHotelDetailPage initVueloHotelDetailPage() {
+        return PageFactory.initElements(driver, VueloHotelDetailPage.class);
+    }
 }
