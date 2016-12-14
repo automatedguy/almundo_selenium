@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
+import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -100,6 +101,11 @@ public class VueloHotelDataTrip extends BasePage {
         listoBtn.click();
 
         return adults + childs;
+    }
+
+    public VueloHotelResultsPage clickBuscarBtn() {
+        buscarBtn.click();
+        return initVueloHotelResultsPage();
     }
 
 }
