@@ -23,6 +23,7 @@ public class VueloHotelDetailPage extends TestBaseSetup {
 
     public VueloHotelDetailPage verHabitacionBtnClick() {
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
+        logger.info("Clicking on Ver Habitación button");
         verHabitacionBtn.click();
         return this;
     }
@@ -30,7 +31,9 @@ public class VueloHotelDetailPage extends TestBaseSetup {
     public PaymentPage comprarBtnClick(int index) {
         String cssSelectorName = ".select-room-button.button.button--md.button--secondary";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
+        PageUtils.waitElementForClickable(driver,By.cssSelector(cssSelectorName), 30, "Comprar Button");
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
+        logger.info("Clicking on Comprar button index: " + index);
         comprarBtn.get(index).click();
         return initPaymentPage();
     }

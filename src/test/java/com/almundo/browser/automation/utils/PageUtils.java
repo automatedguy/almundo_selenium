@@ -118,7 +118,7 @@ public class PageUtils {
 
     public static void waitListContainResults(WebDriver driver, String element, int number){
         try {
-            WebDriverWait wait = new WebDriverWait(driver,5);
+            WebDriverWait wait = new WebDriverWait(driver,30);
             wait.withMessage("Incorrect number of results");
             wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(element), number));
         }catch (TimeoutException exception) {

@@ -28,6 +28,7 @@ public class VueloHotelResultsPage extends TestBaseSetup {
 
     public VueloHotelDetailPage continuarBtnClick() {
         PageUtils.waitElementForVisibility(driver,continuarBtn,30, "Continuar Button");
+        logger.info("Clicking on Continuar button");
         continuarBtn.click();
         return initVueloHotelDetailPage();
     }
@@ -36,6 +37,7 @@ public class VueloHotelResultsPage extends TestBaseSetup {
         String cssSelectorNameElegir = ".button.button--secondary.button--block.button--md";
         PageUtils.waitListContainResults(driver, cssSelectorNameElegir, 0);
         List<WebElement> elegirBtn = driver.findElements(By.cssSelector(cssSelectorNameElegir));
+        logger.info("Clicking on Elegir button index: " + index);
         elegirBtn.get(index).click();
         return this;
     }
