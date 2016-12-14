@@ -74,6 +74,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
         hotelesDetailPage = hotelesResultsPage.clickVerHotelButton(0);
         hotelesDetailPage.clickVerHabitacionesButton();
+
         paymentPage = hotelesDetailPage.clickReservarAhoraButton();
         paymentPage.populatePaymentPage(numPassengers);
 

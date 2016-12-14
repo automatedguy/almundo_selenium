@@ -87,7 +87,7 @@ public class PaymentInfoSection extends PaymentPage {
     }
 
     public void selectDocumentType(String documentTypeSelected) {
-        logger.info("Selecting Document Type: [" + documentType + "]");
+        logger.info("Selecting Document Type: [" + documentTypeSelected + "]");
         Select documentTypeSelect = new Select(documentType);
         documentTypeSelect.selectByVisibleText(documentTypeSelected);
     }
