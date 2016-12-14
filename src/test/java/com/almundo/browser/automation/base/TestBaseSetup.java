@@ -62,7 +62,7 @@ public class TestBaseSetup {
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
-                                        @Optional("firefox") String browserType,
+                                        @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) throws Exception {
 

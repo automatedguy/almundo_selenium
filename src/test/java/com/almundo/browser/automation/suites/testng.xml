@@ -7,8 +7,8 @@
 
     <test name="SemaphoresTestsResults">
         <classes>
-            <!--<class name="com.almundo.browser.automation.tests.HotelFlowTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.VueloFlowTest"/>-->
+            <class name="com.almundo.browser.automation.tests.HotelFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.VueloFlowTest"/>
             <class name="com.almundo.browser.automation.tests.VueloHotelFlowTest"/>
         </classes>
     </test>
