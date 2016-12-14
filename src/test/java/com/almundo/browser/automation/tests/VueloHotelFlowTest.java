@@ -7,6 +7,7 @@ import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -75,6 +76,8 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         numPassengers = basePage.vueloHotelDataTrip().selectPassenger(adults, childs, rooms);
 
         vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
+
+        Assert.assertTrue(vueloHotelResultsPage.vacancy());
 
         vueloHotelResultsPage.clickElegirBtn(0);
         vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
