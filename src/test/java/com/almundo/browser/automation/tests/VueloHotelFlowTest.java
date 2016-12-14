@@ -74,8 +74,6 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
         numPassengers = basePage.vueloHotelDataTrip().selectPassenger(adults, childs, rooms);
 
-        basePage.vueloHotelDataTrip().buscarBtn.click();
-
         vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
 
         if(basePage.nothingFound()){
