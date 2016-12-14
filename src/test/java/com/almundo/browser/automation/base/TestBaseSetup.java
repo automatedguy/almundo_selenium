@@ -6,9 +6,7 @@ import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PaymentPage.*;
-import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
-import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
-import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -259,6 +257,14 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, VueloHotelDataTrip.class);
     }
 
+    protected PaymentPage initPaymentPage() {
+        return PageFactory.initElements(driver, PaymentPage.class);
+    }
+
+    protected PassengerInfoSection initPassengerInfoSection() {
+        return PageFactory.initElements(driver, PassengerInfoSection.class);
+    }
+
     protected PaymentInfoSection initPaymentInfoSection() {
         return PageFactory.initElements(driver, PaymentInfoSection.class);
     }
@@ -271,20 +277,20 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, ContactInfoSection.class);
     }
 
-    protected PassengerInfoSection initPassengerInfoSection() {
-        return PageFactory.initElements(driver, PassengerInfoSection.class);
-    }
-
     protected FooterSection initFooterSection() {
         return PageFactory.initElements(driver, FooterSection.class);
     }
 
-    protected VuelosResultsPage initVuelosResultsPage() {
-        return PageFactory.initElements(driver, VuelosResultsPage.class);
+    protected HotelesResultsPage initHotelesResultsPage() {
+        return PageFactory.initElements(driver, HotelesResultsPage.class);
     }
 
-    protected PaymentPage initPaymentPage() {
-        return PageFactory.initElements(driver, PaymentPage.class);
+    protected HotelesDetailPage initHotelesDetailPage() {
+        return PageFactory.initElements(driver, HotelesDetailPage.class);
+    }
+
+    protected VuelosResultsPage initVuelosResultsPage() {
+        return PageFactory.initElements(driver, VuelosResultsPage.class);
     }
 
     protected VueloHotelResultsPage initVueloHotelResultsPage() {
@@ -294,4 +300,5 @@ public class TestBaseSetup {
     protected VueloHotelDetailPage initVueloHotelDetailPage() {
         return PageFactory.initElements(driver, VueloHotelDetailPage.class);
     }
+
 }
