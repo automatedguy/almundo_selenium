@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -50,5 +51,14 @@ public class VuelosResultsPage extends TestBaseSetup {
         logger.info("Clicking on Comprar button");
         comprarBtn.get(index).click();
         return initPaymentPage();
+    }
+
+    public boolean flightsFound(){
+        try {
+            PageUtils.waitForNoVacancy(driver, By.linkText(Constants.LISTADO_DE_SUCURSALES), 5, "[" + Constants.LISTADO_DE_SUCURSALES + "] message");
+        } catch (Exception ex){
+            return true;
+        }
+        return false;
     }
 }
