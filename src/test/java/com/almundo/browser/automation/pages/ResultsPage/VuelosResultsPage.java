@@ -42,9 +42,9 @@ public class VuelosResultsPage extends TestBaseSetup {
     }
 
     public PaymentPage comprarBtnClick(int index) {
-        String cssSelectorNameComprar = ".button.button--lg.button--secondary.button--block.epp-space-bottom-16";
-        PageUtils.waitListContainResults(driver, cssSelectorNameComprar, 0);
-        List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorNameComprar));
+        String cssSelectorName = ".button.button--lg.button--secondary.button--block.epp-space-bottom-16";
+        PageUtils.waitListContainResults(driver, cssSelectorName, 0);
+        List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
         comprarBtn.get(index).click();
         return initPaymentPage();
     }

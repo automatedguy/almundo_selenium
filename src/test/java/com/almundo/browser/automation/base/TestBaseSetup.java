@@ -6,6 +6,8 @@ import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PaymentPage.*;
+import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
+import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
@@ -283,5 +285,13 @@ public class TestBaseSetup {
 
     protected PaymentPage initPaymentPage() {
         return PageFactory.initElements(driver, PaymentPage.class);
+    }
+
+    protected VueloHotelResultsPage initVueloHotelResultsPage() {
+        return PageFactory.initElements(driver, VueloHotelResultsPage.class);
+    }
+
+    protected VueloHotelDetailPage initVueloHotelDetailPage() {
+        return PageFactory.initElements(driver, VueloHotelDetailPage.class);
     }
 }
