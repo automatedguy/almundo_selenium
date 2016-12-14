@@ -23,6 +23,7 @@ public class VueloHotelDetailPage extends TestBaseSetup {
 
     public VueloHotelDetailPage verHabitacionBtnClick() {
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
+        PageUtils.waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");
         verHabitacionBtn.click();
         return this;
