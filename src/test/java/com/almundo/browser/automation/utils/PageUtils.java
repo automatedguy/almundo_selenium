@@ -76,6 +76,17 @@ public class PageUtils {
         logger.error(message + " is displayed");
     }
 
+    public static void waitForNoFlights(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
+        }catch (TimeoutException exception) {
+            throw exception;
+        }
+        logger.error(message + " is displayed");
+    }
+
     public static void waitElementClickable(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);

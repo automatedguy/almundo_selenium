@@ -104,6 +104,7 @@ public class VueloHotelDataTrip extends BasePage {
     }
 
     public VueloHotelResultsPage clickBuscarBtn() {
+        logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initVueloHotelResultsPage();
     }

@@ -55,7 +55,7 @@ public class VuelosResultsPage extends TestBaseSetup {
 
     public boolean flightsFound(){
         try {
-            PageUtils.waitForNoVacancy(driver, By.linkText(Constants.LISTADO_DE_SUCURSALES), 5, "[" + Constants.LISTADO_DE_SUCURSALES + "] message");
+            PageUtils.waitForNoFlights(driver, By.cssSelector("div:nth-child(4) > div > div > div.alert__text > p:nth-child(5) > a"), 5, "[" + Constants.LISTADO_DE_SUCURSALES + "] link");
         } catch (Exception ex){
             return true;
         }

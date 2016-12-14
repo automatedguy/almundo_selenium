@@ -93,6 +93,7 @@ public class HotelesDataTrip extends BasePage {
     }
 
     public HotelesResultsPage clickBuscarBtn() {
+        logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initHotelesResultsPage();
     }
