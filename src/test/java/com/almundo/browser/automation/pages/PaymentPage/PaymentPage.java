@@ -16,6 +16,7 @@ public class PaymentPage extends TestBaseSetup {
 
     public JSONObject paymentPageElements = null;
     public static JSONObject billingsList = null;
+    public static JSONObject contactsList = null;
 
     private void getPaymentPageElements()  {
         paymentPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "PaymentPage", "countries_properties.json");
@@ -26,20 +27,25 @@ public class PaymentPage extends TestBaseSetup {
         return billingsList;
     }
 
+    public static JSONObject getContactsListObject()  {
+        contactsList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
+        return contactsList;
+    }
 
-    public PaymentPage populatePaymentPage(JSONObject billingData, int numPassengers) throws InterruptedException {
+
+    public PaymentPage populatePaymentPage(JSONObject billingData, JSONObject contactData, int numPassengers) throws InterruptedException {
 
         getPaymentPageElements();
         // AQ-41
         populatePassengers(numPassengers);
 
         // AQ-42
-        populatePaymentInfo();
+        populateCreditCardSection();
 
         // AQ-43
         populateBillingSection(billingData);
 
-        populateContactInfo();
+        populateContactSection(contactData);
 
         // AQ-44
         checkConditions();
@@ -82,7 +88,7 @@ public class PaymentPage extends TestBaseSetup {
         ArrayList<Passenger> passengers = createPassenger(numPassengers);
 
         PassengerInfoSection passengerInfoSection = initPassengerInfoSection();
-        logger.info("---------- Filling Passenger Info Section ----------");
+        logger.info("------------- Filling Passenger Section -------------");
 
         for(Passenger passengerToPopulate : passengers){
 
@@ -104,7 +110,7 @@ public class PaymentPage extends TestBaseSetup {
                 passengerInfoSection.setDocumentExpiration(passengerToPopulate.document_expiration);
             }
 
-            passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
+            //passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
 
             //passengerInfoSection.setGender(passengerToPopulate.gender);
 
@@ -113,28 +119,28 @@ public class PaymentPage extends TestBaseSetup {
         return this;
     }
 
-    private PaymentPage populatePaymentInfo(){
+    private PaymentPage populateCreditCardSection(){
 
-        PaymentInfoSection paymentInfoSection = initPaymentInfoSection();
-        logger.info("---------- Filling Payment Info Section ----------");
+        CreditCardSection creditCardSection = initCreditCardSection();
+        logger.info("------------- Filling Credit Card Section -------------");
 
-        paymentInfoSection.selectPaymentQtyOption(0);
-        paymentInfoSection.selectBankOption("American Express");
+        creditCardSection.selectPaymentQtyOption(0);
+        creditCardSection.selectBankOption("American Express");
 
-        paymentInfoSection.setCardHolder("Nombre Apellido");
+        creditCardSection.setCardHolder("Nombre Apellido");
 
-        paymentInfoSection.setCardNumber("4242424242424242");
+        creditCardSection.setCardNumber("4242424242424242");
 
-        paymentInfoSection.setCardExpiration("07/17");
+        creditCardSection.setCardExpiration("07/17");
 
-        paymentInfoSection.setSecurityCode("777");
+        creditCardSection.setSecurityCode("777");
 
         if(isElementRequiered(paymentPageElements, "documentType")) {
-            paymentInfoSection.selectDocumentType("Pasaporte");
+            creditCardSection.selectDocumentType("Pasaporte");
         }
 
         if(isElementRequiered(paymentPageElements, "document_number_card")) {
-            paymentInfoSection.setDocumentNumber("2078709888");
+            creditCardSection.setDocumentNumber("2078709888");
         }
         return this;
     }
@@ -142,59 +148,41 @@ public class PaymentPage extends TestBaseSetup {
     private PaymentPage populateBillingSection(JSONObject billingData) {
         if (isElementRequiered(paymentPageElements, "BillingInfoSection")) {
 
-            BillingInfoSection billingInfoSection = initBillingInfoSection();
-            logger.info("---------- Filling Billing Info Section ----------");
+            BillingSection billingSection = initBillingSection();
+            logger.info("------------- Filling Billing Section -------------");
 
             if (isElementRequiered(paymentPageElements, "fiscal_name")) {
-                billingInfoSection.setBillingFiscalName("Nombre o Razon Social");
+                billingSection.setBillingFiscalName("Nombre o Razon Social");
             }
 
             if (isElementRequiered(paymentPageElements, "billing_fiscal_type")){
-                billingInfoSection.selectBillingFiscalType("Persona juridica");
+                billingSection.selectBillingFiscalType("Persona juridica");
             }
             if (isElementRequiered(paymentPageElements, "billing_document_type")){
-                billingInfoSection.selectBillingDocumentType("Tarjeta de Identidad");
+                billingSection.selectBillingDocumentType("Tarjeta de Identidad");
             }
 
-            //billingInfoSection.setBillingFiscalDocument("20285494568");
-            billingInfoSection.setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
-            billingInfoSection.setBillingAddress(billingData.get("billing_address").toString());
-            billingInfoSection.setAddressNumber(billingData.get("address_number").toString());
-            billingInfoSection.setAddressFloor(billingData.get("address_floor").toString());
-            billingInfoSection.setAddressDepartment(billingData.get("address_department").toString());
-            billingInfoSection.setAddressPostalCode(billingData.get("address_postal_code").toString());
-            billingInfoSection.setAddressState(billingData.get("address_state").toString());
-            billingInfoSection.setAddressCity(billingData.get("address_city").toString());
-
-
-
-//            billingInfoSection.setBillingAddress("Domicilo");
-//            billingInfoSection.setAddressNumber("7550");
-//            billingInfoSection.setAddressFloor("10");
-//            billingInfoSection.setAddressDepartment("A");
-//            billingInfoSection.setAddressPostalCode("1009");
-//            billingInfoSection.setAddressState("Buenos Aires");
-//            billingInfoSection.setAddressCity("CABA");
+            billingSection.setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
+            billingSection.setBillingAddress(billingData.get("billing_address").toString());
+            billingSection.setAddressNumber(billingData.get("address_number").toString());
+            billingSection.setAddressFloor(billingData.get("address_floor").toString());
+            billingSection.setAddressDepartment(billingData.get("address_department").toString());
+            billingSection.setAddressPostalCode(billingData.get("address_postal_code").toString());
+            billingSection.setAddressState(billingData.get("address_state").toString());
+            billingSection.setAddressCity(billingData.get("address_city").toString());
         }
         return this;
     }
 
-    private PaymentPage populateContactInfo() {
-
-        ContactInfoSection contactInfoSection = initContactInfoSection();
-        logger.info("---------- Filling Contact Info Section ----------");
-
-        contactInfoSection.setEmail("testing@almundo.com");
-
-        contactInfoSection.setRepEmail("testing@almundo.com");
-
-        contactInfoSection.selectPhoneType("Teléfono");
-
-        contactInfoSection.setCountryCode("54");
-
-        contactInfoSection.setAreaCode("11");
-
-        contactInfoSection.setPhoneNumber("44448888");
+    private PaymentPage populateContactSection(JSONObject contactData) {
+        ContactSection contactSection = initContactInfoSection();
+        logger.info("------------- Filling Contact Section -------------");
+        contactSection.setEmail(contactData.get("email").toString());
+        contactSection.setRepEmail(contactData.get("rep_email").toString());
+        contactSection.selectPhoneType(contactData.get("tel").toString());
+        contactSection.setCountryCode(contactData.get("country_code").toString());
+        contactSection.setAreaCode(contactData.get("area").toString());
+        contactSection.setPhoneNumber(contactData.get("phone_number").toString());
 
         return this;
     }

@@ -11,9 +11,9 @@ import java.util.List;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class PaymentInfoSection extends PaymentPage {
+public class CreditCardSection extends PaymentPage {
 
-    public PaymentInfoSection(WebDriver driver) {
+    public CreditCardSection(WebDriver driver) {
         super(driver);
     }
 
@@ -36,7 +36,6 @@ public class PaymentInfoSection extends PaymentPage {
 
     @FindBy(id = "document_number")
     private WebElement document_number;
-
 
     //############################################### Actions ###############################################
 

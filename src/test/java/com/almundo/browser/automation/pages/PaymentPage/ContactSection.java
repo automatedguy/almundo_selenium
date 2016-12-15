@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by leandro.efron on 6/12/2016.
  */
-public class ContactInfoSection extends PaymentPage {
+public class ContactSection extends PaymentPage {
 
-    public ContactInfoSection(WebDriver driver) {
+    public ContactSection(WebDriver driver) {
         super(driver);
     }
 

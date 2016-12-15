@@ -265,16 +265,16 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, PassengerInfoSection.class);
     }
 
-    protected PaymentInfoSection initPaymentInfoSection() {
-        return PageFactory.initElements(driver, PaymentInfoSection.class);
+    protected CreditCardSection initCreditCardSection() {
+        return PageFactory.initElements(driver, CreditCardSection.class);
     }
 
-    protected BillingInfoSection initBillingInfoSection() {
-        return PageFactory.initElements(driver, BillingInfoSection.class);
+    protected BillingSection initBillingSection() {
+        return PageFactory.initElements(driver, BillingSection.class);
     }
 
-    protected ContactInfoSection initContactInfoSection() {
-        return PageFactory.initElements(driver, ContactInfoSection.class);
+    protected ContactSection initContactInfoSection() {
+        return PageFactory.initElements(driver, ContactSection.class);
     }
 
     protected FooterSection initFooterSection() {
