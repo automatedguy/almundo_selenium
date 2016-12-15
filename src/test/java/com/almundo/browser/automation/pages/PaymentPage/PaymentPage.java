@@ -49,7 +49,7 @@ public class PaymentPage extends TestBaseSetup {
 
         getPaymentPageElements();
         // AQ-41
-        populatePassengers(numPassengers, passengerList);
+        populatePassengerSection(numPassengers, passengerList);
 
         // AQ-42
         populateCreditCardSection(creditCardData);
@@ -60,7 +60,7 @@ public class PaymentPage extends TestBaseSetup {
         populateContactSection(contactData);
 
         // AQ-44
-        checkConditions();
+        acceptConditions();
 
         return this;
     }
@@ -95,7 +95,7 @@ public class PaymentPage extends TestBaseSetup {
         return isRequiered;
     }
 
-    private PaymentPage populatePassengers(int numPassengers, JSONArray passengerList){
+    private PaymentPage populatePassengerSection(int numPassengers, JSONArray passengerList){
 
         ArrayList<Passenger> passengers = createPassenger(numPassengers);
 
@@ -106,6 +106,8 @@ public class PaymentPage extends TestBaseSetup {
         JSONObject passengerinfo;
 
         for(Passenger passengerToPopulate : passengers){
+
+            logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
 
             passengerinfo = (JSONObject) passengerList.get(passengerIndex);
 
@@ -206,7 +208,7 @@ public class PaymentPage extends TestBaseSetup {
         return this;
     }
 
-    private PaymentPage checkConditions(){
+    private PaymentPage acceptConditions(){
         FooterSection footerSection = initFooterSection();
         logger.info("---------- Checking options Footer Section ----------");
 
