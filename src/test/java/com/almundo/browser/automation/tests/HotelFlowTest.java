@@ -74,7 +74,6 @@ public class HotelFlowTest extends TestBaseSetup {
 
     private void getPassengersDataObject(String dataSet)  {
         passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-        logger.info("passengerData Info:" + passengerData);
         passengerList.add(passengerData);
     }
 
@@ -91,8 +90,6 @@ public class HotelFlowTest extends TestBaseSetup {
         getPassengersDataObject("adult_female_dni_native");
         getPassengersDataObject("child_female_dni_native");
         getPassengersDataObject("child_female_dni_native");
-
-        logger.info("Passenger LIst: " + passengerList);
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
