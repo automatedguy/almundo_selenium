@@ -75,7 +75,7 @@ public class VueloFlowTest extends TestBaseSetup {
         creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
-    private void getPassengersDataObject(String dataSet)  {
+    private void getPassengerDataObject(String dataSet)  {
         passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
         passengerList.add(passengerData);
     }
@@ -89,10 +89,10 @@ public class VueloFlowTest extends TestBaseSetup {
         getContactDataObject("contact_cell_phone");
         getCreditCardDataObject("amex");
 
-        getPassengersDataObject("adult_male_passport_native");
-        getPassengersDataObject("adult_male_passport_native");
-        getPassengersDataObject("child_male_passport_native");
-        getPassengersDataObject("child_male_passport_native");
+        getPassengerDataObject("adult_male_passport_native");
+        getPassengerDataObject("adult_male_passport_native");
+        getPassengerDataObject("child_male_passport_native");
+        getPassengerDataObject("child_male_passport_native");
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();

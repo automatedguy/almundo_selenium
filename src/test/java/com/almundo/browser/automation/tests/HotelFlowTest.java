@@ -72,7 +72,7 @@ public class HotelFlowTest extends TestBaseSetup {
         creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
-    private void getPassengersDataObject(String dataSet)  {
+    private void getPassengerDataObject(String dataSet)  {
         passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
         passengerList.add(passengerData);
     }
@@ -86,10 +86,10 @@ public class HotelFlowTest extends TestBaseSetup {
         getContactDataObject("contact_cell_phone");
         getCreditCardDataObject("amex");
 
-        getPassengersDataObject("adult_female_dni_native");
-        getPassengersDataObject("adult_female_dni_native");
-        getPassengersDataObject("child_female_dni_native");
-        getPassengersDataObject("child_female_dni_native");
+        getPassengerDataObject("adult_female_dni_native");
+        getPassengerDataObject("adult_female_dni_native");
+        getPassengerDataObject("child_female_dni_native");
+        getPassengerDataObject("child_female_dni_native");
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
