@@ -60,22 +60,21 @@ public class HotelFlowTest extends TestBaseSetup {
         rooms = Integer.parseInt(hotelData.get("rooms").toString());
     }
 
-    private void getPassengersDataObject(String dataSet)  {
-        passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-        logger.info("passengerData Info:" + passengerData);
-        passengerList.add(passengerData);
-    }
-
-    private void getCreditCardDataObject(String dataSet)  {
-        creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-    }
-
     private void getBillingDataObject(String dataSet)  {
         billingData = JsonRead.getJsonDataObject(PaymentPage.getBillingListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
     private void getContactDataObject(String dataSet)  {
         contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
+    private void getCreditCardDataObject(String dataSet)  {
+        creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
+    private void getPassengersDataObject(String dataSet)  {
+        passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+        passengerList.add(passengerData);
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -91,8 +90,6 @@ public class HotelFlowTest extends TestBaseSetup {
         getPassengersDataObject("adult_female_dni_native");
         getPassengersDataObject("child_female_dni_native");
         getPassengersDataObject("child_female_dni_native");
-
-        logger.info("Passenger LIst: " + passengerList);
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -112,7 +109,7 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelesDetailPage.clickVerHabitacionesBtn();
 
         paymentPage = hotelesDetailPage.clickReservarAhoraBtn();
-        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList,numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList, numPassengers);
 
     }
 }

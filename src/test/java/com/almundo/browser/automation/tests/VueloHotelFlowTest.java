@@ -6,6 +6,7 @@ import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -23,6 +24,13 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     private JSONObject vueloHotelList = null;
     private JSONObject vueloHotel = null;
+
+    private JSONObject billingData = null;
+    private JSONObject contactData = null;
+    private JSONObject creditCardData = null;
+    private JSONObject passengerData = null;
+
+    private JSONArray passengerList = new JSONArray();
 
     private String originAuto;
     private String originFull;
@@ -58,11 +66,37 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     }
 
+    private void getBillingDataObject(String dataSet)  {
+        billingData = JsonRead.getJsonDataObject(PaymentPage.getBillingListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
+    private void getContactDataObject(String dataSet)  {
+        contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
+    private void getCreditCardDataObject(String dataSet)  {
+        creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
+    private void getPassengersDataObject(String dataSet)  {
+        passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+        passengerList.add(passengerData);
+    }
+
+
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void vueloHotelReservationFirstOptionFlow() throws InterruptedException {
         getVueloHotelDataObject("miami_10days_2adults_2childs_1room");
+        getBillingDataObject("local_Billing");
+        getContactDataObject("contact_cell_phone");
+        getCreditCardDataObject("amex");
+
+        getPassengersDataObject("adult_male_passport_native");
+        getPassengersDataObject("adult_male_passport_native");
+        getPassengersDataObject("child_male_passport_native");
+        getPassengersDataObject("child_male_passport_native");
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
@@ -83,6 +117,6 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
         vueloHotelDetailPage.clickVerHabitacionBtn();
         paymentPage = vueloHotelDetailPage.clickComprarBtn(0);
-        //paymentPage.populatePaymentPage(numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList, numPassengers);
     }
 }
