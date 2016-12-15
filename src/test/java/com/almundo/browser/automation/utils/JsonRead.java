@@ -14,7 +14,6 @@ import java.io.IOException;
  */
 public class JsonRead extends TestBaseSetup {
 
-
     public static JSONObject getJsonFile(String jsonFileName) {
 
         JSONParser parser = new JSONParser();

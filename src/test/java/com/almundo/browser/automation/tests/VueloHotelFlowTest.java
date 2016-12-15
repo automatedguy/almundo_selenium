@@ -17,9 +17,9 @@ import org.testng.annotations.Test;
 
 public class VueloHotelFlowTest extends TestBaseSetup {
 
-    VueloHotelResultsPage vueloHotelResultsPage = null;
-    VueloHotelDetailPage vueloHotelDetailPage = null;
-    PaymentPage paymentPage = null;
+    private VueloHotelResultsPage vueloHotelResultsPage = null;
+    private VueloHotelDetailPage vueloHotelDetailPage = null;
+    private PaymentPage paymentPage = null;
 
     private JSONObject vueloHotelList = null;
     private JSONObject vueloHotel = null;

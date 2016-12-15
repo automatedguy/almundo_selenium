@@ -15,10 +15,6 @@ public class PageUtils {
 
     // TODO: we can probably define generic methods here.
 
-    public static void clickOn(WebDriver driver, By elementToClick){
-        driver.findElement(elementToClick).click();
-    }
-
     public static void assertElementIsPresent(WebDriver driver, By assertedElement, String textToCompare){
         WebElement elementToAssert = driver.findElement(assertedElement);
 
@@ -54,13 +50,35 @@ public class PageUtils {
         }
     }
 
-    public static void waitElementForInvisibility(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
+    public static void waitElementForVisibility(WebDriver driver, By element, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
-            wait.until(ExpectedConditions.invisibilityOfElementWithText(elementToLocate, Constants.NO_DISPONIBILIDAD_MSG));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         }catch (TimeoutException exception) {
-            logger.error(message + " is displayed");
+            logger.error(message + " is not displayed");
+            throw exception;
+        }
+    }
+
+    public static void waitElementForClickable(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        }catch (TimeoutException exception) {
+            logger.error(message + " is not clickable");
+            throw exception;
+        }
+    }
+
+    public static void waitElementForClickable(WebDriver driver, By element, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        }catch (TimeoutException exception) {
+            logger.error(message + " is not clickable");
             throw exception;
         }
     }
@@ -74,41 +92,6 @@ public class PageUtils {
             throw exception;
         }
         logger.error(message + " is displayed");
-    }
-
-    public static void waitElementClickable(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-            wait.withMessage(message);
-            wait.until(ExpectedConditions.elementToBeClickable(element));
-        }catch (TimeoutException exception) {
-            logger.error(message + " is not clickable");
-            throw exception;
-        }
-    }
-
-    public static void waitElementForClickable(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-            wait.withMessage(message);
-            logger.info("Waiting clickable for: [" + elementToLocate.toString() + "]");
-            wait.until(ExpectedConditions.elementToBeClickable(elementToLocate));
-        }catch (TimeoutException exception) {
-            logger.error(message + " is not clickable");
-            throw exception;
-        }
-    }
-
-    public static void waitElementLocatedforVisibility(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-            wait.withMessage(message);
-            logger.info("Waiting visibility for: [" + elementToLocate.toString() + "]");
-            wait.until(ExpectedConditions.visibilityOfElementLocated(elementToLocate));
-        }catch (TimeoutException exception) {
-            logger.error(message + " is not displayed");
-            throw exception;
-        }
     }
 
     public static void waitListContainResults(WebDriver driver, String element, int number){

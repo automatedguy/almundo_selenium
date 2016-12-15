@@ -71,7 +71,7 @@ public class BasePage extends TestBaseSetup {
         List<WebElement> availableDates = getAvailableDatesList();
         int totalAvailableDates = availableDates.size();
 
-        PageUtils.waitElementClickable(driver, availableDates.get(daysAhead-1), 5, "Available dates");
+        PageUtils.waitElementForClickable(driver, availableDates.get(daysAhead-1), 5, "Available dates");
 
         if(totalAvailableDates >= daysAhead){
             logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");

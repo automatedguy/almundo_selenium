@@ -16,11 +16,11 @@ import org.testng.annotations.Test;
 
 public class VueloFlowTest extends TestBaseSetup {
 
+    private VuelosResultsPage vuelosResultsPage = null;
+    private PaymentPage paymentPage = null;
+
     private JSONObject vuelosList = null;
     private JSONObject vuelo = null;
-
-    VuelosResultsPage vuelosResultsPage = null;
-    PaymentPage paymentPage = null;
 
     private String originAuto;
     private String originFull;
