@@ -107,7 +107,7 @@ public class PaymentPage extends TestBaseSetup {
 
         for(Passenger passengerToPopulate : passengers){
 
-            logger.info("************ Filling Passenger [" + passengerIndex+1 + "] ************");
+            logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
 
             passengerinfo = (JSONObject) passengerList.get(passengerIndex);
 

@@ -80,7 +80,7 @@ public class HotelFlowTest extends TestBaseSetup {
         contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
-        /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void hotelReservationFirstOptionFlow() throws InterruptedException {

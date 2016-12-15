@@ -11,6 +11,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.pages.PaymentPage.PaymentPage.getPassengersListObject;
+import static com.almundo.browser.automation.pages.PaymentPage.PaymentPage.passengersList;
+
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -28,7 +31,7 @@ public class VueloFlowTest extends TestBaseSetup {
     private JSONObject creditCardData = null;
     private JSONObject passengerData = null;
 
-    private JSONArray passengerList = new JSONArray();
+    private JSONArray passengerJsonList = new JSONArray();
 
     private String originAuto;
     private String originFull;
@@ -63,21 +66,21 @@ public class VueloFlowTest extends TestBaseSetup {
         flightClass = vuelo.get("flightClass").toString();
     }
 
-    private void getBillingDataObject(String dataSet)  {
-        billingData = JsonRead.getJsonDataObject(PaymentPage.getBillingListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-    }
-
-    private void getContactDataObject(String dataSet)  {
-        contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    private void getPassengerDataObject(String dataSet)  {
+        passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
+        passengerJsonList.add(passengerData);
     }
 
     private void getCreditCardDataObject(String dataSet)  {
         creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
-    private void getPassengersDataObject(String dataSet)  {
-        passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-        passengerList.add(passengerData);
+    private void getBillingDataObject(String dataSet)  {
+        billingData = JsonRead.getJsonDataObject(PaymentPage.getBillingListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
+    private void getContactDataObject(String dataSet)  {
+        contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -89,10 +92,11 @@ public class VueloFlowTest extends TestBaseSetup {
         getContactDataObject("contact_cell_phone");
         getCreditCardDataObject("amex");
 
-        getPassengersDataObject("adult_male_passport_native");
-        getPassengersDataObject("adult_male_passport_native");
-        getPassengersDataObject("child_male_passport_native");
-        getPassengersDataObject("child_male_passport_native");
+        getPassengersListObject();
+        getPassengerDataObject("adult_male_passport_native");
+        getPassengerDataObject("adult_male_passport_native");
+        getPassengerDataObject("child_male_passport_native");
+        getPassengerDataObject("child_male_passport_native");
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -114,7 +118,7 @@ public class VueloFlowTest extends TestBaseSetup {
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
         paymentPage = vuelosResultsPage.clickComprarBtn(0);
-        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList, numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerJsonList, numPassengers);
     }
 
 }
