@@ -25,6 +25,16 @@ public class PaymentPage extends TestBaseSetup {
         paymentPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "PaymentPage", "countries_properties.json");
     }
 
+    public static JSONObject getPassengersListObject()  {
+        passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
+        return passengersList;
+    }
+
+    public static JSONObject getCreditCardListObject()  {
+        creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
+        return creditCardList;
+    }
+
     public static JSONObject getBillingListObject()  {
         billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
         return billingsList;
@@ -33,16 +43,6 @@ public class PaymentPage extends TestBaseSetup {
     public static JSONObject getContactsListObject()  {
         contactsList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
         return contactsList;
-    }
-
-    public static JSONObject getCreditCardListObject()  {
-        creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
-        return creditCardList;
-    }
-
-    public static JSONObject getPassengersListObject()  {
-        passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
-        return passengersList;
     }
 
     public PaymentPage populatePaymentPage(JSONObject billingData, JSONObject contactData, JSONObject creditCardData, JSONArray passengerList, int numPassengers) throws InterruptedException {

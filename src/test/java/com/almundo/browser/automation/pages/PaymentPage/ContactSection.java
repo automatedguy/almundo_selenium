@@ -49,31 +49,31 @@ public class ContactSection extends PaymentPage {
     }
 
     public void setRepEmail(String repEmail) {
-        logger.info("Entering Repeat Email: [" + repEmail + "]");
+        logger.info("Entering Repetí tu email: [" + repEmail + "]");
         repEmailTxt.clear();
         repEmailTxt.sendKeys(repEmail);
     }
 
     public void selectPhoneType(String phoneType) {
-        logger.info("Selecting phone type: [" + phoneType + "]");
+        logger.info("Selecting Teléfono: [" + phoneType + "]");
         Select selectPhoneType = new Select (phoneTypeDdl);
         selectPhoneType.selectByVisibleText(phoneType);
     }
 
     public void setCountryCode(String countryCode) {
-        logger.info("Entering country code: [" + countryCode + "]");
+        logger.info("Entering Código de país: [" + countryCode + "]");
         countryCodeTxt.clear();
         countryCodeTxt.sendKeys(countryCode);
     }
 
     public void setAreaCode(String areaCode) {
-        logger.info("Selecting area code: [" + areaCode + "]");
+        logger.info("Selecting Cód. Area: [" + areaCode + "]");
         areaCodeTxt.clear();
         areaCodeTxt.sendKeys(areaCode);
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        logger.info("Entering phone number: [" + phoneNumber + "]");
+        logger.info("Entering Número: [" + phoneNumber + "]");
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);
     }
