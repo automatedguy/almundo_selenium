@@ -17,6 +17,7 @@ public class PaymentPage extends TestBaseSetup {
     public JSONObject paymentPageElements = null;
     public static JSONObject billingsList = null;
     public static JSONObject contactsList = null;
+    public static JSONObject creditCardList = null;
 
     private void getPaymentPageElements()  {
         paymentPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "PaymentPage", "countries_properties.json");
@@ -32,15 +33,19 @@ public class PaymentPage extends TestBaseSetup {
         return contactsList;
     }
 
+    public static JSONObject getCreditCardListObject()  {
+        creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
+        return creditCardList;
+    }
 
-    public PaymentPage populatePaymentPage(JSONObject billingData, JSONObject contactData, int numPassengers) throws InterruptedException {
+    public PaymentPage populatePaymentPage(JSONObject billingData, JSONObject contactData, JSONObject creditCardData,int numPassengers) throws InterruptedException {
 
         getPaymentPageElements();
         // AQ-41
         populatePassengers(numPassengers);
 
         // AQ-42
-        populateCreditCardSection();
+        populateCreditCardSection(creditCardData);
 
         // AQ-43
         populateBillingSection(billingData);
@@ -119,28 +124,28 @@ public class PaymentPage extends TestBaseSetup {
         return this;
     }
 
-    private PaymentPage populateCreditCardSection(){
+    private PaymentPage populateCreditCardSection(JSONObject creditCardData){
 
         CreditCardSection creditCardSection = initCreditCardSection();
         logger.info("------------- Filling Credit Card Section -------------");
 
         creditCardSection.selectPaymentQtyOption(0);
-        creditCardSection.selectBankOption("American Express");
+        creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
 
-        creditCardSection.setCardHolder("Nombre Apellido");
+        creditCardSection.setCardHolder(creditCardData.get("card_holder").toString());
 
-        creditCardSection.setCardNumber("4242424242424242");
+        creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
-        creditCardSection.setCardExpiration("07/17");
+        creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
 
-        creditCardSection.setSecurityCode("777");
+        creditCardSection.setSecurityCode(creditCardData.get("security_code").toString());
 
         if(isElementRequiered(paymentPageElements, "documentType")) {
-            creditCardSection.selectDocumentType("Pasaporte");
+            creditCardSection.selectDocumentType(creditCardData.get("documentType").toString());
         }
 
         if(isElementRequiered(paymentPageElements, "document_number_card")) {
-            creditCardSection.setDocumentNumber("2078709888");
+            creditCardSection.setDocumentNumber(creditCardData.get("document_number").toString());
         }
         return this;
     }

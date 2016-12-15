@@ -26,6 +26,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     private JSONObject billingData = null;
     private JSONObject contactData = null;
+    private JSONObject creditCardData = null;
 
     private String destinationAuto;
     private String destinationFull;
@@ -61,6 +62,12 @@ public class HotelFlowTest extends TestBaseSetup {
 
     private void getContactDataObject(String dataSet)  {
         contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+        logger.info("contactData Info:" + contactData);
+    }
+
+    private void getCreditCardDataObject(String dataSet)  {
+        creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+        logger.info("Credit Card Info:" + creditCardData);
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -70,6 +77,7 @@ public class HotelFlowTest extends TestBaseSetup {
         getHotelDataObject("miami_10days_2adults_2childs_1room");
         getBillingDataObject("local_Billing");
         getContactDataObject("contact_cell_phone");
+        getCreditCardDataObject("amex");
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -89,7 +97,7 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelesDetailPage.clickVerHabitacionesBtn();
 
         paymentPage = hotelesDetailPage.clickReservarAhoraBtn();
-        paymentPage.populatePaymentPage(billingData, contactData, numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, numPassengers);
 
     }
 }

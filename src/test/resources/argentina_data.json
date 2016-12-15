@@ -130,12 +130,15 @@
 	},
 
 	"creditcard":{
-		"card_holder":"Dueño Dí L'Tarjüeta",
-		"card_number": "4242424242424242",
-		"card_expire": "12/18",
-		"security_code": "1234",
-		"documentType": "DNI",
-		"document_number": "29098766"
+		"amex": {
+			"credit_card_name" : "American Express",
+			"card_holder": "Dueño Dí L'Tarjüeta",
+			"card_number": "4242424242424242",
+			"card_expire": "12/18",
+			"security_code": "1234",
+			"documentType": "DNI",
+			"document_number": "29098766"
+		}
 	},
 
 	"billings": {
