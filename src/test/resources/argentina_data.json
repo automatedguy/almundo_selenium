@@ -49,5 +49,83 @@
 				"childs": 2,
 				"rooms": 1
 			}
+	},
+
+	"pasajeros":{
+
+		"adults":{
+			"adult_male_passport_argentine": {
+				"first_name": "José Ñoqui",
+				"last_name": "O'Higgins Lingüístico",
+				"documentType": "Pasaporte",
+				"document_number": "29098765N",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/1979",
+				"gender": "Masculino",
+				"nationality": "Argentina"
+			},
+			"adult_female_dni_argentine": {
+				"first_name": "Naña Çraña",
+				"last_name": "Pingüino L'Oréal",
+				"documentType": "DNI",
+				"document_number": "29098766",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/1979",
+				"gender": "Femenino",
+				"nationality": "Argentina"
+			}
+		},
+
+		"children":{
+			"child_male_passport_argentine": {
+				"first_name": "Timmy",
+				"last_name": "O' Tool",
+				"documentType": "Pasaporte",
+				"document_number": "290987567N",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/2010",
+				"gender": "Masculino",
+				"nationality": "Argentina"
+			},
+			"child_female_dni_argentine": {
+				"first_name": "Ñímis",
+				"last_name": "O' Tool",
+				"documentType": "DNI",
+				"document_number": "29098757",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/2010",
+				"gender": "Femenino",
+				"nationality": "Argentina"
+			}
+		},
+
+		"babies":{
+			"baby_male_passport_argentine": {
+				"first_name": "Rosemary's",
+				"last_name": "Baby",
+				"documentType": "Pasaporte",
+				"document_number": "27999666N",
+				"document_emisor": "",
+				"document_expiration": "",
+				"birthday": "09/09/2015",
+				"gender": "Masculino",
+				"nationality": ""
+			},
+			"baby_female_passport_argentine": {
+				"first_name": "Rosemary",
+				"last_name": "Bowie",
+				"documentType": "DNI",
+				"document_number": "27999666",
+				"document_emisor": "Argentina",
+				"document_expiration": "",
+				"birthday": "09/09/2015",
+				"gender": "Femenino",
+				"nationality": "Argentina"
+			}
+		}
 	}
 }
