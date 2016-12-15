@@ -20,7 +20,8 @@ public class PaymentPage extends TestBaseSetup {
         paymentPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "PaymentPage", "countries_properties.json");
     }
 
-    public PaymentPage populatePaymentPage(int numPassengers) throws InterruptedException {
+
+    public PaymentPage populatePaymentPage(JSONObject billingData, int numPassengers) throws InterruptedException {
 
         getPaymentPageElements();
         // AQ-41
@@ -30,7 +31,7 @@ public class PaymentPage extends TestBaseSetup {
         populatePaymentInfo();
 
         // AQ-43
-        populateBillingInfo();
+        populateBillingSection(billingData);
 
         populateContactInfo();
 
@@ -83,7 +84,7 @@ public class PaymentPage extends TestBaseSetup {
 
             passengerInfoSection.setlastName(passengerToPopulate.lastName);
 
-            passengerInfoSection.setDocumentType(passengerToPopulate.documentType, "Pasaporte");
+            //passengerInfoSection.setDocumentType(passengerToPopulate.documentType, "Pasaporte");
 
             if(isElementRequiered(paymentPageElements, "document_number")){
                 passengerInfoSection.setDocumentNumber(passengerToPopulate.documentNumber);
@@ -97,9 +98,9 @@ public class PaymentPage extends TestBaseSetup {
                 passengerInfoSection.setDocumentExpiration(passengerToPopulate.document_expiration);
             }
 
-            passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
+            //passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
 
-            passengerInfoSection.setGender(passengerToPopulate.gender);
+            //passengerInfoSection.setGender(passengerToPopulate.gender);
 
             passengerInfoSection.setNationality(passengerToPopulate.nationality);
         }
@@ -132,7 +133,7 @@ public class PaymentPage extends TestBaseSetup {
         return this;
     }
 
-    private PaymentPage populateBillingInfo() {
+    private PaymentPage populateBillingSection(JSONObject billingData) {
         if (isElementRequiered(paymentPageElements, "BillingInfoSection")) {
 
             BillingInfoSection billingInfoSection = initBillingInfoSection();
@@ -149,14 +150,25 @@ public class PaymentPage extends TestBaseSetup {
                 billingInfoSection.selectBillingDocumentType("Tarjeta de Identidad");
             }
 
-            billingInfoSection.setBillingFiscalDocument("20285494568");
-            billingInfoSection.setBillingAddress("Domicilo");
-            billingInfoSection.setAddressNumber("7550");
-            billingInfoSection.setAddressFloor("10");
-            billingInfoSection.setAddressDepartment("A");
-            billingInfoSection.setAddressPostalCode("1009");
-            billingInfoSection.setAddressState("Buenos Aires");
-            billingInfoSection.setAddressCity("CABA");
+            //billingInfoSection.setBillingFiscalDocument("20285494568");
+            billingInfoSection.setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
+            billingInfoSection.setBillingAddress(billingData.get("billing_address").toString());
+            billingInfoSection.setAddressNumber(billingData.get("address_number").toString());
+            billingInfoSection.setAddressFloor(billingData.get("address_floor").toString());
+            billingInfoSection.setAddressDepartment(billingData.get("address_department").toString());
+            billingInfoSection.setAddressPostalCode(billingData.get("address_postal_code").toString());
+            billingInfoSection.setAddressState(billingData.get("address_state").toString());
+            billingInfoSection.setAddressCity(billingData.get("address_city").toString());
+
+
+
+//            billingInfoSection.setBillingAddress("Domicilo");
+//            billingInfoSection.setAddressNumber("7550");
+//            billingInfoSection.setAddressFloor("10");
+//            billingInfoSection.setAddressDepartment("A");
+//            billingInfoSection.setAddressPostalCode("1009");
+//            billingInfoSection.setAddressState("Buenos Aires");
+//            billingInfoSection.setAddressCity("CABA");
         }
         return this;
     }

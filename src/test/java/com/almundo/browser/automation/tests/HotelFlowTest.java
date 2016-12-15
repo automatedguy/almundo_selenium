@@ -22,7 +22,10 @@ public class HotelFlowTest extends TestBaseSetup {
     private PaymentPage paymentPage = null;
 
     private JSONObject hotelesList = null;
-    private JSONObject hotel = null;
+    private JSONObject hotelData = null;
+
+    private JSONObject billingList = null;
+    private JSONObject billingData = null;
 
     private String destinationAuto;
     private String destinationFull;
@@ -35,21 +38,26 @@ public class HotelFlowTest extends TestBaseSetup {
     @BeforeClass
     private void getHotelesListDataObject() {
         hotelesList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
+        billingList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
     }
 
-    private void getHotelDataObject(String combination) {
-        hotel = JsonRead.getJsonDataObject(hotelesList, combination, countryPar.toLowerCase() + "_data.json");
+    private void getHotelDataObject(String dataSet) {
+        hotelData = JsonRead.getJsonDataObject(hotelesList, dataSet, countryPar.toLowerCase() + "_data.json");
 
-        destinationAuto = hotel.get("destinationAuto").toString();
-        destinationFull = hotel.get("destinationFull").toString();
+        destinationAuto = hotelData.get("destinationAuto").toString();
+        destinationFull = hotelData.get("destinationFull").toString();
 
-        startDate = Integer.parseInt(hotel.get("startDate").toString());
-        endDate = Integer.parseInt(hotel.get("endDate").toString());
+        startDate = Integer.parseInt(hotelData.get("startDate").toString());
+        endDate = Integer.parseInt(hotelData.get("endDate").toString());
 
-        adults = Integer.parseInt(hotel.get("adults").toString());
-        childs = Integer.parseInt(hotel.get("childs").toString());
+        adults = Integer.parseInt(hotelData.get("adults").toString());
+        childs = Integer.parseInt(hotelData.get("childs").toString());
 
-        rooms = Integer.parseInt(hotel.get("rooms").toString());
+        rooms = Integer.parseInt(hotelData.get("rooms").toString());
+    }
+
+    private void getBillingDataObject(String dataSet)  {
+        billingData = JsonRead.getJsonDataObject(billingList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -57,6 +65,7 @@ public class HotelFlowTest extends TestBaseSetup {
     @Test
     public void hotelReservationFirstOptionFlow() throws InterruptedException {
         getHotelDataObject("miami_10days_2adults_2childs_1room");
+        getBillingDataObject("local_Billing");
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -76,7 +85,7 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelesDetailPage.clickVerHabitacionesBtn();
 
         paymentPage = hotelesDetailPage.clickReservarAhoraBtn();
-        paymentPage.populatePaymentPage(numPassengers);
+        paymentPage.populatePaymentPage(billingData, numPassengers);
 
     }
 }

@@ -83,6 +83,6 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
         vueloHotelDetailPage.clickVerHabitacionBtn();
         paymentPage = vueloHotelDetailPage.clickComprarBtn(0);
-        paymentPage.populatePaymentPage(numPassengers);
+        //paymentPage.populatePaymentPage(numPassengers);
     }
 }

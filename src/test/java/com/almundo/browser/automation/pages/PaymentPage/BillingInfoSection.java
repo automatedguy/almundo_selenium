@@ -68,8 +68,8 @@ public class BillingInfoSection extends PaymentPage {
 
     public BillingInfoSection setBillingFiscalDocument(String cuil) {
         logger.info("Entering CUIL/CUIT: [" + cuil + "]");
-        billing_fiscal_document.clear();
-        billing_fiscal_document.sendKeys(cuil);
+        this.billing_fiscal_document.clear();
+        this.billing_fiscal_document.sendKeys(cuil);
         return this;
     }
 

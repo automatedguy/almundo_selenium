@@ -81,7 +81,7 @@ public class VueloFlowTest extends TestBaseSetup {
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
         paymentPage = vuelosResultsPage.clickComprarBtn(0);
-        paymentPage.populatePaymentPage(numPassengers);
+        //paymentPage.populatePaymentPage(numPassengers);
     }
 
 }

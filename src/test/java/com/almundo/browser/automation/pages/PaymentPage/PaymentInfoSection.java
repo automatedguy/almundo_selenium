@@ -63,37 +63,37 @@ public class PaymentInfoSection extends PaymentPage {
     }
 
     public void setCardHolder(String cardHolder) {
-        logger.info("Entering Card Holder: [" + cardHolder + "]");
+        logger.info("Entering Titular de la tarjeta: [" + cardHolder + "]");
         card_holder.clear();
         card_holder.sendKeys(cardHolder);
     }
 
     public void setCardNumber(String cardNumber) {
-        logger.info("Entering Card Number: [" + cardNumber + "]");
+        logger.info("Entering Número de tu tarjeta: [" + cardNumber + "]");
         card_number.clear();
         card_number.sendKeys(cardNumber);
     }
 
     public void setCardExpiration(String expDate) {
-        logger.info("Entering Card Expiration: [" + expDate + "]");
+        logger.info("Entering Fecha de vencimiento: [" + expDate + "]");
         card_expire.clear();
         card_expire.sendKeys(expDate);
     }
 
     public void setSecurityCode(String code) {
-        logger.info("Entering Security Code: [" + code + "]");
+        logger.info("Entering Código de Seguridad: [" + code + "]");
         security_code.clear();
         security_code.sendKeys(code);
     }
 
     public void selectDocumentType(String documentTypeSelected) {
-        logger.info("Selecting Document Type: [" + documentTypeSelected + "]");
+        logger.info("Selecting Tipo de Documento: [" + documentTypeSelected + "]");
         Select documentTypeSelect = new Select(documentType);
         documentTypeSelect.selectByVisibleText(documentTypeSelected);
     }
 
     public void setDocumentNumber(String documentNumber) {
-        logger.info("Entering Document Number: [" + documentNumber + "]");
+        logger.info("Entering Número de Documento: [" + documentNumber + "]");
         document_number.clear();
         document_number.sendKeys(documentNumber);
     }

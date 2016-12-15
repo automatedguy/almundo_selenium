@@ -49,5 +49,47 @@
 				"childs": 2,
 				"rooms": 1
 			}
+	},
+
+	"billings": {
+		"local_Billing": {
+			"billing_fiscal_document": "23281685589",
+			"billing_address": "Carlos Pellegrini",
+			"address_number": 887,
+			"address_floor": 8,
+			"address_department": "A",
+			"address_postal_code": "C1009ABQ",
+			"address_state": "Buenos Aires",
+			"address_city": "C.A.B.A."
+		}
+	},
+
+	"contacts": {
+		"contact_cell_phone": {
+			"email": "mock.of.arm@almundo.com",
+			"rep_email": "mock.of.arm@almundo.com",
+			"tel": "Celular",
+			"country_code": 54,
+			"area": "911",
+			"phone_number": "11112222"
+		},
+
+		"contact_phone": {
+			"email": "mock.of.arm@almundo.com",
+			"rep_email": "mock.of.arm@almundo.com",
+			"tel": "Teléfono",
+			"country_code": 54,
+			"area": "011",
+			"phone_number": "11112222"
+		},
+
+		"contact_fax": {
+			"email": "mock.of.arm@almundo.com",
+			"rep_email": "mock.of.arm@almundo.com",
+			"tel": "Fax",
+			"country_code": 54,
+			"area": "011",
+			"phone_number": "11112222"
+		}
 	}
 }

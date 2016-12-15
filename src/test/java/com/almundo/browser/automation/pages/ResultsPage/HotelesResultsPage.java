@@ -27,6 +27,7 @@ public class HotelesResultsPage extends TestBaseSetup {
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.button-detail", 0);
 
         List<WebElement> verHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary.button--block.button-detail"));
+        logger.info("Clicking on Ver Hotel button");
         verHotelButtonResults.get(index).click();
 
         return initHotelesDetailPage();
