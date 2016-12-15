@@ -16,70 +16,62 @@ public class PassengerInfoSection extends PaymentPage {
 
     //############################################### Actions ###############################################
 
-    public PassengerInfoSection setFirstName(String firstName){
+    public PassengerInfoSection setFirstName(String firstName, String firstNamePassenger){
         PageUtils.waitElementForVisibility(driver, By.id(firstName), 45, "First Name text box");
         WebElement elementToPopulate = driver.findElement(By.id(firstName));
-        elementToPopulate.sendKeys("Nombre");
+        elementToPopulate.sendKeys(firstNamePassenger);
         return this;
     }
 
-    public PassengerInfoSection setlastName(String lastName){
+    public PassengerInfoSection setlastName(String lastName, String lastNamePassenger){
         WebElement elementToPopulate = driver.findElement(By.id(lastName));
-        elementToPopulate.sendKeys("Apellido");
+        elementToPopulate.sendKeys(lastNamePassenger);
         return this;
     }
 
-    public PassengerInfoSection setDocumentType(String documentTypeElement, String documentType){
-        WebElement elementToPopulate = driver.findElement(By.id(documentTypeElement));
+    public PassengerInfoSection setDocumentType(String documentType, String documentTypePassenger){
+        WebElement elementToPopulate = driver.findElement(By.id(documentType));
         Select tipoDeDocumento = new Select(elementToPopulate);
-        tipoDeDocumento.selectByVisibleText(documentType);
+        tipoDeDocumento.selectByVisibleText(documentTypePassenger);
         return this;
     }
 
-    public PassengerInfoSection setDocumentNumber(String documentNumber){
+    public PassengerInfoSection setDocumentNumber(String documentNumber, String documentNumberPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(documentNumber));
-        elementToPopulate.sendKeys("123456789");
+        elementToPopulate.sendKeys(documentNumberPassenger);
         return this;
     }
 
-    public PassengerInfoSection setDocumentEmisor(String documentEmisor){
+    public PassengerInfoSection setDocumentEmisor(String documentEmisor, String documentEmisorPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(documentEmisor));
         Select paisEmisorDelPasaporte = new Select(elementToPopulate);
-        paisEmisorDelPasaporte.selectByVisibleText("Argentina");
+        paisEmisorDelPasaporte.selectByVisibleText(documentEmisorPassenger);
         return this;
     }
 
-    public PassengerInfoSection setDocumentExpiration(String documentExpiration){
+    public PassengerInfoSection setDocumentExpiration(String documentExpiration, String documentExpirationPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(documentExpiration));
-        elementToPopulate.sendKeys("25/12/2017");
+        elementToPopulate.sendKeys(documentExpirationPassenger);
         return this;
     }
 
-    public PassengerInfoSection setBirthDay(String birthday, String numeroPasajero){
-        String typePassenger;
+    public PassengerInfoSection setBirthDay(String birthday, String birthdayPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(birthday));
-        typePassenger = driver.findElement(By.cssSelector(".passenger-ctn:nth-of-type(" + numeroPasajero + ")>.passenger__info__detail>div:nth-of-type(1)>h3>span:nth-of-type(2)")).getText();
-        if (typePassenger.equals("Adulto")){
-            elementToPopulate.sendKeys("09/09/1979");
-        } else if (typePassenger.equals("Niño")){
-            elementToPopulate.sendKeys("09/09/2010");
-        } else {
-            elementToPopulate.sendKeys("09/09/2015");
-        }
+        elementToPopulate.sendKeys(birthdayPassenger);
         return this;
     }
 
-    public PassengerInfoSection setGender(String gender){
+    public PassengerInfoSection setGender(String gender, String genderPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(gender));
         Select sexo = new Select(elementToPopulate);
-        sexo.selectByVisibleText("Femenino");
+        sexo.selectByVisibleText(genderPassenger);
         return this;
     }
 
-    public PassengerInfoSection setNationality(String nationality){
+    public PassengerInfoSection setNationality(String nationality, String nationalityPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(nationality));
         Select nacionalidad = new Select(elementToPopulate);
-        nacionalidad.selectByVisibleText("Argentina");
+        nacionalidad.selectByVisibleText(nationalityPassenger);
         return this;
     }
 }

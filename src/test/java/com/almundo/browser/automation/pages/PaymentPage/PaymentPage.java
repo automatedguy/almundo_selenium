@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.PaymentPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.JsonRead;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,7 @@ public class PaymentPage extends TestBaseSetup {
     public static JSONObject billingsList = null;
     public static JSONObject contactsList = null;
     public static JSONObject creditCardList = null;
+    public static JSONObject passengersList = null;
 
     private void getPaymentPageElements()  {
         paymentPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "PaymentPage", "countries_properties.json");
@@ -38,11 +40,16 @@ public class PaymentPage extends TestBaseSetup {
         return creditCardList;
     }
 
-    public PaymentPage populatePaymentPage(JSONObject billingData, JSONObject contactData, JSONObject creditCardData,int numPassengers) throws InterruptedException {
+    public static JSONObject getPassengersListObject()  {
+        passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
+        return passengersList;
+    }
+
+    public PaymentPage populatePaymentPage(JSONObject billingData, JSONObject contactData, JSONObject creditCardData, JSONArray passengerList, int numPassengers) throws InterruptedException {
 
         getPaymentPageElements();
         // AQ-41
-        populatePassengers(numPassengers);
+        populatePassengers(numPassengers, passengerList);
 
         // AQ-42
         populateCreditCardSection(creditCardData);
@@ -88,38 +95,45 @@ public class PaymentPage extends TestBaseSetup {
         return isRequiered;
     }
 
-    private PaymentPage populatePassengers(int numPassengers){
+    private PaymentPage populatePassengers(int numPassengers, JSONArray passengerList){
 
         ArrayList<Passenger> passengers = createPassenger(numPassengers);
 
         PassengerInfoSection passengerInfoSection = initPassengerInfoSection();
         logger.info("------------- Filling Passenger Section -------------");
 
+        int passengerIndex = 0;
+        JSONObject passengerinfo;
+
         for(Passenger passengerToPopulate : passengers){
 
-            passengerInfoSection.setFirstName(passengerToPopulate.firstName);
+            passengerinfo = (JSONObject) passengerList.get(passengerIndex);
 
-            passengerInfoSection.setlastName(passengerToPopulate.lastName);
+            passengerInfoSection.setFirstName(passengerToPopulate.firstName, passengerinfo.get("first_name").toString());
 
-            //passengerInfoSection.setDocumentType(passengerToPopulate.documentType, "Pasaporte");
+            passengerInfoSection.setlastName(passengerToPopulate.lastName, passengerinfo.get("last_name").toString());
+
+            passengerInfoSection.setDocumentType(passengerToPopulate.documentType, passengerinfo.get("documentType").toString());
 
             if(isElementRequiered(paymentPageElements, "document_number")){
-                passengerInfoSection.setDocumentNumber(passengerToPopulate.documentNumber);
+                passengerInfoSection.setDocumentNumber(passengerToPopulate.documentNumber, passengerinfo.get("document_number").toString());
             }
 
             if(isElementRequiered(paymentPageElements, "document_emisor")) {
-                passengerInfoSection.setDocumentEmisor(passengerToPopulate.document_emisor);
+                passengerInfoSection.setDocumentEmisor(passengerToPopulate.document_emisor, passengerinfo.get("document_emisor").toString());
             }
 
             if(isElementRequiered(paymentPageElements, "document_expiration")) {
-                passengerInfoSection.setDocumentExpiration(passengerToPopulate.document_expiration);
+                passengerInfoSection.setDocumentExpiration(passengerToPopulate.document_expiration, passengerinfo.get("document_expiration").toString());
             }
 
-            //passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
+            //passengerInfoSection.setBirthDay(passengerToPopulate.birthday, passengerinfo.get("birthday").toString());
 
-            //passengerInfoSection.setGender(passengerToPopulate.gender);
+            //passengerInfoSection.setGender(passengerToPopulate.gender, passengerinfo.get("gender").toString());
 
-            passengerInfoSection.setNationality(passengerToPopulate.nationality);
+            passengerInfoSection.setNationality(passengerToPopulate.nationality, passengerinfo.get("nationality").toString());
+
+            passengerIndex = passengerIndex + 1;
         }
         return this;
     }

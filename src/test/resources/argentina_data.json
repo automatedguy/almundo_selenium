@@ -52,8 +52,6 @@
 	},
 
 	"passengers":{
-
-		"adults":{
 			"adult_male_passport_native": {
 				"first_name": "José Ñoqui",
 				"last_name": "O'Higgins Lingüístico",
@@ -65,6 +63,7 @@
 				"gender": "Masculino",
 				"nationality": "Argentina"
 			},
+
 			"adult_female_dni_native": {
 				"first_name": "Naña Çraña",
 				"last_name": "Pingüino L'Oréal",
@@ -75,10 +74,8 @@
 				"birthday": "09/09/1979",
 				"gender": "Femenino",
 				"nationality": "Argentina"
-			}
-		},
+			},
 
-		"children":{
 			"child_male_passport_native": {
 				"first_name": "Timmy",
 				"last_name": "O' Tool",
@@ -100,10 +97,8 @@
 				"birthday": "09/09/2010",
 				"gender": "Femenino",
 				"nationality": "Argentina"
-			}
-		},
+			},
 
-		"babies":{
 			"baby_male_passport_native": {
 				"first_name": "Rosemary's",
 				"last_name": "Baby",
@@ -126,7 +121,6 @@
 				"gender": "Femenino",
 				"nationality": "Argentina"
 			}
-		}
 	},
 
 	"creditcard":{

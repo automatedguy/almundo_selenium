@@ -6,6 +6,7 @@ import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -27,6 +28,9 @@ public class HotelFlowTest extends TestBaseSetup {
     private JSONObject billingData = null;
     private JSONObject contactData = null;
     private JSONObject creditCardData = null;
+    private JSONObject passengerData = null;
+
+    private JSONArray passengerList = new JSONArray();
 
     private String destinationAuto;
     private String destinationFull;
@@ -62,12 +66,16 @@ public class HotelFlowTest extends TestBaseSetup {
 
     private void getContactDataObject(String dataSet)  {
         contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-        logger.info("contactData Info:" + contactData);
     }
 
     private void getCreditCardDataObject(String dataSet)  {
         creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-        logger.info("Credit Card Info:" + creditCardData);
+    }
+
+    private void getPassengersDataObject(String dataSet)  {
+        passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+        logger.info("passengerData Info:" + passengerData);
+        passengerList.add(passengerData);
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -78,6 +86,13 @@ public class HotelFlowTest extends TestBaseSetup {
         getBillingDataObject("local_Billing");
         getContactDataObject("contact_cell_phone");
         getCreditCardDataObject("amex");
+
+        getPassengersDataObject("adult_female_dni_native");
+        getPassengersDataObject("adult_female_dni_native");
+        getPassengersDataObject("child_female_dni_native");
+        getPassengersDataObject("child_female_dni_native");
+
+        logger.info("Passenger LIst: " + passengerList);
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -97,7 +112,7 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelesDetailPage.clickVerHabitacionesBtn();
 
         paymentPage = hotelesDetailPage.clickReservarAhoraBtn();
-        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList,numPassengers);
 
     }
 }
