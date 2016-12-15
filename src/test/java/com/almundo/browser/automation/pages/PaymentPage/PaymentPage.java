@@ -15,9 +15,15 @@ public class PaymentPage extends TestBaseSetup {
     public PaymentPage(WebDriver driver) { super.driver = driver; }
 
     public JSONObject paymentPageElements = null;
+    public static JSONObject billingsList = null;
 
     private void getPaymentPageElements()  {
         paymentPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "PaymentPage", "countries_properties.json");
+    }
+
+    public static JSONObject getBillingListObject()  {
+        billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
+        return billingsList;
     }
 
 
@@ -98,7 +104,7 @@ public class PaymentPage extends TestBaseSetup {
                 passengerInfoSection.setDocumentExpiration(passengerToPopulate.document_expiration);
             }
 
-            //passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
+            passengerInfoSection.setBirthDay(passengerToPopulate.birthday, String.valueOf(numPassengers));
 
             //passengerInfoSection.setGender(passengerToPopulate.gender);
 

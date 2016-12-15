@@ -24,10 +24,6 @@ public class HotelFlowTest extends TestBaseSetup {
     private JSONObject hotelesList = null;
     private JSONObject hotelData = null;
 
-    private JSONObject billingsList = null;
-    private JSONObject billingData = null;
-
-    private JSONObject billingsList = null;
     private JSONObject billingData = null;
 
     private String destinationAuto;
@@ -41,7 +37,6 @@ public class HotelFlowTest extends TestBaseSetup {
     @BeforeClass
     private void getHotelesListDataObject() {
         hotelesList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
-        billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
     }
 
     private void getHotelDataObject(String dataSet) {
@@ -60,7 +55,7 @@ public class HotelFlowTest extends TestBaseSetup {
     }
 
     private void getBillingDataObject(String dataSet)  {
-        billingData = JsonRead.getJsonDataObject(billingsList, dataSet, countryPar.toLowerCase() + "_data.json");
+        billingData = JsonRead.getJsonDataObject(PaymentPage.getBillingListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -69,7 +64,6 @@ public class HotelFlowTest extends TestBaseSetup {
     public void hotelReservationFirstOptionFlow() throws InterruptedException {
         getHotelDataObject("miami_10days_2adults_2childs_1room");
         getBillingDataObject("local_Billing");
-
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
