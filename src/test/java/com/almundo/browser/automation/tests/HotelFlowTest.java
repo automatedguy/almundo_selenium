@@ -12,6 +12,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.pages.PaymentPage.PaymentPage.getPassengersListObject;
+import static com.almundo.browser.automation.pages.PaymentPage.PaymentPage.passengersList;
+
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -30,7 +33,7 @@ public class HotelFlowTest extends TestBaseSetup {
     private JSONObject creditCardData = null;
     private JSONObject passengerData = null;
 
-    private JSONArray passengerList = new JSONArray();
+    private JSONArray passengerJsonList = new JSONArray();
 
     private String destinationAuto;
     private String destinationFull;
@@ -60,6 +63,15 @@ public class HotelFlowTest extends TestBaseSetup {
         rooms = Integer.parseInt(hotelData.get("rooms").toString());
     }
 
+    private void getPassengersDataObject(String dataSet)  {
+        passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
+        passengerJsonList.add(passengerData);
+    }
+
+    private void getCreditCardDataObject(String dataSet)  {
+        creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
     private void getBillingDataObject(String dataSet)  {
         billingData = JsonRead.getJsonDataObject(PaymentPage.getBillingListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
@@ -68,16 +80,7 @@ public class HotelFlowTest extends TestBaseSetup {
         contactData = JsonRead.getJsonDataObject(PaymentPage.getContactsListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
-    private void getCreditCardDataObject(String dataSet)  {
-        creditCardData = JsonRead.getJsonDataObject(PaymentPage.getCreditCardListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-    }
-
-    private void getPassengersDataObject(String dataSet)  {
-        passengerData = JsonRead.getJsonDataObject(PaymentPage.getPassengersListObject(), dataSet, countryPar.toLowerCase() + "_data.json");
-        passengerList.add(passengerData);
-    }
-
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+        /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void hotelReservationFirstOptionFlow() throws InterruptedException {
@@ -86,6 +89,7 @@ public class HotelFlowTest extends TestBaseSetup {
         getContactDataObject("contact_cell_phone");
         getCreditCardDataObject("amex");
 
+        getPassengersListObject();
         getPassengersDataObject("adult_female_dni_native");
         getPassengersDataObject("adult_female_dni_native");
         getPassengersDataObject("child_female_dni_native");
@@ -109,7 +113,7 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelesDetailPage.clickVerHabitacionesBtn();
 
         paymentPage = hotelesDetailPage.clickReservarAhoraBtn();
-        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList, numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerJsonList, numPassengers);
 
     }
 }
