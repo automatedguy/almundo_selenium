@@ -114,7 +114,7 @@ public class VueloFlowTest extends TestBaseSetup {
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
         paymentPage = vuelosResultsPage.clickComprarBtn(0);
-        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList,numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList, numPassengers);
     }
 
 }

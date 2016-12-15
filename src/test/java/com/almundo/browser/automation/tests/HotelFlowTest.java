@@ -109,7 +109,7 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelesDetailPage.clickVerHabitacionesBtn();
 
         paymentPage = hotelesDetailPage.clickReservarAhoraBtn();
-        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList,numPassengers);
+        paymentPage.populatePaymentPage(billingData, contactData, creditCardData, passengerList, numPassengers);
 
     }
 }
