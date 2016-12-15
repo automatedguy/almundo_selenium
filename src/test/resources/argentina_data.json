@@ -54,7 +54,7 @@
 	"passengers":{
 
 		"adults":{
-			"adult_male_passport_argentine": {
+			"adult_male_passport_native": {
 				"first_name": "José Ñoqui",
 				"last_name": "O'Higgins Lingüístico",
 				"documentType": "Pasaporte",
@@ -65,7 +65,7 @@
 				"gender": "Masculino",
 				"nationality": "Argentina"
 			},
-			"adult_female_dni_argentine": {
+			"adult_female_dni_native": {
 				"first_name": "Naña Çraña",
 				"last_name": "Pingüino L'Oréal",
 				"documentType": "DNI",
@@ -79,7 +79,7 @@
 		},
 
 		"children":{
-			"child_male_passport_argentine": {
+			"child_male_passport_native": {
 				"first_name": "Timmy",
 				"last_name": "O' Tool",
 				"documentType": "Pasaporte",
@@ -90,7 +90,7 @@
 				"gender": "Masculino",
 				"nationality": "Argentina"
 			},
-			"child_female_dni_argentine": {
+			"child_female_dni_native": {
 				"first_name": "Ñímis",
 				"last_name": "O' Tool",
 				"documentType": "DNI",
@@ -104,7 +104,7 @@
 		},
 
 		"babies":{
-			"baby_male_passport_argentine": {
+			"baby_male_passport_native": {
 				"first_name": "Rosemary's",
 				"last_name": "Baby",
 				"documentType": "Pasaporte",
@@ -115,7 +115,7 @@
 				"gender": "Masculino",
 				"nationality": ""
 			},
-			"baby_female_passport_argentine": {
+			"baby_female_passport_native": {
 				"first_name": "Rosemary",
 				"last_name": "Bowie",
 				"documentType": "DNI",
@@ -127,6 +127,15 @@
 				"nationality": "Argentina"
 			}
 		}
+	},
+
+	"creditcard":{
+		"card_holder":"Dueño Dí L'Tarjüeta",
+		"card_number": "4242424242424242",
+		"card_expire": "12/18",
+		"security_code": "1234",
+		"documentType": "DNI",
+		"document_number": "29098766"
 	},
 
 	"billings": {
