@@ -1,5 +1,7 @@
-package com.almundo.browser.automation.pages.PaymentPage;
+package com.almundo.browser.automation.pages.CheckOutPage;
 
+import com.almundo.browser.automation.utils.JsonRead;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,11 +13,14 @@ import java.util.List;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class CreditCardSection extends PaymentPage {
+public class CreditCardSection extends CheckOutPage {
 
     public CreditCardSection(WebDriver driver) {
         super(driver);
     }
+
+    public JSONObject creditCardList = null;
+    public JSONObject creditCardData;
 
     //############################################### Locators ##############################################
 
@@ -97,4 +102,12 @@ public class CreditCardSection extends PaymentPage {
         document_number.sendKeys(documentNumber);
     }
 
+
+    public void getCreditCardList()  {
+        creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getCreditCardData(String dataSet)  {
+        creditCardData = JsonRead.getJsonDataObject(creditCardList, dataSet, countryPar.toLowerCase() + "_data.json");
+    }
 }

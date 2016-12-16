@@ -1,5 +1,7 @@
-package com.almundo.browser.automation.pages.PaymentPage;
+package com.almundo.browser.automation.pages.CheckOutPage;
 
+import com.almundo.browser.automation.utils.JsonRead;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,11 +10,14 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by leandro.efron on 6/12/2016.
  */
-public class ContactSection extends PaymentPage {
+public class ContactSection extends CheckOutPage {
 
     public ContactSection(WebDriver driver) {
         super(driver);
     }
+
+    private JSONObject contactList = null;
+    public JSONObject contactData = null;
 
     //############################################### Locators ##############################################
 
@@ -76,6 +81,15 @@ public class ContactSection extends PaymentPage {
         logger.info("Entering Número: [" + phoneNumber + "]");
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);
+    }
+
+
+    public void getContactList()  {
+        contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getContactData(String dataSet)  {
+        contactData = JsonRead.getJsonDataObject(contactList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 
 }

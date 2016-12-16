@@ -104,4 +104,5 @@ public class BasePage extends TestBaseSetup {
         }
         return this;
     }
+
 }

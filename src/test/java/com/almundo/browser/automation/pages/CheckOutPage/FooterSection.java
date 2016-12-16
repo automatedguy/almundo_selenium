@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.pages.PaymentPage;
+package com.almundo.browser.automation.pages.CheckOutPage;
 
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by gabrielcespedes on 06/12/16.
  */
-public class FooterSection extends PaymentPage {
+public class FooterSection extends CheckOutPage {
 
     public FooterSection(WebDriver driver) {
         super(driver);

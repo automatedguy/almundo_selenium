@@ -1,7 +1,9 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
+import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +13,17 @@ import org.openqa.selenium.support.FindBy;
  * Created by leandro.efron on 5/12/2016.
  */
 public class HotelesDataTrip extends BasePage {
+
+    public JSONObject hotelesDataTripList = null;
+    public JSONObject hotelDataTripItinerary = null;
+
+    public String destinationAuto;
+    public String destinationFull;
+    public int startDate;
+    public int endDate;
+    public int adults;
+    public int childs;
+    public int rooms;
 
     public HotelesDataTrip(WebDriver driver) {
         super(driver);
@@ -62,11 +75,11 @@ public class HotelesDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public HotelesDataTrip setDestination(String destination, String destinationFull) {
+    public HotelesDataTrip setDestination(String destinationAuto, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTxt.clear();
-        destinationTxt.sendKeys(destination);
+        destinationTxt.sendKeys(destinationAuto);
         selectAutoCompleteOption(destinationFull);
         return this;
     }
@@ -96,6 +109,26 @@ public class HotelesDataTrip extends BasePage {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initHotelesResultsPage();
+    }
+
+
+    public void getHotelesDataTripList() {
+        hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getHotelDataTripItinerary(String dataSet) {
+        hotelDataTripItinerary = JsonRead.getJsonDataObject(hotelesDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        destinationAuto = hotelDataTripItinerary.get("destinationAuto").toString();
+        destinationFull = hotelDataTripItinerary.get("destinationFull").toString();
+
+        startDate = Integer.parseInt(hotelDataTripItinerary.get("startDate").toString());
+        endDate = Integer.parseInt(hotelDataTripItinerary.get("endDate").toString());
+
+        adults = Integer.parseInt(hotelDataTripItinerary.get("adults").toString());
+        childs = Integer.parseInt(hotelDataTripItinerary.get("childs").toString());
+
+        rooms = Integer.parseInt(hotelDataTripItinerary.get("rooms").toString());
     }
 
 }

@@ -1,5 +1,7 @@
-package com.almundo.browser.automation.pages.PaymentPage;
+package com.almundo.browser.automation.pages.CheckOutPage;
 
+import com.almundo.browser.automation.utils.JsonRead;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,11 +10,14 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by gabrielcespedes on 29/11/16.
  */
-public class BillingSection extends PaymentPage {
+public class BillingSection extends CheckOutPage {
 
     public BillingSection(WebDriver driver) {
         super(driver);
     }
+
+    private JSONObject billingsList = null;
+    public JSONObject billingData = null;
 
     //############################################### Locators ##############################################
 
@@ -127,5 +132,14 @@ public class BillingSection extends PaymentPage {
         address_city.clear();
         address_city.sendKeys(addressCity);
         return this;
+    }
+
+
+    public void getBillingList()  {
+        billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getBillingData(String dataSet)  {
+        billingData = JsonRead.getJsonDataObject(billingsList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 }

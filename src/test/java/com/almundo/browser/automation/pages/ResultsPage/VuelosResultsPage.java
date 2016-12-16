@@ -1,7 +1,7 @@
 package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.PaymentPage.PaymentPage;
+import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
@@ -44,13 +44,13 @@ public class VuelosResultsPage extends TestBaseSetup {
         return this;
     }
 
-    public PaymentPage clickComprarBtn(int index) {
+    public CheckOutPage clickComprarBtn(int index) {
         String cssSelectorName = ".button.button--lg.button--secondary.button--block.epp-space-bottom-16";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
         logger.info("Clicking on Comprar button");
         comprarBtn.get(index).click();
-        return initPaymentPage();
+        return initCheckOutPage();
     }
 
     public boolean vacancy(){
