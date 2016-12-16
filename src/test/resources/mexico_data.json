@@ -49,5 +49,129 @@
                 "childs": 2,
                 "rooms": 1
             }
+    },
+
+    "passengers":{
+        "adult_male_passport_native": {
+            "first_name": "José Ñoqui",
+            "last_name": "O'Higgins Lingüístico",
+            "documentType": "Pasaporte",
+            "document_number": "29098765N",
+            "document_emisor": "Argentina",
+            "document_expiration": "25/12/2017",
+            "birthday": "09/09/1979",
+            "gender": "Masculino",
+            "nationality": "Argentina"
+        },
+
+        "adult_female_dni_native": {
+            "first_name": "Naña Çraña",
+            "last_name": "Pingüino L'Oréal",
+            "documentType": "DNI",
+            "document_number": "29098766",
+            "document_emisor": "Argentina",
+            "document_expiration": "25/12/2017",
+            "birthday": "09/09/1979",
+            "gender": "Femenino",
+            "nationality": "Argentina"
+        },
+
+        "child_male_passport_native": {
+            "first_name": "Timmy",
+            "last_name": "O' Tool",
+            "documentType": "Pasaporte",
+            "document_number": "290987567N",
+            "document_emisor": "Argentina",
+            "document_expiration": "25/12/2017",
+            "birthday": "09/09/2010",
+            "gender": "Masculino",
+            "nationality": "Argentina"
+        },
+        "child_female_dni_native": {
+            "first_name": "Ñímis",
+            "last_name": "O' Tool",
+            "documentType": "DNI",
+            "document_number": "29098757",
+            "document_emisor": "Argentina",
+            "document_expiration": "25/12/2017",
+            "birthday": "09/09/2010",
+            "gender": "Femenino",
+            "nationality": "Argentina"
+        },
+
+        "baby_male_passport_native": {
+            "first_name": "Rosemary's",
+            "last_name": "Baby",
+            "documentType": "Pasaporte",
+            "document_number": "27999666N",
+            "document_emisor": "",
+            "document_expiration": "",
+            "birthday": "09/09/2015",
+            "gender": "Masculino",
+            "nationality": ""
+        },
+        "baby_female_passport_native": {
+            "first_name": "Rosemary",
+            "last_name": "Bowie",
+            "documentType": "DNI",
+            "document_number": "27999666",
+            "document_emisor": "Argentina",
+            "document_expiration": "",
+            "birthday": "09/09/2015",
+            "gender": "Femenino",
+            "nationality": "Argentina"
+        }
+    },
+
+    "creditcard":{
+        "amex": {
+            "credit_card_name" : "American Express",
+            "card_holder": "Dueño Dí L'Tarjüeta",
+            "card_number": "4242424242424242",
+            "card_expire": "12/18",
+            "security_code": "1234",
+            "documentType": "DNI",
+            "document_number": "29098766"
+        }
+    },
+
+    "billings": {
+        "local_Billing": {
+            "billing_fiscal_document": "23281685589",
+            "billing_address": "Carlos Pellegrini",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Buenos Aires",
+            "address_city": "C.A.B.A."
+        }
+    },
+
+    "contacts": {
+        "contact_cell_phone": {
+            "email": "mock.of.arm@almundo.com",
+            "rep_email": "mock.of.arm@almundo.com",
+            "tel": "Celular",
+            "country_code": 54,
+            "area": "911",
+            "phone_number": "11112222"
+        },
+        "contact_phone": {
+            "email": "mock.of.arm@almundo.com",
+            "rep_email": "mock.of.arm@almundo.com",
+            "tel": "Teléfono",
+            "country_code": 54,
+            "area": "011",
+            "phone_number": "11112222"
+        },
+        "contact_fax": {
+            "email": "mock.of.arm@almundo.com",
+            "rep_email": "mock.of.arm@almundo.com",
+            "tel": "Fax",
+            "country_code": 54,
+            "area": "011",
+            "phone_number": "11112222"
+        }
     }
 }
