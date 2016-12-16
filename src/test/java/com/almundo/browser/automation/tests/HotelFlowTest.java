@@ -30,7 +30,6 @@ public class HotelFlowTest extends TestBaseSetup {
         checkOutPage.creditCardSection().getCreditCardList();
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
-
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////

@@ -35,29 +35,17 @@ public class CheckOutPage extends TestBaseSetup {
 
 
     private static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
-
         boolean isRequiered = false;
-        //logger.info("Checking whether Billing Information will be requiered or not...");
-
         try {
             isRequiered = Boolean.parseBoolean(JSONElementsRead.get(element).toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        if(isRequiered){
-//            logger.info(element + " information is requiered.");
-//        }
-//        else{
-//            logger.info(element + " information is not requiered.");
-//        }
         return isRequiered;
     }
 
     private static void getCheckOutPageElements()  {
-        logger.info(jsonCountryPropertyObject);
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "CheckOutPage", "countries_properties.json");
-        logger.info(checkOutPageElements);
     }
 
     public CheckOutPage populateCheckOutPage(int numPassengers, JSONArray passengerList, JSONObject creditCardData, JSONObject billingData, JSONObject contactData) throws InterruptedException {
