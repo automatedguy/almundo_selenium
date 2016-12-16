@@ -11,7 +11,7 @@
       "actividades":"true",
       "trenes":"true"
     },
-    "PaymentPage":{
+    "CheckOutPage":{
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
@@ -36,7 +36,7 @@
       "actividades":"false",
       "trenes":"false"
     },
-    "PaymentPage":{
+    "CheckOutPage":{
       "BillingInfoSection":"true",
       "billing_fiscal_type": "true",
       "billing_document_type": "true",
@@ -61,7 +61,7 @@
       "actividades":"true",
       "trenes":"false"
     },
-    "PaymentPage":{
+    "CheckOutPage":{
       "BillingInfoSection":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",

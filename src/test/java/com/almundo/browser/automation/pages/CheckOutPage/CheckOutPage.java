@@ -55,7 +55,9 @@ public class CheckOutPage extends TestBaseSetup {
     }
 
     private static void getCheckOutPageElements()  {
+        logger.info(jsonCountryPropertyObject);
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "CheckOutPage", "countries_properties.json");
+        logger.info(checkOutPageElements);
     }
 
     public CheckOutPage populateCheckOutPage(int numPassengers, JSONArray passengerList, JSONObject creditCardData, JSONObject billingData, JSONObject contactData) throws InterruptedException {
