@@ -16,8 +16,8 @@ public class ContactSection extends CheckOutPage {
         super(driver);
     }
 
-    private JSONObject contactList = null;
-    public JSONObject contactData = null;
+    private static JSONObject contactList = null;
+    public static JSONObject contactData = null;
 
     //############################################### Locators ##############################################
 
@@ -84,11 +84,11 @@ public class ContactSection extends CheckOutPage {
     }
 
 
-    public void getContactList()  {
+    public static void getContactList()  {
         contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getContactData(String dataSet)  {
+    public static void getContactData(String dataSet)  {
         contactData = JsonRead.getJsonDataObject(contactList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 

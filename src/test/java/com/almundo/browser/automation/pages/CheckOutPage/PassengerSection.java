@@ -18,9 +18,9 @@ public class PassengerSection extends CheckOutPage {
         super(driver);
     }
 
-    private JSONObject passengersList = null;
-    public JSONObject passengerData = null;
-    public JSONArray passengerJsonList = new JSONArray();
+    private static JSONObject passengersList = null;
+    public static JSONObject passengerData = null;
+    public static JSONArray passengerJsonList = new JSONArray();
 
     //############################################### Actions ###############################################
 
@@ -107,11 +107,11 @@ public class PassengerSection extends CheckOutPage {
     }
 
 
-    public void getPassengersList()  {
+    public static void getPassengersList()  {
         passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getPassengerData(String dataSet)  {
+    public static void getPassengerData(String dataSet)  {
         passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
         passengerJsonList.add(passengerData);
     }

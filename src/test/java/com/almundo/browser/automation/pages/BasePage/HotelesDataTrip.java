@@ -14,16 +14,16 @@ import org.openqa.selenium.support.FindBy;
  */
 public class HotelesDataTrip extends BasePage {
 
-    public JSONObject hotelesDataTripList = null;
-    public JSONObject hotelDataTripItinerary = null;
+    public static JSONObject hotelesDataTripList = null;
+    public static JSONObject hotelDataTripItinerary = null;
 
-    public String destinationAuto;
-    public String destinationFull;
-    public int startDate;
-    public int endDate;
-    public int adults;
-    public int childs;
-    public int rooms;
+    public static String destinationAuto;
+    public static String destinationFull;
+    public static int startDate;
+    public static int endDate;
+    public static int adults;
+    public static int childs;
+    public static int rooms;
 
     public HotelesDataTrip(WebDriver driver) {
         super(driver);
@@ -112,11 +112,11 @@ public class HotelesDataTrip extends BasePage {
     }
 
 
-    public void getHotelesDataTripList() {
+    public static void getHotelesDataTripList() {
         hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getHotelDataTripItinerary(String dataSet) {
+    public static void getHotelDataTripItinerary(String dataSet) {
         hotelDataTripItinerary = JsonRead.getJsonDataObject(hotelesDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         destinationAuto = hotelDataTripItinerary.get("destinationAuto").toString();

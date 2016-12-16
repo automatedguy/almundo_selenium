@@ -15,7 +15,7 @@ public class CheckOutPage extends TestBaseSetup {
 
     public CheckOutPage(WebDriver driver) { super.driver = driver; }
 
-    public JSONObject checkOutPageElements = null;
+    public static JSONObject checkOutPageElements = null;
 
     public PassengerSection passengerSection() {
         return initPassengerInfoSection();
@@ -34,7 +34,7 @@ public class CheckOutPage extends TestBaseSetup {
     }
 
 
-    private boolean isElementRequiered(JSONObject JSONElementsRead, String element){
+    private static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
 
         boolean isRequiered = false;
         //logger.info("Checking whether Billing Information will be requiered or not...");
@@ -45,17 +45,16 @@ public class CheckOutPage extends TestBaseSetup {
             e.printStackTrace();
         }
 
-        if(isRequiered){
-            logger.info(element + " information is requiered.");
-        }
-        else{
-            logger.info(element + " information is not requiered.");
-
-        }
+//        if(isRequiered){
+//            logger.info(element + " information is requiered.");
+//        }
+//        else{
+//            logger.info(element + " information is not requiered.");
+//        }
         return isRequiered;
     }
 
-    private void getCheckOutPageElements()  {
+    private static void getCheckOutPageElements()  {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "CheckOutPage", "countries_properties.json");
     }
 

@@ -16,8 +16,8 @@ public class BillingSection extends CheckOutPage {
         super(driver);
     }
 
-    private JSONObject billingsList = null;
-    public JSONObject billingData = null;
+    private static JSONObject billingsList = null;
+    public static JSONObject billingData = null;
 
     //############################################### Locators ##############################################
 
@@ -135,11 +135,11 @@ public class BillingSection extends CheckOutPage {
     }
 
 
-    public void getBillingList()  {
+    public static void getBillingList()  {
         billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getBillingData(String dataSet)  {
+    public static void getBillingData(String dataSet)  {
         billingData = JsonRead.getJsonDataObject(billingsList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 }

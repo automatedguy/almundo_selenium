@@ -19,8 +19,8 @@ public class CreditCardSection extends CheckOutPage {
         super(driver);
     }
 
-    public JSONObject creditCardList = null;
-    public JSONObject creditCardData;
+    public static JSONObject creditCardList = null;
+    public static JSONObject creditCardData;
 
     //############################################### Locators ##############################################
 
@@ -103,11 +103,11 @@ public class CreditCardSection extends CheckOutPage {
     }
 
 
-    public void getCreditCardList()  {
+    public static void getCreditCardList()  {
         creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getCreditCardData(String dataSet)  {
+    public static void getCreditCardData(String dataSet)  {
         creditCardData = JsonRead.getJsonDataObject(creditCardList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 }

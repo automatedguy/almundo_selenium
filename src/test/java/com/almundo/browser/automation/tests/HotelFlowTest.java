@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
@@ -21,7 +22,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataTripList() {
-        basePage = initBasePage();
+        basePage = new BasePage(driver);
         basePage.hotelesDataTrip().getHotelesDataTripList();
 
         checkOutPage = initCheckOutPage();
