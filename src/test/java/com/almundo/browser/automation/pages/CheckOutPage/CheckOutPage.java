@@ -76,37 +76,37 @@ public class CheckOutPage extends TestBaseSetup {
         logger.info("------------- Filling Passenger Section -------------");
 
         int passengerIndex = 0;
-        JSONObject passengerinfo;
+        JSONObject passengerInfo;
 
-        for(Passenger passengerToPopulate : passengers){
+        for(Passenger passengerId : passengers){
 
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
 
-            passengerinfo = (JSONObject) passengerList.get(passengerIndex);
+            passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
-            passengerSection.setFirstName(passengerToPopulate.firstName, passengerinfo.get("first_name").toString());
+            passengerSection.setFirstName(passengerId.firstName, passengerInfo.get("first_name").toString());
 
-            passengerSection.setlastName(passengerToPopulate.lastName, passengerinfo.get("last_name").toString());
+            passengerSection.setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
 
-            passengerSection.setDocumentType(passengerToPopulate.documentType, passengerinfo.get("documentType").toString());
+            passengerSection.setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
 
             if(isElementRequiered(checkOutPageElements, "document_number")){
-                passengerSection.setDocumentNumber(passengerToPopulate.documentNumber, passengerinfo.get("document_number").toString());
+                passengerSection.setDocumentNumber(passengerId.documentNumber, passengerInfo.get("document_number").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "document_emisor")) {
-                passengerSection.setDocumentEmisor(passengerToPopulate.document_emisor, passengerinfo.get("document_emisor").toString());
+                passengerSection.setDocumentEmisor(passengerId.document_emisor, passengerInfo.get("document_emisor").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "document_expiration")) {
-                passengerSection.setDocumentExpiration(passengerToPopulate.document_expiration, passengerinfo.get("document_expiration").toString());
+                passengerSection.setDocumentExpiration(passengerId.document_expiration, passengerInfo.get("document_expiration").toString());
             }
 
-            //passengerSection.setBirthDay(passengerToPopulate.birthday, passengerinfo.get("birthday").toString());
+            //passengerSection.setBirthDay(passengerToPopulate.birthday, passengerInfo.get("birthday").toString());
 
-            //passengerSection.setGender(passengerToPopulate.gender, passengerinfo.get("gender").toString());
+            //passengerSection.setGender(passengerToPopulate.gender, passengerInfo.get("gender").toString());
 
-            passengerSection.setNationality(passengerToPopulate.nationality, passengerinfo.get("nationality").toString());
+            passengerSection.setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
 
             passengerIndex = passengerIndex + 1;
         }

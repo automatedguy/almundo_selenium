@@ -3,10 +3,12 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -19,8 +21,6 @@ public class VueloFlowTest extends TestBaseSetup {
     private VuelosResultsPage vuelosResultsPage = null;
     private CheckOutPage checkOutPage = null;
 
-    private JSONArray passengerJsonList = new JSONArray();
-
     @BeforeClass
     private void initDataTripList() {
         basePage = new BasePage(driver);
@@ -31,6 +31,12 @@ public class VueloFlowTest extends TestBaseSetup {
         checkOutPage.creditCardSection().getCreditCardList();
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
+    }
+
+    @AfterMethod
+    private void cleanPassengerJsonList() {
+        PassengerSection.passengerJsonList = new JSONArray();
+
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -77,5 +83,6 @@ public class VueloFlowTest extends TestBaseSetup {
                 checkOutPage.contactSection().contactData);
 
     }
+
 
 }
