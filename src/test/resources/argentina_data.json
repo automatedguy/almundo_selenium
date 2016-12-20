@@ -51,6 +51,20 @@
 			}
 	},
 
+	"autos": {
+		"capital_10days_mayor_24": {
+			"originAuto": "Bue",
+			"originFull": "Buenos Aires, Buenos Aires, Argentina",
+			"destinationAuto": "Bue",
+			"destinationFull": "Buenos Aires, Buenos Aires, Argentina",
+			"startDate": 7,
+			"endDate": 10,
+			"pickUpTime": "12:00",
+			"dropOffTime": "12:00",
+			"ageRange": "Mayor a 24 años"
+		}
+	},
+
 	"passengers":{
 			"adult_male_passport_native": {
 				"first_name": "José Ñoqui",
