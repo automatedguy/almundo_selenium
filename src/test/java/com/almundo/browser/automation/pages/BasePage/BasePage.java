@@ -59,6 +59,21 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = ".icon.trains")
     public WebElement trenesIcon;
 
+    @FindBy(css = ".ui-datepicker-month")
+    public WebElement monthLbl;
+
+    @FindBy(css = ".ui-datepicker-year")
+    public WebElement yearLbl;
+
+    @FindBy(css = ".ui-icon.ui-icon-circle-triangle-e")
+    public WebElement nextCalBtn;
+
+    @FindBy(css = ".button.button--sm")
+    public WebElement listoBtn;
+
+    @FindBy(css = ".search__input")
+    public WebElement personasTxt;
+
     @FindBy(css = ".button.button--secondary.button--lg.button-search.button--block.ellipsis.ng-binding")
     public WebElement buscarBtn;
 
@@ -66,22 +81,21 @@ public class BasePage extends TestBaseSetup {
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) throws InterruptedException {
         calendar.click();
+        Thread.sleep(500);
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
 
         List<WebElement> availableDates = getAvailableDatesList();
         int totalAvailableDates = availableDates.size();
 
-        PageUtils.waitElementForClickable(driver, availableDates.get(daysAhead-1), 5, "Available dates");
-
         if(totalAvailableDates >= daysAhead){
-            logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
+            logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + monthLbl.getText() + " " + yearLbl.getText() + "]");
             availableDates.get(daysAhead-1).click();
         }
         else{
             daysAhead = daysAhead - totalAvailableDates;
             hotelesDataTrip().nextCalBtn.click();
             List<WebElement> availableDatesNextCal = getAvailableDatesList();
-            logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
+            logger.info("Selecting date: [" + availableDatesNextCal.get(daysAhead-1).getText() + " " + monthLbl.getText() + " " + yearLbl.getText() + "]");
             availableDatesNextCal.get(daysAhead-1).click();
         }
         return this;

@@ -45,9 +45,6 @@ public class VuelosDataTrip extends BasePage{
     @FindBy(id = "arrival-flights")
     public WebElement arrivalFlightsCalendar;
 
-    @FindBy(css = ".search__input")
-    public WebElement personasTxt;
-
     @FindBy(id = "class-flights")
     public WebElement classFlightsDdl;
 
@@ -62,9 +59,6 @@ public class VuelosDataTrip extends BasePage{
 
     @FindBy(css = ".row-youngers>.add")
     public WebElement addChildBtn;
-
-    @FindBy(css = ".button.button--sm")
-    public WebElement listoBtn;
 
     @FindBy(name = "class-flights")
     public WebElement classFlightDdl;
@@ -145,4 +139,5 @@ public class VuelosDataTrip extends BasePage{
 
         flightClass = vueloDataTripItinerary.get("flightClass").toString();
     }
+
 }

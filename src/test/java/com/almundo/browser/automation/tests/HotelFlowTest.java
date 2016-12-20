@@ -82,5 +82,6 @@ public class HotelFlowTest extends TestBaseSetup {
                                          checkOutPage.billingSection().billingData,
                                          checkOutPage.contactSection().contactData);
 
+
     }
 }

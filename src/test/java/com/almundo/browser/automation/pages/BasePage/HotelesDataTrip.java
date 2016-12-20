@@ -40,18 +40,6 @@ public class HotelesDataTrip extends BasePage {
     @FindBy(id = "checkout-hotels")
     public WebElement checkoutCalendar;
 
-    @FindBy(css = ".ui-datepicker-month")
-    public WebElement monthLbl;
-
-    @FindBy(css = ".ui-datepicker-year")
-    public WebElement yearLbl;
-
-    @FindBy(css = ".ui-icon.ui-icon-circle-triangle-e")
-    public WebElement nextCalBtn;
-
-    @FindBy(css = ".search__input")
-    public WebElement personasTxt;
-
     @FindBy(css = ".row-rooms>.sub")
     public WebElement subRoomBtn;
 
@@ -69,9 +57,6 @@ public class HotelesDataTrip extends BasePage {
 
     @FindBy(css = ".row-room-details>div:nth-of-type(2)>.add")
     public WebElement addChildBtn;
-
-    @FindBy(css = ".button.button--sm")
-    public WebElement listoBtn;
 
     //############################################### Actions ###############################################
 
