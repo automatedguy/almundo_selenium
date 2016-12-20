@@ -301,4 +301,8 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, VueloHotelDetailPage.class);
     }
 
+    protected AutosResultsPage initAutosResultsPage() {
+        return PageFactory.initElements(driver, AutosResultsPage.class);
+    }
+
 }
