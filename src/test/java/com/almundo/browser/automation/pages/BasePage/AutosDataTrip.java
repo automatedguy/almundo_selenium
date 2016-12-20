@@ -17,6 +17,9 @@ public class AutosDataTrip extends BasePage {
     public static JSONObject autosDataTripList = null;
     public static JSONObject autosDataTripItinerary = null;
 
+
+    public static String originAuto;
+    public static String originFull;
     public static String destinationAuto;
     public static String destinationFull;
     public static int startDate;
@@ -91,6 +94,9 @@ public class AutosDataTrip extends BasePage {
 
     public static void getAutosDataTripItinerary(String dataSet) {
         autosDataTripItinerary = JsonRead.getJsonDataObject(autosDataTripItinerary, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        originAuto = autosDataTripItinerary.get("originAuto").toString();
+        originFull = autosDataTripItinerary.get("originFull").toString();
 
         destinationAuto = autosDataTripItinerary.get("destinationAuto").toString();
         destinationFull = autosDataTripItinerary.get("destinationFull").toString();
