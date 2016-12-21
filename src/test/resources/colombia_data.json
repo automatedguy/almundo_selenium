@@ -51,6 +51,20 @@
             }
     },
 
+    "autos": {
+        "capital_10days_entre_21_24": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "Bog",
+            "destinationFull": "Bogotá, Bogotá D.C., Colombia",
+            "startDate": 10,
+            "endDate": 10,
+            "pickUpTime": "12:00",
+            "dropOffTime": "12:00",
+            "ageRange": "Entre 21 y 24 años"
+        }
+    },
+
     "passengers":{
         "adult_male_passport_native": {
             "first_name": "José Ñoqui",

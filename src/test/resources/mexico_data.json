@@ -51,6 +51,20 @@
             }
     },
 
+    "autos": {
+        "capital_10days_entre_21_24": {
+            "originAuto": "Dis",
+            "originFull": "Ciudad de México, Distrito Federal, México",
+            "destinationAuto": "Dis",
+            "destinationFull": "Ciudad de México, Distrito Federal, México",
+            "startDate": 10,
+            "endDate": 10,
+            "pickUpTime": "12:00",
+            "dropOffTime": "12:00",
+            "ageRange": "Entre 21 y 24 años"
+        }
+    },
+
     "passengers":{
         "adult_male_passport_native": {
             "first_name": "José Ñoqui",
