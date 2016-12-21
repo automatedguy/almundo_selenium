@@ -56,6 +56,7 @@ public class VueloFlowTest extends TestBaseSetup {
         basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().arrivalFlightsCalendar, basePage.vuelosDataTrip().endDate);
 
         numPassengers = basePage.vuelosDataTrip().selectPassenger(basePage.vuelosDataTrip().adults, basePage.vuelosDataTrip().childs);
+        basePage.vuelosDataTrip().selectChildAgeRange(basePage.vuelosDataTrip().childAgeRange);
 
         basePage.vuelosDataTrip().selectClass(basePage.vuelosDataTrip().flightClass);
 
