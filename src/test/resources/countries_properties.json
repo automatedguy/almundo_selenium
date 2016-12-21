@@ -22,6 +22,18 @@
       "document_number_card":"false",
       "fiscal_name":"false",
       "accepted":"false"
+    },
+    "AutosCheckOutPage":{
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"false",
+      "accepted":"false"
     }
   },
   "COLOMBIA":{

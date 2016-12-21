@@ -19,16 +19,19 @@ public class AutosFlowTest extends TestBaseSetup {
     private AutosResultsPage autosResultsPage = null;
     private CheckOutPage checkOutPage = null;
 
+    //TODO: overload populateCheckOutPage
+    private int cardDrivers = 1;
+
     @BeforeClass
     private void initDataTripList() {
         basePage = new BasePage(driver);
         basePage.autosDataTrip().getAutosDataTripList();
-//
-//        checkOutPage = initCheckOutPage();
-//        checkOutPage.passengerSection().getPassengersList();
-//        checkOutPage.creditCardSection().getCreditCardList();
-//        checkOutPage.billingSection().getBillingList();
-//        checkOutPage.contactSection().getContactList();
+
+        checkOutPage = initCheckOutPage();
+        checkOutPage.passengerSection().getPassengersList();
+        checkOutPage.creditCardSection().getCreditCardList();
+        checkOutPage.billingSection().getBillingList();
+        checkOutPage.contactSection().getContactList();
     }
 
     @AfterMethod
@@ -58,6 +61,20 @@ public class AutosFlowTest extends TestBaseSetup {
         basePage.autosDataTrip().selectAgeRange(basePage.autosDataTrip().ageRange);
 
         autosResultsPage = basePage.autosDataTrip().clickBuscarBtn();
+
+        checkOutPage = autosResultsPage.clickReservarAhoraBtn();
+
+        checkOutPage.passengerSection().getPassengerData("adult_male_passport_native");
+
+        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.billingSection().getBillingData("local_Billing");
+        checkOutPage.contactSection().getContactData("contact_cell_phone");
+
+        checkOutPage.populateCheckOutPage(cardDrivers,
+                checkOutPage.passengerSection().passengerJsonList,
+                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.billingSection().billingData,
+                checkOutPage.contactSection().contactData, "");
 
     }
 

@@ -44,13 +44,14 @@ public class CheckOutPage extends TestBaseSetup {
         return isRequiered;
     }
 
-    private static void getCheckOutPageElements()  {
-        checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "CheckOutPage", "countries_properties.json");
+    private static void getCheckOutPageElements(String productCheckOutPage)  {
+        checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPage populateCheckOutPage(int numPassengers, JSONArray passengerList, JSONObject creditCardData, JSONObject billingData, JSONObject contactData) throws InterruptedException {
+    public CheckOutPage populateCheckOutPage(int numPassengers, JSONArray passengerList, JSONObject creditCardData,
+                                             JSONObject billingData, JSONObject contactData, String productCheckOutPage ) throws InterruptedException {
 
-        getCheckOutPageElements();
+        getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populateCreditCardSection(creditCardData);
         populateBillingSection(billingData);
