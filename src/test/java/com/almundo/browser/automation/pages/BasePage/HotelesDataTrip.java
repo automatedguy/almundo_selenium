@@ -4,9 +4,14 @@ import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -84,9 +89,16 @@ public class HotelesDataTrip extends BasePage {
                 logger.info("Adding: [1 child]");
                 addChildBtn.click();
             }
+
+            List<WebElement> dropDownList = driver.findElements(By.cssSelector(".row-yougers-details>.input--block"));
+            for(int i=0; i<childs; i++) {
+                Random rand = new Random();
+                int randomNum = rand.nextInt((17 - 1) + 1) + 1;
+                Select dropdown = new Select (dropDownList.get(i));
+                dropdown.selectByVisibleText(String.valueOf(randomNum));
+            }
         }
         listoBtn.click();
-
         return adults + childs;
     }
 
