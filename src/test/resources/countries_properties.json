@@ -1,5 +1,6 @@
 {
   "ARGENTINA":{
+
     "MODULES":{
       "hoteles":"true",
       "vuelos":"true",
@@ -80,6 +81,7 @@
 
   },
   "COLOMBIA":{
+
     "MODULES":{
       "hoteles":"true",
       "vuelos":"true",
@@ -91,20 +93,77 @@
       "actividades":"false",
       "trenes":"false"
     },
-    "CheckOutPage":{
+
+    "HotelesCheckOutPageInternational":{
+      "BillingInfoSection":"true",
+      "fiscal_name": "true",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "true",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"false",
+      "documentType":"true",
+      "document_number":"false",
+      "document_number_card":"true",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"false",
+      "accepted":"false"
+    },
+
+    "VuelosCheckOutPageInternational":{
       "BillingInfoSection":"true",
       "billing_fiscal_type": "true",
       "billing_document_type": "true",
       "document_emisor":"false",
       "document_expiration":"false",
+      "documentType0":"true",
       "documentType":"true",
       "document_number":"true",
       "document_number_card":"true",
       "fiscal_name":"true",
-      "accepted":"true"
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"true",
+      "accepted":"false"
+    },
+
+    "VueloHotelCheckOutPageInternational":{
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "true",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"false",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"true",
+      "accepted":"false"
+    },
+
+    "AutosCheckOutPage":{
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"false",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"false",
+      "accepted":"false"
     }
+
+
   },
   "MEXICO":{
+
     "MODULES":{
       "hoteles":"true",
       "vuelos":"true",
@@ -116,17 +175,70 @@
       "actividades":"true",
       "trenes":"false"
     },
-    "CheckOutPage":{
-      "BillingInfoSection":"false",
+
+    "HotelesCheckOutPageInternational":{
+      "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
-      "document_emisor":"true",
-      "document_expiration":"true",
+      "document_emisor":"false",
+      "document_expiration":"false",
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
       "fiscal_name":"false",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"true",
+      "accepted":"false"
+    },
+
+    "VuelosCheckOutPageInternational":{
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"false",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"true",
+      "accepted":"false"
+    },
+
+    "VueloHotelCheckOutPageInternational":{
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"false",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"true",
+      "accepted":"false"
+    },
+
+    "AutosCheckOutPage":{
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"false",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"false",
       "accepted":"false"
     }
+
   }
 }

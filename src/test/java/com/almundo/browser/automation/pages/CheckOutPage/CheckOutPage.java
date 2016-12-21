@@ -89,7 +89,9 @@ public class CheckOutPage extends TestBaseSetup {
 
             passengerSection.setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
 
-            passengerSection.setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
+            if(isElementRequiered(checkOutPageElements, "documentType0")) {
+                passengerSection.setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
+            }
 
             if(isElementRequiered(checkOutPageElements, "document_number")){
                 passengerSection.setDocumentNumber(passengerId.documentNumber, passengerInfo.get("document_number").toString());
@@ -157,7 +159,7 @@ public class CheckOutPage extends TestBaseSetup {
             }
 
             if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
-                billingSection.selectBillingFiscalType("Persona juridica");
+                billingSection.selectBillingFiscalType("Persona Jurídica");
             }
             if (isElementRequiered(checkOutPageElements, "billing_document_type")){
                 billingSection.selectBillingDocumentType("Tarjeta de Identidad");
