@@ -74,7 +74,7 @@ public class AutosFlowTest extends TestBaseSetup {
                 checkOutPage.passengerSection().passengerJsonList,
                 checkOutPage.creditCardSection().creditCardData,
                 checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "");
+                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
 
     }
 

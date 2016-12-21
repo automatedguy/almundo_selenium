@@ -29,7 +29,7 @@
 			"miami_10days_2adults_2childs_1room": {
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
-				"startDate": 7,
+				"startDate": 10,
 				"endDate": 10,
 				"adults": 2,
 				"childs": 2,
@@ -43,7 +43,7 @@
 				"originFull": "Buenos Aires, Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
-				"startDate": 7,
+				"startDate": 10,
 				"endDate": 10,
 				"adults": 2,
 				"childs": 2,

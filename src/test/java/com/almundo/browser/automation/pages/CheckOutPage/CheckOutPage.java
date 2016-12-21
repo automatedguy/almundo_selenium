@@ -103,11 +103,17 @@ public class CheckOutPage extends TestBaseSetup {
                 passengerSection.setDocumentExpiration(passengerId.document_expiration, passengerInfo.get("document_expiration").toString());
             }
 
-            //passengerSection.setBirthDay(passengerToPopulate.birthday, passengerInfo.get("birthday").toString());
+            if(isElementRequiered(checkOutPageElements, "birthday")) {
+                passengerSection.setBirthDay(passengerId.birthday, passengerInfo.get("birthday").toString());
+            }
 
-            //passengerSection.setGender(passengerToPopulate.gender, passengerInfo.get("gender").toString());
+            if(isElementRequiered(checkOutPageElements, "gender")) {
+                passengerSection.setGender(passengerId.gender, passengerInfo.get("gender").toString());
+            }
 
-            passengerSection.setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
+            if(isElementRequiered(checkOutPageElements, "nationality")) {
+                    passengerSection.setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
+            }
 
             passengerIndex = passengerIndex + 1;
         }
@@ -126,7 +132,7 @@ public class CheckOutPage extends TestBaseSetup {
 
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
-        creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
+        // creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
 
         creditCardSection.setSecurityCode(creditCardData.get("security_code").toString());
 
