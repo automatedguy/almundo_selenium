@@ -52,7 +52,7 @@
 	},
 
 	"autos": {
-		"capital_10days_mayor_24": {
+		"capital_10days_entre_21_24": {
 			"originAuto": "Bue",
 			"originFull": "Buenos Aires, Buenos Aires, Argentina",
 			"destinationAuto": "Bue",
@@ -61,7 +61,7 @@
 			"endDate": 10,
 			"pickUpTime": "12:00",
 			"dropOffTime": "12:00",
-			"ageRange": "Mayor a 24 años"
+			"ageRange": "Entre 21 y 24 años"
 		}
 	},
 

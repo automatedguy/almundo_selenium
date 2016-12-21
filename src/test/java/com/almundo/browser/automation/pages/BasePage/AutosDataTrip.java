@@ -75,6 +75,20 @@ public class AutosDataTrip extends BasePage {
         return this;
     }
 
+    public AutosDataTrip selectPickUpTime(String pickUpTime) {
+        Select pickUpTimeDdl = new Select(pickUpTimeSelect);
+        logger.info("Selecting Pick Up Time: [" + pickUpTime + "]");
+        pickUpTimeDdl.selectByVisibleText(pickUpTime);
+        return this;
+    }
+
+    public AutosDataTrip selectDropOffTime(String dropOffTime) {
+        Select dropOffTimeDdl = new Select(dropOffTimeSelect);
+        logger.info("Selecting Drop Off Time: [" + dropOffTime + "]");
+        dropOffTimeDdl.selectByVisibleText(dropOffTime);
+        return this;
+    }
+
     public AutosDataTrip selectAgeRange(String ageRange) {
         Select ageRangeDdl = new Select(ageRangeSelect);
         logger.info("Selecting Age Range: [" + ageRange + "]");

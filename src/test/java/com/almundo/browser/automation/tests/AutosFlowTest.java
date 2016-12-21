@@ -44,7 +44,7 @@ public class AutosFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();
 
-        basePage.autosDataTrip().getAutosDataTripItinerary("capital_10days_mayor_24");
+        basePage.autosDataTrip().getAutosDataTripItinerary("capital_10days_entre_21_24");
 
         basePage.autosDataTrip().setOrigin(basePage.autosDataTrip().originAuto, basePage.autosDataTrip().originFull);
         basePage.autosDataTrip().setDestination(basePage.autosDataTrip().destinationAuto, basePage.autosDataTrip().destinationFull);
@@ -52,7 +52,12 @@ public class AutosFlowTest extends TestBaseSetup {
         basePage.autosDataTrip().selectDateFromCalendar(basePage.autosDataTrip().pickUpDateCalendar, basePage.autosDataTrip().startDate);
         basePage.autosDataTrip().selectDateFromCalendar(basePage.autosDataTrip().dropOffDateCalendar, basePage.autosDataTrip().endDate);
 
+        basePage.autosDataTrip().selectPickUpTime(basePage.autosDataTrip().pickUpTime);
+        basePage.autosDataTrip().selectDropOffTime(basePage.autosDataTrip().dropOffTime);
 
+        basePage.autosDataTrip().selectAgeRange(basePage.autosDataTrip().ageRange);
+
+        autosResultsPage = basePage.autosDataTrip().clickBuscarBtn();
 
     }
 
