@@ -93,7 +93,7 @@ public class AutosDataTrip extends BasePage {
     }
 
     public static void getAutosDataTripItinerary(String dataSet) {
-        autosDataTripItinerary = JsonRead.getJsonDataObject(autosDataTripItinerary, dataSet, countryPar.toLowerCase() + "_data.json");
+        autosDataTripItinerary = JsonRead.getJsonDataObject(autosDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = autosDataTripItinerary.get("originAuto").toString();
         originFull = autosDataTripItinerary.get("originFull").toString();

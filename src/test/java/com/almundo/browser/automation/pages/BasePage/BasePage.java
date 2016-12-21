@@ -30,6 +30,10 @@ public class BasePage extends TestBaseSetup {
         return initVueloHotelDataTrip();
     }
 
+    public AutosDataTrip autosDataTrip() {
+        return initAutosDataTrip();
+    }
+
     //############################################### Locators ##############################################
 
     @FindBy(css = ".icon.hotels")
