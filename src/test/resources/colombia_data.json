@@ -5,7 +5,7 @@
                 "originFull": "Bogotá, Bogotá D.C., Colombia",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
-                "startDate": 7,
+                "startDate": 9,
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
@@ -17,7 +17,7 @@
                 "originFull": "Bogotá, Bogotá D.C., Colombia",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
-                "startDate": 7,
+                "startDate": 10,
                 "endDate": 10,
                 "adults": 2,
                 "childs": 0,
@@ -29,7 +29,7 @@
             "miami_10days_2adults_2childs_1room": {
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
-                "startDate": 7,
+                "startDate": 9,
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
@@ -43,12 +43,26 @@
                 "originFull": "Bogotá, Bogotá D.C., Colombia",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
-                "startDate": 7,
+                "startDate": 10,
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
                 "rooms": 1
             }
+    },
+
+    "autos": {
+        "capital_10days_entre_21_24": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "Bog",
+            "destinationFull": "Bogotá, Bogotá D.C., Colombia",
+            "startDate": 10,
+            "endDate": 10,
+            "pickUpTime": "12:00",
+            "dropOffTime": "12:00",
+            "ageRange": "Entre 21 y 24 años"
+        }
     },
 
     "passengers":{

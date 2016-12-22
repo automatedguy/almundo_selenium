@@ -44,13 +44,14 @@ public class CheckOutPage extends TestBaseSetup {
         return isRequiered;
     }
 
-    private static void getCheckOutPageElements()  {
-        checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, "CheckOutPage", "countries_properties.json");
+    private static void getCheckOutPageElements(String productCheckOutPage)  {
+        checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPage populateCheckOutPage(int numPassengers, JSONArray passengerList, JSONObject creditCardData, JSONObject billingData, JSONObject contactData) throws InterruptedException {
+    public CheckOutPage populateCheckOutPage(int numPassengers, JSONArray passengerList, JSONObject creditCardData,
+                                             JSONObject billingData, JSONObject contactData, String productCheckOutPage ) throws InterruptedException {
 
-        getCheckOutPageElements();
+        getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populateCreditCardSection(creditCardData);
         populateBillingSection(billingData);
@@ -88,7 +89,9 @@ public class CheckOutPage extends TestBaseSetup {
 
             passengerSection.setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
 
-            passengerSection.setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
+            if(isElementRequiered(checkOutPageElements, "documentType0")) {
+                passengerSection.setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
+            }
 
             if(isElementRequiered(checkOutPageElements, "document_number")){
                 passengerSection.setDocumentNumber(passengerId.documentNumber, passengerInfo.get("document_number").toString());
@@ -102,11 +105,17 @@ public class CheckOutPage extends TestBaseSetup {
                 passengerSection.setDocumentExpiration(passengerId.document_expiration, passengerInfo.get("document_expiration").toString());
             }
 
-            //passengerSection.setBirthDay(passengerToPopulate.birthday, passengerInfo.get("birthday").toString());
+            if(isElementRequiered(checkOutPageElements, "birthday")) {
+                passengerSection.setBirthDay(passengerId.birthday, passengerInfo.get("birthday").toString());
+            }
 
-            //passengerSection.setGender(passengerToPopulate.gender, passengerInfo.get("gender").toString());
+            if(isElementRequiered(checkOutPageElements, "gender")) {
+                passengerSection.setGender(passengerId.gender, passengerInfo.get("gender").toString());
+            }
 
-            passengerSection.setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
+            if(isElementRequiered(checkOutPageElements, "nationality")) {
+                    passengerSection.setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
+            }
 
             passengerIndex = passengerIndex + 1;
         }
@@ -125,7 +134,7 @@ public class CheckOutPage extends TestBaseSetup {
 
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
-        creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
+        // creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
 
         creditCardSection.setSecurityCode(creditCardData.get("security_code").toString());
 
@@ -150,7 +159,7 @@ public class CheckOutPage extends TestBaseSetup {
             }
 
             if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
-                billingSection.selectBillingFiscalType("Persona juridica");
+                billingSection.selectBillingFiscalType("Persona Jurídica");
             }
             if (isElementRequiered(checkOutPageElements, "billing_document_type")){
                 billingSection.selectBillingDocumentType("Tarjeta de Identidad");

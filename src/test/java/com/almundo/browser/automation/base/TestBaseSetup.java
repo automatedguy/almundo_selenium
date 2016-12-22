@@ -1,11 +1,8 @@
 package com.almundo.browser.automation.base;
 
-import com.almundo.browser.automation.pages.BasePage.BasePage;
-import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
-import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
-import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
-import com.almundo.browser.automation.pages.LandingPage;
+import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
+import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.JsonRead;
@@ -62,7 +59,7 @@ public class TestBaseSetup {
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) throws Exception {
 
@@ -257,6 +254,10 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, VueloHotelDataTrip.class);
     }
 
+    protected AutosDataTrip initAutosDataTrip() {
+        return PageFactory.initElements(driver, AutosDataTrip.class);
+    }
+
     protected CheckOutPage initCheckOutPage() {
         return PageFactory.initElements(driver, CheckOutPage.class);
     }
@@ -299,6 +300,10 @@ public class TestBaseSetup {
 
     protected VueloHotelDetailPage initVueloHotelDetailPage() {
         return PageFactory.initElements(driver, VueloHotelDetailPage.class);
+    }
+
+    protected AutosResultsPage initAutosResultsPage() {
+        return PageFactory.initElements(driver, AutosResultsPage.class);
     }
 
 }
