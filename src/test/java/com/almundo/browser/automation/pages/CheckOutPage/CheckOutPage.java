@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 
-import static com.almundo.browser.automation.pages.BasePage.HotelesDataTrip.hotelesDataTripList;
-
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -63,7 +61,7 @@ public class CheckOutPage extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
-        populateCreditCardSection(creditCardData);
+        populateCreditCardSection(creditCardData, productCheckOutPage);
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
@@ -139,7 +137,7 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPage populateCreditCardSection(JSONObject creditCardData){
+    private CheckOutPage populateCreditCardSection(JSONObject creditCardData, String product){
 
         CreditCardSection creditCardSection = initCreditCardSection();
         logger.info("------------- Filling Credit Card Section -------------");
@@ -151,11 +149,11 @@ public class CheckOutPage extends TestBaseSetup {
 
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
-        if(hotelesDataTripList == null) {
-            creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
-        }else {
+        if(product.contains("Hoteles") || product.contains("Autos")) {
             creditCardSection.selectMonthCardExpiration(creditCardData.get("month_card_expire").toString());
             creditCardSection.selectYearCardExpiration(creditCardData.get("year_card_expire").toString());
+        }else {
+            creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
 
         }
 
