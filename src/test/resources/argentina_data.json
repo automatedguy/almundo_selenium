@@ -154,6 +154,9 @@
 
 	"billings": {
 		"local_Billing": {
+			"fiscal_name":"Automation & Sarasa Associates Inc.",
+			"billing_fiscal_type":"Persona Natural",
+			"billing_document_type":"Cédula de Extranjería",
 			"billing_fiscal_document": "23281685589",
 			"billing_address": "Carlos Pellegrini",
 			"address_number": 887,
