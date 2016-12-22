@@ -31,7 +31,13 @@ public class CreditCardSection extends CheckOutPage {
     private WebElement card_number;
 
     @FindBy(id = "card_expire")
-    private WebElement card_expire;
+    public WebElement card_expire;
+
+    @FindBy(id = "month_card_expire")
+    private WebElement month_card_expire;
+
+    @FindBy(id = "year_card_expire")
+    private WebElement year_card_expire;
 
     @FindBy(id = "security_code")
     private WebElement security_code;
@@ -82,6 +88,18 @@ public class CreditCardSection extends CheckOutPage {
         logger.info("Entering Fecha de vencimiento: [" + expDate + "]");
         card_expire.clear();
         card_expire.sendKeys(expDate);
+    }
+
+    public void selectMonthCardExpiration(String monthCardExpiration) {
+        logger.info("Selecting Fecha de vencimiento - Mes: [" + monthCardExpiration + "]");
+        Select selectMonthCardExpiration = new Select (month_card_expire);
+        selectMonthCardExpiration.selectByVisibleText(monthCardExpiration);
+    }
+
+    public void selectYearCardExpiration(String yearCardExpiration) {
+        logger.info("Selecting Fecha de vencimiento - Año: [" + yearCardExpiration + "]");
+        Select selectYearCardExpiration = new Select (year_card_expire);
+        selectYearCardExpiration.selectByVisibleText(yearCardExpiration);
     }
 
     public void setSecurityCode(String code) {

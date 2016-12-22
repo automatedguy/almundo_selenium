@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 
+import static com.almundo.browser.automation.pages.BasePage.HotelesDataTrip.hotelesDataTripList;
+
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -48,8 +50,12 @@ public class CheckOutPage extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPage populateCheckOutPage(int numPassengers, JSONArray passengerList, JSONObject creditCardData,
-                                             JSONObject billingData, JSONObject contactData, String productCheckOutPage ) throws InterruptedException {
+    public CheckOutPage populateCheckOutPage(int numPassengers,
+                                             JSONArray passengerList,
+                                             JSONObject creditCardData,
+                                             JSONObject billingData,
+                                             JSONObject contactData,
+                                             String productCheckOutPage ) throws InterruptedException {
 
         getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
@@ -134,7 +140,13 @@ public class CheckOutPage extends TestBaseSetup {
 
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
-        // creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
+        if(hotelesDataTripList == null) {
+            creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
+        }else {
+            creditCardSection.selectMonthCardExpiration(creditCardData.get("month_card_expire").toString());
+            creditCardSection.selectYearCardExpiration(creditCardData.get("year_card_expire").toString());
+
+        }
 
         creditCardSection.setSecurityCode(creditCardData.get("security_code").toString());
 
