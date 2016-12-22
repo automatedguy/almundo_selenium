@@ -176,14 +176,14 @@ public class CheckOutPage extends TestBaseSetup {
             logger.info("------------- Filling Billing Section -------------");
 
             if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
-                billingSection.setBillingFiscalName("Nombre o Razon Social");
+                billingSection.setBillingFiscalName(billingData.get("fiscal_name").toString());
             }
 
             if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
-                billingSection.selectBillingFiscalType("Persona Jurídica");
+                billingSection.selectBillingFiscalType(billingData.get("billing_fiscal_type").toString());
             }
             if (isElementRequiered(checkOutPageElements, "billing_document_type")){
-                billingSection.selectBillingDocumentType("Tarjeta de Identidad");
+                billingSection.selectBillingDocumentType(billingData.get("billing_document_type").toString());
             }
 
             billingSection.setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
