@@ -20,7 +20,7 @@ public class AutosFlowTest extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
 
     //TODO: overload populateCheckOutPage
-    private int cardDrivers = 1;
+    private int carDrivers = 1;
 
     @BeforeClass
     private void initDataTripList() {
@@ -70,7 +70,7 @@ public class AutosFlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
-        checkOutPage.populateCheckOutPage(cardDrivers,
+        checkOutPage.populateCheckOutPage(carDrivers,
                 checkOutPage.passengerSection().passengerJsonList,
                 checkOutPage.creditCardSection().creditCardData,
                 checkOutPage.billingSection().billingData,

@@ -70,12 +70,12 @@ public class BasePage extends TestBaseSetup {
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) throws InterruptedException {
         calendar.click();
+        Thread.sleep(500);
+
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
 
         List<WebElement> availableDates = getAvailableDatesList();
         int totalAvailableDates = availableDates.size();
-
-        PageUtils.waitElementForClickable(driver, availableDates.get(daysAhead-1), 5, "Available dates");
 
         if(totalAvailableDates >= daysAhead){
             logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
@@ -85,7 +85,7 @@ public class BasePage extends TestBaseSetup {
             daysAhead = daysAhead - totalAvailableDates;
             hotelesDataTrip().nextCalBtn.click();
             List<WebElement> availableDatesNextCal = getAvailableDatesList();
-            logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
+            logger.info("Selecting date: [" + availableDatesNextCal.get(daysAhead-1).getText() + " " + hotelesDataTrip().monthLbl.getText() + " " + hotelesDataTrip().yearLbl.getText() + "]");
             availableDatesNextCal.get(daysAhead-1).click();
         }
         return this;

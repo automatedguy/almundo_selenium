@@ -24,7 +24,7 @@ public class AutosResultsPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public CheckOutPage clickReservarAhoraBtn() {
+    public CheckOutPage clickReservarAhoraBtn() throws InterruptedException {
         List<WebElement> detailCarsButtonResults = driver.findElements(By.cssSelector(".button--block.button--lg"));
         PageUtils.waitElementForClickable(driver, detailCarsButtonResults.get(0), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
