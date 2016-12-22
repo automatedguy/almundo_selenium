@@ -270,6 +270,10 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CreditCardSection.class);
     }
 
+    protected PickUpLocationSection initPickUpLocationSection() {
+        return PageFactory.initElements(driver, PickUpLocationSection.class);
+    }
+
     protected BillingSection initBillingSection() {
         return PageFactory.initElements(driver, BillingSection.class);
     }
