@@ -9,6 +9,7 @@
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
+                "childAgeRange": "Entre 2 y 11 años",
                 "flightClass": "Turista"
             },
 
@@ -21,6 +22,7 @@
                 "endDate": 10,
                 "adults": 2,
                 "childs": 0,
+                "childAgeRange": null,
                 "flightClass": "Turista"
             }
     },
