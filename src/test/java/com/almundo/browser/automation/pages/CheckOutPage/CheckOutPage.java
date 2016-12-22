@@ -23,6 +23,10 @@ public class CheckOutPage extends TestBaseSetup {
         return initPassengerInfoSection();
     }
 
+    public PickUpLocationSection pickUpLocationSection() {
+        return initPickUpLocationSection();
+    }
+
     public CreditCardSection creditCardSection() {
         return initCreditCardSection();
     }
@@ -34,7 +38,6 @@ public class CheckOutPage extends TestBaseSetup {
     public ContactSection contactSection() {
         return initContactInfoSection();
     }
-
 
     private static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;
@@ -59,6 +62,7 @@ public class CheckOutPage extends TestBaseSetup {
 
         getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
+        populatePickUpLocationSection();
         populateCreditCardSection(creditCardData);
         populateBillingSection(billingData);
         populateContactSection(contactData);
@@ -124,6 +128,13 @@ public class CheckOutPage extends TestBaseSetup {
             }
 
             passengerIndex = passengerIndex + 1;
+        }
+        return this;
+    }
+
+    private CheckOutPage populatePickUpLocationSection(){
+        if(isElementRequiered(checkOutPageElements, "PickUpLocationSection")){
+            pickUpLocationSection().selectAgency();
         }
         return this;
     }

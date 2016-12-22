@@ -14,11 +14,13 @@
     },
 
     "HotelesCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
+      "documentType0":"true",
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
@@ -30,11 +32,13 @@
     },
 
     "VuelosCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
+      "documentType0":"true",
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
@@ -46,11 +50,13 @@
     },
 
     "VueloHotelCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
+      "documentType0":"true",
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
@@ -62,6 +68,7 @@
     },
 
     "AutosCheckOutPage":{
+      "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
@@ -96,6 +103,7 @@
     },
 
     "HotelesCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name": "true",
       "billing_fiscal_type": "true",
@@ -113,6 +121,7 @@
     },
 
     "VuelosCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "true",
       "billing_document_type": "true",
@@ -130,6 +139,7 @@
     },
 
     "VueloHotelCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "true",
       "billing_document_type": "true",
@@ -147,6 +157,7 @@
     },
 
     "AutosCheckOutPage":{
+      "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
@@ -180,6 +191,7 @@
     },
 
     "HotelesCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
@@ -196,6 +208,7 @@
     },
 
     "VuelosCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
@@ -212,6 +225,7 @@
     },
 
     "VueloHotelCheckOutPageInternational":{
+      "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
@@ -228,6 +242,7 @@
     },
 
     "AutosCheckOutPage":{
+      "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
