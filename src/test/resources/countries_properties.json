@@ -117,7 +117,7 @@
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"true"
     },
 
     "VuelosCheckOutPageInternational":{
@@ -135,7 +135,7 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"true"
     },
 
     "VueloHotelCheckOutPageInternational":{
