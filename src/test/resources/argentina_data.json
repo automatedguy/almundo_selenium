@@ -60,7 +60,7 @@
 			"originFull": "Buenos Aires, Buenos Aires, Argentina",
 			"destinationAuto": "Bue",
 			"destinationFull": "Buenos Aires, Buenos Aires, Argentina",
-			"startDate": 40,
+			"startDate": 30,
 			"endDate": 10,
 			"pickUpTime": "12:00",
 			"dropOffTime": "12:00",
@@ -154,9 +154,23 @@
 
 	"billings": {
 		"local_Billing": {
-			"fiscal_name":"Automation & Sarasa Associates Inc.",
-			"billing_fiscal_type":"Persona Natural",
-			"billing_document_type":"Cédula de Extranjería",
+			"fiscal_name":"",
+			"billing_fiscal_type":"",
+			"billing_document_type":"",
+			"billing_fiscal_document": "23281685589",
+			"billing_address": "Carlos Pellegrini",
+			"address_number": 887,
+			"address_floor": 8,
+			"address_department": "A",
+			"address_postal_code": "C1009ABQ",
+			"address_state": "Buenos Aires",
+			"address_city": "C.A.B.A."
+		},
+
+		"local_Billing_v2": {
+			"fiscal_name":"",
+			"billing_fiscal_type":"",
+			"billing_document_type":"",
 			"billing_fiscal_document": "23281685589",
 			"billing_address": "Carlos Pellegrini",
 			"address_number": 887,
