@@ -44,7 +44,8 @@ public class HotelFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void hotelReservationFirstOptionFlow() throws InterruptedException {
+    public void hotelIntReservationFirstOptionFlow() throws InterruptedException {
+        logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room");
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -81,6 +82,47 @@ public class HotelFlowTest extends TestBaseSetup {
                                          checkOutPage.creditCardSection().creditCardData,
                                          checkOutPage.billingSection().billingData,
                                          checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
+
+
+    }
+
+    @Test
+    public void hotelDomReservationFirstOptionFlow() throws InterruptedException {
+        logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room");
+
+        PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
+        basePage.hotelesIcon.click();
+
+        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+
+        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
+
+        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
+        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
+
+        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
+
+        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+
+        Assert.assertTrue(hotelesResultsPage.vacancy());
+
+        hotelesDetailPage = hotelesResultsPage.clickVerHotelBtn(0);
+        hotelesDetailPage.clickVerHabitacionesBtn();
+
+        checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
+
+        checkOutPage.passengerSection().getPassengerData("adult_female_dni_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_dni_native");
+
+        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.billingSection().getBillingData("local_Billing");
+        checkOutPage.contactSection().getContactData("contact_phone");
+
+        checkOutPage.populateCheckOutPage(numPassengers,
+                checkOutPage.passengerSection().passengerJsonList,
+                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.billingSection().billingData,
+                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
 
 
     }

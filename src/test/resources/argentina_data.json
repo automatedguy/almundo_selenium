@@ -13,17 +13,17 @@
 				"flightClass": "Turista"
 			},
 
-			"miami_7days_2adults_turista": {
+			"domestic_20days_2adults_todas": {
 				"originAuto": "Bue",
 				"originFull": "Buenos Aires, Buenos Aires, Argentina",
-				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
-				"startDate": 7,
-				"endDate": 7,
+				"destinationAuto": "Bar",
+				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
+				"startDate": 30,
+				"endDate": 20,
 				"adults": 2,
 				"childs": 0,
-				"childAgeRange": null,
-				"flightClass": "Turista"
+				"childAgeRange": "",
+				"flightClass": "Todas"
 			}
 	},
 
@@ -35,6 +35,16 @@
 				"endDate": 10,
 				"adults": 2,
 				"childs": 2,
+				"rooms": 1
+			},
+
+			"domestic01_15days_2adults_1room": {
+				"destinationAuto": "Bar",
+				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
+				"startDate": 20,
+				"endDate": 15,
+				"adults": 2,
+				"childs": 0,
 				"rooms": 1
 			}
 	},
@@ -69,7 +79,7 @@
 	},
 
 	"passengers":{
-			"adult_male_passport_native": {
+			"adult_male_native": {
 				"first_name": "José Ñoqui",
 				"last_name": "O'Higgins Lingüístico",
 				"documentType": "Pasaporte",
@@ -81,7 +91,19 @@
 				"nationality": "Argentina"
 			},
 
-			"adult_female_dni_native": {
+			"adult_female_native": {
+				"first_name": "María Angélica",
+				"last_name": "D'Onofrio",
+				"documentType": "Pasaporte",
+				"document_number": "29098765N",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/1979",
+				"gender": "Femenino",
+				"nationality": "Argentina"
+			},
+
+			"adult_female_foreign": {
 				"first_name": "Naña Çraña",
 				"last_name": "Pingüino L'Oréal",
 				"documentType": "DNI",
@@ -90,10 +112,10 @@
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/1979",
 				"gender": "Femenino",
-				"nationality": "Argentina"
+				"nationality": "España"
 			},
 
-			"child_male_passport_native": {
+			"child_male_native": {
 				"first_name": "Timmy",
 				"last_name": "O' Tool",
 				"documentType": "Pasaporte",
@@ -104,7 +126,8 @@
 				"gender": "Masculino",
 				"nationality": "Argentina"
 			},
-			"child_female_dni_native": {
+
+			"child_female_native": {
 				"first_name": "Ñímis",
 				"last_name": "O' Tool",
 				"documentType": "DNI",
@@ -127,6 +150,7 @@
 				"gender": "Masculino",
 				"nationality": ""
 			},
+
 			"baby_female_passport_native": {
 				"first_name": "Rosemary",
 				"last_name": "Bowie",

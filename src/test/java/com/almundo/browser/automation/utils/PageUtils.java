@@ -110,5 +110,9 @@ public class PageUtils {
 
     }
 
+    public static void scrollToCoordinate(WebDriver driver, int coordinate) {
+        ((JavascriptExecutor)driver).executeScript("window.scrollBy(0," + coordinate + ")");
+    }
+
 
 }

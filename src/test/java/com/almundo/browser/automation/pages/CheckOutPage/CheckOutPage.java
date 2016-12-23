@@ -137,7 +137,7 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPage populateCreditCardSection(JSONObject creditCardData, String product){
+    private CheckOutPage populateCreditCardSection(JSONObject creditCardData, String product) {
 
         CreditCardSection creditCardSection = initCreditCardSection();
         logger.info("------------- Filling Credit Card Section -------------");

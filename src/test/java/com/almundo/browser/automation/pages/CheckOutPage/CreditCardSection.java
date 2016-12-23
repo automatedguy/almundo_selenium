@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.CheckOutPage;
 
 import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -53,6 +54,8 @@ public class CreditCardSection extends CheckOutPage {
     public void selectPaymentQtyOption(int index) {
         List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
 
+        PageUtils.scrollToElement(driver, results.get(0));
+        PageUtils.scrollToCoordinate(driver, -200);
         results.get(index).click();
     }
 
@@ -66,7 +69,9 @@ public class CreditCardSection extends CheckOutPage {
 
             if (cardNameElement.getText().equals(cardName)) {
                 logger.info("Selecting card name: [" + cardName + "]");
-                radioButtonElement.click();
+                while (!radioButtonElement.isSelected()){
+                    radioButtonElement.click();
+                }
                 break;
             }
         }

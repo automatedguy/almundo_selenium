@@ -61,7 +61,7 @@ public class TestBaseSetup {
                                         //@Optional("OS X 10.11") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country) throws Exception {
+                                        @Optional("MEXICO") String country) throws Exception {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -230,6 +230,12 @@ public class TestBaseSetup {
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public void logTestTitle(String testTitle) {
+        logger.info("--------------------------------------------------------------------------------");
+        logger.info(testTitle);
+        logger.info("--------------------------------------------------------------------------------");
     }
 
     //################################################ Inits ################################################
