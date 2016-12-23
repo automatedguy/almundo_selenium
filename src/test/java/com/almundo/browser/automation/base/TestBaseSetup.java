@@ -61,7 +61,7 @@ public class TestBaseSetup {
                                         //@Optional("OS X 10.11") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country) throws Exception {
+                                        @Optional("ARGENTINA") String country) throws Exception {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -153,8 +153,8 @@ public class TestBaseSetup {
 
     private void initSauceLabsDriver (String methodName) throws MalformedURLException, UnexpectedException {
 
-        String USERNAME = "dafrubihit";
-        String ACCESS_KEY = "b8a12f4f-f7de-4ed1-8f1d-f5a80bb1ee7a";
+        String USERNAME = "hetreniphi";
+        String ACCESS_KEY = "44519f20-685a-4a7c-b0cc-8654e2406ead";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

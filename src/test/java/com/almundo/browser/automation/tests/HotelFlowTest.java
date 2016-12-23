@@ -74,7 +74,7 @@ public class HotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("child_female_dni_native");
 
         checkOutPage.creditCardSection().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing");
+        checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
