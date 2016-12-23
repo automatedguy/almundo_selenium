@@ -171,7 +171,7 @@
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"true"
     }
 
 
@@ -192,28 +192,30 @@
 
     "HotelesCheckOutPageInternational":{
       "PickUpLocationSection": "false",
-      "BillingInfoSection":"true",
+      "BillingInfoSection":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
+      "documentType0":"false",
       "documentType":"false",
-      "document_number":"true",
+      "document_number":"false",
       "document_number_card":"false",
       "fiscal_name":"false",
       "birthday":"false",
       "gender":"false",
-      "nationality":"true",
+      "nationality":"flase",
       "accepted":"false"
     },
 
     "VuelosCheckOutPageInternational":{
       "PickUpLocationSection": "false",
-      "BillingInfoSection":"true",
+      "BillingInfoSection":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
-      "document_emisor":"false",
-      "document_expiration":"false",
+      "document_emisor":"true",
+      "document_expiration":"true",
+      "documentType0":"true",
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
@@ -226,11 +228,12 @@
 
     "VueloHotelCheckOutPageInternational":{
       "PickUpLocationSection": "false",
-      "BillingInfoSection":"true",
+      "BillingInfoSection":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
-      "document_emisor":"false",
-      "document_expiration":"false",
+      "document_emisor":"true",
+      "document_expiration":"true",
+      "documentType0":"true",
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
@@ -243,15 +246,16 @@
 
     "AutosCheckOutPage":{
       "PickUpLocationSection": "true",
-      "BillingInfoSection":"true",
+      "BillingInfoSection":"false",
+      "fiscal_name":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
+      "documentType0":"true",
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
-      "fiscal_name":"false",
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
