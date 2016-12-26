@@ -6,6 +6,7 @@ import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -20,18 +21,14 @@ public class HotelesDetailPage extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
-
-
-
+    @FindBy(id = "more-rooms")
+    public WebElement verHabitacionesBtn;
 
     //############################################### Actions ###############################################
 
     public HotelesDetailPage clickVerHabitacionesBtn() throws InterruptedException {
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".price-total--ctn"), 30, "Price Total Section");
-
-        List<WebElement> verHabitacionesButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary"));
-        logger.info("Clicking on Ver Habitaciones button");
-        verHabitacionesButtonResults.get(0).click();
+        PageUtils.waitElementForVisibility(driver, verHabitacionesBtn, 30, "Ver Habitaciones button");
+        verHabitacionesBtn.click();
         return this;
     }
 
