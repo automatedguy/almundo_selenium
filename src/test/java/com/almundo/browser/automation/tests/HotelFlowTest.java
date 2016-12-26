@@ -45,7 +45,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     @Test
     public void hotelIntReservationFirstOptionFlow() throws InterruptedException {
-        logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room");
+        logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -68,10 +68,10 @@ public class HotelFlowTest extends TestBaseSetup {
 
         checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_dni_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_dni_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_dni_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_dni_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
+        checkOutPage.passengerSection().getPassengerData("child_female_native");
+        checkOutPage.passengerSection().getPassengerData("child_female_native");
 
         checkOutPage.creditCardSection().getCreditCardData("amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
@@ -88,7 +88,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     @Test
     public void hotelDomReservationFirstOptionFlow() throws InterruptedException {
-        logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room");
+        logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -111,11 +111,11 @@ public class HotelFlowTest extends TestBaseSetup {
 
         checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_dni_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_dni_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
         checkOutPage.creditCardSection().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing");
+        checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,

@@ -43,7 +43,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
     @Test
     public void vueloIntReservationFlow() throws InterruptedException {
-        logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista");
+        logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -88,7 +88,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
     @Test
     public void vueloDomReservationFlow() throws InterruptedException {
-        logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas");
+        logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();

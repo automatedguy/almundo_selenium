@@ -42,7 +42,7 @@
                 "destinationAuto": "Car",
                 "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
                 "startDate": 20,
-                "endDate": 15,
+                "endDate": 20,
                 "adults": 2,
                 "childs": 0,
                 "rooms": 1
@@ -81,7 +81,7 @@
             "adult_male_native": {
                 "first_name": "José Ñoqui",
                 "last_name": "O'Higgins Lingüístico",
-                "documentType": "Tarjeta de Identidad",
+                "documentType": "Pasaporte",
                 "document_number": "29098765N",
                 "document_emisor": "Colombia",
                 "document_expiration": "25/12/2017",

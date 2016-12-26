@@ -44,6 +44,8 @@ public class AutosFlowTest extends TestBaseSetup {
 
     @Test
     public void autosReservationFirstOptionFlow() throws InterruptedException {
+        logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
+
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();
 
@@ -64,7 +66,7 @@ public class AutosFlowTest extends TestBaseSetup {
 
         checkOutPage = autosResultsPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_passport_native");
+        checkOutPage.passengerSection().getPassengerData("adult_male_native");
 
         checkOutPage.creditCardSection().getCreditCardData("amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");

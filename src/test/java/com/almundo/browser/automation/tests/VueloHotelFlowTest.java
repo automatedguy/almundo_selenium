@@ -45,6 +45,8 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     @Test
     public void vueloHotelReservationFirstOptionFlow() throws InterruptedException {
+        logTestTitle("Vuelo+Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
 
@@ -70,10 +72,10 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
         checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_passport_native");
-        checkOutPage.passengerSection().getPassengerData("adult_male_passport_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_passport_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_passport_native");
+        checkOutPage.passengerSection().getPassengerData("adult_male_native");
+        checkOutPage.passengerSection().getPassengerData("adult_male_native");
+        checkOutPage.passengerSection().getPassengerData("child_male_native");
+        checkOutPage.passengerSection().getPassengerData("child_male_native");
 
         checkOutPage.creditCardSection().getCreditCardData("amex");
         checkOutPage.billingSection().getBillingData("local_Billing");

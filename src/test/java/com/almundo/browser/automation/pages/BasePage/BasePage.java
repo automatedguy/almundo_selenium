@@ -83,9 +83,13 @@ public class BasePage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) throws InterruptedException {
+    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
         calendar.click();
-        Thread.sleep(1000);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
 
         List<WebElement> availableDates = getAvailableDatesList();
