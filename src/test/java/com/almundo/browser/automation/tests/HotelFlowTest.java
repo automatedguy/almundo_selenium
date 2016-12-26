@@ -44,7 +44,7 @@ public class HotelFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void hotelIntReservationFirstOptionFlow() throws InterruptedException {
+    public void hotelIntReservationFlow() throws InterruptedException {
         logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
@@ -87,7 +87,7 @@ public class HotelFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void hotelDomReservationFirstOptionFlow() throws InterruptedException {
+    public void hotelDomReservationFlow() throws InterruptedException {
         logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");

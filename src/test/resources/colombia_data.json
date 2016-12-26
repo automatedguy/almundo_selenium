@@ -59,6 +59,20 @@
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
+                "childAgeRange": "Entre 2 y 11 años",
+                "rooms": 1
+            },
+
+            "domestic01_15days_2adults_1childs_1room": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Car",
+                "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
+                "startDate": 20,
+                "endDate": 20,
+                "adults": 2,
+                "childs": 1,
+                "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
             }
     },

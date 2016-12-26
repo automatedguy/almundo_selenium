@@ -59,6 +59,20 @@
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
+                "childAgeRange": "Entre 2 y 11 años",
+                "rooms": 1
+            },
+
+            "domestic01_15days_2adults_1childs_1room": {
+                "originAuto": "Dis",
+                "originFull": "Ciudad de México, Distrito Federal, México",
+                "destinationAuto": "Can",
+                "destinationFull": "Cancún, Quintana Roo, México",
+                "startDate": 20,
+                "endDate": 20,
+                "adults": 2,
+                "childs": 1,
+                "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
             }
     },
