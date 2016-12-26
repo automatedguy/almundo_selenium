@@ -43,13 +43,51 @@ public class AutosFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void autosReservationFirstOptionFlow() throws InterruptedException {
+    public void autosDomReservationFlow() throws InterruptedException {
         logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();
 
         basePage.autosDataTrip().getAutosDataTripItinerary("capital_10days_entre_21_24");
+
+        basePage.autosDataTrip().setOrigin(basePage.autosDataTrip().originAuto, basePage.autosDataTrip().originFull);
+        basePage.autosDataTrip().setDestination(basePage.autosDataTrip().destinationAuto, basePage.autosDataTrip().destinationFull);
+
+        basePage.autosDataTrip().selectDateFromCalendar(basePage.autosDataTrip().pickUpDateCalendar, basePage.autosDataTrip().startDate);
+        basePage.autosDataTrip().selectDateFromCalendar(basePage.autosDataTrip().dropOffDateCalendar, basePage.autosDataTrip().endDate);
+
+        basePage.autosDataTrip().selectPickUpTime(basePage.autosDataTrip().pickUpTime);
+        basePage.autosDataTrip().selectDropOffTime(basePage.autosDataTrip().dropOffTime);
+
+        basePage.autosDataTrip().selectAgeRange(basePage.autosDataTrip().ageRange);
+
+        autosResultsPage = basePage.autosDataTrip().clickBuscarBtn();
+
+        checkOutPage = autosResultsPage.clickReservarAhoraBtn();
+
+        checkOutPage.passengerSection().getPassengerData("adult_male_native");
+
+        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.billingSection().getBillingData("local_Billing_v2");
+        checkOutPage.contactSection().getContactData("contact_cell_phone");
+
+        checkOutPage.populateCheckOutPage(carDrivers,
+                checkOutPage.passengerSection().passengerJsonList,
+                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.billingSection().billingData,
+                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
+
+    }
+
+    @Test
+    public void autosIntReservationFlow() throws InterruptedException {
+        logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
+
+        PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
+        basePage.autosIcon.click();
+
+        basePage.autosDataTrip().getAutosDataTripItinerary("miami_10days_entre_21_24");
 
         basePage.autosDataTrip().setOrigin(basePage.autosDataTrip().originAuto, basePage.autosDataTrip().originFull);
         basePage.autosDataTrip().setDestination(basePage.autosDataTrip().destinationAuto, basePage.autosDataTrip().destinationFull);
