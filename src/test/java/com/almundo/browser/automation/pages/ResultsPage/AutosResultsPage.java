@@ -25,7 +25,7 @@ public class AutosResultsPage extends TestBaseSetup {
     //############################################### Actions ###############################################
 
     public CheckOutPage clickReservarAhoraBtn() throws InterruptedException {
-        String cssSelectorName  = ".button.button--secondary.button--block.button--lg.suggested.crazy_week";
+        String cssSelectorName  = ".button--block.button--lg";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
 
         List<WebElement> detailCarsButtonResults = driver.findElements(By.cssSelector(cssSelectorName));
