@@ -43,7 +43,7 @@ public class AutosFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void autosDomReservationFlow() throws InterruptedException {
+    public void autosDomReservationFlow() {
         logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
@@ -81,7 +81,7 @@ public class AutosFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void autosIntReservationFlow() throws InterruptedException {
+    public void autosIntReservationFlow() {
         logTestTitle("Autos Flow - International - 10 days - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");

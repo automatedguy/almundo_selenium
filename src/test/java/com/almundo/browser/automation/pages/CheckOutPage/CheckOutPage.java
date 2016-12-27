@@ -56,7 +56,7 @@ public class CheckOutPage extends TestBaseSetup {
                                              JSONObject creditCardData,
                                              JSONObject billingData,
                                              JSONObject contactData,
-                                             String productCheckOutPage ) throws InterruptedException {
+                                             String productCheckOutPage ) {
 
         getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);

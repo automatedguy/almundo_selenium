@@ -44,7 +44,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void vueloHotelIntReservationFlow() throws InterruptedException {
+    public void vueloHotelIntReservationFlow() {
         logTestTitle("Vuelo+Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
@@ -90,7 +90,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void vueloHotelDomReservationFlow() throws InterruptedException {
+    public void vueloHotelDomReservationFlow() {
         logTestTitle("Vuelo+Hotel Flow - Domestic - 20 days - 2 Adults/1 Child - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");

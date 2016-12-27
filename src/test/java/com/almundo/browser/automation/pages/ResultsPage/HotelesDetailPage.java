@@ -26,7 +26,7 @@ public class HotelesDetailPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public HotelesDetailPage clickVerHabitacionesBtn() throws InterruptedException {
+    public HotelesDetailPage clickVerHabitacionesBtn() {
         PageUtils.waitElementForVisibility(driver, verHabitacionesBtn, 30, "Ver Habitaciones button");
         logger.info("Clicking on Ver Habitaciones button");
         verHabitacionesBtn.click();

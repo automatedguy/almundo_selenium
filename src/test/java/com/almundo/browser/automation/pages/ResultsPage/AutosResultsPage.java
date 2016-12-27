@@ -24,7 +24,7 @@ public class AutosResultsPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public CheckOutPage clickReservarAhoraBtn() throws InterruptedException {
+    public CheckOutPage clickReservarAhoraBtn() {
         String cssSelectorName  = ".button--block.button--lg";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
 

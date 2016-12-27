@@ -21,13 +21,17 @@ public class VueloHotelDetailPage extends TestBaseSetup {
 
     //############################################### Actions ##############################################
 
-    public VueloHotelDetailPage clickVerHabitacionBtn() throws InterruptedException {
+    public VueloHotelDetailPage clickVerHabitacionBtn() {
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
         PageUtils.waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");
         verHabitacionBtn.click();
         //TODO: we can try to make this explicit.
-        Thread.sleep(1000);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 

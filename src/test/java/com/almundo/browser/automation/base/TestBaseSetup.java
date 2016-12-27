@@ -24,7 +24,6 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.UnexpectedException;
 
 
 public class TestBaseSetup {
@@ -59,9 +58,9 @@ public class TestBaseSetup {
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country) throws Exception {
+                                        @Optional("ARGENTINA") String country) {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -92,7 +91,7 @@ public class TestBaseSetup {
 
 
     @BeforeMethod
-    public void setDriver() throws InterruptedException {
+    public void setDriver() {
         System.out.println();
         logger.info("Starting @BeforeMethod...");
         try {
@@ -151,7 +150,7 @@ public class TestBaseSetup {
         }
     }
 
-    private void initSauceLabsDriver (String methodName) throws MalformedURLException, UnexpectedException {
+    private void initSauceLabsDriver (String methodName)  {
 
         String USERNAME = "hetreniphi";
         String ACCESS_KEY = "44519f20-685a-4a7c-b0cc-8654e2406ead";
@@ -175,7 +174,11 @@ public class TestBaseSetup {
 
         // Launch remote browser and set it as the current thread
         //driver = new RemoteWebDriver(new URL(url), capabilities);
-        webDriver.set(new RemoteWebDriver(new URL(url), capabilities));
+        try {
+            webDriver.set(new RemoteWebDriver(new URL(url), capabilities));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
