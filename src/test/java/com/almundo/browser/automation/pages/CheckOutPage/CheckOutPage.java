@@ -149,7 +149,7 @@ public class CheckOutPage extends TestBaseSetup {
 
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
-        if(product.contains("Hoteles") || product.contains("Autos")) {
+        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
             creditCardSection.selectMonthCardExpiration(creditCardData.get("month_card_expire").toString());
             creditCardSection.selectYearCardExpiration(creditCardData.get("year_card_expire").toString());
         }else {

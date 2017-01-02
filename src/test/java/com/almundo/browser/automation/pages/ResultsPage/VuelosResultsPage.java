@@ -22,10 +22,10 @@ public class VuelosResultsPage extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "option-inbound-00")
+    @FindBy(id = "cluster0-choice0-0")
     private WebElement ticketIdaRdb;
 
-    @FindBy(id = "option-inbound-01")
+    @FindBy(id = "cluster0-choice1-0")
     private WebElement ticketVueltaRdb;
 
     //############################################### Actions ##############################################

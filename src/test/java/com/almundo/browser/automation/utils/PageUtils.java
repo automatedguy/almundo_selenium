@@ -6,6 +6,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  * Created by gabrielcespedes on 20/10/16.
  */
@@ -114,5 +117,12 @@ public class PageUtils {
         ((JavascriptExecutor)driver).executeScript("window.scrollBy(0," + coordinate + ")");
     }
 
+    public static void setFocusOnChildWindow(WebDriver driver){
+        Set<String> set1=driver.getWindowHandles();
+        Iterator<String> win1=set1.iterator();
+        String parent=win1.next();
+        String child=win1.next();
+        driver.switchTo().window(child);
+    }
 
 }

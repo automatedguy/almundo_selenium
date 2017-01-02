@@ -86,7 +86,7 @@ public class BasePage extends TestBaseSetup {
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
         calendar.click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

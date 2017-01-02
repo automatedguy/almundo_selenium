@@ -1,8 +1,12 @@
 package com.almundo.browser.automation.pages.BasePage;
 
+import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 /**
  * Created by gabrielcespedes on 02/01/17.
@@ -15,8 +19,6 @@ public class LoginPopUp extends BasePage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = ".closelogin")
-    public WebElement closeLoginBtn;
 
     @FindBy(css = ".button-logo.full.button-facebook")
     public WebElement facebookLoginBtn;
@@ -38,16 +40,16 @@ public class LoginPopUp extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public LoginPopUp clickCloseLoginBtn() {
+    public void clickCloseLoginBtn() {
         logger.info("Closing Login Pop-Up");
-        closeLoginBtn.click();
-        return this;
-    }
-
-    public LoginPopUp clickBackground() {
-        logger.info("Closing Login Pop-Up");
-        background.click();
-        return this;
+        PageUtils.waitListContainResults(driver, ".closelogin", 0);
+        List<WebElement> closeLoginBtn = driver.findElements(By.cssSelector(".closelogin"));
+        closeLoginBtn.get(1).click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
