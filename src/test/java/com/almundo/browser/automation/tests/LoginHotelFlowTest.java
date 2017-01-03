@@ -1,7 +1,6 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -27,8 +26,8 @@ public class LoginHotelFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataTripList() {
-        basePage = new BasePage(driver);
-        basePage.hotelesDataTrip().getHotelesDataTripList();
+//        basePage = new BasePage(driver);
+//        basePage.hotelesDataTrip().getHotelesDataTripList();
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
@@ -38,12 +37,12 @@ public class LoginHotelFlowTest extends TestBaseSetup {
     }
 
     @BeforeMethod
-    private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = new LoginPopUp(driver);
+    private void doLogin(){
+        LoginPopUp loginPopUp = (LoginPopUp) initLoginPopUp();
         loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
         loginPopUp.setLoginPasswordTxt("gabi1981ce");
         basePage = loginPopUp.clickIngresarBtn();
-
+        basePage.hotelesDataTrip().getHotelesDataTripList();
     }
 
 
@@ -56,7 +55,7 @@ public class LoginHotelFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void hotelIntReservationFlow() {
+    public void hotelIntLoginReservationFlow() {
         logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
@@ -99,7 +98,7 @@ public class LoginHotelFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void hotelDomReservationFlow() {
+    public void hotelDomLoginReservationFlow() {
         logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");

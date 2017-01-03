@@ -251,6 +251,10 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, BasePage.class);
     }
 
+    protected BasePage initLoginPopUp() {
+        return PageFactory.initElements(driver, LoginPopUp.class);
+    }
+
     protected HotelesDataTrip initHotelesDataTrip() {
         return PageFactory.initElements(driver, HotelesDataTrip.class);
     }

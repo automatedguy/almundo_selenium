@@ -53,6 +53,7 @@ public class LoginPopUp extends BasePage {
     }
 
     public LoginPopUp setLoginEmailTxt(String loginEmail) {
+        PageUtils.waitElementForVisibility(driver, loginEmailTxt, 15, "Login Pop-Up...");
         logger.info("Entering Login Email: [" + loginEmail + "]");
         loginEmailTxt.clear();
         loginEmailTxt.sendKeys(loginEmail);
@@ -69,6 +70,11 @@ public class LoginPopUp extends BasePage {
     public BasePage clickIngresarBtn() {
         logger.info("Clicking on Ingresar Button.");
         ingresarBtn.click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return initBasePage();
     }
 
