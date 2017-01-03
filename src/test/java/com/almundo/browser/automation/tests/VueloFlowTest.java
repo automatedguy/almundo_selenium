@@ -83,7 +83,7 @@ public class VueloFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("child_male_native");
 
         checkOutPage.creditCardSection().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing");
+        checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
@@ -126,7 +126,7 @@ public class VueloFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
 
         checkOutPage.creditCardSection().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing");
+        checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
