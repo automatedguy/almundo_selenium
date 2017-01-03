@@ -33,7 +33,7 @@ public class LoginPopUp extends BasePage {
     public WebElement loginPasswordTxt;
 
     @FindBy(css = ".button.button--secondary.button--block.button--md.submit")
-    public WebElement loginBtn;
+    public WebElement ingresarBtn;
 
     @FindBy(css = ".login-background.modal-login")
     public WebElement background;
@@ -50,6 +50,26 @@ public class LoginPopUp extends BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public LoginPopUp setLoginEmailTxt(String loginEmail) {
+        logger.info("Entering Login Email: [" + loginEmail + "]");
+        loginEmailTxt.clear();
+        loginEmailTxt.sendKeys(loginEmail);
+        return this;
+    }
+
+    public LoginPopUp setLoginPasswordTxt(String loginPassword) {
+        logger.info("Entering Login Password: [" + loginPassword + "]");
+        loginPasswordTxt.clear();
+        loginPasswordTxt.sendKeys(loginPassword);
+        return this;
+    }
+
+    public BasePage clickIngresarBtn() {
+        logger.info("Clicking on Ingresar Button.");
+        ingresarBtn.click();
+        return initBasePage();
     }
 
 }
