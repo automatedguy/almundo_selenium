@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.BasePage.FacebookLoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -39,9 +40,12 @@ public class FacebookLoginHotelFlowTest extends TestBaseSetup {
     @BeforeMethod
     private void doLogin(){
         LoginPopUp loginPopUp = (LoginPopUp) initLoginPopUp();
-        loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
-        loginPopUp.setLoginPasswordTxt("gabi1981ce");
-        basePage = loginPopUp.clickIngresarBtn();
+        FacebookLoginPopUp facebookLoginPopUp = (FacebookLoginPopUp) loginPopUp.clickFacebookLoginBtn();
+        PageUtils.setFocusOnChildWindow(driver);
+        facebookLoginPopUp.setEmailTxt("almundoqastuff@gmail.com");
+        facebookLoginPopUp.setPassTxt("almundo#01");
+
+        basePage = facebookLoginPopUp.clickFacebookLoginBtn();
         basePage.hotelesDataTrip().getHotelesDataTripList();
     }
 
