@@ -78,4 +78,26 @@ public class LoginPopUp extends BasePage {
         return initBasePage();
     }
 
+    public BasePage clickFacebookLoginBtn() {
+        logger.info("Clicking on Facebook Login Button.");
+        facebookLoginBtn.click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return initFacebookLoginPopUp();
+    }
+
+    public BasePage clickGoogleLoginBtn() {
+        logger.info("Clicking on Facebook Login Button.");
+        googleLoginBtn.click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return initGoogleLoginPopUpEmail();
+    }
+
 }

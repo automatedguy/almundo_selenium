@@ -255,6 +255,18 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, LoginPopUp.class);
     }
 
+    protected BasePage initFacebookLoginPopUp() {
+        return PageFactory.initElements(driver, FacebookLoginPopUp.class);
+    }
+
+    protected BasePage initGoogleLoginPopUpEmail() {
+        return PageFactory.initElements(driver, GoogleLoginPopUpEmail.class);
+    }
+
+    protected BasePage initGoogleLoginPopUpPasswd() {
+        return PageFactory.initElements(driver, GoogleLoginPopUpPasswd.class);
+    }
+
     protected HotelesDataTrip initHotelesDataTrip() {
         return PageFactory.initElements(driver, HotelesDataTrip.class);
     }
