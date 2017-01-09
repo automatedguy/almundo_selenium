@@ -3,6 +3,7 @@ package com.almundo.browser.automation.base;
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CreditCardSectionV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.PassengerSectionV3;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
@@ -303,6 +304,10 @@ public class TestBaseSetup {
 
     protected CreditCardSection initCreditCardSection() {
         return PageFactory.initElements(driver, CreditCardSection.class);
+    }
+
+    protected CreditCardSectionV3 initCreditCardSectionV3() {
+        return PageFactory.initElements(driver, CreditCardSectionV3.class);
     }
 
     protected PickUpLocationSection initPickUpLocationSection() {

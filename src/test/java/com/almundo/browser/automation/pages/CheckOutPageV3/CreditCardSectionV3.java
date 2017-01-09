@@ -53,7 +53,7 @@ public class CreditCardSectionV3 extends CheckOutPage {
     //############################################### Actions ###############################################
 
     public void selectPaymentQtyOption(int index) {
-        List<WebElement> results = driver.findElements(By.cssSelector(".icon.icon-down.transition"));
+        List<WebElement> results = driver.findElements(By.cssSelector(".monthly-payment"));
 
         PageUtils.scrollToElement(driver, results.get(0));
         PageUtils.scrollToCoordinate(driver, -200);

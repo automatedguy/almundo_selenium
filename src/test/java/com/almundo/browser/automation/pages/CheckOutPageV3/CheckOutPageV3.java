@@ -24,8 +24,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initPickUpLocationSection();
     }
 
-    public CreditCardSection creditCardSection() {
-        return initCreditCardSection();
+    public CreditCardSectionV3 creditCardSectionV3() {
+        return initCreditCardSectionV3();
     }
 
     public BillingSection billingSection() {
@@ -58,9 +58,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                String productCheckOutPage ) {
 
         getCheckOutPageElements(productCheckOutPage);
+        populateCreditCardSection(creditCardData, productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
-        populateCreditCardSection(creditCardData, productCheckOutPage);
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
@@ -125,7 +125,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     private CheckOutPageV3 populateCreditCardSection(JSONObject creditCardData, String product) {
 
-        CreditCardSection creditCardSection = initCreditCardSection();
+        CreditCardSectionV3 creditCardSection = initCreditCardSectionV3();
         logger.info("------------- Filling Credit Card Section -------------");
 
         creditCardSection.selectPaymentQtyOption(0);

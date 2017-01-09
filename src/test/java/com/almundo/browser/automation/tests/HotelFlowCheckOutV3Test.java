@@ -32,7 +32,7 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage = initCheckOutPageV3();
         checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.creditCardSection().getCreditCardList();
+        checkOutPage.creditCardSectionV3().getCreditCardList();
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
@@ -123,13 +123,13 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.creditCardSectionV3().getCreditCardData("amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.creditCardSectionV3().creditCardData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
 
