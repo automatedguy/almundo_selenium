@@ -3,8 +3,8 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -23,14 +23,14 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
 
     private HotelesResultsPage hotelesResultsPage = null;
     private HotelesDetailPage hotelesDetailPage = null;
-    private CheckOutPage checkOutPage = null;
+    private CheckOutPageV3 checkOutPage = null;
 
     @BeforeClass
     private void initDataTripList() {
         basePage = new BasePage(driver);
         basePage.hotelesDataTrip().getHotelesDataTripList();
 
-        checkOutPage = initCheckOutPage();
+        checkOutPage = initCheckOutPageV3();
         checkOutPage.passengerSection().getPassengersList();
         checkOutPage.creditCardSection().getCreditCardList();
         checkOutPage.billingSection().getBillingList();
@@ -118,7 +118,7 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
         hotelesDetailPage = hotelesResultsPage.clickVerHotelBtn(0);
         hotelesDetailPage.clickVerHabitacionesBtn();
 
-        checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
+        checkOutPage = hotelesDetailPage.clickReservarAhoraV3Btn();
 
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");

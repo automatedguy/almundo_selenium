@@ -1,12 +1,14 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -34,74 +36,66 @@ public class PassengerSectionV3 extends CheckOutPage {
         return this;
     }
 
-/*    public PassengerSectionV3 setlastName(String lastName, String lastNamePassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(lastName));
-
+    public PassengerSectionV3 setlastName(int index, String lastNamePassenger){
+        List<WebElement> lastNameList = driver.findElements(By.id("last_name"));
         logger.info("Entering Apellido/s: [" + lastNamePassenger + "]");
-        elementToPopulate.clear();
-        elementToPopulate.sendKeys(lastNamePassenger);
+        lastNameList.get(index).clear();
+        lastNameList.get(index).sendKeys(lastNamePassenger);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentType(String documentType, String documentTypePassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(documentType));
-
+    public PassengerSectionV3 setDocumentType(int index, String documentTypePassenger){
+        List<WebElement> documentTypeList = driver.findElements(By.name("document_type"));
         logger.info("Selecting Tipo de documento: [" + documentTypePassenger + "]");
-        Select tipoDeDocumento = new Select(elementToPopulate);
+        Select tipoDeDocumento = new Select(documentTypeList.get(index));
         tipoDeDocumento.selectByVisibleText(documentTypePassenger);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentNumber(String documentNumber, String documentNumberPassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(documentNumber));
-
+    public PassengerSectionV3 setDocumentNumber(int index, String documentNumberPassenger){
+        List<WebElement> documentNumberList = driver.findElements(By.id("number"));
         logger.info("Entering Número: [" + documentNumberPassenger + "]");
-        elementToPopulate.clear();
-        elementToPopulate.sendKeys(documentNumberPassenger);
+        documentNumberList.get(index).clear();
+        documentNumberList.get(index).sendKeys(documentNumberPassenger);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentEmisor(String documentEmisor, String documentEmisorPassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(documentEmisor));
-
+    public PassengerSectionV3 setDocumentEmisor(int index, String documentEmisorPassenger){
+        List<WebElement> documentEmisorList = driver.findElements(By.id("documentEmisor"));
         logger.info("Selecting País emisor del pasaporte: [" + documentEmisorPassenger + "]");
-        Select paisEmisorDelPasaporte = new Select(elementToPopulate);
+        Select paisEmisorDelPasaporte = new Select(documentEmisorList.get(index));
         paisEmisorDelPasaporte.selectByVisibleText(documentEmisorPassenger);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentExpiration(String documentExpiration, String documentExpirationPassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(documentExpiration));
-
+    public PassengerSectionV3 setDocumentExpiration(int index, String documentExpirationPassenger){
+        List<WebElement> documentExpirationList = driver.findElements(By.id("documentExpiration"));
         logger.info("Entering Fecha de venc. del documento: [" + documentExpirationPassenger + "]");
-        elementToPopulate.clear();
-        elementToPopulate.sendKeys(documentExpirationPassenger);
+        documentExpirationList.get(index).clear();
+        documentExpirationList.get(index).sendKeys(documentExpirationPassenger);
         return this;
     }
 
-    public PassengerSectionV3 setBirthDay(String birthday, String birthdayPassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(birthday));
-
+    public PassengerSectionV3 setBirthDay(int index, String birthdayPassenger){
+        List<WebElement> birthDayList = driver.findElements(By.id("birthday"));
         logger.info("Entering Fecha de Nacimiento: [" + birthdayPassenger + "]");
-        elementToPopulate.clear();
-        elementToPopulate.sendKeys(birthdayPassenger);
+        birthDayList.get(index).clear();
+        birthDayList.get(index).sendKeys(birthdayPassenger);
         return this;
     }
 
-    public PassengerSectionV3 setGender(String gender, String genderPassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(gender));
-
+    public PassengerSectionV3 setGender(int index, String genderPassenger){
+        List<WebElement> genderList = driver.findElements(By.id("gender"));
         logger.info("Selecting Sexo: [" + genderPassenger + "]");
-        Select sexo = new Select(elementToPopulate);
+        Select sexo = new Select(genderList.get(index));
         sexo.selectByVisibleText(genderPassenger);
         return this;
     }
 
-    public PassengerSectionV3 setNationality(String nationality, String nationalityPassenger){
-        WebElement elementToPopulate = driver.findElement(By.id(nationality));
-
+    public PassengerSectionV3 setNationality(int index, String nationalityPassenger){
+        List<WebElement> nationalityList = driver.findElements(By.name("nationality"));
         logger.info("Selecting Nacionalidad: [" + nationalityPassenger + "]");
-        Select nacionalidad = new Select(elementToPopulate);
+        Select nacionalidad = new Select(nationalityList.get(index));
         nacionalidad.selectByVisibleText(nationalityPassenger);
         return this;
     }
@@ -114,5 +108,5 @@ public class PassengerSectionV3 extends CheckOutPage {
     public static void getPassengerData(String dataSet)  {
         passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
         passengerJsonList.add(passengerData);
-    }*/
+    }
 }

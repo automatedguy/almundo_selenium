@@ -7,8 +7,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 
-import java.util.ArrayList;
-
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -70,63 +68,50 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    private ArrayList<Passenger> createPassenger(int numPassengers){
-        ArrayList<Passenger> passengers = new ArrayList<>();
-        for (int idNum = 0; idNum < numPassengers; idNum++) {
-            passengers.add(new Passenger(idNum));
-        }
-        return passengers;
-    }
-
     private CheckOutPageV3 populatePassengerSection(int numPassengers, JSONArray passengerList){
 
-        ArrayList<Passenger> passengers = createPassenger(numPassengers);
-
-        PassengerSection passengerSection = initPassengerInfoSection();
+        PassengerSectionV3 passengerSection = initPassengerInfoSectionV3();
         logger.info("------------- Filling Passenger Section -------------");
 
-        int passengerIndex = 0;
         JSONObject passengerInfo;
 
-        for(Passenger passengerId : passengers){
+        for(int passengerIndex = 0; passengerIndex <= numPassengers-1; passengerIndex++ ){
 
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
 
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
-            passengerSection.setFirstName(passengerId.firstName, passengerInfo.get("first_name").toString());
+            passengerSection.setFirstName(passengerIndex, passengerInfo.get("first_name").toString());
 
-            passengerSection.setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
+            passengerSection.setlastName(passengerIndex, passengerInfo.get("last_name").toString());
 
             if(isElementRequiered(checkOutPageElements, "documentType0")) {
-                passengerSection.setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
+                passengerSection.setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "document_number")){
-                passengerSection.setDocumentNumber(passengerId.documentNumber, passengerInfo.get("document_number").toString());
+                passengerSection.setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "document_emisor")) {
-                passengerSection.setDocumentEmisor(passengerId.document_emisor, passengerInfo.get("document_emisor").toString());
+                passengerSection.setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "document_expiration")) {
-                passengerSection.setDocumentExpiration(passengerId.document_expiration, passengerInfo.get("document_expiration").toString());
+                passengerSection.setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "birthday")) {
-                passengerSection.setBirthDay(passengerId.birthday, passengerInfo.get("birthday").toString());
+                passengerSection.setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "gender")) {
-                passengerSection.setGender(passengerId.gender, passengerInfo.get("gender").toString());
+                passengerSection.setGender(passengerIndex, passengerInfo.get("gender").toString());
             }
 
             if(isElementRequiered(checkOutPageElements, "nationality")) {
-                    passengerSection.setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
+                    passengerSection.setNationality(passengerIndex, passengerInfo.get("nationality").toString());
             }
-
-            passengerIndex = passengerIndex + 1;
         }
         return this;
     }

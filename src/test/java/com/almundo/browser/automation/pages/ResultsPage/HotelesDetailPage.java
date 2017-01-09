@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,6 +41,15 @@ public class HotelesDetailPage extends TestBaseSetup {
         detailHotelButtonResults.get(1).click();
 
         return initCheckOutPage();
+    }
+
+    public CheckOutPageV3 clickReservarAhoraV3Btn() {
+        List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary"));
+        PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(1), 20, "Reservar Ahora button");
+        logger.info("Clicking on Reservar button");
+        detailHotelButtonResults.get(1).click();
+
+        return initCheckOutPageV3();
     }
 
 }

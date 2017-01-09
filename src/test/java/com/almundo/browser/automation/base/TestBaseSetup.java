@@ -2,6 +2,8 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.PassengerSectionV3;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.Constants;
@@ -55,7 +57,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(Constants.STAGING_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
                                         @Optional("firefox") String browserType,
@@ -287,8 +289,16 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CheckOutPage.class);
     }
 
+    protected CheckOutPageV3 initCheckOutPageV3() {
+        return PageFactory.initElements(driver, CheckOutPageV3.class);
+    }
+
     protected PassengerSection initPassengerInfoSection() {
         return PageFactory.initElements(driver, PassengerSection.class);
+    }
+
+    protected PassengerSectionV3 initPassengerInfoSectionV3() {
+        return PageFactory.initElements(driver, PassengerSectionV3.class);
     }
 
     protected CreditCardSection initCreditCardSection() {
