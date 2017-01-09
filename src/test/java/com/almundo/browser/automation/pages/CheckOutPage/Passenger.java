@@ -16,7 +16,7 @@ public class Passenger {
     public String nationality;
     public String numeroPasajero;
 
-    Passenger(int idNum){
+    public Passenger(int idNum){
         this.firstName = "first_name" + String.valueOf(idNum);
         this.lastName = "last_name" + String.valueOf(idNum);
         this.documentType = "documentType" + String.valueOf(idNum);
