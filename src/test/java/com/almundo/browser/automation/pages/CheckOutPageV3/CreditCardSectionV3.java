@@ -26,22 +26,22 @@ public class CreditCardSectionV3 extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "card_holder")
+    @FindBy(css = "credit-card-form > div > div > div > div:nth-child(3) > div > input")
     public WebElement card_holder;
 
-    @FindBy(id = "card_number")
+    @FindBy(css = "credit-card-form > div > div > div > div:nth-child(2) > div > label > input")
     private WebElement card_number;
 
     @FindBy(id = "card_expire")
     public WebElement card_expire;
 
-    @FindBy(id = "month_card_expire")
+    @FindBy(css = "div:nth-child(4)>div:nth-child(1)>div>div.col-6-xs.month-container>select")
     private WebElement month_card_expire;
 
-    @FindBy(id = "year_card_expire")
+    @FindBy(css = "div:nth-child(4)>div:nth-child(1)>div>div:nth-child(2)>select")
     private WebElement year_card_expire;
 
-    @FindBy(id = "security_code")
+    @FindBy(css = "credit-card-form > div > div > div > div:nth-child(4) > div:nth-child(2) > input")
     private WebElement security_code;
 
     @FindBy(id = "documentType")
@@ -68,20 +68,14 @@ public class CreditCardSectionV3 extends CheckOutPage {
             WebElement cardNameElement = cardNames.get(i);
             WebElement radioButtonElement = radioButtons.get(i);
 
-            if (cardNameElement.getText().equals(cardName)) {
+            if (cardNameElement.getAttribute("alt").equals(cardName)) {
+                logger.info("Selecting card provider: [" + cardName + "]");
+                cardNameElement.click();
                 logger.info("Selecting card name: [" + cardName + "]");
-                while (!radioButtonElement.isSelected()){
-                    radioButtonElement.click();
-                }
+                radioButtonElement.click();
                 break;
             }
         }
-    }
-
-    public void setCardHolder(String cardHolder) {
-        logger.info("Entering Titular de la tarjeta: [" + cardHolder + "]");
-        card_holder.clear();
-        card_holder.sendKeys(cardHolder);
     }
 
     public void setCardNumber(String cardNumber) {
@@ -90,10 +84,17 @@ public class CreditCardSectionV3 extends CheckOutPage {
         card_number.sendKeys(cardNumber);
     }
 
+    public void setCardHolder(String cardHolder) {
+        logger.info("Entering Titular de la tarjeta: [" + cardHolder + "]");
+        card_holder.clear();
+        card_holder.sendKeys(cardHolder);
+    }
+
     public void setCardExpiration(String expDate) {
         logger.info("Entering Fecha de vencimiento: [" + expDate + "]");
-        card_expire.clear();
-        card_expire.sendKeys(expDate);
+        List<WebElement> creditCardFieldList = driver.findElements(By.cssSelector(".field.ng-pristine.ng-untouched.ng-empty.ng-invalid.ng-invalid-required.ng-valid-pattern.ng-valid-maxlength"));
+        creditCardFieldList.get(0).clear();
+        creditCardFieldList.get(0).sendKeys(expDate);
     }
 
     public void selectMonthCardExpiration(String monthCardExpiration) {
@@ -125,7 +126,6 @@ public class CreditCardSectionV3 extends CheckOutPage {
         document_number.clear();
         document_number.sendKeys(documentNumber);
     }
-
 
     public static void getCreditCardList()  {
         creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
