@@ -5,6 +5,8 @@ import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 
@@ -12,6 +14,11 @@ import java.util.ArrayList;
  * Created by gabrielcespedes on 04/11/16.
  */
 public class CheckOutPage extends TestBaseSetup {
+
+
+    @FindBy(id = ".button.button--lg.button--secondary")
+    public WebElement comprarBtn;
+
 
     public CheckOutPage(WebDriver driver) { super.driver = driver; }
 
