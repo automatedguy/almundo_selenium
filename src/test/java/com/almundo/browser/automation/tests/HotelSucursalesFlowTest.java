@@ -2,7 +2,6 @@ package com.almundo.browser.automation.tests;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
-import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -13,7 +12,6 @@ import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -39,11 +37,11 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.contactSection().getContactList();
     }
 
-    @BeforeMethod
+/*    @BeforeMethod
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = new LoginPopUp(driver);
         loginPopUp.clickCloseLoginBtn();
-    }
+    }*/
 
 
     @AfterMethod

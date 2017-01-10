@@ -61,7 +61,7 @@ public class TestBaseSetup {
     public void initializeTestBaseSetup(@Optional(Constants.SUC_URL) String env_url,
                                         @Optional() String osType,
                                         //@Optional("OS X 10.11") String osType,
-                                        @Optional("firefox") String browserType,
+                                        @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) {
 
@@ -106,7 +106,13 @@ public class TestBaseSetup {
                         } else {
                             System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");
                         }
-                        driver = new ChromeDriver();
+                        DesiredCapabilities capability = DesiredCapabilities.chrome();
+                        capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+                        driver = new ChromeDriver(capability);
+
+                        //driver = new ChromeDriver();
+
+
                         break;
 
                     case "firefox":
