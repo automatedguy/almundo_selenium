@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -22,6 +23,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
     private VuelosResultsPage vuelosResultsPage = null;
     private CheckOutPage checkOutPage = null;
+    private ConfirmationPage confirmationPage = null;
 
     @BeforeClass
     private void initDataTripList() {
@@ -135,9 +137,7 @@ public class VueloFlowTest extends TestBaseSetup {
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
 
-        checkOutPage.clickComprarBtn();
-
+        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());
     }
-
-
 }

@@ -18,6 +18,8 @@ public class Constants extends TestBaseSetup {
 
     public static final String VOLVE_A_INTENTARLO_MSG = "No pudimos procesar la consulta. Volvé a intentarlo en unos minutos.";
 
+    public static final String FELICITACIONES_MSG = "¡Felicitaciones, tu solicitud de compra fué exitosa!";
+
     public static final String MENOR_2_EN_BRAZOS = "Menos de 2 años en brazos";
     public static final String MENOR_2_EN_ASIENTO = "Menos de 2 años en asiento";
     public static final String ENTRE_2_11 = "Entre 2 y 11 años";

@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
@@ -24,6 +25,7 @@ public class HotelFlowTest extends TestBaseSetup {
     private HotelesResultsPage hotelesResultsPage = null;
     private HotelesDetailPage hotelesDetailPage = null;
     private CheckOutPage checkOutPage = null;
+    private ConfirmationPage confirmationPage = null;
 
     @BeforeClass
     private void initDataTripList() {
@@ -52,7 +54,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
-    @Test
+/*    @Test
     public void hotelIntReservationFlow() {
         logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
@@ -93,7 +95,7 @@ public class HotelFlowTest extends TestBaseSetup {
                                          checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
 
 
-    }
+    }*/
 
     @Test
     public void hotelDomReservationFlow() {
@@ -123,7 +125,7 @@ public class HotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.creditCardSection().getCreditCardData("visa");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
@@ -133,6 +135,7 @@ public class HotelFlowTest extends TestBaseSetup {
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
 
-
+        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());
     }
 }
