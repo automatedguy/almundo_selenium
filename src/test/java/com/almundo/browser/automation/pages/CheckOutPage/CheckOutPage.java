@@ -16,9 +16,14 @@ import java.util.ArrayList;
 public class CheckOutPage extends TestBaseSetup {
 
 
-    @FindBy(id = ".button.button--lg.button--secondary")
+    @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
+    public ConfirmationPage clickComprarBtn(){
+        logger.info("Clicking on Comprar Button.");
+        comprarBtn.click();
+        return initConfirmationPage();
+    }
 
     public CheckOutPage(WebDriver driver) { super.driver = driver; }
 

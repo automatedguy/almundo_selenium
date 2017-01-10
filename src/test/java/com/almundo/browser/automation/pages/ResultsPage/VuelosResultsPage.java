@@ -45,7 +45,7 @@ public class VuelosResultsPage extends TestBaseSetup {
     }
 
     public CheckOutPage clickComprarBtn(int index) {
-        String cssSelectorName = ".button.button--lg.button--secondary.button--block.epp-space-bottom-16";
+        String cssSelectorName = ".button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
         logger.info("Clicking on Comprar button");

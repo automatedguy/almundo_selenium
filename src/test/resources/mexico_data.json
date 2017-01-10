@@ -200,6 +200,17 @@
             "security_code": "1234",
             "documentType": "DNI",
             "document_number": "29098766"
+        },
+        "visa": {
+            "credit_card_name" : "Visa",
+            "card_holder": "Dueño Dí L'Tarjüeta",
+            "card_number": "4242424242424242",
+            "card_expire": "12/18",
+            "month_card_expire": "12",
+            "year_card_expire": "2022",
+            "security_code": "1234",
+            "documentType": "DNI",
+            "document_number": "29098766"
         }
     },
 

@@ -49,7 +49,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
-    @Test
+/*    @Test
     public void vueloIntReservationFlow() {
         logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
 
@@ -92,7 +92,7 @@ public class VueloFlowTest extends TestBaseSetup {
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageInternational");
 
-    }
+    }*/
 
     @Test
     public void vueloDomReservationFlow() {
@@ -125,7 +125,7 @@ public class VueloFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.creditCardSection().getCreditCardData("visa");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
@@ -134,6 +134,8 @@ public class VueloFlowTest extends TestBaseSetup {
                 checkOutPage.creditCardSection().creditCardData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
+
+        checkOutPage.clickComprarBtn();
 
     }
 
