@@ -124,7 +124,7 @@ public class VueloHotelSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("child_female_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("cash");
+        checkOutPage.creditCardSection().getCreditCardData("deposit");
         checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
