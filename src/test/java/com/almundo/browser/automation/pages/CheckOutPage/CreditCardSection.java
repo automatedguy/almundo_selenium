@@ -49,7 +49,45 @@ public class CreditCardSection extends CheckOutPage {
     @FindBy(id = "document_number")
     private WebElement document_number;
 
+    @FindBy(css = "div:nth-child(1) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    private WebElement pagoEnEfectivoLbl;
+
+    @FindBy(css = "div:nth-child(2) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    private WebElement depositoLbl;
+
+    @FindBy(css = "div:nth-child(3) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    private WebElement transferenciaLbl;
+
+    @FindBy(css = "div:nth-child(4) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    private WebElement reservaPor24hsLbl;
+
+
+
     //############################################### Actions ###############################################
+
+    public CreditCardSection clickPagoEnEfectivoLbl(){
+        logger.info("Click: Selecting Pago en Efectivo");
+        pagoEnEfectivoLbl.click();
+        return this;
+    }
+
+    public CreditCardSection clickDepositoLbl(){
+        logger.info("Click: Selecting Depósito");
+        depositoLbl.click();
+        return this;
+    }
+
+    public CreditCardSection clickTransferenciaLbl(){
+        logger.info("Click: Selecting Transferencia");
+        transferenciaLbl.click();
+        return this;
+    }
+
+    public CreditCardSection clickReservaPor24hsLbl(){
+        logger.info("Click: Selecting Reserva por 24 hs.");
+        reservaPor24hsLbl.click();
+        return this;
+    }
 
     public void selectPaymentQtyOption(int index) {
         List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
