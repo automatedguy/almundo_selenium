@@ -102,7 +102,7 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic02_20days_2adults_1room");
 
         basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
 
@@ -123,15 +123,15 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("visa");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
+        checkOutPage.creditCardSection().getCreditCardData("cash");
+        checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
                 checkOutPage.creditCardSection().creditCardData,
                 checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
+                checkOutPage.contactSection().contactData, "HotelCheckOutPageDomesticSucursal");
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
