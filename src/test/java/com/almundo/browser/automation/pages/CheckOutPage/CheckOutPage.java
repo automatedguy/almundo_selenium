@@ -73,7 +73,7 @@ public class CheckOutPage extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
-        populateCreditCardSection(creditCardData, productCheckOutPage);
+        selectPaymentOption(creditCardData, productCheckOutPage);
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
@@ -149,11 +149,7 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPage populateCreditCardSection(JSONObject creditCardData, String product) {
-
-        CreditCardSection creditCardSection = initCreditCardSection();
-        logger.info("------------- Filling Credit Card Section -------------");
-
+    private CheckOutPage populateCreditCardSection(JSONObject creditCardData, String product, CreditCardSection creditCardSection){
         creditCardSection.selectPaymentQtyOption(0);
         creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
 
@@ -168,15 +164,36 @@ public class CheckOutPage extends TestBaseSetup {
             creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
 
         }
-
         creditCardSection.setSecurityCode(creditCardData.get("security_code").toString());
-
         if(isElementRequiered(checkOutPageElements, "documentType")) {
             creditCardSection.selectDocumentType(creditCardData.get("documentType").toString());
         }
-
         if(isElementRequiered(checkOutPageElements, "document_number_card")) {
             creditCardSection.setDocumentNumber(creditCardData.get("document_number").toString());
+        }
+        return this;
+    }
+
+    private CheckOutPage selectPaymentOption(JSONObject creditCardData, String product) {
+
+        CreditCardSection creditCardSection = initCreditCardSection();
+        logger.info("------------- Filling Credit Card Section -------------");
+
+        switch(creditCardData.get("credit_card_name").toString()){
+            case "cash":
+                creditCardSection.selectPaymentOption("Pago en efectivo");
+                break;
+            case "deposit":
+                creditCardSection.selectPaymentOption("Depósito");
+                break;
+            case "transfer":
+                creditCardSection.selectPaymentOption("Transferencia");
+                break;
+            case "booking24":
+                creditCardSection.selectPaymentOption("Reserva por 24 hs.");
+                break;
+            default:
+                populateCreditCardSection(creditCardData, product, creditCardSection);
         }
         return this;
     }
@@ -232,7 +249,9 @@ public class CheckOutPage extends TestBaseSetup {
             footerSection.acceptItinerary();
             footerSection.confirmarClick();
         }
+        if(isElementRequiered(checkOutPageElements, "agentEmail")) {
+            footerSection.setEmailTxt("gabriel.cespedes@almundo.com");
+        }
         return this;
     }
-
 }

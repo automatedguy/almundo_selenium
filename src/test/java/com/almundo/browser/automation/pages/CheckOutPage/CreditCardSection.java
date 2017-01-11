@@ -89,6 +89,17 @@ public class CreditCardSection extends CheckOutPage {
         return this;
     }
 
+    public CreditCardSection selectPaymentOption(String paymentOptionSelected){
+        List<WebElement> paymentOptions = driver.findElements(By.cssSelector(".label--inline-block.epp-space-right-16.cards__definition__label.text--bold"));
+        for(WebElement paymentOption : paymentOptions){
+            if(paymentOption.getText().equals(paymentOptionSelected)){
+                paymentOption.click();
+                break;
+            }
+        }
+        return this;
+    }
+
     public void selectPaymentQtyOption(int index) {
         List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
 

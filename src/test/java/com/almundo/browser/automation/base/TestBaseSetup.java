@@ -109,10 +109,6 @@ public class TestBaseSetup {
                         DesiredCapabilities capability = DesiredCapabilities.chrome();
                         capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
                         driver = new ChromeDriver(capability);
-
-                        //driver = new ChromeDriver();
-
-
                         break;
 
                     case "firefox":
@@ -121,7 +117,6 @@ public class TestBaseSetup {
                         } else {
                             System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver");
                         }
-
                         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                         capabilities.setCapability("marionette", true);
                         driver = new FirefoxDriver(capabilities);

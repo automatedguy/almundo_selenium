@@ -35,12 +35,6 @@ public class VueloSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.contactSection().getContactList();
     }
 
-/*    @BeforeMethod
-    private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = new LoginPopUp(driver);
-        loginPopUp.clickCloseLoginBtn();
-    }*/
-
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
@@ -101,7 +95,7 @@ public class VueloSucursalesFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
 
-        basePage.vuelosDataTrip().getVuelosDataTripItinerary("domestic_20days_2adults_todas");
+        basePage.vuelosDataTrip().getVuelosDataTripItinerary("domestic_30days_2adults_todas");
 
         basePage.vuelosDataTrip().setOrigin(basePage.vuelosDataTrip().originAuto, basePage.vuelosDataTrip().originFull);
         basePage.vuelosDataTrip().setDestination(basePage.vuelosDataTrip().destinationAuto, basePage.vuelosDataTrip().destinationFull);
@@ -125,15 +119,15 @@ public class VueloSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
 
-        checkOutPage.creditCardSection().getCreditCardData("visa");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
+        checkOutPage.creditCardSection().getCreditCardData("booking24");
+        checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
                 checkOutPage.creditCardSection().creditCardData,
                 checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
+                checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomesticSucursal");
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
