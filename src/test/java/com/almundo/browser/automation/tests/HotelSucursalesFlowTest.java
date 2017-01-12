@@ -133,7 +133,7 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "HotelCheckOutPageDomesticSucursal");
 
-        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+/*        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }
