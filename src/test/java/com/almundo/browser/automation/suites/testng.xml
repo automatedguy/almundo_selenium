@@ -14,9 +14,9 @@
 
             <!--<class name="com.almundo.browser.automation.tests.HotelFlowCheckOutV3Test"/>-->
 
-            <!--<class name="com.almundo.browser.automation.tests.HotelSucursalesFlowTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.VueloSucursalesFlowTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.VueloHotelSucursalesFlowTest"/>-->
+            <class name="com.almundo.browser.automation.tests.HotelSucursalesFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.VueloSucursalesFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.VueloHotelSucursalesFlowTest"/>
             <class name="com.almundo.browser.automation.tests.AutosSucursalesFlowTest"/>
 
             <!--<class name="com.almundo.browser.automation.tests.LoginHotelFlowTest"/>-->
