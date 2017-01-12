@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 /**
  * Created by gabrielcespedes on 20/12/16.
  */
-public class AutosSucursalFlowTest extends TestBaseSetup {
+public class AutosSucursalesFlowTest extends TestBaseSetup {
 
     private AutosResultsPage autosResultsPage = null;
     private CheckOutPage checkOutPage = null;
