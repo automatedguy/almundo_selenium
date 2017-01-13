@@ -9,7 +9,6 @@ import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.AutosResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -53,7 +52,7 @@ public class AutosFlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
-/*    @Test
+    @Test
     public void autosDomReservationFlow() {
         logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
 
@@ -89,7 +88,7 @@ public class AutosFlowTest extends TestBaseSetup {
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "AutosCheckOutPage");
 
-    }*/
+    }
 
     @Test
     public void autosIntReservationFlow() {
@@ -127,8 +126,8 @@ public class AutosFlowTest extends TestBaseSetup {
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "AutosCheckOutPage");
 
-        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+/*        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 
 }

@@ -54,7 +54,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
-/*    @Test
+    @Test
     public void hotelIntReservationFlow() {
         logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
@@ -93,9 +93,7 @@ public class HotelFlowTest extends TestBaseSetup {
                                          checkOutPage.creditCardSection().creditCardData,
                                          checkOutPage.billingSection().billingData,
                                          checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
-
-
-    }*/
+    }
 
     @Test
     public void hotelDomReservationFlow() {
@@ -135,7 +133,7 @@ public class HotelFlowTest extends TestBaseSetup {
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
 
-        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+/*        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

@@ -26,9 +26,6 @@ public class LoginHotelFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataTripList() {
-//        basePage = new BasePage(driver);
-//        basePage.hotelesDataTrip().getHotelesDataTripList();
-
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
         checkOutPage.creditCardSection().getCreditCardList();

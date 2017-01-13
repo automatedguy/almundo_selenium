@@ -139,6 +139,4 @@ public class LoginVueloFlowTest extends TestBaseSetup {
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
 
     }
-
-
 }

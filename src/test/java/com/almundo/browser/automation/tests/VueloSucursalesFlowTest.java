@@ -43,51 +43,6 @@ public class VueloSucursalesFlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
-/*    @Test
-    public void vueloIntReservationFlow() {
-        logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
-
-        PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
-        basePage.vuelosIcon.click();
-
-        basePage.vuelosDataTrip().getVuelosDataTripItinerary("miami_10days_2adults_2childs_turista");
-
-        basePage.vuelosDataTrip().setOrigin(basePage.vuelosDataTrip().originAuto, basePage.vuelosDataTrip().originFull);
-        basePage.vuelosDataTrip().setDestination(basePage.vuelosDataTrip().destinationAuto, basePage.vuelosDataTrip().destinationFull);
-
-        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().departureFlightsCalendar, basePage.vuelosDataTrip().startDate);
-        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().arrivalFlightsCalendar, basePage.vuelosDataTrip().endDate);
-
-        numPassengers = basePage.vuelosDataTrip().selectPassenger(basePage.vuelosDataTrip().adults, basePage.vuelosDataTrip().childs);
-        basePage.vuelosDataTrip().selectChildAgeRange(basePage.vuelosDataTrip().childAgeRange);
-
-        basePage.vuelosDataTrip().selectClass(basePage.vuelosDataTrip().flightClass);
-
-        vuelosResultsPage = basePage.vuelosDataTrip().clickBuscarBtn();
-
-        Assert.assertTrue(vuelosResultsPage.vacancy());
-
-        vuelosResultsPage.clickTicketIdaRdb();
-        vuelosResultsPage.clickTicketVuelta();
-        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
-
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
-
-        checkOutPage.creditCardSection().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "VuelosCheckOutPageInternational");
-
-    }*/
-
     @Test
     public void vueloDomReservationFlow() {
         logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
@@ -127,7 +82,8 @@ public class VueloSucursalesFlowTest extends TestBaseSetup {
                 checkOutPage.passengerSection().passengerJsonList,
                 checkOutPage.creditCardSection().creditCardData,
                 checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomesticSucursal");
+                checkOutPage.contactSection().contactData,
+                "VueloHotelCheckOutPageDomesticSucursal", true);
 
 /*        confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/

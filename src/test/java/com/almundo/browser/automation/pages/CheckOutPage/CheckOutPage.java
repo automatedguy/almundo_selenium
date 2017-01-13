@@ -2,8 +2,10 @@ package com.almundo.browser.automation.pages.CheckOutPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,10 +21,20 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
+    @FindBy(id = "assistance_yes")
+    public WebElement assistanceRdb;
+
     public ConfirmationPage clickComprarBtn(){
         logger.info("Clicking on Comprar Button.");
         comprarBtn.click();
         return initConfirmationPage();
+    }
+
+    public CheckOutPage selectAssistanceRdb(){
+        PageUtils.waitElementForVisibility(driver, By.id("assistance_yes"), 45, "Include Insurance Radio Button.");
+        logger.info("Clicking on Insurance.");
+        assistanceRdb.click();
+        return this;
     }
 
     public CheckOutPage(WebDriver driver) { super.driver = driver; }
@@ -71,6 +83,27 @@ public class CheckOutPage extends TestBaseSetup {
                                              String productCheckOutPage ) {
 
         getCheckOutPageElements(productCheckOutPage);
+        populatePassengerSection(numPassengers, passengerList);
+        populatePickUpLocationSection();
+        selectPaymentOption(creditCardData, productCheckOutPage);
+        populateBillingSection(billingData);
+        populateContactSection(contactData);
+        acceptConditions();
+
+        return this;
+    }
+
+    public CheckOutPage populateCheckOutPage(int numPassengers,
+                                             JSONArray passengerList,
+                                             JSONObject creditCardData,
+                                             JSONObject billingData,
+                                             JSONObject contactData,
+                                             String productCheckOutPage, boolean includeAssistance ) {
+
+        getCheckOutPageElements(productCheckOutPage);
+        if(includeAssistance){
+            selectAssistanceRdb();
+        }
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
         selectPaymentOption(creditCardData, productCheckOutPage);
