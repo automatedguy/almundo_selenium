@@ -28,8 +28,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initCreditCardSectionV3();
     }
 
-    public BillingSection billingSection() {
-        return initBillingSection();
+    public BillingSectionV3 billingSection() {
+        return initBillingSectionV3();
     }
 
     public ContactSection contactSection() {
@@ -131,9 +131,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         creditCardSection.selectPaymentQtyOption(0);
         creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
 
-        creditCardSection.setCardHolder(creditCardData.get("card_number").toString());
+        creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
-        creditCardSection.setCardNumber(creditCardData.get("card_holder").toString());
+        creditCardSection.setCardHolder(creditCardData.get("card_holder").toString());
 
         if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
             creditCardSection.selectMonthCardExpiration(creditCardData.get("month_card_expire").toString());

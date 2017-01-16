@@ -2,6 +2,7 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
+import com.almundo.browser.automation.pages.CheckOutPageV3.BillingSectionV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CreditCardSectionV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.PassengerSectionV3;
@@ -321,6 +322,10 @@ public class TestBaseSetup {
 
     protected BillingSection initBillingSection() {
         return PageFactory.initElements(driver, BillingSection.class);
+    }
+
+    protected BillingSectionV3 initBillingSectionV3() {
+        return PageFactory.initElements(driver, BillingSectionV3.class);
     }
 
     protected ContactSection initContactInfoSection() {
