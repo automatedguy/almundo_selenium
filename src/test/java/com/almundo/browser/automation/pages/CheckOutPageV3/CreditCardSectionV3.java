@@ -26,6 +26,9 @@ public class CreditCardSectionV3 extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
+    @FindBy(css = "div:nth-child(1) > div:nth-child(22) > div > div > div.cards.ng-scope.in.collapse > label")
+    public WebElement creditCardPayment;
+
     @FindBy(css = "credit-card-form > div > div > div > div:nth-child(3) > div > input")
     public WebElement card_holder;
 
@@ -62,17 +65,26 @@ public class CreditCardSectionV3 extends CheckOutPage {
 
     public void selectBankOption(String cardName) {
         List<WebElement> cardNames = driver.findElements(By.cssSelector(".logo.ng-scope"));
-        List<WebElement> radioButtons = driver.findElements(By.cssSelector(".card.col-12-xs.col-12-sm.col-12-md"));
+
 
         for (int i = 0; i < cardNames.size(); ++i) {
             WebElement cardNameElement = cardNames.get(i);
-            WebElement radioButtonElement = radioButtons.get(i);
+
+
+//            PageUtils.scrollToElement(driver, results.get(0));
+            PageUtils.scrollToCoordinate(driver, -200);
 
             if (cardNameElement.getAttribute("alt").equals(cardName)) {
+
                 logger.info("Selecting card provider: [" + cardName + "]");
                 cardNameElement.click();
+
                 logger.info("Selecting card name: [" + cardName + "]");
-                radioButtonElement.click();
+//                List<WebElement> radioButtons = driver.findElements(By.cssSelector(".card.col-12-xs.col-12-sm.col-12-md"));
+//                WebElement radioButtonElement = radioButtons.get(i);
+//                radioButtonElement.click();
+                creditCardPayment.click();
+
                 break;
             }
         }
