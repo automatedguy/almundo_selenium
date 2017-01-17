@@ -2,10 +2,7 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
-import com.almundo.browser.automation.pages.CheckOutPageV3.BillingSectionV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.CreditCardSectionV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.PassengerSectionV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.Constants;
@@ -332,8 +329,16 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, ContactSection.class);
     }
 
+    protected ContactSectionV3 initContactInfoSectionV3() {
+        return PageFactory.initElements(driver, ContactSectionV3.class);
+    }
+
     protected FooterSection initFooterSection() {
         return PageFactory.initElements(driver, FooterSection.class);
+    }
+
+    protected FooterSectionV3 initFooterSectionV3() {
+        return PageFactory.initElements(driver, FooterSectionV3.class);
     }
 
     protected HotelesResultsPage initHotelesResultsPage() {

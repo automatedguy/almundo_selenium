@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
@@ -32,8 +33,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initBillingSectionV3();
     }
 
-    public ContactSection contactSection() {
-        return initContactInfoSection();
+    public ContactSectionV3 contactSectionV3() {
+        return initContactInfoSectionV3();
     }
 
     private static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
@@ -130,11 +131,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
         creditCardSection.selectPaymentQtyOption(0);
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(1000);
         creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
@@ -190,7 +187,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private CheckOutPageV3 populateContactSection(JSONObject contactData) {
-        ContactSection contactSection = initContactInfoSection();
+        ContactSectionV3 contactSection = initContactInfoSectionV3();
         logger.info("------------- Filling Contact Section -------------");
         contactSection.setEmail(contactData.get("email").toString());
         contactSection.setRepEmail(contactData.get("rep_email").toString());
@@ -203,7 +200,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private CheckOutPageV3 acceptConditions(){
-        FooterSection footerSection = initFooterSection();
+        FooterSectionV3 footerSection = initFooterSectionV3();
         logger.info("---------- Checking options Footer Section ----------");
 
         footerSection.acceptTermsAndConditions();

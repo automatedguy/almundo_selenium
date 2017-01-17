@@ -3,9 +3,9 @@ package com.almundo.browser.automation.tests;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -24,7 +24,7 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
 
     private VueloHotelResultsPage vueloHotelResultsPage = null;
     private VueloHotelDetailPage vueloHotelDetailPage = null;
-    private CheckOutPage checkOutPage = null;
+    private CheckOutPageV3 checkOutPage = null;
     private ConfirmationPage confirmationPage = null;
 
     @BeforeClass
@@ -32,11 +32,11 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
         basePage = new BasePage(driver);
         basePage.vueloHotelDataTrip().getVueloHotelDataTripList();
 
-        checkOutPage = initCheckOutPage();
+        checkOutPage = initCheckOutPageV3();
         checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.creditCardSection().getCreditCardList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        checkOutPage.creditCardSectionV3().getCreditCardList();
+        checkOutPage.billingSectionV3().getBillingList();
+        checkOutPage.contactSectionV3().getContactList();
     }
 
     @BeforeMethod
@@ -80,23 +80,23 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
         vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
         vueloHotelDetailPage.clickVerHabitacionBtn();
 
-        checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
+        checkOutPage = vueloHotelDetailPage.clickComprarV3Btn(0);
 
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
         checkOutPage.passengerSection().getPassengerData("child_male_native");
         checkOutPage.passengerSection().getPassengerData("child_male_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
+        checkOutPage.creditCardSectionV3().getCreditCardData("amex");
+        checkOutPage.billingSectionV3().getBillingData("local_Billing");
+        checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
 
 
         checkOutPage.populateCheckOutPage(numPassengers,
                                           checkOutPage.passengerSection().passengerJsonList,
-                                          checkOutPage.creditCardSection().creditCardData,
-                                          checkOutPage.billingSection().billingData,
-                                          checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageInternational");
+                                          checkOutPage.creditCardSectionV3().creditCardData,
+                                          checkOutPage.billingSectionV3().billingData,
+                                          checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternational");
     }
 
     @Test
@@ -126,22 +126,22 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
         vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
         vueloHotelDetailPage.clickVerHabitacionBtn();
 
-        checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
+        checkOutPage = vueloHotelDetailPage.clickComprarV3Btn(0);
 
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("child_female_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("visa");
-        checkOutPage.billingSection().getBillingData("local_Billing");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
+        checkOutPage.creditCardSectionV3().getCreditCardData("visa");
+        checkOutPage.billingSectionV3().getBillingData("local_Billing");
+        checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
 
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomestic");
+                checkOutPage.creditCardSectionV3().creditCardData,
+                checkOutPage.billingSectionV3().billingData,
+                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageDomestic");
 
 /*        confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/

@@ -124,5 +124,12 @@ public class PageUtils {
         String child=win1.next();
         driver.switchTo().window(child);
     }
+    public static void waitImplicitly(int miliSeconds){
+        try {
+            Thread.sleep(miliSeconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

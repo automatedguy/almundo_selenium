@@ -70,18 +70,13 @@ public class CreditCardSectionV3 extends CheckOutPage {
         for (int i = 0; i < cardNames.size(); ++i) {
             WebElement cardNameElement = cardNames.get(i);
 
-
-//            PageUtils.scrollToElement(driver, results.get(0));
             PageUtils.scrollToCoordinate(driver, -200);
-
             if (cardNameElement.getAttribute("alt").equals(cardName)) {
-
                 logger.info("Selecting card provider: [" + cardName + "]");
                 cardNameElement.click();
-
+                PageUtils.waitImplicitly(1000);
                 logger.info("Selecting card name: [" + cardName + "]");
                 creditCardPayment.click();
-
                 break;
             }
         }

@@ -13,6 +13,7 @@
             <!--<class name="com.almundo.browser.automation.tests.AutosFlowTest"/>-->
 
             <class name="com.almundo.browser.automation.tests.HotelFlowCheckOutV3Test"/>
+            <!--<class name="com.almundo.browser.automation.tests.VueloHotelFlowCheckOutV3Test"/>-->
 
             <!--<class name="com.almundo.browser.automation.tests.HotelSucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.VueloSucursalesFlowTest"/>-->

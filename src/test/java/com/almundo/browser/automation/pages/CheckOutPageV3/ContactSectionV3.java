@@ -34,7 +34,7 @@ public class ContactSectionV3 extends CheckOutPage {
     @FindBy(id = "susc")
     public WebElement subscriptionCbx;
 
-    @FindBy(id = "tel0")
+    @FindBy(css = "contact-form > div > div:nth-child(2) > div > div > div.row > div:nth-child(1) > div > div:nth-child(1) > div > select")
     public WebElement phoneTypeDdl;
 
     @FindBy(id = "country_code")
