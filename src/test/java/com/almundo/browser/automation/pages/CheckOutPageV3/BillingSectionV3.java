@@ -3,10 +3,13 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 /**
  * Created by gabrielcespedes on 29/11/16.
@@ -49,7 +52,7 @@ public class BillingSectionV3 extends CheckOutPage {
     @FindBy(id = "postal_code")
     private WebElement address_postal_code;
 
-    @FindBy(id = "address_state")
+    @FindBy(css = "billing-form > div > div:nth-child(5) > div.schema-form-section.col-12-xs.col-12-sm.col-7-md > div > select")
     private WebElement address_state;
 
     @FindBy(id = "city")
@@ -95,8 +98,8 @@ public class BillingSectionV3 extends CheckOutPage {
 
     public BillingSectionV3 setAddressNumber(String addressNumber) {
         logger.info("Entering Número: [" + addressNumber + "]");
-        address_number.clear();
-        address_number.sendKeys(addressNumber);
+        List<WebElement> addressNumberList = driver.findElements(By.id("number"));
+        addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumber);
         return this;
     }
 

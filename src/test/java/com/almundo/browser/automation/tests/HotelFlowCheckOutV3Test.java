@@ -33,7 +33,7 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage = initCheckOutPageV3();
         checkOutPage.passengerSection().getPassengersList();
         checkOutPage.creditCardSectionV3().getCreditCardList();
-        checkOutPage.billingSection().getBillingList();
+        checkOutPage.billingSectionV3().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
 
@@ -51,49 +51,6 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
-
-/*    @Test
-    public void hotelIntReservationFlow() {
-        logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
-
-        PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
-        basePage.hotelesIcon.click();
-
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
-
-        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
-
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
-
-        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
-
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
-
-        Assert.assertTrue(hotelesResultsPage.vacancy());
-
-        hotelesDetailPage = hotelesResultsPage.clickVerHotelBtn(0);
-        hotelesDetailPage.clickVerHabitacionesBtn();
-
-        checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
-
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
-
-        checkOutPage.creditCardSection().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-        checkOutPage.populateCheckOutPage(numPassengers,
-                                         checkOutPage.passengerSection().passengerJsonList,
-                                         checkOutPage.creditCardSection().creditCardData,
-                                         checkOutPage.billingSection().billingData,
-                                         checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
-
-
-    }*/
 
     @Test
     public void hotelDomReservationFlow() {
@@ -124,14 +81,14 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
         checkOutPage.creditCardSectionV3().getCreditCardData("amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
+        checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
                 checkOutPage.creditCardSectionV3().creditCardData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
+                checkOutPage.billingSectionV3().billingData,
+                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomesticV3");
 
 
     }

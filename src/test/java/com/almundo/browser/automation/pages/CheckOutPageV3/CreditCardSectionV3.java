@@ -26,7 +26,7 @@ public class CreditCardSectionV3 extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = "div:nth-child(1) > div:nth-child(22) > div > div > div.cards.ng-scope.in.collapse > label")
+    @FindBy(css = "credit-cards > div > credit-card-grid > div > div:nth-child(1) > div:nth-child(21) > div > div > div.cards.ng-scope.in.collapse > label")
     public WebElement creditCardPayment;
 
     @FindBy(css = "credit-card-form > div > div > div > div:nth-child(3) > div > input")
@@ -80,9 +80,6 @@ public class CreditCardSectionV3 extends CheckOutPage {
                 cardNameElement.click();
 
                 logger.info("Selecting card name: [" + cardName + "]");
-//                List<WebElement> radioButtons = driver.findElements(By.cssSelector(".card.col-12-xs.col-12-sm.col-12-md"));
-//                WebElement radioButtonElement = radioButtons.get(i);
-//                radioButtonElement.click();
                 creditCardPayment.click();
 
                 break;

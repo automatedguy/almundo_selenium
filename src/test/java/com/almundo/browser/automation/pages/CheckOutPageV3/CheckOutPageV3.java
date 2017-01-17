@@ -28,7 +28,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initCreditCardSectionV3();
     }
 
-    public BillingSectionV3 billingSection() {
+    public BillingSectionV3 billingSectionV3() {
         return initBillingSectionV3();
     }
 
@@ -129,8 +129,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
         logger.info("------------- Filling Credit Card Section -------------");
 
         creditCardSection.selectPaymentQtyOption(0);
-        creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
         creditCardSection.setCardHolder(creditCardData.get("card_holder").toString());
@@ -158,7 +163,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private CheckOutPageV3 populateBillingSection(JSONObject billingData) {
         if (isElementRequiered(checkOutPageElements, "BillingInfoSection")) {
 
-            BillingSection billingSection = initBillingSection();
+            BillingSectionV3 billingSection = initBillingSectionV3();
             logger.info("------------- Filling Billing Section -------------");
 
             if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
