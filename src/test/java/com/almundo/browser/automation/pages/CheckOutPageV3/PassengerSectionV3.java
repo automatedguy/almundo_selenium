@@ -85,17 +85,19 @@ public class PassengerSectionV3 extends CheckOutPage {
     }
 
     public PassengerSectionV3 setGender(int index, String genderPassenger){
-        List<WebElement> genderList = driver.findElements(By.id("gender"));
+        index = index + 1;
+        WebElement genderDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index +") > div > div > div > div > div:nth-child(3) > div:nth-child(2) > div > select"));
         logger.info("Selecting Sexo: [" + genderPassenger + "]");
-        Select sexo = new Select(genderList.get(index));
+        Select sexo = new Select(genderDdl);
         sexo.selectByVisibleText(genderPassenger);
         return this;
     }
 
     public PassengerSectionV3 setNationality(int index, String nationalityPassenger){
-        List<WebElement> nationalityList = driver.findElements(By.name("nationality"));
+        index = index + 1;
+        WebElement nationalityDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index + ") > div > div > div > div > div:nth-child(3) > div:nth-child(3) > div > select"));
         logger.info("Selecting Nacionalidad: [" + nationalityPassenger + "]");
-        Select nacionalidad = new Select(nationalityList.get(index));
+        Select nacionalidad = new Select(nationalityDdl);
         nacionalidad.selectByVisibleText(nationalityPassenger);
         return this;
     }

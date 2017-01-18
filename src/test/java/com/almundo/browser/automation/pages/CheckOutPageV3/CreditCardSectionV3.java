@@ -26,7 +26,7 @@ public class CreditCardSectionV3 extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = "credit-cards > div > credit-card-grid > div > div:nth-child(1) > div:nth-child(21) > div > div > div.cards.ng-scope.in.collapse > label")
+    @FindBy(css = "credit-card-grid > div > div:nth-child(1) > div:nth-child(22) > div > div > div.cards.ng-scope.in.collapse > label")
     public WebElement creditCardPayment;
 
     @FindBy(css = "credit-card-form > div > div > div > div:nth-child(3) > div > input")

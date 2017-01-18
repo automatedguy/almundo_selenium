@@ -112,14 +112,14 @@
 			"rooms": 1
 		},
 		"int02_20days_2adults_1childs_1room": {
-			"originAuto": "Cór",
-			"originFull": "Córdoba, Córdoba, Argentina",
-			"destinationAuto": "Sal",
-			"destinationFull": "Salta, Salta, Argentina",
-			"startDate": 20,
-			"endDate": 20,
+			"originAuto": "Bue",
+			"originFull": "Buenos Aires, Buenos Aires, Argentina",
+			"destinationAuto": "San",
+			"destinationFull": "Santiago de Chile, Chile",
+			"startDate": 34,
+			"endDate": 5,
 			"adults": 2,
-			"childs": 1,
+			"childs": 0,
 			"childAgeRange": "Entre 2 y 11 años",
 			"rooms": 1
 		}

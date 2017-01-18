@@ -17,8 +17,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public static JSONObject checkOutPageElements = null;
 
-    public PassengerSection passengerSection() {
-        return initPassengerInfoSection();
+    public PassengerSectionV3 passengerSectionV3() {
+        return initPassengerInfoSectionV3();
     }
 
     public PickUpLocationSection pickUpLocationSection() {
@@ -137,7 +137,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
         creditCardSection.setCardHolder(creditCardData.get("card_holder").toString());
 
-        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
+        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos") || product.contains("VueloHotel") ) {
             creditCardSection.selectMonthCardExpiration(creditCardData.get("month_card_expire").toString());
             creditCardSection.selectYearCardExpiration(creditCardData.get("year_card_expire").toString());
         }else {
