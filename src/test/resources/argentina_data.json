@@ -110,6 +110,18 @@
 			"childs": 1,
 			"childAgeRange": "Entre 2 y 11 años",
 			"rooms": 1
+		},
+		"int02_20days_2adults_1childs_1room": {
+			"originAuto": "Cór",
+			"originFull": "Córdoba, Córdoba, Argentina",
+			"destinationAuto": "Sal",
+			"destinationFull": "Salta, Salta, Argentina",
+			"startDate": 20,
+			"endDate": 20,
+			"adults": 2,
+			"childs": 1,
+			"childAgeRange": "Entre 2 y 11 años",
+			"rooms": 1
 		}
 	},
 
