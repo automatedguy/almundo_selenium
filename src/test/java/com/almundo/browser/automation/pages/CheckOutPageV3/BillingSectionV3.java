@@ -40,7 +40,7 @@ public class BillingSectionV3 extends CheckOutPage {
     @FindBy(id = "street")
     private WebElement billing_address;
 
-    @FindBy(id = "number")
+    @FindBy(css = "billing-form #number")
     private WebElement address_number;
 
     @FindBy(id = "floor")
