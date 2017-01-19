@@ -36,7 +36,7 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
-    
+
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
