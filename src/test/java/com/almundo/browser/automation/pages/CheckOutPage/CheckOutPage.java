@@ -210,22 +210,27 @@ public class CheckOutPage extends TestBaseSetup {
     private CheckOutPage selectPaymentOption(JSONObject creditCardData, String product) {
 
         CreditCardSection creditCardSection = initCreditCardSection();
-        logger.info("------------- Filling Credit Card Section -------------");
+        logger.info("------------- Selecting Payment Option... -------------");
 
         switch(creditCardData.get("credit_card_name").toString()){
             case "cash":
+                logger.info("------------- Payment Option: CASH  -------------");
                 creditCardSection.selectPaymentOption("Pago en efectivo");
                 break;
             case "deposit":
+                logger.info("------------- Payment Option: DEPOSIT  -------------");
                 creditCardSection.selectPaymentOption("Depósito");
                 break;
             case "transfer":
+                logger.info("------------- Payment Option: TRANSFER  -------------");
                 creditCardSection.selectPaymentOption("Transferencia");
                 break;
             case "booking24":
+                logger.info("------------- Payment Option: BOOKING 24HS.  -------------");
                 creditCardSection.selectPaymentOption("Reserva por 24 hs.");
                 break;
             default:
+                logger.info("------------- Payment Option: CREDIT CARD  -------------");
                 populateCreditCardSection(creditCardData, product, creditCardSection);
         }
         return this;

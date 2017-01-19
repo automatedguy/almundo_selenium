@@ -65,30 +65,6 @@ public class CreditCardSection extends CheckOutPage {
 
     //############################################### Actions ###############################################
 
-    public CreditCardSection clickPagoEnEfectivoLbl(){
-        logger.info("Click: Selecting Pago en Efectivo");
-        pagoEnEfectivoLbl.click();
-        return this;
-    }
-
-    public CreditCardSection clickDepositoLbl(){
-        logger.info("Click: Selecting Depósito");
-        depositoLbl.click();
-        return this;
-    }
-
-    public CreditCardSection clickTransferenciaLbl(){
-        logger.info("Click: Selecting Transferencia");
-        transferenciaLbl.click();
-        return this;
-    }
-
-    public CreditCardSection clickReservaPor24hsLbl(){
-        logger.info("Click: Selecting Reserva por 24 hs.");
-        reservaPor24hsLbl.click();
-        return this;
-    }
-
     public CreditCardSection selectPaymentOption(String paymentOptionSelected){
         List<WebElement> paymentOptions = driver.findElements(By.cssSelector(".label--inline-block.epp-space-right-16.cards__definition__label.text--bold"));
         for(WebElement paymentOption : paymentOptions){

@@ -128,7 +128,6 @@ public class VuelosDataTrip extends BasePage{
         return initVuelosResultsPage();
     }
 
-
     public static void getVuelosDataTripList() {
         vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vuelos", countryPar.toLowerCase() + "_data.json");
     }

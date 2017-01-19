@@ -83,7 +83,6 @@ public class ContactSection extends CheckOutPage {
         phoneNumberTxt.sendKeys(phoneNumber);
     }
 
-
     public static void getContactList()  {
         contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
     }
