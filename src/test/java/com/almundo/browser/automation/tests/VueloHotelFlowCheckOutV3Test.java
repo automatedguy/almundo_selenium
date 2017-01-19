@@ -86,7 +86,7 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSectionV3().getPassengerData("child_female_native");
 
-        checkOutPage.creditCardSectionV3().getCreditCardData("amex");
+        checkOutPage.creditCardSectionV3().getCreditCardData("visa");
         checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
         checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
 
