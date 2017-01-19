@@ -36,14 +36,7 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
-
-/*    @BeforeMethod
-    private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = new LoginPopUp(driver);
-        loginPopUp.clickCloseLoginBtn();
-    }*/
-
-
+    
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
