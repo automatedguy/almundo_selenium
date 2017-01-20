@@ -89,31 +89,31 @@ public class BillingSectionV3 extends CheckOutPage {
         return this;
     }
 
-    public BillingSectionV3 setBillingAddressTxt(String billingAddressTxt) {
-        logger.info("Entering Domicilio: [" + billingAddressTxt + "]");
+    public BillingSectionV3 setBillingAddressTxt(String billingAddress) {
+        logger.info("Entering Domicilio: [" + billingAddress + "]");
         this.billingAddressTxt.clear();
-        this.billingAddressTxt.sendKeys(billingAddressTxt);
+        this.billingAddressTxt.sendKeys(billingAddress);
         return this;
     }
 
-    public BillingSectionV3 setAddressNumberTxt(String addressNumberTxt) {
-        logger.info("Entering Número: [" + addressNumberTxt + "]");
+    public BillingSectionV3 setAddressNumberTxt(String addressNumber) {
+        logger.info("Entering Número: [" + addressNumber + "]");
         List<WebElement> addressNumberList = driver.findElements(By.id("number"));
-        addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumberTxt);
+        addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumber);
         return this;
     }
 
-    public BillingSectionV3 setAddressFloorTxt(String addressFloorTxt) {
-        logger.info("Entering Piso: [" + addressFloorTxt + "]");
+    public BillingSectionV3 setAddressFloorTxt(String addressFloor) {
+        logger.info("Entering Piso: [" + addressFloor + "]");
         this.addressFloorTxt.clear();
-        this.addressFloorTxt.sendKeys(addressFloorTxt);
+        this.addressFloorTxt.sendKeys(addressFloor);
         return this;
     }
 
-    public BillingSectionV3 setAddressDepartmentTxt(String addressDepartmentTxt) {
-        logger.info("Entering Departamento: [" + addressDepartmentTxt + "]");
+    public BillingSectionV3 setAddressDepartmentTxt(String addressDepartment) {
+        logger.info("Entering Departamento: [" + addressDepartment + "]");
         this.addressDepartmentTxt.clear();
-        this.addressDepartmentTxt.sendKeys(addressDepartmentTxt);
+        this.addressDepartmentTxt.sendKeys(addressDepartment);
         return this;
     }
 
@@ -131,13 +131,13 @@ public class BillingSectionV3 extends CheckOutPage {
         return this;
     }
 
-    public BillingSectionV3 setAddressCityTxt(String addressCityTxt) {
-        logger.info("Entering Ciudad: [" + addressCityTxt + "]");
+    public BillingSectionV3 setAddressCityTxt(String addressCity) {
+        logger.info("Entering Ciudad: [" + addressCity + "]");
         this.addressCityTxt.clear();
-        this.addressCityTxt.sendKeys(addressCityTxt);
+        this.addressCityTxt.sendKeys(addressCity);
         return this;
     }
-    
+
     public static void getBillingList()  {
         billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
     }
