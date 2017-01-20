@@ -129,10 +129,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
         CreditCardSectionV3 creditCardSection = initCreditCardSectionV3();
         logger.info("------------- Filling Credit Card Section -------------");
 
+        //TODO: Enviar numero de cuotas en lugar del index
         creditCardSection.selectPaymentQtyOption(0);
 
         PageUtils.waitImplicitly(1000);
+
+        //TODO: Dividir en 2 metods selectBank y selectCard
         creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
+
+        //TODO: Aca iria selectCard
+
         creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
 
         creditCardSection.setCardHolder(creditCardData.get("card_holder").toString());
@@ -164,7 +170,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             logger.info("------------- Filling Billing Section -------------");
 
             if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
-                billingSection.setBillingFiscalName(billingData.get("fiscal_name").toString());
+                billingSection.setBillingFiscalNameTxt(billingData.get("fiscal_name").toString());
             }
 
             if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
@@ -174,14 +180,14 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 billingSection.selectBillingDocumentType(billingData.get("billing_document_type").toString());
             }
 
-            billingSection.setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
-            billingSection.setBillingAddress(billingData.get("billing_address").toString());
-            billingSection.setAddressNumber(billingData.get("address_number").toString());
-            billingSection.setAddressFloor(billingData.get("address_floor").toString());
-            billingSection.setAddressDepartment(billingData.get("address_department").toString());
-            billingSection.setAddressPostalCode(billingData.get("address_postal_code").toString());
-            billingSection.setAddressState(billingData.get("address_state").toString());
-            billingSection.setAddressCity(billingData.get("address_city").toString());
+            billingSection.setBillingFiscalDocumentTxt(billingData.get("billing_fiscal_document").toString());
+            billingSection.setBillingAddressTxt(billingData.get("billing_address").toString());
+            billingSection.setAddressNumberTxt(billingData.get("address_number").toString());
+            billingSection.setAddressFloorTxt(billingData.get("address_floor").toString());
+            billingSection.setAddressDepartmentTxt(billingData.get("address_department").toString());
+            billingSection.setAddressPostalCodeTxt(billingData.get("address_postal_code").toString());
+            billingSection.setAddressStateDdl(billingData.get("address_state").toString());
+            billingSection.setAddressCityTxt(billingData.get("address_city").toString());
         }
         return this;
     }

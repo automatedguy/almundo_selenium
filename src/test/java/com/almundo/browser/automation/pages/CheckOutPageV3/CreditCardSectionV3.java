@@ -57,7 +57,9 @@ public class CreditCardSectionV3 extends CheckOutPage {
 
         PageUtils.scrollToElement(driver, results.get(0));
         PageUtils.scrollToCoordinate(driver, -200);
+
         results.get(index).click();
+        //List<WebElement> bank = results.get(index).findElements(By.cssSelector(".header-bank"));
     }
 
     public void selectBankOption(String cardName) {

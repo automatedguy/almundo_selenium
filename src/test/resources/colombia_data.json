@@ -74,6 +74,19 @@
                 "childs": 1,
                 "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
+            },
+
+            "int02_20days_2adults_1childs_1room": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "San",
+                "destinationFull": "Santiago de Chile, Chile",
+                "startDate": 34,
+                "endDate": 5,
+                "adults": 2,
+                "childs": 0,
+                "childAgeRange": "Entre 2 y 11 años",
+                "rooms": 1
             }
     },
 
