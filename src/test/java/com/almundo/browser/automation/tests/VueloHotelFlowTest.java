@@ -34,7 +34,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.creditCardSection().getCreditCardList();
+        checkOutPage.paymentSection().getPaymentList();
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
@@ -87,14 +87,14 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("child_male_native");
         checkOutPage.passengerSection().getPassengerData("child_male_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
 
         checkOutPage.populateCheckOutPage(numPassengers,
                                           checkOutPage.passengerSection().passengerJsonList,
-                                          checkOutPage.creditCardSection().creditCardData,
+                                          checkOutPage.paymentSection().paymentData,
                                           checkOutPage.billingSection().billingData,
                                           checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageInternational");
     }
@@ -132,14 +132,14 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("child_female_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("visa");
+        checkOutPage.paymentSection().getPaymentData("6_visa_visa");
         checkOutPage.billingSection().getBillingData("local_Billing");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomestic");
 

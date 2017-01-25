@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -25,38 +26,99 @@ public class PassengerSectionV3 extends CheckOutPage {
     public static JSONObject passengerData = null;
     public static JSONArray passengerJsonList = new JSONArray();
 
+    private static List<WebElement> firstNameList = null;
+    private static List<WebElement> lastNameList = null;
+    private static List<WebElement> docTypeList = null;
+    private static List<WebElement> docNumberList = null;
+    private static List<WebElement> birthdayList = null;
+    private static List<WebElement> genderList = null;
+    private static List<WebElement> nationalityList = null;
+
+
+    //############################################### Locators ##############################################
+
+    @FindBy(id = "first_name")
+    private WebElement first_name;
+
+    @FindBy(id = "last_name")
+    private WebElement last_name;
+
+    @FindBy(css = "passengers-form #document_type")
+    private WebElement doc_type;
+
+    @FindBy(css = "passengers-form #number")
+    private WebElement doc_number;
+
+    @FindBy(id = "birthday")
+    private WebElement birthday;
+
+    @FindBy(id = "gender")
+    private WebElement gender;
+
+    @FindBy(id = "nationality")
+    private WebElement nationality;
+
     //############################################### Actions ###############################################
 
+    public void setFirstNameList() {
+        firstNameList = driver.findElements(By.id("first_name"));
+    }
+
+    public void setLastNameList() {
+        lastNameList = driver.findElements(By.id("last_name"));
+    }
+
+    public void setDocTypeList() {
+        docTypeList = driver.findElements(By.cssSelector("passengers-form #document_type"));
+    }
+
+    public void setDocNumberList() {
+        docNumberList = driver.findElements(By.cssSelector("passengers-form #number"));
+    }
+
+    public void setBirthdayList() {
+        birthdayList = driver.findElements(By.id("birthday"));
+    }
+
+    public void setGenderList() {
+        genderList = driver.findElements(By.id("gender"));
+    }
+
+    public void setNationalityList() {
+        nationalityList = driver.findElements(By.id("nationality"));
+    }
+
+
     public PassengerSectionV3 setFirstName(int index, String firstName){
-        List<WebElement> firstNameList = driver.findElements(By.id("first_name"));
-        PageUtils.waitElementForVisibility(driver, By.id("first_name") , 45, "First Name text box");
+        //List<WebElement> firstNameList = driver.findElements(By.id("first_name"));
+        PageUtils.waitElementForVisibility(driver, first_name, 45, "First Name text box");
         logger.info("Entering Nombre/s: [" + firstName + "]");
         firstNameList.get(index).clear();
         firstNameList.get(index).sendKeys(firstName);
         return this;
     }
 
-    public PassengerSectionV3 setlastName(int index, String lastNamePassenger){
-        List<WebElement> lastNameList = driver.findElements(By.id("last_name"));
-        logger.info("Entering Apellido/s: [" + lastNamePassenger + "]");
+    public PassengerSectionV3 setlastName(int index, String lastName){
+        //List<WebElement> lastNameList = driver.findElements(By.id("last_name"));
+        logger.info("Entering Apellido/s: [" + lastName + "]");
         lastNameList.get(index).clear();
-        lastNameList.get(index).sendKeys(lastNamePassenger);
+        lastNameList.get(index).sendKeys(lastName);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentType(int index, String documentTypePassenger){
-        List<WebElement> documentTypeList = driver.findElements(By.name("document_type"));
-        logger.info("Selecting Tipo de documento: [" + documentTypePassenger + "]");
-        Select tipoDeDocumento = new Select(documentTypeList.get(index));
-        tipoDeDocumento.selectByVisibleText(documentTypePassenger);
+    public PassengerSectionV3 setDocumentType(int index, String documentType){
+        //List<WebElement> documentTypeList = driver.findElements(By.name("document_type"));
+        logger.info("Selecting Tipo de documento: [" + documentType + "]");
+        Select tipoDeDocumento = new Select(docTypeList.get(index));
+        tipoDeDocumento.selectByVisibleText(documentType);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentNumber(int index, String documentNumberPassenger){
-        List<WebElement> documentNumberList = driver.findElements(By.id("number"));
-        logger.info("Entering Número: [" + documentNumberPassenger + "]");
-        documentNumberList.get(index).clear();
-        documentNumberList.get(index).sendKeys(documentNumberPassenger);
+    public PassengerSectionV3 setDocumentNumber(int index, String docNumber){
+        //List<WebElement> documentNumberList = driver.findElements(By.id("number"));
+        logger.info("Entering Número: [" + docNumber + "]");
+        docNumberList.get(index).clear();
+        docNumberList.get(index).sendKeys(docNumber);
         return this;
     }
 
@@ -76,29 +138,29 @@ public class PassengerSectionV3 extends CheckOutPage {
         return this;
     }
 
-    public PassengerSectionV3 setBirthDay(int index, String birthdayPassenger){
-        List<WebElement> birthDayList = driver.findElements(By.id("birthday"));
-        logger.info("Entering Fecha de Nacimiento: [" + birthdayPassenger + "]");
-        birthDayList.get(index).clear();
-        birthDayList.get(index).sendKeys(birthdayPassenger);
+    public PassengerSectionV3 setBirthDay(int index, String birthday){
+        //List<WebElement> birthDayList = driver.findElements(By.id("birthday"));
+        logger.info("Entering Fecha de Nacimiento: [" + birthday + "]");
+        birthdayList.get(index).clear();
+        birthdayList.get(index).sendKeys(birthday);
         return this;
     }
 
-    public PassengerSectionV3 setGender(int index, String genderPassenger){
-        index = index + 1;
-        WebElement genderDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index +") > div > div > div > div > div:nth-child(3) > div:nth-child(2) > div > select"));
-        logger.info("Selecting Sexo: [" + genderPassenger + "]");
-        Select sexo = new Select(genderDdl);
-        sexo.selectByVisibleText(genderPassenger);
+    public PassengerSectionV3 setGender(int index, String gender){
+        //index = index + 1;
+       // WebElement genderDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index +") > div > div > div > div > div:nth-child(3) > div:nth-child(2) > div > select"));
+        logger.info("Selecting Sexo: [" + gender + "]");
+        Select sexo = new Select(genderList.get(index));
+        sexo.selectByVisibleText(gender);
         return this;
     }
 
-    public PassengerSectionV3 setNationality(int index, String nationalityPassenger){
-        index = index + 1;
-        WebElement nationalityDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index + ") > div > div > div > div > div:nth-child(3) > div:nth-child(3) > div > select"));
-        logger.info("Selecting Nacionalidad: [" + nationalityPassenger + "]");
-        Select nacionalidad = new Select(nationalityDdl);
-        nacionalidad.selectByVisibleText(nationalityPassenger);
+    public PassengerSectionV3 setNationality(int index, String nationality){
+        //index = index + 1;
+        //WebElement nationalityDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index + ") > div > div > div > div > div:nth-child(3) > div:nth-child(3) > div > select"));
+        logger.info("Selecting Nacionalidad: [" + nationality + "]");
+        Select nacionalidad = new Select(nationalityList.get(index));
+        nacionalidad.selectByVisibleText(nationality);
         return this;
     }
 

@@ -33,7 +33,7 @@ public class AutosFlowTest extends TestBaseSetup {
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.creditCardSection().getCreditCardList();
+        checkOutPage.paymentSection().getPaymentList();
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
@@ -78,13 +78,13 @@ public class AutosFlowTest extends TestBaseSetup {
 
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
         checkOutPage.populateCheckOutPage(carDrivers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "AutosCheckOutPage");
 
@@ -116,13 +116,13 @@ public class AutosFlowTest extends TestBaseSetup {
 
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.paymentSection().getPaymentData("6_visa_visa");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
         checkOutPage.populateCheckOutPage(carDrivers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "AutosCheckOutPage");
 

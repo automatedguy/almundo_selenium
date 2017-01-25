@@ -86,6 +86,17 @@ public class PageUtils {
         }
     }
 
+    public static void waitUrlContains(WebDriver driver, int timeOutInSeconds, String text, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.urlContains(text));
+        }catch (TimeoutException exception) {
+            logger.error(message + " is not displayed");
+            throw exception;
+        }
+    }
+
     public static void waitForNoVacancy(WebDriver driver, By elementToLocate, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -124,6 +135,7 @@ public class PageUtils {
         String child=win1.next();
         driver.switchTo().window(child);
     }
+
     public static void waitImplicitly(int miliSeconds){
         try {
             Thread.sleep(miliSeconds);

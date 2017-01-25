@@ -34,7 +34,7 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage = initCheckOutPageV3();
         checkOutPage.passengerSectionV3().getPassengersList();
-        checkOutPage.creditCardSectionV3().getCreditCardList();
+        checkOutPage.paymentSectionV3().getPaymentList();
         checkOutPage.billingSectionV3().getBillingList();
         checkOutPage.contactSectionV3().getContactList();
     }
@@ -55,7 +55,7 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
 
     @Test
     public void vueloHotelIntReservationFlow() {
-        logTestTitle("Vuelo+Hotel Flow - Domestic - 20 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("Vuelo+Hotel Flow - International - 20 days - 2 Adults - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
@@ -86,18 +86,19 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSectionV3().getPassengerData("child_female_native");
 
-        checkOutPage.creditCardSectionV3().getCreditCardData("amex");
+        checkOutPage.paymentSectionV3().getPaymentData("6_visa_visa");
         checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
         checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
 
+        replaceUrl();
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSectionV3().passengerJsonList,
-                checkOutPage.creditCardSectionV3().creditCardData,
+                checkOutPage.paymentSectionV3().paymentData,
                 checkOutPage.billingSectionV3().billingData,
                 checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageDomesticV3");
 
-/*        confirmationPage = checkOutPage.clickComprarBtn();
+/*      confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

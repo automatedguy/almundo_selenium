@@ -285,6 +285,24 @@
       "accepted":"true"
     },
 
+    "HotelesCheckOutPageDomesticV3":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "fiscal_name": "true",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "true",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"false",
+      "documentType":"true",
+      "document_number":"false",
+      "document_number_card":"true",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"false",
+      "accepted":"true"
+    },
+
     "VuelosCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",

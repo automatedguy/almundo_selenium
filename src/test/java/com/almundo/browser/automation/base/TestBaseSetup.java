@@ -5,10 +5,7 @@ import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
-import com.almundo.browser.automation.utils.Constants;
-import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.RetryAnalyzer;
-import com.almundo.browser.automation.utils.SauceHelpers;
+import com.almundo.browser.automation.utils.*;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
@@ -243,6 +240,15 @@ public class TestBaseSetup {
         logger.info("--------------------------------------------------------------------------------");
     }
 
+    public void replaceUrl(){
+        PageUtils.waitUrlContains(driver, 30, "cart", "URL does not contain cart");
+        String actualURL = driver.getCurrentUrl();
+        String newURL = actualURL.replace("cart", "checkout");
+        logger.info("new URL: " + newURL);
+        driver.navigate().to(newURL);
+        PageUtils.waitImplicitly(8000);
+    }
+
     //################################################ Inits ################################################
 
     protected LandingPage initLandingPage () {
@@ -305,12 +311,12 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, PassengerSectionV3.class);
     }
 
-    protected CreditCardSection initCreditCardSection() {
-        return PageFactory.initElements(driver, CreditCardSection.class);
+    protected PaymentSection initPaymentSection() {
+        return PageFactory.initElements(driver, PaymentSection.class);
     }
 
-    protected CreditCardSectionV3 initCreditCardSectionV3() {
-        return PageFactory.initElements(driver, CreditCardSectionV3.class);
+    protected PaymentSectionV3 initPaymentSectionV3() {
+        return PageFactory.initElements(driver, PaymentSectionV3.class);
     }
 
     protected PickUpLocationSection initPickUpLocationSection() {

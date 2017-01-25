@@ -49,8 +49,8 @@ public class CheckOutPage extends TestBaseSetup {
         return initPickUpLocationSection();
     }
 
-    public CreditCardSection creditCardSection() {
-        return initCreditCardSection();
+    public PaymentSection paymentSection() {
+        return initPaymentSection();
     }
 
     public BillingSection billingSection() {
@@ -77,7 +77,7 @@ public class CheckOutPage extends TestBaseSetup {
 
     public CheckOutPage populateCheckOutPage(int numPassengers,
                                              JSONArray passengerList,
-                                             JSONObject creditCardData,
+                                             JSONObject paymentData,
                                              JSONObject billingData,
                                              JSONObject contactData,
                                              String productCheckOutPage ) {
@@ -85,7 +85,7 @@ public class CheckOutPage extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
-        selectPaymentOption(creditCardData, productCheckOutPage);
+        selectPaymentOption(paymentData, productCheckOutPage);
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
@@ -95,7 +95,7 @@ public class CheckOutPage extends TestBaseSetup {
 
     public CheckOutPage populateCheckOutPage(int numPassengers,
                                              JSONArray passengerList,
-                                             JSONObject creditCardData,
+                                             JSONObject paymentData,
                                              JSONObject billingData,
                                              JSONObject contactData,
                                              String productCheckOutPage, boolean includeAssistance ) {
@@ -106,7 +106,7 @@ public class CheckOutPage extends TestBaseSetup {
         }
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
-        selectPaymentOption(creditCardData, productCheckOutPage);
+        selectPaymentOption(paymentData, productCheckOutPage);
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
@@ -182,51 +182,51 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPage populateCreditCardSection(JSONObject creditCardData, String product, CreditCardSection creditCardSection){
-        creditCardSection.selectPaymentQtyOption(0);
-        creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
+    private CheckOutPage populatePaymentSection(JSONObject paymentData, String product, PaymentSection paymentSection){
+        paymentSection.selectPaymentQtyOption(0);
+        paymentSection.selectBankOption(paymentData.get("credit_card_name").toString());
 
-        creditCardSection.setCardHolder(creditCardData.get("card_holder").toString());
+        paymentSection.setCardHolder(paymentData.get("card_holder").toString());
 
-        creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
+        paymentSection.setCardNumber(paymentData.get("card_number").toString());
 
         if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
-            creditCardSection.selectMonthCardExpiration(creditCardData.get("month_card_expire").toString());
-            creditCardSection.selectYearCardExpiration(creditCardData.get("year_card_expire").toString());
+            paymentSection.selectMonthCardExpiration(paymentData.get("month_card_expire").toString());
+            paymentSection.selectYearCardExpiration(paymentData.get("year_card_expire").toString());
         }else {
-            creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
+            paymentSection.setCardExpiration(paymentData.get("card_expire").toString());
 
         }
-        creditCardSection.setSecurityCode(creditCardData.get("security_code").toString());
+        paymentSection.setSecurityCode(paymentData.get("security_code").toString());
         if(isElementRequiered(checkOutPageElements, "documentType")) {
-            creditCardSection.selectDocumentType(creditCardData.get("documentType").toString());
+            paymentSection.selectDocumentType(paymentData.get("documentType").toString());
         }
         if(isElementRequiered(checkOutPageElements, "document_number_card")) {
-            creditCardSection.setDocumentNumber(creditCardData.get("document_number").toString());
+            paymentSection.setDocumentNumber(paymentData.get("document_number").toString());
         }
         return this;
     }
 
-    private CheckOutPage selectPaymentOption(JSONObject creditCardData, String product) {
+    private CheckOutPage selectPaymentOption(JSONObject paymentData, String product) {
 
-        CreditCardSection creditCardSection = initCreditCardSection();
-        logger.info("------------- Filling Credit Card Section -------------");
+        PaymentSection paymentSection = initPaymentSection();
+        logger.info("------------- Filling Payment Section -------------");
 
-        switch(creditCardData.get("credit_card_name").toString()){
+        switch(paymentData.get("credit_card_name").toString()){
             case "cash":
-                creditCardSection.selectPaymentOption("Pago en efectivo");
+                paymentSection.selectPaymentOption("Pago en efectivo");
                 break;
             case "deposit":
-                creditCardSection.selectPaymentOption("Depósito");
+                paymentSection.selectPaymentOption("Depósito");
                 break;
             case "transfer":
-                creditCardSection.selectPaymentOption("Transferencia");
+                paymentSection.selectPaymentOption("Transferencia");
                 break;
             case "booking24":
-                creditCardSection.selectPaymentOption("Reserva por 24 hs.");
+                paymentSection.selectPaymentOption("Reserva por 24 hs.");
                 break;
             default:
-                populateCreditCardSection(creditCardData, product, creditCardSection);
+                populatePaymentSection(paymentData, product, paymentSection);
         }
         return this;
     }

@@ -32,7 +32,7 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.creditCardSection().getCreditCardList();
+        checkOutPage.paymentSection().getPaymentList();
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
@@ -80,13 +80,13 @@ public class HotelSucursalesFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("deposit");
+        checkOutPage.paymentSection().getPaymentData("deposit");
         checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "HotelCheckOutPageDomesticSucursal");
 

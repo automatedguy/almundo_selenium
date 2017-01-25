@@ -14,14 +14,14 @@ import java.util.List;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class CreditCardSection extends CheckOutPage {
+public class PaymentSection extends CheckOutPage {
 
-    public CreditCardSection(WebDriver driver) {
+    public PaymentSection(WebDriver driver) {
         super(driver);
     }
 
-    public static JSONObject creditCardList = null;
-    public static JSONObject creditCardData;
+    public static JSONObject paymentList = null;
+    public static JSONObject paymentData;
 
     //############################################### Locators ##############################################
 
@@ -65,31 +65,31 @@ public class CreditCardSection extends CheckOutPage {
 
     //############################################### Actions ###############################################
 
-    public CreditCardSection clickPagoEnEfectivoLbl(){
+    public PaymentSection clickPagoEnEfectivoLbl(){
         logger.info("Click: Selecting Pago en Efectivo");
         pagoEnEfectivoLbl.click();
         return this;
     }
 
-    public CreditCardSection clickDepositoLbl(){
+    public PaymentSection clickDepositoLbl(){
         logger.info("Click: Selecting Depósito");
         depositoLbl.click();
         return this;
     }
 
-    public CreditCardSection clickTransferenciaLbl(){
+    public PaymentSection clickTransferenciaLbl(){
         logger.info("Click: Selecting Transferencia");
         transferenciaLbl.click();
         return this;
     }
 
-    public CreditCardSection clickReservaPor24hsLbl(){
+    public PaymentSection clickReservaPor24hsLbl(){
         logger.info("Click: Selecting Reserva por 24 hs.");
         reservaPor24hsLbl.click();
         return this;
     }
 
-    public CreditCardSection selectPaymentOption(String paymentOptionSelected){
+    public PaymentSection selectPaymentOption(String paymentOptionSelected){
         List<WebElement> paymentOptions = driver.findElements(By.cssSelector(".label--inline-block.epp-space-right-16.cards__definition__label.text--bold"));
         for(WebElement paymentOption : paymentOptions){
             if(paymentOption.getText().equals(paymentOptionSelected)){
@@ -175,11 +175,11 @@ public class CreditCardSection extends CheckOutPage {
     }
 
 
-    public static void getCreditCardList()  {
-        creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
+    public static void getPaymentList()  {
+        paymentList = JsonRead.getJsonDataObject(jsonDataObject, "payment", countryPar.toLowerCase() + "_data.json");
     }
 
-    public static void getCreditCardData(String dataSet)  {
-        creditCardData = JsonRead.getJsonDataObject(creditCardList, dataSet, countryPar.toLowerCase() + "_data.json");
+    public static void getPaymentData(String dataSet)  {
+        paymentData = JsonRead.getJsonDataObject(paymentList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 }

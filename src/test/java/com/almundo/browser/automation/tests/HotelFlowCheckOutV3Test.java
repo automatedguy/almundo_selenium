@@ -32,7 +32,7 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage = initCheckOutPageV3();
         checkOutPage.passengerSectionV3().getPassengersList();
-        checkOutPage.creditCardSectionV3().getCreditCardList();
+        checkOutPage.paymentSectionV3().getPaymentList();
         checkOutPage.billingSectionV3().getBillingList();
         checkOutPage.contactSectionV3().getContactList();
     }
@@ -80,16 +80,27 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage.passengerSectionV3().getPassengerData("adult_female_native");
         checkOutPage.passengerSectionV3().getPassengerData("adult_female_native");
 
-        checkOutPage.creditCardSectionV3().getCreditCardData("amex");
+        checkOutPage.paymentSectionV3().getPaymentData("1_amex_amex");
         checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
         checkOutPage.contactSectionV3().getContactData("contact_phone");
 
+        replaceUrl();
+
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSectionV3().passengerJsonList,
-                checkOutPage.creditCardSectionV3().creditCardData,
+                checkOutPage.paymentSectionV3().paymentData,
                 checkOutPage.billingSectionV3().billingData,
                 checkOutPage.contactSectionV3().contactData, "HotelesCheckOutPageDomesticV3");
 
 
+    }
+
+    public void replaceUrl(){
+        PageUtils.waitUrlContains(driver, 30, "cart", "URL does not contain cart");
+        String actualURL = driver.getCurrentUrl();
+        String newURL = actualURL.replace("cart/v2", "checkout");
+        logger.info("new URL: " + newURL);
+        driver.navigate().to(newURL);
+        PageUtils.waitImplicitly(8000);
     }
 }

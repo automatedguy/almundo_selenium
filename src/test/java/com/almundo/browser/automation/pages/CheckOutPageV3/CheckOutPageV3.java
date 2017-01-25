@@ -1,9 +1,8 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.CheckOutPage.*;
+import com.almundo.browser.automation.pages.CheckOutPage.PickUpLocationSection;
 import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
@@ -25,8 +24,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initPickUpLocationSection();
     }
 
-    public CreditCardSectionV3 creditCardSectionV3() {
-        return initCreditCardSectionV3();
+    public PaymentSectionV3 paymentSectionV3() {
+        return initPaymentSectionV3();
     }
 
     public BillingSectionV3 billingSectionV3() {
@@ -53,13 +52,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public CheckOutPageV3 populateCheckOutPage(int numPassengers,
                                                JSONArray passengerList,
-                                               JSONObject creditCardData,
+                                               JSONObject paymentData,
                                                JSONObject billingData,
                                                JSONObject contactData,
                                                String productCheckOutPage ) {
 
         getCheckOutPageElements(productCheckOutPage);
-        populateCreditCardSection(creditCardData, productCheckOutPage);
+        populatePaymentSection(paymentData, productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
         populateBillingSection(billingData);
@@ -75,6 +74,14 @@ public class CheckOutPageV3 extends TestBaseSetup {
         logger.info("------------- Filling Passenger Section -------------");
 
         JSONObject passengerInfo;
+
+        passengerSectionV3().setFirstNameList();
+        passengerSectionV3().setLastNameList();
+        passengerSectionV3().setDocTypeList();
+        passengerSectionV3().setDocNumberList();
+        passengerSectionV3().setBirthdayList();
+        passengerSectionV3().setGenderList();
+        passengerSectionV3().setNationalityList();
 
         for(int passengerIndex = 0; passengerIndex <= numPassengers-1; passengerIndex++ ){
 
@@ -124,35 +131,39 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPageV3 populateCreditCardSection(JSONObject creditCardData, String product) {
+    private CheckOutPageV3 populatePaymentSection(JSONObject paymentData, String product) {
 
-        CreditCardSectionV3 creditCardSection = initCreditCardSectionV3();
-        logger.info("------------- Filling Credit Card Section -------------");
+        PaymentSectionV3 paymentSection = initPaymentSectionV3();
+        logger.info("------------- Filling Payment Section -------------");
 
-        creditCardSection.selectPaymentQtyOption(0);
+        //paymentSection.selectPaymentQtyOption(0);
+        paymentSection.selectPayment(paymentData.get("payment_qty").toString());
 
-        PageUtils.waitImplicitly(1000);
-        creditCardSection.selectBankOption(creditCardData.get("credit_card_name").toString());
-        creditCardSection.setCardNumber(creditCardData.get("card_number").toString());
+        //paymentSection.selectBankOption(paymentData.get("credit_card_name").toString());
+        paymentSection.selectBank(paymentData.get("bank_name").toString());
 
-        creditCardSection.setCardHolder(creditCardData.get("card_holder").toString());
+        paymentSection.selectCreditCard(paymentData.get("credit_card_name").toString());
+
+        paymentSection.setCardNumber(paymentData.get("card_number").toString());
+
+        paymentSection.setCardHolder(paymentData.get("card_holder").toString());
 
         if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos") || product.contains("VueloHotel") ) {
-            creditCardSection.selectMonthCardExpiration(creditCardData.get("month_card_expire").toString());
-            creditCardSection.selectYearCardExpiration(creditCardData.get("year_card_expire").toString());
+            paymentSection.selectMonthCardExpiration(paymentData.get("month_card_expire").toString());
+            paymentSection.selectYearCardExpiration(paymentData.get("year_card_expire").toString());
         }else {
-            creditCardSection.setCardExpiration(creditCardData.get("card_expire").toString());
+            paymentSection.setCardExpiration(paymentData.get("card_expire").toString());
 
         }
 
-        creditCardSection.setSecurityCode(creditCardData.get("security_code").toString());
+        paymentSection.setSecurityCode(paymentData.get("security_code").toString());
 
         if(isElementRequiered(checkOutPageElements, "documentType")) {
-            creditCardSection.selectDocumentType(creditCardData.get("documentType").toString());
+            paymentSection.selectDocumentType(paymentData.get("documentType").toString());
         }
 
         if(isElementRequiered(checkOutPageElements, "document_number_card")) {
-            creditCardSection.setDocumentNumber(creditCardData.get("document_number").toString());
+            paymentSection.setDocumentNumber(paymentData.get("document_number").toString());
         }
         return this;
     }

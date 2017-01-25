@@ -30,7 +30,7 @@ public class LoginVueloFlowTest extends TestBaseSetup {
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.creditCardSection().getCreditCardList();
+        checkOutPage.paymentSection().getPaymentList();
         checkOutPage.billingSection().getBillingList();
         checkOutPage.contactSection().getContactList();
     }
@@ -85,13 +85,13 @@ public class LoginVueloFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("child_male_native");
         checkOutPage.passengerSection().getPassengerData("child_male_native");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.paymentSection().getPaymentData("amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageInternational");
 
@@ -128,13 +128,13 @@ public class LoginVueloFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
 
-        checkOutPage.creditCardSection().getCreditCardData("amex");
+        checkOutPage.paymentSection().getPaymentData("amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
                 checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.creditCardSection().creditCardData,
+                checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
 

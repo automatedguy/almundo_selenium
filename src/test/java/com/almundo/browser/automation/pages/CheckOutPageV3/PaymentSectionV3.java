@@ -15,14 +15,17 @@ import java.util.List;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class CreditCardSectionV3 extends CheckOutPage {
+public class PaymentSectionV3 extends CheckOutPage {
 
-    public CreditCardSectionV3(WebDriver driver) {
+    public PaymentSectionV3(WebDriver driver) {
         super(driver);
     }
 
-    public static JSONObject creditCardList = null;
-    public static JSONObject creditCardData;
+    public static JSONObject paymentList = null;
+    public static JSONObject paymentData;
+
+    private WebElement paymentSelected = null;
+    private WebElement bankSelected = null;
 
     //############################################### Locators ##############################################
 
@@ -56,16 +59,83 @@ public class CreditCardSectionV3 extends CheckOutPage {
     //############################################### Actions ###############################################
 
     public void selectPaymentQtyOption(int index) {
-        List<WebElement> results = driver.findElements(By.cssSelector(".monthly-payment"));
+        //List<WebElement> results = driver.findElements(By.cssSelector(".monthly-payment"));
+        List<WebElement> results = driver.findElements(By.cssSelector("..payment"));
 
         PageUtils.scrollToElement(driver, results.get(0));
         PageUtils.scrollToCoordinate(driver, -200);
         results.get(index).click();
     }
 
+    public void selectPayment(String paymentNumber) {
+//        WebElement paymentElement = driver.findElement(By.cssSelector(".installment-" + paymentOption));
+//        logger.info("Selecting Payment Quantity: [" + paymentOption + "]");
+//        PageUtils.scrollToElement(driver, paymentElement);
+//        paymentElement.click();
+//
+//        PageUtils.waitImplicitly(1000);
+
+
+        /////2
+//        List<WebElement> results = driver.findElements(By.cssSelector("div[class^='first-row installment-']"));
+//
+//        for (int i = 0; i < results.size(); ++i) {
+//            if (results.get(i).getText().equals(paymentQty)) {
+//                logger.info("Selecting Payment Quantity: [" + paymentQty + "]");
+//                PageUtils.scrollToElement(driver, results.get(i));
+//                results.get(i).click();
+//                paymentSelected = payments.get(i);
+//                break;
+//            }
+//        }
+
+
+        //////3
+        List<WebElement> results = driver.findElements(By.cssSelector(".payment .monthly-payment>strong"));
+        List<WebElement> payments = driver.findElements(By.cssSelector(".payment"));
+
+        for (int i = 0; i < results.size(); ++i) {
+            if (results.get(i).getText().equals(paymentNumber)) {
+                logger.info("Selecting Payment Quantity: [" + paymentNumber + "]");
+                PageUtils.scrollToElement(driver, results.get(i));
+                results.get(i).click();
+                paymentSelected = payments.get(i);
+                break;
+            }
+        }
+        PageUtils.waitImplicitly(1000);
+    }
+
+    public void selectBank(String bankName) {
+        List<WebElement> results = paymentSelected.findElements(By.cssSelector(".header-bank .logo"));
+        List<WebElement> banks = paymentSelected.findElements(By.cssSelector(".bank"));
+
+        for (int i = 0; i < results.size(); ++i) {
+            if (results.get(i).getAttribute("alt").equals(bankName)) {
+                logger.info("Selecting Bank: [" + bankName + "]");
+                PageUtils.scrollToElement(driver, results.get(i));
+                results.get(i).click();
+                bankSelected = banks.get(i);
+                break;
+            }
+        }
+    }
+
+    public void selectCreditCard(String cardName) {
+        List<WebElement> cardNames = bankSelected.findElements(By.cssSelector(".cards .logo .logo"));
+
+        for(WebElement cardNameResult : cardNames){
+            if (cardNameResult.getAttribute("alt").equals(cardName)) {
+                logger.info("Selecting Card: [" + cardName + "]");
+                PageUtils.scrollToElement(driver, cardNameResult);
+                cardNameResult.click();
+                break;
+            }
+        }
+    }
+
     public void selectBankOption(String cardName) {
         List<WebElement> cardNames = driver.findElements(By.cssSelector(".logo.ng-scope"));
-
 
         for (int i = 0; i < cardNames.size(); ++i) {
             WebElement cardNameElement = cardNames.get(i);
@@ -131,11 +201,11 @@ public class CreditCardSectionV3 extends CheckOutPage {
         document_number.sendKeys(documentNumber);
     }
 
-    public static void getCreditCardList()  {
-        creditCardList = JsonRead.getJsonDataObject(jsonDataObject, "creditcard", countryPar.toLowerCase() + "_data.json");
+    public static void getPaymentList()  {
+        paymentList = JsonRead.getJsonDataObject(jsonDataObject, "payment", countryPar.toLowerCase() + "_data.json");
     }
 
-    public static void getCreditCardData(String dataSet)  {
-        creditCardData = JsonRead.getJsonDataObject(creditCardList, dataSet, countryPar.toLowerCase() + "_data.json");
+    public static void getPaymentData(String dataSet)  {
+        paymentData = JsonRead.getJsonDataObject(paymentList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
 }
