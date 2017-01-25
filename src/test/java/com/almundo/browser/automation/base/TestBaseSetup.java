@@ -58,7 +58,7 @@ public class TestBaseSetup {
                                         //@Optional("OS X 10.11") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country) {
+                                        @Optional("ARGENTINA") String country) {
 
         this.baseURL = env_url;
         this.os = osType;

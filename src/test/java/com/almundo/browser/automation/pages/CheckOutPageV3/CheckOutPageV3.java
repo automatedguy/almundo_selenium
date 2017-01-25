@@ -134,16 +134,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private CheckOutPageV3 populatePaymentSection(JSONObject paymentData, String product) {
 
         PaymentSectionV3 paymentSection = initPaymentSectionV3();
-        logger.info("------------- Filling Payment Section -------------");
+        logger.info("------------- Selecting type of Payment -------------");
 
-        //paymentSection.selectPaymentQtyOption(0);
         paymentSection.selectPayment(paymentData.get("payment_qty").toString());
 
-        //paymentSection.selectBankOption(paymentData.get("credit_card_name").toString());
         paymentSection.selectBank(paymentData.get("bank_name").toString());
 
         paymentSection.selectCreditCard(paymentData.get("credit_card_name").toString());
 
+        logger.info("------------- Filling Payment Section -------------");
         paymentSection.setCardNumber(paymentData.get("card_number").toString());
 
         paymentSection.setCardHolder(paymentData.get("card_holder").toString());

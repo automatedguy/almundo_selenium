@@ -25,7 +25,7 @@ public class BillingSectionV3 extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "fiscalNameTxt")
+    @FindBy(id = "fiscal_name")
     private WebElement fiscalNameTxt;
 
     @FindBy(css = "billing-form > div > div:nth-child(2) > div.schema-form-section.col-12-xs.col-12-sm.col-3-md > div > select")

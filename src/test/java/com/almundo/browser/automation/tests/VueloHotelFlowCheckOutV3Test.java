@@ -55,7 +55,7 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
 
     @Test
     public void vueloHotelIntReservationFlow() {
-        logTestTitle("Vuelo+Hotel Flow - International - 20 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("Vuelo+Hotel Flow - International - 20 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
