@@ -108,7 +108,6 @@ public class HotelesDataTrip extends BasePage {
         return initHotelesResultsPage();
     }
 
-
     public static void getHotelesDataTripList() {
         hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
     }

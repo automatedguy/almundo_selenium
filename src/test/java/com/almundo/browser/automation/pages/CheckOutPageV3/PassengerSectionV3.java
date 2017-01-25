@@ -30,10 +30,11 @@ public class PassengerSectionV3 extends CheckOutPage {
     private static List<WebElement> lastNameList = null;
     private static List<WebElement> docTypeList = null;
     private static List<WebElement> docNumberList = null;
+    private static List<WebElement> docEmisorList = null;
+    private static List<WebElement> docExpirationList = null;
     private static List<WebElement> birthdayList = null;
     private static List<WebElement> genderList = null;
     private static List<WebElement> nationalityList = null;
-
 
     //############################################### Locators ##############################################
 
@@ -90,7 +91,6 @@ public class PassengerSectionV3 extends CheckOutPage {
 
 
     public PassengerSectionV3 setFirstName(int index, String firstName){
-        //List<WebElement> firstNameList = driver.findElements(By.id("first_name"));
         PageUtils.waitElementForVisibility(driver, first_name, 45, "First Name text box");
         logger.info("Entering Nombre/s: [" + firstName + "]");
         firstNameList.get(index).clear();
@@ -99,7 +99,6 @@ public class PassengerSectionV3 extends CheckOutPage {
     }
 
     public PassengerSectionV3 setlastName(int index, String lastName){
-        //List<WebElement> lastNameList = driver.findElements(By.id("last_name"));
         logger.info("Entering Apellido/s: [" + lastName + "]");
         lastNameList.get(index).clear();
         lastNameList.get(index).sendKeys(lastName);
@@ -107,7 +106,6 @@ public class PassengerSectionV3 extends CheckOutPage {
     }
 
     public PassengerSectionV3 setDocumentType(int index, String documentType){
-        //List<WebElement> documentTypeList = driver.findElements(By.name("document_type"));
         logger.info("Selecting Tipo de documento: [" + documentType + "]");
         Select tipoDeDocumento = new Select(docTypeList.get(index));
         tipoDeDocumento.selectByVisibleText(documentType);
@@ -115,7 +113,6 @@ public class PassengerSectionV3 extends CheckOutPage {
     }
 
     public PassengerSectionV3 setDocumentNumber(int index, String docNumber){
-        //List<WebElement> documentNumberList = driver.findElements(By.id("number"));
         logger.info("Entering Número: [" + docNumber + "]");
         docNumberList.get(index).clear();
         docNumberList.get(index).sendKeys(docNumber);
@@ -139,7 +136,6 @@ public class PassengerSectionV3 extends CheckOutPage {
     }
 
     public PassengerSectionV3 setBirthDay(int index, String birthday){
-        //List<WebElement> birthDayList = driver.findElements(By.id("birthday"));
         logger.info("Entering Fecha de Nacimiento: [" + birthday + "]");
         birthdayList.get(index).clear();
         birthdayList.get(index).sendKeys(birthday);
@@ -147,8 +143,6 @@ public class PassengerSectionV3 extends CheckOutPage {
     }
 
     public PassengerSectionV3 setGender(int index, String gender){
-        //index = index + 1;
-       // WebElement genderDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index +") > div > div > div > div > div:nth-child(3) > div:nth-child(2) > div > select"));
         logger.info("Selecting Sexo: [" + gender + "]");
         Select sexo = new Select(genderList.get(index));
         sexo.selectByVisibleText(gender);
@@ -156,8 +150,6 @@ public class PassengerSectionV3 extends CheckOutPage {
     }
 
     public PassengerSectionV3 setNationality(int index, String nationality){
-        //index = index + 1;
-        //WebElement nationalityDdl = driver.findElement(By.cssSelector("passengers-form:nth-child(" + index + ") > div > div > div > div > div:nth-child(3) > div:nth-child(3) > div > select"));
         logger.info("Selecting Nacionalidad: [" + nationality + "]");
         Select nacionalidad = new Select(nationalityList.get(index));
         nacionalidad.selectByVisibleText(nationality);

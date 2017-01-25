@@ -3,13 +3,10 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
 
 /**
  * Created by leandro.efron on 6/12/2016.
@@ -31,10 +28,7 @@ public class ContactSectionV3 extends CheckOutPage {
     @FindBy(id = "email_confirmation")
     public WebElement repEmailTxt;
 
-    @FindBy(id = "susc")
-    public WebElement subscriptionCbx;
-
-    @FindBy(css = "contact-form > div > div:nth-child(2) > div > div > div.row > div:nth-child(1) > div > div:nth-child(1) > div > select")
+    @FindBy(name = "telephone_type")
     public WebElement phoneTypeDdl;
 
     @FindBy(id = "country_code")
@@ -43,11 +37,8 @@ public class ContactSectionV3 extends CheckOutPage {
     @FindBy(id = "area_code")
     public WebElement areaCodeTxt;
 
-    @FindBy(id = "phone_number0")
+    @FindBy(css = "contact-form #number")
     public WebElement phoneNumberTxt;
-
-    @FindBy(linkText = "Agregar otro teléfono")
-    private WebElement addPhoneLnk;
 
     //############################################### Actions ###############################################
 
@@ -82,9 +73,9 @@ public class ContactSectionV3 extends CheckOutPage {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        logger.info("Entering Número: [" + phoneNumber + "]");
-        List<WebElement> phoneNumberList = driver.findElements(By.id("number"));
-        phoneNumberList.get(phoneNumberList.size() -1).sendKeys(phoneNumber);
+        logger.info("Entering Número de Teléfono: [" + phoneNumber + "]");
+        phoneNumberTxt.clear();
+        phoneNumberTxt.sendKeys(phoneNumber);
     }
 
 

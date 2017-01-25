@@ -25,119 +25,118 @@ public class BillingSectionV3 extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
+    @FindBy(id = "fiscalNameTxt")
+    private WebElement fiscalNameTxt;
+
+    @FindBy(css = "billing-form > div > div:nth-child(2) > div.schema-form-section.col-12-xs.col-12-sm.col-3-md > div > select")
+    private WebElement billingFiscalTypeDdl;
+
+    @FindBy(css = "billing-form > div > div:nth-child(2) > div.schema-form-section.col-12-xs.col-12-sm.col-4-md > div > select")
+    private WebElement billingDocumentType;
+
     @FindBy(id = "fiscal_document")
-    private WebElement billing_fiscal_document;
-
-    @FindBy(id = "fiscal_name")
-    private WebElement fiscal_name;
-
-    @FindBy(id = "billing_fiscal_type")
-    private WebElement billing_fiscal_type;
-
-    @FindBy(id = "billing_document_type")
-    private WebElement billing_document_type;
+    private WebElement billingFiscalDocumentTxt;
 
     @FindBy(id = "street")
-    private WebElement billing_address;
+    private WebElement billingAddressTxt;
 
-    @FindBy(id = "number")
-    private WebElement address_number;
+    @FindBy(css = "billing-form #number")
+    private WebElement addressNumberTxt;
 
     @FindBy(id = "floor")
-    private WebElement address_floor;
+    private WebElement addressFloorTxt;
 
     @FindBy(id = "department")
-    private WebElement address_department;
+    private WebElement addressDepartmentTxt;
 
     @FindBy(id = "postal_code")
-    private WebElement address_postal_code;
+    private WebElement addressPostalCodeTxt;
 
     @FindBy(css = "billing-form > div > div:nth-child(5) > div.schema-form-section.col-12-xs.col-12-sm.col-7-md > div > select")
-    private WebElement address_state;
+    private WebElement addressStateDdl;
 
     @FindBy(id = "city")
-    private WebElement address_city;
+    private WebElement addressCityTxt;
 
 
     //############################################### Actions ##############################################
 
+    public BillingSectionV3 setBillingFiscalNameTxt(String billingFiscalName) {
+        logger.info("Entering Nombre o Razón Social: [" + billingFiscalName + "]");
+        fiscalNameTxt.clear();
+        fiscalNameTxt.sendKeys(billingFiscalName);
+        return this;
+    }
+
     public BillingSectionV3 selectBillingFiscalType(String billingFiscalType) {
         logger.info("Selecting Situación: [" + billingFiscalType + "]");
-        Select SITUACION_FISCAL_SELECT = new Select(billing_fiscal_type);
+        Select SITUACION_FISCAL_SELECT = new Select(this.billingFiscalTypeDdl);
         SITUACION_FISCAL_SELECT.selectByVisibleText(billingFiscalType);
         return this;
     }
 
     public BillingSectionV3 selectBillingDocumentType(String billingDocumentType){
         logger.info("Selecting Tipo de Documento: [" + billingDocumentType + "]");
-        Select tipoDeDocumento = new Select(billing_document_type);
+        Select tipoDeDocumento = new Select(this.billingDocumentType);
         tipoDeDocumento.selectByVisibleText(billingDocumentType);
         return this;
     }
 
-    public BillingSectionV3 setBillingFiscalDocument(String cuil) {
+    public BillingSectionV3 setBillingFiscalDocumentTxt(String cuil) {
         logger.info("Entering CUIL/CUIT: [" + cuil + "]");
-        this.billing_fiscal_document.clear();
-        this.billing_fiscal_document.sendKeys(cuil);
+        this.billingFiscalDocumentTxt.clear();
+        this.billingFiscalDocumentTxt.sendKeys(cuil);
         return this;
     }
 
-    public BillingSectionV3 setBillingFiscalName(String billingFiscalName) {
-        logger.info("Entering Nombre o Razón Social: [" + billingFiscalName + "]");
-        fiscal_name.clear();
-        fiscal_name.sendKeys(billingFiscalName);
-        return this;
-    }
-
-    public BillingSectionV3 setBillingAddress(String billingAddress) {
+    public BillingSectionV3 setBillingAddressTxt(String billingAddress) {
         logger.info("Entering Domicilio: [" + billingAddress + "]");
-        billing_address.clear();
-        billing_address.sendKeys(billingAddress);
+        this.billingAddressTxt.clear();
+        this.billingAddressTxt.sendKeys(billingAddress);
         return this;
     }
 
-    public BillingSectionV3 setAddressNumber(String addressNumber) {
+    public BillingSectionV3 setAddressNumberTxt(String addressNumber) {
         logger.info("Entering Número: [" + addressNumber + "]");
         List<WebElement> addressNumberList = driver.findElements(By.id("number"));
         addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumber);
         return this;
     }
 
-    public BillingSectionV3 setAddressFloor(String addressFloor) {
+    public BillingSectionV3 setAddressFloorTxt(String addressFloor) {
         logger.info("Entering Piso: [" + addressFloor + "]");
-        address_floor.clear();
-        address_floor.sendKeys(addressFloor);
+        this.addressFloorTxt.clear();
+        this.addressFloorTxt.sendKeys(addressFloor);
         return this;
     }
 
-    public BillingSectionV3 setAddressDepartment(String addressDepartment) {
+    public BillingSectionV3 setAddressDepartmentTxt(String addressDepartment) {
         logger.info("Entering Departamento: [" + addressDepartment + "]");
-        address_department.clear();
-        address_department.sendKeys(addressDepartment);
+        this.addressDepartmentTxt.clear();
+        this.addressDepartmentTxt.sendKeys(addressDepartment);
         return this;
     }
 
-    public BillingSectionV3 setAddressPostalCode(String addressPostalCcode) {
+    public BillingSectionV3 setAddressPostalCodeTxt(String addressPostalCcode) {
         logger.info("Entering Código Postal: [" + addressPostalCcode + "]");
-        address_postal_code.clear();
-        address_postal_code.sendKeys(addressPostalCcode);
+        addressPostalCodeTxt.clear();
+        addressPostalCodeTxt.sendKeys(addressPostalCcode);
         return this;
     }
 
-    public BillingSectionV3 setAddressState(String addressState) {
-        logger.info("Selecting Provincia: [" + addressState + "]");
-        Select addressStateSelect =  new Select(address_state);
-        addressStateSelect.selectByVisibleText(addressState);
+    public BillingSectionV3 setAddressStateDdl(String addressStateDdl) {
+        logger.info("Selecting Provincia: [" + addressStateDdl + "]");
+        Select addressStateSelect =  new Select(this.addressStateDdl);
+        addressStateSelect.selectByVisibleText(addressStateDdl);
         return this;
     }
 
-    public BillingSectionV3 setAddressCity(String addressCity) {
+    public BillingSectionV3 setAddressCityTxt(String addressCity) {
         logger.info("Entering Ciudad: [" + addressCity + "]");
-        address_city.clear();
-        address_city.sendKeys(addressCity);
+        this.addressCityTxt.clear();
+        this.addressCityTxt.sendKeys(addressCity);
         return this;
     }
-
 
     public static void getBillingList()  {
         billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");

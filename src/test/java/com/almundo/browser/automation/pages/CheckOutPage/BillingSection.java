@@ -134,7 +134,6 @@ public class BillingSection extends CheckOutPage {
         return this;
     }
 
-
     public static void getBillingList()  {
         billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
     }
