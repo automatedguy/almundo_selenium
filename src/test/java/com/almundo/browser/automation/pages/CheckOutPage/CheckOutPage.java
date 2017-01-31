@@ -17,12 +17,19 @@ import java.util.ArrayList;
  */
 public class CheckOutPage extends TestBaseSetup {
 
+    public CheckOutPage(WebDriver driver) { super.driver = driver; }
+
+    public static JSONObject checkOutPageElements = null;
+
+    //############################################### Locators ##############################################
 
     @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
     @FindBy(id = "assistance_yes")
     public WebElement assistanceRdb;
+
+    //############################################### Actions ##############################################
 
     public ConfirmationPage clickComprarBtn(){
         logger.info("Clicking on Comprar Button.");
@@ -36,10 +43,6 @@ public class CheckOutPage extends TestBaseSetup {
         assistanceRdb.click();
         return this;
     }
-
-    public CheckOutPage(WebDriver driver) { super.driver = driver; }
-
-    public static JSONObject checkOutPageElements = null;
 
     public PassengerSection passengerSection() {
         return initPassengerInfoSection();

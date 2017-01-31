@@ -55,7 +55,7 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
 
     @Test
     public void vueloHotelIntReservationFlow() {
-        logTestTitle("Vuelo+Hotel Flow - International - 20 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+        logTestTitle("Vuelo+Hotel - Int - 20 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
@@ -86,7 +86,7 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSectionV3().getPassengerData("child_female_native");
 
-        checkOutPage.paymentSectionV3().getPaymentData("6_visa_visa");
+        checkOutPage.paymentSectionV3().getPaymentData("1_amex_amex");
         checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
         checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
 
@@ -96,7 +96,59 @@ public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
                 checkOutPage.passengerSectionV3().passengerJsonList,
                 checkOutPage.paymentSectionV3().paymentData,
                 checkOutPage.billingSectionV3().billingData,
-                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageDomesticV3");
+                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
+
+/*      confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());*/
+    }
+
+    @Test
+    public void vueloHotel_2CreditCard() {
+        logTestTitle("Vuelo+Hotel - 2 Credit Card payment - " + countryPar );
+
+        PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
+        basePage.vueloHotelIcon.click();
+
+        basePage.vueloHotelDataTrip().getVueloHotelDataTripItinerary("int02_20days_2adults_1childs_1room");
+
+        basePage.vueloHotelDataTrip().setOrigin(basePage.vueloHotelDataTrip().originAuto, basePage.vueloHotelDataTrip().originFull);
+        basePage.vueloHotelDataTrip().setDestination(basePage.vueloHotelDataTrip().destinationAuto, basePage.vueloHotelDataTrip().destinationFull);
+
+        basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().departureCalendar, basePage.vueloHotelDataTrip().startDate);
+        basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().arrivalCalendar, basePage.vueloHotelDataTrip().endDate);
+
+        numPassengers = basePage.vueloHotelDataTrip().selectPassenger(basePage.vueloHotelDataTrip().adults,
+                basePage.vueloHotelDataTrip().childs,
+                basePage.vueloHotelDataTrip().rooms);
+
+        vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
+
+        Assert.assertTrue(vueloHotelResultsPage.vacancy());
+
+        vueloHotelResultsPage.clickElegirBtn(0);
+        vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
+        vueloHotelDetailPage.clickVerHabitacionBtn();
+
+        checkOutPage = vueloHotelDetailPage.clickComprarV3Btn(0);
+
+        checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
+        checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
+        checkOutPage.passengerSectionV3().getPassengerData("child_female_native");
+
+        checkOutPage.paymentSectionV3().getPaymentData("1_amex_amex");
+        checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
+        checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
+
+        replaceUrl();
+
+        checkOutPage.paymentSectionV3().clickSeveralCardsCbx();
+
+        checkOutPage.populateCheckOutPage(numPassengers,
+                checkOutPage.passengerSectionV3().passengerJsonList,
+                checkOutPage.paymentSectionV3().paymentData,
+                checkOutPage.paymentSectionV3().paymentData,
+                checkOutPage.billingSectionV3().billingData,
+                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
 
 /*      confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/

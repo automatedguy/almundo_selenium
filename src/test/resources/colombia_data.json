@@ -81,10 +81,10 @@
                 "originFull": "Bogotá, Bogotá D.C., Colombia",
                 "destinationAuto": "San",
                 "destinationFull": "Santiago de Chile, Chile",
-                "startDate": 34,
-                "endDate": 5,
+                "startDate": 30,
+                "endDate": 20,
                 "adults": 2,
-                "childs": 0,
+                "childs": 1,
                 "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
             }
@@ -203,29 +203,34 @@
             }
     },
 
-    "creditcard":{
-        "amex": {
-            "credit_card_name" : "American Express",
-            "card_holder": "Dueño Dí L'Tarjüeta",
-            "card_number": "4242424242424242",
-            "card_expire": "12/18",
-            "month_card_expire": "12",
-            "year_card_expire": "2022",
-            "security_code": "1234",
-            "documentType": "Tarjeta de identidad (NUIP)",
-            "document_number": "29098766"
-        },
-        "visa": {
-            "credit_card_name" : "Visa",
-            "card_holder": "Dueño Dí L'Tarjüeta",
-            "card_number": "4242424242424242",
-            "card_expire": "12/18",
-            "month_card_expire": "12",
-            "year_card_expire": "2022",
-            "security_code": "1234",
-            "documentType": "DNI",
-            "document_number": "29098766"
-        }
+    "payment":{
+            "1_amex_amex": {
+                "payment_qty" : "1",
+                "bank_name" : "American Express",
+                "credit_card_name" : "American Express",
+                "card_holder": "Dueño Dí L'Tarjüeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "Tarjeta de identidad (NUIP)",
+                "document_number": "29098766"
+            },
+
+            "6_visa_visa": {
+                "payment_qty" : "6",
+                "bank_name" : "Visa",
+                "credit_card_name" : "Visa",
+                "card_holder": "Dueño Dí L'Tarjüeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            }
     },
 
     "billings": {
@@ -239,8 +244,8 @@
             "address_floor": 8,
             "address_department": "A",
             "address_postal_code": "C1009ABQ",
-            "address_state": "Buenos Aires",
-            "address_city": "C.A.B.A."
+            "address_state": "Bogotá D.C.",
+            "address_city": "Bogotá"
         },
 
         "local_Billing_v2": {
@@ -253,8 +258,8 @@
             "address_floor": 8,
             "address_department": "A",
             "address_postal_code": "C1009ABQ",
-            "address_state": "Buenos Aires",
-            "address_city": "C.A.B.A."
+            "address_state": "Bogotá D.C.",
+            "address_city": "Bogotá"
         }
     },
 

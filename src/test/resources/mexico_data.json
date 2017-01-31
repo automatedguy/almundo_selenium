@@ -39,8 +39,8 @@
             },
 
             "domestic01_15days_2adults_1room": {
-                "destinationAuto": "Can",
-                "destinationFull": "Cancún, Quintana Roo, México",
+                "destinationAuto": "Aca",
+                "destinationFull": "Acapulco, Guerrero, México",
                 "startDate": 20,
                 "endDate": 20,
                 "adults": 2,
@@ -165,6 +165,7 @@
                 "gender": "Masculino",
                 "nationality": "México"
             },
+
             "child_female_native": {
                 "first_name": "Ñímis",
                 "last_name": "O' Tool",
@@ -202,8 +203,10 @@
             }
     },
 
-    "creditcard":{
-        "amex": {
+    "payment":{
+        "1_amex_amex": {
+            "payment_qty" : "1",
+            "bank_name" : "American Express",
             "credit_card_name" : "American Express",
             "card_holder": "Dueño Dí L'Tarjüeta",
             "card_number": "4242424242424242",
@@ -214,7 +217,9 @@
             "documentType": "DNI",
             "document_number": "29098766"
         },
-        "visa": {
+        "6_visa_visa": {
+            "payment_qty" : "6",
+            "bank_name" : "Visa",
             "credit_card_name" : "Visa",
             "card_holder": "Dueño Dí L'Tarjüeta",
             "card_number": "4242424242424242",

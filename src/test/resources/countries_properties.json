@@ -139,7 +139,7 @@
       "accepted":"false"
     },
 
-    "VueloHotelCheckOutPageDomesticV3":{
+    "VueloHotelCheckOutPageInternationalV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -375,6 +375,24 @@
       "accepted":"true"
     },
 
+    "VueloHotelCheckOutPageInternationalV3":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "fiscal_name":"false",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "true",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"True",
+      "documentType":"true",
+      "document_number":"true",
+      "document_number_card":"true",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"true",
+      "accepted":"true"
+    },
+
     "VueloHotelCheckOutPageDomesticV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
@@ -384,9 +402,9 @@
       "document_emisor":"false",
       "document_expiration":"false",
       "documentType0":"true",
-      "documentType":"false",
-      "document_number":"true",
-      "document_number_card":"false",
+      "documentType":"true",
+      "document_number":"false",
+      "document_number_card":"true",
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
@@ -520,7 +538,7 @@
         "accepted":"false"
       },
 
-      "VueloHotelCheckOutPageDomesticV3":{
+      "VueloHotelCheckOutPageInternationalV3":{
         "PickUpLocationSection": "false",
         "BillingInfoSection":"false",
         "billing_fiscal_type": "false",

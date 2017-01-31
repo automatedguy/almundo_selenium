@@ -58,13 +58,67 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                String productCheckOutPage ) {
 
         getCheckOutPageElements(productCheckOutPage);
-        populatePaymentSection(paymentData, productCheckOutPage);
+        populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
         populatePassengerSection(numPassengers, passengerList);
         populatePickUpLocationSection();
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
+        return this;
+    }
 
+    public CheckOutPageV3 populateCheckOutPage(int numPassengers,
+                                               JSONArray passengerList,
+                                               JSONObject paymentData1,
+                                               JSONObject paymentData2,
+                                               JSONObject billingData,
+                                               JSONObject contactData,
+                                               String productCheckOutPage ) {
+
+        getCheckOutPageElements(productCheckOutPage);
+        populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
+        populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);
+        populatePassengerSection(numPassengers, passengerList);
+        populatePickUpLocationSection();
+        populateBillingSection(billingData);
+        populateContactSection(contactData);
+        acceptConditions();
+        return this;
+    }
+
+    private CheckOutPageV3 populatePaymentSection(JSONObject paymentData, String container, String product) {
+
+        PaymentSectionV3 paymentSection = initPaymentSectionV3();
+        logger.info("------------- Selecting type of Payment "+ container + "-------------");
+
+        paymentSection.selectPayment(paymentData.get("payment_qty").toString(), container);
+
+        paymentSection.selectBank(paymentData.get("bank_name").toString(), container);
+
+        paymentSection.selectCreditCard(paymentData.get("credit_card_name").toString(), container);
+
+        logger.info("------------- Filling Payment Section -------------");
+        paymentSection.setCardNumber(paymentData.get("card_number").toString(), container);
+
+        paymentSection.setCardHolder(paymentData.get("card_holder").toString(), container);
+
+        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos") || product.contains("VueloHotel") ) {
+            paymentSection.selectMonthCardExpiration(paymentData.get("month_card_expire").toString(), container);
+            paymentSection.selectYearCardExpiration(paymentData.get("year_card_expire").toString(), container);
+        }else {
+            paymentSection.setCardExpiration(paymentData.get("card_expire").toString());
+
+        }
+
+        paymentSection.setSecurityCode(paymentData.get("security_code").toString(), container);
+
+        if(isElementRequiered(checkOutPageElements, "documentType")) {
+            paymentSection.selectDocumentType(paymentData.get("documentType").toString(), container);
+        }
+
+        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
+            paymentSection.setDocumentNumber(paymentData.get("document_number").toString(), container);
+        }
         return this;
     }
 
@@ -127,42 +181,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private CheckOutPageV3 populatePickUpLocationSection(){
         if(isElementRequiered(checkOutPageElements, "PickUpLocationSection")){
             pickUpLocationSection().selectAgency();
-        }
-        return this;
-    }
-
-    private CheckOutPageV3 populatePaymentSection(JSONObject paymentData, String product) {
-
-        PaymentSectionV3 paymentSection = initPaymentSectionV3();
-        logger.info("------------- Selecting type of Payment -------------");
-
-        paymentSection.selectPayment(paymentData.get("payment_qty").toString());
-
-        paymentSection.selectBank(paymentData.get("bank_name").toString());
-
-        paymentSection.selectCreditCard(paymentData.get("credit_card_name").toString());
-
-        logger.info("------------- Filling Payment Section -------------");
-        paymentSection.setCardNumber(paymentData.get("card_number").toString());
-
-        paymentSection.setCardHolder(paymentData.get("card_holder").toString());
-
-        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos") || product.contains("VueloHotel") ) {
-            paymentSection.selectMonthCardExpiration(paymentData.get("month_card_expire").toString());
-            paymentSection.selectYearCardExpiration(paymentData.get("year_card_expire").toString());
-        }else {
-            paymentSection.setCardExpiration(paymentData.get("card_expire").toString());
-
-        }
-
-        paymentSection.setSecurityCode(paymentData.get("security_code").toString());
-
-        if(isElementRequiered(checkOutPageElements, "documentType")) {
-            paymentSection.selectDocumentType(paymentData.get("documentType").toString());
-        }
-
-        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
-            paymentSection.setDocumentNumber(paymentData.get("document_number").toString());
         }
         return this;
     }
