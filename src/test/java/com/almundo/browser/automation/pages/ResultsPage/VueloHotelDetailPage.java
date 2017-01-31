@@ -28,11 +28,7 @@ public class VueloHotelDetailPage extends TestBaseSetup {
         logger.info("Clicking on Ver Habitación button");
         verHabitacionBtn.click();
         //TODO: we can try to make this explicit.
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(1000);
         return this;
     }
 

@@ -36,7 +36,7 @@ public class TestBaseSetup {
     private static String os = null;
     private static String browser = null;
     private static String browserVersion = null;
-    private static String osName = null;
+    public static String osName = System.getProperty("os.name");
 
     public int numPassengers;
     public static String countryPar;
@@ -44,8 +44,6 @@ public class TestBaseSetup {
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
     public static JSONObject jsonCountryPropertyObject = null;
-
-    public String osProperty = System.getProperty("os.name").toLowerCase();
 
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
@@ -55,16 +53,15 @@ public class TestBaseSetup {
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.STAGING_URL) String env_url,
                                         @Optional() String osType,
-                                        //@Optional("OS X 10.11") String osType,
+//                                        @Optional("OS X 10.11") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country) {
+                                        @Optional("ARGENTINA") String country) {
 
         this.baseURL = env_url;
         this.os = osType;
         this.browser = browserType;
         this.browserVersion = browserTypeVersion;
-        osName = System.getProperty("os.name");
         this.countryPar = country;
 
         try {
@@ -90,13 +87,13 @@ public class TestBaseSetup {
 
     @BeforeMethod
     public void setDriver() {
-        System.out.println();
-        logger.info("Starting @BeforeMethod...");
+        //System.out.println();
+        //logger.info("Starting @BeforeMethod...");
         try {
             if (os == null || browserVersion == null) {
                 switch (browser) {
                     case "chrome":
-                        if (osProperty.contains("windows")){
+                        if (osName.toLowerCase().contains("windows")){
                             System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver.exe");
                         } else {
                             System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");
@@ -107,7 +104,7 @@ public class TestBaseSetup {
                         break;
 
                     case "firefox":
-                        if (osProperty.contains("windows")){
+                        if (osName.toLowerCase().contains("windows")){
                             System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver.exe");
                         } else {
                             System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver");
@@ -142,7 +139,7 @@ public class TestBaseSetup {
             logger.info("Selecting country page: [" + countryPar + "]");
             basePage = landingPage.selectCountryPage(countryPar);
 
-            logger.info("Finishing @BeforeMethod...");
+            //logger.info("Finishing @BeforeMethod...");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -259,7 +256,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, BasePage.class);
     }
 
-    protected BasePage initLoginPopUp() {
+    protected LoginPopUp initLoginPopUp() {
         return PageFactory.initElements(driver, LoginPopUp.class);
     }
 

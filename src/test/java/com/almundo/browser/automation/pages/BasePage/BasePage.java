@@ -85,11 +85,7 @@ public class BasePage extends TestBaseSetup {
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
         calendar.click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(2000);
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
 
         List<WebElement> availableDates = getAvailableDatesList();

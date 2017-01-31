@@ -39,7 +39,7 @@ public class FacebookLoginHotelFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void doLogin(){
-        LoginPopUp loginPopUp = (LoginPopUp) initLoginPopUp();
+        LoginPopUp loginPopUp = initLoginPopUp();
         FacebookLoginPopUp facebookLoginPopUp = (FacebookLoginPopUp) loginPopUp.clickFacebookLoginBtn();
         PageUtils.setFocusOnChildWindow(driver);
         facebookLoginPopUp.setEmailTxt("almundoqastuff@gmail.com");

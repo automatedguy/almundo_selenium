@@ -46,11 +46,7 @@ public class FacebookLoginPopUp extends BasePage {
     public BasePage clickFacebookLoginBtn() {
         logger.info("Clicking on Facebook Log In Button.");
         facebookLoginBtn.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(4000);
         return initBasePage();
     }
 }

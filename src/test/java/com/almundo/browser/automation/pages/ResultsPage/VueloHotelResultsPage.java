@@ -31,11 +31,7 @@ public class VueloHotelResultsPage extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver,continuarBtn,30, "Continuar Button");
         logger.info("Clicking on Continuar button");
         continuarBtn.click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(2000);
         return initVueloHotelDetailPage();
     }
 
@@ -45,11 +41,7 @@ public class VueloHotelResultsPage extends TestBaseSetup {
         List<WebElement> elegirBtn = driver.findElements(By.cssSelector(cssSelectorNameElegir));
         logger.info("Clicking on Elegir button index: " + index);
         elegirBtn.get(index).click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(2000);
         return this;
     }
 

@@ -39,7 +39,7 @@ public class LoginVueloHotelFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void doLogin(){
-        LoginPopUp loginPopUp = (LoginPopUp) initLoginPopUp();
+        LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
         loginPopUp.setLoginPasswordTxt("gabi1981ce");
         basePage = loginPopUp.clickIngresarBtn();

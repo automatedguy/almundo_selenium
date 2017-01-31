@@ -41,11 +41,7 @@ public class GoogleLoginPopUpEmail extends BasePage {
     public GoogleLoginPopUpEmail clickNextBtn() {
         logger.info("Clicking on Facebook Log In Button.");
         nextBtn.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(4000);
         return this;
     }
 

@@ -34,11 +34,7 @@ public class GoogleLoginPopUpPasswd extends BasePage {
     public BasePage clickSignInBtn() {
         logger.info("Clicking on Google Sign In Button.");
         signInBtn.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        PageUtils.waitImplicitly(4000);
         return initBasePage();
     }
 
