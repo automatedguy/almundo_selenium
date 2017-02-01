@@ -132,7 +132,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("child_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("6_visa_visa");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 

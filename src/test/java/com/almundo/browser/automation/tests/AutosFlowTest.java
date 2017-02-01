@@ -116,7 +116,7 @@ public class AutosFlowTest extends TestBaseSetup {
 
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("6_visa_visa");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
