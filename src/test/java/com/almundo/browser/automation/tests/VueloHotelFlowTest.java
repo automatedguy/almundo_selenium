@@ -142,8 +142,5 @@ public class VueloHotelFlowTest extends TestBaseSetup {
                 checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomestic");
-
-/*        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

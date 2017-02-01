@@ -125,9 +125,6 @@ public class AutosFlowTest extends TestBaseSetup {
                 checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "AutosCheckOutPage");
-
-/*        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 
 }

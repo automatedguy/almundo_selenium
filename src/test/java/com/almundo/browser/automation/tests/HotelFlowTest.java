@@ -41,7 +41,7 @@ public class HotelFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = new LoginPopUp(driver);
+        LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
     }
 
@@ -132,8 +132,5 @@ public class HotelFlowTest extends TestBaseSetup {
                 checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
-
-/*        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

@@ -136,8 +136,5 @@ public class VueloFlowTest extends TestBaseSetup {
                 checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
-
-/*        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

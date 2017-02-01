@@ -51,7 +51,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.STAGING_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
                                         @Optional("chrome") String browserType,
