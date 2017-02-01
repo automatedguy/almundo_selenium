@@ -286,7 +286,9 @@ public class CheckOutPage extends TestBaseSetup {
         contactSection.setRepEmail(contactData.get("rep_email").toString());
         contactSection.selectPhoneType(contactData.get("tel").toString());
         contactSection.setCountryCode(contactData.get("country_code").toString());
-        contactSection.setAreaCode(contactData.get("area").toString());
+        if (isElementRequiered(checkOutPageElements, "area")) {
+            contactSection.setAreaCode(contactData.get("area").toString());
+        }
         contactSection.setPhoneNumber(contactData.get("phone_number").toString());
 
         return this;
