@@ -41,7 +41,7 @@ public class VueloHotelFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = new LoginPopUp(driver);
+        LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
     }
 
