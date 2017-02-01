@@ -228,7 +228,7 @@
                 "month_card_expire": "12",
                 "year_card_expire": "2022",
                 "security_code": "1234",
-                "documentType": "DNI",
+                "documentType": "Tarjeta de identidad (NUIP)",
                 "document_number": "29098766"
             }
     },
