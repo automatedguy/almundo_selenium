@@ -56,7 +56,8 @@
       "birthday":"false",
       "gender":"false",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "HotelesCheckOutPageDomesticV3":{
@@ -97,7 +98,8 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VuelosCheckOutPageDomestic":{
@@ -120,7 +122,8 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageInternational":{
@@ -143,7 +146,8 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageDomestic":{
@@ -166,7 +170,8 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageInternationalV3":{
@@ -255,7 +260,8 @@
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "AutosCheckOutPageSucursales":{
