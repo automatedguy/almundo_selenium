@@ -53,9 +53,9 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
-                                        @Optional() String osType,
+//                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-//                                        @Optional("Windows 10") String osType,
+                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) {
@@ -150,8 +150,8 @@ public class TestBaseSetup {
 
     private void initSauceLabsDriver (String methodName)  {
 
-        String USERNAME = "automationdude";
-        String ACCESS_KEY = "69ddf8bc-f400-4c73-9c32-38d806a93b4a";
+        String USERNAME = "notengolicencia";
+        String ACCESS_KEY = "c6c8881d-9db3-4932-b2a5-1b4dc0ce61c2";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
