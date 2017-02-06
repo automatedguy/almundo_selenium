@@ -40,7 +40,7 @@ public class AutosFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = new LoginPopUp(driver);
+        LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
     }
 
@@ -116,7 +116,7 @@ public class AutosFlowTest extends TestBaseSetup {
 
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("6_visa_visa");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
@@ -125,9 +125,6 @@ public class AutosFlowTest extends TestBaseSetup {
                 checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "AutosCheckOutPage");
-
-/*        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 
 }

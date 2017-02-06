@@ -39,7 +39,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = new LoginPopUp(driver);
+        LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
     }
 
@@ -77,7 +77,7 @@ public class VueloFlowTest extends TestBaseSetup {
 
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
-        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
+        checkOutPage = vuelosResultsPage.clickComprarBtn(2);
 
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
@@ -122,12 +122,12 @@ public class VueloFlowTest extends TestBaseSetup {
 
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
-        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
+        checkOutPage = vuelosResultsPage.clickComprarBtn(2);
 
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
 
-        checkOutPage.paymentSection().getPaymentData("6_visa_visa");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
@@ -136,8 +136,5 @@ public class VueloFlowTest extends TestBaseSetup {
                 checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
-
-/*        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

@@ -24,11 +24,17 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"false",
       "gender":"false",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "HotelesCheckOutPageDomestic":{
@@ -42,11 +48,17 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"false",
       "gender":"false",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "HotelesCheckOutPageDomesticV3":{
@@ -78,11 +90,17 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VuelosCheckOutPageDomestic":{
@@ -96,11 +114,17 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageInternational":{
@@ -114,11 +138,17 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageDomestic":{
@@ -132,11 +162,17 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageInternationalV3":{
@@ -168,6 +204,11 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"true",
       "birthday":"true",
       "gender":"true",
@@ -187,6 +228,11 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"true",
       "birthday":"false",
       "gender":"false",
@@ -206,11 +252,17 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
     "AutosCheckOutPageSucursales":{
@@ -224,6 +276,11 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "fiscal_name":"false",
       "birthday":"false",
       "gender":"false",
@@ -261,10 +318,16 @@
       "documentType":"false",
       "document_number":"false",
       "document_number_card":"true",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"false",
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"true"
+      "accepted":"true",
+      "agentEmail":"false"
     },
 
     "HotelesCheckOutPageDomestic":{
@@ -277,12 +340,18 @@
       "document_expiration":"false",
       "documentType0":"false",
       "documentType":"true",
-      "document_number":"false",
+      "document_number":"true",
       "document_number_card":"true",
-      "birthday":"false",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"true",
+      "birthday":"true",
       "gender":"false",
-      "nationality":"false",
-      "accepted":"true"
+      "nationality":"true",
+      "accepted":"true",
+      "agentEmail":"false"
     },
 
     "HotelesCheckOutPageDomesticV3":{
@@ -315,10 +384,16 @@
       "documentType":"true",
       "document_number":"true",
       "document_number_card":"true",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"false",
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"true"
+      "accepted":"true",
+      "agentEmail":"false"
     },
 
     "VuelosCheckOutPageDomestic":{
@@ -333,10 +408,16 @@
       "documentType":"true",
       "document_number":"true",
       "document_number_card":"true",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"false",
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"true"
+      "accepted":"true",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageInternational":{
@@ -351,10 +432,16 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"true",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"true"
+      "accepted":"true",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageDomestic":{
@@ -369,10 +456,16 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"true",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"true"
+      "accepted":"true",
+      "agentEmail":"false"
     },
 
     "VueloHotelCheckOutPageInternationalV3":{
@@ -424,10 +517,16 @@
       "documentType":"false",
       "document_number":"true",
       "document_number_card":"true",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"false",
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"true"
+      "accepted":"true",
+      "agentEmail":"false"
     }
   },
 
@@ -459,11 +558,17 @@
       "document_number":"true",
       "document_number":"false",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "birthday":"false",
       "gender":"false",
       "nationality":"true",
       "nationality":"false",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
       "HotelesCheckOutPageDomestic":{
@@ -478,10 +583,16 @@
         "documentType":"false",
         "document_number":"false",
         "document_number_card":"false",
+        "address_number":"true",
+        "address_floor":"true",
+        "address_department":"true",
+        "address_postal_code":"true",
+        "area":"true",
         "birthday":"false",
         "gender":"false",
         "nationality":"false",
-        "accepted":"false"
+        "accepted":"false",
+        "agentEmail":"false"
       },
 
       "VuelosCheckOutPageInternational":{
@@ -496,10 +607,16 @@
         "documentType":"false",
         "document_number":"true",
         "document_number_card":"false",
+        "address_number":"true",
+        "address_floor":"true",
+        "address_department":"true",
+        "address_postal_code":"true",
+        "area":"true",
         "birthday":"true",
         "gender":"true",
         "nationality":"true",
-        "accepted":"false"
+        "accepted":"false",
+        "agentEmail":"false"
       },
 
       "VuelosCheckOutPageDomestic":{
@@ -514,10 +631,16 @@
         "documentType":"false",
         "document_number":"false",
         "document_number_card":"false",
+        "address_number":"true",
+        "address_floor":"true",
+        "address_department":"true",
+        "address_postal_code":"true",
+        "area":"true",
         "birthday":"true",
         "gender":"true",
         "nationality":"true",
-        "accepted":"false"
+        "accepted":"false",
+        "agentEmail":"false"
       },
 
       "VueloHotelCheckOutPageInternational":{
@@ -532,10 +655,16 @@
         "documentType":"false",
         "document_number":"true",
         "document_number_card":"false",
+        "address_number":"true",
+        "address_floor":"true",
+        "address_department":"true",
+        "address_postal_code":"true",
+        "area":"true",
         "birthday":"true",
         "gender":"true",
         "nationality":"true",
-        "accepted":"false"
+        "accepted":"false",
+        "agentEmail":"false"
       },
 
       "VueloHotelCheckOutPageInternationalV3":{
@@ -568,10 +697,16 @@
       "documentType":"false",
       "document_number":"false",
       "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
       "birthday":"true",
       "gender":"true",
       "nationality":"true",
-      "accepted":"false"
+      "accepted":"false",
+      "agentEmail":"false"
     },
 
       "AutosCheckOutPage":{
@@ -586,10 +721,16 @@
         "documentType":"false",
         "document_number":"true",
         "document_number_card":"false",
+        "address_number":"true",
+        "address_floor":"true",
+        "address_department":"true",
+        "address_postal_code":"true",
+        "area":"true",
         "birthday":"false",
         "gender":"false",
         "nationality":"false",
-        "accepted":"false"
+        "accepted":"false",
+        "agentEmail":"false"
       }
 
     }

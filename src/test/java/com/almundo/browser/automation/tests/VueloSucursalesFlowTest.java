@@ -69,7 +69,7 @@ public class VueloSucursalesFlowTest extends TestBaseSetup {
 
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
-        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
+        checkOutPage = vuelosResultsPage.clickComprarBtn(2);
 
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");

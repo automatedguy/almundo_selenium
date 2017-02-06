@@ -258,10 +258,21 @@ public class CheckOutPage extends TestBaseSetup {
 
             billingSection.setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
             billingSection.setBillingAddress(billingData.get("billing_address").toString());
-            billingSection.setAddressNumber(billingData.get("address_number").toString());
-            billingSection.setAddressFloor(billingData.get("address_floor").toString());
-            billingSection.setAddressDepartment(billingData.get("address_department").toString());
-            billingSection.setAddressPostalCode(billingData.get("address_postal_code").toString());
+
+            if (isElementRequiered(checkOutPageElements, "address_number")){
+                billingSection.setAddressNumber(billingData.get("address_number").toString());
+            }
+
+            if (isElementRequiered(checkOutPageElements, "address_floor")) {
+                billingSection.setAddressFloor(billingData.get("address_floor").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "address_department")) {
+                billingSection.setAddressDepartment(billingData.get("address_department").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "address_postal_code")) {
+                billingSection.setAddressPostalCode(billingData.get("address_postal_code").toString());
+            }
+
             billingSection.setAddressState(billingData.get("address_state").toString());
             billingSection.setAddressCity(billingData.get("address_city").toString());
         }
@@ -275,7 +286,9 @@ public class CheckOutPage extends TestBaseSetup {
         contactSection.setRepEmail(contactData.get("rep_email").toString());
         contactSection.selectPhoneType(contactData.get("tel").toString());
         contactSection.setCountryCode(contactData.get("country_code").toString());
-        contactSection.setAreaCode(contactData.get("area").toString());
+        if (isElementRequiered(checkOutPageElements, "area")) {
+            contactSection.setAreaCode(contactData.get("area").toString());
+        }
         contactSection.setPhoneNumber(contactData.get("phone_number").toString());
 
         return this;
