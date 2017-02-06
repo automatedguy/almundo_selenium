@@ -4,6 +4,7 @@ import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
+import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.*;
 import org.apache.log4j.Logger;
@@ -51,9 +52,10 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.STAGING_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
+//                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) {
@@ -148,7 +150,7 @@ public class TestBaseSetup {
 
     private void initSauceLabsDriver (String methodName)  {
 
-        String USERNAME = "automation";
+        String USERNAME = "automationdude";
         String ACCESS_KEY = "69ddf8bc-f400-4c73-9c32-38d806a93b4a";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
@@ -366,6 +368,10 @@ public class TestBaseSetup {
 
     protected AutosResultsPage initAutosResultsPage() {
         return PageFactory.initElements(driver, AutosResultsPage.class);
+    }
+
+    protected PromoPage initPromoPage() {
+        return PageFactory.initElements(driver, PromoPage.class);
     }
 
 }

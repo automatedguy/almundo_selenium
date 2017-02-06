@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -81,7 +82,50 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = ".button.button--secondary.button--lg.button-search.button--block.ellipsis.ng-binding")
     public WebElement buscarBtn;
 
+    //BANNERS
+    @FindBy(css = "ul[name$='Home Principal Buscador Izquierda (Fijo)']")
+    public WebElement mainLeftBannerLnk;
+
+    @FindBy(css = "ul[name$='Home Principal Buscador Derecha']")
+    public WebElement mainRightBannerLnk;
+
+    @FindBy(css = "ul[name='AR Home Medio Izquierda']")
+    public WebElement homeMedioLeftBannerLnk;
+
+    @FindBy(css = "ul[name='AR Home Medio Derecha']")
+    public WebElement homeMedioRightBannerLnk;
+
     //############################################### Actions ###############################################
+
+    public PromoPage clickMainLeftBannerLnk() {
+        PageUtils.waitElementForClickable(driver, mainLeftBannerLnk, 15, "Home Main Left Banner");
+        logger.info("Clicking on Home Main left Banner");
+        mainLeftBannerLnk.click();
+        return initPromoPage();
+    }
+
+    public PromoPage clickMainRightBannerLnk() {
+        PageUtils.waitElementForClickable(driver, mainRightBannerLnk, 15, "Home Main Right Banner");
+        logger.info("Clicking on Home Main right Banner");
+        mainRightBannerLnk.click();
+        return initPromoPage();
+    }
+
+    public PromoPage clickHomeMedioLeftBannerLnk() {
+        PageUtils.waitElementForClickable(driver, homeMedioLeftBannerLnk, 15, "Home Medio Left Banner");
+        PageUtils.scrollToElement(driver, homeMedioLeftBannerLnk);
+        logger.info("Clicking on Home Medio left Banner");
+        homeMedioLeftBannerLnk.click();
+        return initPromoPage();
+    }
+
+    public PromoPage clickHomeMedioRightBannerLnk() {
+        PageUtils.waitElementForClickable(driver, homeMedioRightBannerLnk, 15, "Home Medio Right Banner");
+        PageUtils.scrollToElement(driver, homeMedioRightBannerLnk);
+        logger.info("Clicking on Home Medio right Banner");
+        homeMedioRightBannerLnk.click();
+        return initPromoPage();
+    }
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
         calendar.click();
