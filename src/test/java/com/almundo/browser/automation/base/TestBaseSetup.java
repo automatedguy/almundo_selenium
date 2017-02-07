@@ -20,6 +20,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.*;
+import java.lang.reflect.Method;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -53,9 +54,9 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
-//                                        @Optional() String osType,
+                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-                                        @Optional("Windows 10") String osType,
+//                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) {
@@ -88,7 +89,7 @@ public class TestBaseSetup {
 
 
     @BeforeMethod
-    public void setDriver() {
+    public void setDriver(Method methodName) {
         //System.out.println();
         //logger.info("Starting @BeforeMethod...");
         try {
@@ -121,7 +122,7 @@ public class TestBaseSetup {
                 }
             } else {
 
-                String method = this.getClass().getName().substring(37) + " - " + countryPar;
+                String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
 
                 if(baseURL.contains("staging")){method = method + " - STG";}
                 else{method = method + " - PROD";}
@@ -147,6 +148,7 @@ public class TestBaseSetup {
             e.printStackTrace();
         }
     }
+
 
     private void initSauceLabsDriver (String methodName)  {
 
