@@ -38,14 +38,18 @@ public class HomePageBannerTest extends TestBaseSetup {
         logTestTitle("HomePage - Open Home Main left banner - " + countryPar );
 
         String promo_path = basePage.mainLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("data-ng-href");
-        promoPage = basePage.clickMainLeftBannerLnk();
-        PageUtils.waitImplicitly(2000);
+        if(promo_path.contains("https://goo.")) {
+            logger.info("Can't validate URL for: [" + promo_path + "]");
+        } else {
+            promoPage = basePage.clickMainLeftBannerLnk();
+            PageUtils.waitImplicitly(2000);
 
-        logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promo_path + "]");
-        Assert.assertTrue(driver.getCurrentUrl().contains(promo_path));
+            logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promo_path + "]");
+            Assert.assertTrue(driver.getCurrentUrl().contains(promo_path));
 
-        logger.info("Validating URL item property is enabled");
-        Assert.assertTrue(promoPage.urlItemProperty.isEnabled());
+            logger.info("Validating URL item property is enabled");
+            Assert.assertTrue(promoPage.urlItemProperty.isEnabled());
+        }
     }
 
     @Test
