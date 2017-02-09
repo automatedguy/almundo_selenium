@@ -265,13 +265,14 @@
 
     "contacts": {
         "contact_cell_phone": {
-            "email": "mock.of.arm@almundo.com",
-            "rep_email": "mock.of.arm@almundo.com",
+            "email": "almundocolombia@gmail.com",
+            "rep_email": "almundocolombia@gmail.com",
             "tel": "Celular",
             "country_code": 54,
             "area": "911",
             "phone_number": "11112222"
         },
+
         "contact_phone": {
             "email": "mock.of.arm@almundo.com",
             "rep_email": "mock.of.arm@almundo.com",
@@ -280,6 +281,7 @@
             "area": "011",
             "phone_number": "11112222"
         },
+
         "contact_fax": {
             "email": "mock.of.arm@almundo.com",
             "rep_email": "mock.of.arm@almundo.com",
@@ -287,6 +289,26 @@
             "country_code": 54,
             "area": "011",
             "phone_number": "11112222"
+        }
+    },
+
+    "users": {
+        "email": {
+            "userEmail": "almundocolombia@gmail.com",
+            "password": "almundo12345",
+            "name": "Automation"
+        },
+
+        "google": {
+            "userEmail": "almundocolombia@gmail.com",
+            "password": "almundo12345",
+            "name": "Automation"
+        },
+
+        "facebook": {
+            "userEmail": "almundocolombia@gmail.com",
+            "password": "almundo12345",
+            "name": "Automation"
         }
     }
 }

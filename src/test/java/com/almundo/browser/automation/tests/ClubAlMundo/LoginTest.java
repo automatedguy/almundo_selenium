@@ -1,0 +1,83 @@
+package com.almundo.browser.automation.tests.ClubAlMundo;
+
+import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.PageUtils;
+import junit.framework.Assert;
+import org.json.simple.JSONObject;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created by leandro.efron on 8/2/2017.
+ */
+public class LoginTest extends TestBaseSetup {
+
+    private LoginPopUp loginPopUp = null;
+
+    public static JSONObject userList = null;
+    public static JSONObject userData = null;
+
+    @BeforeClass
+    private void initUserList() {
+        getUserList();
+    }
+
+    @BeforeMethod
+    private void initLoginPopUpElement(){
+        loginPopUp = initLoginPopUp();
+    }
+
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
+
+    @Test
+    public void login_email () {
+        logTestTitle("Login - Login with email - " + countryPar );
+        getUserData("email");
+
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+
+        basePage = loginPopUp.clickIngresarBtn();
+
+        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+
+        basePage.headerSection().clickMyAccountMenuLnk();
+        List<String> actualList  = basePage.headerSection().getMyAccountMenuList();
+        List<String> expectedList;
+
+        if(countryPar.equals("ARGENTINA")) {
+            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión"));
+        } else {
+            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión"));
+        }
+
+        logger.info("Validating My Account menu options are displayed:");
+        Assert.assertTrue(PageUtils.equalLists(actualList, expectedList));
+
+        logger.info("Logging out user");
+        basePage.headerSection().clickMyAccountMenuOption("Cerrar sesión");
+
+        PageUtils.waitImplicitly(4000);
+        logger.info("Validating user is logged out");
+        Assert.assertEquals("Ingresar", basePage.headerSection().textLnk.getText());
+
+    }
+
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
+
+    public void getUserList() {
+        userList = JsonRead.getJsonDataObject(jsonDataObject, "users", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getUserData(String dataSet) {
+        userData = JsonRead.getJsonDataObject(userList, dataSet, countryPar.toLowerCase() + "_data.json");
+    }
+
+}

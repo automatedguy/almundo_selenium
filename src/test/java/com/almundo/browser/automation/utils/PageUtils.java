@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -142,6 +143,20 @@ public class PageUtils {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean equalLists(List<String> actualList, List<String> expectedList) {
+        boolean equalList = true;
+
+        for (int i = 0; i < expectedList.size(); i++) {
+            if (actualList.contains(expectedList.get(i))) {
+                logger.info("Option [" + expectedList.get(i) + "] is displayed");
+            }else {
+                logger.error("Option [" + expectedList.get(i) + "] is not displayed");
+                equalList = false;
+            }
+        }
+       return equalList;
     }
 
 }

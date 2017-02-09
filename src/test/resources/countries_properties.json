@@ -504,7 +504,6 @@
       "accepted":"true"
     },
 
-
     "AutosCheckOutPage":{
       "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
@@ -685,7 +684,7 @@
         "accepted":"false"
       },
 
-    "VueloHotelCheckOutPageDomestic":{
+      "VueloHotelCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"false",
       "fiscal_name":"false",

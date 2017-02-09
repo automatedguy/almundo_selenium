@@ -16,7 +16,6 @@ public class LoginPopUp extends BasePage {
 
     //############################################### Locators ##############################################
 
-
     @FindBy(css = ".button-logo.full.button-facebook")
     public WebElement facebookLoginBtn;
 
@@ -47,6 +46,12 @@ public class LoginPopUp extends BasePage {
         PageUtils.waitImplicitly(2000);
     }
 
+    public LoginPopUp loginUser(String loginEmail, String loginPassword) {
+        setLoginEmailTxt(loginEmail);
+        setLoginPasswordTxt(loginPassword);
+        return this;
+    }
+
     public LoginPopUp setLoginEmailTxt(String loginEmail) {
         PageUtils.waitElementForVisibility(driver, loginEmailTxt, 15, "Login Pop-Up...");
         logger.info("Entering Login Email: [" + loginEmail + "]");
@@ -63,21 +68,21 @@ public class LoginPopUp extends BasePage {
     }
 
     public BasePage clickIngresarBtn() {
-        logger.info("Clicking on Ingresar Button.");
+        logger.info("Clicking on Ingresar button");
         ingresarBtn.click();
         PageUtils.waitImplicitly(4000);
         return initBasePage();
     }
 
     public BasePage clickFacebookLoginBtn() {
-        logger.info("Clicking on Facebook Login Button.");
+        logger.info("Clicking on Facebook Login button");
         facebookLoginBtn.click();
         PageUtils.waitImplicitly(4000);
         return initFacebookLoginPopUp();
     }
 
     public BasePage clickGoogleLoginBtn() {
-        logger.info("Clicking on Facebook Login Button.");
+        logger.info("Clicking on Facebook Login button");
         googleLoginBtn.click();
         PageUtils.waitImplicitly(4000);
         return initGoogleLoginPopUpEmail();

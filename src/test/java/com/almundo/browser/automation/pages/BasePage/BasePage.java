@@ -35,6 +35,8 @@ public class BasePage extends TestBaseSetup {
         return initAutosDataTrip();
     }
 
+    public HeaderSection headerSection() { return initHeaderSection(); }
+
     //############################################### Locators ##############################################
 
     @FindBy(css = ".icon.hotels")

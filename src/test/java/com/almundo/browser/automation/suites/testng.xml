@@ -15,7 +15,9 @@
             <class name="com.almundo.browser.automation.tests.HotelFlowCheckOutV3Test"/>
             <class name="com.almundo.browser.automation.tests.VueloHotelFlowCheckOutV3Test"/>
 
-            <class name="com.almundo.browser.automation.tests.HomePageBannerTest"/>
+            <class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>
+
+            <class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>
 
             <class name="com.almundo.browser.automation.tests.HotelSucursalesFlowTest"/>
             <class name="com.almundo.browser.automation.tests.VueloSucursalesFlowTest"/>

@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.tests;
+package com.almundo.browser.automation.tests.HomePage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by leandro.efron on 31/1/2017.
  */
-public class HomePageBannerTest extends TestBaseSetup {
+public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     private PromoPage promoPage = null;
 

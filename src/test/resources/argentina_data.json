@@ -387,5 +387,28 @@
 				"area": "011",
 				"phone_number": "11112222"
 			}
+	},
+
+	"users": {
+		"email": {
+			"userEmail": "almundoargentina2@gmail.com",
+			"password": "almundo12345",
+			"name": "Automation"
+		},
+
+		"google": {
+			"userEmail": "almundoargentina2@gmail.com",
+			"password": "almundo12345",
+			"name": "Automation"
+		},
+
+		"facebook": {
+			"userEmail": "almundoargentina2@gmail.com",
+			"password": "almundo12345",
+			"name": "Automation"
+		}
 	}
+
+
+
 }
