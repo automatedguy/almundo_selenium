@@ -1,10 +1,10 @@
-package com.almundo.browser.automation.tests;
+package com.almundo.browser.automation.tests.Hotels;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
-import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
-import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -12,37 +12,30 @@ import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
 
-public class HotelFlowCheckOutV3Test extends TestBaseSetup {
+public class SucursalesFlowTest extends TestBaseSetup {
 
     private HotelesResultsPage hotelesResultsPage = null;
     private HotelesDetailPage hotelesDetailPage = null;
-    private CheckOutPageV3 checkOutPage = null;
+    private CheckOutPage checkOutPage = null;
+    private ConfirmationPage confirmationPage = null;
 
     @BeforeClass
     private void initDataTripList() {
         basePage = new BasePage(driver);
         basePage.hotelesDataTrip().getHotelesDataTripList();
 
-        checkOutPage = initCheckOutPageV3();
-        checkOutPage.passengerSectionV3().getPassengersList();
-        checkOutPage.paymentSectionV3().getPaymentList();
-        checkOutPage.billingSectionV3().getBillingList();
-        checkOutPage.contactSectionV3().getContactList();
+        checkOutPage = initCheckOutPage();
+        checkOutPage.passengerSection().getPassengersList();
+        checkOutPage.paymentSection().getPaymentList();
+        checkOutPage.billingSection().getBillingList();
+        checkOutPage.contactSection().getContactList();
     }
-
-    @BeforeMethod
-    private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.clickCloseLoginBtn();
-    }
-
 
     @AfterMethod
     private void cleanPassengerJsonList() {
@@ -59,7 +52,7 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic02_20days_2adults_1room");
 
         basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
 
@@ -75,32 +68,22 @@ public class HotelFlowCheckOutV3Test extends TestBaseSetup {
         hotelesDetailPage = hotelesResultsPage.clickVerHotelBtn(0);
         hotelesDetailPage.clickVerHabitacionesBtn();
 
-        checkOutPage = hotelesDetailPage.clickReservarAhoraV3Btn();
+        checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_native");
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.paymentSectionV3().getPaymentData("1_amex_amex");
-        checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
-        checkOutPage.contactSectionV3().getContactData("contact_phone");
-
-        replaceUrl();
+        checkOutPage.paymentSection().getPaymentData("deposit");
+        checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
+        checkOutPage.contactSection().getContactData("contact_phone");
 
         checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSectionV3().passengerJsonList,
-                checkOutPage.paymentSectionV3().paymentData,
-                checkOutPage.billingSectionV3().billingData,
-                checkOutPage.contactSectionV3().contactData, "HotelesCheckOutPageDomesticV3");
+                checkOutPage.passengerSection().passengerJsonList,
+                checkOutPage.paymentSection().paymentData,
+                checkOutPage.billingSection().billingData,
+                checkOutPage.contactSection().contactData, "HotelCheckOutPageDomesticSucursal");
 
-
-    }
-
-    public void replaceUrl(){
-        PageUtils.waitUrlContains(driver, 30, "cart", "URL does not contain cart");
-        String actualURL = driver.getCurrentUrl();
-        String newURL = actualURL.replace("cart/v2", "checkout");
-        logger.info("new URL: " + newURL);
-        driver.navigate().to(newURL);
-        PageUtils.waitImplicitly(8000);
+/*        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.tests;
+package com.almundo.browser.automation.tests.Trips;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
  * Created by gabrielcespedes on 04/11/16.
  */
 
-public class VueloHotelFlowCheckOutV3Test extends TestBaseSetup {
+public class FlowCheckOutV3Test extends TestBaseSetup {
 
     private VueloHotelResultsPage vueloHotelResultsPage = null;
     private VueloHotelDetailPage vueloHotelDetailPage = null;

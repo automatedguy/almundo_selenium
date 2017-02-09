@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.tests;
+package com.almundo.browser.automation.tests.Cars;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 /**
  * Created by gabrielcespedes on 20/12/16.
  */
-public class AutosSucursalesFlowTest extends TestBaseSetup {
+public class SucursalesFlowTest extends TestBaseSetup {
 
     private AutosResultsPage autosResultsPage = null;
     private CheckOutPage checkOutPage = null;
