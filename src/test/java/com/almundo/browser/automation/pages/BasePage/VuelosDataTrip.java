@@ -35,6 +35,9 @@ public class VuelosDataTrip extends BasePage{
 
     //############################################### Locators ##############################################
 
+    @FindBy(name = "type-flights")
+    public WebElement flightTypeDdl;
+
     @FindBy(id = "origin-flights")
     public WebElement originFlightsTxt;
 
@@ -66,6 +69,13 @@ public class VuelosDataTrip extends BasePage{
     public WebElement classFlightDdl;
 
     //############################################### Actions ###############################################
+
+    public VuelosDataTrip selectFlightType(String flightType) {
+        Select flightTypeSelect = new Select(flightTypeDdl);
+        logger.info("Selecting Flight Type: [" + flightType + "]");
+        flightTypeSelect.selectByVisibleText(flightType);
+        return this;
+    }
 
     public VuelosDataTrip setOrigin(String origin, String originFull) {
         PageUtils.waitElementForVisibility(driver, originFlightsTxt, 10, "Origin text field");
