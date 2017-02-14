@@ -57,12 +57,16 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         logTestTitle("HomePage - Open Home Main right banner - " + countryPar );
         String promoDisplayed_path = basePage.mainRightBannerLnk.findElement(By.cssSelector(" li[aria-hidden='false']>a")).getAttribute("data-ng-href");
 
-        promoPage = basePage.clickMainRightBannerLnk();
-        PageUtils.waitImplicitly(2000);
-        logger.info("Promo selected: [" + promoDisplayed_path + "]");
+        if(promoDisplayed_path.contains("https://goo.")) {
+            logger.info("Can't validate URL for: [" + promoDisplayed_path + "]");
+        } else {
+            promoPage = basePage.clickMainRightBannerLnk();
+            PageUtils.waitImplicitly(2000);
+            logger.info("Promo selected: [" + promoDisplayed_path + "]");
 
-        logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promoDisplayed_path + "]");
-        Assert.assertTrue(driver.getCurrentUrl().contains(promoDisplayed_path));
+            logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promoDisplayed_path + "]");
+            Assert.assertTrue(driver.getCurrentUrl().contains(promoDisplayed_path));
+        }
     }
 
     @Test

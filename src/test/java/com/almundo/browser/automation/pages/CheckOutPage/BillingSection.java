@@ -57,6 +57,46 @@ public class BillingSection extends CheckOutPage {
 
     //############################################### Actions ##############################################
 
+    public BillingSection populateBillingSection(JSONObject billingData) {
+        if (isElementRequiered(checkOutPageElements, "BillingInfoSection")) {
+
+            logger.info("------------- Filling Billing Section -------------");
+
+            if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
+                setBillingFiscalName(billingData.get("fiscal_name").toString());
+            }
+
+            if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
+                selectBillingFiscalType(billingData.get("billing_fiscal_type").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "billing_document_type")){
+                selectBillingDocumentType(billingData.get("billing_document_type").toString());
+            }
+
+            setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
+            setBillingAddress(billingData.get("billing_address").toString());
+
+            if (isElementRequiered(checkOutPageElements, "address_number")){
+                setAddressNumber(billingData.get("address_number").toString());
+            }
+
+            if (isElementRequiered(checkOutPageElements, "address_floor")) {
+                setAddressFloor(billingData.get("address_floor").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "address_department")) {
+                setAddressDepartment(billingData.get("address_department").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "address_postal_code")) {
+                setAddressPostalCode(billingData.get("address_postal_code").toString());
+            }
+
+            setAddressState(billingData.get("address_state").toString());
+            setAddressCity(billingData.get("address_city").toString());
+        }
+        return this;
+    }
+
+
     public BillingSection selectBillingFiscalType(String billingFiscalType) {
         logger.info("Selecting Situación: [" + billingFiscalType + "]");
         Select SITUACION_FISCAL_SELECT = new Select(billing_fiscal_type);

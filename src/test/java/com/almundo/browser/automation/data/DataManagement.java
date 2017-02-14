@@ -2,6 +2,7 @@ package com.almundo.browser.automation.data;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.JsonRead;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -15,11 +16,21 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject hotelesDataTripList = null;
     private JSONObject hotelDataTripItinerary = null;
 
-    public JSONObject vueloHotelDataTripList = null;
-    public JSONObject vueloHotelDataTripItinerary = null;
+    private JSONObject vueloHotelDataTripList = null;
+    private JSONObject vueloHotelDataTripItinerary = null;
 
-    public JSONObject autosDataTripList = null;
-    public JSONObject autosDataTripItinerary = null;
+    private JSONObject autosDataTripList = null;
+    private JSONObject autosDataTripItinerary = null;
+
+    private JSONObject passengersList = null;
+    public JSONObject passengerData = null;
+    public JSONArray passengerJsonList = new JSONArray();
+
+    private JSONObject paymentList = null;
+
+    private JSONObject contactList = null;
+
+    private static JSONObject billingsList = null;
 
     public String originAuto;
     public String originFull;
@@ -36,7 +47,8 @@ public class DataManagement extends TestBaseSetup {
     public String dropOffTime;
     public String ageRange;
 
-    //VUELOS
+    //------------------------- HOME PAGE -----------------------------
+    //VUELOS DATA TRIP
     public void getVuelosDataTripList() {
         vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vuelos", countryPar.toLowerCase() + "_data.json");
     }
@@ -60,7 +72,7 @@ public class DataManagement extends TestBaseSetup {
         flightClass = vueloDataTripItinerary.get("flightClass").toString();
     }
 
-    //HOTELES
+    //HOTELES DATA TRIP
     public void getHotelesDataTripList() {
         hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
     }
@@ -80,7 +92,7 @@ public class DataManagement extends TestBaseSetup {
         rooms = Integer.parseInt(hotelDataTripItinerary.get("rooms").toString());
     }
 
-    //VUELO+HOTEL
+    //VUELO+HOTEL DATA TRIP
     public void getVueloHotelDataTripList() {
         vueloHotelDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vueloHotel", countryPar.toLowerCase() + "_data.json");
     }
@@ -103,7 +115,7 @@ public class DataManagement extends TestBaseSetup {
         rooms = Integer.parseInt(vueloHotelDataTripItinerary.get("rooms").toString());
     }
 
-    //AUTOS
+    //AUTOS DATA TRIP
     public void getAutosDataTripList() {
         autosDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "autos", countryPar.toLowerCase() + "_data.json");
     }
@@ -125,4 +137,47 @@ public class DataManagement extends TestBaseSetup {
 
         ageRange = autosDataTripItinerary.get("ageRange").toString();
     }
+
+    //------------------------- CHECKOUT -----------------------------
+    //PASSENGER DATA
+    public void getPassengersList()  {
+        passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getPassengerData(String dataSet)  {
+        passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
+        passengerJsonList.add(passengerData);
+    }
+
+    //PAYMENT DATA
+    public void getPaymentList()  {
+        paymentList = JsonRead.getJsonDataObject(jsonDataObject, "payment", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public JSONObject getPaymentData(String dataSet)  {
+        JSONObject paymentData = JsonRead.getJsonDataObject(paymentList, dataSet, countryPar.toLowerCase() + "_data.json");
+        return paymentData;
+    }
+
+    //BILLING DATA
+    public void getBillingList()  {
+        billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public JSONObject getBillingData(String dataSet)  {
+        JSONObject billingData = JsonRead.getJsonDataObject(billingsList, dataSet, countryPar.toLowerCase() + "_data.json");
+        return billingData;
+    }
+
+    //CONTACT DATA
+    public void getContactList()  {
+        contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public JSONObject getContactData(String dataSet)  {
+        JSONObject contactData = JsonRead.getJsonDataObject(contactList, dataSet, countryPar.toLowerCase() + "_data.json");
+        return contactData;
+    }
+
+
 }

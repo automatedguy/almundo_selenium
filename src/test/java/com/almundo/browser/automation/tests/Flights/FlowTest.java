@@ -70,7 +70,7 @@ public class FlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+//        numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);
@@ -92,11 +92,11 @@ public class FlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "VuelosCheckOutPageInternational");
+//        checkOutPage.populateCheckOutPage(numPassengers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "VuelosCheckOutPageInternational");
 
     }
 
@@ -117,7 +117,7 @@ public class FlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        //numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);
@@ -137,10 +137,10 @@ public class FlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
+        //checkOutPage.populateCheckOutPage(numPassengers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
     }
 }

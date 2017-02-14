@@ -61,7 +61,7 @@ public class HotelesDataTrip extends BasePage {
         return this;
     }
 
-    public int selectPassenger(int adults, int childs, int rooms) {
+    public void selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
@@ -86,7 +86,6 @@ public class HotelesDataTrip extends BasePage {
             }
         }
         listoBtn.click();
-        return adults + childs;
     }
 
     public HotelesResultsPage clickBuscarBtn() {

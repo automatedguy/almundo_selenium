@@ -47,6 +47,21 @@ public class ContactSection extends CheckOutPage {
 
     //############################################### Actions ###############################################
 
+    public ContactSection populateContactSection(JSONObject contactData) {
+        logger.info("------------- Filling Contact Section -------------");
+        setEmail(contactData.get("email").toString());
+        setRepEmail(contactData.get("rep_email").toString());
+        selectPhoneType(contactData.get("tel").toString());
+        setCountryCode(contactData.get("country_code").toString());
+
+        if (isElementRequiered(checkOutPageElements, "area")) {
+            setAreaCode(contactData.get("area").toString());
+        }
+
+        setPhoneNumber(contactData.get("phone_number").toString());
+        return this;
+    }
+
     public void setEmail(String email) {
         logger.info("Entering Email: [" + email + "]");
         emailTxt.clear();
@@ -82,6 +97,7 @@ public class ContactSection extends CheckOutPage {
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);
     }
+
 
     public static void getContactList()  {
         contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");

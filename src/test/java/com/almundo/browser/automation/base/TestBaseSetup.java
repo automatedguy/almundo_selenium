@@ -29,7 +29,6 @@ import java.net.URL;
 public class TestBaseSetup {
 
     public static Logger logger = Logger.getLogger( TestBaseSetup.class );
-
     public static WebDriver driver;
 
     public BasePage basePage = null;
@@ -40,7 +39,6 @@ public class TestBaseSetup {
     private static String browserVersion = null;
     public static String osName = System.getProperty("os.name");
 
-    public int numPassengers;
     public static String countryPar;
 
     public static JSONObject jsonDataObject = null;
@@ -53,11 +51,11 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.SUC_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional("firefox") String browserType,
+                                        @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country) {
 

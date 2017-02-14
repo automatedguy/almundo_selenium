@@ -10,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -20,6 +18,26 @@ public class CheckOutPage extends TestBaseSetup {
     public CheckOutPage(WebDriver driver) { super.driver = driver; }
 
     public static JSONObject checkOutPageElements = null;
+
+    public PassengerSection passengerSection() {
+        return initPassengerInfoSection();
+    }
+
+    public PickUpLocationSection pickUpLocationSection() {
+        return initPickUpLocationSection();
+    }
+
+    public PaymentSection paymentSection() {
+        return initPaymentSection();
+    }
+
+    public BillingSection billingSection() {
+        return initBillingSection();
+    }
+
+    public ContactSection contactSection() {
+        return initContactInfoSection();
+    }
 
     //############################################### Locators ##############################################
 
@@ -44,27 +62,7 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    public PassengerSection passengerSection() {
-        return initPassengerInfoSection();
-    }
-
-    public PickUpLocationSection pickUpLocationSection() {
-        return initPickUpLocationSection();
-    }
-
-    public PaymentSection paymentSection() {
-        return initPaymentSection();
-    }
-
-    public BillingSection billingSection() {
-        return initBillingSection();
-    }
-
-    public ContactSection contactSection() {
-        return initContactInfoSection();
-    }
-
-    private static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
+    public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;
         try {
             isRequiered = Boolean.parseBoolean(JSONElementsRead.get(element).toString());
@@ -78,105 +76,34 @@ public class CheckOutPage extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPage populateCheckOutPage(int numPassengers,
-                                             JSONArray passengerList,
-                                             JSONObject paymentData,
-                                             JSONObject billingData,
-                                             JSONObject contactData,
-                                             String productCheckOutPage ) {
+    public CheckOutPage populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage ) {
 
         getCheckOutPageElements(productCheckOutPage);
-        populatePassengerSection(numPassengers, passengerList);
+        passengerSection().populatePassengerSection(passengerList);
         populatePickUpLocationSection();
-        selectPaymentOption(paymentData, productCheckOutPage);
-        populateBillingSection(billingData);
-        populateContactSection(contactData);
+        paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
+        billingSection().populateBillingSection(billingData);
+        contactSection().populateContactSection(contactData);
         acceptConditions();
 
         return this;
     }
 
-    public CheckOutPage populateCheckOutPage(int numPassengers,
-                                             JSONArray passengerList,
-                                             JSONObject paymentData,
-                                             JSONObject billingData,
-                                             JSONObject contactData,
-                                             String productCheckOutPage, boolean includeAssistance ) {
+    public CheckOutPage populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage, boolean includeAssistance) {
 
         getCheckOutPageElements(productCheckOutPage);
-        if(includeAssistance){
-            selectAssistanceRdb();
-        }
-        populatePassengerSection(numPassengers, passengerList);
+        if(includeAssistance){selectAssistanceRdb();}
+
+        passengerSection().populatePassengerSection(passengerList);
         populatePickUpLocationSection();
-        selectPaymentOption(paymentData, productCheckOutPage);
-        populateBillingSection(billingData);
-        populateContactSection(contactData);
+        paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
+        billingSection().populateBillingSection(billingData);
+        contactSection().populateContactSection(contactData);
         acceptConditions();
 
         return this;
     }
 
-    private ArrayList<Passenger> createPassenger(int numPassengers){
-        ArrayList<Passenger> passengers = new ArrayList<>();
-        for (int idNum = 0; idNum < numPassengers; idNum++) {
-            passengers.add(new Passenger(idNum));
-        }
-        return passengers;
-    }
-
-    private CheckOutPage populatePassengerSection(int numPassengers, JSONArray passengerList){
-
-        ArrayList<Passenger> passengers = createPassenger(numPassengers);
-
-        PassengerSection passengerSection = initPassengerInfoSection();
-        logger.info("------------- Filling Passenger Section -------------");
-
-        int passengerIndex = 0;
-        JSONObject passengerInfo;
-
-        for(Passenger passengerId : passengers){
-
-            logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
-
-            passengerInfo = (JSONObject) passengerList.get(passengerIndex);
-
-            passengerSection.setFirstName(passengerId.firstName, passengerInfo.get("first_name").toString());
-
-            passengerSection.setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
-
-            if(isElementRequiered(checkOutPageElements, "documentType0")) {
-                passengerSection.setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
-            }
-
-            if(isElementRequiered(checkOutPageElements, "document_number")){
-                passengerSection.setDocumentNumber(passengerId.documentNumber, passengerInfo.get("document_number").toString());
-            }
-
-            if(isElementRequiered(checkOutPageElements, "document_emisor")) {
-                passengerSection.setDocumentEmisor(passengerId.document_emisor, passengerInfo.get("document_emisor").toString());
-            }
-
-            if(isElementRequiered(checkOutPageElements, "document_expiration")) {
-                passengerSection.setDocumentExpiration(passengerId.document_expiration, passengerInfo.get("document_expiration").toString());
-            }
-
-            if(isElementRequiered(checkOutPageElements, "birthday")) {
-                passengerSection.setBirthDay(passengerId.birthday, passengerInfo.get("birthday").toString());
-            }
-
-            if(isElementRequiered(checkOutPageElements, "gender")) {
-                passengerSection.setGender(passengerId.gender, passengerInfo.get("gender").toString());
-            }
-
-            if(isElementRequiered(checkOutPageElements, "nationality")) {
-                    passengerSection.setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
-            }
-
-            passengerIndex = passengerIndex + 1;
-        }
-        return this;
-    }
 
     private CheckOutPage populatePickUpLocationSection(){
         if(isElementRequiered(checkOutPageElements, "PickUpLocationSection")){
@@ -185,118 +112,9 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPage populatePaymentSection(JSONObject paymentData, String product, PaymentSection paymentSection){
-        paymentSection.selectPaymentQtyOption(0);
-        paymentSection.selectBankOption(paymentData.get("credit_card_name").toString());
-
-        paymentSection.setCardHolder(paymentData.get("card_holder").toString());
-
-        paymentSection.setCardNumber(paymentData.get("card_number").toString());
-
-        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
-            paymentSection.selectMonthCardExpiration(paymentData.get("month_card_expire").toString());
-            paymentSection.selectYearCardExpiration(paymentData.get("year_card_expire").toString());
-        }else {
-            paymentSection.setCardExpiration(paymentData.get("card_expire").toString());
-
-        }
-        paymentSection.setSecurityCode(paymentData.get("security_code").toString());
-        if(isElementRequiered(checkOutPageElements, "documentType")) {
-            paymentSection.selectDocumentType(paymentData.get("documentType").toString());
-        }
-        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
-            paymentSection.setDocumentNumber(paymentData.get("document_number").toString());
-        }
-        return this;
-    }
-
-    private CheckOutPage selectPaymentOption(JSONObject paymentData, String product) {
-
-        PaymentSection paymentSection = initPaymentSection();
-        logger.info("------------- Selecting Payment Option... -------------");
-
-        switch(paymentData.get("credit_card_name").toString()){
-            case "cash":
-                logger.info("------------- Payment Option: CASH  -------------");
-                paymentSection.selectPaymentOption("Pago en efectivo");
-                break;
-            case "deposit":
-                logger.info("------------- Payment Option: DEPOSIT  -------------");
-                paymentSection.selectPaymentOption("Depósito");
-                break;
-            case "transfer":
-                logger.info("------------- Payment Option: TRANSFER  -------------");
-                paymentSection.selectPaymentOption("Transferencia");
-                break;
-            case "booking24":
-                logger.info("------------- Payment Option: BOOKING 24HS.  -------------");
-                paymentSection.selectPaymentOption("Reserva por 24 hs.");
-                break;
-            default:
-                logger.info("------------- Payment Option: CREDIT CARD  -------------");
-                populatePaymentSection(paymentData, product, paymentSection);
-        }
-        return this;
-    }
-
-    private CheckOutPage populateBillingSection(JSONObject billingData) {
-        if (isElementRequiered(checkOutPageElements, "BillingInfoSection")) {
-
-            BillingSection billingSection = initBillingSection();
-            logger.info("------------- Filling Billing Section -------------");
-
-            if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
-                billingSection.setBillingFiscalName(billingData.get("fiscal_name").toString());
-            }
-
-            if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
-                billingSection.selectBillingFiscalType(billingData.get("billing_fiscal_type").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "billing_document_type")){
-                billingSection.selectBillingDocumentType(billingData.get("billing_document_type").toString());
-            }
-
-            billingSection.setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());
-            billingSection.setBillingAddress(billingData.get("billing_address").toString());
-
-            if (isElementRequiered(checkOutPageElements, "address_number")){
-                billingSection.setAddressNumber(billingData.get("address_number").toString());
-            }
-
-            if (isElementRequiered(checkOutPageElements, "address_floor")) {
-                billingSection.setAddressFloor(billingData.get("address_floor").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "address_department")) {
-                billingSection.setAddressDepartment(billingData.get("address_department").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "address_postal_code")) {
-                billingSection.setAddressPostalCode(billingData.get("address_postal_code").toString());
-            }
-
-            billingSection.setAddressState(billingData.get("address_state").toString());
-            billingSection.setAddressCity(billingData.get("address_city").toString());
-        }
-        return this;
-    }
-
-    private CheckOutPage populateContactSection(JSONObject contactData) {
-        ContactSection contactSection = initContactInfoSection();
-        logger.info("------------- Filling Contact Section -------------");
-        contactSection.setEmail(contactData.get("email").toString());
-        contactSection.setRepEmail(contactData.get("rep_email").toString());
-        contactSection.selectPhoneType(contactData.get("tel").toString());
-        contactSection.setCountryCode(contactData.get("country_code").toString());
-        if (isElementRequiered(checkOutPageElements, "area")) {
-            contactSection.setAreaCode(contactData.get("area").toString());
-        }
-        contactSection.setPhoneNumber(contactData.get("phone_number").toString());
-
-        return this;
-    }
-
     private CheckOutPage acceptConditions(){
         FooterSection footerSection = initFooterSection();
-        logger.info("---------- Checking options Footer Section ----------");
+        logger.info("---------- Checking Footer Section options ----------");
 
         footerSection.acceptTermsAndConditions();
         if(isElementRequiered(checkOutPageElements, "accepted")) {

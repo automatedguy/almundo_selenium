@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+
 /**
  * Created by gabrielcespedes on 12/12/16.
  */
@@ -23,6 +25,65 @@ public class PassengerSection extends CheckOutPage {
     public static JSONArray passengerJsonList = new JSONArray();
 
     //############################################### Actions ###############################################
+
+    private ArrayList<Passenger> createPassenger(int numPassengers){
+        ArrayList<Passenger> passengers = new ArrayList<>();
+        for (int idNum = 0; idNum < numPassengers; idNum++) {
+            passengers.add(new Passenger(idNum));
+        }
+        return passengers;
+    }
+
+    public PassengerSection populatePassengerSection(JSONArray passengerList){
+
+        ArrayList<Passenger> passengers = createPassenger(passengerList.size());
+        logger.info("------------- Filling Passenger Section -------------");
+
+        int passengerIndex = 0;
+        JSONObject passengerInfo;
+
+        for(Passenger passengerId : passengers){
+
+            logger.info("************ Filling Passenger [" + (passengerIndex + 1) +  "] ************");
+
+            passengerInfo = (JSONObject) passengerList.get(passengerIndex);
+
+            setFirstName(passengerId.firstName, passengerInfo.get("first_name").toString());
+
+            setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
+
+            if(isElementRequiered(checkOutPageElements, "documentType0")) {
+                setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "document_number")){
+                setDocumentNumber(passengerId.documentNumber, passengerInfo.get("document_number").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "document_emisor")) {
+                setDocumentEmisor(passengerId.document_emisor, passengerInfo.get("document_emisor").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "document_expiration")) {
+                setDocumentExpiration(passengerId.document_expiration, passengerInfo.get("document_expiration").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "birthday")) {
+                setBirthDay(passengerId.birthday, passengerInfo.get("birthday").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "gender")) {
+                setGender(passengerId.gender, passengerInfo.get("gender").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "nationality")) {
+                setNationality(passengerId.nationality, passengerInfo.get("nationality").toString());
+            }
+            passengerIndex = passengerIndex + 1;
+        }
+        return this;
+    }
+
 
     public PassengerSection setFirstName(String firstName, String firstNamePassenger){
         PageUtils.waitElementForVisibility(driver, By.id(firstName), 45, "First Name text box");

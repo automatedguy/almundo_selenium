@@ -64,7 +64,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, dataManagement.startDate);
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, dataManagement.endDate);
 
-        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        //numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
 
@@ -82,11 +82,11 @@ public class SucursalesFlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
         checkOutPage.contactSection().getContactData("contact_phone");
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "HotelCheckOutPageDomesticSucursal");
+//        checkOutPage.populateCheckOutPage(numPassengers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "HotelCheckOutPageDomesticSucursal");
 
 /*        confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/

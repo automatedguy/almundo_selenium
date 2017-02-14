@@ -77,7 +77,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, dataManagement.startDate);
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, dataManagement.endDate);
 
-        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        //numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
@@ -97,11 +97,11 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                                         checkOutPage.passengerSection().passengerJsonList,
-                                         checkOutPage.paymentSection().paymentData,
-                                         checkOutPage.billingSection().billingData,
-                                         checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
+//        checkOutPage.populateCheckOutPage(numPassengers,
+//                                         checkOutPage.passengerSection().passengerJsonList,
+//                                         checkOutPage.paymentSection().paymentData,
+//                                         checkOutPage.billingSection().billingData,
+//                                         checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
 
 
     }
@@ -122,7 +122,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
         hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
-        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+       // numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
@@ -140,11 +140,11 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
+       // checkOutPage.populateCheckOutPage(numPassengers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
 
 
     }

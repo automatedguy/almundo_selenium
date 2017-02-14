@@ -78,10 +78,10 @@ public class SucursalesFlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
-        checkOutPage.populateCheckOutPage(carDrivers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "AutosCheckOutPageSucursales");
+//        checkOutPage.populateCheckOutPage(carDrivers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "AutosCheckOutPageSucursales");
     }
 }

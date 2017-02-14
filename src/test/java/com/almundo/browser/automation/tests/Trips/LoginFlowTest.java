@@ -72,7 +72,7 @@ public class LoginFlowTest extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        //numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -94,11 +94,11 @@ public class LoginFlowTest extends TestBaseSetup {
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                                          checkOutPage.passengerSection().passengerJsonList,
-                                          checkOutPage.paymentSection().paymentData,
-                                          checkOutPage.billingSection().billingData,
-                                          checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageInternational");
+//        checkOutPage.populateCheckOutPage(numPassengers,
+//                                          checkOutPage.passengerSection().passengerJsonList,
+//                                          checkOutPage.paymentSection().paymentData,
+//                                          checkOutPage.billingSection().billingData,
+//                                          checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageInternational");
     }
 
     @Test
@@ -118,7 +118,7 @@ public class LoginFlowTest extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        //numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -139,10 +139,10 @@ public class LoginFlowTest extends TestBaseSetup {
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomestic");
+//        checkOutPage.populateCheckOutPage(numPassengers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomestic");
     }
 }

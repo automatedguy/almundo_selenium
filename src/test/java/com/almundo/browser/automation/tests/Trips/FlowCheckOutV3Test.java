@@ -72,7 +72,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        //numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -94,11 +94,11 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         replaceUrl();
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSectionV3().passengerJsonList,
-                checkOutPage.paymentSectionV3().paymentData,
-                checkOutPage.billingSectionV3().billingData,
-                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
+//        checkOutPage.populateCheckOutPage(numPassengers,
+//                checkOutPage.passengerSectionV3().passengerJsonList,
+//                checkOutPage.paymentSectionV3().paymentData,
+//                checkOutPage.billingSectionV3().billingData,
+//                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
 
 /*      confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/
@@ -121,7 +121,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+       // numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -145,12 +145,12 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage.paymentSectionV3().clickSeveralCardsCbx();
 
-        checkOutPage.populateCheckOutPage(numPassengers,
-                checkOutPage.passengerSectionV3().passengerJsonList,
-                checkOutPage.paymentSectionV3().paymentData,
-                checkOutPage.paymentSectionV3().paymentData,
-                checkOutPage.billingSectionV3().billingData,
-                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
+//        checkOutPage.populateCheckOutPage(numPassengers,
+//                checkOutPage.passengerSectionV3().passengerJsonList,
+//                checkOutPage.paymentSectionV3().paymentData,
+//                checkOutPage.paymentSectionV3().paymentData,
+//                checkOutPage.billingSectionV3().billingData,
+//                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
 
 /*      confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/

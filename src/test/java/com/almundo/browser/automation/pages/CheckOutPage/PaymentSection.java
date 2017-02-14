@@ -89,16 +89,34 @@ public class PaymentSection extends CheckOutPage {
         return this;
     }
 
-    public PaymentSection selectPaymentOption(String paymentOptionSelected){
-        List<WebElement> paymentOptions = driver.findElements(By.cssSelector(".label--inline-block.epp-space-right-16.cards__definition__label.text--bold"));
-        for(WebElement paymentOption : paymentOptions){
-            if(paymentOption.getText().equals(paymentOptionSelected)){
-                paymentOption.click();
-                break;
-            }
+
+    public PaymentSection populatePaymentSection(JSONObject paymentData, String product){
+
+        selectPaymentQtyOption(0);
+
+        selectBankOption(paymentData.get("credit_card_name").toString());
+
+        setCardHolder(paymentData.get("card_holder").toString());
+
+        setCardNumber(paymentData.get("card_number").toString());
+
+        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
+            selectMonthCardExpiration(paymentData.get("month_card_expire").toString());
+            selectYearCardExpiration(paymentData.get("year_card_expire").toString());
+        }else {
+            setCardExpiration(paymentData.get("card_expire").toString());
+        }
+
+        setSecurityCode(paymentData.get("security_code").toString());
+        if(isElementRequiered(checkOutPageElements, "documentType")) {
+            selectDocumentType(paymentData.get("documentType").toString());
+        }
+        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
+            setDocumentNumber(paymentData.get("document_number").toString());
         }
         return this;
     }
+
 
     public void selectPaymentQtyOption(int index) {
         List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
@@ -173,6 +191,47 @@ public class PaymentSection extends CheckOutPage {
         document_number.clear();
         document_number.sendKeys(documentNumber);
     }
+
+
+    public PaymentSection selectPaymentOption(JSONObject paymentData, String product) {
+
+        logger.info("------------- Selecting Payment Option... -------------");
+
+        switch(paymentData.get("credit_card_name").toString()){
+            case "cash":
+                logger.info("------------- Payment Option: CASH  -------------");
+                selectPayment("Pago en efectivo");
+                break;
+            case "deposit":
+                logger.info("------------- Payment Option: DEPOSIT  -------------");
+                selectPayment("Depósito");
+                break;
+            case "transfer":
+                logger.info("------------- Payment Option: TRANSFER  -------------");
+                selectPayment("Transferencia");
+                break;
+            case "booking24":
+                logger.info("------------- Payment Option: BOOKING 24HS.  -------------");
+                selectPayment("Reserva por 24 hs.");
+                break;
+            default:
+                logger.info("------------- Payment Option: CREDIT CARD  -------------");
+                populatePaymentSection(paymentData, product);
+        }
+        return this;
+    }
+
+    public PaymentSection selectPayment(String paymentOptionSelected){
+        List<WebElement> paymentOptions = driver.findElements(By.cssSelector(".label--inline-block.epp-space-right-16.cards__definition__label.text--bold"));
+        for(WebElement paymentOption : paymentOptions){
+            if(paymentOption.getText().equals(paymentOptionSelected)){
+                paymentOption.click();
+                break;
+            }
+        }
+        return this;
+    }
+
 
 
     public static void getPaymentList()  {

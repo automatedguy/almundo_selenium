@@ -86,11 +86,11 @@ public class FlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
-        checkOutPage.populateCheckOutPage(carDrivers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
+//        checkOutPage.populateCheckOutPage(carDrivers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
 
     }
 
@@ -126,11 +126,11 @@ public class FlowTest extends TestBaseSetup {
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
-        checkOutPage.populateCheckOutPage(carDrivers,
-                checkOutPage.passengerSection().passengerJsonList,
-                checkOutPage.paymentSection().paymentData,
-                checkOutPage.billingSection().billingData,
-                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
+//        checkOutPage.populateCheckOutPage(carDrivers,
+//                checkOutPage.passengerSection().passengerJsonList,
+//                checkOutPage.paymentSection().paymentData,
+//                checkOutPage.billingSection().billingData,
+//                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
     }
 
 }
