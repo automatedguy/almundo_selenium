@@ -30,16 +30,13 @@ public class FlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getVuelosDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
-
     @BeforeMethod
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
@@ -70,7 +67,7 @@ public class FlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-//        numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        basePage.vuelosDataTrip().selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);
@@ -83,24 +80,19 @@ public class FlowTest extends TestBaseSetup {
         vuelosResultsPage.clickTicketVuelta();
         checkOutPage = vuelosResultsPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "VuelosCheckOutPageInternational");
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getPaymentData("local_Billing_v2"),
+                dataManagement.getPaymentData("contact_cell_phone"),
+               "VuelosCheckOutPageInternational");
     }
 
-    @Test
+/*    @Test
     public void vueloDomReservationFlow() {
         logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
 
@@ -142,5 +134,6 @@ public class FlowTest extends TestBaseSetup {
 //                checkOutPage.paymentSection().paymentData,
 //                checkOutPage.billingSection().billingData,
 //                checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
-    }
+    }*/
+
 }
