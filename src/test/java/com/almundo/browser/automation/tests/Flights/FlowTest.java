@@ -87,8 +87,8 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                 dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getPaymentData("local_Billing_v2"),
-                dataManagement.getPaymentData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
                "VuelosCheckOutPageInternational");
     }
 
