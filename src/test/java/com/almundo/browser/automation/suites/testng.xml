@@ -30,11 +30,13 @@
             <class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>
             <class name="com.almundo.browser.automation.tests.Cars.SucursalesFlowTest"/>
 
-            <class name="com.almundo.browser.automation.tests.LoginHotelFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.LoginVueloFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.LoginVueloHotelFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.LoginAutosFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.FacebookLoginHotelFlowTest"/>
+            <!--Login flows-->
+            <class name="com.almundo.browser.automation.tests.Hotels.LoginFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Flights.LoginFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Trips.LoginFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Cars.LoginFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Hotels.FacebookLoginFlowTest"/>
+
         </classes>
     </test>
 </suite>

@@ -45,7 +45,7 @@ public class VuelosResultsPage extends TestBaseSetup {
     }
 
     public CheckOutPage clickComprarBtn(int index) {
-        String cssSelectorName = ".button";
+        String cssSelectorName = ".flights-cluster-pricebox .button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
         logger.info("Clicking on Comprar button");

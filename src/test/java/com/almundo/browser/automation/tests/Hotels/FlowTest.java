@@ -1,7 +1,8 @@
 package com.almundo.browser.automation.tests.Hotels;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
@@ -27,10 +28,12 @@ public class FlowTest extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
     private ConfirmationPage confirmationPage = null;
 
+    private HotelesDataTrip hotelesDataTrip = null;
+    private DataManagement dataManagement = new DataManagement();
+
     @BeforeClass
     private void initDataTripList() {
-        basePage = new BasePage(driver);
-        basePage.hotelesDataTrip().getHotelesDataTripList();
+        dataManagement.getHotelesDataTripList();
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
@@ -45,11 +48,9 @@ public class FlowTest extends TestBaseSetup {
         loginPopUp.clickCloseLoginBtn();
     }
 
-
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
-
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -61,16 +62,18 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
 
-        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
+        hotelesDataTrip = basePage.hotelesDataTrip();
 
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
+        hotelesDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
+        hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 
@@ -102,16 +105,18 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+        dataManagement.getHotelDataTripItinerary("domestic01_15days_2adults_1room");
 
-        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
+        hotelesDataTrip = basePage.hotelesDataTrip();
 
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
+        hotelesDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
+        hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, dataManagement.startDate);
+        hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, dataManagement.endDate);
 
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
+        hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 

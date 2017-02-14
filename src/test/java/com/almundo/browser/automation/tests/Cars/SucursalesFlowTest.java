@@ -1,7 +1,8 @@
 package com.almundo.browser.automation.tests.Cars;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.AutosDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -21,13 +22,15 @@ public class SucursalesFlowTest extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
     private ConfirmationPage confirmationPage = null;
 
+    private AutosDataTrip autosDataTrip = null;
+    private DataManagement dataManagement = new DataManagement();
+
     //TODO: overload populateCheckOutPage
     private int carDrivers = 1;
 
     @BeforeClass
     private void initDataTripList() {
-        basePage = new BasePage(driver);
-        basePage.autosDataTrip().getAutosDataTripList();
+        dataManagement.getAutosDataTripList();
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
@@ -39,7 +42,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
-
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -51,20 +53,22 @@ public class SucursalesFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();
 
-        basePage.autosDataTrip().getAutosDataTripItinerary("capital_10days_entre_21_24");
+        dataManagement.getAutosDataTripItinerary("capital_10days_entre_21_24");
 
-        basePage.autosDataTrip().setOrigin(basePage.autosDataTrip().originAuto, basePage.autosDataTrip().originFull);
-        basePage.autosDataTrip().setDestination(basePage.autosDataTrip().destinationAuto, basePage.autosDataTrip().destinationFull);
+        autosDataTrip = basePage.autosDataTrip();
 
-        basePage.autosDataTrip().selectDateFromCalendar(basePage.autosDataTrip().pickUpDateCalendar, basePage.autosDataTrip().startDate);
-        basePage.autosDataTrip().selectDateFromCalendar(basePage.autosDataTrip().dropOffDateCalendar, basePage.autosDataTrip().endDate);
+        autosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        autosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        basePage.autosDataTrip().selectPickUpTime(basePage.autosDataTrip().pickUpTime);
-        basePage.autosDataTrip().selectDropOffTime(basePage.autosDataTrip().dropOffTime);
+        autosDataTrip.selectDateFromCalendar(autosDataTrip.pickUpDateCalendar, dataManagement.startDate);
+        autosDataTrip.selectDateFromCalendar(autosDataTrip.dropOffDateCalendar, dataManagement.endDate);
 
-        basePage.autosDataTrip().selectAgeRange(basePage.autosDataTrip().ageRange);
+        autosDataTrip.selectPickUpTime(dataManagement.pickUpTime);
+        autosDataTrip.selectDropOffTime(dataManagement.dropOffTime);
 
-        autosResultsPage = basePage.autosDataTrip().clickBuscarBtn();
+        autosDataTrip.selectAgeRange(dataManagement.ageRange);
+
+        autosResultsPage = autosDataTrip.clickBuscarBtn();
 
         checkOutPage = autosResultsPage.clickReservarAhoraBtn();
 

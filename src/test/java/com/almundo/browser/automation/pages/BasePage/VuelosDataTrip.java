@@ -1,9 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,20 +12,6 @@ import org.openqa.selenium.support.ui.Select;
  * Created by gabrielcespedes on 05/12/16.
  */
 public class VuelosDataTrip extends BasePage{
-
-    public static JSONObject vueloDataTripList = null;
-    public static JSONObject vueloDataTripItinerary = null;
-
-    public static String originAuto;
-    public static String originFull;
-    public static String destinationAuto;
-    public static String destinationFull;
-    public static int startDate;
-    public static int endDate;
-    public static int adults;
-    public static int childs;
-    public static String childAgeRange;
-    public static String flightClass;
 
     public VuelosDataTrip(WebDriver driver) {
         super(driver);
@@ -114,7 +98,7 @@ public class VuelosDataTrip extends BasePage{
         return adults + childs;
     }
 
-    public VuelosDataTrip selectChildAgeRange(String ageRange) {
+    public VuelosDataTrip selectChildAgeRange(String ageRange, int childs) {
         if (childs>0){
             for(int i=0; i<childs; i++) {
                 Select ageSelection = new Select(driver.findElement(By.id("age-" + i)));
@@ -136,29 +120,6 @@ public class VuelosDataTrip extends BasePage{
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initVuelosResultsPage();
-    }
-
-    public static void getVuelosDataTripList() {
-        vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vuelos", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getVuelosDataTripItinerary(String dataSet) {
-        vueloDataTripItinerary = JsonRead.getJsonDataObject(vueloDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
-
-        originAuto = vueloDataTripItinerary.get("originAuto").toString();
-        originFull = vueloDataTripItinerary.get("originFull").toString();
-
-        destinationAuto = vueloDataTripItinerary.get("destinationAuto").toString();
-        destinationFull = vueloDataTripItinerary.get("destinationFull").toString();
-
-        startDate = Integer.parseInt(vueloDataTripItinerary.get("startDate").toString());
-        endDate = Integer.parseInt(vueloDataTripItinerary.get("endDate").toString());
-
-        adults = Integer.parseInt(vueloDataTripItinerary.get("adults").toString());
-        childs = Integer.parseInt(vueloDataTripItinerary.get("childs").toString());
-        childAgeRange = vueloDataTripItinerary.get("childAgeRange").toString();
-
-        flightClass = vueloDataTripItinerary.get("flightClass").toString();
     }
 
 }

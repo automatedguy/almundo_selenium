@@ -13,6 +13,7 @@ public class Constants extends TestBaseSetup {
     public static final String CRR_URL = "https://ccr.almundo.com.ar/";
 
     public static final String RESOURCES_PATH = "src/test/resources/";
+    public static final String DATA_PATH = "src/test/java/com/almundo/browser/automation/data/";
 
     public static final String NO_DISPONIBILIDAD_MSG = "Lo sentimos. No encontramos disponibilidad para tu búsqueda\nPor favor intentá una nueva busqueda";
 

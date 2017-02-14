@@ -1,6 +1,8 @@
-package com.almundo.browser.automation.tests;
+package com.almundo.browser.automation.tests.Hotels;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -18,14 +20,19 @@ import org.testng.annotations.Test;
  * Created by gabrielcespedes on 04/11/16.
  */
 
-public class LoginHotelFlowTest extends TestBaseSetup {
+public class LoginFlowTest extends TestBaseSetup {
 
     private HotelesResultsPage hotelesResultsPage = null;
     private HotelesDetailPage hotelesDetailPage = null;
     private CheckOutPage checkOutPage = null;
 
+    private HotelesDataTrip hotelesDataTrip = null;
+    private DataManagement dataManagement = new DataManagement();
+
     @BeforeClass
     private void initDataTripList() {
+        dataManagement.getHotelesDataTripList();
+
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
         checkOutPage.paymentSection().getPaymentList();
@@ -39,14 +46,11 @@ public class LoginHotelFlowTest extends TestBaseSetup {
         loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
         loginPopUp.setLoginPasswordTxt("gabi1981ce");
         basePage = loginPopUp.clickIngresarBtn();
-        basePage.hotelesDataTrip().getHotelesDataTripList();
     }
-
 
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
-
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -58,16 +62,18 @@ public class LoginHotelFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
 
-        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
+        hotelesDataTrip = basePage.hotelesDataTrip();
 
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
+        hotelesDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
+        hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 
@@ -81,7 +87,7 @@ public class LoginHotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("child_female_native");
         checkOutPage.passengerSection().getPassengerData("child_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("amex");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
@@ -101,16 +107,18 @@ public class LoginHotelFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+        dataManagement.getHotelDataTripItinerary("domestic01_15days_2adults_1room");
 
-        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
+        hotelesDataTrip = basePage.hotelesDataTrip();
 
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
+        hotelesDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
+        hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 
@@ -122,7 +130,7 @@ public class LoginHotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("amex");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 
@@ -131,7 +139,6 @@ public class LoginHotelFlowTest extends TestBaseSetup {
                 checkOutPage.paymentSection().paymentData,
                 checkOutPage.billingSection().billingData,
                 checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
-
 
     }
 }

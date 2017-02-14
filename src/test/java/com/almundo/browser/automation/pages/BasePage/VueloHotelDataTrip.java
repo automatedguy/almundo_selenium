@@ -1,9 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,19 +19,6 @@ public class VueloHotelDataTrip extends BasePage {
     public VueloHotelDataTrip(WebDriver driver) {
         super(driver);
     }
-
-    public static JSONObject vueloHotelDataTripList = null;
-    public static JSONObject vueloHotelDataTripItinerary = null;
-
-    public static String originAuto;
-    public static String originFull;
-    public static String destinationAuto;
-    public static String destinationFull;
-    public static int startDate;
-    public static int endDate;
-    public static int adults;
-    public static int childs;
-    public static int rooms;
 
     //############################################### Locators ##############################################
 
@@ -120,28 +105,6 @@ public class VueloHotelDataTrip extends BasePage {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initVueloHotelResultsPage();
-    }
-
-    public static void getVueloHotelDataTripList() {
-        vueloHotelDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vueloHotel", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getVueloHotelDataTripItinerary(String dataSet) {
-        vueloHotelDataTripItinerary = JsonRead.getJsonDataObject(vueloHotelDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
-
-        originAuto = vueloHotelDataTripItinerary.get("originAuto").toString();
-        originFull = vueloHotelDataTripItinerary.get("originFull").toString();
-
-        destinationAuto = vueloHotelDataTripItinerary.get("destinationAuto").toString();
-        destinationFull = vueloHotelDataTripItinerary.get("destinationFull").toString();
-
-        startDate = Integer.parseInt(vueloHotelDataTripItinerary.get("startDate").toString());
-        endDate = Integer.parseInt(vueloHotelDataTripItinerary.get("endDate").toString());
-
-        adults = Integer.parseInt(vueloHotelDataTripItinerary.get("adults").toString());
-        childs = Integer.parseInt(vueloHotelDataTripItinerary.get("childs").toString());
-
-        rooms = Integer.parseInt(vueloHotelDataTripItinerary.get("rooms").toString());
     }
 
 }

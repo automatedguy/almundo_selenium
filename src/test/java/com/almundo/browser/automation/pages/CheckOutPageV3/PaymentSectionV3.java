@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
+import junit.framework.Assert;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -115,15 +116,21 @@ public class PaymentSectionV3 extends CheckOutPage {
     public void selectBank(String bankName, String container) {
         List<WebElement> results = paymentSelected.findElements(By.cssSelector(container + " .header-bank .logo"));
         List<WebElement> banks = paymentSelected.findElements(By.cssSelector(container + " .bank"));
+        boolean isBankSelected = false;
 
         for (int i = 0; i < results.size(); ++i) {
             if (results.get(i).getAttribute("alt").equals(bankName)) {
                 logger.info("Selecting Bank: [" + bankName + "]");
                 PageUtils.scrollToElement(driver, results.get(i));
                 results.get(i).click();
+                isBankSelected = true;
                 bankSelected = banks.get(i);
                 break;
             }
+        }
+
+        if(isBankSelected == false) {
+            Assert.fail("Bank was not selected");
         }
     }
 

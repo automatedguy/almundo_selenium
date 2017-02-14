@@ -1,9 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.AutosResultsPage;
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,20 +11,6 @@ import org.openqa.selenium.support.ui.Select;
  * Created by gabrielcespedes on 20/12/16.
  */
 public class AutosDataTrip extends BasePage {
-
-    public static JSONObject autosDataTripList = null;
-    public static JSONObject autosDataTripItinerary = null;
-
-
-    public static String originAuto;
-    public static String originFull;
-    public static String destinationAuto;
-    public static String destinationFull;
-    public static int startDate;
-    public static int endDate;
-    public static String pickUpTime;
-    public static String dropOffTime;
-    public static String ageRange;
 
     public AutosDataTrip(WebDriver iDriver) {
         super(iDriver);
@@ -102,25 +86,4 @@ public class AutosDataTrip extends BasePage {
         return initAutosResultsPage();
     }
 
-    public static void getAutosDataTripList() {
-        autosDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "autos", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getAutosDataTripItinerary(String dataSet) {
-        autosDataTripItinerary = JsonRead.getJsonDataObject(autosDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
-
-        originAuto = autosDataTripItinerary.get("originAuto").toString();
-        originFull = autosDataTripItinerary.get("originFull").toString();
-
-        destinationAuto = autosDataTripItinerary.get("destinationAuto").toString();
-        destinationFull = autosDataTripItinerary.get("destinationFull").toString();
-
-        startDate = Integer.parseInt(autosDataTripItinerary.get("startDate").toString());
-        endDate = Integer.parseInt(autosDataTripItinerary.get("endDate").toString());
-
-        pickUpTime = autosDataTripItinerary.get("pickUpTime").toString();
-        dropOffTime = autosDataTripItinerary.get("dropOffTime").toString();
-
-        ageRange = autosDataTripItinerary.get("ageRange").toString();
-    }
 }

@@ -1,8 +1,9 @@
 package com.almundo.browser.automation.tests.Flights;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -25,10 +26,12 @@ public class FlowTest extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
     private ConfirmationPage confirmationPage = null;
 
+    private VuelosDataTrip vuelosDataTrip = null;
+    private DataManagement dataManagement = new DataManagement();
+
     @BeforeClass
     private void initDataTripList() {
-        basePage = new BasePage(driver);
-        basePage.vuelosDataTrip().getVuelosDataTripList();
+        dataManagement.getVuelosDataTripList();
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
@@ -46,7 +49,6 @@ public class FlowTest extends TestBaseSetup {
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
-
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -58,26 +60,28 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
 
-        basePage.vuelosDataTrip().getVuelosDataTripItinerary("miami_10days_2adults_2childs_turista");
+        dataManagement.getVuelosDataTripItinerary("miami_10days_2adults_2childs_turista");
 
-        basePage.vuelosDataTrip().setOrigin(basePage.vuelosDataTrip().originAuto, basePage.vuelosDataTrip().originFull);
-        basePage.vuelosDataTrip().setDestination(basePage.vuelosDataTrip().destinationAuto, basePage.vuelosDataTrip().destinationFull);
+        vuelosDataTrip = basePage.vuelosDataTrip();
 
-        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().departureFlightsCalendar, basePage.vuelosDataTrip().startDate);
-        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().arrivalFlightsCalendar, basePage.vuelosDataTrip().endDate);
+        vuelosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
+        vuelosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.vuelosDataTrip().selectPassenger(basePage.vuelosDataTrip().adults, basePage.vuelosDataTrip().childs);
-        basePage.vuelosDataTrip().selectChildAgeRange(basePage.vuelosDataTrip().childAgeRange);
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        basePage.vuelosDataTrip().selectClass(basePage.vuelosDataTrip().flightClass);
+        numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
-        vuelosResultsPage = basePage.vuelosDataTrip().clickBuscarBtn();
+        vuelosDataTrip.selectClass(dataManagement.flightClass);
+
+        vuelosResultsPage = vuelosDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(vuelosResultsPage.vacancy());
 
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
-        checkOutPage = vuelosResultsPage.clickComprarBtn(2);
+        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
 
         checkOutPage.passengerSection().getPassengerData("adult_male_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
@@ -103,26 +107,28 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
 
-        basePage.vuelosDataTrip().getVuelosDataTripItinerary("domestic_20days_2adults_todas");
+        dataManagement.getVuelosDataTripItinerary("domestic_20days_2adults_todas");
 
-        basePage.vuelosDataTrip().setOrigin(basePage.vuelosDataTrip().originAuto, basePage.vuelosDataTrip().originFull);
-        basePage.vuelosDataTrip().setDestination(basePage.vuelosDataTrip().destinationAuto, basePage.vuelosDataTrip().destinationFull);
+        vuelosDataTrip = basePage.vuelosDataTrip();
 
-        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().departureFlightsCalendar, basePage.vuelosDataTrip().startDate);
-        basePage.vuelosDataTrip().selectDateFromCalendar(basePage.vuelosDataTrip().arrivalFlightsCalendar, basePage.vuelosDataTrip().endDate);
+        vuelosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        vuelosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.vuelosDataTrip().selectPassenger(basePage.vuelosDataTrip().adults, basePage.vuelosDataTrip().childs);
-        basePage.vuelosDataTrip().selectChildAgeRange(basePage.vuelosDataTrip().childAgeRange);
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        basePage.vuelosDataTrip().selectClass(basePage.vuelosDataTrip().flightClass);
+        numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
-        vuelosResultsPage = basePage.vuelosDataTrip().clickBuscarBtn();
+        vuelosDataTrip.selectClass(dataManagement.flightClass);
+
+        vuelosResultsPage = vuelosDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(vuelosResultsPage.vacancy());
 
         vuelosResultsPage.clickTicketIdaRdb();
         vuelosResultsPage.clickTicketVuelta();
-        checkOutPage = vuelosResultsPage.clickComprarBtn(2);
+        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
 
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
         checkOutPage.passengerSection().getPassengerData("adult_female_foreign");

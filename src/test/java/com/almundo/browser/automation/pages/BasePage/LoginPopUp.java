@@ -74,8 +74,9 @@ public class LoginPopUp extends BasePage {
         return initBasePage();
     }
 
-    public BasePage clickFacebookLoginBtn() {
+    public FacebookLoginPopUp clickFacebookLoginBtn() {
         logger.info("Clicking on Facebook Login button");
+        PageUtils.waitElementForClickable(driver, facebookLoginBtn, 10, "Facebook login button");
         facebookLoginBtn.click();
         PageUtils.waitImplicitly(4000);
         return initFacebookLoginPopUp();

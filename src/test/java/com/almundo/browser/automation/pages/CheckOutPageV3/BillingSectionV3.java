@@ -52,7 +52,7 @@ public class BillingSectionV3 extends CheckOutPage {
     @FindBy(id = "postal_code")
     private WebElement addressPostalCodeTxt;
 
-    @FindBy(css = "billing-form > div > div:nth-child(5) > div.schema-form-section.col-12-xs.col-12-sm.col-7-md > div > select")
+    @FindBy(id = "states")
     private WebElement addressStateDdl;
 
     @FindBy(id = "city")

@@ -1,7 +1,9 @@
-package com.almundo.browser.automation.tests;
+package com.almundo.browser.automation.tests.Hotels;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FacebookLoginPopUp;
+import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -19,16 +21,18 @@ import org.testng.annotations.Test;
  * Created by gabrielcespedes on 04/11/16.
  */
 
-public class FacebookLoginHotelFlowTest extends TestBaseSetup {
+public class FacebookLoginFlowTest extends TestBaseSetup {
 
     private HotelesResultsPage hotelesResultsPage = null;
     private HotelesDetailPage hotelesDetailPage = null;
     private CheckOutPage checkOutPage = null;
 
+    private HotelesDataTrip hotelesDataTrip = null;
+    private DataManagement dataManagement = new DataManagement();
+
     @BeforeClass
     private void initDataTripList() {
-//        basePage = new BasePage(driver);
-//        basePage.hotelesDataTrip().getHotelesDataTripList();
+        dataManagement.getHotelesDataTripList();
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
@@ -40,15 +44,12 @@ public class FacebookLoginHotelFlowTest extends TestBaseSetup {
     @BeforeMethod
     private void doLogin(){
         LoginPopUp loginPopUp = initLoginPopUp();
-        FacebookLoginPopUp facebookLoginPopUp = (FacebookLoginPopUp) loginPopUp.clickFacebookLoginBtn();
+        FacebookLoginPopUp facebookLoginPopUp = loginPopUp.clickFacebookLoginBtn();
         PageUtils.setFocusOnChildWindow(driver);
         facebookLoginPopUp.setEmailTxt("almundoqastuff@gmail.com");
         facebookLoginPopUp.setPassTxt("almundo#01");
-
         basePage = facebookLoginPopUp.clickFacebookLoginBtn();
-        basePage.hotelesDataTrip().getHotelesDataTripList();
     }
-
 
     @AfterMethod
     private void cleanPassengerJsonList() {
@@ -62,19 +63,23 @@ public class FacebookLoginHotelFlowTest extends TestBaseSetup {
     public void hotelIntLoginReservationFlow() {
         logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
-        PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
+
+
+        PageUtils.waitElementForClickable(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
 
-        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
+        hotelesDataTrip = basePage.hotelesDataTrip();
 
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
+        hotelesDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
+        hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, dataManagement.startDate);
+        hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, dataManagement.endDate);
 
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
+        hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 
@@ -88,7 +93,7 @@ public class FacebookLoginHotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("child_female_native");
         checkOutPage.passengerSection().getPassengerData("child_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("amex");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_cell_phone");
 
@@ -108,16 +113,18 @@ public class FacebookLoginHotelFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
-        basePage.hotelesDataTrip().getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+        dataManagement.getHotelDataTripItinerary("domestic01_15days_2adults_1room");
 
-        basePage.hotelesDataTrip().setDestination(basePage.hotelesDataTrip().destinationAuto, basePage.hotelesDataTrip().destinationFull);
+        hotelesDataTrip = basePage.hotelesDataTrip();
 
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, basePage.hotelesDataTrip().startDate);
-        basePage.hotelesDataTrip().selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, basePage.hotelesDataTrip().endDate);
+        hotelesDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.hotelesDataTrip().selectPassenger(basePage.hotelesDataTrip().adults, basePage.hotelesDataTrip().childs, basePage.hotelesDataTrip().rooms);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+        numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
+        hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 
@@ -129,7 +136,7 @@ public class FacebookLoginHotelFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("amex");
+        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
         checkOutPage.billingSection().getBillingData("local_Billing_v2");
         checkOutPage.contactSection().getContactData("contact_phone");
 

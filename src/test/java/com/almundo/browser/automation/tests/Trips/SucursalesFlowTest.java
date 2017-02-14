@@ -1,7 +1,8 @@
 package com.almundo.browser.automation.tests.Trips;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
@@ -25,10 +26,12 @@ public class SucursalesFlowTest extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
     private ConfirmationPage confirmationPage = null;
 
+    private VueloHotelDataTrip vueloHotelDataTrip = null;
+    private DataManagement dataManagement = new DataManagement();
+
     @BeforeClass
     private void initDataTripList() {
-        basePage = new BasePage(driver);
-        basePage.vueloHotelDataTrip().getVueloHotelDataTripList();
+        dataManagement.getVueloHotelDataTripList();
 
         checkOutPage = initCheckOutPage();
         checkOutPage.passengerSection().getPassengersList();
@@ -40,7 +43,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
     @AfterMethod
     private void cleanPassengerJsonList() {
         PassengerSection.passengerJsonList = new JSONArray();
-
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -52,17 +54,17 @@ public class SucursalesFlowTest extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
 
-        basePage.vueloHotelDataTrip().getVueloHotelDataTripItinerary("domestic02_20days_2adults_1childs_1room");
+        dataManagement.getVueloHotelDataTripItinerary("domestic02_20days_2adults_1childs_1room");
 
-        basePage.vueloHotelDataTrip().setOrigin(basePage.vueloHotelDataTrip().originAuto, basePage.vueloHotelDataTrip().originFull);
-        basePage.vueloHotelDataTrip().setDestination(basePage.vueloHotelDataTrip().destinationAuto, basePage.vueloHotelDataTrip().destinationFull);
+        vueloHotelDataTrip = basePage.vueloHotelDataTrip();
 
-        basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().departureCalendar, basePage.vueloHotelDataTrip().startDate);
-        basePage.vueloHotelDataTrip().selectDateFromCalendar(basePage.vueloHotelDataTrip().arrivalCalendar, basePage.vueloHotelDataTrip().endDate);
+        vueloHotelDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        vueloHotelDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        numPassengers = basePage.vueloHotelDataTrip().selectPassenger(basePage.vueloHotelDataTrip().adults,
-                basePage.vueloHotelDataTrip().childs,
-                basePage.vueloHotelDataTrip().rooms);
+        vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
+        vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
+
+        numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
 

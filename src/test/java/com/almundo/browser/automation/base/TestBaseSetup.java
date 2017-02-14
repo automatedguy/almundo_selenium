@@ -53,7 +53,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(Constants.SUC_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -264,7 +264,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, LoginPopUp.class);
     }
 
-    protected BasePage initFacebookLoginPopUp() {
+    protected FacebookLoginPopUp initFacebookLoginPopUp() {
         return PageFactory.initElements(driver, FacebookLoginPopUp.class);
     }
 
