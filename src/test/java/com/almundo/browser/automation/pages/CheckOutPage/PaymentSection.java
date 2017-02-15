@@ -45,44 +45,7 @@ public class PaymentSection extends CheckOutPage {
     @FindBy(id = "document_number")
     private WebElement document_number;
 
-    @FindBy(css = "div:nth-child(1) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
-    private WebElement pagoEnEfectivoLbl;
-
-    @FindBy(css = "div:nth-child(2) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
-    private WebElement depositoLbl;
-
-    @FindBy(css = "div:nth-child(3) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
-    private WebElement transferenciaLbl;
-
-    @FindBy(css = "div:nth-child(4) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
-    private WebElement reservaPor24hsLbl;
-
     //############################################### Actions ###############################################
-
-    public PaymentSection clickPagoEnEfectivoLbl(){
-        logger.info("Click: Selecting Pago en Efectivo");
-        pagoEnEfectivoLbl.click();
-        return this;
-    }
-
-    public PaymentSection clickDepositoLbl(){
-        logger.info("Click: Selecting Depósito");
-        depositoLbl.click();
-        return this;
-    }
-
-    public PaymentSection clickTransferenciaLbl(){
-        logger.info("Click: Selecting Transferencia");
-        transferenciaLbl.click();
-        return this;
-    }
-
-    public PaymentSection clickReservaPor24hsLbl(){
-        logger.info("Click: Selecting Reserva por 24 hs.");
-        reservaPor24hsLbl.click();
-        return this;
-    }
-
 
     public PaymentSection populatePaymentSection(JSONObject paymentData, String product){
 
@@ -188,8 +151,6 @@ public class PaymentSection extends CheckOutPage {
 
 
     public PaymentSection selectPaymentOption(JSONObject paymentData, String product) {
-
-        logger.info("------------- Selecting Payment Option... -------------");
 
         switch(paymentData.get("credit_card_name").toString()){
             case "cash":

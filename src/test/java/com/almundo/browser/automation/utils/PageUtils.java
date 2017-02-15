@@ -129,12 +129,29 @@ public class PageUtils {
         ((JavascriptExecutor)driver).executeScript("window.scrollBy(0," + coordinate + ")");
     }
 
-    public static void setFocusOnChildWindow(WebDriver driver){
-        Set<String> set1=driver.getWindowHandles();
-        Iterator<String> win1=set1.iterator();
-        String parent=win1.next();
-        String child=win1.next();
-        driver.switchTo().window(child);
+//    public static void setFocusOnChildWindow(WebDriver driver){
+//        Set<String> set1=driver.getWindowHandles();
+//        Iterator<String> win1=set1.iterator();
+//        String parent=win1.next();
+//        String child=win1.next();
+//        driver.switchTo().window(child);
+//    }
+
+    public static void setFocusOnWindow(WebDriver driver, String window){
+        String parentWindow = driver.getWindowHandle();
+        String parent = null;
+
+        if (window.equals("child")) {
+            Set<String> set1=driver.getWindowHandles();
+            Iterator<String> win1 = set1.iterator();
+            parent=win1.next();
+            String child = win1.next();
+            driver.switchTo().window(child);
+
+        } else {
+            driver.switchTo().window(parent);
+        }
+
     }
 
     public static void waitImplicitly(int miliSeconds){
