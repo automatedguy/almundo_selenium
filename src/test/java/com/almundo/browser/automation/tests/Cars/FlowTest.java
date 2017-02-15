@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.AutosDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.AutosResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
@@ -27,18 +26,13 @@ public class FlowTest extends TestBaseSetup {
     private AutosDataTrip autosDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
 
-    //TODO: overload populateCheckOutPage
-    private int carDrivers = 1;
-
     @BeforeClass
     private void initDataTripList() {
         dataManagement.getAutosDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @BeforeMethod
@@ -49,7 +43,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -80,18 +74,13 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPage = autosResultsPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-//        checkOutPage.populateCheckOutPage(carDrivers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "AutosCheckOutPage");
     }
 
     @Test
@@ -120,17 +109,12 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPage = autosResultsPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-//        checkOutPage.populateCheckOutPage(carDrivers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "AutosCheckOutPage");
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "AutosCheckOutPage");
     }
-
 }
