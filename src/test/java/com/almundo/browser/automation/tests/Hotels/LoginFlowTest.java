@@ -32,12 +32,10 @@ public class LoginFlowTest extends TestBaseSetup {
     @BeforeClass
     private void initDataTripList() {
         dataManagement.getHotelesDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @BeforeMethod
@@ -71,7 +69,7 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
         hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
-        //numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
@@ -82,22 +80,16 @@ public class LoginFlowTest extends TestBaseSetup {
 
         checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData("child_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                                         checkOutPage.passengerSection().passengerJsonList,
-//                                         checkOutPage.paymentSection().paymentData,
-//                                         checkOutPage.billingSection().billingData,
-//                                         checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
-
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "HotelesCheckOutPageInternational");
     }
 
     @Test
