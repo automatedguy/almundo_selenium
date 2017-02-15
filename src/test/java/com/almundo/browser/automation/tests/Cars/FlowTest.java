@@ -25,10 +25,7 @@ public class FlowTest extends TestBaseSetup {
 
     private AutosDataTrip autosDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
-
-    //TODO: overload populateCheckOutPage
-    private int carDrivers = 1;
-
+    
     @BeforeClass
     private void initDataTripList() {
         dataManagement.getAutosDataTripList();
