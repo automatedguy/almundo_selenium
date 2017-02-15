@@ -16,9 +16,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Iterator;
-import java.util.Set;
-
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -49,6 +46,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         facebookLoginPopUp.setEmailTxt("almundoqastuff@gmail.com");
         facebookLoginPopUp.setPassTxt("almundo#01");
         basePage = facebookLoginPopUp.clickFacebookLoginBtn();
+        PageUtils.setFocusOnWindow(driver, "parent");
     }
 
     @AfterMethod
@@ -101,12 +99,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
     public void hotelDomLoginReservationFlow() {
         logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
 
-        Set<String> set1=driver.getWindowHandles();
-        Iterator<String> win1 = set1.iterator();
-        String parent = win1.next();
-        driver.switchTo().window(parent);
-
-        PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
+        PageUtils.waitElementForClickable(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
 
         dataManagement.getHotelDataTripItinerary("domestic01_15days_2adults_1room");

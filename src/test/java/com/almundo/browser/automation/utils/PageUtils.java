@@ -138,20 +138,18 @@ public class PageUtils {
 //    }
 
     public static void setFocusOnWindow(WebDriver driver, String window){
-        String parentWindow = driver.getWindowHandle();
-        String parent = null;
-
         if (window.equals("child")) {
-            Set<String> set1=driver.getWindowHandles();
-            Iterator<String> win1 = set1.iterator();
-            parent=win1.next();
+            Set<String> set = driver.getWindowHandles();
+            Iterator<String> win1 = set.iterator();
+            String parent = win1.next();
             String child = win1.next();
             driver.switchTo().window(child);
-
         } else {
+            Set<String> set= driver.getWindowHandles();
+            Iterator<String> win1 = set.iterator();
+            String parent = win1.next();
             driver.switchTo().window(parent);
         }
-
     }
 
     public static void waitImplicitly(int miliSeconds){
