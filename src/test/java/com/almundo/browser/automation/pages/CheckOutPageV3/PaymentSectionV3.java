@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import junit.framework.Assert;
 import org.json.simple.JSONObject;
@@ -20,9 +19,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     public PaymentSectionV3(WebDriver driver) {
         super(driver);
     }
-
-    public static JSONObject paymentList = null;
-    public static JSONObject paymentData;
 
     private static WebElement paymentSelected = null;
     private static WebElement bankSelected = null;
@@ -225,11 +221,4 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         documentNumberField.sendKeys(documentNumber);
     }
 
-    public static void getPaymentList()  {
-        paymentList = JsonRead.getJsonDataObject(jsonDataObject, "payment", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getPaymentData(String dataSet)  {
-        paymentData = JsonRead.getJsonDataObject(paymentList, dataSet, countryPar.toLowerCase() + "_data.json");
-    }
 }

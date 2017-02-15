@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -21,8 +20,6 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         super(driver);
     }
 
-    private static JSONObject passengersList = null;
-    public static JSONObject passengerData = null;
     public static JSONArray passengerJsonList = new JSONArray();
 
     private static List<WebElement> firstNameList = null;
@@ -206,12 +203,4 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public static void getPassengersList()  {
-        passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getPassengerData(String dataSet)  {
-        passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
-        passengerJsonList.add(passengerData);
-    }
 }

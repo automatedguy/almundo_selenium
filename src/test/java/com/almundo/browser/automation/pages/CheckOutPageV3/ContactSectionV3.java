@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,9 +14,6 @@ public class ContactSectionV3 extends CheckOutPageV3 {
     public ContactSectionV3(WebDriver driver) {
         super(driver);
     }
-
-    private static JSONObject contactList = null;
-    public static JSONObject contactData = null;
 
     //############################################### Locators ##############################################
 
@@ -88,12 +84,4 @@ public class ContactSectionV3 extends CheckOutPageV3 {
         phoneNumberTxt.sendKeys(phoneNumber);
     }
 
-
-    public static void getContactList()  {
-        contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getContactData(String dataSet)  {
-        contactData = JsonRead.getJsonDataObject(contactList, dataSet, countryPar.toLowerCase() + "_data.json");
-    }
 }

@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,9 +17,6 @@ public class BillingSectionV3 extends CheckOutPageV3 {
     public BillingSectionV3(WebDriver driver) {
         super(driver);
     }
-
-    private static JSONObject billingsList = null;
-    public static JSONObject billingData = null;
 
     //############################################### Locators ##############################################
 
@@ -160,11 +156,4 @@ public class BillingSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public static void getBillingList()  {
-        billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getBillingData(String dataSet)  {
-        billingData = JsonRead.getJsonDataObject(billingsList, dataSet, countryPar.toLowerCase() + "_data.json");
-    }
 }
