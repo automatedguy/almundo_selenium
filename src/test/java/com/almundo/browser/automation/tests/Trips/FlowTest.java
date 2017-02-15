@@ -6,6 +6,7 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -78,19 +79,34 @@ public class FlowTest extends TestBaseSetup {
         vueloHotelResultsPage.clickElegirBtn(0);
         vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
         vueloHotelDetailPage.clickVerHabitacionBtn();
-
         checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
 
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
+        if(countryPar.equals("ARGENTINA")) {
+            CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
+            replaceUrl();
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "VueloHotelCheckOutPageInternational");
+            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData("child_male_native");
+            dataManagement.getPassengerData("child_male_native");
+
+            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
+                    dataManagement.getPaymentData("1_amex_amex"),
+                    dataManagement.getBillingData("local_Billing"),
+                    dataManagement.getContactData("contact_cell_phone"),
+                    "VueloHotelCheckOutPageInternational");
+        } else {
+            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData("child_male_native");
+            dataManagement.getPassengerData("child_male_native");
+
+            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                    dataManagement.getPaymentData("1_amex_amex"),
+                    dataManagement.getBillingData("local_Billing"),
+                    dataManagement.getContactData("contact_cell_phone"),
+                    "VueloHotelCheckOutPageInternational");
+        }
     }
 
     @Test
@@ -122,14 +138,29 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native");
+        if(countryPar.equals("ARGENTINA")) {
+            CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
+            replaceUrl();
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "VueloHotelCheckOutPageDomestic");
+            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData("child_female_native");
+
+            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
+                                              dataManagement.getPaymentData("1_amex_amex"),
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                              "VueloHotelCheckOutPageDomestic");
+        } else {
+            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData("child_female_native");
+
+            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                              dataManagement.getPaymentData("1_amex_amex"),
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                              "VueloHotelCheckOutPageDomestic");
+        }
     }
 }
