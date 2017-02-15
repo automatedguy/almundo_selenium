@@ -32,6 +32,8 @@ public class DataManagement extends TestBaseSetup {
 
     private static JSONObject billingsList = null;
 
+    private static JSONObject usersDataList = null;
+
     public String originAuto;
     public String originFull;
     public String destinationAuto;
@@ -136,6 +138,16 @@ public class DataManagement extends TestBaseSetup {
         dropOffTime = autosDataTripItinerary.get("dropOffTime").toString();
 
         ageRange = autosDataTripItinerary.get("ageRange").toString();
+    }
+
+    //LOGIN
+    public void getUsersDataList() {
+        usersDataList = JsonRead.getJsonDataObject(jsonDataObject, "users", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public JSONObject getUserData(String dataSet) {
+        JSONObject userData = JsonRead.getJsonDataObject(usersDataList, dataSet, countryPar.toLowerCase() + "_data.json");
+        return userData;
     }
 
     //------------------------- CHECKOUT -----------------------------

@@ -1,8 +1,8 @@
 package com.almundo.browser.automation.tests.ClubAlMundo;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import junit.framework.Assert;
 import org.json.simple.JSONObject;
@@ -21,12 +21,11 @@ public class LoginTest extends TestBaseSetup {
 
     private LoginPopUp loginPopUp = null;
 
-    public static JSONObject userList = null;
-    public static JSONObject userData = null;
+    private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
     private void initUserList() {
-        getUserList();
+        dataManagement.getUsersDataList();
     }
 
     @BeforeMethod
@@ -39,7 +38,7 @@ public class LoginTest extends TestBaseSetup {
     @Test
     public void login_email () {
         logTestTitle("Login - Login with email - " + countryPar );
-        getUserData("email");
+        JSONObject userData = dataManagement.getUserData("email");
 
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
 
@@ -71,13 +70,5 @@ public class LoginTest extends TestBaseSetup {
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
-
-    public void getUserList() {
-        userList = JsonRead.getJsonDataObject(jsonDataObject, "users", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public void getUserData(String dataSet) {
-        userData = JsonRead.getJsonDataObject(userList, dataSet, countryPar.toLowerCase() + "_data.json");
-    }
 
 }
