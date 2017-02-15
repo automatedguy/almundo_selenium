@@ -129,7 +129,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         replaceUrl();
 
-        checkOutPage.paymentSectionV3().clickSeveralCardsCbx();
+        checkOutPage.paymentSection().clickSeveralCardsCbx();
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                 dataManagement.getPaymentData("6_visa_visa"),

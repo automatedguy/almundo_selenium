@@ -62,9 +62,7 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
     public PassengerSectionV3 populatePassengerSection(JSONArray passengerList){
 
-        // PassengerSectionV3 passengerSection = initPassengerInfoSectionV3();
         logger.info("------------- Filling Passenger Section -------------");
-
         JSONObject passengerInfo;
 
         setFirstNameList();
@@ -78,11 +76,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
 
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
-
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
             setFirstName(passengerIndex, passengerInfo.get("first_name").toString());
-
             setlastName(passengerIndex, passengerInfo.get("last_name").toString());
 
             if(isElementRequiered(checkOutPageElements, "documentType0")) {
@@ -116,7 +112,6 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-
     public void setFirstNameList() {
         firstNameList = driver.findElements(By.id("first_name"));
     }
@@ -144,7 +139,6 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     public void setNationalityList() {
         nationalityList = driver.findElements(By.id("nationality"));
     }
-
 
     public PassengerSectionV3 setFirstName(int index, String firstName){
         PageUtils.waitElementForVisibility(driver, first_name, 45, "First Name text box");
@@ -211,7 +205,6 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         nacionalidad.selectByVisibleText(nationality);
         return this;
     }
-
 
     public static void getPassengersList()  {
         passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");

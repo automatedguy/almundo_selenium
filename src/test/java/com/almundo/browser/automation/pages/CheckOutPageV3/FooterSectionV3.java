@@ -49,6 +49,7 @@ public class FooterSectionV3 extends CheckOutPage {
         confirmar.click();
         return this;
     }
+
     public FooterSectionV3 setEmailTxt(String email) {
         logger.info("Filling Agent Email Adress...");
         List<WebElement> emailAgent = driver.findElements(By.id("email"));

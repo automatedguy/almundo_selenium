@@ -24,7 +24,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initPickUpLocationSection();
     }
 
-    public PaymentSectionV3 paymentSectionV3() {
+    public PaymentSectionV3 paymentSection() {
         return initPaymentSectionV3();
     }
 
@@ -52,9 +52,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage  ) {
         getCheckOutPageElements(productCheckOutPage);
-        populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
+        paymentSection().populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);
-        pickUpLocationSection().populatePickUpLocationSection();
+        //TODO: Refactor for Cars (when migrated to checkout V3)
+        //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();
@@ -67,43 +68,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject billingData,
                                                JSONObject contactData,
                                                String productCheckOutPage ) {
-
         getCheckOutPageElements(productCheckOutPage);
-        populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
-        populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);
-
+        paymentSection().populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
+        paymentSection().populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);
-        pickUpLocationSection().populatePickUpLocationSection();
+        //TODO: Refactor for Cars (when migrated to checkout V3)
+        //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();
-        return this;
-    }
-
-    private CheckOutPageV3 populatePaymentSection(JSONObject paymentData, String container, String product) {
-
-        PaymentSectionV3 paymentSection = initPaymentSectionV3();
-        logger.info("------------- Selecting type of Payment "+ container + "-------------");
-        paymentSection.selectPayment(paymentData.get("payment_qty").toString(), container);
-        paymentSection.selectBank(paymentData.get("bank_name").toString(), container);
-        paymentSection.selectCreditCard(paymentData.get("credit_card_name").toString(), container);
-        logger.info("------------- Filling Payment Section -------------");
-        paymentSection.setCardNumber(paymentData.get("card_number").toString(), container);
-        paymentSection.setCardHolder(paymentData.get("card_holder").toString(), container);
-        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos") || product.contains("VueloHotel") ) {
-            paymentSection.selectMonthCardExpiration(paymentData.get("month_card_expire").toString(), container);
-            paymentSection.selectYearCardExpiration(paymentData.get("year_card_expire").toString(), container);
-        }else {
-            paymentSection.setCardExpiration(paymentData.get("card_expire").toString());
-
-        }
-        paymentSection.setSecurityCode(paymentData.get("security_code").toString(), container);
-        if(isElementRequiered(checkOutPageElements, "documentType")) {
-            paymentSection.selectDocumentType(paymentData.get("documentType").toString(), container);
-        }
-        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
-            paymentSection.setDocumentNumber(paymentData.get("document_number").toString(), container);
-        }
         return this;
     }
 

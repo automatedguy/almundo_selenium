@@ -96,5 +96,4 @@ public class ContactSectionV3 extends CheckOutPageV3 {
     public static void getContactData(String dataSet)  {
         contactData = JsonRead.getJsonDataObject(contactList, dataSet, countryPar.toLowerCase() + "_data.json");
     }
-
 }

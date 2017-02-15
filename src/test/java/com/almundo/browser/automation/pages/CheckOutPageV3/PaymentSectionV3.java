@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import junit.framework.Assert;
@@ -16,7 +15,7 @@ import java.util.List;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class PaymentSectionV3 extends CheckOutPage {
+public class PaymentSectionV3 extends CheckOutPageV3 {
 
     public PaymentSectionV3(WebDriver driver) {
         super(driver);
@@ -66,10 +65,27 @@ public class PaymentSectionV3 extends CheckOutPage {
     //############################################### Actions ###############################################
 
 
+    public PaymentSectionV3 populatePaymentSection(JSONObject paymentData, String container, String product) {
 
+        logger.info("------------- Selecting type of Payment "+ container + "-------------");
+        selectPayment(paymentData.get("payment_qty").toString(), container);
+        selectBank(paymentData.get("bank_name").toString(), container);
+        selectCreditCard(paymentData.get("credit_card_name").toString(), container);
 
-
-
+        logger.info("------------- Filling Payment Section -------------");
+        setCardNumber(paymentData.get("card_number").toString(), container);
+        setCardHolder(paymentData.get("card_holder").toString(), container);
+        selectMonthCardExpiration(paymentData.get("month_card_expire").toString(), container);
+        selectYearCardExpiration(paymentData.get("year_card_expire").toString(), container);
+        setSecurityCode(paymentData.get("security_code").toString(), container);
+        if(isElementRequiered(checkOutPageElements, "documentType")) {
+            selectDocumentType(paymentData.get("documentType").toString(), container);
+        }
+        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
+            setDocumentNumber(paymentData.get("document_number").toString(), container);
+        }
+        return this;
+    }
 
     public void clickSeveralCardsCbx () {
         if (!serveralCardsCbx.isSelected()) {

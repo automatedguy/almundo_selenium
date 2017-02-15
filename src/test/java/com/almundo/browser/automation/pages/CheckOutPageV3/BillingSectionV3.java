@@ -57,7 +57,6 @@ public class BillingSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "city")
     private WebElement addressCityTxt;
 
-
     //############################################### Actions ##############################################
 
     public BillingSectionV3 populateBillingSection(JSONObject billingData) {
