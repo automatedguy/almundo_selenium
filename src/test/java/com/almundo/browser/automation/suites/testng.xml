@@ -8,34 +8,34 @@
     <test name="SemaphoresTestsResults">
         <classes>
 
-            <!--Web channel-->
-            <class name="com.almundo.browser.automation.tests.Hotels.FlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Flights.FlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Trips.FlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Cars.FlowTest"/>
+            <!--&lt;!&ndash;Web channel&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Flights.FlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Trips.FlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Cars.FlowTest"/>-->
 
-            <!--Checkout V3-->
-            <class name="com.almundo.browser.automation.tests.Hotels.FlowCheckOutV3Test"/>
+            <!--&lt;!&ndash;Checkout V3&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowCheckOutV3Test"/>-->
             <class name="com.almundo.browser.automation.tests.Trips.FlowCheckOutV3Test"/>
 
-            <!--Club AlMundo-->
-            <class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>
+            <!--&lt;!&ndash;Club AlMundo&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>-->
 
-            <!--Home Page-->
-            <class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>
+            <!--&lt;!&ndash;Home Page&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>-->
 
-            <!--Sucursales channel-->
-            <class name="com.almundo.browser.automation.tests.Hotels.SucursalesFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Flights.SucursalesFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Cars.SucursalesFlowTest"/>
+            <!--&lt;!&ndash;Sucursales channel&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.Hotels.SucursalesFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Flights.SucursalesFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Cars.SucursalesFlowTest"/>-->
 
-            <!--Login flows-->
-            <class name="com.almundo.browser.automation.tests.Hotels.LoginFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Flights.LoginFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Trips.LoginFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Cars.LoginFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Hotels.FacebookLoginFlowTest"/>
+            <!--&lt;!&ndash;Login flows&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.Hotels.LoginFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Flights.LoginFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Trips.LoginFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Cars.LoginFlowTest"/>-->
+            <!--<class name="com.almundo.browser.automation.tests.Hotels.FacebookLoginFlowTest"/>-->
 
         </classes>
     </test>

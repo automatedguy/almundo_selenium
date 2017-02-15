@@ -50,16 +50,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPageV3 populateCheckOutPage(int numPassengers,
-                                               JSONArray passengerList,
-                                               JSONObject paymentData,
-                                               JSONObject billingData,
-                                               JSONObject contactData,
-                                               String productCheckOutPage ) {
+    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage  ) {
 
         getCheckOutPageElements(productCheckOutPage);
         populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
-        populatePassengerSection(numPassengers, passengerList);
+        populatePassengerSection(passengerList);
         populatePickUpLocationSection();
         populateBillingSection(billingData);
         populateContactSection(contactData);
@@ -67,8 +62,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPageV3 populateCheckOutPage(int numPassengers,
-                                               JSONArray passengerList,
+    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList,
                                                JSONObject paymentData1,
                                                JSONObject paymentData2,
                                                JSONObject billingData,
@@ -78,7 +72,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
         populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);
-        populatePassengerSection(numPassengers, passengerList);
+        populatePassengerSection(passengerList);
         populatePickUpLocationSection();
         populateBillingSection(billingData);
         populateContactSection(contactData);
@@ -122,7 +116,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPageV3 populatePassengerSection(int numPassengers, JSONArray passengerList){
+    private CheckOutPageV3 populatePassengerSection(JSONArray passengerList){
 
         PassengerSectionV3 passengerSection = initPassengerInfoSectionV3();
         logger.info("------------- Filling Passenger Section -------------");
@@ -137,7 +131,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         passengerSectionV3().setGenderList();
         passengerSectionV3().setNationalityList();
 
-        for(int passengerIndex = 0; passengerIndex <= numPassengers-1; passengerIndex++ ){
+        for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
 
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
 
