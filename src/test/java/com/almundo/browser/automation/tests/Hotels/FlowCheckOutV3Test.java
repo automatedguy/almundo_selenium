@@ -4,7 +4,6 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
@@ -32,12 +31,10 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     @BeforeClass
     private void initDataTripList() {
         dataManagement.getHotelesDataTripList();
-
-        checkOutPage = initCheckOutPageV3();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @BeforeMethod
@@ -48,7 +45,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
 
     }
 
@@ -70,7 +67,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, dataManagement.startDate);
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, dataManagement.endDate);
 
-        //numPassengers = basePage.hotelesDataTrip().selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
 
@@ -81,21 +78,16 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage = hotelesDetailPage.clickReservarAhoraV3Btn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_phone");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("adult_female_native");
 
         replaceUrl();
 
-        //checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSectionV3().contactData, "HotelesCheckOutPageDomesticV3");
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_phone"),
+                "HotelesCheckOutPageDomesticV3");
     }
 
     public void replaceUrl(){

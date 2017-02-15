@@ -4,7 +4,6 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
@@ -25,7 +24,6 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     private VueloHotelResultsPage vueloHotelResultsPage = null;
     private VueloHotelDetailPage vueloHotelDetailPage = null;
     private CheckOutPageV3 checkOutPage = null;
-    private ConfirmationPage confirmationPage = null;
 
     private VueloHotelDataTrip vueloHotelDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
