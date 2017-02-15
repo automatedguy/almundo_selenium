@@ -25,7 +25,7 @@ public class FlowTest extends TestBaseSetup {
 
     private AutosDataTrip autosDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
-    
+
     @BeforeClass
     private void initDataTripList() {
         dataManagement.getAutosDataTripList();
