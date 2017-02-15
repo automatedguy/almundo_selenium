@@ -36,8 +36,8 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage = initCheckOutPageV3();
         checkOutPage.passengerSection().getPassengersList();
         checkOutPage.paymentSectionV3().getPaymentList();
-        checkOutPage.billingSectionV3().getBillingList();
-        checkOutPage.contactSectionV3().getContactList();
+        checkOutPage.billingSection().getBillingList();
+        checkOutPage.contactSection().getContactList();
     }
 
     @BeforeMethod
@@ -85,15 +85,15 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
         checkOutPage.paymentSectionV3().getPaymentData("1_amex_amex");
-        checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
-        checkOutPage.contactSectionV3().getContactData("contact_phone");
+        checkOutPage.billingSection().getBillingData("local_Billing_v2");
+        checkOutPage.contactSection().getContactData("contact_phone");
 
         replaceUrl();
 
         //checkOutPage.populateCheckOutPage(numPassengers,
 //                checkOutPage.passengerSection().passengerJsonList,
 //                checkOutPage.paymentSectionV3().paymentData,
-//                checkOutPage.billingSectionV3().billingData,
+//                checkOutPage.billingSection().billingData,
 //                checkOutPage.contactSectionV3().contactData, "HotelesCheckOutPageDomesticV3");
 
     }

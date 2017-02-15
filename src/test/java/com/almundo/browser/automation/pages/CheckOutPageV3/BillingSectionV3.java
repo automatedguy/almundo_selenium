@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -14,7 +13,7 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 29/11/16.
  */
-public class BillingSectionV3 extends CheckOutPage {
+public class BillingSectionV3 extends CheckOutPageV3 {
 
     public BillingSectionV3(WebDriver driver) {
         super(driver);
@@ -60,6 +59,30 @@ public class BillingSectionV3 extends CheckOutPage {
 
 
     //############################################### Actions ##############################################
+
+    public BillingSectionV3 populateBillingSection(JSONObject billingData) {
+        if (isElementRequiered(checkOutPageElements, "BillingInfoSection")) {
+            logger.info("------------- Filling Billing Section -------------");
+            if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
+                setBillingFiscalNameTxt(billingData.get("fiscal_name").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
+                selectBillingFiscalType(billingData.get("billing_fiscal_type").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "billing_document_type")){
+                selectBillingDocumentType(billingData.get("billing_document_type").toString());
+            }
+            setBillingFiscalDocumentTxt(billingData.get("billing_fiscal_document").toString());
+            setBillingAddressTxt(billingData.get("billing_address").toString());
+            setAddressNumberTxt(billingData.get("address_number").toString());
+            setAddressFloorTxt(billingData.get("address_floor").toString());
+            setAddressDepartmentTxt(billingData.get("address_department").toString());
+            setAddressPostalCodeTxt(billingData.get("address_postal_code").toString());
+            setAddressStateDdl(billingData.get("address_state").toString());
+            setAddressCityTxt(billingData.get("address_city").toString());
+        }
+        return this;
+    }
 
     public BillingSectionV3 setBillingFiscalNameTxt(String billingFiscalName) {
         logger.info("Entering Nombre o Razón Social: [" + billingFiscalName + "]");

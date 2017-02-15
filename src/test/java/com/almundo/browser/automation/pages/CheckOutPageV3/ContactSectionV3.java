@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by leandro.efron on 6/12/2016.
  */
-public class ContactSectionV3 extends CheckOutPage {
+public class ContactSectionV3 extends CheckOutPageV3 {
 
     public ContactSectionV3(WebDriver driver) {
         super(driver);
@@ -41,6 +40,17 @@ public class ContactSectionV3 extends CheckOutPage {
     public WebElement phoneNumberTxt;
 
     //############################################### Actions ###############################################
+
+    public ContactSectionV3 populateContactSection(JSONObject contactData) {
+        logger.info("------------- Filling Contact Section -------------");
+        setEmail(contactData.get("email").toString());
+        setRepEmail(contactData.get("rep_email").toString());
+        selectPhoneType(contactData.get("tel").toString());
+        setCountryCode(contactData.get("country_code").toString());
+        setAreaCode(contactData.get("area").toString());
+        setPhoneNumber(contactData.get("phone_number").toString());
+        return this;
+    }
 
     public void setEmail(String email) {
         logger.info("Entering Email: [" + email + "]");
