@@ -80,8 +80,5 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_phone"),
                                           "VueloHotelCheckOutPageDomesticSucursal", true);
-
-/*        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
     }
 }

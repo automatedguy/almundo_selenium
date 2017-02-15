@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.AutosDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.AutosResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
@@ -31,17 +30,15 @@ public class SucursalesFlowTest extends TestBaseSetup {
     @BeforeClass
     private void initDataTripList() {
         dataManagement.getAutosDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -72,16 +69,12 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         checkOutPage = autosResultsPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("deposit");
-        checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-//        checkOutPage.populateCheckOutPage(carDrivers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "AutosCheckOutPageSucursales");
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("deposit"),
+                dataManagement.getBillingData("local_Billing_sucursales"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "AutosCheckOutPageSucursales");
     }
 }
