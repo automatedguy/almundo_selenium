@@ -36,7 +36,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initContactInfoSectionV3();
     }
 
-    private static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
+    public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;
         try {
             isRequiered = Boolean.parseBoolean(JSONElementsRead.get(element).toString());
