@@ -16,7 +16,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public static JSONObject checkOutPageElements = null;
 
-    public PassengerSectionV3 passengerSectionV3() {
+    public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
     }
 
@@ -54,7 +54,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
         getCheckOutPageElements(productCheckOutPage);
         populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
-        populatePassengerSection(passengerList);
+
+        passengerSection().populatePassengerSection(passengerList);
+        //populatePassengerSection(passengerList);
+
         pickUpLocationSection().populatePickUpLocationSection();
         populateBillingSection(billingData);
         populateContactSection(contactData);
@@ -123,13 +126,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
         JSONObject passengerInfo;
 
-        passengerSectionV3().setFirstNameList();
-        passengerSectionV3().setLastNameList();
-        passengerSectionV3().setDocTypeList();
-        passengerSectionV3().setDocNumberList();
-        passengerSectionV3().setBirthdayList();
-        passengerSectionV3().setGenderList();
-        passengerSectionV3().setNationalityList();
+        passengerSection().setFirstNameList();
+        passengerSection().setLastNameList();
+        passengerSection().setDocTypeList();
+        passengerSection().setDocNumberList();
+        passengerSection().setBirthdayList();
+        passengerSection().setGenderList();
+        passengerSection().setNationalityList();
 
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
 
