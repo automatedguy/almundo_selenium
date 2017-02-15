@@ -55,7 +55,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
         populatePassengerSection(passengerList);
-        populatePickUpLocationSection();
+        pickUpLocationSection().populatePickUpLocationSection();
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
@@ -73,7 +73,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
         populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);
         populatePassengerSection(passengerList);
-        populatePickUpLocationSection();
+        pickUpLocationSection().populatePickUpLocationSection();
         populateBillingSection(billingData);
         populateContactSection(contactData);
         acceptConditions();
@@ -168,13 +168,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
             if(isElementRequiered(checkOutPageElements, "nationality")) {
                     passengerSection.setNationality(passengerIndex, passengerInfo.get("nationality").toString());
             }
-        }
-        return this;
-    }
-
-    private CheckOutPageV3 populatePickUpLocationSection(){
-        if(isElementRequiered(checkOutPageElements, "PickUpLocationSection")){
-            pickUpLocationSection().selectAgency();
         }
         return this;
     }
