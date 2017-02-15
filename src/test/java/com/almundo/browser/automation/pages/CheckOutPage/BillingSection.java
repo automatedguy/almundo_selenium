@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPage;
 
-import com.almundo.browser.automation.utils.JsonRead;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,9 +14,6 @@ public class BillingSection extends CheckOutPage {
     public BillingSection(WebDriver driver) {
         super(driver);
     }
-
-    private static JSONObject billingsList = null;
-    public static JSONObject billingData = null;
 
     //############################################### Locators ##############################################
 
@@ -53,7 +49,6 @@ public class BillingSection extends CheckOutPage {
 
     @FindBy(id = "address_city")
     private WebElement address_city;
-
 
     //############################################### Actions ##############################################
 
@@ -97,88 +92,81 @@ public class BillingSection extends CheckOutPage {
     }
 
 
-    public BillingSection selectBillingFiscalType(String billingFiscalType) {
+    private BillingSection selectBillingFiscalType(String billingFiscalType) {
         logger.info("Selecting Situación: [" + billingFiscalType + "]");
         Select SITUACION_FISCAL_SELECT = new Select(billing_fiscal_type);
         SITUACION_FISCAL_SELECT.selectByVisibleText(billingFiscalType);
         return this;
     }
 
-    public BillingSection selectBillingDocumentType(String billingDocumentType){
+    private BillingSection selectBillingDocumentType(String billingDocumentType){
         logger.info("Selecting Tipo de Documento: [" + billingDocumentType + "]");
         Select tipoDeDocumento = new Select(billing_document_type);
         tipoDeDocumento.selectByVisibleText(billingDocumentType);
         return this;
     }
 
-    public BillingSection setBillingFiscalDocument(String cuil) {
+    private BillingSection setBillingFiscalDocument(String cuil) {
         logger.info("Entering CUIL/CUIT: [" + cuil + "]");
         this.billing_fiscal_document.clear();
         this.billing_fiscal_document.sendKeys(cuil);
         return this;
     }
 
-    public BillingSection setBillingFiscalName(String billingFiscalName) {
+    private BillingSection setBillingFiscalName(String billingFiscalName) {
         logger.info("Entering Nombre o Razón Social: [" + billingFiscalName + "]");
         fiscal_name.clear();
         fiscal_name.sendKeys(billingFiscalName);
         return this;
     }
 
-    public BillingSection setBillingAddress(String billingAddress) {
+    private BillingSection setBillingAddress(String billingAddress) {
         logger.info("Entering Domicilio: [" + billingAddress + "]");
         billing_address.clear();
         billing_address.sendKeys(billingAddress);
         return this;
     }
 
-    public BillingSection setAddressNumber(String addressNumber) {
+    private BillingSection setAddressNumber(String addressNumber) {
         logger.info("Entering Número: [" + addressNumber + "]");
         address_number.clear();
         address_number.sendKeys(addressNumber);
         return this;
     }
 
-    public BillingSection setAddressFloor(String addressFloor) {
+    private BillingSection setAddressFloor(String addressFloor) {
         logger.info("Entering Piso: [" + addressFloor + "]");
         address_floor.clear();
         address_floor.sendKeys(addressFloor);
         return this;
     }
 
-    public BillingSection setAddressDepartment(String addressDepartment) {
+    private BillingSection setAddressDepartment(String addressDepartment) {
         logger.info("Entering Departamento: [" + addressDepartment + "]");
         address_department.clear();
         address_department.sendKeys(addressDepartment);
         return this;
     }
 
-    public BillingSection setAddressPostalCode(String addressPostalCcode) {
+    private BillingSection setAddressPostalCode(String addressPostalCcode) {
         logger.info("Entering Código Postal: [" + addressPostalCcode + "]");
         address_postal_code.clear();
         address_postal_code.sendKeys(addressPostalCcode);
         return this;
     }
 
-    public BillingSection setAddressState(String addressState) {
+    private BillingSection setAddressState(String addressState) {
         logger.info("Entering Provincia: [" + addressState + "]");
         address_state.clear();
         address_state.sendKeys(addressState);
         return this;
     }
 
-    public BillingSection setAddressCity(String addressCity) {
+    private BillingSection setAddressCity(String addressCity) {
         logger.info("Entering Ciudad: [" + addressCity + "]");
         address_city.clear();
         address_city.sendKeys(addressCity);
         return this;
     }
 
-    public static void getBillingList()  {
-        billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getBillingData(String dataSet)  {
-        billingData = JsonRead.getJsonDataObject(billingsList, dataSet, countryPar.toLowerCase() + "_data.json");
-    }
 }

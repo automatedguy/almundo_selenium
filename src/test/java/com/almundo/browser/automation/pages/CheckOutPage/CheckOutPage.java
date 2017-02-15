@@ -80,7 +80,7 @@ public class CheckOutPage extends TestBaseSetup {
 
         getCheckOutPageElements(productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);
-        populatePickUpLocationSection();
+        pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
@@ -92,23 +92,16 @@ public class CheckOutPage extends TestBaseSetup {
     public CheckOutPage populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage, boolean includeAssistance) {
 
         getCheckOutPageElements(productCheckOutPage);
+
         if(includeAssistance){selectAssistanceRdb();}
 
         passengerSection().populatePassengerSection(passengerList);
-        populatePickUpLocationSection();
+        pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();
 
-        return this;
-    }
-
-
-    private CheckOutPage populatePickUpLocationSection(){
-        if(isElementRequiered(checkOutPageElements, "PickUpLocationSection")){
-            pickUpLocationSection().selectAgency();
-        }
         return this;
     }
 

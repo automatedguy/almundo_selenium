@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPage;
 
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,8 +19,6 @@ public class PassengerSection extends CheckOutPage {
         super(driver);
     }
 
-    private static JSONObject passengersList = null;
-    public static JSONObject passengerData = null;
     public static JSONArray passengerJsonList = new JSONArray();
 
     //############################################### Actions ###############################################
@@ -85,7 +82,7 @@ public class PassengerSection extends CheckOutPage {
     }
 
 
-    public PassengerSection setFirstName(String firstName, String firstNamePassenger){
+    private PassengerSection setFirstName(String firstName, String firstNamePassenger){
         PageUtils.waitElementForVisibility(driver, By.id(firstName), 45, "First Name text box");
         WebElement elementToPopulate = driver.findElement(By.id(firstName));
 
@@ -95,7 +92,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setlastName(String lastName, String lastNamePassenger){
+    private PassengerSection setlastName(String lastName, String lastNamePassenger){
         WebElement elementToPopulate = driver.findElement(By.id(lastName));
 
         logger.info("Entering Apellido/s: [" + lastNamePassenger + "]");
@@ -104,7 +101,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setDocumentType(String documentType, String documentTypePassenger){
+    private PassengerSection setDocumentType(String documentType, String documentTypePassenger){
         WebElement elementToPopulate = driver.findElement(By.id(documentType));
 
         logger.info("Selecting Tipo de documento: [" + documentTypePassenger + "]");
@@ -113,7 +110,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setDocumentNumber(String documentNumber, String documentNumberPassenger){
+    private PassengerSection setDocumentNumber(String documentNumber, String documentNumberPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(documentNumber));
 
         logger.info("Entering Número: [" + documentNumberPassenger + "]");
@@ -122,7 +119,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setDocumentEmisor(String documentEmisor, String documentEmisorPassenger){
+    private PassengerSection setDocumentEmisor(String documentEmisor, String documentEmisorPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(documentEmisor));
 
         logger.info("Selecting País emisor del pasaporte: [" + documentEmisorPassenger + "]");
@@ -131,7 +128,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setDocumentExpiration(String documentExpiration, String documentExpirationPassenger){
+    private PassengerSection setDocumentExpiration(String documentExpiration, String documentExpirationPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(documentExpiration));
 
         logger.info("Entering Fecha de venc. del documento: [" + documentExpirationPassenger + "]");
@@ -140,7 +137,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setBirthDay(String birthday, String birthdayPassenger){
+    private PassengerSection setBirthDay(String birthday, String birthdayPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(birthday));
 
         logger.info("Entering Fecha de Nacimiento: [" + birthdayPassenger + "]");
@@ -149,7 +146,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setGender(String gender, String genderPassenger){
+    private PassengerSection setGender(String gender, String genderPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(gender));
 
         logger.info("Selecting Sexo: [" + genderPassenger + "]");
@@ -158,7 +155,7 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-    public PassengerSection setNationality(String nationality, String nationalityPassenger){
+    private PassengerSection setNationality(String nationality, String nationalityPassenger){
         WebElement elementToPopulate = driver.findElement(By.id(nationality));
 
         logger.info("Selecting Nacionalidad: [" + nationalityPassenger + "]");
@@ -167,13 +164,4 @@ public class PassengerSection extends CheckOutPage {
         return this;
     }
 
-
-    public static void getPassengersList()  {
-        passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getPassengerData(String dataSet)  {
-        passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
-        passengerJsonList.add(passengerData);
-    }
 }

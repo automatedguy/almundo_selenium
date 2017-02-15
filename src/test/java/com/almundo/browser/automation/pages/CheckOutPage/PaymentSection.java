@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPage;
 
-import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -19,9 +18,6 @@ public class PaymentSection extends CheckOutPage {
     public PaymentSection(WebDriver driver) {
         super(driver);
     }
-
-    public static JSONObject paymentList = null;
-    public static JSONObject paymentData;
 
     //############################################### Locators ##############################################
 
@@ -49,19 +45,17 @@ public class PaymentSection extends CheckOutPage {
     @FindBy(id = "document_number")
     private WebElement document_number;
 
-    @FindBy(css = "div:nth-child(1) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    @FindBy(css = "div:nth-child(1) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
     private WebElement pagoEnEfectivoLbl;
 
-    @FindBy(css = "div:nth-child(2) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    @FindBy(css = "div:nth-child(2) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
     private WebElement depositoLbl;
 
-    @FindBy(css = "div:nth-child(3) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    @FindBy(css = "div:nth-child(3) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
     private WebElement transferenciaLbl;
 
-    @FindBy(css = "div:nth-child(4) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 > div > label")
+    @FindBy(css = "div:nth-child(4) > div > div.epp-air-left-24.epp-air-right-24.epp-air-top-16.epp-air-bottom-16 .cards__definition__label")
     private WebElement reservaPor24hsLbl;
-
-
 
     //############################################### Actions ###############################################
 
@@ -118,7 +112,7 @@ public class PaymentSection extends CheckOutPage {
     }
 
 
-    public void selectPaymentQtyOption(int index) {
+    private void selectPaymentQtyOption(int index) {
         List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
 
         PageUtils.scrollToElement(driver, results.get(0));
@@ -126,7 +120,7 @@ public class PaymentSection extends CheckOutPage {
         results.get(index).click();
     }
 
-    public void selectBankOption(String cardName) {
+    private void selectBankOption(String cardName) {
         List<WebElement> cardNames = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>label>span"));
         List<WebElement> radioButtons = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>input"));
 
@@ -144,49 +138,49 @@ public class PaymentSection extends CheckOutPage {
         }
     }
 
-    public void setCardHolder(String cardHolder) {
+    private void setCardHolder(String cardHolder) {
         logger.info("Entering Titular de la tarjeta: [" + cardHolder + "]");
         card_holder.clear();
         card_holder.sendKeys(cardHolder);
     }
 
-    public void setCardNumber(String cardNumber) {
+    private void setCardNumber(String cardNumber) {
         logger.info("Entering Número de tu tarjeta: [" + cardNumber + "]");
         card_number.clear();
         card_number.sendKeys(cardNumber);
     }
 
-    public void setCardExpiration(String expDate) {
+    private void setCardExpiration(String expDate) {
         logger.info("Entering Fecha de vencimiento: [" + expDate + "]");
         card_expire.clear();
         card_expire.sendKeys(expDate);
     }
 
-    public void selectMonthCardExpiration(String monthCardExpiration) {
+    private void selectMonthCardExpiration(String monthCardExpiration) {
         logger.info("Selecting Fecha de vencimiento - Mes: [" + monthCardExpiration + "]");
         Select selectMonthCardExpiration = new Select (month_card_expire);
         selectMonthCardExpiration.selectByVisibleText(monthCardExpiration);
     }
 
-    public void selectYearCardExpiration(String yearCardExpiration) {
+    private void selectYearCardExpiration(String yearCardExpiration) {
         logger.info("Selecting Fecha de vencimiento - Año: [" + yearCardExpiration + "]");
         Select selectYearCardExpiration = new Select (year_card_expire);
         selectYearCardExpiration.selectByVisibleText(yearCardExpiration);
     }
 
-    public void setSecurityCode(String code) {
+    private void setSecurityCode(String code) {
         logger.info("Entering Código de Seguridad: [" + code + "]");
         security_code.clear();
         security_code.sendKeys(code);
     }
 
-    public void selectDocumentType(String documentTypeSelected) {
+    private void selectDocumentType(String documentTypeSelected) {
         logger.info("Selecting Tipo de Documento: [" + documentTypeSelected + "]");
         Select documentTypeSelect = new Select(documentType);
         documentTypeSelect.selectByVisibleText(documentTypeSelected);
     }
 
-    public void setDocumentNumber(String documentNumber) {
+    private void setDocumentNumber(String documentNumber) {
         logger.info("Entering Número de Documento: [" + documentNumber + "]");
         document_number.clear();
         document_number.sendKeys(documentNumber);
@@ -232,13 +226,4 @@ public class PaymentSection extends CheckOutPage {
         return this;
     }
 
-
-
-    public static void getPaymentList()  {
-        paymentList = JsonRead.getJsonDataObject(jsonDataObject, "payment", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getPaymentData(String dataSet)  {
-        paymentData = JsonRead.getJsonDataObject(paymentList, dataSet, countryPar.toLowerCase() + "_data.json");
-    }
 }

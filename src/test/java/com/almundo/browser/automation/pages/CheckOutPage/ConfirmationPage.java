@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
  * Created by gabrielcespedes on 10/01/17.
  */
 public class ConfirmationPage extends BasePage {
+
     public ConfirmationPage(WebDriver iDriver) {
         super(iDriver);
     }
