@@ -166,7 +166,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             }
 
             if(isElementRequiered(checkOutPageElements, "nationality")) {
-                    passengerSection.setNationality(passengerIndex, passengerInfo.get("nationality").toString());
+                passengerSection.setNationality(passengerIndex, passengerInfo.get("nationality").toString());
             }
         }
         return this;
@@ -225,5 +225,4 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
         return this;
     }
-
 }

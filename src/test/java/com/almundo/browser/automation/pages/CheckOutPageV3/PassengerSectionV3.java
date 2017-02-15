@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
@@ -16,7 +15,7 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 12/12/16.
  */
-public class PassengerSectionV3 extends CheckOutPage {
+public class PassengerSectionV3 extends CheckOutPageV3 {
 
     public PassengerSectionV3(WebDriver driver) {
         super(driver);
@@ -60,6 +59,63 @@ public class PassengerSectionV3 extends CheckOutPage {
     private WebElement nationality;
 
     //############################################### Actions ###############################################
+
+    public PassengerSectionV3 populatePassengerSection(JSONArray passengerList){
+
+        // PassengerSectionV3 passengerSection = initPassengerInfoSectionV3();
+        logger.info("------------- Filling Passenger Section -------------");
+
+        JSONObject passengerInfo;
+
+        setFirstNameList();
+        setLastNameList();
+        setDocTypeList();
+        setDocNumberList();
+        setBirthdayList();
+        setGenderList();
+        setNationalityList();
+
+        for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
+
+            logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
+
+            passengerInfo = (JSONObject) passengerList.get(passengerIndex);
+
+            setFirstName(passengerIndex, passengerInfo.get("first_name").toString());
+
+            setlastName(passengerIndex, passengerInfo.get("last_name").toString());
+
+            if(isElementRequiered(checkOutPageElements, "documentType0")) {
+                setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "document_number")){
+                setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "document_emisor")) {
+                setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "document_expiration")) {
+                setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "birthday")) {
+                setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "gender")) {
+                setGender(passengerIndex, passengerInfo.get("gender").toString());
+            }
+
+            if(isElementRequiered(checkOutPageElements, "nationality")) {
+                setNationality(passengerIndex, passengerInfo.get("nationality").toString());
+            }
+        }
+        return this;
+    }
+
 
     public void setFirstNameList() {
         firstNameList = driver.findElements(By.id("first_name"));

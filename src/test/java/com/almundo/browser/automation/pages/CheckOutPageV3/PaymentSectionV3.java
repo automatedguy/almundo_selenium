@@ -65,6 +65,12 @@ public class PaymentSectionV3 extends CheckOutPage {
 
     //############################################### Actions ###############################################
 
+
+
+
+
+
+
     public void clickSeveralCardsCbx () {
         if (!serveralCardsCbx.isSelected()) {
             logger.info("Clicking on [Con 2 Tarjetas] checkbox");
