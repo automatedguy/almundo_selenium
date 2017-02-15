@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
@@ -32,14 +31,12 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getVueloHotelDataTripList();
-
-        checkOutPage = initCheckOutPageV3();
-        checkOutPage.passengerSectionV3().getPassengersList();
-        checkOutPage.paymentSectionV3().getPaymentList();
-        checkOutPage.billingSectionV3().getBillingList();
-        checkOutPage.contactSectionV3().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @BeforeMethod
@@ -50,7 +47,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -72,7 +69,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        //numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -84,24 +81,17 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage = vueloHotelDetailPage.clickComprarV3Btn(0);
 
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSectionV3().getPassengerData("child_female_native");
-
-        checkOutPage.paymentSectionV3().getPaymentData("6_visa_visa");
-        checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
-        checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("child_female_native");
 
         replaceUrl();
 
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSectionV3().passengerJsonList,
-//                checkOutPage.paymentSectionV3().paymentData,
-//                checkOutPage.billingSectionV3().billingData,
-//                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
-
-/*      confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("6_visa_visa"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "VueloHotelCheckOutPageInternationalV3");
     }
 
     @Test
@@ -121,7 +111,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-       // numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -133,26 +123,18 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage = vueloHotelDetailPage.clickComprarV3Btn(0);
 
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSectionV3().getPassengerData("child_female_native");
-
-        checkOutPage.paymentSectionV3().getPaymentData("6_visa_visa");
-        checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
-        checkOutPage.contactSectionV3().getContactData("contact_cell_phone");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("child_female_native");
 
         replaceUrl();
 
         checkOutPage.paymentSectionV3().clickSeveralCardsCbx();
 
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSectionV3().passengerJsonList,
-//                checkOutPage.paymentSectionV3().paymentData,
-//                checkOutPage.paymentSectionV3().paymentData,
-//                checkOutPage.billingSectionV3().billingData,
-//                checkOutPage.contactSectionV3().contactData, "VueloHotelCheckOutPageInternationalV3");
-
-/*      confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());*/
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("6_visa_visa"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "VueloHotelCheckOutPageInternationalV3");
     }
 }
