@@ -31,7 +31,7 @@ public class FlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getVueloHotelDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
@@ -87,10 +87,10 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "VueloHotelCheckOutPageInternational");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "VueloHotelCheckOutPageInternational");
     }
 
     @Test
@@ -127,9 +127,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "VueloHotelCheckOutPageDomestic");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "VueloHotelCheckOutPageDomestic");
     }
 }

@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -30,14 +29,12 @@ public class LoginFlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getVueloHotelDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @BeforeMethod
@@ -50,7 +47,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -72,7 +69,7 @@ public class LoginFlowTest extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        //numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -84,21 +81,16 @@ public class LoginFlowTest extends TestBaseSetup {
 
         checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                                          checkOutPage.passengerSection().passengerJsonList,
-//                                          checkOutPage.paymentSection().paymentData,
-//                                          checkOutPage.billingSection().billingData,
-//                                          checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageInternational");
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "VueloHotelCheckOutPageInternational");
     }
 
     @Test
@@ -118,7 +110,7 @@ public class LoginFlowTest extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        //numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
@@ -130,19 +122,14 @@ public class LoginFlowTest extends TestBaseSetup {
 
         checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("child_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomestic");
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "VueloHotelCheckOutPageDomestic");
     }
 }

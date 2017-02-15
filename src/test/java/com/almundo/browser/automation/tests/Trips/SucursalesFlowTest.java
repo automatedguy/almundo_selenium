@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -30,19 +29,17 @@ public class SucursalesFlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getVueloHotelDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -64,7 +61,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
         vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        //numPassengers = vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
 
@@ -76,20 +73,15 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("child_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("deposit");
-        checkOutPage.billingSection().getBillingData("local_Billing_sucursales");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "VueloHotelCheckOutPageDomesticSucursal");
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("deposit"),
+                                          dataManagement.getBillingData("local_Billing_sucursales"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "VueloHotelCheckOutPageDomesticSucursal");
 
 /*        confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());*/
