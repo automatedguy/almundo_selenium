@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -30,7 +29,7 @@ public class LoginFlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getHotelesDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
@@ -48,7 +47,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -108,7 +107,7 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
         hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
-        //numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
@@ -119,18 +118,13 @@ public class LoginFlowTest extends TestBaseSetup {
 
         checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("adult_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_phone");
-
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_phone"),
+                                          "HotelesCheckOutPageDomestic");
     }
 }

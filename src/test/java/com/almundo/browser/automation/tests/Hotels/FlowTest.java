@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -48,7 +47,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////

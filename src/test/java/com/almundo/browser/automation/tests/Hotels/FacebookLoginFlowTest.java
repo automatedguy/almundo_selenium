@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.FacebookLoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.HotelesDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -31,14 +30,12 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getHotelesDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @BeforeMethod
@@ -53,8 +50,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
-
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -62,8 +58,6 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
     @Test
     public void hotelIntLoginReservationFlow() {
         logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
-
-
 
         PageUtils.waitElementForClickable(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -77,7 +71,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, dataManagement.startDate);
         hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, dataManagement.endDate);
 
-        //numPassengers = hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
@@ -88,22 +82,16 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
 
         checkOutPage = hotelesDetailPage.clickReservarAhoraBtn();
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_female_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData("child_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-//        checkOutPage.populateCheckOutPage(numPassengers,
-//                                         checkOutPage.passengerSection().passengerJsonList,
-//                                         checkOutPage.paymentSection().paymentData,
-//                                         checkOutPage.billingSection().billingData,
-//                                         checkOutPage.contactSection().contactData, "HotelesCheckOutPageInternational");
-
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "HotelesCheckOutPageInternational");
     }
 
     @Test
@@ -136,16 +124,10 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
         checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_phone");
-
-       // checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "HotelesCheckOutPageDomestic");
-
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_phone"),
+                                          "HotelesCheckOutPageDomestic");
     }
 }

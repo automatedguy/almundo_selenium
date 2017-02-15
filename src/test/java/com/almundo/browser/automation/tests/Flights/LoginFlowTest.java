@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
@@ -28,14 +27,12 @@ public class LoginFlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
+    private void initDataLists() {
         dataManagement.getVuelosDataTripList();
-
-        checkOutPage = initCheckOutPage();
-        checkOutPage.passengerSection().getPassengersList();
-        checkOutPage.paymentSection().getPaymentList();
-        checkOutPage.billingSection().getBillingList();
-        checkOutPage.contactSection().getContactList();
+        dataManagement.getPassengersList();
+        dataManagement.getPaymentList();
+        dataManagement.getBillingList();
+        dataManagement.getContactList();
     }
 
     @BeforeMethod
@@ -48,8 +45,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
-
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -71,7 +67,7 @@ public class LoginFlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        //numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);
@@ -84,21 +80,16 @@ public class LoginFlowTest extends TestBaseSetup {
         vuelosResultsPage.clickTicketVuelta();
         checkOutPage = vuelosResultsPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_male_native");
-        checkOutPage.passengerSection().getPassengerData("adult_female_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
-        checkOutPage.passengerSection().getPassengerData("child_male_native");
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_cell_phone");
-
-        //checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "VuelosCheckOutPageInternational");
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "VuelosCheckOutPageInternational");
     }
 
     @Test
@@ -118,7 +109,7 @@ public class LoginFlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        //numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);
@@ -131,18 +122,14 @@ public class LoginFlowTest extends TestBaseSetup {
         vuelosResultsPage.clickTicketVuelta();
         checkOutPage = vuelosResultsPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_phone");
-
-        //checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
-
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_phone"),
+                                          "VuelosCheckOutPageDomestic");
     }
+
 }
