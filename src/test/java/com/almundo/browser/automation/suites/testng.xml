@@ -16,6 +16,7 @@
 
             <!--Checkout V3-->
             <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowCheckOutV3Test"/>-->
+<<<<<<< HEAD
             <!--<class name="com.almundo.browser.automation.tests.Trips.FlowCheckOutV3Test"/>-->
 
             <!--Club AlMundo-->
@@ -25,17 +26,36 @@
             <!--<class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>-->
 
             <!--Sucursales channel-->
+=======
+            <class name="com.almundo.browser.automation.tests.Trips.FlowCheckOutV3Test"/>
+
+            <!--&lt;!&ndash;Club AlMundo&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>-->
+
+            <!--&lt;!&ndash;Home Page&ndash;&gt;-->
+            <!--<class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>-->
+
+            <!--&lt;!&ndash;Sucursales channel&ndash;&gt;-->
+>>>>>>> d75d79a45ab5c32fe5f2a55a2d7565488eda8205
             <!--<class name="com.almundo.browser.automation.tests.Hotels.SucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Flights.SucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Cars.SucursalesFlowTest"/>-->
 
+<<<<<<< HEAD
             <!--Login flows-->
+=======
+            <!--&lt;!&ndash;Login flows&ndash;&gt;-->
+>>>>>>> d75d79a45ab5c32fe5f2a55a2d7565488eda8205
             <!--<class name="com.almundo.browser.automation.tests.Hotels.LoginFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Flights.LoginFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Trips.LoginFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Cars.LoginFlowTest"/>-->
+<<<<<<< HEAD
             <class name="com.almundo.browser.automation.tests.Hotels.FacebookLoginFlowTest"/>
+=======
+            <!--<class name="com.almundo.browser.automation.tests.Hotels.FacebookLoginFlowTest"/>-->
+>>>>>>> d75d79a45ab5c32fe5f2a55a2d7565488eda8205
 
         </classes>
     </test>

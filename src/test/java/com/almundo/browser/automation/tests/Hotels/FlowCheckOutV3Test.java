@@ -34,7 +34,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         dataManagement.getHotelesDataTripList();
 
         checkOutPage = initCheckOutPageV3();
-        checkOutPage.passengerSectionV3().getPassengersList();
+        checkOutPage.passengerSection().getPassengersList();
         checkOutPage.paymentSectionV3().getPaymentList();
         checkOutPage.billingSectionV3().getBillingList();
         checkOutPage.contactSectionV3().getContactList();
@@ -81,8 +81,8 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         checkOutPage = hotelesDetailPage.clickReservarAhoraV3Btn();
 
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_native");
-        checkOutPage.passengerSectionV3().getPassengerData("adult_female_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
+        checkOutPage.passengerSection().getPassengerData("adult_female_native");
 
         checkOutPage.paymentSectionV3().getPaymentData("1_amex_amex");
         checkOutPage.billingSectionV3().getBillingData("local_Billing_v2");
@@ -91,7 +91,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         replaceUrl();
 
         //checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSectionV3().passengerJsonList,
+//                checkOutPage.passengerSection().passengerJsonList,
 //                checkOutPage.paymentSectionV3().paymentData,
 //                checkOutPage.billingSectionV3().billingData,
 //                checkOutPage.contactSectionV3().contactData, "HotelesCheckOutPageDomesticV3");
