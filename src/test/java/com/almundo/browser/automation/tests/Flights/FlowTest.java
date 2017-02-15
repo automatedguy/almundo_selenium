@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
-import com.almundo.browser.automation.pages.CheckOutPage.PassengerSection;
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
@@ -45,7 +44,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        PassengerSection.passengerJsonList = new JSONArray();
+        dataManagement.passengerJsonList = new JSONArray();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -92,7 +91,7 @@ public class FlowTest extends TestBaseSetup {
                "VuelosCheckOutPageInternational");
     }
 
-/*    @Test
+    @Test
     public void vueloDomReservationFlow() {
         logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
 
@@ -109,7 +108,7 @@ public class FlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        //numPassengers = vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        basePage.vuelosDataTrip().selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);
@@ -122,18 +121,14 @@ public class FlowTest extends TestBaseSetup {
         vuelosResultsPage.clickTicketVuelta();
         checkOutPage = vuelosResultsPage.clickComprarBtn(0);
 
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
-        checkOutPage.passengerSection().getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPage.paymentSection().getPaymentData("1_amex_amex");
-        checkOutPage.billingSection().getBillingData("local_Billing_v2");
-        checkOutPage.contactSection().getContactData("contact_phone");
-
-        //checkOutPage.populateCheckOutPage(numPassengers,
-//                checkOutPage.passengerSection().passengerJsonList,
-//                checkOutPage.paymentSection().paymentData,
-//                checkOutPage.billingSection().billingData,
-//                checkOutPage.contactSection().contactData, "VuelosCheckOutPageDomestic");
-    }*/
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_phone"),
+                "VuelosCheckOutPageDomestic");
+    }
 
 }

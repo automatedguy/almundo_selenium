@@ -22,8 +22,8 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject autosDataTripList = null;
     private JSONObject autosDataTripItinerary = null;
 
-    private JSONObject passengersList = null;
-    public JSONObject passengerData = null;
+    public JSONObject passengersList = null;
+    private JSONObject passengerData = null;
     public JSONArray passengerJsonList = new JSONArray();
 
     private JSONObject paymentList = null;
