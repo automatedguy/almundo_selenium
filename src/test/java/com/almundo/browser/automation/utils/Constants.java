@@ -28,5 +28,8 @@ public class Constants extends TestBaseSetup {
     public static final String ENTRE_2_11 = "Entre 2 y 11 años";
     public static final String MAYOR_11 = "Más de 11 años";
 
+    /* FLIGHTS CONSTANTS TYPE */
+    public static final String ONE_WAY = "Solo ida";
+    public static final String MULTIDESTINATION = "Varias ciudades";
 
 }

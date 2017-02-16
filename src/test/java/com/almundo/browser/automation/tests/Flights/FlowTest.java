@@ -15,6 +15,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.utils.Constants.ONE_WAY;
+
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -50,7 +52,90 @@ public class FlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void vueloIntReservationFlow() {
+    public void vueloIntOneWayReservationFlow() {
+        logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
+
+        PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
+        basePage.vuelosIcon.click();
+
+        dataManagement.getVuelosDataTripItinerary("miami_10days_2adults_2childs_turista");
+
+        vuelosDataTrip = basePage.vuelosDataTrip();
+
+        vuelosDataTrip.selectFlightType(ONE_WAY);
+
+        vuelosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
+        vuelosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
+
+        vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+
+        vuelosDataTrip.selectClass(dataManagement.flightClass);
+
+        vuelosResultsPage = vuelosDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(vuelosResultsPage.vacancy());
+
+        vuelosResultsPage.clickTicketIdaRdb();
+        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
+
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "VuelosCheckOutPageInternational");
+    }
+
+    @Test
+    public void vueloDomOneWayReservationFlow() {
+        logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
+
+        PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
+        basePage.vuelosIcon.click();
+
+        dataManagement.getVuelosDataTripItinerary("domestic_20days_2adults_todas");
+
+        vuelosDataTrip = basePage.vuelosDataTrip();
+
+        vuelosDataTrip.selectFlightType(ONE_WAY);
+
+        vuelosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        vuelosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
+
+        vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+
+        vuelosDataTrip.selectClass(dataManagement.flightClass);
+
+        vuelosResultsPage = vuelosDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(vuelosResultsPage.vacancy());
+
+        vuelosResultsPage.clickTicketIdaRdb();
+        vuelosResultsPage.clickTicketVuelta();
+        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
+
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_phone"),
+                "VuelosCheckOutPageDomestic");
+    }
+
+    @Test
+    public void vueloIntRoundTripReservationFlow() {
         logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
@@ -92,7 +177,7 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void vueloDomReservationFlow() {
+    public void vueloDomRoundTripReservationFlow() {
         logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
