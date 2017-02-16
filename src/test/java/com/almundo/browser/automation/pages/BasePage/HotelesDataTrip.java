@@ -61,7 +61,7 @@ public class HotelesDataTrip extends BasePage {
         return this;
     }
 
-    public void selectPassenger(int adults, int childs, int rooms) {
+    public HotelesDataTrip selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
@@ -86,6 +86,10 @@ public class HotelesDataTrip extends BasePage {
             }
         }
         listoBtn.click();
+
+        logger.info("Total Adults: [" + adults + "]");
+        logger.info("Total Childs: [" + childs + "]");
+        return this;
     }
 
     public HotelesResultsPage clickBuscarBtn() {

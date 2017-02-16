@@ -39,7 +39,7 @@ public class VueloHotelResultsPage extends TestBaseSetup {
         String cssSelectorNameElegir = ".button.button--secondary.button--block.button--md";
         PageUtils.waitListContainResults(driver, cssSelectorNameElegir, 0);
         List<WebElement> elegirBtn = driver.findElements(By.cssSelector(cssSelectorNameElegir));
-        logger.info("Clicking on Elegir button index: " + index);
+        logger.info("Clicking on Elegir button index: [" + index + "]");
         elegirBtn.get(index).click();
         PageUtils.waitImplicitly(2000);
         return this;

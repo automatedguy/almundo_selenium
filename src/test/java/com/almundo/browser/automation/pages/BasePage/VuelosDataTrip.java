@@ -79,7 +79,7 @@ public class VuelosDataTrip extends BasePage{
         return this;
     }
 
-    public int selectPassenger(int adults, int childs) {
+    public VuelosDataTrip selectPassenger(int adults, int childs) {
         personasTxt.click();
 
         if (adults>1){
@@ -95,7 +95,10 @@ public class VuelosDataTrip extends BasePage{
                 addChildBtn.click();
             }
         }
-        return adults + childs;
+
+        logger.info("Total Adults: [" + adults + "]");
+        logger.info("Total Childs: [" + childs + "]");
+        return this;
     }
 
     public VuelosDataTrip selectChildAgeRange(String ageRange, int childs) {

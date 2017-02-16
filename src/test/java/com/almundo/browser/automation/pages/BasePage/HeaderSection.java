@@ -28,10 +28,11 @@ public class HeaderSection extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public void clickMyAccountMenuLnk() {
+    public HeaderSection clickMyAccountMenuLnk() {
         PageUtils.waitElementForVisibility(driver, myAccountMenuLnk, 10, "My account menu link");
         logger.info("Clicking on My Account menu link");
         myAccountMenuLnk.click();
+        return this;
     }
 
     public List<String> getMyAccountMenuList() {

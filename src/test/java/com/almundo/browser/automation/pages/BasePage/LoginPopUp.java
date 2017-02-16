@@ -39,11 +39,12 @@ public class LoginPopUp extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public void clickCloseLoginBtn() {
+    public BasePage clickCloseLoginBtn() {
         logger.info("Closing Login Pop-Up");
         PageUtils.waitElementForVisibility(driver, closeLoginBtn, 15, "Close Login button");
         closeLoginBtn.click();
         PageUtils.waitImplicitly(2000);
+        return initBasePage();
     }
 
     public LoginPopUp loginUser(String loginEmail, String loginPassword) {

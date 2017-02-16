@@ -66,7 +66,7 @@ public class FlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        basePage.vuelosDataTrip().selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);
@@ -108,7 +108,7 @@ public class FlowTest extends TestBaseSetup {
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
         vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
 
-        basePage.vuelosDataTrip().selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
 
         vuelosDataTrip.selectClass(dataManagement.flightClass);

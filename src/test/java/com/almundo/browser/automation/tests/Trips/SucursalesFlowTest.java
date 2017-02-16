@@ -63,7 +63,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
-        vueloHotelResultsPage = basePage.vueloHotelDataTrip().clickBuscarBtn();
+        vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(vueloHotelResultsPage.vacancy());
 

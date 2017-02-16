@@ -57,12 +57,12 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         hotelesDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkinCalendar, dataManagement.startDate);
-        hotelesDataTrip.selectDateFromCalendar(basePage.hotelesDataTrip().checkoutCalendar, dataManagement.endDate);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelesDataTrip.selectDateFromCalendar(hotelesDataTrip.checkoutCalendar, dataManagement.endDate);
 
         hotelesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
-        hotelesResultsPage = basePage.hotelesDataTrip().clickBuscarBtn();
+        hotelesResultsPage = hotelesDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelesResultsPage.vacancy());
 

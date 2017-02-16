@@ -37,7 +37,7 @@ public class VueloHotelDetailPage extends TestBaseSetup {
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
 
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
-        logger.info("Clicking on Comprar button index: " + index);
+        logger.info("Clicking on Comprar button index: [" + index + "]");
         comprarBtn.get(index).click();
         return initCheckOutPage();
     }

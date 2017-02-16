@@ -72,7 +72,7 @@ public class VueloHotelDataTrip extends BasePage {
         return this;
     }
 
-    public int selectPassenger(int adults, int childs, int rooms) {
+    public VueloHotelDataTrip selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
@@ -98,7 +98,9 @@ public class VueloHotelDataTrip extends BasePage {
         }
         listoBtn.click();
 
-        return adults + childs;
+        logger.info("Total Adults: [" + adults + "]");
+        logger.info("Total Childs: [" + childs + "]");
+        return this;
     }
 
     public VueloHotelResultsPage clickBuscarBtn() {
