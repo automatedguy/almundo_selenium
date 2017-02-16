@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 14/12/16.
  */
-public class VueloHotelDetailPage extends TestBaseSetup {
+public class TripsDetailPage extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
@@ -22,7 +22,7 @@ public class VueloHotelDetailPage extends TestBaseSetup {
 
     //############################################### Actions ##############################################
 
-    public VueloHotelDetailPage clickVerHabitacionBtn() {
+    public TripsDetailPage clickVerHabitacionBtn() {
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
         PageUtils.waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");

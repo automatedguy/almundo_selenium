@@ -23,15 +23,15 @@ public class BasePage extends TestBaseSetup {
         return initHotelesDataTrip();
     }
 
-    public VuelosDataTrip vuelosDataTrip() {
+    public FlightsDataTrip vuelosDataTrip() {
         return initVuelosDataTrip();
     }
 
-    public VueloHotelDataTrip vueloHotelDataTrip() {
+    public TripsDataTrip vueloHotelDataTrip() {
         return initVueloHotelDataTrip();
     }
 
-    public AutosDataTrip autosDataTrip() {
+    public CarsDataTrip autosDataTrip() {
         return initAutosDataTrip();
     }
 

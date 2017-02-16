@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
-import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +14,9 @@ import java.util.Random;
 /**
  * Created by leandro.efron on 6/12/2016.
  */
-public class VueloHotelDataTrip extends BasePage {
+public class TripsDataTrip extends BasePage {
 
-    public VueloHotelDataTrip(WebDriver driver) {
+    public TripsDataTrip(WebDriver driver) {
         super(driver);
     }
 
@@ -54,7 +54,7 @@ public class VueloHotelDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public VueloHotelDataTrip setOrigin(String origin, String originFull) {
+    public TripsDataTrip setOrigin(String origin, String originFull) {
         PageUtils.waitElementForVisibility(driver, originTripsTxt, 10, "Origin text field");
         logger.info("Entering Origin: [" + originFull + "]");
         originTripsTxt.clear();
@@ -63,7 +63,7 @@ public class VueloHotelDataTrip extends BasePage {
         return this;
     }
 
-    public VueloHotelDataTrip setDestination(String destination, String destinationFull) {
+    public TripsDataTrip setDestination(String destination, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTripsTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTripsTxt.clear();
@@ -72,7 +72,7 @@ public class VueloHotelDataTrip extends BasePage {
         return this;
     }
 
-    public VueloHotelDataTrip selectPassenger(int adults, int childs, int rooms) {
+    public TripsDataTrip selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
@@ -103,7 +103,7 @@ public class VueloHotelDataTrip extends BasePage {
         return this;
     }
 
-    public VueloHotelResultsPage clickBuscarBtn() {
+    public TripsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initVueloHotelResultsPage();
