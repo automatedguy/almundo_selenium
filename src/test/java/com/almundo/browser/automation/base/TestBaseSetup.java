@@ -274,8 +274,8 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, GoogleLoginPopUpPasswd.class);
     }
 
-    protected HotelesDataTrip initHotelesDataTrip() {
-        return PageFactory.initElements(driver, HotelesDataTrip.class);
+    protected HotelsDataTrip initHotelesDataTrip() {
+        return PageFactory.initElements(driver, HotelsDataTrip.class);
     }
 
     protected VuelosDataTrip initVuelosDataTrip () {
@@ -346,12 +346,12 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, FooterSectionV3.class);
     }
 
-    protected HotelesResultsPage initHotelesResultsPage() {
-        return PageFactory.initElements(driver, HotelesResultsPage.class);
+    protected HotelsResultsPage initHotelesResultsPage() {
+        return PageFactory.initElements(driver, HotelsResultsPage.class);
     }
 
-    protected HotelesDetailPage initHotelesDetailPage() {
-        return PageFactory.initElements(driver, HotelesDetailPage.class);
+    protected HotelsDetailPage initHotelesDetailPage() {
+        return PageFactory.initElements(driver, HotelsDetailPage.class);
     }
 
     protected VuelosResultsPage initVuelosResultsPage() {

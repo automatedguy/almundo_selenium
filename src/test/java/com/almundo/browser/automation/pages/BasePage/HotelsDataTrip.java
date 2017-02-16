@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
-import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +15,9 @@ import java.util.Random;
 /**
  * Created by leandro.efron on 5/12/2016.
  */
-public class HotelesDataTrip extends BasePage {
+public class HotelsDataTrip extends BasePage {
 
-    public HotelesDataTrip(WebDriver driver) {
+    public HotelsDataTrip(WebDriver driver) {
         super(driver);
     }
 
@@ -52,7 +52,7 @@ public class HotelesDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public HotelesDataTrip setDestination(String destinationAuto, String destinationFull) {
+    public HotelsDataTrip setDestination(String destinationAuto, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTxt.clear();
@@ -61,7 +61,7 @@ public class HotelesDataTrip extends BasePage {
         return this;
     }
 
-    public HotelesDataTrip selectPassenger(int adults, int childs, int rooms) {
+    public HotelsDataTrip selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
@@ -92,7 +92,7 @@ public class HotelesDataTrip extends BasePage {
         return this;
     }
 
-    public HotelesResultsPage clickBuscarBtn() {
+    public HotelsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initHotelesResultsPage();

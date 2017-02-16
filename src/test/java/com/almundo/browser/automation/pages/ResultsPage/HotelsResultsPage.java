@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Created by leandro.efron on 13/12/2016.
  */
-public class HotelesResultsPage extends TestBaseSetup {
+public class HotelsResultsPage extends TestBaseSetup {
 
-    public HotelesResultsPage(WebDriver iDriver) {
+    public HotelsResultsPage(WebDriver iDriver) {
         this.driver = iDriver;
     }
 
@@ -23,7 +23,7 @@ public class HotelesResultsPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public HotelesDetailPage clickVerHotelBtn(int index) {
+    public HotelsDetailPage clickVerHotelBtn(int index) {
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.button-detail", 0);
 
         List<WebElement> verHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary.button--block.button-detail"));
