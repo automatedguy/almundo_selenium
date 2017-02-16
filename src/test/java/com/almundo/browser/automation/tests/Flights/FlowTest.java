@@ -16,6 +16,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.ONE_WAY;
+import static com.almundo.browser.automation.utils.Constants.ROUND_TRIP;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -121,7 +122,6 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(vuelosResultsPage.vacancy());
 
         vuelosResultsPage.clickTicketIdaRdb();
-        vuelosResultsPage.clickTicketVuelta();
         checkOutPage = vuelosResultsPage.clickComprarBtn(0);
 
         dataManagement.getPassengerData("adult_female_foreign");
@@ -144,6 +144,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getVuelosDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         vuelosDataTrip = basePage.vuelosDataTrip();
+
+        vuelosDataTrip.selectFlightType(ROUND_TRIP);
 
         vuelosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         vuelosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -186,6 +188,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getVuelosDataTripItinerary("domestic_20days_2adults_todas");
 
         vuelosDataTrip = basePage.vuelosDataTrip();
+
+        vuelosDataTrip.selectFlightType(ROUND_TRIP);
 
         vuelosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         vuelosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
