@@ -52,6 +52,19 @@ public class VuelosDataTrip extends BasePage{
     @FindBy(name = "class-flights")
     public WebElement classFlightDdl;
 
+    //MULTIDESTINATION
+    @FindBy(css = ".add-leg .txt")
+    public WebElement addLegLnk;
+
+    @FindBy(id = "origin-flights-0")
+    public WebElement originFlights2Txt;
+
+    @FindBy(id = "destination-flights-0")
+    public WebElement destinationFlights2Txt;
+
+    @FindBy(id = "departure-flights-0")
+    public WebElement departureFlights0Calendar;
+
     //############################################### Actions ###############################################
 
     public VuelosDataTrip selectFlightType(String flightType) {
@@ -67,6 +80,16 @@ public class VuelosDataTrip extends BasePage{
         originFlightsTxt.clear();
         originFlightsTxt.sendKeys(origin);
         selectAutoCompleteOption(originFull);
+        return this;
+    }
+
+    public VuelosDataTrip setFlight(String nameAuto, String nameFull, String id) {
+        WebElement originFld = driver.findElement(By.id(id));
+        PageUtils.waitElementForVisibility(driver, originFld, 10, "Text field");
+        logger.info("Entering Flight: [" + nameFull + "]");
+        originFlights2Txt.clear();
+        originFlights2Txt.sendKeys(nameAuto);
+        selectAutoCompleteOption(nameFull);
         return this;
     }
 
