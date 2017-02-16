@@ -37,7 +37,7 @@ public class LoginTest extends TestBaseSetup {
 
     @Test
     public void login_email () {
-        logTestTitle("Login - Login with email - " + countryPar );
+        logTestTitle("Club AlMundo - Login with email - " + countryPar );
         JSONObject userData = dataManagement.getUserData("email");
 
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());

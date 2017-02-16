@@ -7,6 +7,7 @@ import com.almundo.browser.automation.pages.BasePage.VuelosDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
+import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -53,8 +54,8 @@ public class FlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void vueloIntOneWayReservationFlow() {
-        logTestTitle("Vuelo Flow - One Way International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
+    public void oneWay_Int_Booking_Flow() {
+        logTestTitle("Flight Flow - One Way - Int - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -95,8 +96,8 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void vueloDomOneWayReservationFlow() {
-        logTestTitle("Vuelo Flow - One Way Domestic - 20 days - 2 Adults - Todas - " + countryPar );
+    public void oneWay_Dom_Booking_Flow() {
+        logTestTitle("Flight Flow - One Way - Dom - 20 days - 2 Adults - Todas - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -126,7 +127,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
-
+        
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                 dataManagement.getPaymentData("1_amex_amex"),
                 dataManagement.getBillingData("local_Billing_v2"),
@@ -135,8 +136,8 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void vueloIntRoundTripReservationFlow() {
-        logTestTitle("Vuelo Flow - Round Trip International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
+    public void roundTrip_Int_Booking_Flow() {
+        logTestTitle("Flight Flow - Round Trip - Int - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -179,8 +180,8 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void vueloDomRoundTripReservationFlow() {
-        logTestTitle("Vuelo Flow - Round Trip Domestic - 20 days - 2 Adults - Todas - " + countryPar );
+    public void roundTrip_Dom_Booking_Flow() {
+        logTestTitle("Flight Flow - Round Trip - Dom - 20 days - 2 Adults - Todas - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -220,6 +221,51 @@ public class FlowTest extends TestBaseSetup {
                 "VuelosCheckOutPageDomestic");
     }
 
-    
+    @Test
+    public void multiDest_Int_Booking_Flow() {
+        logTestTitle("Flight Flow - Multi Destination - Int - 2 Adults - Turista - " + countryPar );
+
+        PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
+        basePage.vuelosIcon.click();
+
+        dataManagement.getVuelosDataTripItinerary("multiDest_3Flights_2adults_todas");
+
+        vuelosDataTrip = basePage.vuelosDataTrip();
+
+        vuelosDataTrip.selectFlightType(Constants.MULTIDESTINATION);
+        vuelosDataTrip.clickAddLegLnk();
+
+        vuelosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
+        vuelosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlightsCalendar, dataManagement.startDate);
+
+        vuelosDataTrip.setFlight(dataManagement.originAuto2, dataManagement.originFull2, "origin-flights-0");
+        vuelosDataTrip.setFlight(dataManagement.destinationAuto2, dataManagement.destinationFull2, "destination-flights-0");
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlights0Calendar, dataManagement.startDate2);
+
+        vuelosDataTrip.setFlight(dataManagement.originAuto3, dataManagement.originFull3, "origin-flights-1");
+        vuelosDataTrip.setFlight(dataManagement.destinationAuto3, dataManagement.destinationFull3, "destination-flights-1");
+        vuelosDataTrip.selectDateFromCalendar(vuelosDataTrip.departureFlights1Calendar, dataManagement.startDate3);
+
+        vuelosDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        vuelosDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+
+        vuelosDataTrip.selectClass(dataManagement.flightClass);
+
+        vuelosResultsPage = vuelosDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(vuelosResultsPage.vacancy());
+
+        checkOutPage = vuelosResultsPage.clickComprarBtn(0);
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "VuelosCheckOutPageInternational");
+    }
 
 }

@@ -56,16 +56,19 @@ public class VuelosDataTrip extends BasePage{
     @FindBy(css = ".add-leg .txt")
     public WebElement addLegLnk;
 
-    @FindBy(id = "origin-flights-0")
-    public WebElement originFlights2Txt;
-
-    @FindBy(id = "destination-flights-0")
-    public WebElement destinationFlights2Txt;
-
     @FindBy(id = "departure-flights-0")
     public WebElement departureFlights0Calendar;
 
+    @FindBy(id = "departure-flights-1")
+    public WebElement departureFlights1Calendar;
+
     //############################################### Actions ###############################################
+
+    public void clickAddLegLnk() {
+        PageUtils.waitElementForClickable(driver, addLegLnk, 5, "Agregar vuelo link");
+        logger.info("Adding flight leg");
+        addLegLnk.click();
+    }
 
     public VuelosDataTrip selectFlightType(String flightType) {
         Select flightTypeSelect = new Select(flightTypeDdl);
@@ -87,8 +90,8 @@ public class VuelosDataTrip extends BasePage{
         WebElement originFld = driver.findElement(By.id(id));
         PageUtils.waitElementForVisibility(driver, originFld, 10, "Text field");
         logger.info("Entering Flight: [" + nameFull + "]");
-        originFlights2Txt.clear();
-        originFlights2Txt.sendKeys(nameAuto);
+        originFld.clear();
+        originFld.sendKeys(nameAuto);
         selectAutoCompleteOption(nameFull);
         return this;
     }
@@ -143,6 +146,7 @@ public class VuelosDataTrip extends BasePage{
     }
 
     public VuelosResultsPage clickBuscarBtn() {
+        PageUtils.scrollToElement(driver, buscarBtn);
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initVuelosResultsPage();

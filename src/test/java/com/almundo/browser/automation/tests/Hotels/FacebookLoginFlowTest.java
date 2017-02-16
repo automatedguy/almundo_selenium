@@ -57,8 +57,8 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void hotelIntLoginReservationFlow() {
-        logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+    public void fblogin_Int_Booking_Flow() {
+        logTestTitle("Facebook login Hotel Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForClickable(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -96,8 +96,8 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void hotelDomLoginReservationFlow() {
-        logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
+    public void fblogin_Dom_Booking_Flow() {
+        logTestTitle("Facebook login Hotel Flow - Dom - 15 days - 2 Adults - 1 Room - " + countryPar );
 
         PageUtils.waitElementForClickable(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();

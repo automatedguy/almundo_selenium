@@ -36,9 +36,19 @@ public class DataManagement extends TestBaseSetup {
 
     public String originAuto;
     public String originFull;
+    public String originAuto2;
+    public String originFull2;
+    public String originAuto3;
+    public String originFull3;
     public String destinationAuto;
     public String destinationFull;
+    public String destinationAuto2;
+    public String destinationFull2;
+    public String destinationAuto3;
+    public String destinationFull3;
     public int startDate;
+    public int startDate2;
+    public int startDate3;
     public int endDate;
     public int adults;
     public int childs;
@@ -61,11 +71,24 @@ public class DataManagement extends TestBaseSetup {
         originAuto = vueloDataTripItinerary.get("originAuto").toString();
         originFull = vueloDataTripItinerary.get("originFull").toString();
 
+        originAuto2 = vueloDataTripItinerary.get("originAuto2").toString();
+        originFull2 = vueloDataTripItinerary.get("originFull2").toString();
+
+        originAuto3 = vueloDataTripItinerary.get("originAuto3").toString();
+        originFull3 = vueloDataTripItinerary.get("originFull3").toString();
+
         destinationAuto = vueloDataTripItinerary.get("destinationAuto").toString();
         destinationFull = vueloDataTripItinerary.get("destinationFull").toString();
 
+        destinationAuto2 = vueloDataTripItinerary.get("destinationAuto2").toString();
+        destinationFull2 = vueloDataTripItinerary.get("destinationFull2").toString();
+
+        destinationAuto3 = vueloDataTripItinerary.get("destinationAuto3").toString();
+        destinationFull3 = vueloDataTripItinerary.get("destinationFull3").toString();
+
         startDate = Integer.parseInt(vueloDataTripItinerary.get("startDate").toString());
-        endDate = Integer.parseInt(vueloDataTripItinerary.get("endDate").toString());
+        startDate2 = Integer.parseInt(vueloDataTripItinerary.get("startDate2").toString());
+        startDate3 = Integer.parseInt(vueloDataTripItinerary.get("startDate3").toString());
 
         adults = Integer.parseInt(vueloDataTripItinerary.get("adults").toString());
         childs = Integer.parseInt(vueloDataTripItinerary.get("childs").toString());

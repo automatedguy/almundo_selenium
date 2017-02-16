@@ -51,8 +51,43 @@ public class LoginFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void autosDomReservationFlow() {
-        logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
+    public void login_Int_Booking_Flow() {
+        logTestTitle("Login Cars Flow - International - 10 days - " + countryPar );
+
+        PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
+        basePage.autosIcon.click();
+
+        dataManagement.getAutosDataTripItinerary("miami_10days_entre_21_24");
+
+        autosDataTrip = basePage.autosDataTrip();
+
+        autosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        autosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+
+        autosDataTrip.selectDateFromCalendar(autosDataTrip.pickUpDateCalendar, dataManagement.startDate);
+        autosDataTrip.selectDateFromCalendar(autosDataTrip.dropOffDateCalendar, dataManagement.endDate);
+
+        autosDataTrip.selectPickUpTime(dataManagement.pickUpTime);
+        autosDataTrip.selectDropOffTime(dataManagement.dropOffTime);
+
+        autosDataTrip.selectAgeRange(dataManagement.ageRange);
+
+        autosResultsPage = autosDataTrip.clickBuscarBtn();
+
+        checkOutPage = autosResultsPage.clickReservarAhoraBtn();
+
+        dataManagement.getPassengerData("adult_male_native");
+
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
+                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "AutosCheckOutPage");
+    }
+
+    @Test
+    public void login_Dom_Booking_Flow() {
+        logTestTitle("Login Cars Flow - Domestic - 10 days - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();
@@ -83,41 +118,6 @@ public class LoginFlowTest extends TestBaseSetup {
                                          dataManagement.getBillingData("local_Billing_v2"),
                                          dataManagement.getContactData("contact_cell_phone"),
                                          "AutosCheckOutPage");
-    }
-
-    @Test
-    public void autosIntReservationFlow() {
-        logTestTitle("Autos Flow - International - 10 days - " + countryPar );
-
-        PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
-        basePage.autosIcon.click();
-
-        dataManagement.getAutosDataTripItinerary("miami_10days_entre_21_24");
-
-        autosDataTrip = basePage.autosDataTrip();
-
-        autosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        autosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-
-        autosDataTrip.selectDateFromCalendar(autosDataTrip.pickUpDateCalendar, dataManagement.startDate);
-        autosDataTrip.selectDateFromCalendar(autosDataTrip.dropOffDateCalendar, dataManagement.endDate);
-
-        autosDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-        autosDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-
-        autosDataTrip.selectAgeRange(dataManagement.ageRange);
-
-        autosResultsPage = autosDataTrip.clickBuscarBtn();
-
-        checkOutPage = autosResultsPage.clickReservarAhoraBtn();
-
-        dataManagement.getPassengerData("adult_male_native");
-
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "AutosCheckOutPage");
     }
 
 }

@@ -53,8 +53,8 @@ public class FlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void hotelIntReservationFlow() {
-        logTestTitle("Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+    public void int_Booking_Flow() {
+        logTestTitle("Hotel Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();
@@ -92,8 +92,8 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void hotelDomReservationFlow() {
-        logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
+    public void dom_Booking_Flow() {
+        logTestTitle("Hotel Flow - Dom - 15 days - 2 Adults - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
         basePage.hotelesIcon.click();

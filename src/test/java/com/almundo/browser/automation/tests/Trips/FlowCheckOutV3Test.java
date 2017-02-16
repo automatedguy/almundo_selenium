@@ -51,8 +51,8 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void vueloHotelIntReservationFlow() {
-        logTestTitle("Vuelo+Hotel - Int - 20 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+    public void int_Booking_Flow() {
+        logTestTitle("Trips - Int - 20 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
@@ -93,8 +93,8 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     }
 
     @Test
-    public void vueloHotel_2CreditCard() {
-        logTestTitle("Vuelo+Hotel - 2 Credit Card payment - " + countryPar );
+    public void twoCreditCard_Booking_Flow() {
+        logTestTitle("Trips - 2 Credit Card payment - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();

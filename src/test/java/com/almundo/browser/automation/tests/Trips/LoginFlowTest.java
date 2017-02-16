@@ -53,8 +53,8 @@ public class LoginFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void vueloHotelIntLoginReservationFlow() {
-        logTestTitle("Vuelo+Hotel Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+    public void login_Int_Booking_Flow() {
+        logTestTitle("Login Trips Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
@@ -94,8 +94,8 @@ public class LoginFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void vueloHotelDomLoginReservationFlow() {
-        logTestTitle("Vuelo+Hotel Flow - Domestic - 20 days - 2 Adults/1 Child - 1 Room - " + countryPar );
+    public void login_Dom_Booking_Flow() {
+        logTestTitle("Login Trips Flow - Domestic - 20 days - 2 Adults/1 Child - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();

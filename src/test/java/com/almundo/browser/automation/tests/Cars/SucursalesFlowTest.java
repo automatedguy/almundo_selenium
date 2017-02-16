@@ -44,8 +44,8 @@ public class SucursalesFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void autosDomReservationFlow() {
-        logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
+    public void suc_Dom_Booking_Flow() {
+        logTestTitle("Sucursales Autos Flow - Domestic - 10 days - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();

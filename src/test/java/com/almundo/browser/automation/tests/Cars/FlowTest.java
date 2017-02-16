@@ -49,8 +49,8 @@ public class FlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void autosDomReservationFlow() {
-        logTestTitle("Autos Flow - Domestic - 10 days - " + countryPar );
+    public void dom_Booking_Flow() {
+        logTestTitle("Cars Flow - Domestic - 10 days - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();
@@ -84,8 +84,8 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void autosIntReservationFlow() {
-        logTestTitle("Autos Flow - International - 10 days - " + countryPar );
+    public void int_Booking_Flow() {
+        logTestTitle("Cars Flow - International - 10 days - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
         basePage.autosIcon.click();

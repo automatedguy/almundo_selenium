@@ -45,8 +45,8 @@ public class SucursalesFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void vueloHotelDomReservationFlow() {
-        logTestTitle("Vuelo+Hotel Flow - Domestic - 20 days - 2 Adults/1 Child - 1 Room - " + countryPar );
+    public void suc_Dom_Booking_Flow() {
+        logTestTitle("Sucursales Trips Flow - Domestic - 20 days - 2 Adults/1 Child - 1 Room - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vueloHotelIcon, 10, "Vuelo+Hotel icon");
         basePage.vueloHotelIcon.click();
