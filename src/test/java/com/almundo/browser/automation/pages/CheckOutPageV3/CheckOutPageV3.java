@@ -86,7 +86,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         footerSection.acceptTermsAndConditions();
         if(isElementRequiered(checkOutPageElements, "accepted")) {
             footerSection.acceptItinerary();
-            footerSection.confirmarClick();
+            footerSection.clickConfirmarBtn();
         }
         return this;
     }

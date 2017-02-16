@@ -43,7 +43,7 @@ public class FooterSectionV3 extends CheckOutPage {
         return this;
     }
 
-    public FooterSectionV3 confirmarClick() {
+    public FooterSectionV3 clickConfirmarBtn() {
         PageUtils.waitElementForVisibility(driver, confirmar, 10, "Confirmar Button");
         logger.info("Clicking on Confirmar button...");
         confirmar.click();
