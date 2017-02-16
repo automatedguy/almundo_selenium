@@ -53,7 +53,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void vueloIntOneWayReservationFlow() {
-        logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
+        logTestTitle("Vuelo Flow - One Way International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -95,7 +95,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void vueloDomOneWayReservationFlow() {
-        logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
+        logTestTitle("Vuelo Flow - One Way Domestic - 20 days - 2 Adults - Todas - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -136,7 +136,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void vueloIntRoundTripReservationFlow() {
-        logTestTitle("Vuelo Flow - International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
+        logTestTitle("Vuelo Flow - Round Trip International - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -178,7 +178,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void vueloDomRoundTripReservationFlow() {
-        logTestTitle("Vuelo Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
+        logTestTitle("Vuelo Flow - Round Trip Domestic - 20 days - 2 Adults - Todas - " + countryPar );
 
         PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
         basePage.vuelosIcon.click();
@@ -215,5 +215,7 @@ public class FlowTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_phone"),
                 "VuelosCheckOutPageDomestic");
     }
+
+    
 
 }
