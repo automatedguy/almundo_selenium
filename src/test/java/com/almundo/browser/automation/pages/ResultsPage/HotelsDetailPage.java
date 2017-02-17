@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by leandro.efron on 13/12/2016.
  */
-public class HotelesDetailPage extends TestBaseSetup {
+public class HotelsDetailPage extends TestBaseSetup {
 
-    public HotelesDetailPage(WebDriver iDriver) {
+    public HotelsDetailPage(WebDriver iDriver) {
         this.driver = iDriver;
     }
 
@@ -27,7 +27,7 @@ public class HotelesDetailPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public HotelesDetailPage clickVerHabitacionesBtn() {
+    public HotelsDetailPage clickVerHabitacionesBtn() {
         PageUtils.waitElementForVisibility(driver, verHabitacionesBtn, 30, "Ver Habitaciones button");
         logger.info("Clicking on Ver Habitaciones button");
         verHabitacionesBtn.click();

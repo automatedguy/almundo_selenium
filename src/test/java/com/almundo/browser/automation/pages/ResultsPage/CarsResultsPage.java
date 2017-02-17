@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 20/12/16.
  */
-public class AutosResultsPage extends TestBaseSetup {
+public class CarsResultsPage extends TestBaseSetup {
 
-    public AutosResultsPage(WebDriver iDriver) {
+    public CarsResultsPage(WebDriver iDriver) {
         this.driver = iDriver;
     }
 

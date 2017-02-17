@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
-import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,28 +11,26 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by leandro.efron on 6/12/2016.
- */
-public class VueloHotelDataTrip extends BasePage {
 
-    public VueloHotelDataTrip(WebDriver driver) {
+/**
+ * Created by leandro.efron on 5/12/2016.
+ */
+public class HotelsDataTrip extends BasePage {
+
+    public HotelsDataTrip(WebDriver driver) {
         super(driver);
     }
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "origin-trips")
-    public WebElement originTripsTxt;
+    @FindBy(id = "destination-hotels")
+    public WebElement destinationTxt;
 
-    @FindBy(id = "destination-trips")
-    public WebElement destinationTripsTxt;
+    @FindBy(id = "checkin-hotels")
+    public WebElement checkinCalendar;
 
-    @FindBy(id = "departure-trips")
-    public WebElement departureCalendar;
-
-    @FindBy(id = "arrival-trips")
-    public WebElement arrivalCalendar;
+    @FindBy(id = "checkout-hotels")
+    public WebElement checkoutCalendar;
 
     @FindBy(css = ".row-rooms>.sub")
     public WebElement subRoomBtn;
@@ -54,25 +52,16 @@ public class VueloHotelDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public VueloHotelDataTrip setOrigin(String origin, String originFull) {
-        PageUtils.waitElementForVisibility(driver, originTripsTxt, 10, "Origin text field");
-        logger.info("Entering Origin: [" + originFull + "]");
-        originTripsTxt.clear();
-        originTripsTxt.sendKeys(origin);
-        selectAutoCompleteOption(originFull);
-        return this;
-    }
-
-    public VueloHotelDataTrip setDestination(String destination, String destinationFull) {
-        PageUtils.waitElementForVisibility(driver, destinationTripsTxt, 10, "Destination text field");
+    public HotelsDataTrip setDestination(String destinationAuto, String destinationFull) {
+        PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destinationFull + "]");
-        destinationTripsTxt.clear();
-        destinationTripsTxt.sendKeys(destination);
+        destinationTxt.clear();
+        destinationTxt.sendKeys(destinationAuto);
         selectAutoCompleteOption(destinationFull);
         return this;
     }
 
-    public VueloHotelDataTrip selectPassenger(int adults, int childs, int rooms) {
+    public HotelsDataTrip selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
@@ -103,10 +92,10 @@ public class VueloHotelDataTrip extends BasePage {
         return this;
     }
 
-    public VueloHotelResultsPage clickBuscarBtn() {
+    public HotelsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
-        return initVueloHotelResultsPage();
+        return initHotelesResultsPage();
     }
 
 }

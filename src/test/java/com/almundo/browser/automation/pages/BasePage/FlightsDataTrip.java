@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
-import com.almundo.browser.automation.pages.ResultsPage.VuelosResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +11,9 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by gabrielcespedes on 05/12/16.
  */
-public class VuelosDataTrip extends BasePage{
+public class FlightsDataTrip extends BasePage{
 
-    public VuelosDataTrip(WebDriver driver) {
+    public FlightsDataTrip(WebDriver driver) {
         super(driver);
     }
 
@@ -70,14 +70,14 @@ public class VuelosDataTrip extends BasePage{
         addLegLnk.click();
     }
 
-    public VuelosDataTrip selectFlightType(String flightType) {
+    public FlightsDataTrip selectFlightType(String flightType) {
         Select flightTypeSelect = new Select(flightTypeDdl);
         logger.info("Selecting Flight Type: [" + flightType + "]");
         flightTypeSelect.selectByVisibleText(flightType);
         return this;
     }
 
-    public VuelosDataTrip setOrigin(String origin, String originFull) {
+    public FlightsDataTrip setOrigin(String origin, String originFull) {
         PageUtils.waitElementForVisibility(driver, originFlightsTxt, 10, "Origin text field");
         logger.info("Entering Flight Origin: [" + originFull + "]");
         originFlightsTxt.clear();
@@ -86,7 +86,7 @@ public class VuelosDataTrip extends BasePage{
         return this;
     }
 
-    public VuelosDataTrip setFlight(String nameAuto, String nameFull, String id) {
+    public FlightsDataTrip setFlight(String nameAuto, String nameFull, String id) {
         WebElement originFld = driver.findElement(By.id(id));
         PageUtils.waitElementForVisibility(driver, originFld, 10, "Text field");
         logger.info("Entering Flight: [" + nameFull + "]");
@@ -96,7 +96,7 @@ public class VuelosDataTrip extends BasePage{
         return this;
     }
 
-    public VuelosDataTrip setDestination(String destination, String destinationFull) {
+    public FlightsDataTrip setDestination(String destination, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationFlightsTxt, 10, "Destination text field");
         logger.info("Entering Flight Destination: [" + destinationFull + "]");
         destinationFlightsTxt.clear();
@@ -105,7 +105,7 @@ public class VuelosDataTrip extends BasePage{
         return this;
     }
 
-    public VuelosDataTrip selectPassenger(int adults, int childs) {
+    public FlightsDataTrip selectPassenger(int adults, int childs) {
         personasTxt.click();
 
         if (adults>1){
@@ -127,7 +127,7 @@ public class VuelosDataTrip extends BasePage{
         return this;
     }
 
-    public VuelosDataTrip selectChildAgeRange(String ageRange, int childs) {
+    public FlightsDataTrip selectChildAgeRange(String ageRange, int childs) {
         if (childs>0){
             for(int i=0; i<childs; i++) {
                 Select ageSelection = new Select(driver.findElement(By.id("age-" + i)));
@@ -138,14 +138,14 @@ public class VuelosDataTrip extends BasePage{
         return this;
     }
 
-    public VuelosDataTrip selectClass(String flightClass) {
+    public FlightsDataTrip selectClass(String flightClass) {
         Select claseVueloDdl = new Select(classFlightDdl);
         logger.info("Selecting Flight Class: [" + flightClass + "]");
         claseVueloDdl.selectByVisibleText(flightClass);
         return this;
     }
 
-    public VuelosResultsPage clickBuscarBtn() {
+    public FlightsResultsPage clickBuscarBtn() {
         PageUtils.scrollToElement(driver, buscarBtn);
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();

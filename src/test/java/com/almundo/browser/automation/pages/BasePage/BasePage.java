@@ -19,19 +19,19 @@ public class BasePage extends TestBaseSetup {
         this.driver = iDriver;
     }
 
-    public HotelesDataTrip hotelesDataTrip() {
+    public HotelsDataTrip hotelesDataTrip() {
         return initHotelesDataTrip();
     }
 
-    public VuelosDataTrip vuelosDataTrip() {
+    public FlightsDataTrip vuelosDataTrip() {
         return initVuelosDataTrip();
     }
 
-    public VueloHotelDataTrip vueloHotelDataTrip() {
+    public TripsDataTrip vueloHotelDataTrip() {
         return initVueloHotelDataTrip();
     }
 
-    public AutosDataTrip autosDataTrip() {
+    public CarsDataTrip autosDataTrip() {
         return initAutosDataTrip();
     }
 

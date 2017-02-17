@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 13/12/16.
  */
-public class VuelosResultsPage extends TestBaseSetup {
+public class FlightsResultsPage extends TestBaseSetup {
 
-    public VuelosResultsPage(WebDriver driver) {
+    public FlightsResultsPage(WebDriver driver) {
         super.driver = driver;
     }
 
@@ -30,14 +30,14 @@ public class VuelosResultsPage extends TestBaseSetup {
 
     //############################################### Actions ##############################################
 
-    public VuelosResultsPage clickTicketIdaRdb() {
+    public FlightsResultsPage clickTicketIdaRdb() {
         PageUtils.waitElementForVisibility(driver,ticketIdaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Ida");
         ticketIdaRdb.click();
         return this;
     }
 
-    public VuelosResultsPage clickTicketVuelta() {
+    public FlightsResultsPage clickTicketVuelta() {
         PageUtils.waitElementForVisibility(driver,ticketVueltaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Vuelta");
         ticketVueltaRdb.click();

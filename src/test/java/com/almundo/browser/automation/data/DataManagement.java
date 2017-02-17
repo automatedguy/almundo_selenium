@@ -65,7 +65,44 @@ public class DataManagement extends TestBaseSetup {
         vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vuelos", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getVuelosDataTripItinerary(String dataSet) {
+    public void getOneWayDataTripItinerary(String dataSet) {
+        vueloDataTripItinerary = JsonRead.getJsonDataObject(vueloDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        originAuto = vueloDataTripItinerary.get("originAuto").toString();
+        originFull = vueloDataTripItinerary.get("originFull").toString();
+
+        destinationAuto = vueloDataTripItinerary.get("destinationAuto").toString();
+        destinationFull = vueloDataTripItinerary.get("destinationFull").toString();
+
+        startDate = Integer.parseInt(vueloDataTripItinerary.get("startDate").toString());
+
+        adults = Integer.parseInt(vueloDataTripItinerary.get("adults").toString());
+        childs = Integer.parseInt(vueloDataTripItinerary.get("childs").toString());
+        childAgeRange = vueloDataTripItinerary.get("childAgeRange").toString();
+
+        flightClass = vueloDataTripItinerary.get("flightClass").toString();
+    }
+
+    public void getRoundTripDataTripItinerary(String dataSet) {
+        vueloDataTripItinerary = JsonRead.getJsonDataObject(vueloDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        originAuto = vueloDataTripItinerary.get("originAuto").toString();
+        originFull = vueloDataTripItinerary.get("originFull").toString();
+
+        destinationAuto = vueloDataTripItinerary.get("destinationAuto").toString();
+        destinationFull = vueloDataTripItinerary.get("destinationFull").toString();
+
+        startDate = Integer.parseInt(vueloDataTripItinerary.get("startDate").toString());
+        endDate = Integer.parseInt(vueloDataTripItinerary.get("endDate").toString());
+
+        adults = Integer.parseInt(vueloDataTripItinerary.get("adults").toString());
+        childs = Integer.parseInt(vueloDataTripItinerary.get("childs").toString());
+        childAgeRange = vueloDataTripItinerary.get("childAgeRange").toString();
+
+        flightClass = vueloDataTripItinerary.get("flightClass").toString();
+    }
+
+    public void getMultiDestDataTripItinerary(String dataSet) {
         vueloDataTripItinerary = JsonRead.getJsonDataObject(vueloDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vueloDataTripItinerary.get("originAuto").toString();

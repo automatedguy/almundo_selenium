@@ -2,11 +2,11 @@ package com.almundo.browser.automation.tests.Trips;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
-import com.almundo.browser.automation.pages.BasePage.VueloHotelDataTrip;
+import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
-import com.almundo.browser.automation.pages.ResultsPage.VueloHotelDetailPage;
-import com.almundo.browser.automation.pages.ResultsPage.VueloHotelResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
+import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -20,12 +20,12 @@ import org.testng.annotations.Test;
 
 public class SucursalesFlowTest extends TestBaseSetup {
 
-    private VueloHotelResultsPage vueloHotelResultsPage = null;
-    private VueloHotelDetailPage vueloHotelDetailPage = null;
+    private TripsResultsPage tripsResultsPage = null;
+    private TripsDetailPage tripsDetailPage = null;
     private CheckOutPage checkOutPage = null;
     private ConfirmationPage confirmationPage = null;
 
-    private VueloHotelDataTrip vueloHotelDataTrip = null;
+    private TripsDataTrip tripsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
@@ -53,25 +53,25 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         dataManagement.getVueloHotelDataTripItinerary("domestic02_20days_2adults_1childs_1room");
 
-        vueloHotelDataTrip = basePage.vueloHotelDataTrip();
+        tripsDataTrip = basePage.vueloHotelDataTrip();
 
-        vueloHotelDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        vueloHotelDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.departureCalendar, dataManagement.startDate);
-        vueloHotelDataTrip.selectDateFromCalendar(vueloHotelDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
 
-        vueloHotelDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
-        vueloHotelResultsPage = vueloHotelDataTrip.clickBuscarBtn();
+        tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
-        Assert.assertTrue(vueloHotelResultsPage.vacancy());
+        Assert.assertTrue(tripsResultsPage.vacancy());
 
-        vueloHotelResultsPage.clickElegirBtn(0);
-        vueloHotelDetailPage = vueloHotelResultsPage.clickContinuarBtn();
-        vueloHotelDetailPage.clickVerHabitacionBtn();
+        tripsResultsPage.clickElegirBtn(0);
+        tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+        tripsDetailPage.clickVerHabitacionBtn();
 
-        checkOutPage = vueloHotelDetailPage.clickComprarBtn(0);
+        checkOutPage = tripsDetailPage.clickComprarBtn(0);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");

@@ -2,10 +2,10 @@ package com.almundo.browser.automation.tests.Cars;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
-import com.almundo.browser.automation.pages.BasePage.AutosDataTrip;
+import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.ResultsPage.AutosResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.annotations.AfterMethod;
@@ -18,10 +18,10 @@ import org.testng.annotations.Test;
  */
 public class LoginFlowTest extends TestBaseSetup {
 
-    private AutosResultsPage autosResultsPage = null;
+    private CarsResultsPage carsResultsPage = null;
     private CheckOutPage checkOutPage = null;
 
-    private AutosDataTrip autosDataTrip = null;
+    private CarsDataTrip carsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
 
     //TODO: overload populateCheckOutPage
@@ -59,22 +59,22 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.getAutosDataTripItinerary("miami_10days_entre_21_24");
 
-        autosDataTrip = basePage.autosDataTrip();
+        carsDataTrip = basePage.autosDataTrip();
 
-        autosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        autosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        autosDataTrip.selectDateFromCalendar(autosDataTrip.pickUpDateCalendar, dataManagement.startDate);
-        autosDataTrip.selectDateFromCalendar(autosDataTrip.dropOffDateCalendar, dataManagement.endDate);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
 
-        autosDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-        autosDataTrip.selectDropOffTime(dataManagement.dropOffTime);
+        carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
+        carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
 
-        autosDataTrip.selectAgeRange(dataManagement.ageRange);
+        carsDataTrip.selectAgeRange(dataManagement.ageRange);
 
-        autosResultsPage = autosDataTrip.clickBuscarBtn();
+        carsResultsPage = carsDataTrip.clickBuscarBtn();
 
-        checkOutPage = autosResultsPage.clickReservarAhoraBtn();
+        checkOutPage = carsResultsPage.clickReservarAhoraBtn();
 
         dataManagement.getPassengerData("adult_male_native");
 
@@ -94,22 +94,22 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.getAutosDataTripItinerary("capital_10days_entre_21_24");
 
-        autosDataTrip = basePage.autosDataTrip();
+        carsDataTrip = basePage.autosDataTrip();
 
-        autosDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        autosDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
 
-        autosDataTrip.selectDateFromCalendar(autosDataTrip.pickUpDateCalendar, dataManagement.startDate);
-        autosDataTrip.selectDateFromCalendar(autosDataTrip.dropOffDateCalendar, dataManagement.endDate);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
 
-        autosDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-        autosDataTrip.selectDropOffTime(dataManagement.dropOffTime);
+        carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
+        carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
 
-        autosDataTrip.selectAgeRange(dataManagement.ageRange);
+        carsDataTrip.selectAgeRange(dataManagement.ageRange);
 
-        autosResultsPage = autosDataTrip.clickBuscarBtn();
+        carsResultsPage = carsDataTrip.clickBuscarBtn();
 
-        checkOutPage = autosResultsPage.clickReservarAhoraBtn();
+        checkOutPage = carsResultsPage.clickReservarAhoraBtn();
 
         dataManagement.getPassengerData("adult_male_native");
 
