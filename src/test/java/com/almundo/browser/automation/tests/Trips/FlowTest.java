@@ -85,13 +85,13 @@ public class FlowTest extends TestBaseSetup {
                     dataManagement.getPaymentData("1_amex_amex"),
                     dataManagement.getBillingData("local_Billing"),
                     dataManagement.getContactData("contact_cell_phone"),
-                    "VueloHotelCheckOutPageInternational");
+                    "TripsCheckOutPageInternational");
         } else {
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                     dataManagement.getPaymentData("1_amex_amex"),
                     dataManagement.getBillingData("local_Billing"),
                     dataManagement.getContactData("contact_cell_phone"),
-                    "VueloHotelCheckOutPageInternational");
+                    "TripsCheckOutPageInternational");
         }
     }
 
@@ -126,13 +126,13 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getPaymentData("1_amex_amex"),
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
-                                              "VueloHotelCheckOutPageDomestic");
+                                              "TripsCheckOutPageDomestic");
         } else {
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                               dataManagement.getPaymentData("1_amex_amex"),
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
-                                              "VueloHotelCheckOutPageDomestic");
+                                              "TripsCheckOutPageDomestic");
         }
     }
 }
