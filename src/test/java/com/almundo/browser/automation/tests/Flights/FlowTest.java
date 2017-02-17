@@ -33,7 +33,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
-        dataManagement.getVuelosDataTripList();
+        dataManagement.getFlightsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();

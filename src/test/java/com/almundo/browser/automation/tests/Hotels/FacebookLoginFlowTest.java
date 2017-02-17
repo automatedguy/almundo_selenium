@@ -31,7 +31,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
-        dataManagement.getHotelesDataTripList();
+        dataManagement.getHotelsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();
@@ -61,7 +61,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         logTestTitle("Facebook login Hotel Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
         PageUtils.waitElementForClickable(driver, basePage.hotelsIcon, 10, "Hoteles icon");
         basePage.hotelsIcon.click();
-        dataManagement.getHotelDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -88,7 +88,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         logTestTitle("Facebook login Hotel Flow - Dom - 15 days - 2 Adults - 1 Room - " + countryPar );
         PageUtils.waitElementForClickable(driver, basePage.hotelsIcon, 10, "Hoteles icon");
         basePage.hotelsIcon.click();
-        dataManagement.getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+        dataManagement.getHotelsDataTripItinerary("domestic01_15days_2adults_1room");
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);

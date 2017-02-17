@@ -61,7 +61,7 @@ public class DataManagement extends TestBaseSetup {
 
     //------------------------- HOME PAGE -----------------------------
     //VUELOS DATA TRIP
-    public void getVuelosDataTripList() {
+    public void getFlightsDataTripList() {
         vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "flights", countryPar.toLowerCase() + "_data.json");
     }
 
@@ -135,11 +135,11 @@ public class DataManagement extends TestBaseSetup {
     }
 
     //HOTELES DATA TRIP
-    public void getHotelesDataTripList() {
+    public void getHotelsDataTripList() {
         hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hotels", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getHotelDataTripItinerary(String dataSet) {
+    public void getHotelsDataTripItinerary(String dataSet) {
         hotelDataTripItinerary = JsonRead.getJsonDataObject(hotelesDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         destinationAuto = hotelDataTripItinerary.get("destinationAuto").toString();
@@ -155,11 +155,11 @@ public class DataManagement extends TestBaseSetup {
     }
 
     //VUELO+HOTEL DATA TRIP
-    public void getVueloHotelDataTripList() {
+    public void getTripsDataTripList() {
         vueloHotelDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "trips", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getVueloHotelDataTripItinerary(String dataSet) {
+    public void getTripsDataTripItinerary(String dataSet) {
         vueloHotelDataTripItinerary = JsonRead.getJsonDataObject(vueloHotelDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vueloHotelDataTripItinerary.get("originAuto").toString();
@@ -178,11 +178,11 @@ public class DataManagement extends TestBaseSetup {
     }
 
     //AUTOS DATA TRIP
-    public void getAutosDataTripList() {
+    public void getCarsDataTripList() {
         autosDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "cars", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getAutosDataTripItinerary(String dataSet) {
+    public void getCarsDataTripItinerary(String dataSet) {
         autosDataTripItinerary = JsonRead.getJsonDataObject(autosDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = autosDataTripItinerary.get("originAuto").toString();
