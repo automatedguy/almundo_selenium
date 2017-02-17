@@ -7,7 +7,6 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -39,6 +38,7 @@ public class FlowTest extends TestBaseSetup {
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
+        basePage.clickCarsBtn();
     }
 
     @AfterMethod
@@ -51,9 +51,9 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void dom_Booking_Flow() {
         logTestTitle("Cars Flow - Domestic - 10 days - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
-        basePage.carsIcon.click();
+
         dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
+
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -64,7 +64,9 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
         checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+
         dataManagement.getPassengerData("adult_male_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("1_amex_amex"),
                                           dataManagement.getBillingData("local_Billing_v2"),
@@ -75,9 +77,9 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void int_Booking_Flow() {
         logTestTitle("Cars Flow - International - 10 days - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
-        basePage.carsIcon.click();
+
         dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -88,7 +90,9 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
         checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+
         dataManagement.getPassengerData("adult_male_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("1_amex_amex"),
                                           dataManagement.getBillingData("local_Billing_v2"),

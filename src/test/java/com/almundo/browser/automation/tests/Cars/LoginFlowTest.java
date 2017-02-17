@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -41,6 +40,7 @@ public class LoginFlowTest extends TestBaseSetup {
         loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
         loginPopUp.setLoginPasswordTxt("gabi1981ce");
         basePage = loginPopUp.clickIngresarBtn();
+        basePage.clickCarsBtn();
     }
 
     @AfterMethod
@@ -53,9 +53,9 @@ public class LoginFlowTest extends TestBaseSetup {
     @Test
     public void login_Int_Booking_Flow() {
         logTestTitle("Login Cars Flow - International - 10 days - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
-        basePage.carsIcon.click();
+
         dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -66,20 +66,22 @@ public class LoginFlowTest extends TestBaseSetup {
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
         checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+
         dataManagement.getPassengerData("adult_male_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing_v2"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "CarsCheckOutPage");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "CarsCheckOutPage");
     }
 
     @Test
     public void login_Dom_Booking_Flow() {
         logTestTitle("Login Cars Flow - Domestic - 10 days - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
-        basePage.carsIcon.click();
+
         dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
+
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -90,11 +92,13 @@ public class LoginFlowTest extends TestBaseSetup {
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
         checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+
         dataManagement.getPassengerData("adult_male_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                         dataManagement.getPaymentData("1_amex_amex"),
-                                         dataManagement.getBillingData("local_Billing_v2"),
-                                         dataManagement.getContactData("contact_cell_phone"),
-                                         "CarsCheckOutPage");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "CarsCheckOutPage");
     }
 }

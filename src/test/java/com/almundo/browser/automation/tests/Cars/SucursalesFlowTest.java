@@ -6,10 +6,10 @@ import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -36,6 +36,11 @@ public class SucursalesFlowTest extends TestBaseSetup {
         dataManagement.getContactList();
     }
 
+    @BeforeMethod
+    private void clickCarsBtn() {
+        basePage.clickCarsBtn();
+    }
+
     @AfterMethod
     private void cleanPassengerJsonList() {
         dataManagement.passengerJsonList = new JSONArray();
@@ -46,9 +51,9 @@ public class SucursalesFlowTest extends TestBaseSetup {
     @Test
     public void suc_Dom_Booking_Flow() {
         logTestTitle("Sucursales Autos Flow - Domestic - 10 days - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
-        basePage.carsIcon.click();
+
         dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
+
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -59,11 +64,13 @@ public class SucursalesFlowTest extends TestBaseSetup {
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
         checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+
         dataManagement.getPassengerData("adult_male_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("deposit"),
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "CarsCheckOutPageSucursales");
+                                          dataManagement.getPaymentData("deposit"),
+                                          dataManagement.getBillingData("local_Billing_sucursales"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "CarsCheckOutPageSucursales");
     }
 }

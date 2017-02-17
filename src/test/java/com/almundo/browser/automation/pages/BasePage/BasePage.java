@@ -120,6 +120,13 @@ public class BasePage extends TestBaseSetup {
         return this;
     }
 
+    public BasePage clicksTripsBtn() {
+        PageUtils.waitElementForClickable(driver, tripsIcon, 10, "Vuelos+Hotel button");
+        logger.info("Clicking on Vuelos+Hotel button");
+        tripsIcon.click();
+        return this;
+    }
+
     public PromoPage clickMainLeftBannerLnk() {
         PageUtils.waitElementForClickable(driver, mainLeftBannerLnk, 15, "Home Main Left Banner");
         logger.info("Clicking on Home Main left Banner");

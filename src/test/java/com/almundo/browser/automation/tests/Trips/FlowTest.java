@@ -9,7 +9,6 @@ import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -44,6 +43,7 @@ public class FlowTest extends TestBaseSetup {
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
+        basePage.clicksTripsBtn();
     }
 
     @AfterMethod
@@ -56,9 +56,9 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void int_Booking_Flow() {
         logTestTitle("Trips Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
-        basePage.tripsIcon.click();
+
         dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
+
         tripsDataTrip = basePage.tripsDataTrip();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -66,15 +66,18 @@ public class FlowTest extends TestBaseSetup {
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
         tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(tripsResultsPage.vacancy());
         tripsResultsPage.clickElegirBtn(0);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
         checkOutPage = tripsDetailPage.clickComprarBtn(0);
+
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("child_male_native");
         dataManagement.getPassengerData("child_male_native");
+
         if(countryPar.equals("ARGENTINA")) {
             CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
             replaceUrl();
@@ -94,10 +97,10 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void dom_Booking_Flow() {
-        logTestTitle("Trips Flow - Domestic - 20 days - 2 Adults/1 Child - 1 Room - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
-        basePage.tripsIcon.click();
+        logTestTitle("Trips Flow - Domestic - 15 days - 2 Adults/1 Child - 1 Room - " + countryPar );
+
         dataManagement.getTripsDataTripItinerary("domestic01_15days_2adults_1childs_1room");
+
         tripsDataTrip = basePage.tripsDataTrip();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -105,14 +108,17 @@ public class FlowTest extends TestBaseSetup {
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
         tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(tripsResultsPage.vacancy());
         tripsResultsPage.clickElegirBtn(0);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
         checkOutPage = tripsDetailPage.clickComprarBtn(0);
+
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("child_female_native");
+
         if(countryPar.equals("ARGENTINA")) {
             CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
             replaceUrl();
