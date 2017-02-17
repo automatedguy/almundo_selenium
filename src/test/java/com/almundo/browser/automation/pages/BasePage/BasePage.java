@@ -99,6 +99,27 @@ public class BasePage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
+    public BasePage clickFlightsBtn() {
+        PageUtils.waitElementForClickable(driver, flightsIcon, 10, "Vuelos button");
+        logger.info("Clicking on Vuelos button");
+        flightsIcon.click();
+        return this;
+    }
+
+    public BasePage clickHotelsBtn() {
+        PageUtils.waitElementForClickable(driver, hotelsIcon, 10, "Hoteles button");
+        logger.info("Clicking on Hoteles button");
+        hotelsIcon.click();
+        return this;
+    }
+
+    public BasePage clickCarsBtn() {
+        PageUtils.waitElementForClickable(driver, carsIcon, 10, "Autos button");
+        logger.info("Clicking on Autos button");
+        carsIcon.click();
+        return this;
+    }
+
     public PromoPage clickMainLeftBannerLnk() {
         PageUtils.waitElementForClickable(driver, mainLeftBannerLnk, 15, "Home Main Left Banner");
         logger.info("Clicking on Home Main left Banner");

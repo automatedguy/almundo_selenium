@@ -52,7 +52,7 @@ public class PaymentSection extends CheckOutPage {
         selectBankOption(paymentData.get("credit_card_name").toString());
         setCardHolder(paymentData.get("card_holder").toString());
         setCardNumber(paymentData.get("card_number").toString());
-        if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
+        if(product.contains("Hotels") || product.contains("Cars") || product.contains("Flights")) {
             selectMonthCardExpiration(paymentData.get("month_card_expire").toString());
             selectYearCardExpiration(paymentData.get("year_card_expire").toString());
         }else {

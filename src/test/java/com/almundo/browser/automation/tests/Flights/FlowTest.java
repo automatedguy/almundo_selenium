@@ -8,7 +8,6 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.utils.Constants;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -40,10 +39,12 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getBillingList();
         dataManagement.getContactList();
     }
+
     @BeforeMethod
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
+        basePage.clickFlightsBtn();
     }
 
     @AfterMethod
@@ -56,9 +57,9 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void oneWay_Int_Booking_Flow() {
         logTestTitle("Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.flightsIcon, 10, "Vuelos icon");
-        basePage.flightsIcon.click();
+
         dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
+
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ONE_WAY);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
@@ -68,26 +69,29 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
         flightsDataTrip.selectClass(dataManagement.flightClass);
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb();
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
+
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("child_male_native");
         dataManagement.getPassengerData("child_male_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing_v2"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "FlightsCheckOutPageInternational");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "FlightsCheckOutPageInternational");
     }
 
     @Test
     public void oneWay_Dom_Booking_Flow() {
         logTestTitle("Flight Flow - One Way - Dom - 2 Adults - Todas - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.flightsIcon, 10, "Vuelos icon");
-        basePage.flightsIcon.click();
+
         dataManagement.getOneWayDataTripItinerary("domestic_20days_2adults_todas");
+
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ONE_WAY);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -97,24 +101,27 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
         flightsDataTrip.selectClass(dataManagement.flightClass);
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb();
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
+
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing_v2"),
-                dataManagement.getContactData("contact_phone"),
-                "FlightsCheckOutPageDomestic");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_phone"),
+                                          "FlightsCheckOutPageDomestic");
     }
 
     @Test
     public void roundTrip_Int_Booking_Flow() {
         logTestTitle("Flight Flow - Round Trip - Int - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.flightsIcon, 10, "Vuelos icon");
-        basePage.flightsIcon.click();
+
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
+
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
@@ -125,27 +132,30 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
         flightsDataTrip.selectClass(dataManagement.flightClass);
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb();
         flightsResultsPage.clickTicketVuelta();
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
+
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("child_male_native");
         dataManagement.getPassengerData("child_male_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing_v2"),
-                dataManagement.getContactData("contact_cell_phone"),
-               "FlightsCheckOutPageInternational");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "FlightsCheckOutPageInternational");
     }
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {
         logTestTitle("Flight Flow - Round Trip - Dom - 20 days - 2 Adults - Todas - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.flightsIcon, 10, "Vuelos icon");
-        basePage.flightsIcon.click();
+
         dataManagement.getRoundTripDataTripItinerary("domestic_20days_2adults_todas");
+
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -156,25 +166,28 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
         flightsDataTrip.selectClass(dataManagement.flightClass);
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb();
         flightsResultsPage.clickTicketVuelta();
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
+
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing_v2"),
-                dataManagement.getContactData("contact_phone"),
-                "FlightsCheckOutPageDomestic");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_phone"),
+                                          "FlightsCheckOutPageDomestic");
     }
 
     @Test
     public void multiDest_Int_Booking_Flow() {
         logTestTitle("Flight Flow - Multi Destination - Int - 2 Adults - Turista - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.flightsIcon, 10, "Vuelos icon");
-        basePage.flightsIcon.click();
+
         dataManagement.getMultiDestDataTripItinerary("multiDest_3Flights_2adults_todas");
+
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(Constants.MULTIDESTINATION);
         flightsDataTrip.clickAddLegLnk();
@@ -191,14 +204,17 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
         flightsDataTrip.selectClass(dataManagement.flightClass);
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(flightsResultsPage.vacancy());
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
+
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
+
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing_v2"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "FlightsCheckOutPageInternational");
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_cell_phone"),
+                                          "FlightsCheckOutPageInternational");
     }
 }
