@@ -28,7 +28,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
-        dataManagement.getAutosDataTripList();
+        dataManagement.getCarsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();
@@ -53,7 +53,7 @@ public class FlowTest extends TestBaseSetup {
         logTestTitle("Cars Flow - Domestic - 10 days - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
         basePage.carsIcon.click();
-        dataManagement.getAutosDataTripItinerary("capital_10days_entre_21_24");
+        dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -77,7 +77,7 @@ public class FlowTest extends TestBaseSetup {
         logTestTitle("Cars Flow - International - 10 days - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
         basePage.carsIcon.click();
-        dataManagement.getAutosDataTripItinerary("miami_10days_entre_21_24");
+        dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);

@@ -30,7 +30,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
-        dataManagement.getHotelesDataTripList();
+        dataManagement.getHotelsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();
@@ -49,7 +49,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         logTestTitle("Sucursales Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.hotelsIcon, 10, "Hoteles icon");
         basePage.hotelsIcon.click();
-        dataManagement.getHotelDataTripItinerary("domestic02_20days_2adults_1room");
+        dataManagement.getHotelsDataTripItinerary("domestic02_20days_2adults_1room");
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);

@@ -30,7 +30,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
     @BeforeClass
     private void initDataTripList() {
-        dataManagement.getHotelesDataTripList();
+        dataManagement.getHotelsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();
@@ -56,7 +56,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.hotelsIcon, 10, "Hoteles icon");
         basePage.hotelsIcon.click();
-        dataManagement.getHotelDataTripItinerary("domestic01_15days_2adults_1room");
+        dataManagement.getHotelsDataTripItinerary("domestic01_15days_2adults_1room");
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);

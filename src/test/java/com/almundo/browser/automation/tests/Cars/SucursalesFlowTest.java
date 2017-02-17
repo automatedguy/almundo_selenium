@@ -29,7 +29,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataTripList() {
-        dataManagement.getAutosDataTripList();
+        dataManagement.getCarsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();
@@ -48,7 +48,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         logTestTitle("Sucursales Autos Flow - Domestic - 10 days - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
         basePage.carsIcon.click();
-        dataManagement.getAutosDataTripItinerary("capital_10days_entre_21_24");
+        dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);

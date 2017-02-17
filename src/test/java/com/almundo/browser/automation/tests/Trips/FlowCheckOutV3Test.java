@@ -30,7 +30,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
-        dataManagement.getVueloHotelDataTripList();
+        dataManagement.getTripsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();
@@ -55,7 +55,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         logTestTitle("Trips - Int - 20 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
         basePage.tripsIcon.click();
-        dataManagement.getVueloHotelDataTripItinerary("int02_20days_2adults_1childs_1room");
+        dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1childs_1room");
         tripsDataTrip = basePage.tripsDataTrip();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -84,7 +84,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         logTestTitle("Trips - 2 Credit Card payment - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
         basePage.tripsIcon.click();
-        dataManagement.getVueloHotelDataTripItinerary("int02_20days_2adults_1childs_1room");
+        dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1childs_1room");
         tripsDataTrip = basePage.tripsDataTrip();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
