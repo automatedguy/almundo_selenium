@@ -18,7 +18,6 @@ public class PickUpLocationSection extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
-
     //############################################### Actions ##############################################
 
     public PickUpLocationSection populatePickUpLocationSection(){

@@ -57,5 +57,4 @@ public class HeaderSection extends BasePage {
             }
         }
     }
-
 }

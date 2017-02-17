@@ -106,7 +106,6 @@ public class TripsDataTrip extends BasePage {
     public TripsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
-        return initVueloHotelResultsPage();
+        return initTripsResultsPage();
     }
-
 }

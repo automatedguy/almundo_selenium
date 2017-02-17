@@ -97,5 +97,4 @@ public class HotelsDataTrip extends BasePage {
         buscarBtn.click();
         return initHotelesResultsPage();
     }
-
 }

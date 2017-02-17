@@ -1,19 +1,6 @@
 {
   "ARGENTINA":{
-
-    "MODULES":{
-      "hoteles":"true",
-      "vuelos":"true",
-      "trips":"true",
-      "paquetes":"true",
-      "disney":"true",
-      "seguros":"true",
-      "autos":"true",
-      "actividades":"true",
-      "trenes":"true"
-    },
-
-    "HotelesCheckOutPageInternational":{
+    "HotelsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -37,7 +24,7 @@
       "agentEmail":"false"
     },
 
-    "HotelesCheckOutPageDomestic":{
+    "HotelsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -61,7 +48,7 @@
       "agentEmail":"false"
     },
 
-    "HotelesCheckOutPageDomesticV3":{
+    "HotelsCheckOutPageDomesticV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -79,7 +66,7 @@
       "accepted":"false"
     },
 
-    "VuelosCheckOutPageInternational":{
+    "FlightsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -103,7 +90,7 @@
       "agentEmail":"false"
     },
 
-    "VuelosCheckOutPageDomestic":{
+    "FlightsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -127,7 +114,7 @@
       "agentEmail":"false"
     },
 
-    "VueloHotelCheckOutPageInternational":{
+    "TripsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -151,7 +138,7 @@
       "agentEmail":"false"
     },
 
-    "VueloHotelCheckOutPageDomestic":{
+    "TripsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -175,7 +162,7 @@
       "agentEmail":"false"
     },
 
-    "VueloHotelCheckOutPageInternationalV3":{
+    "TripsCheckOutPageInternationalV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -193,7 +180,7 @@
       "accepted":"false"
     },
 
-    "VueloHotelCheckOutPageDomesticSucursal":{
+    "TripsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -217,7 +204,7 @@
       "agentEmail":"true"
     },
 
-    "HotelCheckOutPageDomesticSucursal":{
+    "HotelsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -241,7 +228,7 @@
       "agentEmail":"true"
     },
 
-    "AutosCheckOutPage":{
+    "CarsCheckOutPage":{
       "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -265,7 +252,7 @@
       "agentEmail":"false"
     },
 
-    "AutosCheckOutPageSucursales":{
+    "CarsCheckOutPageSucursales":{
       "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
       "billing_fiscal_type": "false",
@@ -289,23 +276,9 @@
       "agentEmail":"true"
     }
   },
-
 
   "COLOMBIA":{
-
-    "MODULES":{
-      "hoteles":"true",
-      "vuelos":"true",
-      "trips":"true",
-      "paquetes":"true",
-      "disney":"true",
-      "seguros":"true",
-      "autos":"true",
-      "actividades":"false",
-      "trenes":"false"
-    },
-
-    "HotelesCheckOutPageInternational":{
+    "HotelsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name": "true",
@@ -330,7 +303,7 @@
       "agentEmail":"false"
     },
 
-    "HotelesCheckOutPageDomestic":{
+    "HotelsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name": "true",
@@ -354,7 +327,7 @@
       "agentEmail":"false"
     },
 
-    "HotelesCheckOutPageDomesticV3":{
+    "HotelsCheckOutPageDomesticV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name": "true",
@@ -372,7 +345,7 @@
       "accepted":"true"
     },
 
-    "VuelosCheckOutPageInternational":{
+    "FlightsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name":"true",
@@ -396,7 +369,7 @@
       "agentEmail":"false"
     },
 
-    "VuelosCheckOutPageDomestic":{
+    "FlightsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name":"true",
@@ -420,7 +393,7 @@
       "agentEmail":"false"
     },
 
-    "VueloHotelCheckOutPageInternational":{
+    "TripsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name":"false",
@@ -444,7 +417,7 @@
       "agentEmail":"false"
     },
 
-    "VueloHotelCheckOutPageDomestic":{
+    "TripsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name":"false",
@@ -468,7 +441,7 @@
       "agentEmail":"false"
     },
 
-    "VueloHotelCheckOutPageInternationalV3":{
+    "TripsCheckOutPageInternationalV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name":"false",
@@ -486,7 +459,7 @@
       "accepted":"true"
     },
 
-    "VueloHotelCheckOutPageDomesticV3":{
+    "TripsCheckOutPageDomesticV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
       "fiscal_name":"true",
@@ -504,7 +477,7 @@
       "accepted":"true"
     },
 
-    "AutosCheckOutPage":{
+    "CarsCheckOutPage":{
       "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
       "fiscal_name":"true",
@@ -529,22 +502,8 @@
     }
   },
 
-
   "MEXICO":{
-
-    "MODULES":{
-      "hoteles":"true",
-      "vuelos":"true",
-      "trips":"true",
-      "paquetes":"true",
-      "disney":"true",
-      "seguros":"true",
-      "autos":"true",
-      "actividades":"true",
-      "trenes":"false"
-    },
-
-    "HotelesCheckOutPageInternational":{
+    "HotelsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"false",
       "fiscal_name":"false",
@@ -570,7 +529,7 @@
       "agentEmail":"false"
     },
 
-      "HotelesCheckOutPageDomestic":{
+    "HotelsCheckOutPageDomestic":{
         "PickUpLocationSection": "false",
         "BillingInfoSection":"false",
         "fiscal_name":"false",
@@ -592,9 +551,9 @@
         "nationality":"false",
         "accepted":"false",
         "agentEmail":"false"
-      },
+    },
 
-      "VuelosCheckOutPageInternational":{
+    "FlightsCheckOutPageInternational":{
         "PickUpLocationSection": "false",
         "BillingInfoSection":"false",
         "fiscal_name":"false",
@@ -616,9 +575,9 @@
         "nationality":"true",
         "accepted":"false",
         "agentEmail":"false"
-      },
+    },
 
-      "VuelosCheckOutPageDomestic":{
+    "FlightsCheckOutPageDomestic":{
         "PickUpLocationSection": "false",
         "BillingInfoSection":"false",
         "fiscal_name":"false",
@@ -640,9 +599,9 @@
         "nationality":"true",
         "accepted":"false",
         "agentEmail":"false"
-      },
+    },
 
-      "VueloHotelCheckOutPageInternational":{
+    "TripsCheckOutPageInternational":{
         "PickUpLocationSection": "false",
         "BillingInfoSection":"false",
         "fiscal_name":"false",
@@ -664,9 +623,9 @@
         "nationality":"true",
         "accepted":"false",
         "agentEmail":"false"
-      },
+    },
 
-      "VueloHotelCheckOutPageInternationalV3":{
+    "TripsCheckOutPageInternationalV3":{
         "PickUpLocationSection": "false",
         "BillingInfoSection":"false",
         "billing_fiscal_type": "false",
@@ -682,9 +641,9 @@
         "gender":"true",
         "nationality":"true",
         "accepted":"false"
-      },
+    },
 
-      "VueloHotelCheckOutPageDomestic":{
+    "TripsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"false",
       "fiscal_name":"false",
@@ -708,7 +667,7 @@
       "agentEmail":"false"
     },
 
-      "AutosCheckOutPage":{
+    "CarsCheckOutPage":{
         "PickUpLocationSection": "true",
         "BillingInfoSection":"false",
         "fiscal_name":"false",
@@ -730,7 +689,6 @@
         "nationality":"false",
         "accepted":"false",
         "agentEmail":"false"
-      }
-
     }
   }
+}

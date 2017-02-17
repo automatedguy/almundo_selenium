@@ -45,40 +45,28 @@ public class SucursalesFlowTest extends TestBaseSetup {
     @Test
     public void suc_Dom_Booking_Flow() {
         logTestTitle("Sucursales Flight Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
-
-        PageUtils.waitElementForVisibility(driver, basePage.vuelosIcon, 10, "Vuelos icon");
-        basePage.vuelosIcon.click();
-
+        PageUtils.waitElementForVisibility(driver, basePage.flightsIcon, 10, "Vuelos icon");
+        basePage.flightsIcon.click();
         dataManagement.getRoundTripDataTripItinerary("domestic_30days_2adults_todas");
-
-        flightsDataTrip = basePage.vuelosDataTrip();
-
+        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-
         flightsDataTrip.selectClass(dataManagement.flightClass);
-
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
-
         Assert.assertTrue(flightsResultsPage.vacancy());
-
         flightsResultsPage.clickTicketIdaRdb();
         flightsResultsPage.clickTicketVuelta();
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
-
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
-
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("deposit"),
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_phone"),
-                                          "VueloHotelCheckOutPageDomesticSucursal", true);
+                                          "FlightsCheckOutPageDomesticSucursal", true);
     }
 }

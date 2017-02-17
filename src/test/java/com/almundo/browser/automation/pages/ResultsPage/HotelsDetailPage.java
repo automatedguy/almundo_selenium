@@ -39,7 +39,6 @@ public class HotelsDetailPage extends TestBaseSetup {
         PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(1), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
         detailHotelButtonResults.get(1).click();
-
         return initCheckOutPage();
     }
 
@@ -48,8 +47,6 @@ public class HotelsDetailPage extends TestBaseSetup {
         PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(1), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
         detailHotelButtonResults.get(1).click();
-
         return initCheckOutPageV3();
     }
-
 }

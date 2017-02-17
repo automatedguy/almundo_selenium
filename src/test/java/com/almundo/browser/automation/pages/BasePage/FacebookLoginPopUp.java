@@ -27,7 +27,6 @@ public class FacebookLoginPopUp extends BasePage {
 
     //############################################### Actions ###############################################
 
-
     public FacebookLoginPopUp setEmailTxt(String email) {
         PageUtils.waitElementForVisibility(driver, emailTxt, 15, "Facebook Login Email Text Box...");
         logger.info("Entering Login Email: [" + email + "]");

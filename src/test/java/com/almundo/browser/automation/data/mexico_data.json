@@ -1,5 +1,5 @@
 {
-    "vuelos": {
+    "flights": {
             "miami_10days_2adults_2childs_turista": {
                 "originAuto": "Dis",
                 "originFull": "Ciudad de México, Distrito Federal, México",
@@ -27,7 +27,7 @@
             }
     },
 
-    "hoteles": {
+    "hotels": {
             "miami_10days_2adults_2childs_1room": {
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
@@ -49,7 +49,7 @@
             }
     },
 
-    "vueloHotel": {
+    "trips": {
             "miami_10days_2adults_2childs_1room": {
                 "originAuto": "Dis",
                 "originFull": "Ciudad de México, Distrito Federal, México",
@@ -90,7 +90,7 @@
             }
     },
 
-    "autos": {
+    "cars": {
         "capital_10days_entre_21_24": {
             "originAuto": "Dis",
             "originFull": "Ciudad de México, Distrito Federal, México",

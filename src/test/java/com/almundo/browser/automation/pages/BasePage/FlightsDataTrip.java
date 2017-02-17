@@ -149,7 +149,6 @@ public class FlightsDataTrip extends BasePage{
         PageUtils.scrollToElement(driver, buscarBtn);
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
-        return initVuelosResultsPage();
+        return initFlightsResultsPage();
     }
-
 }

@@ -83,5 +83,4 @@ public class ContactSectionV3 extends CheckOutPageV3 {
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);
     }
-
 }

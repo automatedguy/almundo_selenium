@@ -20,17 +20,14 @@ public class HotelsResultsPage extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
-
     //############################################### Actions ###############################################
 
     public HotelsDetailPage clickVerHotelBtn(int index) {
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.button-detail", 0);
-
         List<WebElement> verHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary.button--block.button-detail"));
         logger.info("Clicking on Ver Hotel button");
         verHotelButtonResults.get(index).click();
-
-        return initHotelesDetailPage();
+        return initHotelsDetailPage();
     }
 
     public boolean vacancy(){
@@ -41,5 +38,4 @@ public class HotelsResultsPage extends TestBaseSetup {
         }
         return false;
     }
-
 }

@@ -50,7 +50,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage  ) {
+    public CheckOutPageV3 populateCheckOutPage
+            (JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage  )
+    {
         getCheckOutPageElements(productCheckOutPage);
         paymentSection().populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);

@@ -48,22 +48,16 @@ public class PaymentSection extends CheckOutPage {
     //############################################### Actions ###############################################
 
     public PaymentSection populatePaymentSection(JSONObject paymentData, String product){
-
         selectPaymentQtyOption(0);
-
         selectBankOption(paymentData.get("credit_card_name").toString());
-
         setCardHolder(paymentData.get("card_holder").toString());
-
         setCardNumber(paymentData.get("card_number").toString());
-
         if(product.contains("Hoteles") || product.contains("Autos") || product.contains("Vuelos")) {
             selectMonthCardExpiration(paymentData.get("month_card_expire").toString());
             selectYearCardExpiration(paymentData.get("year_card_expire").toString());
         }else {
             setCardExpiration(paymentData.get("card_expire").toString());
         }
-
         setSecurityCode(paymentData.get("security_code").toString());
         if(isElementRequiered(checkOutPageElements, "documentType")) {
             selectDocumentType(paymentData.get("documentType").toString());
@@ -74,10 +68,8 @@ public class PaymentSection extends CheckOutPage {
         return this;
     }
 
-
     private void selectPaymentQtyOption(int index) {
         List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
-
         PageUtils.scrollToElement(driver, results.get(0));
         PageUtils.scrollToCoordinate(driver, -200);
         results.get(index).click();
@@ -86,11 +78,9 @@ public class PaymentSection extends CheckOutPage {
     private void selectBankOption(String cardName) {
         List<WebElement> cardNames = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>label>span"));
         List<WebElement> radioButtons = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>input"));
-
         for (int i = 0; i < cardNames.size(); ++i) {
             WebElement cardNameElement = cardNames.get(i);
             WebElement radioButtonElement = radioButtons.get(i);
-
             if (cardNameElement.getText().equals(cardName)) {
                 logger.info("Selecting card name: [" + cardName + "]");
                 while (!radioButtonElement.isSelected()){
@@ -149,9 +139,7 @@ public class PaymentSection extends CheckOutPage {
         document_number.sendKeys(documentNumber);
     }
 
-
     public PaymentSection selectPaymentOption(JSONObject paymentData, String product) {
-
         switch(paymentData.get("credit_card_name").toString()){
             case "cash":
                 logger.info("------------- Payment Option: CASH  -------------");
@@ -186,5 +174,4 @@ public class PaymentSection extends CheckOutPage {
         }
         return this;
     }
-
 }

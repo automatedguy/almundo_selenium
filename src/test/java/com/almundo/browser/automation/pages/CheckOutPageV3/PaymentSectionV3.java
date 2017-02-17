@@ -62,12 +62,10 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
 
 
     public PaymentSectionV3 populatePaymentSection(JSONObject paymentData, String container, String product) {
-
         logger.info("------------- Selecting type of Payment "+ container + "-------------");
         selectPayment(paymentData.get("payment_qty").toString(), container);
         selectBank(paymentData.get("bank_name").toString(), container);
         selectCreditCard(paymentData.get("credit_card_name").toString(), container);
-
         logger.info("------------- Filling Payment Section -------------");
         setCardNumber(paymentData.get("card_number").toString(), container);
         setCardHolder(paymentData.get("card_holder").toString(), container);
@@ -83,7 +81,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-
     public void clickSeveralCardsCbx () {
         if (!serveralCardsCbx.isSelected()) {
             logger.info("Clicking on [Con 2 Tarjetas] checkbox");
@@ -94,29 +91,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
     public void selectPayment(String paymentNumber, String container) {
-//        WebElement paymentElement = driver.findElement(By.cssSelector(".installment-" + paymentOption));
-//        logger.info("Selecting Payment Quantity: [" + paymentOption + "]");
-//        PageUtils.scrollToElement(driver, paymentElement);
-//        paymentElement.click();
-//
-//        PageUtils.waitImplicitly(1000);
-
-
-        /////2
-//        List<WebElement> results = driver.findElements(By.cssSelector("div[class^='first-row installment-']"));
-//
-//        for (int i = 0; i < results.size(); ++i) {
-//            if (results.get(i).getText().equals(paymentQty)) {
-//                logger.info("Selecting Payment Quantity: [" + paymentQty + "]");
-//                PageUtils.scrollToElement(driver, results.get(i));
-//                results.get(i).click();
-//                paymentSelected = payments.get(i);
-//                break;
-//            }
-//        }
-
-
-        //////3
         List<WebElement> results = driver.findElements(By.cssSelector(container + " .payment .monthly-payment>strong"));
         List<WebElement> payments = driver.findElements(By.cssSelector(container + " .payment"));
 
@@ -147,7 +121,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
                 break;
             }
         }
-
         if(isBankSelected == false) {
             Assert.fail("Bank was not selected");
         }
@@ -178,13 +151,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         logger.info("Entering Titular de la tarjeta: [" + cardHolder + "]");
         cardHolderField.clear();
         cardHolderField.sendKeys(cardHolder);
-    }
-
-    public void setCardExpiration(String expDate) {
-        logger.info("Entering Fecha de vencimiento: [" + expDate + "]");
-        List<WebElement> creditCardFieldList = driver.findElements(By.cssSelector(".field.ng-pristine.ng-untouched.ng-empty.ng-invalid.ng-invalid-required.ng-valid-pattern.ng-valid-maxlength"));
-        creditCardFieldList.get(0).clear();
-        creditCardFieldList.get(0).sendKeys(expDate);
     }
 
     public void selectMonthCardExpiration(String monthCardExpiration, String container) {
@@ -221,5 +187,4 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         documentNumberField.clear();
         documentNumberField.sendKeys(documentNumber);
     }
-
 }

@@ -54,40 +54,27 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     @Test
     public void dom_Booking_Flow() {
         logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
-
-        PageUtils.waitElementForVisibility(driver, basePage.hotelesIcon, 10, "Hoteles icon");
-        basePage.hotelesIcon.click();
-
+        PageUtils.waitElementForVisibility(driver, basePage.hotelsIcon, 10, "Hoteles icon");
+        basePage.hotelsIcon.click();
         dataManagement.getHotelDataTripItinerary("domestic01_15days_2adults_1room");
-
-        hotelsDataTrip = basePage.hotelesDataTrip();
-
+        hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
-
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
-
         Assert.assertTrue(hotelsResultsPage.vacancy());
-
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
         hotelsDetailPage.clickVerHabitacionesBtn();
-
         checkOutPage = hotelsDetailPage.clickReservarAhoraV3Btn();
-
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
-
         replaceUrl();
-
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                 dataManagement.getPaymentData("1_amex_amex"),
                 dataManagement.getBillingData("local_Billing_v2"),
                 dataManagement.getContactData("contact_phone"),
-                "HotelesCheckOutPageDomesticV3");
+                "HotelsCheckOutPageDomesticV3");
     }
 
     public void replaceUrl(){

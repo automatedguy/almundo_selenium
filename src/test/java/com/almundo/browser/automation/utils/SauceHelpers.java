@@ -58,5 +58,4 @@ public class SauceHelpers {
     public static void addSauceConnectTunnelId(DesiredCapabilities desiredCapabilities) {
         addSauceConnectTunnelId(desiredCapabilities, null);
     }
-
 }

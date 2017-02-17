@@ -35,7 +35,6 @@ public class TripsDetailPage extends TestBaseSetup {
     public CheckOutPage clickComprarBtn(int index) {
         String cssSelectorName = ".select-room-button.button.button--md.button--secondary";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
-
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
         logger.info("Clicking on Comprar button index: [" + index + "]");
         comprarBtn.get(index).click();
@@ -50,5 +49,4 @@ public class TripsDetailPage extends TestBaseSetup {
         comprarBtn.get(index).click();
         return initCheckOutPageV3();
     }
-
 }

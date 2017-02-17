@@ -274,19 +274,19 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, GoogleLoginPopUpPasswd.class);
     }
 
-    protected HotelsDataTrip initHotelesDataTrip() {
+    protected HotelsDataTrip initHotelsDataTrip() {
         return PageFactory.initElements(driver, HotelsDataTrip.class);
     }
 
-    protected FlightsDataTrip initVuelosDataTrip () {
+    protected FlightsDataTrip initFlightsDataTrip() {
         return PageFactory.initElements(driver, FlightsDataTrip.class);
     }
 
-    protected TripsDataTrip initVueloHotelDataTrip() {
+    protected TripsDataTrip initTripsDataTrip() {
         return PageFactory.initElements(driver, TripsDataTrip.class);
     }
 
-    protected CarsDataTrip initAutosDataTrip() {
+    protected CarsDataTrip initCarsDataTrip() {
         return PageFactory.initElements(driver, CarsDataTrip.class);
     }
 
@@ -350,23 +350,23 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, HotelsResultsPage.class);
     }
 
-    protected HotelsDetailPage initHotelesDetailPage() {
+    protected HotelsDetailPage initHotelsDetailPage() {
         return PageFactory.initElements(driver, HotelsDetailPage.class);
     }
 
-    protected FlightsResultsPage initVuelosResultsPage() {
+    protected FlightsResultsPage initFlightsResultsPage() {
         return PageFactory.initElements(driver, FlightsResultsPage.class);
     }
 
-    protected TripsResultsPage initVueloHotelResultsPage() {
+    protected TripsResultsPage initTripsResultsPage() {
         return PageFactory.initElements(driver, TripsResultsPage.class);
     }
 
-    protected TripsDetailPage initVueloHotelDetailPage() {
+    protected TripsDetailPage initTripsDetailPage() {
         return PageFactory.initElements(driver, TripsDetailPage.class);
     }
 
-    protected CarsResultsPage initAutosResultsPage() {
+    protected CarsResultsPage initCarsResultsPage() {
         return PageFactory.initElements(driver, CarsResultsPage.class);
     }
 

@@ -91,7 +91,6 @@ public class BillingSection extends CheckOutPage {
         return this;
     }
 
-
     private BillingSection selectBillingFiscalType(String billingFiscalType) {
         logger.info("Selecting Situación: [" + billingFiscalType + "]");
         Select SITUACION_FISCAL_SELECT = new Select(billing_fiscal_type);
@@ -168,5 +167,4 @@ public class BillingSection extends CheckOutPage {
         address_city.sendKeys(addressCity);
         return this;
     }
-
 }

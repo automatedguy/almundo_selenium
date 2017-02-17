@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.util.Iterator;
 import java.util.List;
@@ -16,32 +15,6 @@ import java.util.Set;
 public class PageUtils {
 
     public static Logger logger = Logger.getLogger(PageUtils.class);
-
-    // TODO: we can probably define generic methods here.
-
-    public static void assertElementIsPresent(WebDriver driver, By assertedElement, String textToCompare){
-        WebElement elementToAssert = driver.findElement(assertedElement);
-
-        System.out.println("Text to assert: " + elementToAssert.getText());
-
-        try {
-            Assert.assertTrue(elementToAssert.getText() != null);
-        }
-        catch (AssertionError uhOh) {
-            System.out.println("Object: " + elementToAssert + " - is not there");
-            System.out.println("StackTrace: "+ uhOh.getStackTrace());
-            Assert.fail();
-        }
-
-        try {
-            Assert.assertEquals(elementToAssert.getText(), textToCompare);
-        }
-        catch (AssertionError uhOh) {
-            System.out.println("Object text: " + elementToAssert.getText() + " - label is wrong or changed.");
-            System.out.println("StackTrace: "+ uhOh.getStackTrace());
-            Assert.fail();
-        }
-    }
 
     public static void waitElementForVisibility(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
@@ -165,5 +138,4 @@ public class PageUtils {
         }
        return equalList;
     }
-
 }

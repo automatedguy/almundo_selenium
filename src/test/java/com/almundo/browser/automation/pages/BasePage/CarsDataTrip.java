@@ -83,7 +83,6 @@ public class CarsDataTrip extends BasePage {
     public CarsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
-        return initAutosResultsPage();
+        return initCarsResultsPage();
     }
-
 }

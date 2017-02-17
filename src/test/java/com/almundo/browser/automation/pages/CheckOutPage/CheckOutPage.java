@@ -76,8 +76,9 @@ public class CheckOutPage extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPage populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage ) {
-
+    public CheckOutPage populateCheckOutPage
+            (JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage )
+    {
         getCheckOutPageElements(productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);
         pickUpLocationSection().populatePickUpLocationSection();
@@ -85,30 +86,27 @@ public class CheckOutPage extends TestBaseSetup {
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();
-
         return this;
     }
 
-    public CheckOutPage populateCheckOutPage(JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage, boolean includeAssistance) {
-
+    public CheckOutPage populateCheckOutPage
+            (JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage,
+             boolean includeAssistance)
+    {
         getCheckOutPageElements(productCheckOutPage);
-
         if(includeAssistance){selectAssistanceRdb();}
-
         passengerSection().populatePassengerSection(passengerList);
         pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();
-
         return this;
     }
 
     private CheckOutPage acceptConditions(){
         FooterSection footerSection = initFooterSection();
         logger.info("---------- Checking Footer Section options ----------");
-
         footerSection.acceptTermsAndConditions();
         if(isElementRequiered(checkOutPageElements, "accepted")) {
             footerSection.acceptItinerary();

@@ -49,11 +49,9 @@ public class ContactSection extends CheckOutPage {
         setRepEmail(contactData.get("rep_email").toString());
         selectPhoneType(contactData.get("tel").toString());
         setCountryCode(contactData.get("country_code").toString());
-
         if (isElementRequiered(checkOutPageElements, "area")) {
             setAreaCode(contactData.get("area").toString());
         }
-
         setPhoneNumber(contactData.get("phone_number").toString());
         return this;
     }
@@ -93,5 +91,4 @@ public class ContactSection extends CheckOutPage {
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);
     }
-
 }

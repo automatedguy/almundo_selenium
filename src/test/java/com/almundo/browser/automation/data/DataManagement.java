@@ -62,7 +62,7 @@ public class DataManagement extends TestBaseSetup {
     //------------------------- HOME PAGE -----------------------------
     //VUELOS DATA TRIP
     public void getVuelosDataTripList() {
-        vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vuelos", countryPar.toLowerCase() + "_data.json");
+        vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "flights", countryPar.toLowerCase() + "_data.json");
     }
 
     public void getOneWayDataTripItinerary(String dataSet) {
@@ -136,7 +136,7 @@ public class DataManagement extends TestBaseSetup {
 
     //HOTELES DATA TRIP
     public void getHotelesDataTripList() {
-        hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
+        hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hotels", countryPar.toLowerCase() + "_data.json");
     }
 
     public void getHotelDataTripItinerary(String dataSet) {
@@ -156,7 +156,7 @@ public class DataManagement extends TestBaseSetup {
 
     //VUELO+HOTEL DATA TRIP
     public void getVueloHotelDataTripList() {
-        vueloHotelDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "vueloHotel", countryPar.toLowerCase() + "_data.json");
+        vueloHotelDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "trips", countryPar.toLowerCase() + "_data.json");
     }
 
     public void getVueloHotelDataTripItinerary(String dataSet) {
@@ -179,7 +179,7 @@ public class DataManagement extends TestBaseSetup {
 
     //AUTOS DATA TRIP
     public void getAutosDataTripList() {
-        autosDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "autos", countryPar.toLowerCase() + "_data.json");
+        autosDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "cars", countryPar.toLowerCase() + "_data.json");
     }
 
     public void getAutosDataTripItinerary(String dataSet) {
@@ -250,6 +250,4 @@ public class DataManagement extends TestBaseSetup {
         JSONObject contactData = JsonRead.getJsonDataObject(contactList, dataSet, countryPar.toLowerCase() + "_data.json");
         return contactData;
     }
-
-
 }

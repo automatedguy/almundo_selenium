@@ -88,8 +88,8 @@ public class BillingSectionV3 extends CheckOutPageV3 {
 
     public BillingSectionV3 selectBillingFiscalType(String billingFiscalType) {
         logger.info("Selecting Situación: [" + billingFiscalType + "]");
-        Select SITUACION_FISCAL_SELECT = new Select(this.billingFiscalTypeDdl);
-        SITUACION_FISCAL_SELECT.selectByVisibleText(billingFiscalType);
+        Select situacionFiscalSelect = new Select(this.billingFiscalTypeDdl);
+        situacionFiscalSelect.selectByVisibleText(billingFiscalType);
         return this;
     }
 
@@ -155,5 +155,4 @@ public class BillingSectionV3 extends CheckOutPageV3 {
         this.addressCityTxt.sendKeys(addressCity);
         return this;
     }
-
 }

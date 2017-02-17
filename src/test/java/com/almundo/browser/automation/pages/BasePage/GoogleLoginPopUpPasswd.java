@@ -37,5 +37,4 @@ public class GoogleLoginPopUpPasswd extends BasePage {
         PageUtils.waitImplicitly(4000);
         return initBasePage();
     }
-
 }

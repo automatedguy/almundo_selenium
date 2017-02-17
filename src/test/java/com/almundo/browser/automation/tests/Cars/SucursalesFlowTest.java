@@ -46,35 +46,24 @@ public class SucursalesFlowTest extends TestBaseSetup {
     @Test
     public void suc_Dom_Booking_Flow() {
         logTestTitle("Sucursales Autos Flow - Domestic - 10 days - " + countryPar );
-
-        PageUtils.waitElementForVisibility(driver, basePage.autosIcon, 10, "Autos icon");
-        basePage.autosIcon.click();
-
+        PageUtils.waitElementForVisibility(driver, basePage.carsIcon, 10, "Autos icon");
+        basePage.carsIcon.click();
         dataManagement.getAutosDataTripItinerary("capital_10days_entre_21_24");
-
-        carsDataTrip = basePage.autosDataTrip();
-
+        carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-
         carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-
         carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
-
         carsResultsPage = carsDataTrip.clickBuscarBtn();
-
         checkOutPage = carsResultsPage.clickReservarAhoraBtn();
-
         dataManagement.getPassengerData("adult_male_native");
-
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                 dataManagement.getPaymentData("deposit"),
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_cell_phone"),
-                "AutosCheckOutPageSucursales");
+                "CarsCheckOutPageSucursales");
     }
 }

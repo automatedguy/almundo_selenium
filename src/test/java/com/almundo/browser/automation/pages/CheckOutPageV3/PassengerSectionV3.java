@@ -58,10 +58,8 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     //############################################### Actions ###############################################
 
     public PassengerSectionV3 populatePassengerSection(JSONArray passengerList){
-
         logger.info("------------- Filling Passenger Section -------------");
         JSONObject passengerInfo;
-
         setFirstNameList();
         setLastNameList();
         setDocTypeList();
@@ -69,9 +67,7 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         setBirthdayList();
         setGenderList();
         setNationalityList();
-
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
-
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
@@ -79,36 +75,28 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
             setlastName(passengerIndex, passengerInfo.get("last_name").toString());
 
             if(isElementRequiered(checkOutPageElements, "documentType0")) {
-                setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());
-            }
+                setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}
 
             if(isElementRequiered(checkOutPageElements, "document_number")){
-                setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());
-            }
+                setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
 
             if(isElementRequiered(checkOutPageElements, "document_emisor")) {
-                setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());
-            }
+                setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());}
 
             if(isElementRequiered(checkOutPageElements, "document_expiration")) {
-                setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());
-            }
+                setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());}
 
             if(isElementRequiered(checkOutPageElements, "birthday")) {
-                setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());
-            }
+                setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());}
 
             if(isElementRequiered(checkOutPageElements, "gender")) {
-                setGender(passengerIndex, passengerInfo.get("gender").toString());
-            }
+                setGender(passengerIndex, passengerInfo.get("gender").toString());}
 
             if(isElementRequiered(checkOutPageElements, "nationality")) {
-                setNationality(passengerIndex, passengerInfo.get("nationality").toString());
-            }
+                setNationality(passengerIndex, passengerInfo.get("nationality").toString());}
         }
         return this;
     }
-
 
     public void setFirstNameList() {
         firstNameList = driver.findElements(By.id("first_name"));
@@ -203,5 +191,4 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         nacionalidad.selectByVisibleText(nationality);
         return this;
     }
-
 }

@@ -1,5 +1,5 @@
 {
-	"vuelos": {
+	"flights": {
 			"miami_10days_2adults_2childs_turista": {
 				"originAuto": "Bue",
 				"originFull": "Buenos Aires, Buenos Aires, Argentina",
@@ -62,7 +62,7 @@
 			}
 	},
 
-	"hoteles": {
+	"hotels": {
 			"miami_10days_2adults_2childs_1room": {
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
@@ -94,7 +94,7 @@
 			}
 	},
 
-	"vueloHotel": {
+	"trips": {
 			"miami_10days_2adults_2childs_1room": {
 				"originAuto": "Bue",
 				"originFull": "Buenos Aires, Buenos Aires, Argentina",
@@ -148,7 +148,7 @@
 			}
 	},
 
-	"autos": {
+	"cars": {
 			"capital_10days_entre_21_24": {
 				"originAuto": "Bue",
 				"originFull": "Buenos Aires, Buenos Aires, Argentina",
@@ -430,7 +430,4 @@
 			"name": "Automation"
 		}
 	}
-
-
-
 }

@@ -24,7 +24,6 @@ public class TripsResultsPage extends TestBaseSetup {
     @FindBy(id = "continue-v2")
     private WebElement continuarBtn;
 
-
     //############################################### Actions ##############################################
 
     public TripsDetailPage clickContinuarBtn() {
@@ -32,7 +31,7 @@ public class TripsResultsPage extends TestBaseSetup {
         logger.info("Clicking on Continuar button");
         continuarBtn.click();
         PageUtils.waitImplicitly(2000);
-        return initVueloHotelDetailPage();
+        return initTripsDetailPage();
     }
 
     public TripsResultsPage clickElegirBtn(int index) {

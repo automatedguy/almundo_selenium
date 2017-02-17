@@ -19,20 +19,20 @@ public class BasePage extends TestBaseSetup {
         this.driver = iDriver;
     }
 
-    public HotelsDataTrip hotelesDataTrip() {
-        return initHotelesDataTrip();
+    public HotelsDataTrip hotelsDataTrip() {
+        return initHotelsDataTrip();
     }
 
-    public FlightsDataTrip vuelosDataTrip() {
-        return initVuelosDataTrip();
+    public FlightsDataTrip flightsDataTrip() {
+        return initFlightsDataTrip();
     }
 
-    public TripsDataTrip vueloHotelDataTrip() {
-        return initVueloHotelDataTrip();
+    public TripsDataTrip tripsDataTrip() {
+        return initTripsDataTrip();
     }
 
-    public CarsDataTrip autosDataTrip() {
-        return initAutosDataTrip();
+    public CarsDataTrip carsDataTrip() {
+        return initCarsDataTrip();
     }
 
     public HeaderSection headerSection() { return initHeaderSection(); }
@@ -40,31 +40,31 @@ public class BasePage extends TestBaseSetup {
     //############################################### Locators ##############################################
 
     @FindBy(css = ".icon.hotels")
-    public WebElement hotelesIcon;
+    public WebElement hotelsIcon;
 
     @FindBy(css = ".icon.flights")
-    public WebElement vuelosIcon;
+    public WebElement flightsIcon;
 
     @FindBy(css = ".icon.trips")
-    public WebElement vueloHotelIcon;
+    public WebElement tripsIcon;
 
     @FindBy(css = ".icon.packages")
-    public WebElement paqueteslIcon;
+    public WebElement packagesIcon;
 
     @FindBy(css = ".icon.disney")
     public WebElement disneyIcon;
 
     @FindBy(css = ".icon.assistance")
-    public WebElement segurosIcon;
+    public WebElement insuranceIcon;
 
     @FindBy(css = ".icon.cars")
-    public WebElement autosIcon;
+    public WebElement carsIcon;
 
     @FindBy(css = ".icon.excursions")
-    public WebElement excursionesIcon;
+    public WebElement excursionsIcon;
 
     @FindBy(css = ".icon.trains")
-    public WebElement trenesIcon;
+    public WebElement trainsIcon;
 
     @FindBy(css = ".ui-datepicker-month")
     public WebElement monthLbl;
@@ -143,7 +143,7 @@ public class BasePage extends TestBaseSetup {
         }
         else{
             daysAhead = daysAhead - totalAvailableDates;
-            hotelesDataTrip().nextCalBtn.click();
+            hotelsDataTrip().nextCalBtn.click();
             List<WebElement> availableDatesNextCal = getAvailableDatesList();
             logger.info("Selecting date: [" + availableDatesNextCal.get(daysAhead-1).getText() + " " + monthLbl.getText() + " " + yearLbl.getText() + "]");
             availableDatesNextCal.get(daysAhead-1).click();
@@ -168,5 +168,4 @@ public class BasePage extends TestBaseSetup {
         }
         return this;
     }
-
 }

@@ -46,5 +46,4 @@ public class JsonRead extends TestBaseSetup {
         }
         return jsonObject;
     }
-
 }

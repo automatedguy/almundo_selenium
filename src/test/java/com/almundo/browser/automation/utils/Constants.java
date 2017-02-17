@@ -32,5 +32,4 @@ public class Constants extends TestBaseSetup {
     public static final String ONE_WAY = "Solo ida";
     public static final String ROUND_TRIP = "Ida y vuelta";
     public static final String MULTIDESTINATION = "Varias ciudades";
-
 }

@@ -89,5 +89,4 @@ public class LoginPopUp extends BasePage {
         PageUtils.waitImplicitly(4000);
         return initGoogleLoginPopUpEmail();
     }
-
 }
