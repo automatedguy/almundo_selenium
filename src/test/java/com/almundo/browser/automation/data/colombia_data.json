@@ -24,7 +24,29 @@
                 "childs": 0,
                 "childAgeRange": "",
                 "flightClass": "Todas"
-            }
+            },
+
+            "multiDest_3Flights_2adults_todas": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Estados Unidos de América",
+            "originAuto2": "Mia",
+            "originFull2": "Miami, Estados Unidos de América",
+            "destinationAuto2": "Nue",
+            "destinationFull2": "Nueva York, Nueva York, Estados Unidos de América",
+            "originAuto3": "Nue",
+            "originFull3": "Nueva York, Nueva York, Estados Unidos de América",
+            "destinationAuto3": "Bog",
+            "destinationFull3": "Bogotá, Bogotá D.C., Colombia",
+            "startDate": 15,
+            "startDate2": 20,
+            "startDate3": 25,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "",
+            "flightClass": "Todas"
+        }
     },
 
     "hotels": {
