@@ -20,8 +20,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.*;
-import java.lang.reflect.Method;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -57,7 +57,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country) {
+                                        @Optional("MEXICO") String country) {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -240,12 +240,14 @@ public class TestBaseSetup {
     }
 
     public void replaceUrl(){
-        PageUtils.waitUrlContains(driver, 30, "cart", "URL does not contain cart");
-        String actualURL = driver.getCurrentUrl();
-        String newURL = actualURL.replace("cart", "checkout");
-        logger.info("new URL: " + newURL);
-        driver.navigate().to(newURL);
-        PageUtils.waitImplicitly(8000);
+        try{
+            PageUtils.waitUrlContains(driver, 4, "checkout", "URL does not contain checkout");
+        } catch(Exception time) {
+            String actualURL = driver.getCurrentUrl();
+            String newURL = actualURL.replace("cart", "checkout");
+            logger.info("new URL: " + newURL);
+            driver.navigate().to(newURL);
+        }
     }
 
     //################################################ Inits ################################################

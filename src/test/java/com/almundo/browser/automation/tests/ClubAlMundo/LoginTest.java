@@ -38,24 +38,32 @@ public class LoginTest extends TestBaseSetup {
     @Test
     public void login_email () {
         logTestTitle("Club AlMundo - Login with email - " + countryPar );
+
         JSONObject userData = dataManagement.getUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
+
         logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
         Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+
         basePage.headerSection().clickMyAccountMenuLnk();
+
         List<String> actualList  = basePage.headerSection().getMyAccountMenuList();
         List<String> expectedList;
+
         if(countryPar.equals("ARGENTINA")) {
             expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión"));
         } else {
             expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión"));
         }
+
         logger.info("Validating My Account menu options are displayed:");
         Assert.assertTrue(PageUtils.equalLists(actualList, expectedList));
+
         logger.info("Logging out user");
         basePage.headerSection().clickMyAccountMenuOption("Cerrar sesión");
         PageUtils.waitImplicitly(4000);
+
         logger.info("Validating user is logged out");
         Assert.assertEquals("Ingresar", basePage.headerSection().textLnk.getText());
     }

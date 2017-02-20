@@ -3,9 +3,12 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.PickUpLocationSection;
 import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -36,6 +39,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initContactInfoSectionV3();
     }
 
+    //############################################### Locators ##############################################
+
+    @FindBy(css = ".main-title")
+    public WebElement mainTitleLbl;
+
+    //############################################### Actions ##############################################
+
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;
         try {
@@ -50,9 +60,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPageV3 populateCheckOutPage
-            (JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage  )
+    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList,
+                                               JSONObject paymentData,
+                                               JSONObject billingData,
+                                               JSONObject contactData,
+                                               String productCheckOutPage)
     {
+        PageUtils.waitElementForVisibility(driver, mainTitleLbl, 10, "Main text label");
         getCheckOutPageElements(productCheckOutPage);
         paymentSection().populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);
@@ -69,7 +83,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject paymentData2,
                                                JSONObject billingData,
                                                JSONObject contactData,
-                                               String productCheckOutPage ) {
+                                               String productCheckOutPage)
+    {
         getCheckOutPageElements(productCheckOutPage);
         paymentSection().populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
         paymentSection().populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);

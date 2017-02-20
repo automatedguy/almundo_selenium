@@ -82,16 +82,16 @@ public class FlowTest extends TestBaseSetup {
             CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
             replaceUrl();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                    dataManagement.getPaymentData("1_amex_amex"),
-                    dataManagement.getBillingData("local_Billing"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageInternational");
+                                                dataManagement.getPaymentData("1_amex_amex"),
+                                                dataManagement.getBillingData("local_Billing"),
+                                                dataManagement.getContactData("contact_cell_phone"),
+                                                "TripsCheckOutPageInternationalV3");
         } else {
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                    dataManagement.getPaymentData("1_amex_amex"),
-                    dataManagement.getBillingData("local_Billing"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageInternational");
+                                              dataManagement.getPaymentData("1_amex_amex"),
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                              "TripsCheckOutPageInternational");
         }
     }
 
@@ -126,7 +126,7 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getPaymentData("1_amex_amex"),
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
-                                              "TripsCheckOutPageDomestic");
+                                              "TripsCheckOutPageDomesticlV3");
         } else {
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                               dataManagement.getPaymentData("1_amex_amex"),

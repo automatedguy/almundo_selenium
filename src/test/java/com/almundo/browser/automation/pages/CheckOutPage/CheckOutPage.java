@@ -76,8 +76,11 @@ public class CheckOutPage extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPage populateCheckOutPage
-            (JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage )
+    public CheckOutPage populateCheckOutPage(JSONArray passengerList,
+                                             JSONObject paymentData,
+                                             JSONObject billingData,
+                                             JSONObject contactData,
+                                             String productCheckOutPage)
     {
         getCheckOutPageElements(productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);
@@ -89,9 +92,12 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPage populateCheckOutPage
-            (JSONArray passengerList, JSONObject paymentData, JSONObject billingData, JSONObject contactData, String productCheckOutPage,
-             boolean includeAssistance)
+    public CheckOutPage populateCheckOutPage(JSONArray passengerList,
+                                             JSONObject paymentData,
+                                             JSONObject billingData,
+                                             JSONObject contactData,
+                                             String productCheckOutPage,
+                                             boolean includeAssistance)
     {
         getCheckOutPageElements(productCheckOutPage);
         if(includeAssistance){selectAssistanceRdb();}

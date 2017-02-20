@@ -9,6 +9,7 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -30,6 +31,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
+        dataManagement.getUsersDataList();
         dataManagement.getTripsDataTripList();
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
@@ -40,8 +42,8 @@ public class LoginFlowTest extends TestBaseSetup {
     @BeforeMethod
     private void doLogin(){
         LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
-        loginPopUp.setLoginPasswordTxt("gabi1981ce");
+        JSONObject userData = dataManagement.getUserData("email");
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
         basePage.clicksTripsBtn();
     }
@@ -91,7 +93,7 @@ public class LoginFlowTest extends TestBaseSetup {
                     dataManagement.getPaymentData("1_amex_amex"),
                     dataManagement.getBillingData("local_Billing"),
                     dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageInternationalV3");
+                    "TripsCheckOutPageInternational");
         }
     }
 
@@ -123,16 +125,16 @@ public class LoginFlowTest extends TestBaseSetup {
             CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
             replaceUrl();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                    dataManagement.getPaymentData("1_amex_amex"),
-                    dataManagement.getBillingData("local_Billing"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "VueloHotelCheckOutPageDomestic");
+                                                dataManagement.getPaymentData("1_amex_amex"),
+                                                dataManagement.getBillingData("local_Billing"),
+                                                dataManagement.getContactData("contact_cell_phone"),
+                                                "VueloHotelCheckOutPageDomesticV3");
         } else {
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                    dataManagement.getPaymentData("1_amex_amex"),
-                    dataManagement.getBillingData("local_Billing"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "VueloHotelCheckOutPageDomestic");
+                                              dataManagement.getPaymentData("1_amex_amex"),
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                              "VueloHotelCheckOutPageDomestic");
         }
     }
 }

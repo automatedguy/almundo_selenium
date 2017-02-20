@@ -180,6 +180,24 @@
       "accepted":"false"
     },
 
+    "TripsCheckOutPageDomesticlV3":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"true",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"false",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"false",
+      "accepted":"false"
+    },
+
     "TripsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
@@ -396,7 +414,7 @@
     "TripsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
-      "fiscal_name":"false",
+      "fiscal_name":"true",
       "billing_fiscal_type": "true",
       "billing_document_type": "true",
       "document_emisor":"false",
@@ -420,7 +438,7 @@
     "TripsCheckOutPageDomestic":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
-      "fiscal_name":"false",
+      "fiscal_name":"true",
       "billing_fiscal_type": "true",
       "billing_document_type": "true",
       "document_emisor":"false",
@@ -444,7 +462,7 @@
     "TripsCheckOutPageInternationalV3":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
-      "fiscal_name":"false",
+      "fiscal_name":"true",
       "billing_fiscal_type": "true",
       "billing_document_type": "true",
       "document_emisor":"false",
