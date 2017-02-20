@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 22/12/16.
  */
+
 public class PickUpLocationSection extends CheckOutPage {
 
     public PickUpLocationSection(WebDriver driver) {
@@ -17,10 +18,16 @@ public class PickUpLocationSection extends CheckOutPage {
 
     //############################################### Locators ##############################################
 
-
     //############################################### Actions ##############################################
 
-    public void selectAgency() {
+    public PickUpLocationSection populatePickUpLocationSection(){
+        if(isElementRequiered(checkOutPageElements, "PickUpLocationSection")){
+            pickUpLocationSection().selectAgency();
+        }
+        return this;
+    }
+
+    private void selectAgency() {
         String agencyLocator = "adress";
         List<WebElement> agenciesList = driver.findElements(By.id(agencyLocator));
         agenciesList.get(agenciesList.size()-1).click();

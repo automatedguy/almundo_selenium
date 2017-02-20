@@ -9,8 +9,11 @@ public class Constants extends TestBaseSetup {
 
     public static final String STAGING_URL = "http://staging.almundo.com/";
     public static final String PROD_URL = "http://almundo.com/";
+    public static final String SUC_URL = "https://sucursales.almundo.com.ar/";
+    public static final String CRR_URL = "https://ccr.almundo.com.ar/";
 
     public static final String RESOURCES_PATH = "src/test/resources/";
+    public static final String DATA_PATH = "src/test/java/com/almundo/browser/automation/data/";
 
     public static final String NO_DISPONIBILIDAD_MSG = "Lo sentimos. No encontramos disponibilidad para tu búsqueda\nPor favor intentá una nueva busqueda";
 
@@ -18,10 +21,15 @@ public class Constants extends TestBaseSetup {
 
     public static final String VOLVE_A_INTENTARLO_MSG = "No pudimos procesar la consulta. Volvé a intentarlo en unos minutos.";
 
+    public static final String FELICITACIONES_MSG = "¡Felicitaciones, tu solicitud de compra fué exitosa!";
+
     public static final String MENOR_2_EN_BRAZOS = "Menos de 2 años en brazos";
     public static final String MENOR_2_EN_ASIENTO = "Menos de 2 años en asiento";
     public static final String ENTRE_2_11 = "Entre 2 y 11 años";
     public static final String MAYOR_11 = "Más de 11 años";
 
-
+    /* FLIGHTS CONSTANTS TYPE */
+    public static final String ONE_WAY = "Solo ida";
+    public static final String ROUND_TRIP = "Ida y vuelta";
+    public static final String MULTIDESTINATION = "Varias ciudades";
 }

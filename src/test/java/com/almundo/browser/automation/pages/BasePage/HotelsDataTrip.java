@@ -1,9 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
-import com.almundo.browser.automation.pages.ResultsPage.HotelesResultsPage;
-import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,20 +15,9 @@ import java.util.Random;
 /**
  * Created by leandro.efron on 5/12/2016.
  */
-public class HotelesDataTrip extends BasePage {
+public class HotelsDataTrip extends BasePage {
 
-    public static JSONObject hotelesDataTripList = null;
-    public static JSONObject hotelDataTripItinerary = null;
-
-    public static String destinationAuto;
-    public static String destinationFull;
-    public static int startDate;
-    public static int endDate;
-    public static int adults;
-    public static int childs;
-    public static int rooms;
-
-    public HotelesDataTrip(WebDriver driver) {
+    public HotelsDataTrip(WebDriver driver) {
         super(driver);
     }
 
@@ -65,7 +52,7 @@ public class HotelesDataTrip extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public HotelesDataTrip setDestination(String destinationAuto, String destinationFull) {
+    public HotelsDataTrip setDestination(String destinationAuto, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
         logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTxt.clear();
@@ -74,7 +61,7 @@ public class HotelesDataTrip extends BasePage {
         return this;
     }
 
-    public int selectPassenger(int adults, int childs, int rooms) {
+    public HotelsDataTrip selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
@@ -99,33 +86,15 @@ public class HotelesDataTrip extends BasePage {
             }
         }
         listoBtn.click();
-        return adults + childs;
+
+        logger.info("Total Adults: [" + adults + "]");
+        logger.info("Total Childs: [" + childs + "]");
+        return this;
     }
 
-    public HotelesResultsPage clickBuscarBtn() {
+    public HotelsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
         buscarBtn.click();
         return initHotelesResultsPage();
     }
-
-
-    public static void getHotelesDataTripList() {
-        hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hoteles", countryPar.toLowerCase() + "_data.json");
-    }
-
-    public static void getHotelDataTripItinerary(String dataSet) {
-        hotelDataTripItinerary = JsonRead.getJsonDataObject(hotelesDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
-
-        destinationAuto = hotelDataTripItinerary.get("destinationAuto").toString();
-        destinationFull = hotelDataTripItinerary.get("destinationFull").toString();
-
-        startDate = Integer.parseInt(hotelDataTripItinerary.get("startDate").toString());
-        endDate = Integer.parseInt(hotelDataTripItinerary.get("endDate").toString());
-
-        adults = Integer.parseInt(hotelDataTripItinerary.get("adults").toString());
-        childs = Integer.parseInt(hotelDataTripItinerary.get("childs").toString());
-
-        rooms = Integer.parseInt(hotelDataTripItinerary.get("rooms").toString());
-    }
-
 }

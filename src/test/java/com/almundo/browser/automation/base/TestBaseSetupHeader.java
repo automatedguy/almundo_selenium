@@ -14,10 +14,10 @@ import java.io.File;
 public class TestBaseSetupHeader extends TestBaseSetup {
 
     /* Overloading initChromeDriver method in order to setup Http Header */
-    public WebDriver initChromeDriver() throws InterruptedException {
+    public WebDriver initChromeDriver() {
         System.out.println("Launching google chrome with new profile..");
 
-        if (osProperty.contains("windows")){
+        if (osName.toLowerCase().contains("windows")){
             System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver.exe");
         } else {
             System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");

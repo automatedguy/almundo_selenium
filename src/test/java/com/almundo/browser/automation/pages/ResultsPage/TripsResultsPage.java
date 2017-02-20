@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 14/12/16.
  */
-public class VueloHotelResultsPage extends TestBaseSetup {
+public class TripsResultsPage extends TestBaseSetup {
 
-    public VueloHotelResultsPage(WebDriver driver) {
+    public TripsResultsPage(WebDriver driver) {
         super.driver = driver;
     }
 
@@ -24,22 +24,23 @@ public class VueloHotelResultsPage extends TestBaseSetup {
     @FindBy(id = "continue-v2")
     private WebElement continuarBtn;
 
-
     //############################################### Actions ##############################################
 
-    public VueloHotelDetailPage clickContinuarBtn() {
+    public TripsDetailPage clickContinuarBtn() {
         PageUtils.waitElementForVisibility(driver,continuarBtn,30, "Continuar Button");
         logger.info("Clicking on Continuar button");
         continuarBtn.click();
-        return initVueloHotelDetailPage();
+        PageUtils.waitImplicitly(2000);
+        return initTripsDetailPage();
     }
 
-    public VueloHotelResultsPage clickElegirBtn(int index) {
+    public TripsResultsPage clickElegirBtn(int index) {
         String cssSelectorNameElegir = ".button.button--secondary.button--block.button--md";
         PageUtils.waitListContainResults(driver, cssSelectorNameElegir, 0);
         List<WebElement> elegirBtn = driver.findElements(By.cssSelector(cssSelectorNameElegir));
-        logger.info("Clicking on Elegir button index: " + index);
+        logger.info("Clicking on Elegir button index: [" + index + "]");
         elegirBtn.get(index).click();
+        PageUtils.waitImplicitly(2000);
         return this;
     }
 

@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,50 +19,52 @@ public class BasePage extends TestBaseSetup {
         this.driver = iDriver;
     }
 
-    public HotelesDataTrip hotelesDataTrip() {
-        return initHotelesDataTrip();
+    public HotelsDataTrip hotelsDataTrip() {
+        return initHotelsDataTrip();
     }
 
-    public VuelosDataTrip vuelosDataTrip() {
-        return initVuelosDataTrip();
+    public FlightsDataTrip flightsDataTrip() {
+        return initFlightsDataTrip();
     }
 
-    public VueloHotelDataTrip vueloHotelDataTrip() {
-        return initVueloHotelDataTrip();
+    public TripsDataTrip tripsDataTrip() {
+        return initTripsDataTrip();
     }
 
-    public AutosDataTrip autosDataTrip() {
-        return initAutosDataTrip();
+    public CarsDataTrip carsDataTrip() {
+        return initCarsDataTrip();
     }
+
+    public HeaderSection headerSection() { return initHeaderSection(); }
 
     //############################################### Locators ##############################################
 
     @FindBy(css = ".icon.hotels")
-    public WebElement hotelesIcon;
+    public WebElement hotelsIcon;
 
     @FindBy(css = ".icon.flights")
-    public WebElement vuelosIcon;
+    public WebElement flightsIcon;
 
     @FindBy(css = ".icon.trips")
-    public WebElement vueloHotelIcon;
+    public WebElement tripsIcon;
 
     @FindBy(css = ".icon.packages")
-    public WebElement paqueteslIcon;
+    public WebElement packagesIcon;
 
     @FindBy(css = ".icon.disney")
     public WebElement disneyIcon;
 
     @FindBy(css = ".icon.assistance")
-    public WebElement segurosIcon;
+    public WebElement insuranceIcon;
 
     @FindBy(css = ".icon.cars")
-    public WebElement autosIcon;
+    public WebElement carsIcon;
 
     @FindBy(css = ".icon.excursions")
-    public WebElement excursionesIcon;
+    public WebElement excursionsIcon;
 
     @FindBy(css = ".icon.trains")
-    public WebElement trenesIcon;
+    public WebElement trainsIcon;
 
     @FindBy(css = ".ui-datepicker-month")
     public WebElement monthLbl;
@@ -81,11 +84,82 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = ".button.button--secondary.button--lg.button-search.button--block.ellipsis.ng-binding")
     public WebElement buscarBtn;
 
+    //BANNERS
+    @FindBy(css = "ul[name$='Home Principal Buscador Izquierda (Fijo)']")
+    public WebElement mainLeftBannerLnk;
+
+    @FindBy(css = "ul[name$='Home Principal Buscador Derecha']")
+    public WebElement mainRightBannerLnk;
+
+    @FindBy(name = "AR Home Medio Izquierda")
+    public WebElement homeMedioLeftBannerLnk;
+
+    @FindBy(name = "AR Home Medio Derecha")
+    public WebElement homeMedioRightBannerLnk;
+
     //############################################### Actions ###############################################
 
-    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) throws InterruptedException {
+    public BasePage clickFlightsBtn() {
+        PageUtils.waitElementForClickable(driver, flightsIcon, 10, "Vuelos button");
+        logger.info("Clicking on Vuelos button");
+        flightsIcon.click();
+        return this;
+    }
+
+    public BasePage clickHotelsBtn() {
+        PageUtils.waitElementForClickable(driver, hotelsIcon, 10, "Hoteles button");
+        logger.info("Clicking on Hoteles button");
+        hotelsIcon.click();
+        return this;
+    }
+
+    public BasePage clickCarsBtn() {
+        PageUtils.waitElementForClickable(driver, carsIcon, 10, "Autos button");
+        logger.info("Clicking on Autos button");
+        carsIcon.click();
+        return this;
+    }
+
+    public BasePage clicksTripsBtn() {
+        PageUtils.waitElementForClickable(driver, tripsIcon, 10, "Vuelos+Hotel button");
+        logger.info("Clicking on Vuelos+Hotel button");
+        tripsIcon.click();
+        return this;
+    }
+
+    public PromoPage clickMainLeftBannerLnk() {
+        PageUtils.waitElementForClickable(driver, mainLeftBannerLnk, 15, "Home Main Left Banner");
+        logger.info("Clicking on Home Main left Banner");
+        mainLeftBannerLnk.click();
+        return initPromoPage();
+    }
+
+    public PromoPage clickMainRightBannerLnk() {
+        PageUtils.waitElementForClickable(driver, mainRightBannerLnk, 15, "Home Main Right Banner");
+        logger.info("Clicking on Home Main right Banner");
+        mainRightBannerLnk.click();
+        return initPromoPage();
+    }
+
+    public PromoPage clickHomeMedioLeftBannerLnk() {
+        PageUtils.waitElementForClickable(driver, homeMedioLeftBannerLnk, 15, "Home Medio Left Banner");
+        PageUtils.scrollToElement(driver, homeMedioLeftBannerLnk);
+        logger.info("Clicking on Home Medio left Banner");
+        homeMedioLeftBannerLnk.click();
+        return initPromoPage();
+    }
+
+    public PromoPage clickHomeMedioRightBannerLnk() {
+        PageUtils.waitElementForClickable(driver, homeMedioRightBannerLnk, 15, "Home Medio Right Banner");
+        PageUtils.scrollToElement(driver, homeMedioRightBannerLnk);
+        logger.info("Clicking on Home Medio right Banner");
+        homeMedioRightBannerLnk.click();
+        return initPromoPage();
+    }
+
+    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
         calendar.click();
-        Thread.sleep(500);
+        PageUtils.waitImplicitly(2000);
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
 
         List<WebElement> availableDates = getAvailableDatesList();
@@ -97,7 +171,7 @@ public class BasePage extends TestBaseSetup {
         }
         else{
             daysAhead = daysAhead - totalAvailableDates;
-            hotelesDataTrip().nextCalBtn.click();
+            hotelsDataTrip().nextCalBtn.click();
             List<WebElement> availableDatesNextCal = getAvailableDatesList();
             logger.info("Selecting date: [" + availableDatesNextCal.get(daysAhead-1).getText() + " " + monthLbl.getText() + " " + yearLbl.getText() + "]");
             availableDatesNextCal.get(daysAhead-1).click();
@@ -122,5 +196,4 @@ public class BasePage extends TestBaseSetup {
         }
         return this;
     }
-
 }

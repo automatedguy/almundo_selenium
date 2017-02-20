@@ -2,12 +2,11 @@ package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
+import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
+import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
-import com.almundo.browser.automation.utils.Constants;
-import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.RetryAnalyzer;
-import com.almundo.browser.automation.utils.SauceHelpers;
+import com.almundo.browser.automation.utils.*;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
@@ -22,15 +21,14 @@ import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.*;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.UnexpectedException;
 
 
 public class TestBaseSetup {
 
     public static Logger logger = Logger.getLogger( TestBaseSetup.class );
-
     public static WebDriver driver;
 
     public BasePage basePage = null;
@@ -39,16 +37,13 @@ public class TestBaseSetup {
     private static String os = null;
     private static String browser = null;
     private static String browserVersion = null;
-    private static String osName = null;
+    public static String osName = System.getProperty("os.name");
 
-    public int numPassengers;
     public static String countryPar;
 
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
     public static JSONObject jsonCountryPropertyObject = null;
-
-    public String osProperty = System.getProperty("os.name").toLowerCase();
 
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
@@ -58,16 +53,16 @@ public class TestBaseSetup {
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
-                                        //@Optional("OS X 10.11") String osType,
+//                                        @Optional("OS X 10.11") String osType,
+//                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country) throws Exception {
+                                        @Optional("MEXICO") String country) {
 
         this.baseURL = env_url;
         this.os = osType;
         this.browser = browserType;
         this.browserVersion = browserTypeVersion;
-        osName = System.getProperty("os.name");
         this.countryPar = country;
 
         try {
@@ -92,28 +87,29 @@ public class TestBaseSetup {
 
 
     @BeforeMethod
-    public void setDriver() throws InterruptedException {
-        System.out.println();
-        logger.info("Starting @BeforeMethod...");
+    public void setDriver(Method methodName) {
+        //System.out.println();
+        //logger.info("Starting @BeforeMethod...");
         try {
             if (os == null || browserVersion == null) {
                 switch (browser) {
                     case "chrome":
-                        if (osProperty.contains("windows")){
+                        if (osName.toLowerCase().contains("windows")){
                             System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver.exe");
                         } else {
                             System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");
                         }
-                        driver = new ChromeDriver();
+                        DesiredCapabilities capability = DesiredCapabilities.chrome();
+                        capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+                        driver = new ChromeDriver(capability);
                         break;
 
                     case "firefox":
-                        if (osProperty.contains("windows")){
+                        if (osName.toLowerCase().contains("windows")){
                             System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver.exe");
                         } else {
                             System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver");
                         }
-
                         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                         capabilities.setCapability("marionette", true);
                         driver = new FirefoxDriver(capabilities);
@@ -124,7 +120,7 @@ public class TestBaseSetup {
                 }
             } else {
 
-                String method = this.getClass().getName().substring(37) + " - " + countryPar;
+                String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
 
                 if(baseURL.contains("staging")){method = method + " - STG";}
                 else{method = method + " - PROD";}
@@ -144,17 +140,18 @@ public class TestBaseSetup {
             logger.info("Selecting country page: [" + countryPar + "]");
             basePage = landingPage.selectCountryPage(countryPar);
 
-            logger.info("Finishing @BeforeMethod...");
+            //logger.info("Finishing @BeforeMethod...");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void initSauceLabsDriver (String methodName) throws MalformedURLException, UnexpectedException {
 
-        String USERNAME = "duranobal";
-        String ACCESS_KEY = "e068bfe6-b06d-4f49-a730-5bb619004eca";
+    private void initSauceLabsDriver (String methodName)  {
+
+        String USERNAME = "almundoqastuff";
+        String ACCESS_KEY = "2610a7fb-a021-480e-8c84-811af3802503";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -175,7 +172,11 @@ public class TestBaseSetup {
 
         // Launch remote browser and set it as the current thread
         //driver = new RemoteWebDriver(new URL(url), capabilities);
-        webDriver.set(new RemoteWebDriver(new URL(url), capabilities));
+        try {
+            webDriver.set(new RemoteWebDriver(new URL(url), capabilities));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
@@ -232,6 +233,23 @@ public class TestBaseSetup {
         return driver;
     }
 
+    public void logTestTitle(String testTitle) {
+        logger.info("--------------------------------------------------------------------------------");
+        logger.info(testTitle);
+        logger.info("--------------------------------------------------------------------------------");
+    }
+
+    public void replaceUrl(){
+        try{
+            PageUtils.waitUrlContains(driver, 4, "checkout", "URL does not contain checkout");
+        } catch(Exception time) {
+            String actualURL = driver.getCurrentUrl();
+            String newURL = actualURL.replace("cart", "checkout");
+            logger.info("new URL: " + newURL);
+            driver.navigate().to(newURL);
+        }
+    }
+
     //################################################ Inits ################################################
 
     protected LandingPage initLandingPage () {
@@ -242,32 +260,64 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, BasePage.class);
     }
 
-    protected HotelesDataTrip initHotelesDataTrip() {
-        return PageFactory.initElements(driver, HotelesDataTrip.class);
+    protected LoginPopUp initLoginPopUp() {
+        return PageFactory.initElements(driver, LoginPopUp.class);
     }
 
-    protected VuelosDataTrip initVuelosDataTrip () {
-        return PageFactory.initElements(driver, VuelosDataTrip.class);
+    protected FacebookLoginPopUp initFacebookLoginPopUp() {
+        return PageFactory.initElements(driver, FacebookLoginPopUp.class);
     }
 
-    protected VueloHotelDataTrip initVueloHotelDataTrip() {
-        return PageFactory.initElements(driver, VueloHotelDataTrip.class);
+    protected BasePage initGoogleLoginPopUpEmail() {
+        return PageFactory.initElements(driver, GoogleLoginPopUpEmail.class);
     }
 
-    protected AutosDataTrip initAutosDataTrip() {
-        return PageFactory.initElements(driver, AutosDataTrip.class);
+    protected BasePage initGoogleLoginPopUpPasswd() {
+        return PageFactory.initElements(driver, GoogleLoginPopUpPasswd.class);
+    }
+
+    protected HotelsDataTrip initHotelsDataTrip() {
+        return PageFactory.initElements(driver, HotelsDataTrip.class);
+    }
+
+    protected FlightsDataTrip initFlightsDataTrip() {
+        return PageFactory.initElements(driver, FlightsDataTrip.class);
+    }
+
+    protected TripsDataTrip initTripsDataTrip() {
+        return PageFactory.initElements(driver, TripsDataTrip.class);
+    }
+
+    protected CarsDataTrip initCarsDataTrip() {
+        return PageFactory.initElements(driver, CarsDataTrip.class);
     }
 
     protected CheckOutPage initCheckOutPage() {
         return PageFactory.initElements(driver, CheckOutPage.class);
     }
 
+    protected CheckOutPageV3 initCheckOutPageV3() {
+        return PageFactory.initElements(driver, CheckOutPageV3.class);
+    }
+
+    protected ConfirmationPage initConfirmationPage() {
+        return PageFactory.initElements(driver, ConfirmationPage.class);
+    }
+
     protected PassengerSection initPassengerInfoSection() {
         return PageFactory.initElements(driver, PassengerSection.class);
     }
 
-    protected CreditCardSection initCreditCardSection() {
-        return PageFactory.initElements(driver, CreditCardSection.class);
+    protected PassengerSectionV3 initPassengerInfoSectionV3() {
+        return PageFactory.initElements(driver, PassengerSectionV3.class);
+    }
+
+    protected PaymentSection initPaymentSection() {
+        return PageFactory.initElements(driver, PaymentSection.class);
+    }
+
+    protected PaymentSectionV3 initPaymentSectionV3() {
+        return PageFactory.initElements(driver, PaymentSectionV3.class);
     }
 
     protected PickUpLocationSection initPickUpLocationSection() {
@@ -278,36 +328,56 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, BillingSection.class);
     }
 
+    protected BillingSectionV3 initBillingSectionV3() {
+        return PageFactory.initElements(driver, BillingSectionV3.class);
+    }
+
     protected ContactSection initContactInfoSection() {
         return PageFactory.initElements(driver, ContactSection.class);
+    }
+
+    protected ContactSectionV3 initContactInfoSectionV3() {
+        return PageFactory.initElements(driver, ContactSectionV3.class);
     }
 
     protected FooterSection initFooterSection() {
         return PageFactory.initElements(driver, FooterSection.class);
     }
 
-    protected HotelesResultsPage initHotelesResultsPage() {
-        return PageFactory.initElements(driver, HotelesResultsPage.class);
+    protected FooterSectionV3 initFooterSectionV3() {
+        return PageFactory.initElements(driver, FooterSectionV3.class);
     }
 
-    protected HotelesDetailPage initHotelesDetailPage() {
-        return PageFactory.initElements(driver, HotelesDetailPage.class);
+    protected HotelsResultsPage initHotelesResultsPage() {
+        return PageFactory.initElements(driver, HotelsResultsPage.class);
     }
 
-    protected VuelosResultsPage initVuelosResultsPage() {
-        return PageFactory.initElements(driver, VuelosResultsPage.class);
+    protected HotelsDetailPage initHotelsDetailPage() {
+        return PageFactory.initElements(driver, HotelsDetailPage.class);
     }
 
-    protected VueloHotelResultsPage initVueloHotelResultsPage() {
-        return PageFactory.initElements(driver, VueloHotelResultsPage.class);
+    protected FlightsResultsPage initFlightsResultsPage() {
+        return PageFactory.initElements(driver, FlightsResultsPage.class);
     }
 
-    protected VueloHotelDetailPage initVueloHotelDetailPage() {
-        return PageFactory.initElements(driver, VueloHotelDetailPage.class);
+    protected TripsResultsPage initTripsResultsPage() {
+        return PageFactory.initElements(driver, TripsResultsPage.class);
     }
 
-    protected AutosResultsPage initAutosResultsPage() {
-        return PageFactory.initElements(driver, AutosResultsPage.class);
+    protected TripsDetailPage initTripsDetailPage() {
+        return PageFactory.initElements(driver, TripsDetailPage.class);
+    }
+
+    protected CarsResultsPage initCarsResultsPage() {
+        return PageFactory.initElements(driver, CarsResultsPage.class);
+    }
+
+    protected PromoPage initPromoPage() {
+        return PageFactory.initElements(driver, PromoPage.class);
+    }
+
+    protected HeaderSection initHeaderSection() {
+        return PageFactory.initElements(driver, HeaderSection.class);
     }
 
 }

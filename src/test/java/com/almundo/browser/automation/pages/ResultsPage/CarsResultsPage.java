@@ -12,28 +12,23 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 20/12/16.
  */
-public class AutosResultsPage extends TestBaseSetup {
+public class CarsResultsPage extends TestBaseSetup {
 
-    public AutosResultsPage(WebDriver iDriver) {
+    public CarsResultsPage(WebDriver iDriver) {
         this.driver = iDriver;
     }
 
     //############################################### Locators ##############################################
 
-
-
     //############################################### Actions ###############################################
 
-    public CheckOutPage clickReservarAhoraBtn() throws InterruptedException {
-        String cssSelectorName  = ".button.button--secondary.button--block.button--lg.suggested.crazy_week";
+    public CheckOutPage clickReservarAhoraBtn() {
+        String cssSelectorName  = ".button.button--secondary.button--block.button--lg.crazy_week";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
-
         List<WebElement> detailCarsButtonResults = driver.findElements(By.cssSelector(cssSelectorName));
         PageUtils.waitElementForClickable(driver, detailCarsButtonResults.get(0), 20, "Reservar Ahora button");
-
         logger.info("Clicking on Reservar button");
         detailCarsButtonResults.get(0).click();
         return initCheckOutPage();
     }
-
 }

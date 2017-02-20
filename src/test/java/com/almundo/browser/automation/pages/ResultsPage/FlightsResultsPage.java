@@ -14,30 +14,30 @@ import java.util.List;
 /**
  * Created by gabrielcespedes on 13/12/16.
  */
-public class VuelosResultsPage extends TestBaseSetup {
+public class FlightsResultsPage extends TestBaseSetup {
 
-    public VuelosResultsPage(WebDriver driver) {
+    public FlightsResultsPage(WebDriver driver) {
         super.driver = driver;
     }
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "option-inbound-00")
+    @FindBy(id = "cluster0-choice0-0")
     private WebElement ticketIdaRdb;
 
-    @FindBy(id = "option-inbound-01")
+    @FindBy(id = "cluster0-choice1-0")
     private WebElement ticketVueltaRdb;
 
     //############################################### Actions ##############################################
 
-    public VuelosResultsPage clickTicketIdaRdb() {
+    public FlightsResultsPage clickTicketIdaRdb() {
         PageUtils.waitElementForVisibility(driver,ticketIdaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Ida");
         ticketIdaRdb.click();
         return this;
     }
 
-    public VuelosResultsPage clickTicketVuelta() {
+    public FlightsResultsPage clickTicketVuelta() {
         PageUtils.waitElementForVisibility(driver,ticketVueltaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Vuelta");
         ticketVueltaRdb.click();
@@ -45,7 +45,7 @@ public class VuelosResultsPage extends TestBaseSetup {
     }
 
     public CheckOutPage clickComprarBtn(int index) {
-        String cssSelectorName = ".button.button--lg.button--secondary.button--block.epp-space-bottom-16";
+        String cssSelectorName = ".flights-cluster-pricebox .button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
         logger.info("Clicking on Comprar button");

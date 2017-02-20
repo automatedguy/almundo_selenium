@@ -20,7 +20,7 @@ public class JsonRead extends TestBaseSetup {
         JSONObject jsonObject = null;
         try {
 
-            Object data = parser.parse(new FileReader(Constants.RESOURCES_PATH + jsonFileName));
+            Object data = parser.parse(new FileReader(Constants.DATA_PATH + jsonFileName));
             logger.info("Getting JSON file: [" + jsonFileName + "]");
             jsonObject = (JSONObject) data;
 
@@ -46,5 +46,4 @@ public class JsonRead extends TestBaseSetup {
         }
         return jsonObject;
     }
-
 }
