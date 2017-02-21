@@ -147,7 +147,7 @@ public class TestBaseSetup {
     }
 
 
-    private void initSauceLabsDriver (String methodName)  {
+    private void initSauceLabsDriver(String methodName)  {
 
         String USERNAME = "almundoqastuff";
         String ACCESS_KEY = "2610a7fb-a021-480e-8c84-811af3802503";
@@ -166,7 +166,6 @@ public class TestBaseSetup {
         SauceHelpers.addSauceConnectTunnelId(capabilities);
 
         // Launch remote browser and set it as the current thread
-        //driver = new RemoteWebDriver(new URL(url), capabilities);
         try {
             webDriver.set(new RemoteWebDriver(new URL(url), capabilities));
         } catch (MalformedURLException e) {
@@ -219,10 +218,6 @@ public class TestBaseSetup {
      */
     public WebDriver getWebDriver() {
         return webDriver.get();
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 
     public void logTestTitle(String testTitle) {
