@@ -27,8 +27,10 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.clickCloseLoginBtn();
+        if (!baseURL.contains("sucursales")) {
+            LoginPopUp loginPopUp = initLoginPopUp();
+            loginPopUp.clickCloseLoginBtn();
+        }
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////

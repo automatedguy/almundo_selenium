@@ -47,7 +47,6 @@ public class TestBaseSetup {
 
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
-    public static String buildTag = null;
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
@@ -57,7 +56,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country) {
+                                        @Optional("ARGENTINA") String country) {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -164,10 +163,6 @@ public class TestBaseSetup {
 
         capabilities.setCapability("name", methodName);
 
-        if (buildTag != null) {
-            capabilities.setCapability("build", buildTag);
-        }
-
         SauceHelpers.addSauceConnectTunnelId(capabilities);
 
         // Launch remote browser and set it as the current thread
@@ -203,9 +198,6 @@ public class TestBaseSetup {
 
         //get the uri to send the commands to.
         seleniumURI = SauceHelpers.buildSauceUri();
-        //If available add build tag. When running under Jenkins BUILD_TAG is automatically set.
-        //You can set this manually on manual runs.
-        buildTag = System.getenv("BUILD_TAG");
 
         for (ITestNGMethod method : context.getAllTestMethods()) {
             method.setRetryAnalyzer(new RetryAnalyzer());
@@ -252,11 +244,11 @@ public class TestBaseSetup {
 
     //################################################ Inits ################################################
 
-    protected LandingPage initLandingPage () {
+    protected LandingPage initLandingPage() {
         return PageFactory.initElements(driver, LandingPage.class);
     }
 
-    protected BasePage initBasePage () {
+    protected BasePage initBasePage() {
         return PageFactory.initElements(driver, BasePage.class);
     }
 
