@@ -69,6 +69,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           dataManagement.getPaymentData("deposit"),
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_cell_phone"),
-                                          "VueloHotelCheckOutPageDomesticSucursal");
+                                          "TripsCheckOutPageDomesticSucursal");
     }
 }
