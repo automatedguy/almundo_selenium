@@ -7,6 +7,7 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -67,6 +68,8 @@ public class LoginFlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
+
+        PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPage = hotelsDetailPage.clickReservarAhoraBtn();
 
@@ -97,6 +100,8 @@ public class LoginFlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
+
+        PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPage = hotelsDetailPage.clickReservarAhoraBtn();
 

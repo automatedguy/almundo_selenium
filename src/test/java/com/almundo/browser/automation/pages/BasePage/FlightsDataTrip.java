@@ -71,6 +71,7 @@ public class FlightsDataTrip extends BasePage{
     }
 
     public FlightsDataTrip selectFlightType(String flightType) {
+        PageUtils.waitElementForVisibility(driver, flightTypeDdl, 10, "Flight type drop down");
         Select flightTypeSelect = new Select(flightTypeDdl);
         logger.info("Selecting Flight Type: [" + flightType + "]");
         flightTypeSelect.selectByVisibleText(flightType);
@@ -86,7 +87,7 @@ public class FlightsDataTrip extends BasePage{
         return this;
     }
 
-    public FlightsDataTrip setFlight(String nameAuto, String nameFull, String id) {
+    public FlightsDataTrip setMultiDestFlight(String nameAuto, String nameFull, String id) {
         WebElement originFld = driver.findElement(By.id(id));
         PageUtils.waitElementForVisibility(driver, originFld, 10, "Text field");
         logger.info("Entering Flight: [" + nameFull + "]");

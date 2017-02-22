@@ -194,11 +194,11 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-        flightsDataTrip.setFlight(dataManagement.originAuto2, dataManagement.originFull2, "origin-flights-0");
-        flightsDataTrip.setFlight(dataManagement.destinationAuto2, dataManagement.destinationFull2, "destination-flights-0");
+        flightsDataTrip.setMultiDestFlight(dataManagement.originAuto2, dataManagement.originFull2, "origin-flights-0");
+        flightsDataTrip.setMultiDestFlight(dataManagement.destinationAuto2, dataManagement.destinationFull2, "destination-flights-0");
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlights0Calendar, dataManagement.startDate2);
-        flightsDataTrip.setFlight(dataManagement.originAuto3, dataManagement.originFull3, "origin-flights-1");
-        flightsDataTrip.setFlight(dataManagement.destinationAuto3, dataManagement.destinationFull3, "destination-flights-1");
+        flightsDataTrip.setMultiDestFlight(dataManagement.originAuto3, dataManagement.originFull3, "origin-flights-1");
+        flightsDataTrip.setMultiDestFlight(dataManagement.destinationAuto3, dataManagement.destinationFull3, "destination-flights-1");
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlights1Calendar, dataManagement.startDate3);
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);

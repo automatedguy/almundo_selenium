@@ -8,6 +8,7 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -67,6 +68,8 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
+
+        PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPage = hotelsDetailPage.clickReservarAhoraBtn();
 
@@ -87,6 +90,7 @@ public class FlowTest extends TestBaseSetup {
         logTestTitle("Hotel Flow - Dom - 15 days - 2 Adults - 1 Room - " + countryPar );
 
         dataManagement.getHotelsDataTripItinerary("domestic01_15days_2adults_1room");
+
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -96,6 +100,8 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
+
+        PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPage = hotelsDetailPage.clickReservarAhoraBtn();
 

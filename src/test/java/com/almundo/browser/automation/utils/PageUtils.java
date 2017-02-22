@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,7 @@ public class PageUtils {
 
     public static Logger logger = Logger.getLogger(PageUtils.class);
 
+    //WAIT
     public static void waitElementForVisibility(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -93,6 +95,15 @@ public class PageUtils {
         }
     }
 
+    public static void waitImplicitly(int miliSeconds){
+        try {
+            Thread.sleep(miliSeconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //SCROLL
     public static void scrollToElement(WebDriver driver, WebElement element) {
         ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,"+element.getLocation().y+")");
 
@@ -100,6 +111,14 @@ public class PageUtils {
 
     public static void scrollToCoordinate(WebDriver driver, int coordinate) {
         ((JavascriptExecutor)driver).executeScript("window.scrollBy(0," + coordinate + ")");
+    }
+
+    //BROWSER TAB
+    public static void switchToNewTab(WebDriver driver){
+        logger.info("Switching to new tab");
+        PageUtils.waitImplicitly(2000);
+        ArrayList<String> newTab = new ArrayList(driver.getWindowHandles());
+        driver.switchTo().window(newTab.get(1));
     }
 
     public static void setFocusOnWindow(WebDriver driver, String window){
@@ -114,14 +133,6 @@ public class PageUtils {
             Iterator<String> win1 = set.iterator();
             String parent = win1.next();
             driver.switchTo().window(parent);
-        }
-    }
-
-    public static void waitImplicitly(int miliSeconds){
-        try {
-            Thread.sleep(miliSeconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 

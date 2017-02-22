@@ -43,25 +43,25 @@ public class BasePage extends TestBaseSetup {
     public WebElement hotelsIcon;
 
     @FindBy(css = ".icon.flights")
-    public WebElement flightsIcon;
+    private WebElement flightsIcon;
 
     @FindBy(css = ".icon.trips")
     public WebElement tripsIcon;
 
     @FindBy(css = ".icon.packages")
-    public WebElement packagesIcon;
+    private WebElement packagesIcon;
 
     @FindBy(css = ".icon.disney")
-    public WebElement disneyIcon;
+    private WebElement disneyIcon;
 
     @FindBy(css = ".icon.assistance")
-    public WebElement insuranceIcon;
+    private WebElement insuranceIcon;
 
     @FindBy(css = ".icon.cars")
-    public WebElement carsIcon;
+    private WebElement carsIcon;
 
     @FindBy(css = ".icon.excursions")
-    public WebElement excursionsIcon;
+    private WebElement excursionsIcon;
 
     @FindBy(css = ".icon.trains")
     public WebElement trainsIcon;
