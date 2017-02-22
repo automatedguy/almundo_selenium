@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.utils.PageUtils;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.json.simple.JSONObject;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -52,13 +52,13 @@ public class LoginTest extends TestBaseSetup {
         List<String> expectedList;
 
         if(countryPar.equals("ARGENTINA")) {
-            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión"));
+            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pag", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión"));
         } else {
             expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión"));
         }
 
         logger.info("Validating My Account menu options are displayed:");
-        Assert.assertTrue(PageUtils.equalLists(actualList, expectedList));
+        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
 
         logger.info("Logging out user");
         basePage.headerSection().clickMyAccountMenuOption("Cerrar sesión");

@@ -185,9 +185,9 @@ public class TestBaseSetup {
             driver.manage().deleteAllCookies();
             driver.quit();
         } catch (WebDriverException exception){
-            System.out.println(exception.getMessage());
+            logger.info(exception.getMessage());
         } catch (Exception exception){
-            System.out.println(exception.getMessage());
+            logger.info(exception.getMessage());
         }
     }
 

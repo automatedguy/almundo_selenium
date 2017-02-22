@@ -65,7 +65,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Promo selected: [" + promoDisplayed_path + "]");
 
             logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promoDisplayed_path + "]");
-            Assert.assertTrue(driver.getCurrentUrl().contains(promoDisplayed_path));
+            Assert.assertTrue(driver.getCurrentUrl().contains(promoDisplayed_path), "Current URL does not contain expected data");
         }
     }
 
