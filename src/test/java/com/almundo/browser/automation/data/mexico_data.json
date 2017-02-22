@@ -46,7 +46,20 @@
                 "childs": 0,
                 "childAgeRange": "",
                 "flightClass": "Todas"
-            }
+            },
+
+        "domestic_30days_2adults_todas": {
+            "originAuto": "Dis",
+            "originFull": "Ciudad de México, Distrito Federal, México",
+            "destinationAuto": "Can",
+            "destinationFull": "Cancún, Quintana Roo, México",
+            "startDate": 25,
+            "endDate": 30,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "",
+            "flightClass": "Todas"
+        }
     },
 
     "hotels": {
@@ -68,7 +81,17 @@
                 "adults": 2,
                 "childs": 0,
                 "rooms": 1
-            }
+            },
+
+        "domestic02_20days_2adults_1room": {
+            "destinationAuto": "Aca",
+            "destinationFull": "Acapulco, Guerrero, México",
+            "startDate": 25,
+            "endDate": 20,
+            "adults": 2,
+            "childs": 0,
+            "rooms": 1
+        }
     },
 
     "trips": {
@@ -109,7 +132,19 @@
                 "childs": 0,
                 "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
-            }
+            },
+        "domestic02_20days_2adults_1childs_1room": {
+            "originAuto": "Dis",
+            "originFull": "Ciudad de México, Distrito Federal, México",
+            "destinationAuto": "Can",
+            "destinationFull": "Cancún, Quintana Roo, México",
+            "startDate": 25,
+            "endDate": 20,
+            "adults": 2,
+            "childs": 1,
+            "childAgeRange": "Entre 2 y 11 años",
+            "rooms": 1
+        }
     },
 
     "cars": {
@@ -136,7 +171,6 @@
             "dropOffTime": "12:00",
             "ageRange": "Entre 21 y 24 años"
         }
-
     },
 
     "passengers":{

@@ -68,7 +68,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_male_native");
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("deposit"),
+                                          dataManagement.getPaymentData("booking24"),
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "CarsCheckOutPageSucursales");
