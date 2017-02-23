@@ -71,7 +71,7 @@ public class PaymentSection extends CheckOutPage {
     private void selectPaymentQtyOption(int index) {
         List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
         PageUtils.scrollToElement(driver, results.get(0));
-        PageUtils.scrollToCoordinate(driver, -200);
+        PageUtils.scrollToCoordinate(driver, -230);
         results.get(index).click();
     }
 
