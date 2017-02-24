@@ -79,9 +79,6 @@ public class TestBaseSetup {
             e.printStackTrace();
         }
 
-        logger.info("Properties: " + System.getProperties());
-        logger.info("Env: " + System.getenv());
-
         jsonDataObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
         jsonPropertiesObject = JsonRead.getJsonFile("countries_properties.json");
         jsonCountryPropertyObject = JsonRead.getJsonDataObject(jsonPropertiesObject, countryPar, "countries_properties.json");
