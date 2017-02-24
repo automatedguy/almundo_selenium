@@ -52,10 +52,13 @@ public class LoginTest extends TestBaseSetup {
         List<String> expectedList;
 
         if(countryPar.equals("ARGENTINA")) {
-            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pag", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión"));
-        } else {
-            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión"));
+            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión"));
+        } else if(countryPar.equals("COLOMBIA")) {
+            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Formas de pago", "Reservas", "Cerrar sesión"));
         }
+            else {
+                expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión"));
+            }
 
         logger.info("Validating My Account menu options are displayed:");
         Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");

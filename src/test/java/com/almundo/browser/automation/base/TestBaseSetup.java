@@ -51,12 +51,12 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
-                                        @Optional() String osType,
+//                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-//                                        @Optional("Windows 10") String osType,
+                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country) {
+                                        @Optional("MEXICO") String country) {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -78,6 +78,9 @@ public class TestBaseSetup {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        logger.info("Properties: " + System.getProperties());
+        logger.info("Env: " + System.getenv());
 
         jsonDataObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
         jsonPropertiesObject = JsonRead.getJsonFile("countries_properties.json");
