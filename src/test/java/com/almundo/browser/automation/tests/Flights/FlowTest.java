@@ -124,7 +124,7 @@ public class FlowTest extends TestBaseSetup {
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
+        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);

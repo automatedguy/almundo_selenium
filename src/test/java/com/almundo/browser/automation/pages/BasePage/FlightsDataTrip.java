@@ -52,6 +52,14 @@ public class FlightsDataTrip extends BasePage{
     @FindBy(name = "class-flights")
     public WebElement classFlightDdl;
 
+
+    @FindBy(css = "am-autocomplete[data-input-id='origin-flights'] .legend")
+    public WebElement originMessage;
+
+    @FindBy(css = "am-autocomplete[data-input-id='destination-flights'] .legend")
+    public WebElement destinationMessage;
+
+
     //MULTIDESTINATION
     @FindBy(css = ".add-leg .txt")
     public WebElement addLegLnk;
@@ -84,6 +92,15 @@ public class FlightsDataTrip extends BasePage{
         originFlightsTxt.clear();
         originFlightsTxt.sendKeys(origin);
         selectAutoCompleteOption(originFull);
+        return this;
+    }
+
+    public FlightsDataTrip setOrigin(String origin) {
+        PageUtils.waitElementForVisibility(driver, originFlightsTxt, 10, "Origin text field");
+        logger.info("Entering Flight Origin: [" + origin + "]");
+        originFlightsTxt.clear();
+        originFlightsTxt.sendKeys(origin);
+        PageUtils.waitImplicitly(3000);
         return this;
     }
 
