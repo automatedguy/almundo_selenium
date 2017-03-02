@@ -38,6 +38,8 @@ public class TestBaseSetup {
     private static String browser = null;
     private static String browserVersion = null;
     public static String osName = System.getProperty("os.name");
+    public static Boolean landingEnabled = Boolean.TRUE;
+    public static String cartId = null;
 
     public static String countryPar;
 
@@ -48,21 +50,25 @@ public class TestBaseSetup {
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(Constants.STAGING_URL) String env_url,
 //                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
                                         @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country) {
+                                        @Optional("ARGENTINA") String country,
+                                        @Optional("False") Boolean landing,
+                                        @Optional("Windows 10") String cart_id) {
 
         this.baseURL = env_url;
-        this.os = osType;
+        this.os = null;
         this.browser = browserType;
-        this.browserVersion = browserTypeVersion;
+        this.browserVersion = null;
         this.countryPar = country;
+        this.landingEnabled = landing;
+        this.cartId = cart_id;
 
         try {
             if (os == null || browserVersion == null) {
@@ -132,13 +138,13 @@ public class TestBaseSetup {
             logger.info("Maximizing Window...");
             driver.manage().window().maximize();
 
-            logger.info("Navigating to baseURL: [" + baseURL + "]");
-            driver.navigate().to(baseURL);
-
-            LandingPage landingPage = initLandingPage();
-            logger.info("Selecting country page: [" + countryPar + "]");
-            basePage = landingPage.selectCountryPage(countryPar);
-
+            if(landingEnabled) {
+                logger.info("Navigating to baseURL: [" + baseURL + "]");
+                driver.navigate().to(baseURL);
+                LandingPage landingPage = initLandingPage();
+                logger.info("Selecting country page: [" + countryPar + "]");
+                basePage = landingPage.selectCountryPage(countryPar);
+            }
             //logger.info("Finishing @BeforeMethod...");
 
         } catch (Exception e) {

@@ -59,7 +59,6 @@ public class LoginTest extends TestBaseSetup {
             else {
                 expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión"));
             }
-
         logger.info("Validating My Account menu options are displayed:");
         Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
 

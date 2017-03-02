@@ -275,6 +275,20 @@
 				"document_number": "29098766"
 			},
 
+			"1_visa_visa": {
+				"payment_qty" : "1",
+				"bank_name" : "Visa",
+				"credit_card_name" : "Visa",
+				"card_holder": "Dueño Dí L'Tarjüeta",
+				"card_number": "4242424242424242",
+				"card_expire": "12/18",
+				"month_card_expire": "12",
+				"year_card_expire": "2018",
+				"security_code": "123",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
 			"6_visa_visa": {
 				"payment_qty" : "6",
 				"bank_name" : "Visa",
