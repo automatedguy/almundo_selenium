@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.STAGING_URL;
-import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Created by gabrielcespedes on 02/03/17.
@@ -53,7 +52,7 @@ public class CheckOutTest extends TestBaseSetup {
                 dataManagement.getBillingData("local_Billing_v2"),
                 dataManagement.getContactData("contact_phone"),
                 "FlightsCheckOutPageInternational");
-        confirmationPage = checkOutPage.clickComprarBtn();
-        assertTrue(confirmationPage.confirmationOk());
+               // confirmationPage = checkOutPage.clickComprarBtn();
+               // assertTrue(confirmationPage.confirmationOk());
     }
 }

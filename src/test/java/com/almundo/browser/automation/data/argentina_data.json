@@ -176,10 +176,10 @@
 
 	"passengers":{
 			"adult_male_native": {
-				"first_name": "José Ñoqui",
-				"last_name": "O'Higgins Lingüístico",
+				"first_name": "Pepe",
+				"last_name": "Peroncho",
 				"documentType": "Pasaporte",
-				"document_number": "29098765N",
+				"document_number": "29777777N",
 				"document_emisor": "Argentina",
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/1979",

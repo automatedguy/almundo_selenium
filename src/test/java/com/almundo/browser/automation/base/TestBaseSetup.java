@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -56,7 +58,7 @@ public class TestBaseSetup {
 //                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
                                         @Optional("Windows 10") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("phantomjs") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("False") Boolean landing,
@@ -118,6 +120,24 @@ public class TestBaseSetup {
                         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                         capabilities.setCapability("marionette", true);
                         driver = new FirefoxDriver(capabilities);
+                        break;
+
+                    case "phantomjs":
+                        if (osName.toLowerCase().contains("windows")){
+                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "phantomjs.exe");
+                        } else {
+                            System.setProperty("phantomjs.binary.path", Constants.RESOURCES_PATH + "phantomjs");
+                        }
+                        DesiredCapabilities sCaps = new DesiredCapabilities();
+                        sCaps.setJavascriptEnabled(true);
+                        sCaps.setCapability("takesScreenshot", false);
+                        sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, new String[] {
+                                "--web-security=false",
+                                "--ssl-protocol=any",
+                                "--ignore-ssl-errors=true",
+                                "--webdriver-loglevel=NONE"
+                        });
+                        driver = new PhantomJSDriver(sCaps);
                         break;
 
                     default:

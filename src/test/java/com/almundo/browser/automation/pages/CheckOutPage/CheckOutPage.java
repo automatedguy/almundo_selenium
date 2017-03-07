@@ -2,10 +2,8 @@ package com.almundo.browser.automation.pages.CheckOutPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,8 +42,8 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
-    @FindBy(id = "assistance_yes")
-    public WebElement assistanceRdb;
+//    @FindBy(id = "assistance_yes")
+//    public WebElement assistanceRdb;
 
     //############################################### Actions ##############################################
 
@@ -55,12 +53,12 @@ public class CheckOutPage extends TestBaseSetup {
         return initConfirmationPage();
     }
 
-    public CheckOutPage selectAssistanceRdb(){
+/*    public CheckOutPage selectAssistanceRdb(){
         PageUtils.waitElementForVisibility(driver, By.id("assistance_yes"), 45, "Include Insurance Radio Button.");
         logger.info("Clicking on Insurance.");
         assistanceRdb.click();
         return this;
-    }
+    }*/
 
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;
@@ -100,7 +98,7 @@ public class CheckOutPage extends TestBaseSetup {
                                              boolean includeAssistance)
     {
         getCheckOutPageElements(productCheckOutPage);
-        if(includeAssistance){selectAssistanceRdb();}
+//        if(includeAssistance){selectAssistanceRdb();}
         passengerSection().populatePassengerSection(passengerList);
         pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
