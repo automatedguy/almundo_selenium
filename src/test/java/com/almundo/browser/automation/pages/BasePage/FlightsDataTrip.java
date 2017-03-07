@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by gabrielcespedes on 05/12/16.
  */
@@ -34,8 +37,8 @@ public class FlightsDataTrip extends BasePage{
     @FindBy(id = "arrival-flights")
     public WebElement arrivalFlightsCalendar;
 
-    @FindBy(id = "class-flights")
-    public WebElement classFlightsDdl;
+    @FindBy(name = "class-flights")
+    public WebElement classFlightDdl;
 
     @FindBy(css = ".row-adults>.sub")
     public WebElement subAdultsBtn;
@@ -43,15 +46,17 @@ public class FlightsDataTrip extends BasePage{
     @FindBy(css = ".row-adults>.add")
     public WebElement addAdultBtn;
 
+    @FindBy(css = ".row-adults>.count")
+    public WebElement adultsCount;
+
     @FindBy(css = ".row-youngers>.sub")
     public WebElement subChildBtn;
 
     @FindBy(css = ".row-youngers>.add")
     public WebElement addChildBtn;
 
-    @FindBy(name = "class-flights")
-    public WebElement classFlightDdl;
-
+    @FindBy(css = ".row-youngers>.count")
+    public WebElement youngersCount;
 
     @FindBy(css = "am-autocomplete[data-input-id='origin-flights'] .legend")
     public WebElement originMessage;
@@ -59,10 +64,18 @@ public class FlightsDataTrip extends BasePage{
     @FindBy(css = "am-autocomplete[data-input-id='destination-flights'] .legend")
     public WebElement destinationMessage;
 
+    @FindBy(name = "add-hotel")
+    public WebElement addHotelCbx;
 
     //MULTIDESTINATION
     @FindBy(css = ".add-leg .txt")
     public WebElement addLegLnk;
+
+    @FindBy(css = ".remove-leg .txt")
+    public WebElement removeLegLnk;
+
+    @FindBy(css = ".leg-row")
+    public WebElement flightLegRow;
 
     @FindBy(id = "departure-flights-0")
     public WebElement departureFlights0Calendar;
@@ -76,6 +89,66 @@ public class FlightsDataTrip extends BasePage{
         PageUtils.waitElementForClickable(driver, addLegLnk, 5, "Agregar vuelo link");
         logger.info("Adding flight leg");
         addLegLnk.click();
+    }
+
+    public void clickRemoveLegLnk() {
+        PageUtils.waitElementForClickable(driver, removeLegLnk, 5, "Eliminar vuelo link");
+        logger.info("Removing flight leg");
+        removeLegLnk.click();
+    }
+
+    public void clickAddHotelCbk() {
+        PageUtils.waitElementForClickable(driver, addHotelCbx, 5, "Agregar hotel checkbox");
+        logger.info("Clicking on Agregar Hotel checkbox");
+        addHotelCbx.click();
+    }
+
+    public FlightsResultsPage clickBuscarBtn() {
+        PageUtils.scrollToElement(driver, buscarBtn);
+        logger.info("Clicking on Buscar Button");
+        buscarBtn.click();
+        return initFlightsResultsPage();
+    }
+
+    public List<String> getFlightTypeList() {
+        List<String> stringList = new ArrayList<>();
+        List<WebElement> elementList = flightTypeDdl.findElements(By.cssSelector("option"));
+
+        for (WebElement result : elementList) {
+            String newResult = result.getText();
+            stringList.add(newResult);
+        }
+        return stringList;
+    }
+
+    public List<String> getFlightClassList() {
+        List<String> stringList = new ArrayList<>();
+        List<WebElement> elementList = classFlightDdl.findElements(By.cssSelector("option"));
+
+        for (WebElement result : elementList) {
+            String newResult = result.getText();
+            stringList.add(newResult);
+        }
+        return stringList;
+    }
+
+    public List<String> getChildRangeList(int index) {
+
+        WebElement childRangeDdl = driver.findElement(By.id("age-" + index));
+
+        List<String> stringList = new ArrayList<>();
+        List<WebElement> elementList = childRangeDdl.findElements(By.cssSelector("option"));
+
+        for (WebElement result : elementList) {
+            String newResult = result.getText();
+            stringList.add(newResult);
+        }
+        return stringList;
+    }
+
+    public List<WebElement> getLegList() {
+        List<WebElement> elementList = driver.findElements(By.cssSelector(".leg-row"));
+        return elementList;
     }
 
     public FlightsDataTrip selectFlightType(String flightType) {
@@ -163,10 +236,5 @@ public class FlightsDataTrip extends BasePage{
         return this;
     }
 
-    public FlightsResultsPage clickBuscarBtn() {
-        PageUtils.scrollToElement(driver, buscarBtn);
-        logger.info("Clicking on Buscar Button");
-        buscarBtn.click();
-        return initFlightsResultsPage();
-    }
+
 }

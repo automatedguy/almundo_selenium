@@ -137,16 +137,34 @@ public class PageUtils {
     }
 
     public static boolean equalLists(List<String> actualList, List<String> expectedList) {
-        boolean equalList = true;
+        boolean equalLists = true;
 
         for (int i = 0; i < expectedList.size(); i++) {
             if (actualList.contains(expectedList.get(i))) {
                 logger.info("Option [" + expectedList.get(i) + "] is displayed");
             }else {
                 logger.error("Option [" + expectedList.get(i) + "] is not displayed");
-                equalList = false;
+                equalLists = false;
             }
         }
-       return equalList;
+        if(actualList.size()!=expectedList.size()) {
+            logger.error("Lists have different size");
+            equalLists = false;
+        }
+        return equalLists;
+    }
+
+    public static boolean isElementPresent(WebElement webElement) {
+        try {
+            webElement.isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+
     }
 }

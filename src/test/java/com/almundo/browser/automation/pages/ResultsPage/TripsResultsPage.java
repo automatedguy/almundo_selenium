@@ -1,7 +1,6 @@
 package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+
+import static com.almundo.browser.automation.utils.Constants.Messages.*;
 
 /**
  * Created by gabrielcespedes on 14/12/16.
@@ -46,7 +47,7 @@ public class TripsResultsPage extends TestBaseSetup {
 
     public boolean vacancy(){
         try {
-            PageUtils.waitForNoVacancy(driver, By.cssSelector("div.alert__text > p:nth-child(4)"), 5, "[" + Constants.VOLVE_A_INTENTARLO_MSG + "] message");
+            PageUtils.waitForNoVacancy(driver, By.cssSelector("div.alert__text > p:nth-child(4)"), 5, "[" + VOLVE_A_INTENTARLO_MSG + "] message");
         } catch (Exception ex){
             return true;
         }
