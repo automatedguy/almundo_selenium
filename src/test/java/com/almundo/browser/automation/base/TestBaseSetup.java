@@ -62,7 +62,7 @@ public class TestBaseSetup {
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("False") Boolean landing,
-                                        @Optional("Windows 10") String cart_id) {
+                                        @Optional("58bed3dae4b0ddc6e871cdc4") String cart_id) {
 
         this.baseURL = env_url;
         this.os = null;

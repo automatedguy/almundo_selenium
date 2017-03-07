@@ -25,12 +25,16 @@ public class ConfirmationPage extends BasePage {
     @FindBy(css = ".alert__text-secondary")
     public WebElement datosReservaLbl;
 
+    @FindBy(css = ".data__container>div:nth-of-type(1) .text--xxs.color--secondary-dark.text--bold")
+    public WebElement reservationCode;
+
     //############################################### Actions ###############################################
 
     public boolean confirmationOk(){
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".alert__text-primary"), 45, "Reservation Confirmation.");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".alert__text-primary"), 70, "Reservation Confirmation.");
         if(felicitacionesLbl.getText().equals(Constants.FELICITACIONES_MSG)){
             logger.info("Reservation Confirmed! :) ");
+            logger.info("Your Reservation Code:" + reservationCode.getText());
             return true;
         }
         else{

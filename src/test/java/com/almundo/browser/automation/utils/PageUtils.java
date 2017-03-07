@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -148,5 +149,15 @@ public class PageUtils {
             }
         }
        return equalList;
+    }
+
+    static final String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    static SecureRandom rnd = new SecureRandom();
+
+    public static String randomString(int len){
+        StringBuilder sb = new StringBuilder( len );
+        for( int i = 0; i < len; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
     }
 }
