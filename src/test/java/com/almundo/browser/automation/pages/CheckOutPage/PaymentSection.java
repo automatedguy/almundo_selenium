@@ -45,10 +45,16 @@ public class PaymentSection extends CheckOutPage {
     @FindBy(id = "document_number")
     private WebElement document_number;
 
+    @FindBy(id = "cardselect")
+    public WebElement creditCardDdl;
+
+    @FindBy(id = "cantselect")
+    public WebElement paymentQtyDdl;
+
     //############################################### Actions ###############################################
 
     public PaymentSection populatePaymentSection(JSONObject paymentData, String product){
-        selectPaymentQtyOption(0);
+        selectPaymentQty("1");
         selectBankOption(paymentData.get("credit_card_name").toString());
         setCardHolder(paymentData.get("card_holder").toString());
         setCardNumber(paymentData.get("card_number").toString());
@@ -66,6 +72,56 @@ public class PaymentSection extends CheckOutPage {
             setDocumentNumber(paymentData.get("document_number").toString());
         }
         return this;
+    }
+
+    public WebElement selectPaymentQty(String qty) {
+        //List<WebElement> payments = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
+
+        List<WebElement> paymentList = driver.findElements(By.cssSelector(".cards__definition"));
+        WebElement paymentQtySelected = null;
+
+        for (WebElement payment : paymentList) {
+            if(payment.getText().contains(qty)) {
+                PageUtils.scrollToElement(driver, payment);
+                PageUtils.scrollToCoordinate(driver, -230);
+                logger.info("Selecting [" + qty + "] payment/s option");
+                payment.click();
+                paymentQtySelected = payment;
+                break;
+            }
+        }
+        return paymentQtySelected;
+    }
+
+    public WebElement selectCreditCard(WebElement paymentQtySelected, String creditCardCode) {
+
+        List<WebElement> creditCardList = paymentQtySelected.findElements(By.cssSelector(".cards-more-options"));
+        WebElement creditCardIterator;
+        WebElement creditCardSelected = null;
+
+        for (WebElement creditCard : creditCardList) {
+            creditCardIterator = creditCard.findElement(By.cssSelector(".cards__definition__name p img"));
+            if(creditCardIterator.getAttribute("alt").equals(creditCardCode)) {
+                logger.info("Getting [" + creditCardCode + "] credit card row");
+                creditCardSelected = creditCard;
+                break;
+            }
+        }
+        return creditCardSelected;
+    }
+
+    public WebElement selectBank(WebElement creditCardSelected, String bankName) {
+
+        List<WebElement> bankList = creditCardSelected.findElements(By.cssSelector(".cards__definition__container__info__banks"));
+
+        for (WebElement bank : bankList) {
+            if(bank.getText().equals(bankName)) {
+                logger.info("Selecting [" + bank.getText() + "] bank option");
+                bank.click();
+                break;
+            }
+        }
+        return creditCardSelected;
     }
 
     private void selectPaymentQtyOption(int index) {
@@ -138,6 +194,17 @@ public class PaymentSection extends CheckOutPage {
         document_number.clear();
         document_number.sendKeys(documentNumber);
     }
+
+    public void selectOtherPayment(String creditCardName, String paymentQty) {
+        logger.info("Selecting Credit Card: [" + creditCardName + "]");
+        Select selectCreditCard = new Select (creditCardDdl);
+        selectCreditCard.selectByVisibleText(creditCardName);
+
+        logger.info("Selecting Payment Quantity: [" + paymentQty + "]");
+        Select selectPaymentQty = new Select (paymentQtyDdl);
+        selectPaymentQty.selectByVisibleText(paymentQty);
+    }
+
 
     public PaymentSection selectPaymentOption(JSONObject paymentData, String product) {
         switch(paymentData.get("credit_card_name").toString()){

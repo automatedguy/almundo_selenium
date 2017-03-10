@@ -42,6 +42,10 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
+    @FindBy(css = ".price-box__price .price")
+    public WebElement totalPrice;
+
+
 //    @FindBy(id = "assistance_yes")
 //    public WebElement assistanceRdb;
 
@@ -59,6 +63,11 @@ public class CheckOutPage extends TestBaseSetup {
         assistanceRdb.click();
         return this;
     }*/
+
+    public String getTotalPrice() {
+        logger.info("Total Price: [" + totalPrice.getText() + "]");
+        return totalPrice.getText();
+    }
 
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;
