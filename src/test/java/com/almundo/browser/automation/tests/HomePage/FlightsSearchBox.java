@@ -28,7 +28,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     private String resultsListCss = ".am-autocomplete__list .ellipsis";
     private int passengerLimit = 9;
-    private int legLimit = 5;
+    private int flightLegLimit = 5;
 
     @BeforeClass
     private void initDataLists() {
@@ -57,7 +57,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         flightsDataTrip.clickBuscarBtn();
 
         logger.info("Validating message: [" + MANDATORY_FLD_MSG + "]");
-        Assert.assertEquals(flightsDataTrip.originMessage.getText(), MANDATORY_FLD_MSG);
+        Assert.assertEquals(flightsDataTrip.originMessage.getText(), MANDATORY_FLD_MSG.toString());
     }
 
     @Test
@@ -262,8 +262,8 @@ public class FlightsSearchBox extends TestBaseSetup {
             flightsDataTrip.clickAddLegLnk();
         }
 
-        logger.info("Validating flight leg size is [" + legLimit + "}");
-        Assert.assertEquals(flightsDataTrip.getLegList().size(), legLimit, "Leg limit is incorrect");
+        logger.info("Validating flight leg size is [" + flightLegLimit + "}");
+        Assert.assertEquals(flightsDataTrip.getLegList().size(), flightLegLimit, "Leg limit is incorrect");
 
         logger.info("Validating [Agregar Vuelo] link is not displayed");
         Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.addLegLnk), "Agregar Vuelo link is displayed");
