@@ -33,49 +33,75 @@ public class ICBCPriceComparison extends TestBaseSetup {
     String almundo_master_12 = null;
     String almundo_master_18 = null;
 
-
+    String icbc_master_1 = null;
+    String icbc_master_12 = null;
+    String icbc_master_18 = null;
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void bue_mia_latam() {
 
-        checkOutPage = openAlmundoCart("58c2fb57e4b0fc66a4941b2e");
+        checkOutPage = openAlmundoCart("58c6a3f5e4b0397369fe504c");
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
         cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "VI");
         checkOutPage.paymentSection().selectBank(cardSelected, "Visa");
         almundo_visa_1 = checkOutPage.getTotalPrice();
 
+        cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "CA");
+        checkOutPage.paymentSection().selectBank(cardSelected, "Mastercard");
+        almundo_master_1 = checkOutPage.getTotalPrice();
+
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
         cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "VI");
         checkOutPage.paymentSection().selectBank(cardSelected, "ICBC");
         almundo_visa_12 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart("58c30b4be4b0fc66a4941d7f");
+        cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "CA");
+        checkOutPage.paymentSection().selectBank(cardSelected, "ICBC");
+        almundo_master_12 = checkOutPage.getTotalPrice();
+
+        checkOutPage = openIcbcCart("58c6a42de4b0fc66a49484ec");
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
         cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "VI");
         checkOutPage.paymentSection().selectBank(cardSelected, "ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
 
+        cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "CA");
+        checkOutPage.paymentSection().selectBank(cardSelected, "ICBC");
+        icbc_master_1 = checkOutPage.getTotalPrice();
+
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
         cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "VI");
         checkOutPage.paymentSection().selectBank(cardSelected, "ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
 
-        logger.info("------------------------------------------------------------------------");
+        cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, "CA");
+        checkOutPage.paymentSection().selectBank(cardSelected, "ICBC");
+        icbc_master_12 = checkOutPage.getTotalPrice();
+
+        logger.info("------------------------------------------------");
         logger.info("LATAM - BUE-MIA");
+        logger.info("------------------------------------------------");
         logger.info("VISA - 1 Cuota - Almundo: " + almundo_visa_1);
-        logger.info("VISA - 1 Cuota - ICBC   : " + icbc_visa_1);
+        logger.info("VISA - 1 Cuota - ICBC   : " + icbc_visa_1 + "\n");
         softAssert.assertTrue(almundo_visa_1.equals(icbc_visa_1), "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");
 
+        logger.info("MASTERCARD - 1 Cuota - Almundo: " + almundo_master_1);
+        logger.info("MASTERCARD - 1 Cuota - ICBC   : " + icbc_master_1 + "\n");
+        softAssert.assertTrue(almundo_master_1.equals(icbc_master_1), "MASTERCARD - 1 Cuota - Prices are not equal: [" + almundo_master_1 + "] - [" + icbc_master_1 + "]");
+
         logger.info("VISA - 12 Cuotas - Almundo: " + almundo_visa_12);
-        logger.info("VISA - 12 Cuotas - ICBC   : " + icbc_visa_12);
-        softAssert.assertTrue(almundo_visa_12.equals(icbc_visa_12), "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
+        logger.info("VISA - 12 Cuotas - ICBC   : " + icbc_visa_12 + "\n");
+        softAssert.assertTrue(almundo_visa_12.equals(icbc_visa_12), "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
+
+        logger.info("MASTERCARD - 12 Cuotas - Almundo: " + almundo_master_12);
+        logger.info("MASTERCARD - 12 Cuotas - ICBC   : " + icbc_master_12 + "\n");
+        softAssert.assertTrue(almundo_master_12.equals(icbc_master_12), "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
 
         softAssert.assertAll();
-
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
