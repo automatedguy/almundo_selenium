@@ -64,9 +64,11 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }*/
 
-    public String getTotalPrice() {
+    public int getTotalPrice() {
         logger.info("Total Price: [" + totalPrice.getText() + "]");
-        return totalPrice.getText();
+        String price = (totalPrice.getText().replace(".", ""));
+
+        return Integer.parseInt(price);
     }
 
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
