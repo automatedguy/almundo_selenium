@@ -67,9 +67,9 @@ public class TestBaseSetup {
                                         @Optional("58c70563e4b0fc66a4949661") String cart_id_icbc) {
 
         this.baseURL = env_url;
-        this.os = null;
+        this.os = osType;
         this.browser = browserType;
-        this.browserVersion = null;
+        this.browserVersion = browserTypeVersion;
         this.countryPar = country;
         this.landingEnabled = landing;
         this.cartId = cart_id;
