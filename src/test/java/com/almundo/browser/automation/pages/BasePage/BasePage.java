@@ -115,6 +115,7 @@ public class BasePage extends TestBaseSetup {
 
     public BasePage clickCarsBtn() {
         PageUtils.waitElementForClickable(driver, carsIcon, 10, "Autos button");
+        PageUtils.scrollToElement(driver,carsIcon);
         logger.info("Clicking on Autos button");
         carsIcon.click();
         return this;

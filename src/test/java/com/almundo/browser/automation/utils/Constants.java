@@ -7,7 +7,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
  */
 public class Constants extends TestBaseSetup {
 
-    public static final String STAGING_URL = "http://staging.almundo.com/";
+    public static final String STAGING_URL = "https://staging.almundo.com.ar/";
     public static final String PROD_URL = "http://almundo.com/";
     public static final String SUC_URL = "https://sucursales.almundo.com.ar/";
     public static final String CCR_URL = "https://ccr.almundo.com.ar/";
