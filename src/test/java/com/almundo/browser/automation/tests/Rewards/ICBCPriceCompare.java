@@ -40,7 +40,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void bue_mia() {
 
-        checkOutPage = openAlmundoCart("58c7fe1fe4b0397369fe7b7e");
+        checkOutPage = openAlmundoCart(cartId);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
@@ -61,7 +61,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         checkOutPage.paymentSection().selectOtherPayment("Mastercard", "18");
         almundo_master_18 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart("58c7fe2ce4b0397369fe7b81");
+        checkOutPage = openIcbcCart(cartIdICBC);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
