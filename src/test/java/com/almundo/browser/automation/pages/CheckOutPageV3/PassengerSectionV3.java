@@ -28,7 +28,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     private static List<WebElement> docNumberList = null;
     private static List<WebElement> docEmisorList = null;
     private static List<WebElement> docExpirationList = null;
-    private static List<WebElement> birthdayList = null;
+    private static List<WebElement> dayBirthdayList = null;
+    private static List<WebElement> monthBirthdayList = null;
+    private static List<WebElement> yearBirthdayList = null;
     private static List<WebElement> genderList = null;
     private static List<WebElement> nationalityList = null;
 
@@ -115,7 +117,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     }
 
     public void setBirthdayList() {
-        birthdayList = driver.findElements(By.id("birthday"));
+        dayBirthdayList = driver.findElements(By.cssSelector(".day"));
+        monthBirthdayList = driver.findElements(By.cssSelector(".month"));
+        yearBirthdayList = driver.findElements(By.cssSelector(".year"));
     }
 
     public void setGenderList() {
@@ -172,9 +176,34 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     }
 
     public PassengerSectionV3 setBirthDay(int index, String birthday){
+
+        String day;
+        String month;
+
+        if(String.valueOf(birthday.charAt(0)).equals("0")) {
+            day = String.valueOf(birthday.charAt(1));
+        } else {
+                day = String.valueOf(birthday.charAt(0)) + String.valueOf(birthday.charAt(1));
+        }
+
+        if(String.valueOf(birthday.charAt(3)).equals("0")) {
+            month = String.valueOf(birthday.charAt(4));
+        } else {
+            month = String.valueOf(birthday.charAt(3)) + String.valueOf(birthday.charAt(4));
+        }
+
+        String year = String.valueOf(birthday.charAt(6)) + String.valueOf(birthday.charAt(7)) + String.valueOf(birthday.charAt(8)) + String.valueOf(birthday.charAt(9));
+
         logger.info("Entering Fecha de Nacimiento: [" + birthday + "]");
-        birthdayList.get(index).clear();
-        birthdayList.get(index).sendKeys(birthday);
+        Select dayBirthday = new Select (dayBirthdayList.get(index));
+        dayBirthday.selectByVisibleText(day);
+
+        Select monthBirthday = new Select (monthBirthdayList.get(index));
+        monthBirthday.selectByValue(month);
+
+        Select yearBirthday = new Select (yearBirthdayList.get(index));
+        yearBirthday.selectByVisibleText(year);
+
         return this;
     }
 

@@ -123,10 +123,10 @@ public class FlowTest extends TestBaseSetup {
             CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
             replaceUrl();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_amex_amex"),
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_cell_phone"),
-                                              "TripsCheckOutPageDomesticlV3");
+                                                dataManagement.getPaymentData("1_amex_amex"),
+                                                dataManagement.getBillingData("local_Billing"),
+                                                dataManagement.getContactData("contact_cell_phone"),
+                                                "TripsCheckOutPageDomesticlV3");
         } else {
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                               dataManagement.getPaymentData("1_amex_amex"),
