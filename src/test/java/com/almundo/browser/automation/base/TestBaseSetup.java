@@ -55,10 +55,10 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.STAGING_URL) String env_url,
-//                                        @Optional() String osType,
+    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
+                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-                                        @Optional("Windows 10") String osType,
+//                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
@@ -127,7 +127,7 @@ public class TestBaseSetup {
 
                     case "phantomjs":
                         if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "phantomjs.exe");
+                            System.setProperty("phantomjs.binary.path", Constants.RESOURCES_PATH + "phantomjs.exe");
                         } else {
                             System.setProperty("phantomjs.binary.path", Constants.RESOURCES_PATH + "phantomjs");
                         }
