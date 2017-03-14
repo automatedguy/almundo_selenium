@@ -12,7 +12,7 @@ import static com.almundo.browser.automation.utils.Constants.PROD_URL;
 /**
  * Created by leandro.efron on 10/3/2017.
  */
-public class ICBCPriceComparison extends TestBaseSetup {
+public class ICBCPriceCompare extends TestBaseSetup {
 
     private CheckOutPage checkOutPage = null;
 
@@ -38,9 +38,9 @@ public class ICBCPriceComparison extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void bue_mia_latam() {
+    public void bue_mia() {
 
-        checkOutPage = openAlmundoCart("58c6c7f5e4b0fc66a4948af0");
+        checkOutPage = openAlmundoCart(cartId);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
@@ -61,7 +61,7 @@ public class ICBCPriceComparison extends TestBaseSetup {
         checkOutPage.paymentSection().selectOtherPayment("Mastercard", "18");
         almundo_master_18 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart("58c6c830e4b0397369fe5624");
+        checkOutPage = openIcbcCart(cartIdICBC);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
@@ -84,9 +84,11 @@ public class ICBCPriceComparison extends TestBaseSetup {
         selectCardAndBank(paymentQtySelected, "CA", "ICBC");
         icbc_master_18 = checkOutPage.getTotalPrice();
 
-        logger.info("------------------------------------------------");
-        logger.info("LATAM - BUE-MIA");
-        logger.info("------------------------------------------------");
+        logger.info("------------------------------------------------------------");
+        logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
+        logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
+        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
+        logger.info("------------------------------------------------------------");
         logger.info("VISA - 1 Cuota - Almundo: " + almundo_visa_1);
         logger.info("VISA - 1 Cuota - ICBC   : " + icbc_visa_1 + "\n");
         softAssert.assertTrue(almundo_visa_1 >= icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");

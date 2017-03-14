@@ -45,6 +45,15 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".price-box__price .price")
     public WebElement totalPrice;
 
+    @FindBy(css = ".segments>div:nth-of-type(1) h2 span:nth-of-type(5)")
+    public WebElement originAirport;
+
+    @FindBy(css = ".segments>div:nth-of-type(1) h2 span:nth-of-type(7)")
+    public WebElement destinationAirport;
+
+    @FindBy(css = ".segments>div:nth-of-type(1) .airline-name")
+    public WebElement airlineName;
+
 
 //    @FindBy(id = "assistance_yes")
 //    public WebElement assistanceRdb;
@@ -67,7 +76,6 @@ public class CheckOutPage extends TestBaseSetup {
     public int getTotalPrice() {
         logger.info("Total Price: [" + totalPrice.getText() + "]");
         String price = (totalPrice.getText().replace(".", ""));
-
         return Integer.parseInt(price);
     }
 

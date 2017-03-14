@@ -42,6 +42,7 @@ public class TestBaseSetup {
     public static String osName = System.getProperty("os.name");
     public static Boolean landingEnabled = Boolean.TRUE;
     public static String cartId = null;
+    public static String cartIdICBC = null;
 
     public static String countryPar;
 
@@ -52,7 +53,7 @@ public class TestBaseSetup {
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(Constants.STAGING_URL) String env_url,
 //                                        @Optional() String osType,
@@ -62,7 +63,8 @@ public class TestBaseSetup {
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("False") Boolean landing,
-                                        @Optional("58bed3dae4b0ddc6e871cdc4") String cart_id) {
+                                        @Optional("58c7053ee4b0397369fe6150") String cart_id,
+                                        @Optional("58c70563e4b0fc66a4949661") String cart_id_icbc) {
 
         this.baseURL = env_url;
         this.os = null;
@@ -71,6 +73,7 @@ public class TestBaseSetup {
         this.countryPar = country;
         this.landingEnabled = landing;
         this.cartId = cart_id;
+        this.cartIdICBC = cart_id_icbc;
 
         try {
             if (os == null || browserVersion == null) {
