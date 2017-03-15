@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -111,16 +112,19 @@ public class PaymentSection extends CheckOutPage {
     }
 
     public WebElement selectBank(WebElement creditCardSelected, String bankName) {
-
         List<WebElement> bankList = creditCardSelected.findElements(By.cssSelector(".cards__definition__container__info__banks"));
+        boolean found = false;
 
         for (WebElement bank : bankList) {
             if(bank.getText().equals(bankName)) {
                 logger.info("Selecting [" + bank.getText() + "] bank option");
                 bank.click();
+                found = true;
                 break;
             }
         }
+        Assert.assertTrue(found, "Bank [" + bankName + "] " + "is not displayed");
+
         return creditCardSelected;
     }
 
