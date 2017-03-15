@@ -178,8 +178,8 @@ public class TestBaseSetup {
 
     private void initSauceLabsDriver(String methodName)  {
 
-        String USERNAME = "almundoautomation";
-        String ACCESS_KEY = "791d6f73-cde3-4383-aed8-052cbe539d40";
+        String USERNAME = "automationteambsas";
+        String ACCESS_KEY = "69172f7e-ebab-465d-bd46-b158e45c137e";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
