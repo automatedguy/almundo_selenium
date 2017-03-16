@@ -80,7 +80,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             if (promoBox.isDisplayed()) {
                 logger.info("Clicking on Promotion box");
                 PageUtils.scrollToElement(driver, promoBox);
-                promo_path = promoBox.getAttribute("ng-href");
+                promo_path = promoBox.getAttribute("href");
                 logger.info("Promo selected: [" + promo_path + "]");
                 promoBox.click();
                 break;
@@ -159,8 +159,10 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         Assert.assertTrue(promoBoxList.size()>0);
         for (WebElement promoBox: promoBoxList) {
             if (promoBox.isDisplayed()) {
-                logger.info("Promo box: [" + promoBox.getAttribute("ng-href") + "] is displayed");
+                Assert.assertTrue(promoBox.getAttribute("href") != null, "Promo box attribute is null");
+                logger.info("Promo box: [" + promoBox.getAttribute("href") + "] is displayed");
             }
         }
     }
 }
+
