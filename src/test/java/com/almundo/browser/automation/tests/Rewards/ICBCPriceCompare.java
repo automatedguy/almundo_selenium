@@ -44,7 +44,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void latam() {
         logTestTitle("ICBC Store - LATAM - " + countryPar );
-        checkOutPage = openAlmundoCart("58c94363e4b0fc66a494db1a");
+        checkOutPage = openAlmundoCart(cartId);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
@@ -65,7 +65,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         checkOutPage.paymentSection().selectOtherPayment("Mastercard", "18");
         almundo_master_18 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart("58c9436be4b0fc66a494db1d");
+        checkOutPage = openIcbcCart(cartIdICBC);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
@@ -119,7 +119,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void aerolineasArgentinas() {
         logTestTitle("ICBC Store - Aerolíneas Argentinas - " + countryPar );
-        checkOutPage = openAlmundoCart("58c9546ce4b0fc66a494dde7");
+        checkOutPage = openAlmundoCart(cartId);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
@@ -145,7 +145,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank(paymentQtySelected, "CA", "ICBC");
         almundo_master_12 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart("58c954a3e4b0397369fea8e2");
+        checkOutPage = openIcbcCart(cartIdICBC);
 
         paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
