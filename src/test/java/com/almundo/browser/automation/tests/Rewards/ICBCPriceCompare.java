@@ -95,23 +95,23 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("----------------------------------------------------------------");
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_1 >= icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");
+        softAssert.assertTrue(almundo_visa_1 == icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");
 
         logger.info("MASTERCARD - 1 Cuota - Almundo: [" + almundo_master_1 + "]");
         logger.info("MASTERCARD - 1 Cuota - ICBC   : [" + icbc_master_1  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_1 >= icbc_master_1, "MASTERCARD - 1 Cuota - Prices are not equal: [" + almundo_master_1 + "] - [" + icbc_master_1 + "]");
+        softAssert.assertTrue(almundo_master_1 == icbc_master_1, "MASTERCARD - 1 Cuota - Prices are not equal: [" + almundo_master_1 + "] - [" + icbc_master_1 + "]");
 
         logger.info("VISA - 12 Cuotas - Almundo: [" + almundo_visa_12 + "]");
         logger.info("VISA - 12 Cuotas - ICBC   : [" + icbc_visa_12  + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_12 >= icbc_visa_12, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
+        softAssert.assertTrue(almundo_visa_12 == icbc_visa_12, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
 
         logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "]");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_12 >= icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
+        softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
 
         logger.info("MASTERCARD - 18 Cuotas - Almundo: [" + almundo_master_18  + "] -----> No se está seleccionando un banco en este caso");
         logger.info("MASTERCARD - 18 Cuotas - ICBC   : [" + icbc_master_18  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_18 >= icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: [" + almundo_master_18 + "] - [" + icbc_master_18 + "]");
+        softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: [" + almundo_master_18 + "] - [" + icbc_master_18 + "]");
 
         softAssert.assertAll();
     }
@@ -178,27 +178,27 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("----------------------------------------------------------------");
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_1 >= icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");
+        softAssert.assertTrue(almundo_visa_1 == icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");
 
         logger.info("MASTERCARD - 1 Cuota - Almundo: [" + almundo_master_1 + "]");
         logger.info("MASTERCARD - 1 Cuota - ICBC   : [" + icbc_master_1  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_1 >= icbc_master_1, "MASTERCARD - 1 Cuota - Prices are not equal: [" + almundo_master_1 + "] - [" + icbc_master_1 + "]");
+        softAssert.assertTrue(almundo_master_1 == icbc_master_1, "MASTERCARD - 1 Cuota - Prices are not equal: [" + almundo_master_1 + "] - [" + icbc_master_1 + "]");
 
         logger.info("VISA - 6 Cuotas - Almundo: [" + almundo_visa_6 + "]");
         logger.info("VISA - 6 Cuotas - ICBC   : [" + icbc_visa_6  + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_6 >= icbc_visa_6, "VISA - 6 Cuotas - Prices are not equal: [" + almundo_visa_6 + "] - [" + icbc_visa_6 + "]");
+        softAssert.assertTrue(almundo_visa_6 == icbc_visa_6, "VISA - 6 Cuotas - Prices are not equal: [" + almundo_visa_6 + "] - [" + icbc_visa_6 + "]");
 
         logger.info("MASTERCARD - 6 Cuotas - Almundo: [" + almundo_master_6 + "]");
         logger.info("MASTERCARD - 6 Cuotas - ICBC   : [" + icbc_master_6  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_6 >= icbc_master_6, "MASTERCARD - 6 Cuotas - Prices are not equal: [" + almundo_master_6 + "] - [" + icbc_master_6 + "]");
+        softAssert.assertTrue(almundo_master_6 == icbc_master_6, "MASTERCARD - 6 Cuotas - Prices are not equal: [" + almundo_master_6 + "] - [" + icbc_master_6 + "]");
 
         logger.info("VISA - 12 Cuotas - Almundo: [" + almundo_visa_12 + "]");
         logger.info("VISA - 12 Cuotas - ICBC   : [" + icbc_visa_12  + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_12 >= icbc_visa_12, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
+        softAssert.assertTrue(almundo_visa_12 == icbc_visa_12, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
 
         logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "] -----> No se está seleccionando un banco en este caso");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_12 >= icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
+        softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
 
         softAssert.assertAll();
     }
@@ -249,19 +249,19 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("----------------------------------------------------------------");
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_1 >= icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");
+        softAssert.assertTrue(almundo_visa_1 == icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: [" + almundo_visa_1 + "] - [" + icbc_visa_1 + "]");
 
         logger.info("MASTERCARD - 1 Cuota - Almundo: [" + almundo_master_1 + "]");
         logger.info("MASTERCARD - 1 Cuota - ICBC   : [" + icbc_master_1  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_1 >= icbc_master_1, "MASTERCARD - 1 Cuota - Prices are not equal: [" + almundo_master_1 + "] - [" + icbc_master_1 + "]");
+        softAssert.assertTrue(almundo_master_1 == icbc_master_1, "MASTERCARD - 1 Cuota - Prices are not equal: [" + almundo_master_1 + "] - [" + icbc_master_1 + "]");
 
         logger.info("VISA - 12 Cuotas - Almundo: [" + almundo_visa_12 + "]");
         logger.info("VISA - 12 Cuotas - ICBC   : [" + icbc_visa_12  + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_12 >= icbc_visa_12, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
+        softAssert.assertTrue(almundo_visa_12 == icbc_visa_12, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
 
         logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "]");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_12 >= icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
+        softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
 
         softAssert.assertAll();
     }
