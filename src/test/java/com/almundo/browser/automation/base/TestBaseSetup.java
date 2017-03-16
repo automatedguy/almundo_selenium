@@ -43,6 +43,7 @@ public class TestBaseSetup {
     public static Boolean landingEnabled = Boolean.TRUE;
     public static String cartId = null;
     public static String cartIdICBC = null;
+    public static int retriesMaxCount;
 
     public static String countryPar;
 
@@ -64,7 +65,8 @@ public class TestBaseSetup {
                                         @Optional("ARGENTINA") String country,
                                         @Optional("False") Boolean landing,
                                         @Optional("58c7053ee4b0397369fe6150") String cart_id,
-                                        @Optional("58c70563e4b0fc66a4949661") String cart_id_icbc) {
+                                        @Optional("58c70563e4b0fc66a4949661") String cart_id_icbc,
+                                        @Optional("3") int retries_Max_Count) {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -74,6 +76,7 @@ public class TestBaseSetup {
         this.landingEnabled = landing;
         this.cartId = cart_id;
         this.cartIdICBC = cart_id_icbc;
+        this.retriesMaxCount = retries_Max_Count;
 
         try {
             if (os == null || browserVersion == null) {

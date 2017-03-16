@@ -4,6 +4,8 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
+import static com.almundo.browser.automation.base.TestBaseSetup.retriesMaxCount;
+
 public class RetryAnalyzer implements IRetryAnalyzer {
     private int count = 0;
 
@@ -20,7 +22,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
     @Override
     public boolean retry(ITestResult result) {
         if (!result.isSuccess()) {
-            if (count < getMaxount()) {
+            if (count < retriesMaxCount) {
                 count++;
                 result.setStatus(ITestResult.SUCCESS_PERCENTAGE_FAILURE);
                 String message = Thread.currentThread().getName() +
