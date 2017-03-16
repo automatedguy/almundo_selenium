@@ -76,8 +76,6 @@ public class PaymentSection extends CheckOutPage {
     }
 
     public WebElement selectPaymentQty(String qty) {
-        //List<WebElement> payments = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
-
         List<WebElement> paymentList = driver.findElements(By.cssSelector(".cards__definition"));
         WebElement paymentQtySelected = null;
 
@@ -99,15 +97,19 @@ public class PaymentSection extends CheckOutPage {
         List<WebElement> creditCardList = paymentQtySelected.findElements(By.cssSelector(".cards-more-options"));
         WebElement creditCardIterator;
         WebElement creditCardSelected = null;
+        boolean found = false;
 
         for (WebElement creditCard : creditCardList) {
             creditCardIterator = creditCard.findElement(By.cssSelector(".cards__definition__name p img"));
             if(creditCardIterator.getAttribute("alt").equals(creditCardCode)) {
                 logger.info("Getting [" + creditCardCode + "] credit card row");
                 creditCardSelected = creditCard;
+                found = true;
                 break;
             }
         }
+        Assert.assertTrue(found, "Credit Card [" + creditCardCode + "] " + "is not displayed");
+
         return creditCardSelected;
     }
 
