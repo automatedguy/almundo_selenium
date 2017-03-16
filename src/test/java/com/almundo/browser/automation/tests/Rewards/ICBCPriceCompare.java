@@ -142,7 +142,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank(paymentQtySelected, "VI", "ICBC");
         almundo_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank(paymentQtySelected, "CA", "Mastercard");
         almundo_master_12 = checkOutPage.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
@@ -186,17 +186,17 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("VISA - 6 Cuotas - Almundo: [" + almundo_visa_6 + "]");
         logger.info("VISA - 6 Cuotas - ICBC   : [" + icbc_visa_6  + "]" + "\n");
-        softAssert.assertTrue(almundo_visa_6 >= icbc_visa_6, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_6 + "] - [" + icbc_visa_6 + "]");
+        softAssert.assertTrue(almundo_visa_6 >= icbc_visa_6, "VISA - 6 Cuotas - Prices are not equal: [" + almundo_visa_6 + "] - [" + icbc_visa_6 + "]");
 
         logger.info("MASTERCARD - 6 Cuotas - Almundo: [" + almundo_master_6 + "]");
         logger.info("MASTERCARD - 6 Cuotas - ICBC   : [" + icbc_master_6  + "]" + "\n");
-        softAssert.assertTrue(almundo_master_6 >= icbc_master_6, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_6 + "] - [" + icbc_master_6 + "]");
+        softAssert.assertTrue(almundo_master_6 >= icbc_master_6, "MASTERCARD - 6 Cuotas - Prices are not equal: [" + almundo_master_6 + "] - [" + icbc_master_6 + "]");
 
         logger.info("VISA - 12 Cuotas - Almundo: [" + almundo_visa_12 + "]");
         logger.info("VISA - 12 Cuotas - ICBC   : [" + icbc_visa_12  + "]" + "\n");
         softAssert.assertTrue(almundo_visa_12 >= icbc_visa_12, "VISA - 12 Cuotas - Prices are not equal: [" + almundo_visa_12 + "] - [" + icbc_visa_12 + "]");
 
-        logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "]");
+        logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "] -----> No se está seleccionando un banco en este caso");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
         softAssert.assertTrue(almundo_master_12 >= icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: [" + almundo_master_12 + "] - [" + icbc_master_12 + "]");
 
