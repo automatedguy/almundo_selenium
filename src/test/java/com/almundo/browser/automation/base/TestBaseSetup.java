@@ -66,7 +66,7 @@ public class TestBaseSetup {
                                         @Optional("False") Boolean landing,
                                         @Optional("58c7053ee4b0397369fe6150") String cart_id,
                                         @Optional("58c70563e4b0fc66a4949661") String cart_id_icbc,
-                                        @Optional("3") int retries_Max_Count) {
+                                        @Optional("0") int retries_Max_Count) {
 
         this.baseURL = env_url;
         this.os = osType;
