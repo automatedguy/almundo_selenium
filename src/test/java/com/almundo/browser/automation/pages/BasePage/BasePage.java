@@ -91,10 +91,12 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = "ul[name$='Home Principal Buscador Derecha']")
     public WebElement mainRightBannerLnk;
 
-    @FindBy(name = "AR Home Medio Izquierda")
+    //@FindBy(name = "AR Home Medio Izquierda")
+    @FindBy(css = ".bannersads-container .banner-first-container")
     public WebElement homeMedioLeftBannerLnk;
 
-    @FindBy(name = "AR Home Medio Derecha")
+    @FindBy(css = ".bannersads-container .banner-second-container")
+    //@FindBy(name = "AR Home Medio Derecha")
     public WebElement homeMedioRightBannerLnk;
 
     //############################################### Actions ###############################################

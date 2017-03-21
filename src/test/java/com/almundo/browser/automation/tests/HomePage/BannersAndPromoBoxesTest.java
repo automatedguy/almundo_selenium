@@ -96,7 +96,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
     public void openHomeMedioLeftBanner () {
         if (countryPar.equals("ARGENTINA")) {
             logTestTitle("HomePage - Open Home Medio left banner - " + countryPar);
-            String promo_path = basePage.homeMedioLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("data-ng-href");
+            String promo_path = basePage.homeMedioLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
             promoPage = basePage.clickHomeMedioLeftBannerLnk();
             PageUtils.waitImplicitly(2000);
             logger.info("Validating URL [" + driver.getCurrentUrl() + "]");
@@ -108,7 +108,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
     public void openHomeMedioRightBanner () {
         if (countryPar.equals("ARGENTINA")) {
             logTestTitle("HomePage - Open Home Medio right banner - " + countryPar);
-            String promo_path = basePage.homeMedioRightBannerLnk.findElement(By.cssSelector("a")).getAttribute("data-ng-href");
+            String promo_path = basePage.homeMedioRightBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
             promoPage = basePage.clickHomeMedioRightBannerLnk();
             PageUtils.waitImplicitly(2000);
             logger.info("Validating URL [" + driver.getCurrentUrl() + "]");
