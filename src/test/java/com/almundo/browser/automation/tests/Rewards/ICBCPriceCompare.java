@@ -90,6 +90,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("----------------------------------------------------------------");
         logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
+        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
+        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
         logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
         logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
         logger.info("----------------------------------------------------------------");
@@ -173,6 +175,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("----------------------------------------------------------------");
         logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
+        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
+        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
         logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
         logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
         logger.info("----------------------------------------------------------------");
@@ -244,6 +248,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("----------------------------------------------------------------");
         logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
+        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
+        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
         logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
         logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
         logger.info("----------------------------------------------------------------");

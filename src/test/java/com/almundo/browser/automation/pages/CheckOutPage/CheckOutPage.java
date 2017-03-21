@@ -54,6 +54,11 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".segments>div:nth-of-type(1) .airline-name")
     public WebElement airlineName;
 
+    @FindBy(css = ".segments>div:nth-of-type(1)>div h2>span:nth-of-type(3)")
+    public WebElement startDate;
+
+    @FindBy(css = ".segments>div:nth-of-type(2)>div h2>span:nth-of-type(3)")
+    public WebElement endDate;
 
 //    @FindBy(id = "assistance_yes")
 //    public WebElement assistanceRdb;
