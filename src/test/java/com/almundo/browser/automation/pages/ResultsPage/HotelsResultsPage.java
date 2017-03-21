@@ -1,13 +1,14 @@
 package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+
+import static com.almundo.browser.automation.utils.Constants.Messages.*;
 
 /**
  * Created by leandro.efron on 13/12/2016.
@@ -32,7 +33,7 @@ public class HotelsResultsPage extends TestBaseSetup {
 
     public boolean vacancy(){
         try {
-            PageUtils.waitForNoVacancy(driver, By.cssSelector(".main-loader>am-alert>div>div:nth-of-type(2)"), 5, "[" + Constants.NO_DISPONIBILIDAD_MSG + "] message");
+            PageUtils.waitForNoVacancy(driver, By.cssSelector(".main-loader>am-alert>div>div:nth-of-type(2)"), 5, "[" + NO_DISPONIBILIDAD_MSG + "] message");
         } catch (Exception ex){
             return true;
         }

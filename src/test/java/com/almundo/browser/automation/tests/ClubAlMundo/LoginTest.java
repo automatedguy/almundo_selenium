@@ -3,15 +3,14 @@ package com.almundo.browser.automation.tests.ClubAlMundo;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.testng.Assert;
 import org.json.simple.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -52,12 +51,12 @@ public class LoginTest extends TestBaseSetup {
         List<String> expectedList;
 
         if(countryPar.equals("ARGENTINA")) {
-            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión"));
+            expectedList = Constants.USER_MENU_LIST_AR;
         } else if(countryPar.equals("COLOMBIA")) {
-            expectedList = new ArrayList<>(Arrays.asList("Perfil", "Formas de pago", "Reservas", "Cerrar sesión"));
+            expectedList = Constants.USER_MENU_LIST_CO;
         }
             else {
-                expectedList = new ArrayList<>(Arrays.asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión"));
+                expectedList = Constants.USER_MENU_LIST_MX;
             }
 
         logger.info("Validating My Account menu options are displayed:");

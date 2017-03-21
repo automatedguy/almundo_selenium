@@ -7,7 +7,6 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import com.almundo.browser.automation.utils.Constants;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,8 +14,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.ONE_WAY;
-import static com.almundo.browser.automation.utils.Constants.ROUND_TRIP;
+import static com.almundo.browser.automation.utils.Constants.FlightType.MULTIDESTINATION;
+import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
+import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -61,7 +61,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.selectFlightType(ONE_WAY);
+        flightsDataTrip.selectFlightType(ONE_WAY.toString());
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -93,7 +93,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getOneWayDataTripItinerary("domestic_20days_2adults_todas");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.selectFlightType(ONE_WAY);
+        flightsDataTrip.selectFlightType(ONE_WAY.toString());
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -123,8 +123,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
+        flightsDataTrip.selectFlightType(ROUND_TRIP.toString());
+        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
@@ -157,7 +157,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getRoundTripDataTripItinerary("domestic_20days_2adults_todas");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.selectFlightType(ROUND_TRIP);
+        flightsDataTrip.selectFlightType(ROUND_TRIP.toString());
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -189,7 +189,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getMultiDestDataTripItinerary("multiDest_3Flights_2adults_todas");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.selectFlightType(Constants.MULTIDESTINATION);
+        flightsDataTrip.selectFlightType(MULTIDESTINATION.toString());
         flightsDataTrip.clickAddLegLnk();
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -217,4 +217,5 @@ public class FlowTest extends TestBaseSetup {
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "FlightsCheckOutPageInternational");
     }
+
 }
