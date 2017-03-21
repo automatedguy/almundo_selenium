@@ -85,10 +85,10 @@ public class BasePage extends TestBaseSetup {
     public WebElement buscarBtn;
 
     //BANNERS
-    @FindBy(css = "ul[name$='Home Principal Buscador Izquierda (Fijo)']")
+    @FindBy(css = ".banners-container .banner-first-container")
     public WebElement mainLeftBannerLnk;
 
-    @FindBy(css = "ul[name$='Home Principal Buscador Derecha']")
+    @FindBy(css = ".banners-container .banner-second-container")
     public WebElement mainRightBannerLnk;
 
     //@FindBy(name = "AR Home Medio Izquierda")
@@ -96,7 +96,6 @@ public class BasePage extends TestBaseSetup {
     public WebElement homeMedioLeftBannerLnk;
 
     @FindBy(css = ".bannersads-container .banner-second-container")
-    //@FindBy(name = "AR Home Medio Derecha")
     public WebElement homeMedioRightBannerLnk;
 
     //############################################### Actions ###############################################

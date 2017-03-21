@@ -38,7 +38,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
     @Test
     public void openMainLeftBanner () {
         logTestTitle("HomePage - Open Home Main left banner - " + countryPar );
-        String promo_path = basePage.mainLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("data-ng-href");
+        String promo_path = basePage.mainLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
         if(promo_path.contains("https://goo.")) {
             logger.info("Can't validate URL for: [" + promo_path + "]");
         } else {
@@ -56,7 +56,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
     @Test
     public void openMainRightBanner () {
         logTestTitle("HomePage - Open Home Main right banner - " + countryPar );
-        String promoDisplayed_path = basePage.mainRightBannerLnk.findElement(By.cssSelector(" li[aria-hidden='false']>a")).getAttribute("data-ng-href");
+        String promoDisplayed_path = basePage.mainRightBannerLnk.findElement(By.cssSelector(" li[aria-hidden='false']>a")).getAttribute("href");
         String promoDisplayed_path_fix = promoDisplayed_path.replaceAll("\\s","");
 
         if(promoDisplayed_path_fix.contains("https://goo.")) {
@@ -117,26 +117,16 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
     }
 
     @Test
-    public void validateBannersDisplayed () {
-        logTestTitle("HomePage - Validate banners are displayed - " + countryPar );
-        logger.info("Validating Home Principal banners are displayed");
+    public void validateCarouselBanners () {
+        logTestTitle("HomePage - Validate carousel banners are displayed - " + countryPar );
+        logger.info("Validating Home Principal carousel banners are displayed");
         List<WebElement> bannerNamesList = driver.findElements(By.cssSelector("#main-content .banner-list"));
         Assert.assertTrue(bannerNamesList.size()>0);
+
         for (WebElement bannerName : bannerNamesList) {
             logger.info("Banner Name: [" + bannerName.getAttribute("name") + "]");
             Assert.assertTrue(bannerName.findElements(By.cssSelector(".banner-item")).size()>0);
             logger.info("Banner Items: " + bannerName.findElements(By.cssSelector(".banner-item")).size());
-        }
-        if (countryPar.equals("ARGENTINA")) {
-            System.out.println();
-            logger.info("Validating Home Medio banners are displayed");
-            List<WebElement> bannerAdsNamesList = driver.findElements(By.cssSelector(".bannersads-container .banner-list"));
-            Assert.assertTrue(bannerAdsNamesList.size() > 0);
-            for (WebElement bannerAdsName : bannerAdsNamesList) {
-                logger.info("Banner Name: [" + bannerAdsName.getAttribute("name") + "]");
-                Assert.assertTrue(bannerAdsName.findElements(By.cssSelector(".banner-item")).size() > 0);
-                logger.info("Banner Items: " + bannerAdsName.findElements(By.cssSelector(".banner-item")).size());
-            }
         }
     }
 
@@ -145,7 +135,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         logTestTitle("HomePage - Validate Main right banners contain data links in carousel - " + countryPar );
         List <WebElement> elementList = driver.findElements(By.cssSelector("ul[name$='Home Principal Buscador Derecha'] a"));
         for (int i=1; i<=elementList.size(); i++) {
-            String dataLinkBanner = elementList.get(i-1).getAttribute("data-ng-href");
+            String dataLinkBanner = elementList.get(i-1).getAttribute("href");
             Assert.assertFalse(dataLinkBanner.equals(""), "Data link banner [" + i + "] is empty");
             logger.info("Data link banner [" + i + "] - [" + dataLinkBanner + "]");
         }
