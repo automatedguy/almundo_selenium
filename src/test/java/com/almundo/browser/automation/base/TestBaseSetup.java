@@ -1,182 +1,178 @@
 package com.almundo.browser.automation.base;
 
+import com.almundo.browser.automation.pages.BasePage.*;
+import com.almundo.browser.automation.pages.CheckOutPage.*;
+import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
-import com.almundo.browser.automation.utils.Constants;
-import com.almundo.browser.automation.utils.RetryAnalyzer;
-import com.almundo.browser.automation.utils.SauceHelpers;
-import org.openqa.selenium.By;
+import com.almundo.browser.automation.pages.PromoPage;
+import com.almundo.browser.automation.pages.ResultsPage.*;
+import com.almundo.browser.automation.utils.*;
+import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.*;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.UnexpectedException;
+
+import static com.almundo.browser.automation.utils.Constants.*;
 
 
 public class TestBaseSetup {
 
-    public WebDriver driver;
+    public static Logger logger = Logger.getLogger( TestBaseSetup.class );
+    public static WebDriver driver;
+
+    public BasePage basePage = null;
 
     public static String baseURL = null;
     private static String os = null;
     private static String browser = null;
     private static String browserVersion = null;
+    public static String osName = System.getProperty("os.name");
 
-    public int numAdults;
-    public int numChilds;
-    public int numPassengers;
-    public int numRooms;
+    public static String countryPar;
 
-    public String claseVuelo;
-
-
-    public String originAutoComplete;
-    public String originFullText;
-    public String originFullTextStr;
-    public By ORIGIN_FULL_PAR;
-
-    public String destinationAutoComplete;
-    public String destinationFullText;
-    public String destinationFullTextStr;
-    public By DESTINATION_FULL_PAR;
-
-    public int departureDate;
-    public int returnDate;
-
-    public String countryPar;
-
-    public LandingPage landingPage = new LandingPage(driver);
-
-    public String osProperty = System.getProperty("os.name").toLowerCase();
+    public static JSONObject jsonDataObject = null;
+    public static JSONObject jsonPropertiesObject = null;
+    public static JSONObject jsonCountryPropertyObject = null;
 
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
-    public static String buildTag = null;
 
-    @Parameters({ "env" , "osType", "browserType", "browserTypeVersion", "country" , "adults", "childs", "rooms", "originAuto" , "originFull" ,
-            "destinationAuto" , "destinationFull", "startDate", "endDate", "clase" })
-    @BeforeClass
-    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
-                                        //@Optional() String osType,
-                                        @Optional("Windows 10") String osType,
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
+    @BeforeSuite
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+                                        @Optional() String osType,
+//                                        @Optional("OS X 10.11") String osType,
+//                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
-                                        int adults,
-                                        int childs,
-                                        int rooms,
-                                        String originAuto,
-                                        String originFull,
-                                        String destinationAuto,
-                                        String destinationFull,
-                                        int startDate,
-                                        int endDate, String clase) {
-
-         /* Note: Parameters are initialized inside Before Class probably best option for now. */
-        /* as @BeforeClass methods are invoked after test class instantiation and parameters for each test may differ */
+                                        @Optional("ARGENTINA") String country) {
 
         this.baseURL = env_url;
         this.os = osType;
         this.browser = browserType;
         this.browserVersion = browserTypeVersion;
-
         this.countryPar = country;
 
-        this.numAdults = adults;
-        this.numChilds= childs;
-        this.numRooms = rooms;
-        this.claseVuelo = clase;
-
-        this.originAutoComplete = originAuto;
-        this.originFullText = originFull;
-        this.originFullTextStr = String.format("//span[contains(.,'%s')]", originFullText);
-        this.ORIGIN_FULL_PAR = By.xpath(originFullTextStr);
-
-        this.destinationAutoComplete = destinationAuto;
-        this.destinationFullText = destinationFull;
-        this.destinationFullTextStr = String.format("//span[contains(.,'%s')]", destinationFullText);
-        this.DESTINATION_FULL_PAR = By.xpath(destinationFullTextStr);
-
-        this.departureDate = startDate;
-        this.returnDate = endDate;
-
         try {
-            setDriver(browser);
+            if (os == null || browserVersion == null) {
+                logger.info("OS: [" + osName + "]");
+                logger.info("Browser: [" + browser + "]");
+                logger.info("Environment: [" + baseURL + "]");
 
+            } else {
+                logger.info("OS: [" + os + "]");
+                logger.info("Browser: [" + browser + " " + browserVersion + "]");
+                logger.info("Environment: [" + baseURL + "]");
+            }
         } catch (Exception e) {
-            System.out.println("Error....." + e.getStackTrace());
+            e.printStackTrace();
         }
 
+        jsonDataObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
+        jsonPropertiesObject = JsonRead.getJsonFile("countries_properties.json");
+        jsonCountryPropertyObject = JsonRead.getJsonDataObject(jsonPropertiesObject, countryPar, "countries_properties.json");
     }
 
-    public void setDriver(String browser) throws InterruptedException {
+
+    @BeforeMethod
+    public void setDriver(Method methodName) {
+        //System.out.println();
+        //logger.info("Starting @BeforeMethod...");
         try {
             if (os == null || browserVersion == null) {
                 switch (browser) {
                     case "chrome":
-                        driver = initChromeDriver();
+                        if (osName.toLowerCase().contains("windows")){
+                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
+                        } else {
+                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver");
+                        }
+                        DesiredCapabilities capability = DesiredCapabilities.chrome();
+                        capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+                        driver = new ChromeDriver(capability);
                         break;
+
                     case "firefox":
-                        driver = initFirefoxDriver();
+                        if (osName.toLowerCase().contains("windows")){
+                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver.exe");
+                        } else {
+                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver");
+                        }
+                        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+                        capabilities.setCapability("marionette", true);
+                        driver = new FirefoxDriver(capabilities);
                         break;
+
+                    case "phantomjs":
+                        if (osName.toLowerCase().contains("windows")){
+                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "phantomjs.exe");
+                        } else {
+                            System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs");
+                        }
+                        DesiredCapabilities sCaps = new DesiredCapabilities();
+                        sCaps.setJavascriptEnabled(true);
+                        sCaps.setCapability("takesScreenshot", false);
+                        sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, new String[] {
+                                "--web-security=false",
+                                "--ssl-protocol=any",
+                                "--ignore-ssl-errors=true",
+                                "--webdriver-loglevel=NONE"
+                        });
+                        driver = new PhantomJSDriver(sCaps);
+                        break;
+
                     default:
-                        System.out.println("browser : " + browser
-                                + " is invalid, Launching Firefox as browser of choice..");
-                        driver = initFirefoxDriver();
+                        throw new Exception("Browser [" + browser + "] not well defined. Allowed values are: 'firefox', 'chrome' or  'internet explorer'. WebDriver cannot be initialized!");
                 }
             } else {
 
-                String method = this.getClass().getName().substring(37) + " - " + countryPar;
+                String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
 
                 if(baseURL.contains("staging")){method = method + " - STG";}
                 else{method = method + " - PROD";}
 
-                System.out.println("Metodo: " + method);
+                logger.info("============ Method: " + method + " ============");
                 this.initSauceLabsDriver(method);
             }
+
+
+            logger.info("Maximizing Window...");
+            driver.manage().window().maximize();
+
+            logger.info("Navigating to baseURL: [" + baseURL + "]");
+            driver.navigate().to(baseURL);
+
+            LandingPage landingPage = initLandingPage();
+            logger.info("Selecting country page: [" + countryPar + "]");
+            basePage = landingPage.selectCountryPage(countryPar);
+
+            //logger.info("Finishing @BeforeMethod...");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private WebDriver initChromeDriver() throws InterruptedException {
-        System.out.println("Launching google chrome with new profile..");
 
-        if (osProperty.contains("windows")){
-            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
-        } else {
-            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
-        }
+    private void initSauceLabsDriver(String methodName)  {
 
-        return new ChromeDriver();
-    }
-
-    private WebDriver initFirefoxDriver() throws InterruptedException {
-        System.out.println("Launching Firefox browser..");
-
-        if (osProperty.contains("windows")){
-            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver.exe");
-        } else {
-            System.setProperty("webdriver.gecko.driver", Constants.DRIVERS_PATH + "geckodriver");
-        }
-
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("marionette", true);
-
-        return new FirefoxDriver(capabilities);
-    }
-
-    private WebDriver initSauceLabsDriver (String methodName) throws MalformedURLException, UnexpectedException {
-
-        String USERNAME = "phidodrecr";
-        String ACCESS_KEY = "ac3c7da6-5b2b-482e-b685-7e1a64e4374a";
+        String USERNAME = "automationteambsas";
+        String ACCESS_KEY = "69172f7e-ebab-465d-bd46-b158e45c137e";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -189,35 +185,32 @@ public class TestBaseSetup {
 
         capabilities.setCapability("name", methodName);
 
-        if (buildTag != null) {
-            capabilities.setCapability("build", buildTag);
-        }
-
         SauceHelpers.addSauceConnectTunnelId(capabilities);
 
         // Launch remote browser and set it as the current thread
-        //driver = new RemoteWebDriver(new URL(url), capabilities);
-        webDriver.set(new RemoteWebDriver(new URL(url), capabilities));
+        try {
+            webDriver.set(new RemoteWebDriver(new URL(url), capabilities));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
         sessionId.set(id);
 
         driver = this.getWebDriver();
-        return driver;
     }
 
-
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
-        driver.quit();
-    }
-
-    @BeforeMethod
-    public void beforeMethod(){
-        driver.manage().window().maximize();
-        driver.navigate().to(baseURL);
-        landingPage.selectCountryPage(driver, countryPar);
+        try {
+            driver.manage().deleteAllCookies();
+            driver.quit();
+        } catch (WebDriverException exception){
+            logger.info(exception.getMessage());
+        } catch (Exception exception){
+            logger.info(exception.getMessage());
+        }
     }
 
     /* This is to run retry analyzer for all the suites / tests  */
@@ -226,9 +219,6 @@ public class TestBaseSetup {
 
         //get the uri to send the commands to.
         seleniumURI = SauceHelpers.buildSauceUri();
-        //If available add build tag. When running under Jenkins BUILD_TAG is automatically set.
-        //You can set this manually on manual runs.
-        buildTag = System.getenv("BUILD_TAG");
 
         for (ITestNGMethod method : context.getAllTestMethods()) {
             method.setRetryAnalyzer(new RetryAnalyzer());
@@ -252,9 +242,151 @@ public class TestBaseSetup {
         return webDriver.get();
     }
 
-    public WebDriver getDriver() {
-        return driver;
+    public void logTestTitle(String testTitle) {
+        logger.info("--------------------------------------------------------------------------------");
+        logger.info(testTitle);
+        logger.info("--------------------------------------------------------------------------------");
     }
 
+    public void replaceUrl(){
+        try{
+            PageUtils.waitUrlContains(driver, 4, "checkout", "URL does not contain checkout");
+        } catch(Exception time) {
+            String actualURL = driver.getCurrentUrl();
+            String newURL = actualURL.replace("cart", "checkout");
+            logger.info("new URL: " + newURL);
+            driver.navigate().to(newURL);
+        }
+    }
+
+    //################################################ Inits ################################################
+
+    protected LandingPage initLandingPage() {
+        return PageFactory.initElements(driver, LandingPage.class);
+    }
+
+    protected BasePage initBasePage() {
+        return PageFactory.initElements(driver, BasePage.class);
+    }
+
+    protected LoginPopUp initLoginPopUp() {
+        return PageFactory.initElements(driver, LoginPopUp.class);
+    }
+
+    protected FacebookLoginPopUp initFacebookLoginPopUp() {
+        return PageFactory.initElements(driver, FacebookLoginPopUp.class);
+    }
+
+    protected BasePage initGoogleLoginPopUpEmail() {
+        return PageFactory.initElements(driver, GoogleLoginPopUpEmail.class);
+    }
+
+    protected BasePage initGoogleLoginPopUpPasswd() {
+        return PageFactory.initElements(driver, GoogleLoginPopUpPasswd.class);
+    }
+
+    protected HotelsDataTrip initHotelsDataTrip() {
+        return PageFactory.initElements(driver, HotelsDataTrip.class);
+    }
+
+    protected FlightsDataTrip initFlightsDataTrip() {
+        return PageFactory.initElements(driver, FlightsDataTrip.class);
+    }
+
+    protected TripsDataTrip initTripsDataTrip() {
+        return PageFactory.initElements(driver, TripsDataTrip.class);
+    }
+
+    protected CarsDataTrip initCarsDataTrip() {
+        return PageFactory.initElements(driver, CarsDataTrip.class);
+    }
+
+    protected CheckOutPage initCheckOutPage() {
+        return PageFactory.initElements(driver, CheckOutPage.class);
+    }
+
+    protected CheckOutPageV3 initCheckOutPageV3() {
+        return PageFactory.initElements(driver, CheckOutPageV3.class);
+    }
+
+    protected ConfirmationPage initConfirmationPage() {
+        return PageFactory.initElements(driver, ConfirmationPage.class);
+    }
+
+    protected PassengerSection initPassengerInfoSection() {
+        return PageFactory.initElements(driver, PassengerSection.class);
+    }
+
+    protected PassengerSectionV3 initPassengerInfoSectionV3() {
+        return PageFactory.initElements(driver, PassengerSectionV3.class);
+    }
+
+    protected PaymentSection initPaymentSection() {
+        return PageFactory.initElements(driver, PaymentSection.class);
+    }
+
+    protected PaymentSectionV3 initPaymentSectionV3() {
+        return PageFactory.initElements(driver, PaymentSectionV3.class);
+    }
+
+    protected PickUpLocationSection initPickUpLocationSection() {
+        return PageFactory.initElements(driver, PickUpLocationSection.class);
+    }
+
+    protected BillingSection initBillingSection() {
+        return PageFactory.initElements(driver, BillingSection.class);
+    }
+
+    protected BillingSectionV3 initBillingSectionV3() {
+        return PageFactory.initElements(driver, BillingSectionV3.class);
+    }
+
+    protected ContactSection initContactInfoSection() {
+        return PageFactory.initElements(driver, ContactSection.class);
+    }
+
+    protected ContactSectionV3 initContactInfoSectionV3() {
+        return PageFactory.initElements(driver, ContactSectionV3.class);
+    }
+
+    protected FooterSection initFooterSection() {
+        return PageFactory.initElements(driver, FooterSection.class);
+    }
+
+    protected FooterSectionV3 initFooterSectionV3() {
+        return PageFactory.initElements(driver, FooterSectionV3.class);
+    }
+
+    protected HotelsResultsPage initHotelesResultsPage() {
+        return PageFactory.initElements(driver, HotelsResultsPage.class);
+    }
+
+    protected HotelsDetailPage initHotelsDetailPage() {
+        return PageFactory.initElements(driver, HotelsDetailPage.class);
+    }
+
+    protected FlightsResultsPage initFlightsResultsPage() {
+        return PageFactory.initElements(driver, FlightsResultsPage.class);
+    }
+
+    protected TripsResultsPage initTripsResultsPage() {
+        return PageFactory.initElements(driver, TripsResultsPage.class);
+    }
+
+    protected TripsDetailPage initTripsDetailPage() {
+        return PageFactory.initElements(driver, TripsDetailPage.class);
+    }
+
+    protected CarsResultsPage initCarsResultsPage() {
+        return PageFactory.initElements(driver, CarsResultsPage.class);
+    }
+
+    protected PromoPage initPromoPage() {
+        return PageFactory.initElements(driver, PromoPage.class);
+    }
+
+    protected HeaderSection initHeaderSection() {
+        return PageFactory.initElements(driver, HeaderSection.class);
+    }
 
 }

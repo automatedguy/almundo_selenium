@@ -1,0 +1,372 @@
+{
+    "flights": {
+            "miami_10days_2adults_2childs_turista": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 9,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 2,
+                "childAgeRange": "Entre 2 y 11 años",
+                "flightClass": "Turista"
+            },
+
+            "domestic_20days_2adults_todas": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Car",
+                "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
+                "startDate": 30,
+                "endDate": 20,
+                "adults": 2,
+                "childs": 0,
+                "childAgeRange": "",
+                "flightClass": "Todas"
+            },
+
+            "multiDest_3Flights_2adults_todas": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Estados Unidos de América",
+            "originAuto2": "Mia",
+            "originFull2": "Miami, Estados Unidos de América",
+            "destinationAuto2": "Nue",
+            "destinationFull2": "Nueva York, Nueva York, Estados Unidos de América",
+            "originAuto3": "Nue",
+            "originFull3": "Nueva York, Nueva York, Estados Unidos de América",
+            "destinationAuto3": "Bog",
+            "destinationFull3": "Bogotá, Bogotá D.C., Colombia",
+            "startDate": 15,
+            "startDate2": 20,
+            "startDate3": 25,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "",
+            "flightClass": "Todas"
+        },
+
+        "domestic_30days_2adults_todas": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "Car",
+            "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
+            "startDate": 25,
+            "endDate": 30,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "",
+            "flightClass": "Todas"
+        }
+    },
+
+    "hotels": {
+            "miami_10days_2adults_2childs_1room": {
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 9,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 2,
+                "rooms": 1
+            },
+
+            "domestic01_15days_2adults_1room": {
+                "destinationAuto": "Car",
+                "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
+                "startDate": 20,
+                "endDate": 20,
+                "adults": 2,
+                "childs": 0,
+                "rooms": 1
+            },
+
+            "domestic02_20days_2adults_1room": {
+                "destinationAuto": "Car",
+                "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
+                "startDate": 25,
+                "endDate": 20,
+                "adults": 2,
+                "childs": 0,
+                "rooms": 1
+            }
+    },
+
+    "trips": {
+            "miami_10days_2adults_2childs_1room": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 10,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 2,
+                "childAgeRange": "Entre 2 y 11 años",
+                "rooms": 1
+            },
+
+            "domestic01_15days_2adults_1childs_1room": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Car",
+                "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
+                "startDate": 20,
+                "endDate": 20,
+                "adults": 2,
+                "childs": 1,
+                "childAgeRange": "Entre 2 y 11 años",
+                "rooms": 1
+            },
+
+            "int02_20days_2adults_1childs_1room": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "San",
+                "destinationFull": "Santiago de Chile, Chile",
+                "startDate": 30,
+                "endDate": 20,
+                "adults": 2,
+                "childs": 1,
+                "childAgeRange": "Entre 2 y 11 años",
+                "rooms": 1
+            },
+
+        "domestic02_20days_2adults_1childs_1room": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "Car",
+            "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
+            "startDate": 25,
+            "endDate": 20,
+            "adults": 2,
+            "childs": 1,
+            "childAgeRange": "Entre 2 y 11 años",
+            "rooms": 1
+        }
+    },
+
+    "cars": {
+        "capital_10days_entre_21_24": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "Bog",
+            "destinationFull": "Bogotá, Bogotá D.C., Colombia",
+            "startDate": 10,
+            "endDate": 10,
+            "pickUpTime": "12:00",
+            "dropOffTime": "12:00",
+            "ageRange": "Entre 21 y 24 años"
+        },
+
+        "miami_10days_entre_21_24": {
+            "originAuto": "Mia",
+            "originFull": "Miami, Estados Unidos de América",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Estados Unidos de América",
+            "startDate": 10,
+            "endDate": 10,
+            "pickUpTime": "12:00",
+            "dropOffTime": "12:00",
+            "ageRange": "Entre 21 y 24 años"
+        }
+
+    },
+
+    "passengers":{
+            "adult_male_native": {
+                "first_name": "José Ñoqui",
+                "last_name": "O'Higgins Lingüístico",
+                "documentType": "Pasaporte",
+                "document_number": "29098765N",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/1979",
+                "gender": "Masculino",
+                "nationality": "Colombia"
+            },
+
+            "adult_female_native": {
+                "first_name": "María Angélica",
+                "last_name": "D'Onofrio",
+                "documentType": "Pasaporte",
+                "document_number": "29098765N",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/1979",
+                "gender": "Femenino",
+                "nationality": "Colombia"
+            },
+
+            "adult_female_foreign": {
+                "first_name": "Naña Çraña",
+                "last_name": "Pingüino L'Oréal",
+                "documentType": "Pasaporte",
+                "document_number": "29098766",
+                "document_emisor": "España",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/1979",
+                "gender": "Femenino",
+                "nationality": "España"
+            },
+
+            "child_male_native": {
+                "first_name": "Timmy",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
+                "document_number": "290987567N",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/2010",
+                "gender": "Masculino",
+                "nationality": "Colombia"
+            },
+
+            "child_female_native": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Cédula de Ciudadanía",
+                "document_number": "29098757",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "Colombia"
+            },
+
+            "baby_malenative": {
+                "first_name": "Rosemary's",
+                "last_name": "Baby",
+                "documentType": "",
+                "document_number": "",
+                "document_emisor": "",
+                "document_expiration": "",
+                "birthday": "",
+                "gender": "",
+                "nationality": ""
+            },
+
+            "baby_femalenative": {
+                "first_name": "Rosemary",
+                "last_name": "Bowie",
+                "documentType": "",
+                "document_number": "",
+                "document_emisor": "",
+                "document_expiration": "",
+                "birthday": "",
+                "gender": "",
+                "nationality": ""
+            }
+    },
+
+    "payment":{
+            "1_amex_amex": {
+                "payment_qty" : "1",
+                "bank_name" : "American Express",
+                "credit_card_name" : "American Express",
+                "card_holder": "Dueño Dí L'Tarjüeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "Cedula de ciudadania",
+                "document_number": "29098766"
+            },
+
+            "6_visa_visa": {
+                "payment_qty" : "6",
+                "bank_name" : "Visa",
+                "credit_card_name" : "Visa",
+                "card_holder": "Dueño Dí L'Tarjüeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "Cedula de ciudadania",
+                "document_number": "29098766"
+            }
+    },
+
+    "billings": {
+        "local_Billing": {
+            "fiscal_name":"Automation & Sarasa Associates Inc.",
+            "billing_fiscal_type":"Persona natural",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "23281685589",
+            "billing_address": "Carlos Pellegrini",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Bogotá D.C.",
+            "address_city": "Bogotá"
+        },
+
+        "local_Billing_v2": {
+            "fiscal_name":"Automation & Sarasa Associates Inc.",
+            "billing_fiscal_type":"Persona Natural",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "23281685589",
+            "billing_address": "Carlos Pellegrini",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Bogotá D.C.",
+            "address_city": "Bogotá"
+        }
+    },
+
+    "contacts": {
+        "contact_cell_phone": {
+            "email": "almundocolombia@gmail.com",
+            "rep_email": "almundocolombia@gmail.com",
+            "tel": "Celular",
+            "country_code": 54,
+            "area": "911",
+            "phone_number": "11112222"
+        },
+
+        "contact_phone": {
+            "email": "mock.of.arm@almundo.com",
+            "rep_email": "mock.of.arm@almundo.com",
+            "tel": "Teléfono",
+            "country_code": 54,
+            "area": "011",
+            "phone_number": "11112222"
+        },
+
+        "contact_fax": {
+            "email": "mock.of.arm@almundo.com",
+            "rep_email": "mock.of.arm@almundo.com",
+            "tel": "Fax",
+            "country_code": 54,
+            "area": "011",
+            "phone_number": "11112222"
+        }
+    },
+
+    "users": {
+        "email": {
+            "userEmail": "almundocolombia@gmail.com",
+            "password": "almundo12345",
+            "name": "Automation"
+        },
+
+        "google": {
+            "userEmail": "almundocolombia@gmail.com",
+            "password": "almundo12345",
+            "name": "Automation"
+        },
+
+        "facebook": {
+            "userEmail": "almundocolombia@gmail.com",
+            "password": "almundo12345",
+            "name": "Automation"
+        }
+    }
+}
