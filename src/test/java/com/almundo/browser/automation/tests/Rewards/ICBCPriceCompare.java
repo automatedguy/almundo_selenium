@@ -42,7 +42,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void latam() {
         logTestTitle("ICBC Store - LATAM - " + countryPar );
-        checkOutPage = openAlmundoCart("58d2a0fee4b0397369fff7d4");
+        checkOutPage = openAlmundoCart(cartId);
 
         paymentSection = checkOutPage.paymentSection();
 
@@ -65,7 +65,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         paymentSection.selectOtherPayment("Mastercard", "18");
         almundo_master_18 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart("58d2a117e4b0397369fff7d9");
+        checkOutPage = openIcbcCart(cartIdICBC);
 
         paymentSection.selectPaymentQty("1 cuota");
 
