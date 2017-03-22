@@ -20,6 +20,9 @@ public class PaymentSection extends CheckOutPage {
         super(driver);
     }
 
+    private WebElement paymentQtySelected = null;
+    private WebElement creditCardSelected = null;
+
     //############################################### Locators ##############################################
 
     @FindBy(id = "card_holder")
@@ -75,9 +78,8 @@ public class PaymentSection extends CheckOutPage {
         return this;
     }
 
-    public WebElement selectPaymentQty(String qty) {
+    public void selectPaymentQty(String qty) {
         List<WebElement> paymentList = driver.findElements(By.cssSelector(".cards__definition"));
-        WebElement paymentQtySelected = null;
 
         for (WebElement payment : paymentList) {
             if(payment.getText().contains(qty)) {
@@ -89,14 +91,11 @@ public class PaymentSection extends CheckOutPage {
                 break;
             }
         }
-        return paymentQtySelected;
     }
 
-    public WebElement selectCreditCard(WebElement paymentQtySelected, String creditCardCode) {
-
+    public void selectCreditCard(String creditCardCode) {
         List<WebElement> creditCardList = paymentQtySelected.findElements(By.cssSelector(".cards-more-options"));
         WebElement creditCardIterator;
-        WebElement creditCardSelected = null;
         boolean found = false;
 
         for (WebElement creditCard : creditCardList) {
@@ -109,11 +108,9 @@ public class PaymentSection extends CheckOutPage {
             }
         }
         Assert.assertTrue(found, "Credit Card [" + creditCardCode + "] " + "is not displayed");
-
-        return creditCardSelected;
     }
 
-    public WebElement selectBank(WebElement creditCardSelected, String bankName) {
+    public void selectBank(String bankName) {
         List<WebElement> bankList = creditCardSelected.findElements(By.cssSelector(".cards__definition__container__info__banks"));
         boolean found = false;
 
@@ -126,8 +123,6 @@ public class PaymentSection extends CheckOutPage {
             }
         }
         Assert.assertTrue(found, "Bank [" + bankName + "] " + "is not displayed");
-
-        return creditCardSelected;
     }
 
     private void selectPaymentQtyOption(int index) {

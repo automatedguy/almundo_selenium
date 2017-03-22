@@ -2,7 +2,7 @@ package com.almundo.browser.automation.tests.Rewards;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import org.openqa.selenium.WebElement;
+import com.almundo.browser.automation.pages.CheckOutPage.PaymentSection;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -15,9 +15,7 @@ import static com.almundo.browser.automation.utils.Constants.PROD_URL;
 public class ICBCPriceCompare extends TestBaseSetup {
 
     private CheckOutPage checkOutPage = null;
-
-    private WebElement paymentQtySelected = null;
-    private WebElement cardSelected = null;
+    private PaymentSection paymentSection = null;
 
     SoftAssert softAssert = new SoftAssert();
 
@@ -44,48 +42,50 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void latam() {
         logTestTitle("ICBC Store - LATAM - " + countryPar );
-        checkOutPage = openAlmundoCart(cartId);
+        checkOutPage = openAlmundoCart("58d2a0fee4b0397369fff7d4");
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        paymentSection = checkOutPage.paymentSection();
 
-        selectCardAndBank(paymentQtySelected, "VI", "Visa");
+        paymentSection.selectPaymentQty("1 cuota");
+
+        selectCardAndBank("VI", "Visa");
         almundo_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "Mastercard");
+        selectCardAndBank("CA", "Mastercard");
         almundo_master_1 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         almundo_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         almundo_master_12 = checkOutPage.getTotalPrice();
 
-        checkOutPage.paymentSection().selectOtherPayment("Mastercard", "18");
+        paymentSection.selectOtherPayment("Mastercard", "18");
         almundo_master_18 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart(cartIdICBC);
+        checkOutPage = openIcbcCart("58d2a117e4b0397369fff7d9");
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        paymentSection.selectPaymentQty("1 cuota");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("18 cuotas");
+        paymentSection.selectPaymentQty("18 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_18 = checkOutPage.getTotalPrice();
 
         logger.info("----------------------------------------------------------------");
@@ -122,55 +122,56 @@ public class ICBCPriceCompare extends TestBaseSetup {
     public void aerolineasArgentinas() {
         logTestTitle("ICBC Store - Aerolíneas Argentinas - " + countryPar );
         checkOutPage = openAlmundoCart(cartId);
+        paymentSection = checkOutPage.paymentSection();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
-        selectCardAndBank(paymentQtySelected, "VI", "Visa");
+        selectCardAndBank("VI", "Visa");
         almundo_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "Mastercard");
+        selectCardAndBank("CA", "Mastercard");
         almundo_master_1 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("6 cuotas");
+        checkOutPage.paymentSection().selectPaymentQty("6 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         almundo_visa_6 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         almundo_master_6 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         almundo_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "Mastercard");
+        selectCardAndBank("CA", "Mastercard");
         almundo_master_12 = checkOutPage.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("6 cuotas");
+        checkOutPage.paymentSection().selectPaymentQty("6 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         icbc_visa_6 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_6 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
         logger.info("----------------------------------------------------------------");
@@ -212,38 +213,38 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logTestTitle("ICBC Store - Air Canada - " + countryPar );
         checkOutPage = openAlmundoCart(cartId);
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
-        selectCardAndBank(paymentQtySelected, "VI", "Visa");
+        selectCardAndBank("VI", "Visa");
         almundo_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "Mastercard");
+        selectCardAndBank("CA", "Mastercard");
         almundo_master_1 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         almundo_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         almundo_master_12 = checkOutPage.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
-        paymentQtySelected = checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
 
-        selectCardAndBank(paymentQtySelected, "VI", "ICBC");
+        selectCardAndBank("VI", "ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank(paymentQtySelected, "CA", "ICBC");
+        selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
         logger.info("----------------------------------------------------------------");
@@ -286,8 +287,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
         return initCheckOutPage();
     }
 
-    private void selectCardAndBank(WebElement paymentQtySelected, String creditCard, String bankName) {
-        cardSelected = checkOutPage.paymentSection().selectCreditCard(paymentQtySelected, creditCard);
-        checkOutPage.paymentSection().selectBank(cardSelected, bankName);
+    private void selectCardAndBank(String creditCard, String bankName) {
+        paymentSection.selectCreditCard(creditCard);
+        paymentSection.selectBank(bankName);
     }
 }

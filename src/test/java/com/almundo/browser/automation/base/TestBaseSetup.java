@@ -27,6 +27,8 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static com.almundo.browser.automation.utils.Constants.*;
+
 
 public class TestBaseSetup {
 
@@ -56,16 +58,16 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
-                                        @Optional("False") Boolean landing,
-                                        @Optional("58c7053ee4b0397369fe6150") String cart_id,
-                                        @Optional("58c70563e4b0fc66a4949661") String cart_id_icbc,
+                                        @Optional("True") Boolean landing,
+                                        @Optional("") String cart_id,
+                                        @Optional("") String cart_id_icbc,
                                         @Optional("0") int retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -108,9 +110,9 @@ public class TestBaseSetup {
                 switch (browser) {
                     case "chrome":
                         if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver.exe");
+                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
                         } else {
-                            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");
+                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver");
                         }
                         DesiredCapabilities capability = DesiredCapabilities.chrome();
                         capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
@@ -119,9 +121,9 @@ public class TestBaseSetup {
 
                     case "firefox":
                         if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver.exe");
+                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver.exe");
                         } else {
-                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver");
+                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver");
                         }
                         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                         capabilities.setCapability("marionette", true);
@@ -130,9 +132,9 @@ public class TestBaseSetup {
 
                     case "phantomjs":
                         if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("phantomjs.binary.path", Constants.RESOURCES_PATH + "phantomjs.exe");
+                            System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs.exe");
                         } else {
-                            System.setProperty("phantomjs.binary.path", Constants.RESOURCES_PATH + "phantomjs");
+                            System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs");
                         }
                         DesiredCapabilities sCaps = new DesiredCapabilities();
                         sCaps.setJavascriptEnabled(true);

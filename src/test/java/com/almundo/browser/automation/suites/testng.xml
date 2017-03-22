@@ -16,22 +16,22 @@
             <!--<class name="com.almundo.browser.automation.tests.Trips.FlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Cars.FlowTest"/>-->
 
-            <!--&lt;!&ndash;Checkout V3&ndash;&gt;-->
+            <!--Checkout V3-->
             <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowCheckOutV3Test"/>-->
 
-            <!--&lt;!&ndash;Club AlMundo&ndash;&gt;-->
+            <!--Club AlMundo-->
             <!--<class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>-->
 
-            <!--&lt;!&ndash;Home Page&ndash;&gt;-->
+            <!--Home Page-->
             <!--<class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>-->
 
-            <!--&lt;!&ndash;Sucursales channel&ndash;&gt;-->
+            <!--Sucursales channel-->
             <!--<class name="com.almundo.browser.automation.tests.Hotels.SucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Flights.SucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Cars.SucursalesFlowTest"/>-->
 
-            <!--&lt;!&ndash;Login flows&ndash;&gt;-->
+            <!--Login flows-->
             <!--<class name="com.almundo.browser.automation.tests.Hotels.LoginFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Flights.LoginFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Trips.LoginFlowTest"/>-->

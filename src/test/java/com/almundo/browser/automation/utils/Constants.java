@@ -14,6 +14,7 @@ public class Constants {
     public static final String PROD_URL = "http://almundo.com/";
     public static final String SUC_URL = "https://sucursales.almundo.com.ar/";
     public static final String CCR_URL = "https://ccr.almundo.com.ar/";
+    public static final String ICBC_URL = "https://icbcstore.almundo.com.ar/";
 
     //PATHS
     public static final String RESOURCES_PATH = "src/test/resources/";
