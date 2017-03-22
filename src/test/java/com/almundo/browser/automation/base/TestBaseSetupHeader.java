@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.base;
 
+import com.almundo.browser.automation.utils.Constants;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +16,12 @@ public class TestBaseSetupHeader extends TestBaseSetup {
     /* Overloading initChromeDriver method in order to setup Http Header */
     public WebDriver initChromeDriver() throws InterruptedException {
         System.out.println("Launching google chrome with new profile..");
-        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+
+        if (osProperty.contains("windows")){
+            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", Constants.DRIVERS_PATH + "chromedriver");
+        }
 
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("/home/gabrielcespedes/Downloads/extension_2_1_1.crx"));

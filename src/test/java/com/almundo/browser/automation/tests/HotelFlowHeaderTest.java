@@ -21,7 +21,6 @@ public class HotelFlowHeaderTest extends TestBaseSetupHeader {
         hotelFlow.clickOn(driver, BaseFlowMap.HOTELES_ICO.getBy());
 
         hotelFlow.enterText(driver, destinationAutoComplete, HotelFlowMap.DESTINATION_TXT.getBy());
-
         hotelFlow.waitForVisibilityOfElementLocated(driver, 10, DESTINATION_FULL_PAR);
         hotelFlow.selectFromAutoCompleteSuggestions(driver, DESTINATION_FULL_PAR);
 

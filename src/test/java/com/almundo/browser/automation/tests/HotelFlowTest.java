@@ -27,9 +27,16 @@ public class HotelFlowTest extends TestBaseSetup {
         hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_SALIDA_CAL.getBy(), departureDate);
         hotelFlow.selectDateFromCalendar(driver, HotelFlowMap.HOTEL_FECHA_REGRESO_CAL.getBy(), returnDate);
 
+        numPassengers = hotelFlow.selectPassenger(driver, numAdults, numChilds, numRooms);
+
         hotelFlow.clickOn(driver, BaseFlowMap.BUSCAR_BTN.getBy());
 
-        hotelFlow.doHotelReservationFlow(driver);
-        hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+        if(hotelFlow.noVacancy(driver)) {
+            System.out.println("No Vacancy");
+        }
+        else {
+            hotelFlow.doHotelReservationFlow(driver);
+            hotelFlow.paymentPage.populatePaymentInfo(driver, numPassengers);
+        }
     }
 }

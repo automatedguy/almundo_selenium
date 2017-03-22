@@ -12,6 +12,9 @@ public enum BaseFlowMap {
     INGRESAR(By.cssSelector("span.ng-binding.ng-scope")),
     CALENDAR_CAL(By.xpath("//div[@class='ui-datepicker-title']")),
     CALENDAR_NEXT_CAL(By.xpath("//span[@class='ui-icon ui-icon-circle-triangle-e']")),
+    AVAILABLE_DATES_CAL(By.cssSelector(".ui-datepicker-calendar>tbody>tr>td>a")),
+    PERSONAS_TXT(By.cssSelector(".search__input")),
+    LISTO_BTN(By.cssSelector(".button.button--sm")),
     BUSCAR_BTN(By.xpath("//button[contains(.,'Buscar')]"));
     private By name;
     BaseFlowMap(By locator) {this.name = locator; }

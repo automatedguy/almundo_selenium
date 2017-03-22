@@ -45,16 +45,16 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.3</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19</version>
+                <version>2.19.1</version>
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>20</threadCount>
@@ -66,26 +66,7 @@
                     </properties>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suiteFile}</suiteXmlFile>
-                        <!--Argentina-->
-                        <!--<file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/argentina/testng.xml</file>-->
-
-                        <!--Colombia-->
-                        <!--<file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/colombia/testng.xml</file>-->
-
-                        <!--Mexico-->
-                        <!--<file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/mexico/testng.xml</file>-->
-
-                        <!--Local-->
-                        <!--<file>/home/gabrielcespedes/repos/selenium-testsuites/src/test/java/com/almundo/browser/automation/suites/local/testng.xml</file>-->
                     </suiteXmlFiles>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
