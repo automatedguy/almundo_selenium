@@ -1,0 +1,397 @@
+2017-03-21/17:48:22 INFO OS: [Windows 10] 
+2017-03-21/17:48:22 INFO Browser: [chrome] 
+2017-03-21/17:48:22 INFO Environment: [http://almundo.com/] 
+2017-03-21/17:48:22 INFO Getting JSON file: [argentina_data.json] 
+2017-03-21/17:48:22 INFO Getting JSON file: [countries_properties.json] 
+2017-03-21/17:48:22 INFO Getting JSON data object/value: [countries_properties.json/ARGENTINA] 
+2017-03-21/17:48:22 INFO Getting JSON data object/value: [argentina_data.json/flights] 
+2017-03-21/17:48:22 INFO Getting JSON data object/value: [argentina_data.json/passengers] 
+2017-03-21/17:48:22 INFO Getting JSON data object/value: [argentina_data.json/payment] 
+2017-03-21/17:48:22 INFO Getting JSON data object/value: [argentina_data.json/billings] 
+2017-03-21/17:48:22 INFO Getting JSON data object/value: [argentina_data.json/contacts] 
+2017-03-21/17:48:25 INFO Maximizing Window... 
+2017-03-21/17:48:26 INFO Navigating to baseURL: [http://almundo.com/] 
+2017-03-21/17:48:28 INFO Selecting country page: [ARGENTINA] 
+2017-03-21/17:48:34 INFO Closing Login Pop-Up 
+2017-03-21/17:48:36 INFO Clicking on Vuelos button 
+2017-03-21/17:48:37 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:48:37 INFO Flight Flow - Multi Destination - Int - 2 Adults - Turista - ARGENTINA 
+2017-03-21/17:48:37 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:48:37 INFO Getting JSON data object/value: [argentina_data.json/multiDest_3Flights_2adults_todas] 
+2017-03-21/17:48:37 INFO Selecting Flight Type: [Varias ciudades] 
+2017-03-21/17:48:37 INFO Adding flight leg 
+2017-03-21/17:48:37 INFO Entering Flight Origin: [Buenos Aires, Buenos Aires, Argentina] 
+2017-03-21/17:48:39 INFO Entering Flight Destination: [Miami, Estados Unidos de América] 
+2017-03-21/17:48:42 INFO Selecting date: [4 Marzo 2017] 
+2017-03-21/17:48:42 INFO Entering Flight: [Miami, Estados Unidos de América] 
+2017-03-21/17:48:43 INFO Entering Flight: [Nueva York, Nueva York, Estados Unidos de América] 
+2017-03-21/17:48:46 INFO Selecting date: [9 Abril 2017] 
+2017-03-21/17:48:46 INFO Entering Flight: [Nueva York, Nueva York, Estados Unidos de América] 
+2017-03-21/17:48:47 INFO Entering Flight: [Buenos Aires, Buenos Aires, Argentina] 
+2017-03-21/17:48:51 INFO Selecting date: [14 Abril 2017] 
+2017-03-21/17:48:51 INFO Adding: [1 adult] 
+2017-03-21/17:48:51 INFO Total Adults: [2] 
+2017-03-21/17:48:51 INFO Total Childs: [0] 
+2017-03-21/17:48:52 INFO Selecting Flight Class: [Todas] 
+2017-03-21/17:48:52 INFO Clicking on Buscar Button 
+2017-03-21/17:49:12 INFO Clicking on Comprar button 
+2017-03-21/17:49:12 INFO Getting JSON data object/value: [argentina_data.json/adult_male_native] 
+2017-03-21/17:49:12 INFO Getting JSON data object/value: [argentina_data.json/adult_female_native] 
+2017-03-21/17:49:12 INFO Getting JSON data object/value: [argentina_data.json/1_amex_amex] 
+2017-03-21/17:49:12 INFO Getting JSON data object/value: [argentina_data.json/local_Billing_v2] 
+2017-03-21/17:49:12 INFO Getting JSON data object/value: [argentina_data.json/contact_cell_phone] 
+2017-03-21/17:49:12 INFO Getting JSON data object/value: [countries_properties.json/FlightsCheckOutPageInternational] 
+2017-03-21/17:49:12 INFO ------------- Filling Passenger Section ------------- 
+2017-03-21/17:49:12 INFO ************ Filling Passenger [1] ************ 
+2017-03-21/17:49:19 INFO Entering Nombre/s: [José Ñoqui] 
+2017-03-21/17:49:20 INFO Entering Apellido/s: [O'Higgins Lingüístico] 
+2017-03-21/17:49:20 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:49:20 INFO Entering Número: [29098765N] 
+2017-03-21/17:49:21 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:49:21 INFO Selecting Sexo: [Masculino] 
+2017-03-21/17:49:21 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:49:21 INFO ************ Filling Passenger [2] ************ 
+2017-03-21/17:49:21 INFO Entering Nombre/s: [María Angélica] 
+2017-03-21/17:49:21 INFO Entering Apellido/s: [D'Onofrio] 
+2017-03-21/17:49:22 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:49:22 INFO Entering Número: [29098765N] 
+2017-03-21/17:49:22 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:49:22 INFO Selecting Sexo: [Femenino] 
+2017-03-21/17:49:23 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:49:23 INFO ------------- Payment Option: CREDIT CARD  ------------- 
+2017-03-21/17:49:23 INFO Selecting card name: [American Express] 
+2017-03-21/17:49:23 INFO Entering Titular de la tarjeta: [Dueño Dí L'Tarjüeta] 
+2017-03-21/17:49:24 INFO Entering Número de tu tarjeta: [4242424242424242] 
+2017-03-21/17:49:24 INFO Selecting Fecha de vencimiento - Mes: [12] 
+2017-03-21/17:49:25 INFO Selecting Fecha de vencimiento - Año: [2022] 
+2017-03-21/17:49:25 INFO Entering Código de Seguridad: [1234] 
+2017-03-21/17:49:25 INFO ------------- Filling Billing Section ------------- 
+2017-03-21/17:49:25 INFO Entering CUIL/CUIT: [23281685589] 
+2017-03-21/17:49:25 INFO Entering Domicilio: [Carlos Pellegrini] 
+2017-03-21/17:49:26 INFO Entering Número: [887] 
+2017-03-21/17:49:26 INFO Entering Piso: [8] 
+2017-03-21/17:49:26 INFO Entering Departamento: [A] 
+2017-03-21/17:49:26 INFO Entering Código Postal: [C1009ABQ] 
+2017-03-21/17:49:26 INFO Entering Provincia: [Buenos Aires] 
+2017-03-21/17:49:27 INFO Entering Ciudad: [C.A.B.A.] 
+2017-03-21/17:49:27 INFO ------------- Filling Contact Section ------------- 
+2017-03-21/17:49:27 INFO Entering Email: [automationthings@gmail.com] 
+2017-03-21/17:49:27 INFO Entering Repetí tu email: [automationthings@gmail.com] 
+2017-03-21/17:49:28 INFO Selecting Teléfono: [Celular] 
+2017-03-21/17:49:28 INFO Entering Código de país: [54] 
+2017-03-21/17:49:28 INFO Selecting Cód. Area: [911] 
+2017-03-21/17:49:29 INFO Entering Número: [11112222] 
+2017-03-21/17:49:29 INFO ---------- Checking Footer Section options ---------- 
+2017-03-21/17:49:29 INFO Checking Terms and Conditions Check Box... 
+2017-03-21/17:49:34 INFO Maximizing Window... 
+2017-03-21/17:49:35 INFO Navigating to baseURL: [http://almundo.com/] 
+2017-03-21/17:49:38 INFO Selecting country page: [ARGENTINA] 
+2017-03-21/17:49:44 INFO Closing Login Pop-Up 
+2017-03-21/17:49:47 INFO Clicking on Vuelos button 
+2017-03-21/17:49:47 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:49:47 INFO Flight Flow - One Way - Dom - 2 Adults - Todas - ARGENTINA 
+2017-03-21/17:49:47 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:49:47 INFO Getting JSON data object/value: [argentina_data.json/domestic_20days_2adults_todas] 
+2017-03-21/17:49:47 INFO Selecting Flight Type: [Solo ida] 
+2017-03-21/17:49:47 INFO Entering Flight Origin: [Buenos Aires, Buenos Aires, Argentina] 
+2017-03-21/17:49:48 INFO Entering Flight Destination: [San Carlos de Bariloche, Río Negro, Argentina] 
+2017-03-21/17:49:52 INFO Selecting date: [14 Marzo 2017] 
+2017-03-21/17:49:52 INFO Adding: [1 adult] 
+2017-03-21/17:49:52 INFO Total Adults: [2] 
+2017-03-21/17:49:52 INFO Total Childs: [0] 
+2017-03-21/17:49:52 INFO Selecting Flight Class: [Todas] 
+2017-03-21/17:49:52 INFO Clicking on Buscar Button 
+2017-03-21/17:50:02 INFO Selecting Ticket de Ida 
+2017-03-21/17:50:02 INFO Clicking on Comprar button 
+2017-03-21/17:50:02 INFO Getting JSON data object/value: [argentina_data.json/adult_female_foreign] 
+2017-03-21/17:50:02 INFO Getting JSON data object/value: [argentina_data.json/adult_female_foreign] 
+2017-03-21/17:50:02 INFO Getting JSON data object/value: [argentina_data.json/1_amex_amex] 
+2017-03-21/17:50:02 INFO Getting JSON data object/value: [argentina_data.json/local_Billing_v2] 
+2017-03-21/17:50:02 INFO Getting JSON data object/value: [argentina_data.json/contact_phone] 
+2017-03-21/17:50:02 INFO Getting JSON data object/value: [countries_properties.json/FlightsCheckOutPageDomestic] 
+2017-03-21/17:50:02 INFO ------------- Filling Passenger Section ------------- 
+2017-03-21/17:50:02 INFO ************ Filling Passenger [1] ************ 
+2017-03-21/17:50:10 INFO Entering Nombre/s: [Naña Çraña] 
+2017-03-21/17:50:11 INFO Entering Apellido/s: [Pingüino L'Oréal] 
+2017-03-21/17:50:11 INFO Selecting Tipo de documento: [DNI] 
+2017-03-21/17:50:11 INFO Entering Número: [29098766] 
+2017-03-21/17:50:11 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:50:12 INFO Selecting Sexo: [Femenino] 
+2017-03-21/17:50:12 INFO ************ Filling Passenger [2] ************ 
+2017-03-21/17:50:12 INFO Entering Nombre/s: [Naña Çraña] 
+2017-03-21/17:50:12 INFO Entering Apellido/s: [Pingüino L'Oréal] 
+2017-03-21/17:50:13 INFO Selecting Tipo de documento: [DNI] 
+2017-03-21/17:50:13 INFO Entering Número: [29098766] 
+2017-03-21/17:50:13 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:50:13 INFO Selecting Sexo: [Femenino] 
+2017-03-21/17:50:13 INFO ------------- Payment Option: CREDIT CARD  ------------- 
+2017-03-21/17:50:13 INFO Selecting card name: [American Express] 
+2017-03-21/17:50:14 INFO Entering Titular de la tarjeta: [Dueño Dí L'Tarjüeta] 
+2017-03-21/17:50:14 INFO Entering Número de tu tarjeta: [4242424242424242] 
+2017-03-21/17:50:15 INFO Selecting Fecha de vencimiento - Mes: [12] 
+2017-03-21/17:50:15 INFO Selecting Fecha de vencimiento - Año: [2022] 
+2017-03-21/17:50:15 INFO Entering Código de Seguridad: [1234] 
+2017-03-21/17:50:15 INFO ------------- Filling Billing Section ------------- 
+2017-03-21/17:50:15 INFO Entering CUIL/CUIT: [23281685589] 
+2017-03-21/17:50:15 INFO Entering Domicilio: [Carlos Pellegrini] 
+2017-03-21/17:50:15 INFO Entering Número: [887] 
+2017-03-21/17:50:16 INFO Entering Piso: [8] 
+2017-03-21/17:50:16 INFO Entering Departamento: [A] 
+2017-03-21/17:50:16 INFO Entering Código Postal: [C1009ABQ] 
+2017-03-21/17:50:16 INFO Entering Provincia: [Buenos Aires] 
+2017-03-21/17:50:17 INFO Entering Ciudad: [C.A.B.A.] 
+2017-03-21/17:50:17 INFO ------------- Filling Contact Section ------------- 
+2017-03-21/17:50:17 INFO Entering Email: [automationthings@gmail.com] 
+2017-03-21/17:50:17 INFO Entering Repetí tu email: [automationthings@gmail.com] 
+2017-03-21/17:50:18 INFO Selecting Teléfono: [Teléfono] 
+2017-03-21/17:50:18 INFO Entering Código de país: [54] 
+2017-03-21/17:50:18 INFO Selecting Cód. Area: [011] 
+2017-03-21/17:50:19 INFO Entering Número: [11112222] 
+2017-03-21/17:50:19 INFO ---------- Checking Footer Section options ---------- 
+2017-03-21/17:50:19 INFO Checking Terms and Conditions Check Box... 
+2017-03-21/17:50:23 INFO Maximizing Window... 
+2017-03-21/17:50:25 INFO Navigating to baseURL: [http://almundo.com/] 
+2017-03-21/17:50:27 INFO Selecting country page: [ARGENTINA] 
+2017-03-21/17:50:33 INFO Closing Login Pop-Up 
+2017-03-21/17:50:35 INFO Clicking on Vuelos button 
+2017-03-21/17:50:35 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:50:35 INFO Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - ARGENTINA 
+2017-03-21/17:50:35 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:50:35 INFO Getting JSON data object/value: [argentina_data.json/miami_10days_2adults_2childs_turista] 
+2017-03-21/17:50:35 INFO Selecting Flight Type: [Solo ida] 
+2017-03-21/17:50:36 INFO Entering Flight Origin: [Buenos Aires, Buenos Aires, Argentina] 
+2017-03-21/17:50:37 INFO Entering Flight Destination: [Miami, Estados Unidos de América] 
+2017-03-21/17:50:40 INFO Selecting date: [14 Marzo 2017] 
+2017-03-21/17:50:40 INFO Adding: [1 adult] 
+2017-03-21/17:50:40 INFO Adding: [1 child] 
+2017-03-21/17:50:40 INFO Adding: [1 child] 
+2017-03-21/17:50:40 INFO Total Adults: [2] 
+2017-03-21/17:50:40 INFO Total Childs: [2] 
+2017-03-21/17:50:40 INFO Selecting Flight Class: [Turista] 
+2017-03-21/17:50:40 INFO Clicking on Buscar Button 
+2017-03-21/17:50:51 INFO Selecting Ticket de Ida 
+2017-03-21/17:50:51 INFO Clicking on Comprar button 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [argentina_data.json/adult_male_native] 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [argentina_data.json/adult_female_native] 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [argentina_data.json/child_male_native] 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [argentina_data.json/child_male_native] 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [argentina_data.json/1_amex_amex] 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [argentina_data.json/local_Billing_v2] 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [argentina_data.json/contact_cell_phone] 
+2017-03-21/17:50:51 INFO Getting JSON data object/value: [countries_properties.json/FlightsCheckOutPageInternational] 
+2017-03-21/17:50:51 INFO ------------- Filling Passenger Section ------------- 
+2017-03-21/17:50:51 INFO ************ Filling Passenger [1] ************ 
+2017-03-21/17:50:57 INFO Entering Nombre/s: [José Ñoqui] 
+2017-03-21/17:50:58 INFO Entering Apellido/s: [O'Higgins Lingüístico] 
+2017-03-21/17:50:59 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:50:59 INFO Entering Número: [29098765N] 
+2017-03-21/17:50:59 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:51:00 INFO Selecting Sexo: [Masculino] 
+2017-03-21/17:51:00 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:51:00 INFO ************ Filling Passenger [2] ************ 
+2017-03-21/17:51:00 INFO Entering Nombre/s: [María Angélica] 
+2017-03-21/17:51:00 INFO Entering Apellido/s: [D'Onofrio] 
+2017-03-21/17:51:01 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:51:01 INFO Entering Número: [29098765N] 
+2017-03-21/17:51:01 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:51:02 INFO Selecting Sexo: [Femenino] 
+2017-03-21/17:51:02 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:51:02 INFO ************ Filling Passenger [3] ************ 
+2017-03-21/17:51:02 INFO Entering Nombre/s: [Timmy] 
+2017-03-21/17:51:02 INFO Entering Apellido/s: [O' Tool] 
+2017-03-21/17:51:02 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:51:03 INFO Entering Número: [290987567N] 
+2017-03-21/17:51:03 INFO Entering Fecha de Nacimiento: [09/09/2010] 
+2017-03-21/17:51:03 INFO Selecting Sexo: [Masculino] 
+2017-03-21/17:51:03 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:51:03 INFO ************ Filling Passenger [4] ************ 
+2017-03-21/17:51:03 INFO Entering Nombre/s: [Timmy] 
+2017-03-21/17:51:04 INFO Entering Apellido/s: [O' Tool] 
+2017-03-21/17:51:04 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:51:04 INFO Entering Número: [290987567N] 
+2017-03-21/17:51:04 INFO Entering Fecha de Nacimiento: [09/09/2010] 
+2017-03-21/17:51:05 INFO Selecting Sexo: [Masculino] 
+2017-03-21/17:51:05 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:51:05 INFO ------------- Payment Option: CREDIT CARD  ------------- 
+2017-03-21/17:51:05 INFO Selecting card name: [American Express] 
+2017-03-21/17:51:05 INFO Entering Titular de la tarjeta: [Dueño Dí L'Tarjüeta] 
+2017-03-21/17:51:06 INFO Entering Número de tu tarjeta: [4242424242424242] 
+2017-03-21/17:51:07 INFO Selecting Fecha de vencimiento - Mes: [12] 
+2017-03-21/17:51:07 INFO Selecting Fecha de vencimiento - Año: [2022] 
+2017-03-21/17:51:07 INFO Entering Código de Seguridad: [1234] 
+2017-03-21/17:51:07 INFO ------------- Filling Billing Section ------------- 
+2017-03-21/17:51:07 INFO Entering CUIL/CUIT: [23281685589] 
+2017-03-21/17:51:08 INFO Entering Domicilio: [Carlos Pellegrini] 
+2017-03-21/17:51:08 INFO Entering Número: [887] 
+2017-03-21/17:51:08 INFO Entering Piso: [8] 
+2017-03-21/17:51:09 INFO Entering Departamento: [A] 
+2017-03-21/17:51:09 INFO Entering Código Postal: [C1009ABQ] 
+2017-03-21/17:51:09 INFO Entering Provincia: [Buenos Aires] 
+2017-03-21/17:51:09 INFO Entering Ciudad: [C.A.B.A.] 
+2017-03-21/17:51:10 INFO ------------- Filling Contact Section ------------- 
+2017-03-21/17:51:10 INFO Entering Email: [automationthings@gmail.com] 
+2017-03-21/17:51:10 INFO Entering Repetí tu email: [automationthings@gmail.com] 
+2017-03-21/17:51:11 INFO Selecting Teléfono: [Celular] 
+2017-03-21/17:51:11 INFO Entering Código de país: [54] 
+2017-03-21/17:51:11 INFO Selecting Cód. Area: [911] 
+2017-03-21/17:51:12 INFO Entering Número: [11112222] 
+2017-03-21/17:51:12 INFO ---------- Checking Footer Section options ---------- 
+2017-03-21/17:51:12 INFO Checking Terms and Conditions Check Box... 
+2017-03-21/17:51:17 INFO Maximizing Window... 
+2017-03-21/17:51:18 INFO Navigating to baseURL: [http://almundo.com/] 
+2017-03-21/17:51:20 INFO Selecting country page: [ARGENTINA] 
+2017-03-21/17:51:26 INFO Closing Login Pop-Up 
+2017-03-21/17:51:28 INFO Clicking on Vuelos button 
+2017-03-21/17:51:28 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:51:28 INFO Flight Flow - Round Trip - Dom - 20 days - 2 Adults - Todas - ARGENTINA 
+2017-03-21/17:51:28 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:51:28 INFO Getting JSON data object/value: [argentina_data.json/domestic_20days_2adults_todas] 
+2017-03-21/17:51:29 INFO Selecting Flight Type: [Ida y vuelta] 
+2017-03-21/17:51:29 INFO Entering Flight Origin: [Buenos Aires, Buenos Aires, Argentina] 
+2017-03-21/17:51:30 INFO Entering Flight Destination: [San Carlos de Bariloche, Río Negro, Argentina] 
+2017-03-21/17:51:33 INFO Selecting date: [14 Marzo 2017] 
+2017-03-21/17:51:35 INFO Selecting date: [3 Abril 2017] 
+2017-03-21/17:51:35 INFO Adding: [1 adult] 
+2017-03-21/17:51:36 INFO Total Adults: [2] 
+2017-03-21/17:51:36 INFO Total Childs: [0] 
+2017-03-21/17:51:36 INFO Selecting Flight Class: [Todas] 
+2017-03-21/17:51:36 INFO Clicking on Buscar Button 
+2017-03-21/17:51:47 INFO Selecting Ticket de Ida 
+2017-03-21/17:51:47 INFO Selecting Ticket de Vuelta 
+2017-03-21/17:51:47 INFO Clicking on Comprar button 
+2017-03-21/17:51:48 INFO Getting JSON data object/value: [argentina_data.json/adult_female_foreign] 
+2017-03-21/17:51:48 INFO Getting JSON data object/value: [argentina_data.json/adult_female_foreign] 
+2017-03-21/17:51:48 INFO Getting JSON data object/value: [argentina_data.json/1_amex_amex] 
+2017-03-21/17:51:48 INFO Getting JSON data object/value: [argentina_data.json/local_Billing_v2] 
+2017-03-21/17:51:48 INFO Getting JSON data object/value: [argentina_data.json/contact_phone] 
+2017-03-21/17:51:48 INFO Getting JSON data object/value: [countries_properties.json/FlightsCheckOutPageDomestic] 
+2017-03-21/17:51:48 INFO ------------- Filling Passenger Section ------------- 
+2017-03-21/17:51:48 INFO ************ Filling Passenger [1] ************ 
+2017-03-21/17:51:56 INFO Entering Nombre/s: [Naña Çraña] 
+2017-03-21/17:51:56 INFO Entering Apellido/s: [Pingüino L'Oréal] 
+2017-03-21/17:51:57 INFO Selecting Tipo de documento: [DNI] 
+2017-03-21/17:51:57 INFO Entering Número: [29098766] 
+2017-03-21/17:51:57 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:51:58 INFO Selecting Sexo: [Femenino] 
+2017-03-21/17:51:58 INFO ************ Filling Passenger [2] ************ 
+2017-03-21/17:51:58 INFO Entering Nombre/s: [Naña Çraña] 
+2017-03-21/17:51:58 INFO Entering Apellido/s: [Pingüino L'Oréal] 
+2017-03-21/17:51:58 INFO Selecting Tipo de documento: [DNI] 
+2017-03-21/17:51:58 INFO Entering Número: [29098766] 
+2017-03-21/17:51:59 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:51:59 INFO Selecting Sexo: [Femenino] 
+2017-03-21/17:51:59 INFO ------------- Payment Option: CREDIT CARD  ------------- 
+2017-03-21/17:52:00 INFO Selecting card name: [American Express] 
+2017-03-21/17:52:00 INFO Entering Titular de la tarjeta: [Dueño Dí L'Tarjüeta] 
+2017-03-21/17:52:00 INFO Entering Número de tu tarjeta: [4242424242424242] 
+2017-03-21/17:52:01 INFO Selecting Fecha de vencimiento - Mes: [12] 
+2017-03-21/17:52:01 INFO Selecting Fecha de vencimiento - Año: [2022] 
+2017-03-21/17:52:01 INFO Entering Código de Seguridad: [1234] 
+2017-03-21/17:52:02 INFO ------------- Filling Billing Section ------------- 
+2017-03-21/17:52:02 INFO Entering CUIL/CUIT: [23281685589] 
+2017-03-21/17:52:02 INFO Entering Domicilio: [Carlos Pellegrini] 
+2017-03-21/17:52:02 INFO Entering Número: [887] 
+2017-03-21/17:52:02 INFO Entering Piso: [8] 
+2017-03-21/17:52:03 INFO Entering Departamento: [A] 
+2017-03-21/17:52:03 INFO Entering Código Postal: [C1009ABQ] 
+2017-03-21/17:52:03 INFO Entering Provincia: [Buenos Aires] 
+2017-03-21/17:52:03 INFO Entering Ciudad: [C.A.B.A.] 
+2017-03-21/17:52:03 INFO ------------- Filling Contact Section ------------- 
+2017-03-21/17:52:03 INFO Entering Email: [automationthings@gmail.com] 
+2017-03-21/17:52:04 INFO Entering Repetí tu email: [automationthings@gmail.com] 
+2017-03-21/17:52:04 INFO Selecting Teléfono: [Teléfono] 
+2017-03-21/17:52:05 INFO Entering Código de país: [54] 
+2017-03-21/17:52:05 INFO Selecting Cód. Area: [011] 
+2017-03-21/17:52:05 INFO Entering Número: [11112222] 
+2017-03-21/17:52:05 INFO ---------- Checking Footer Section options ---------- 
+2017-03-21/17:52:05 INFO Checking Terms and Conditions Check Box... 
+2017-03-21/17:52:10 INFO Maximizing Window... 
+2017-03-21/17:52:11 INFO Navigating to baseURL: [http://almundo.com/] 
+2017-03-21/17:52:14 INFO Selecting country page: [ARGENTINA] 
+2017-03-21/17:52:19 INFO Closing Login Pop-Up 
+2017-03-21/17:52:21 INFO Clicking on Vuelos button 
+2017-03-21/17:52:21 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:52:21 INFO Flight Flow - Round Trip - Int - 10 days - 2 Adults/2 Childs - Turista - ARGENTINA 
+2017-03-21/17:52:21 INFO -------------------------------------------------------------------------------- 
+2017-03-21/17:52:21 INFO Getting JSON data object/value: [argentina_data.json/miami_10days_2adults_2childs_turista] 
+2017-03-21/17:52:21 INFO Selecting Flight Type: [Ida y vuelta] 
+2017-03-21/17:52:21 INFO Entering Flight Origin: [Buenos Aires, Buenos Aires, Argentina] 
+2017-03-21/17:52:22 INFO Entering Flight Destination: [Miami, Estados Unidos de América] 
+2017-03-21/17:52:26 INFO Selecting date: [14 Marzo 2017] 
+2017-03-21/17:52:28 INFO Selecting date: [23 Abril 2017] 
+2017-03-21/17:52:28 INFO Adding: [1 adult] 
+2017-03-21/17:52:28 INFO Adding: [1 child] 
+2017-03-21/17:52:28 INFO Adding: [1 child] 
+2017-03-21/17:52:29 INFO Total Adults: [2] 
+2017-03-21/17:52:29 INFO Total Childs: [2] 
+2017-03-21/17:52:29 INFO Selecting Flight Class: [Turista] 
+2017-03-21/17:52:29 INFO Clicking on Buscar Button 
+2017-03-21/17:52:52 INFO Selecting Ticket de Ida 
+2017-03-21/17:52:52 INFO Selecting Ticket de Vuelta 
+2017-03-21/17:52:52 INFO Clicking on Comprar button 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [argentina_data.json/adult_male_native] 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [argentina_data.json/adult_female_native] 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [argentina_data.json/child_male_native] 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [argentina_data.json/child_male_native] 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [argentina_data.json/1_amex_amex] 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [argentina_data.json/local_Billing_v2] 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [argentina_data.json/contact_cell_phone] 
+2017-03-21/17:52:52 INFO Getting JSON data object/value: [countries_properties.json/FlightsCheckOutPageInternational] 
+2017-03-21/17:52:52 INFO ------------- Filling Passenger Section ------------- 
+2017-03-21/17:52:52 INFO ************ Filling Passenger [1] ************ 
+2017-03-21/17:53:01 INFO Entering Nombre/s: [José Ñoqui] 
+2017-03-21/17:53:01 INFO Entering Apellido/s: [O'Higgins Lingüístico] 
+2017-03-21/17:53:02 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:53:02 INFO Entering Número: [29098765N] 
+2017-03-21/17:53:02 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:53:02 INFO Selecting Sexo: [Masculino] 
+2017-03-21/17:53:02 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:53:03 INFO ************ Filling Passenger [2] ************ 
+2017-03-21/17:53:03 INFO Entering Nombre/s: [María Angélica] 
+2017-03-21/17:53:03 INFO Entering Apellido/s: [D'Onofrio] 
+2017-03-21/17:53:03 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:53:03 INFO Entering Número: [29098765N] 
+2017-03-21/17:53:04 INFO Entering Fecha de Nacimiento: [09/09/1979] 
+2017-03-21/17:53:04 INFO Selecting Sexo: [Femenino] 
+2017-03-21/17:53:04 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:53:04 INFO ************ Filling Passenger [3] ************ 
+2017-03-21/17:53:05 INFO Entering Nombre/s: [Timmy] 
+2017-03-21/17:53:05 INFO Entering Apellido/s: [O' Tool] 
+2017-03-21/17:53:05 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:53:05 INFO Entering Número: [290987567N] 
+2017-03-21/17:53:05 INFO Entering Fecha de Nacimiento: [09/09/2010] 
+2017-03-21/17:53:06 INFO Selecting Sexo: [Masculino] 
+2017-03-21/17:53:06 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:53:06 INFO ************ Filling Passenger [4] ************ 
+2017-03-21/17:53:06 INFO Entering Nombre/s: [Timmy] 
+2017-03-21/17:53:06 INFO Entering Apellido/s: [O' Tool] 
+2017-03-21/17:53:07 INFO Selecting Tipo de documento: [Pasaporte] 
+2017-03-21/17:53:07 INFO Entering Número: [290987567N] 
+2017-03-21/17:53:07 INFO Entering Fecha de Nacimiento: [09/09/2010] 
+2017-03-21/17:53:07 INFO Selecting Sexo: [Masculino] 
+2017-03-21/17:53:07 INFO Selecting Nacionalidad: [Argentina] 
+2017-03-21/17:53:07 INFO ------------- Payment Option: CREDIT CARD  ------------- 
+2017-03-21/17:53:08 INFO Selecting card name: [American Express] 
+2017-03-21/17:53:08 INFO Entering Titular de la tarjeta: [Dueño Dí L'Tarjüeta] 
+2017-03-21/17:53:08 INFO Entering Número de tu tarjeta: [4242424242424242] 
+2017-03-21/17:53:09 INFO Selecting Fecha de vencimiento - Mes: [12] 
+2017-03-21/17:53:09 INFO Selecting Fecha de vencimiento - Año: [2022] 
+2017-03-21/17:53:09 INFO Entering Código de Seguridad: [1234] 
+2017-03-21/17:53:10 INFO ------------- Filling Billing Section ------------- 
+2017-03-21/17:53:10 INFO Entering CUIL/CUIT: [23281685589] 
+2017-03-21/17:53:10 INFO Entering Domicilio: [Carlos Pellegrini] 
+2017-03-21/17:53:10 INFO Entering Número: [887] 
+2017-03-21/17:53:11 INFO Entering Piso: [8] 
+2017-03-21/17:53:11 INFO Entering Departamento: [A] 
+2017-03-21/17:53:11 INFO Entering Código Postal: [C1009ABQ] 
+2017-03-21/17:53:11 INFO Entering Provincia: [Buenos Aires] 
+2017-03-21/17:53:12 INFO Entering Ciudad: [C.A.B.A.] 
+2017-03-21/17:53:12 INFO ------------- Filling Contact Section ------------- 
+2017-03-21/17:53:12 INFO Entering Email: [automationthings@gmail.com] 
+2017-03-21/17:53:12 INFO Entering Repetí tu email: [automationthings@gmail.com] 
+2017-03-21/17:53:13 INFO Selecting Teléfono: [Celular] 
+2017-03-21/17:53:13 INFO Entering Código de país: [54] 
+2017-03-21/17:53:13 INFO Selecting Cód. Area: [911] 
+2017-03-21/17:53:14 INFO Entering Número: [11112222] 
+2017-03-21/17:53:14 INFO ---------- Checking Footer Section options ---------- 
+2017-03-21/17:53:14 INFO Checking Terms and Conditions Check Box... 
