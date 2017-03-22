@@ -2,10 +2,8 @@ package com.almundo.browser.automation.pages.CheckOutPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,8 +42,26 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
-    @FindBy(id = "assistance_yes")
-    public WebElement assistanceRdb;
+    @FindBy(css = ".price-box__price .price")
+    public WebElement totalPrice;
+
+    @FindBy(css = ".segments>div:nth-of-type(1) h2 span:nth-of-type(5)")
+    public WebElement originAirport;
+
+    @FindBy(css = ".segments>div:nth-of-type(1) h2 span:nth-of-type(7)")
+    public WebElement destinationAirport;
+
+    @FindBy(css = ".segments>div:nth-of-type(1) .airline-name")
+    public WebElement airlineName;
+
+    @FindBy(css = ".segments>div:nth-of-type(1)>div h2>span:nth-of-type(3)")
+    public WebElement startDate;
+
+    @FindBy(css = ".segments>div:nth-of-type(2)>div h2>span:nth-of-type(3)")
+    public WebElement endDate;
+
+//    @FindBy(id = "assistance_yes")
+//    public WebElement assistanceRdb;
 
     //############################################### Actions ##############################################
 
@@ -55,11 +71,17 @@ public class CheckOutPage extends TestBaseSetup {
         return initConfirmationPage();
     }
 
-    public CheckOutPage selectAssistanceRdb(){
+/*    public CheckOutPage selectAssistanceRdb(){
         PageUtils.waitElementForVisibility(driver, By.id("assistance_yes"), 45, "Include Insurance Radio Button.");
         logger.info("Clicking on Insurance.");
         assistanceRdb.click();
         return this;
+    }*/
+
+    public int getTotalPrice() {
+        logger.info("Total Price: [" + totalPrice.getText() + "]");
+        String price = (totalPrice.getText().replace(".", ""));
+        return Integer.parseInt(price);
     }
 
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
@@ -100,7 +122,7 @@ public class CheckOutPage extends TestBaseSetup {
                                              boolean includeAssistance)
     {
         getCheckOutPageElements(productCheckOutPage);
-        if(includeAssistance){selectAssistanceRdb();}
+//        if(includeAssistance){selectAssistanceRdb();}
         passengerSection().populatePassengerSection(passengerList);
         pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);

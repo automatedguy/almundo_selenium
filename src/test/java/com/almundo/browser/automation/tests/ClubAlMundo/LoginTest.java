@@ -58,7 +58,6 @@ public class LoginTest extends TestBaseSetup {
             else {
                 expectedList = Constants.USER_MENU_LIST_MX;
             }
-
         logger.info("Validating My Account menu options are displayed:");
         Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
 

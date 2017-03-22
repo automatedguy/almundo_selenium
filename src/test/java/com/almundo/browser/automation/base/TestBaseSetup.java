@@ -27,8 +27,6 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.almundo.browser.automation.utils.Constants.*;
-
 
 public class TestBaseSetup {
 
@@ -42,6 +40,10 @@ public class TestBaseSetup {
     private static String browser = null;
     private static String browserVersion = null;
     public static String osName = System.getProperty("os.name");
+    public static Boolean landingEnabled = Boolean.TRUE;
+    public static String cartId = null;
+    public static String cartIdICBC = null;
+    public static int retriesMaxCount;
 
     public static String countryPar;
 
@@ -52,21 +54,29 @@ public class TestBaseSetup {
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(Constants.PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country) {
+                                        @Optional("ARGENTINA") String country,
+                                        @Optional("False") Boolean landing,
+                                        @Optional("58c7053ee4b0397369fe6150") String cart_id,
+                                        @Optional("58c70563e4b0fc66a4949661") String cart_id_icbc,
+                                        @Optional("0") int retries_Max_Count) {
 
         this.baseURL = env_url;
         this.os = osType;
         this.browser = browserType;
         this.browserVersion = browserTypeVersion;
         this.countryPar = country;
+        this.landingEnabled = landing;
+        this.cartId = cart_id;
+        this.cartIdICBC = cart_id_icbc;
+        this.retriesMaxCount = retries_Max_Count;
 
         try {
             if (os == null || browserVersion == null) {
@@ -98,9 +108,9 @@ public class TestBaseSetup {
                 switch (browser) {
                     case "chrome":
                         if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
+                            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver.exe");
                         } else {
-                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver");
+                            System.setProperty("webdriver.chrome.driver", Constants.RESOURCES_PATH + "chromedriver");
                         }
                         DesiredCapabilities capability = DesiredCapabilities.chrome();
                         capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
@@ -109,9 +119,9 @@ public class TestBaseSetup {
 
                     case "firefox":
                         if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver.exe");
+                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver.exe");
                         } else {
-                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver");
+                            System.setProperty("webdriver.gecko.driver", Constants.RESOURCES_PATH + "geckodriver");
                         }
                         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                         capabilities.setCapability("marionette", true);
@@ -120,9 +130,9 @@ public class TestBaseSetup {
 
                     case "phantomjs":
                         if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "phantomjs.exe");
+                            System.setProperty("phantomjs.binary.path", Constants.RESOURCES_PATH + "phantomjs.exe");
                         } else {
-                            System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs");
+                            System.setProperty("phantomjs.binary.path", Constants.RESOURCES_PATH + "phantomjs");
                         }
                         DesiredCapabilities sCaps = new DesiredCapabilities();
                         sCaps.setJavascriptEnabled(true);
@@ -154,13 +164,13 @@ public class TestBaseSetup {
             logger.info("Maximizing Window...");
             driver.manage().window().maximize();
 
-            logger.info("Navigating to baseURL: [" + baseURL + "]");
-            driver.navigate().to(baseURL);
-
-            LandingPage landingPage = initLandingPage();
-            logger.info("Selecting country page: [" + countryPar + "]");
-            basePage = landingPage.selectCountryPage(countryPar);
-
+            if(landingEnabled) {
+                logger.info("Navigating to baseURL: [" + baseURL + "]");
+                driver.navigate().to(baseURL);
+                LandingPage landingPage = initLandingPage();
+                logger.info("Selecting country page: [" + countryPar + "]");
+                basePage = landingPage.selectCountryPage(countryPar);
+            }
             //logger.info("Finishing @BeforeMethod...");
 
         } catch (Exception e) {
