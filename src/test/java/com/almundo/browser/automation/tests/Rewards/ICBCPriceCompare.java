@@ -124,7 +124,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         checkOutPage = openAlmundoCart(cartId);
         paymentSection = checkOutPage.paymentSection();
 
-        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        paymentSection.selectPaymentQty("1 cuota");
 
         selectCardAndBank("VI", "Visa");
         almundo_visa_1 = checkOutPage.getTotalPrice();
@@ -132,7 +132,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "Mastercard");
         almundo_master_1 = checkOutPage.getTotalPrice();
 
-        checkOutPage.paymentSection().selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuotas");
 
         selectCardAndBank("VI", "ICBC");
         almundo_visa_6 = checkOutPage.getTotalPrice();
@@ -140,7 +140,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         almundo_master_6 = checkOutPage.getTotalPrice();
 
-        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuotas");
 
         selectCardAndBank("VI", "ICBC");
         almundo_visa_12 = checkOutPage.getTotalPrice();
@@ -150,7 +150,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
 
-        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        paymentSection.selectPaymentQty("1 cuota");
 
         selectCardAndBank("VI", "ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
@@ -158,7 +158,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
-        checkOutPage.paymentSection().selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuotas");
 
         selectCardAndBank("VI", "ICBC");
         icbc_visa_6 = checkOutPage.getTotalPrice();
@@ -166,7 +166,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_6 = checkOutPage.getTotalPrice();
 
-        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuotas");
 
         selectCardAndBank("VI", "ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
@@ -212,8 +212,9 @@ public class ICBCPriceCompare extends TestBaseSetup {
     public void airCanada() {
         logTestTitle("ICBC Store - Air Canada - " + countryPar );
         checkOutPage = openAlmundoCart(cartId);
+        paymentSection = checkOutPage.paymentSection();
 
-        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        paymentSection.selectPaymentQty("1 cuota");
 
         selectCardAndBank("VI", "Visa");
         almundo_visa_1 = checkOutPage.getTotalPrice();
@@ -221,7 +222,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "Mastercard");
         almundo_master_1 = checkOutPage.getTotalPrice();
 
-        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuotas");
 
         selectCardAndBank("VI", "ICBC");
         almundo_visa_12 = checkOutPage.getTotalPrice();
@@ -231,7 +232,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
 
-        checkOutPage.paymentSection().selectPaymentQty("1 cuota");
+        paymentSection.selectPaymentQty("1 cuota");
 
         selectCardAndBank("VI", "ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
@@ -239,7 +240,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
-        checkOutPage.paymentSection().selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuotas");
 
         selectCardAndBank("VI", "ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
