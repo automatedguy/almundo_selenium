@@ -271,6 +271,17 @@ public class TestBaseSetup {
         }
     }
 
+    public void replaceChkOutV2Url(){
+        try{
+            PageUtils.waitUrlContains(driver, 4, "checkout", "URL does not contain checkout");
+        } catch(Exception time) {
+            String actualURL = driver.getCurrentUrl();
+            String newURL = actualURL.replace("cart/v2", "checkout");
+            logger.info("new URL: " + newURL);
+            driver.navigate().to(newURL);
+        }
+    }
+
     //################################################ Inits ################################################
 
     protected LandingPage initLandingPage() {

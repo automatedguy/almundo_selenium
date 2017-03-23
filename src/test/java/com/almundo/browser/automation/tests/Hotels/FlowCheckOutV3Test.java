@@ -75,21 +75,12 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
-        replaceUrl();
+        replaceChkOutV2Url();
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
-                dataManagement.getBillingData("local_Billing_v2"),
-                dataManagement.getContactData("contact_phone"),
-                "HotelsCheckOutPageDomesticV3");
-    }
-
-    public void replaceUrl(){
-        PageUtils.waitUrlContains(driver, 30, "cart", "URL does not contain cart");
-        String actualURL = driver.getCurrentUrl();
-        String newURL = actualURL.replace("cart/v2", "checkout");
-        logger.info("new URL: " + newURL);
-        driver.navigate().to(newURL);
-        PageUtils.waitImplicitly(8000);
+                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getContactData("contact_phone"),
+                                          "HotelsCheckOutPageDomesticV3");
     }
 }
