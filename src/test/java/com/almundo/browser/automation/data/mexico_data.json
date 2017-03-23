@@ -260,32 +260,44 @@
     },
 
     "payment":{
-        "1_amex_amex": {
-            "payment_qty" : "1",
-            "bank_name" : "American Express",
-            "credit_card_name" : "American Express",
-            "card_holder": "Dueño Dí L'Tarjüeta",
-            "card_number": "4242424242424242",
-            "card_expire": "12/18",
-            "month_card_expire": "12",
-            "year_card_expire": "2022",
-            "security_code": "1234",
-            "documentType": "DNI",
-            "document_number": "29098766"
-        },
-        "6_visa_visa": {
-            "payment_qty" : "6",
-            "bank_name" : "Visa",
-            "credit_card_name" : "Visa",
-            "card_holder": "Dueño Dí L'Tarjüeta",
-            "card_number": "4242424242424242",
-            "card_expire": "12/18",
-            "month_card_expire": "12",
-            "year_card_expire": "2022",
-            "security_code": "1234",
-            "documentType": "DNI",
-            "document_number": "29098766"
-        }
+            "1_amex_amex": {
+                "payment_qty" : "1",
+                "bank_name" : "American Express",
+                "credit_card_name" : "American Express",
+                "card_holder": "Dueño Dí L'Tarjüeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+            "6_visa_visa": {
+                "payment_qty" : "6",
+                "bank_name" : "Visa",
+                "credit_card_name" : "Visa",
+                "card_holder": "Dueño Dí L'Tarjüeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "deposit": {
+                "credit_card_name" : "deposit",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            }
     },
 
     "billings": {
