@@ -92,7 +92,7 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getPaymentData("1_amex_amex"),
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
-                                              "HotelsCheckOutPageInternationalV3");
+                                              "HotelsCheckOutPageInternational");
         }
     }
 
@@ -132,7 +132,7 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getPaymentData("1_amex_amex"),
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_phone"),
-                                              "HotelsCheckOutPageDomesticV3");
+                                              "HotelsCheckOutPageDomestic");
         }
     }
 }
