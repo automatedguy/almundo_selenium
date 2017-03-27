@@ -290,17 +290,53 @@
                 "document_number": "29098766"
             },
 
-            "deposit": {
-                "credit_card_name" : "deposit",
-                "card_holder": "",
-                "card_number": "",
-                "card_expire": "",
-                "month_card_expire": "",
-                "year_card_expire": "",
-                "security_code": "",
-                "documentType": "",
-                "document_number": ""
-            }
+        "cash": {
+            "credit_card_name" : "cash",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        },
+
+        "deposit": {
+            "credit_card_name" : "deposit",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        },
+
+        "transfer": {
+            "credit_card_name" : "transfer",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        },
+
+        "booking24": {
+            "credit_card_name" : "booking24",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        }
     },
 
     "billings": {
@@ -334,16 +370,16 @@
 
         "local_Billing_sucursales": {
             "fiscal_name":"Sarasa and Automation Inc. & Associates",
-            "billing_fiscal_type":"",
-            "billing_document_type":"",
+            "billing_fiscal_type":"Persona Natural",
+            "billing_document_type":"Cédula de Extranjería",
             "billing_fiscal_document": "23281685589",
-            "billing_address": "Carlos Pellegrini",
+            "billing_address": "Calle Falsa 123 11 C",
             "address_number": 887,
             "address_floor": 8,
             "address_department": "A",
             "address_postal_code": "C1009ABQ",
-            "address_state": "Buenos Aires",
-            "address_city": "C.A.B.A."
+            "address_state": "Bogotá D.C.",
+            "address_city": "Bogotá"
         }
     },
 
