@@ -54,6 +54,8 @@
     </dependencies>
 
     <build>
+        <outputDirectory>${jobDirectory}/classes</outputDirectory>
+        <testOutputDirectory>${jobDirectory}/test-classes</testOutputDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -69,6 +71,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <!--<parallel>methods</parallel>-->
+                    <reportsDirectory>${jobDirectory}/reports</reportsDirectory>
                     <threadCount>20</threadCount>
                     <properties>
                         <property>
