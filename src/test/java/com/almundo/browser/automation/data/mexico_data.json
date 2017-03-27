@@ -287,29 +287,53 @@
                 "document_number": "29098766"
             },
 
-            "deposit": {
-                "credit_card_name" : "deposit",
-                "card_holder": "",
-                "card_number": "",
-                "card_expire": "",
-                "month_card_expire": "",
-                "year_card_expire": "",
-                "security_code": "",
-                "documentType": "",
-                "document_number": ""
-            },
+        "cash": {
+            "credit_card_name" : "cash",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        },
 
-            "cash": {
-                "credit_card_name" : "cash",
-                "card_holder": "",
-                "card_number": "",
-                "card_expire": "",
-                "month_card_expire": "",
-                "year_card_expire": "",
-                "security_code": "",
-                "documentType": "",
-                "document_number": ""
-            }
+        "deposit": {
+            "credit_card_name" : "deposit",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        },
+
+        "transfer": {
+            "credit_card_name" : "transfer",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        },
+
+        "booking24": {
+            "credit_card_name" : "booking24",
+            "card_holder": "",
+            "card_number": "",
+            "card_expire": "",
+            "month_card_expire": "",
+            "year_card_expire": "",
+            "security_code": "",
+            "documentType": "",
+            "document_number": ""
+        }
     },
 
     "billings": {
