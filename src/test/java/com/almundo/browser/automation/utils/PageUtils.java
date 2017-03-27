@@ -30,6 +30,16 @@ public class PageUtils {
         }
     }
 
+    public static void waitLoginPopup(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }catch (TimeoutException exception) {
+            logger.warn("Login modal is not displayed");
+        }
+    }
+
     public static void waitElementForVisibility(WebDriver driver, By element, int timeOutInSeconds, String message){
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);

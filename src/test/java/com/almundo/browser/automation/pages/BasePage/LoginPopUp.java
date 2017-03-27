@@ -41,7 +41,8 @@ public class LoginPopUp extends BasePage {
 
     public BasePage clickCloseLoginBtn() {
         logger.info("Closing Login Pop-Up");
-        PageUtils.waitElementForVisibility(driver, closeLoginBtn, 15, "Close Login button");
+        PageUtils.waitLoginPopup(driver, closeLoginBtn, 15, "Close Login button");
+        //PageUtils.waitElementForVisibility(driver, closeLoginBtn, 15, "Close Login button");
         closeLoginBtn.click();
         PageUtils.waitImplicitly(2000);
         return initBasePage();

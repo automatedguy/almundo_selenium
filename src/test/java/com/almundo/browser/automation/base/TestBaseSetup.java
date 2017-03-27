@@ -174,10 +174,6 @@ public class TestBaseSetup {
                 basePage = landingPage.selectCountryPage(countryPar);
             }
 
-            if(driver.getCurrentUrl().contains("?am-m=1")) {
-                logger.error("AB TESTING");
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
