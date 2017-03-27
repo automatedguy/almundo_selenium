@@ -953,7 +953,7 @@
 
     "CarsCheckOutPageSucursales":{
       "PickUpLocationSection": "true",
-      "BillingInfoSection":"true",
+      "BillingInfoSection":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
       "document_emisor":"false",
