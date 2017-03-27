@@ -22,6 +22,7 @@ public class PickUpLocationSection extends CheckOutPage {
 
     public PickUpLocationSection populatePickUpLocationSection(){
         if(isElementRequiered(checkOutPageElements, "PickUpLocationSection")){
+            logger.info("------------- Selecting Car Rental Agency -------------");
             pickUpLocationSection().selectAgency();
         }
         return this;
@@ -29,7 +30,13 @@ public class PickUpLocationSection extends CheckOutPage {
 
     private void selectAgency() {
         String agencyLocator = "adress";
+        String agencyNameLocator = "div.adress-box";
+
+
         List<WebElement> agenciesList = driver.findElements(By.id(agencyLocator));
+        List<WebElement> agenciesNameList = driver.findElements(By.cssSelector(agencyNameLocator));
+
+        logger.info("Selecting Agency " + agenciesNameList.get(agenciesNameList.size()-1).getText());
         agenciesList.get(agenciesList.size()-1).click();
     }
 }
