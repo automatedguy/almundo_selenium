@@ -58,13 +58,13 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(SUC_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("True") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -173,7 +173,10 @@ public class TestBaseSetup {
                 logger.info("Selecting country page: [" + countryPar + "]");
                 basePage = landingPage.selectCountryPage(countryPar);
             }
-            //logger.info("Finishing @BeforeMethod...");
+
+            if(driver.getCurrentUrl().contains("?am-m=1")) {
+                logger.error("AB TESTING");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
