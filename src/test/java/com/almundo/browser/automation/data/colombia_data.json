@@ -300,6 +300,18 @@
                 "security_code": "",
                 "documentType": "",
                 "document_number": ""
+            },
+
+            "cash": {
+                "credit_card_name" : "cash",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
             }
     },
 
