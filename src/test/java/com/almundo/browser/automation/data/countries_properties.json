@@ -929,14 +929,14 @@
 
     "TripsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
-      "BillingInfoSection":"true",
+      "BillingInfoSection":"false",
       "billing_fiscal_type": "false",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
-      "documentType0":"true",
+      "documentType0":"false",
       "documentType":"false",
-      "document_number":"true",
+      "document_number":"false",
       "document_number_card":"false",
       "address_number":"true",
       "address_floor":"true",
@@ -946,7 +946,7 @@
       "fiscal_name":"true",
       "birthday":"true",
       "gender":"true",
-      "nationality":"false",
+      "nationality":"true",
       "accepted":"false",
       "agentEmail":"true"
     },

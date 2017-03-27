@@ -14,7 +14,7 @@
             <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Flights.FlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Trips.FlowTest"/>-->
-            <class name="com.almundo.browser.automation.tests.Cars.FlowTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.Cars.FlowTest"/>-->
 
             <!--Checkout V3-->
             <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowCheckOutV3Test"/>-->
@@ -28,7 +28,7 @@
             <!--Sucursales channel-->
             <!--<class name="com.almundo.browser.automation.tests.Hotels.SucursalesFlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Flights.SucursalesFlowTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>-->
+            <class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>
             <!--<class name="com.almundo.browser.automation.tests.Cars.SucursalesFlowTest"/>-->
 
             <!--Login flows-->
