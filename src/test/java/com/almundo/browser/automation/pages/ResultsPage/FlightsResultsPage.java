@@ -26,8 +26,15 @@ public class FlightsResultsPage extends TestBaseSetup {
     @FindBy(id = "cluster0-choice0-0")
     private WebElement ticketIdaRdb;
 
+    @FindBy(xpath = "//label[@for='cluster0-choice0-0']/div/am-flight-choice/div")
+    public WebElement ticketIdaInfo;
+
     @FindBy(id = "cluster0-choice1-0")
     private WebElement ticketVueltaRdb;
+
+    @FindBy(xpath = "//label[@for='cluster0-choice0-0']/div/am-flight-choice/div")
+    public WebElement ticketVueltaInfo;
+
 
     //############################################### Actions ##############################################
 
@@ -35,6 +42,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver,ticketIdaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Ida");
         ticketIdaRdb.click();
+        logger.info("Departure Flight Info: " + "[" + ticketIdaInfo.getText().replaceAll("[\\n\\r]+", " - ")  + "]");
         return this;
     }
 
@@ -42,6 +50,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver,ticketVueltaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Vuelta");
         ticketVueltaRdb.click();
+        logger.info("Return Flight Info: " + "[" + ticketVueltaInfo.getText().replaceAll("[\\n\\r]+", "\\\\n") + "]");
         return this;
     }
 

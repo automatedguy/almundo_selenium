@@ -150,6 +150,7 @@ public class FlowTest extends TestBaseSetup {
                                           "FlightsCheckOutPageInternational");
     }
 
+
     @Test
     public void roundTrip_Dom_Booking_Flow() {
         logTestTitle("Flight Flow - Round Trip - Dom - 20 days - 2 Adults - Todas - " + countryPar );
@@ -217,5 +218,4 @@ public class FlowTest extends TestBaseSetup {
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "FlightsCheckOutPageInternational");
     }
-
 }
