@@ -571,7 +571,7 @@
       "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
       "fiscal_name":"true",
-      "billing_fiscal_type": "false",
+      "billing_fiscal_type": "true",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
@@ -594,7 +594,7 @@
     "HotelsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
-      "billing_fiscal_type": "false",
+      "billing_fiscal_type": "true",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
@@ -618,7 +618,7 @@
     "FlightsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
-      "billing_fiscal_type": "false",
+      "billing_fiscal_type": "true",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",
@@ -642,7 +642,7 @@
     "TripsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
-      "billing_fiscal_type": "false",
+      "billing_fiscal_type": "true",
       "billing_document_type": "false",
       "document_emisor":"false",
       "document_expiration":"false",

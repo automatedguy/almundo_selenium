@@ -10,7 +10,7 @@ import static java.util.Arrays.asList;
 public class Constants {
 
     //URLS
-    public static final String STAGING_URL = "http://staging.almundo.com/";
+    public static final String STAGING_URL = "http://staging.almundo.com.ar/";
     public static final String PROD_URL = "http://almundo.com/";
     public static final String SUC_URL = "https://sucursales.almundo.com.mx/";
     public static final String CCR_URL = "https://ccr.almundo.com.ar/";
