@@ -188,4 +188,8 @@ public class PageUtils {
             sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
         return sb.toString();
     }
+
+    public static String formatItinerary(String itinerary){
+        return itinerary.replaceAll("[\\n\\r]+", " - ");
+    }
 }

@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -14,9 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.FlightType.MULTIDESTINATION;
-import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
-import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
+import static com.almundo.browser.automation.utils.Constants.FlightType.*;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -26,7 +23,6 @@ public class FlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
     private CheckOutPage checkOutPage = null;
-    private ConfirmationPage confirmationPage = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -207,6 +203,9 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
+
+        flightsResultsPage.displayMultidestinationInfo();
+
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
 
         dataManagement.getPassengerData("adult_male_native");
