@@ -58,14 +58,14 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country,
-                                        @Optional("True") Boolean landing,
+                                        @Optional("ARGENTINA") String country,
+                                        @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
                                         @Optional("0") int retries_Max_Count) {
@@ -103,8 +103,6 @@ public class TestBaseSetup {
 
     @BeforeMethod
     public void setDriver(Method methodName) {
-        //System.out.println();
-        //logger.info("Starting @BeforeMethod...");
         try {
             if (os == null || browserVersion == null) {
                 switch (browser) {
@@ -166,6 +164,20 @@ public class TestBaseSetup {
             logger.info("Maximizing Window...");
             driver.manage().window().maximize();
 
+            if(baseURL.equals(STAGING_URL)) {
+                switch (countryPar) {
+                    case "ARGENTINA":
+                        baseURL = STAGING_URL.concat(".ar/");
+                        break;
+                    case "COLOMBIA":
+                        baseURL = STAGING_URL.concat(".co/");
+                        break;
+                    case "MEXICO":
+                        baseURL = STAGING_URL.concat(".mx/");
+                        break;
+                }
+            }
+
             if(landingEnabled) {
                 logger.info("Navigating to baseURL: [" + baseURL + "]");
                 driver.navigate().to(baseURL);
@@ -181,7 +193,6 @@ public class TestBaseSetup {
 
 
     private void initSauceLabsDriver(String methodName)  {
-
         String USERNAME = "automationteambsas";
         String ACCESS_KEY = "69172f7e-ebab-465d-bd46-b158e45c137e";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";

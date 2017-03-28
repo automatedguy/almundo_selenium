@@ -25,7 +25,6 @@ public class FlowTest extends TestBaseSetup {
 
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
-    private CheckOutPage checkOutPage = null;
     private ConfirmationPage confirmationPage = null;
 
     private HotelsDataTrip hotelsDataTrip = null;
@@ -133,6 +132,10 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_phone"),
                                               "HotelsCheckOutPageDomestic");
+
+
         }
+
+
     }
 }
