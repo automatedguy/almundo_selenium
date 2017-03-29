@@ -67,6 +67,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         String cssSelectorName = ".flights-cluster-pricebox .button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
+        displayPriceBoxInfo(0);
         logger.info("Clicking on Comprar button");
         comprarBtn.get(index).click();
         return initCheckOutPage();
@@ -90,5 +91,10 @@ public class FlightsResultsPage extends TestBaseSetup {
 
         logger.info("TRAMO 3 - Date: " + "[" + dateList.get(3).getText() + "]");
         logger.info("Flight Info: " + "[" + formatItinerary(tramoTresInfo.getText()) + "]");
+    }
+
+    void displayPriceBoxInfo(int index){
+        List<WebElement> flightsClusterPricebox = driver.findElements(By.cssSelector(".flights-cluster-pricebox"));
+        logger.info("Flight Rates Info: " + "[" +formatItinerary(flightsClusterPricebox.get(index).getText()) + "]");
     }
 }
