@@ -208,6 +208,9 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
+
+        flightsResultsPage.displayMultidestinationInfo();
+        
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
 
         dataManagement.getPassengerData("adult_male_native");

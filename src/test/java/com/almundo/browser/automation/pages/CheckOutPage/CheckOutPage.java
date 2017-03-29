@@ -2,8 +2,10 @@ package com.almundo.browser.automation.pages.CheckOutPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -109,6 +111,7 @@ public class CheckOutPage extends TestBaseSetup {
                                              String productCheckOutPage)
     {
         getCheckOutPageElements(productCheckOutPage);
+        waitForCheckoutLoad();
         passengerSection().populatePassengerSection(passengerList);
         pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
@@ -116,6 +119,11 @@ public class CheckOutPage extends TestBaseSetup {
         contactSection().populateContactSection(contactData);
         acceptConditions();
         return this;
+    }
+
+    public void waitForCheckoutLoad(){
+        PageUtils.waitElementForVisibility(driver, By.id("first_name0"), 45, "Checkout Page.");
+        logger.info("Checkout URL: " + "[" + driver.getCurrentUrl() + "]");
     }
 
     public CheckOutPage populateCheckOutPage(JSONArray passengerList,

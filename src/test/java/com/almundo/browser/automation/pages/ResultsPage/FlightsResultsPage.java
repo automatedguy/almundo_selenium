@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.*;
+import static com.almundo.browser.automation.utils.PageUtils.formatItinerary;
 
 /**
  * Created by gabrielcespedes on 13/12/16.
@@ -26,8 +27,21 @@ public class FlightsResultsPage extends TestBaseSetup {
     @FindBy(id = "cluster0-choice0-0")
     private WebElement ticketIdaRdb;
 
+    @FindBy(xpath = "//label[@for='cluster0-choice0-0']/div/am-flight-choice/div")
+    public WebElement tramoUnoInfo;
+
     @FindBy(id = "cluster0-choice1-0")
     private WebElement ticketVueltaRdb;
+
+    @FindBy(xpath = "//label[@for='cluster0-choice1-0']/div/am-flight-choice/div")
+    public WebElement tramoDosInfo;
+
+    @FindBy(xpath = "//label[@for='cluster0-choice2-0']/div/am-flight-choice/div")
+    public WebElement tramoTresInfo;
+
+    @FindBy(css = ".date")
+    public List<WebElement> dateList;
+
 
     //############################################### Actions ##############################################
 
@@ -35,6 +49,8 @@ public class FlightsResultsPage extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver,ticketIdaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Ida");
         ticketIdaRdb.click();
+        logger.info("Departure Flight Date: " + "[" + dateList.get(0).getText() + "]");
+        logger.info("Departure Flight Info: " + "[" + formatItinerary(tramoUnoInfo.getText())  + "]");
         return this;
     }
 
@@ -42,6 +58,8 @@ public class FlightsResultsPage extends TestBaseSetup {
         PageUtils.waitElementForVisibility(driver,ticketVueltaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de Vuelta");
         ticketVueltaRdb.click();
+        logger.info("Return Flight Date: " + "[" + dateList.get(1).getText() + "]");
+        logger.info("Return Flight Info: " + "[" + formatItinerary(tramoDosInfo.getText()) + "]");
         return this;
     }
 
@@ -49,6 +67,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         String cssSelectorName = ".flights-cluster-pricebox .button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
+        displayPriceBoxInfo(0);
         logger.info("Clicking on Comprar button");
         comprarBtn.get(index).click();
         return initCheckOutPage();
@@ -61,5 +80,21 @@ public class FlightsResultsPage extends TestBaseSetup {
             return true;
         }
         return false;
+    }
+
+    public void displayMultidestinationInfo(){
+        logger.info("TRAMO 1 - Date: " + "[" + dateList.get(0).getText() + "]");
+        logger.info("Flight Info: " + "[" + formatItinerary(tramoUnoInfo.getText()) + "]");
+
+        logger.info("TRAMO 2 - Date: " + "[" + dateList.get(1).getText() + "]");
+        logger.info("Flight Info: " + "[" + formatItinerary(tramoDosInfo.getText())  + "]");
+
+        logger.info("TRAMO 3 - Date: " + "[" + dateList.get(3).getText() + "]");
+        logger.info("Flight Info: " + "[" + formatItinerary(tramoTresInfo.getText()) + "]");
+    }
+
+    void displayPriceBoxInfo(int index){
+        List<WebElement> flightsClusterPricebox = driver.findElements(By.cssSelector(".flights-cluster-pricebox"));
+        logger.info("Flight Rates Info: " + "[" +formatItinerary(flightsClusterPricebox.get(index).getText()) + "]");
     }
 }

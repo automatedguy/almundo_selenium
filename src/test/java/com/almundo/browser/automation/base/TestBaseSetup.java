@@ -59,7 +59,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -196,8 +196,8 @@ public class TestBaseSetup {
 
 
     private void initSauceLabsDriver(String methodName)  {
-        String USERNAME = "automationteambsas";
-        String ACCESS_KEY = "69172f7e-ebab-465d-bd46-b158e45c137e";
+        String USERNAME = "despegarpuntocom";
+        String ACCESS_KEY = "8c2ceb78-c046-4222-8c87-4368c52e67c2";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -290,7 +290,6 @@ public class TestBaseSetup {
         } catch(Exception time) {
             String actualURL = driver.getCurrentUrl();
             String newURL = actualURL.replace("cart/v2", "checkout");
-            logger.info("new URL: " + newURL);
             driver.navigate().to(newURL);
         }
     }
