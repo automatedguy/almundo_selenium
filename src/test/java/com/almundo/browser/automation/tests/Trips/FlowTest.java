@@ -5,7 +5,9 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import org.json.simple.JSONArray;
@@ -77,17 +79,24 @@ public class FlowTest extends TestBaseSetup {
             CheckOutPageV3 checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(0);
             replaceUrl();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                                dataManagement.getPaymentData("1_amex_amex"),
+                                                dataManagement.getPaymentData("1_visa_visa"),
                                                 dataManagement.getBillingData("local_Billing"),
                                                 dataManagement.getContactData("contact_cell_phone"),
                                                 "TripsCheckOutPageInternationalV3");
+
+            ConfirmationPageV3 confirmationPage = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(confirmationPage.confirmationOk());
+
         } else {
             CheckOutPage checkOutPage = tripsDetailPage.clickComprarBtn(0);
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_amex_amex"),
+                                              dataManagement.getPaymentData("1_visa_visa"),
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
                                               "TripsCheckOutPageInternational");
+
+            ConfirmationPage confirmationPage = checkOutPage.clickComprarBtn();
+            Assert.assertTrue(confirmationPage.confirmationOk());
         }
     }
 

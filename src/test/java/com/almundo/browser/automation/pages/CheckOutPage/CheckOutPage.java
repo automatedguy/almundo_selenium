@@ -66,8 +66,12 @@ public class CheckOutPage extends TestBaseSetup {
     //############################################### Actions ##############################################
 
     public ConfirmationPage clickComprarBtn(){
-        logger.info("Clicking on Comprar Button.");
-        comprarBtn.click();
+        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
+            logger.info("Clicking on Comprar Button");
+            comprarBtn.click();
+        } else {
+            logger.info("Condition is not approved to submit reservation");
+        }
         return initConfirmationPage();
     }
 

@@ -46,6 +46,7 @@ public class TestBaseSetup {
     public static String cartId = null;
     public static String cartIdICBC = null;
     public static int retriesMaxCount;
+    public static Boolean submitReservation = false;
 
     public static String countryPar;
 
@@ -56,7 +57,7 @@ public class TestBaseSetup {
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
                                         @Optional() String osType,
@@ -66,6 +67,7 @@ public class TestBaseSetup {
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
+                                        @Optional("false") Boolean submit_Reservation,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
                                         @Optional("0") int retries_Max_Count) {
@@ -79,6 +81,7 @@ public class TestBaseSetup {
         this.cartId = cart_id;
         this.cartIdICBC = cart_id_icbc;
         this.retriesMaxCount = retries_Max_Count;
+        this.submitReservation = submit_Reservation;
 
         try {
             if (os == null || browserVersion == null) {
@@ -283,7 +286,7 @@ public class TestBaseSetup {
 
     public void replaceChkOutV2Url(){
         try{
-            PageUtils.waitUrlContains(driver, 4, "checkout", "URL does not contain checkout");
+            PageUtils.waitUrlContains(driver, 10, "checkout", "URL does not contain checkout");
         } catch(Exception time) {
             String actualURL = driver.getCurrentUrl();
             String newURL = actualURL.replace("cart/v2", "checkout");
@@ -344,6 +347,10 @@ public class TestBaseSetup {
 
     protected ConfirmationPage initConfirmationPage() {
         return PageFactory.initElements(driver, ConfirmationPage.class);
+    }
+
+    protected ConfirmationPageV3 initConfirmationPageV3() {
+        return PageFactory.initElements(driver, ConfirmationPageV3.class);
     }
 
     protected PassengerSection initPassengerInfoSection() {

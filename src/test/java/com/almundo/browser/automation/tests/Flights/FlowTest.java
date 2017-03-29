@@ -14,9 +14,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.FlightType.MULTIDESTINATION;
-import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
-import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
+import static com.almundo.browser.automation.utils.Constants.FlightType.*;
+
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -144,10 +143,13 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
+                                          dataManagement.getPaymentData("1_visa_visa"),
                                           dataManagement.getBillingData("local_Billing_v2"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "FlightsCheckOutPageInternational");
+
+        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());
     }
 
     @Test

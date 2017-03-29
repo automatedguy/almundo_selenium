@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.pages.CheckOutPage;
+package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -7,34 +7,32 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.almundo.browser.automation.utils.Constants.Messages.*;
+import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_V3_MSG;
+
 
 /**
- * Created by gabrielcespedes on 10/01/17.
+ * Created by leandro.efron on 29/3/2017.
  */
-public class ConfirmationPage extends BasePage {
+public class ConfirmationPageV3 extends BasePage {
 
-    public ConfirmationPage(WebDriver iDriver) {
+    public ConfirmationPageV3(WebDriver iDriver) {
         super(iDriver);
     }
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = ".alert__text-primary")
+    @FindBy(css = ".content-ctn .title")
     public WebElement felicitacionesLbl;
 
-    @FindBy(css = ".alert__text-secondary")
-    public WebElement datosReservaLbl;
-
-    @FindBy(css = ".data__container>div:nth-of-type(1) .text--xxs.color--secondary-dark.text--bold")
+    @FindBy(css = ".code")
     public WebElement reservationCode;
 
     //############################################### Actions ###############################################
 
     public boolean confirmationOk(){
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
-            PageUtils.waitElementForVisibility(driver, By.cssSelector(".alert__text-primary"), 70, "Reservation Confirmation");
-            if (felicitacionesLbl.getText().equals(FELICITACIONES_MSG.toString())) {
+            PageUtils.waitElementForVisibility(driver, By.cssSelector(".content-ctn .title"), 70, "Reservation Confirmation");
+            if (felicitacionesLbl.getText().equals(FELICITACIONES_V3_MSG.toString())) {
                 logger.info("Reservation Confirmed! :) ");
                 logger.info("***************************************************");
                 logger.info("Your Reservation Code:" + reservationCode.getText());

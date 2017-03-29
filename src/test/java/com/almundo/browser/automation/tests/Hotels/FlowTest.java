@@ -7,6 +7,7 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -25,7 +26,6 @@ public class FlowTest extends TestBaseSetup {
 
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
-    private ConfirmationPage confirmationPage = null;
 
     private HotelsDataTrip hotelsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -81,18 +81,27 @@ public class FlowTest extends TestBaseSetup {
             CheckOutPageV3 checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn();
             replaceChkOutV2Url();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                                dataManagement.getPaymentData("1_amex_amex"),
+                                                dataManagement.getPaymentData("1_visa_visa"),
                                                 dataManagement.getBillingData("local_Billing"),
                                                 dataManagement.getContactData("contact_cell_phone"),
                                                 "HotelsCheckOutPageInternationalV3");
+
+            ConfirmationPageV3 confirmationPage = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(confirmationPage.confirmationOk());
+
         } else {
             CheckOutPage checkOutPage = hotelsDetailPage.clickReservarAhoraBtn();
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_amex_amex"),
+                                              dataManagement.getPaymentData("1_visa_visa"),
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
                                               "HotelsCheckOutPageInternational");
+
+            ConfirmationPage confirmationPage = checkOutPage.clickComprarBtn();
+            Assert.assertTrue(confirmationPage.confirmationOk());
         }
+
+
     }
 
     @Test

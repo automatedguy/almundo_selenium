@@ -10,7 +10,7 @@ import static java.util.Arrays.asList;
 public class Constants {
 
     //URLS
-    public static final String STAGING_URL = "http://staging.almundo.com";
+    public static final String STAGING_URL = "http://st.almundo.com";
     public static final String PROD_URL = "http://almundo.com/";
     public static final String SUC_URL = "https://sucursales.almundo.com.mx/";
     public static final String CCR_URL = "https://ccr.almundo.com.ar/";
@@ -41,10 +41,9 @@ public class Constants {
         VOLVE_A_INTENTARLO_MSG("No pudimos procesar la consulta. Volvé a intentarlo en unos minutos."),
         NO_DISPONIBILIDAD_MSG("Lo sentimos. No encontramos disponibilidad para tu búsqueda\nPor favor intentá una nueva busqueda"),
         FELICITACIONES_MSG("¡Felicitaciones, tu solicitud de compra fué exitosa!"),
+        FELICITACIONES_V3_MSG("¡Felicitaciones, tu reserva fue exitosa!"),
         MANDATORY_FLD_MSG("Este campo es obligatorio."),
         LISTADO_DE_SUCURSALES_LNK("Ver listado de sucursales");
-
-
 
         public final String message;
 

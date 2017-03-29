@@ -41,10 +41,23 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
+    @FindBy(css = ".button-buy")
+    public WebElement comprarBtn;
+
     @FindBy(css = ".main-title")
     public WebElement mainTitleLbl;
 
     //############################################### Actions ##############################################
+
+    public ConfirmationPageV3 clickComprarBtn(){
+        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
+            logger.info("Clicking on Comprar Button");
+            comprarBtn.click();
+        } else {
+            logger.info("Condition is not approved to submit reservation");
+        }
+        return initConfirmationPageV3();
+    }
 
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;

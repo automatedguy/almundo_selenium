@@ -8,10 +8,12 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import org.json.simple.JSONArray;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 
 /**
  * Created by gabrielcespedes on 20/12/16.
@@ -98,5 +100,8 @@ public class FlowTest extends TestBaseSetup {
                                           dataManagement.getBillingData("local_Billing_v2"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "CarsCheckOutPage");
+
+        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());
     }
 }
