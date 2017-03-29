@@ -6,6 +6,7 @@ import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,6 +69,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     {
         PageUtils.waitElementForVisibility(driver, mainTitleLbl, 10, "Main text label");
         getCheckOutPageElements(productCheckOutPage);
+        waitForCheckoutLoad();
         paymentSection().populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
@@ -95,6 +97,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
         contactSection().populateContactSection(contactData);
         acceptConditions();
         return this;
+    }
+
+    public void waitForCheckoutLoad(){
+        PageUtils.waitElementForVisibility(driver, By.id("first_name"), 45, "Checkout V3");
+        logger.info("Checkout URL: " + "[" + driver.getCurrentUrl() + "]");
     }
 
     private CheckOutPageV3 acceptConditions(){

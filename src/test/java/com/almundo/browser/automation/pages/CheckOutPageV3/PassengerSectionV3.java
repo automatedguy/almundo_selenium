@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -131,7 +130,6 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     }
 
     public PassengerSectionV3 setFirstName(int index, String firstName){
-        PageUtils.waitElementForVisibility(driver, first_name, 45, "First Name text box");
         logger.info("Entering Nombre/s: [" + firstName + "]");
         firstNameList.get(index).clear();
         firstNameList.get(index).sendKeys(firstName);

@@ -11,8 +11,8 @@
             <!--Web channel-->
             <!--<class name="com.almundo.browser.automation.tests.Checkout.CheckOutTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowTest"/>-->
-            <!--<class name="com.almundo.browser.automation.tests.Hotels.FlowTest"/>-->
-            <class name="com.almundo.browser.automation.tests.Flights.FlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Hotels.FlowTest"/>
+            <!--<class name="com.almundo.browser.automation.tests.Flights.FlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Trips.FlowTest"/>-->
             <!--<class name="com.almundo.browser.automation.tests.Cars.FlowTest"/>-->
 
