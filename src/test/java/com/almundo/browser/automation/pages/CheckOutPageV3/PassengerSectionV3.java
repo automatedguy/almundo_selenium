@@ -116,9 +116,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     }
 
     public void setBirthdayList() {
-        dayBirthdayList = driver.findElements(By.cssSelector(".day"));
-        monthBirthdayList = driver.findElements(By.cssSelector(".month"));
-        yearBirthdayList = driver.findElements(By.cssSelector(".year"));
+        dayBirthdayList = driver.findElements(By.cssSelector(".section.persons .day"));
+        monthBirthdayList = driver.findElements(By.cssSelector(".section.persons .month"));
+        yearBirthdayList = driver.findElements(By.cssSelector(".section.persons .year"));
     }
 
     public void setGenderList() {
