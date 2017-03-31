@@ -27,11 +27,12 @@ public class FlightsResultsPage extends TestBaseSetup {
     @FindBy(id = "cluster0-choice0-0")
     private WebElement ticketIdaRdb;
 
-    @FindBy(xpath = "//label[@for='cluster0-choice0-0']/div/am-flight-choice/div")
-    public WebElement tramoUnoInfo;
-
     @FindBy(id = "cluster0-choice1-0")
     private WebElement ticketVueltaRdb;
+
+
+    @FindBy(xpath = "//label[@for='cluster0-choice0-0']/div/am-flight-choice/div")
+    public WebElement tramoUnoInfo;
 
     @FindBy(xpath = "//label[@for='cluster0-choice1-0']/div/am-flight-choice/div")
     public WebElement tramoDosInfo;
@@ -83,6 +84,7 @@ public class FlightsResultsPage extends TestBaseSetup {
     }
 
     public void displayMultidestinationInfo(){
+        PageUtils.waitElementForVisibility(driver, tramoUnoInfo, 5, "Tramo 1");
         logger.info("TRAMO 1 - Date: " + "[" + dateList.get(0).getText() + "]");
         logger.info("Flight Info: " + "[" + formatItinerary(tramoUnoInfo.getText()) + "]");
 
