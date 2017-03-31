@@ -84,7 +84,7 @@ public class FlightsResultsPage extends TestBaseSetup {
     }
 
     public void displayMultidestinationInfo(){
-        PageUtils.waitElementForVisibility(driver, tramoUnoInfo, 5, "Tramo 1");
+        PageUtils.waitElementForVisibility(driver, tramoUnoInfo, 30, "Tramo 1");
         logger.info("TRAMO 1 - Date: " + "[" + dateList.get(0).getText() + "]");
         logger.info("Flight Info: " + "[" + formatItinerary(tramoUnoInfo.getText()) + "]");
 
