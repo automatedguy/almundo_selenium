@@ -122,7 +122,7 @@ public class CheckOutPage extends TestBaseSetup {
     }
 
     public void waitForCheckoutLoad(){
-        PageUtils.waitElementForVisibility(driver, By.id("first_name0"), 45, "Checkout Page.");
+        PageUtils.waitElementForVisibility(driver, By.id("first_name0"), 45, "Checkout Page");
         logger.info("Checkout URL: " + "[" + driver.getCurrentUrl() + "]");
     }
 

@@ -140,35 +140,35 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
     public void setCardNumber(String cardNumber, String container) {
-        WebElement cardNumberField = driver.findElement(By.cssSelector(container + " #card_number"));
+        WebElement cardNumberField = driver.findElement(By.cssSelector(container + " #credit_card_number"));
         logger.info("Entering Número de tu tarjeta: [" + cardNumber + "]");
         cardNumberField.clear();
         cardNumberField.sendKeys(cardNumber);
     }
 
     public void setCardHolder(String cardHolder, String container) {
-        WebElement cardHolderField = driver.findElement(By.cssSelector(container + " #card_holder"));
+        WebElement cardHolderField = driver.findElement(By.cssSelector(container + " #credit_card_owner"));
         logger.info("Entering Titular de la tarjeta: [" + cardHolder + "]");
         cardHolderField.clear();
         cardHolderField.sendKeys(cardHolder);
     }
 
     public void selectMonthCardExpiration(String monthCardExpiration, String container) {
-        WebElement cardMonthExpField = driver.findElement(By.cssSelector(container + " #card_month_expire"));
+        WebElement cardMonthExpField = driver.findElement(By.cssSelector(container + " .month"));
         logger.info("Selecting Fecha de vencimiento - Mes: [" + monthCardExpiration + "]");
         Select selectMonthCardExpiration = new Select (cardMonthExpField);
         selectMonthCardExpiration.selectByVisibleText(monthCardExpiration);
     }
 
     public void selectYearCardExpiration(String yearCardExpiration, String container) {
-        WebElement cardYearExpField = driver.findElement(By.cssSelector(container + " #card_year_expire"));
+        WebElement cardYearExpField = driver.findElement(By.cssSelector(container + " .year"));
         logger.info("Selecting Fecha de vencimiento - Año: [" + yearCardExpiration + "]");
         Select selectYearCardExpiration = new Select (cardYearExpField);
         selectYearCardExpiration.selectByVisibleText(yearCardExpiration);
     }
 
     public void setSecurityCode(String code, String container) {
-        WebElement securityCodeField = driver.findElement(By.cssSelector(container + " #security_code"));
+        WebElement securityCodeField = driver.findElement(By.cssSelector(container + " #credit_card_security_code"));
         logger.info("Entering Código de Seguridad: [" + code + "]");
         securityCodeField.clear();
         securityCodeField.sendKeys(code);

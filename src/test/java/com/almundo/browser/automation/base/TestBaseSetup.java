@@ -59,7 +59,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -161,6 +161,8 @@ public class TestBaseSetup {
 
                 logger.info("============ Method: " + method + " ============");
                 this.initSauceLabsDriver(method);
+                //this.initBrowserStackDriver(method);
+
             }
 
 
@@ -179,6 +181,11 @@ public class TestBaseSetup {
                         baseURL = STAGING_URL.concat(".mx/");
                         break;
                 }
+                landingEnabled = false;
+
+                logger.info("Navigating to baseURL: [" + baseURL + "]");
+                driver.navigate().to(baseURL);
+                basePage = initBasePage();
             }
 
             if(landingEnabled) {
@@ -225,6 +232,26 @@ public class TestBaseSetup {
 
         driver = this.getWebDriver();
     }
+
+    private void initBrowserStackDriver(String methodName) throws Exception {
+        String USERNAME = "almundoautomatio1";
+        String ACCESS_KEY = "js5ijJ8iVtgeru8s1ULs";
+        String url = "https://" + USERNAME + ":" + ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+        caps.setCapability("browser", "Firefox");
+        caps.setCapability("browser_version", "52.0");
+        if (os.contains("OSX")) caps.setCapability("os", "OS X");
+        else caps.setCapability("os", "Windows");
+        caps.setCapability("os_version", "10");
+        caps.setCapability("resolution", "1280x1024");
+
+        String className = getClass().getName().replace("com.almundo.browser.automation.tests.Flights.", "");
+        caps.setCapability("name", className + " - " + methodName);
+
+        driver = new RemoteWebDriver(new URL(url), caps);
+    }
+
 
     @AfterMethod
     public void tearDown() {
