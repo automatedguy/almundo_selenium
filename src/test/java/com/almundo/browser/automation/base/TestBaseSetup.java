@@ -59,7 +59,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(CCR_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -150,13 +150,13 @@ public class TestBaseSetup {
                         break;
 
                     default:
-                        throw new Exception("Browser [" + browser + "] not well defined. Allowed values are: 'firefox', 'chrome' or  'internet explorer'. WebDriver cannot be initialized!");
+                        throw new Exception("Browser [" + browser + "] not well defined. Allowed values are: 'firefox', 'chrome' or  'phantomjs'. WebDriver cannot be initialized!");
                 }
             } else {
 
                 String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
 
-                if(baseURL.contains("staging")){method = method + " - STG";}
+                if(baseURL.contains("st.almundo")){method = method + " - STG";}
                 else{method = method + " - PROD";}
 
                 logger.info("============ Method: " + method + " ============");

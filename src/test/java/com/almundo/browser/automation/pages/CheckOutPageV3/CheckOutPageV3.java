@@ -80,7 +80,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject contactData,
                                                String productCheckOutPage)
     {
-        PageUtils.waitElementForVisibility(driver, mainTitleLbl, 10, "Main text label");
         getCheckOutPageElements(productCheckOutPage);
         waitForCheckoutLoad();
         paymentSection().populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
