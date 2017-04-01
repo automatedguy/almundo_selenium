@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.*;
-import static com.almundo.browser.automation.utils.PageUtils.formatItinerary;
+import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 
 /**
  * Created by gabrielcespedes on 13/12/16.
@@ -51,7 +51,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         logger.info("Selecting Ticket de Ida");
         ticketIdaRdb.click();
         logger.info("Departure Flight Date: " + "[" + dateList.get(0).getText() + "]");
-        logger.info("Departure Flight Info: " + "[" + formatItinerary(tramoUnoInfo.getText())  + "]");
+        logger.info("Departure Flight Info: " + "[" + formatInfo(tramoUnoInfo.getText())  + "]");
         return this;
     }
 
@@ -60,7 +60,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         logger.info("Selecting Ticket de Vuelta");
         ticketVueltaRdb.click();
         logger.info("Return Flight Date: " + "[" + dateList.get(1).getText() + "]");
-        logger.info("Return Flight Info: " + "[" + formatItinerary(tramoDosInfo.getText()) + "]");
+        logger.info("Return Flight Info: " + "[" + formatInfo(tramoDosInfo.getText()) + "]");
         return this;
     }
 
@@ -86,17 +86,17 @@ public class FlightsResultsPage extends TestBaseSetup {
     public void displayMultidestinationInfo(){
         PageUtils.waitElementForVisibility(driver, tramoUnoInfo, 30, "Tramo 1");
         logger.info("TRAMO 1 - Date: " + "[" + dateList.get(0).getText() + "]");
-        logger.info("Flight Info: " + "[" + formatItinerary(tramoUnoInfo.getText()) + "]");
+        logger.info("Flight Info: " + "[" + formatInfo(tramoUnoInfo.getText()) + "]");
 
         logger.info("TRAMO 2 - Date: " + "[" + dateList.get(1).getText() + "]");
-        logger.info("Flight Info: " + "[" + formatItinerary(tramoDosInfo.getText())  + "]");
+        logger.info("Flight Info: " + "[" + formatInfo(tramoDosInfo.getText())  + "]");
 
         logger.info("TRAMO 3 - Date: " + "[" + dateList.get(3).getText() + "]");
-        logger.info("Flight Info: " + "[" + formatItinerary(tramoTresInfo.getText()) + "]");
+        logger.info("Flight Info: " + "[" + formatInfo(tramoTresInfo.getText()) + "]");
     }
 
     void displayPriceBoxInfo(int index){
         List<WebElement> flightsClusterPricebox = driver.findElements(By.cssSelector(".flights-cluster-pricebox"));
-        logger.info("Flight Rates Info: " + "[" +formatItinerary(flightsClusterPricebox.get(index).getText()) + "]");
+        logger.info("Flight Rates Info: " + "[" + formatInfo(flightsClusterPricebox.get(index).getText()) + "]");
     }
 }

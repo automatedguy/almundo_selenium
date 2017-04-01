@@ -189,7 +189,7 @@ public class PageUtils {
         return sb.toString();
     }
 
-    public static String formatItinerary(String itinerary){
+    public static String formatInfo(String itinerary){
         return itinerary.replaceAll("[\\n\\r]+", " - ");
     }
 }
