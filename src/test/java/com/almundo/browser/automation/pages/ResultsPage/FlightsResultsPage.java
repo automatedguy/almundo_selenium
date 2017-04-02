@@ -30,36 +30,39 @@ public class FlightsResultsPage extends TestBaseSetup {
     @FindBy(id = "cluster0-choice1-0")
     private WebElement ticketVueltaRdb;
 
-
     @FindBy(xpath = "//label[@for='cluster0-choice0-0']/div/am-flight-choice/div")
     public WebElement tramoUnoInfo;
 
     @FindBy(xpath = "//label[@for='cluster0-choice1-0']/div/am-flight-choice/div")
     public WebElement tramoDosInfo;
 
-    @FindBy(xpath = "//label[@for='cluster0-choice2-0']/div/am-flight-choice/div")
-    public WebElement tramoTresInfo;
-
     @FindBy(css = ".date")
     public List<WebElement> dateList;
+
+    @FindBy(css = ".choice-direction")
+    public List<WebElement> directionList;
 
 
     //############################################### Actions ##############################################
 
-    public FlightsResultsPage clickTicketIdaRdb() {
+    public String getDirectionLabel(int index){
+        return directionList.get(index).getText();
+    }
+
+    public FlightsResultsPage clickTicketIdaRdb(int index) {
         PageUtils.waitElementForVisibility(driver,ticketIdaRdb,30, "Ticket Ida Radio Button");
-        logger.info("Selecting Ticket de Ida");
+        logger.info("Selecting Ticket de: " + "[" + getDirectionLabel(index) + "]");
         ticketIdaRdb.click();
-        logger.info("Departure Flight Date: " + "[" + dateList.get(0).getText() + "]");
+        logger.info("Departure Flight Date: " + "[" + dateList.get(index).getText() + "]");
         logger.info("Departure Flight Info: " + "[" + formatInfo(tramoUnoInfo.getText())  + "]");
         return this;
     }
 
-    public FlightsResultsPage clickTicketVuelta() {
+    public FlightsResultsPage clickTicketVuelta(int index) {
         PageUtils.waitElementForVisibility(driver,ticketVueltaRdb,30, "Ticket Ida Radio Button");
-        logger.info("Selecting Ticket de Vuelta");
+        logger.info("Selecting Ticket de: " + "[" + getDirectionLabel(index) + "]");
         ticketVueltaRdb.click();
-        logger.info("Return Flight Date: " + "[" + dateList.get(1).getText() + "]");
+        logger.info("Return Flight Date: " + "[" + dateList.get(index).getText() + "]");
         logger.info("Return Flight Info: " + "[" + formatInfo(tramoDosInfo.getText()) + "]");
         return this;
     }
@@ -68,8 +71,8 @@ public class FlightsResultsPage extends TestBaseSetup {
         String cssSelectorName = ".flights-cluster-pricebox .button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
-        displayPriceBoxInfo(0);
-        logger.info("Clicking on Comprar button");
+        logger.info("Flight Rates Info: " + "[" + getPriceBoxInfo(index) + "]");
+        logger.info("Clicking on button: [Comprar]");
         comprarBtn.get(index).click();
         return initCheckOutPage();
     }
@@ -83,20 +86,18 @@ public class FlightsResultsPage extends TestBaseSetup {
         return false;
     }
 
-    public void displayMultidestinationInfo(){
-        PageUtils.waitElementForVisibility(driver, tramoUnoInfo, 30, "Tramo 1");
-        logger.info("TRAMO 1 - Date: " + "[" + dateList.get(0).getText() + "]");
-        logger.info("Flight Info: " + "[" + formatInfo(tramoUnoInfo.getText()) + "]");
-
-        logger.info("TRAMO 2 - Date: " + "[" + dateList.get(1).getText() + "]");
-        logger.info("Flight Info: " + "[" + formatInfo(tramoDosInfo.getText())  + "]");
-
-        logger.info("TRAMO 3 - Date: " + "[" + dateList.get(3).getText() + "]");
-        logger.info("Flight Info: " + "[" + formatInfo(tramoTresInfo.getText()) + "]");
+    public void displayMultidestinationInfo(int tramos){
+        PageUtils.waitElementForVisibility(driver, tramoUnoInfo, 30, "TRAMO 1");
+        for(int tramoIndex=0; tramoIndex<tramos;tramoIndex++) {
+            logger.info(getDirectionLabel(tramoIndex) + " - Date: " + "[" + dateList.get(tramoIndex).getText() + "]");
+            logger.info("Flight Info: " + "[" +
+                            formatInfo((driver.findElement(By.xpath("//label[@for='cluster0-choice" +
+                            tramoIndex + "-0']/div/am-flight-choice/div"))).getText() + "]"));
+        }
     }
 
-    void displayPriceBoxInfo(int index){
+    public String getPriceBoxInfo(int index){
         List<WebElement> flightsClusterPricebox = driver.findElements(By.cssSelector(".flights-cluster-pricebox"));
-        logger.info("Flight Rates Info: " + "[" + formatInfo(flightsClusterPricebox.get(index).getText()) + "]");
+        return formatInfo(flightsClusterPricebox.get(index).getText());
     }
 }

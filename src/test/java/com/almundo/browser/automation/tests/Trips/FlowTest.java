@@ -66,7 +66,7 @@ public class FlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
 
@@ -115,7 +115,7 @@ public class FlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
 
@@ -124,7 +124,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(0);
+            CheckOutPageV3 checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
             replaceUrl();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
                                                 dataManagement.getPaymentData("1_amex_amex"),
@@ -132,7 +132,7 @@ public class FlowTest extends TestBaseSetup {
                                                 dataManagement.getContactData("contact_cell_phone"),
                                                 "TripsCheckOutPageDomesticlV3");
         } else {
-            CheckOutPage checkOutPage = tripsDetailPage.clickComprarBtn(0);
+            CheckOutPage checkOutPage = tripsDetailPage.clickComprarBtn(FIRST_OPTION);
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                               dataManagement.getPaymentData("1_amex_amex"),
                                               dataManagement.getBillingData("local_Billing"),

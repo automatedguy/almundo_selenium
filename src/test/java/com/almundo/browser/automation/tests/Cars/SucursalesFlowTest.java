@@ -24,9 +24,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
     private CarsDataTrip carsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
 
-    //TODO: overload populateCheckOutPage
-    private int carDrivers = 1;
-
     @BeforeClass
     private void initDataTripList() {
         dataManagement.getCarsDataTripList();
@@ -63,7 +60,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
 

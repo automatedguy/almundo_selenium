@@ -67,7 +67,7 @@ public class FlowTest extends TestBaseSetup {
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
-        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
@@ -78,7 +78,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn();
+            CheckOutPageV3 checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
             replaceChkOutV2Url();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
                                                 dataManagement.getPaymentData("1_visa_visa"),
@@ -90,7 +90,7 @@ public class FlowTest extends TestBaseSetup {
             Assert.assertTrue(confirmationPage.confirmationOk());
 
         } else {
-            CheckOutPage checkOutPage = hotelsDetailPage.clickReservarAhoraBtn();
+            CheckOutPage checkOutPage = hotelsDetailPage.clickReservarAhoraBtn(FIRST_OPTION);
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                               dataManagement.getPaymentData("1_visa_visa"),
                                               dataManagement.getBillingData("local_Billing"),
@@ -118,7 +118,7 @@ public class FlowTest extends TestBaseSetup {
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
-        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
@@ -127,7 +127,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_native");
 
         if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn();
+            CheckOutPageV3 checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
             replaceChkOutV2Url();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
                                                 dataManagement.getPaymentData("1_amex_amex"),
@@ -135,7 +135,7 @@ public class FlowTest extends TestBaseSetup {
                                                 dataManagement.getContactData("contact_phone"),
                                                 "HotelsCheckOutPageDomesticV3");
         } else {
-            CheckOutPage checkOutPage = hotelsDetailPage.clickReservarAhoraBtn();
+            CheckOutPage checkOutPage = hotelsDetailPage.clickReservarAhoraBtn(FIRST_OPTION);
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                               dataManagement.getPaymentData("1_amex_amex"),
                                               dataManagement.getBillingData("local_Billing"),

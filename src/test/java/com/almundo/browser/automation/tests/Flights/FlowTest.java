@@ -70,8 +70,8 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
@@ -102,8 +102,8 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
@@ -133,9 +133,9 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        flightsResultsPage.clickTicketVuelta();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
@@ -170,9 +170,9 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        flightsResultsPage.clickTicketVuelta();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
@@ -186,6 +186,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void multiDest_Int_Booking_Flow() {
+        final int TRANSFERS = 3;
         logTestTitle("Flight Flow - Multi Destination - Int - 2 Adults - Turista - " + countryPar );
 
         dataManagement.getMultiDestDataTripItinerary("multiDest_3Flights_2adults_todas");
@@ -209,9 +210,9 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(flightsResultsPage.vacancy());
 
-        flightsResultsPage.displayMultidestinationInfo();
+        flightsResultsPage.displayMultidestinationInfo(TRANSFERS);
         
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
@@ -222,5 +223,4 @@ public class FlowTest extends TestBaseSetup {
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "FlightsCheckOutPageInternational");
     }
-
 }

@@ -65,7 +65,7 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
 
@@ -91,7 +91,7 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn();
+        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
 

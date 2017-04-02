@@ -67,9 +67,9 @@ public class LoginFlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        flightsResultsPage.clickTicketVuelta();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
@@ -100,8 +100,8 @@ public class LoginFlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        flightsResultsPage.clickTicketVuelta();
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
         checkOutPage = flightsResultsPage.clickComprarBtn(0);
 
         dataManagement.getPassengerData("adult_female_foreign");

@@ -67,11 +67,11 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
-        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(0);
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
-        checkOutPage = hotelsDetailPage.clickReservarAhoraV3Btn();
+        checkOutPage = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");

@@ -99,13 +99,13 @@ public class FlightsDataTrip extends BasePage{
 
     public void clickAddHotelCbk() {
         PageUtils.waitElementForClickable(driver, addHotelCbx, 5, "Agregar hotel checkbox");
-        logger.info("Clicking on Agregar Hotel checkbox");
+        logger.info("Clicking on: [Agregar Hotel Checkbox]");
         addHotelCbx.click();
     }
 
     public FlightsResultsPage clickBuscarBtn() {
         PageUtils.scrollToElement(driver, buscarBtn);
-        logger.info("Clicking on Buscar Button");
+        logger.info("Clicking on button: [Buscar]" );
         buscarBtn.click();
         return initFlightsResultsPage();
     }

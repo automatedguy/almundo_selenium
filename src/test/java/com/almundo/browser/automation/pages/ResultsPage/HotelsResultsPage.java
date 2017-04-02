@@ -25,37 +25,37 @@ public class HotelsResultsPage extends TestBaseSetup {
     //############################################### Actions ###############################################
 
 
-    public void displayHotelName(int index){
+    public String getHotelName(int index){
         PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.button-detail", 0);
         List<WebElement> hotelNameList = driver.findElements(By.cssSelector(".hotel-description"));
-        logger.info("Hotel name: " + "[" + formatInfo(hotelNameList.get(index).getText()) + "]");
+        return formatInfo(hotelNameList.get(index).getText());
     }
 
-    public void displayHotelAmenities(int index){
+    public List<WebElement> getHotelAmenities(int index){
         List<WebElement> hotelAmenitiesList = driver.findElements(By.cssSelector("hotel:nth-child(" + (index+1) + ") article > div.col-5.col-12--ph > div > div.amenities-ctn.ng-scope > ul > li"));
-        int amenityNumber = 0;
         logger.info("Checking Hotel Amenities...");
-        for(WebElement amenity : hotelAmenitiesList){
-            amenityNumber++;
-            logger.info("Hotel amenity " + (amenityNumber) + ": [" +amenity.getAttribute("data-hint").toString() + "]");
-        }
+        return hotelAmenitiesList;
     }
 
-    public void displayHotelStars(int index){
+    public String getHotelStars(int index){
         List<WebElement> hotelStarsList = driver.findElements(By.cssSelector("hotel:nth-child(" + (index+1) + ") article > div.col-5.col-12--ph > div > p.star-ctn > span"));
-        logger.info("Hotel category: " + "[" +(hotelStarsList.size()) + " stars]");
+        return String.valueOf(hotelStarsList.size());
     }
 
-    public void displayHotelRates(int index){
+    public String getHotelRates(int index){
         List<WebElement> hotelPriceBoxList = driver.findElements(By.cssSelector(".price-box-ctn.col-3.col-12--ph"));
-        logger.info("Hotel rates: " + "[" + formatInfo(hotelPriceBoxList.get(index).getText()) + "]");
+        return formatInfo(hotelPriceBoxList.get(index).getText());
     }
 
     public void displayHotelInfo(int index){
-        displayHotelName(index);
-        displayHotelStars(index);
-        displayHotelAmenities(index);
-        displayHotelRates(index);
+        int hotelAmenityIndex = 1;
+        logger.info("Hotel name: " + getHotelName(index));
+        logger.info("Hotel category: " + "[" + getHotelStars(index) + " stars]");
+        logger.info("Hotel rates: " + "[" + getHotelRates(index) + "]");
+        for(WebElement amenity : getHotelAmenities(index)){
+            logger.info("Hotel amenity " + hotelAmenityIndex++ + ": [" +amenity.getAttribute("data-hint").toString() + "]");
+        }
+
     }
 
     public HotelsDetailPage clickVerHotelBtn(int index) {

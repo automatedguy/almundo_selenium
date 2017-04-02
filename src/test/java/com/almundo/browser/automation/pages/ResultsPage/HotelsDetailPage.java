@@ -34,19 +34,19 @@ public class HotelsDetailPage extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPage clickReservarAhoraBtn() {
+    public CheckOutPage clickReservarAhoraBtn(int index) {
         List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary"));
         PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(1), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
-        detailHotelButtonResults.get(1).click();
+        detailHotelButtonResults.get(index+1).click();
         return initCheckOutPage();
     }
 
-    public CheckOutPageV3 clickReservarAhoraV3Btn() {
+    public CheckOutPageV3 clickReservarAhoraV3Btn(int index) {
         List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary"));
         PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(1), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
-        detailHotelButtonResults.get(1).click();
+        detailHotelButtonResults.get(index+1).click();
         return initCheckOutPageV3();
     }
 }

@@ -57,6 +57,8 @@ public class TestBaseSetup {
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
 
+    public final static int FIRST_OPTION = 0;
+
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
@@ -65,7 +67,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("false") Boolean submit_Reservation,
                                         @Optional("") String cart_id,

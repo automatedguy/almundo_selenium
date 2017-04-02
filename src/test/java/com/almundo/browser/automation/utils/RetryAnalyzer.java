@@ -7,7 +7,7 @@ import org.testng.Reporter;
 import static com.almundo.browser.automation.base.TestBaseSetup.retriesMaxCount;
 
 public class RetryAnalyzer implements IRetryAnalyzer {
-    private int count = 0;
+    private int count = 3;
 
     public int getMaxount() {
         String env_path = System.getenv("PATH");

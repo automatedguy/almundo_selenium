@@ -64,9 +64,9 @@ public class SucursalesFlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        flightsResultsPage.clickTicketVuelta();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");

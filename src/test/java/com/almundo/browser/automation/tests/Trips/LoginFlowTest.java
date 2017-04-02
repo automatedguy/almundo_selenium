@@ -70,10 +70,10 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPage = tripsDetailPage.clickComprarBtn(0);
+        checkOutPage = tripsDetailPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_male_native");
@@ -112,10 +112,10 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPage = tripsDetailPage.clickComprarBtn(0);
+        checkOutPage = tripsDetailPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");

@@ -22,13 +22,13 @@ public class CarsResultsPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public CheckOutPage clickReservarAhoraBtn() {
+    public CheckOutPage clickReservarAhoraBtn(int index) {
         String cssSelectorName  = ".button.button--secondary.button--block.button--lg.crazy_week";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> detailCarsButtonResults = driver.findElements(By.cssSelector(cssSelectorName));
-        PageUtils.waitElementForClickable(driver, detailCarsButtonResults.get(0), 20, "Reservar Ahora button");
+        PageUtils.waitElementForClickable(driver, detailCarsButtonResults.get(index), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
-        detailCarsButtonResults.get(0).click();
+        detailCarsButtonResults.get(index).click();
         return initCheckOutPage();
     }
 }
