@@ -10,8 +10,8 @@
 
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependencies>
 
+    <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -52,12 +52,10 @@
         </dependency>
 
     </dependencies>
-
     <build>
-        <outputDirectory>${project.build.directory}/classes</outputDirectory>
-        <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+        <outputDirectory>${jobDirectory}/classes</outputDirectory>
+        <testOutputDirectory>${jobDirectory}/test-classes</testOutputDirectory>
         <plugins>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
@@ -72,7 +70,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <!--<parallel>methods</parallel>-->
-                    <reportsDirectory>${project.build.directory}/reports</reportsDirectory>
+                    <reportsDirectory>${jobDirectory}/reports</reportsDirectory>
                     <threadCount>20</threadCount>
                     <properties>
                         <property>
