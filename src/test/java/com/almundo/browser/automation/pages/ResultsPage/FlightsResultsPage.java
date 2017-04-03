@@ -91,8 +91,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         for(int tramoIndex=0; tramoIndex<tramos;tramoIndex++) {
             logger.info(getDirectionLabel(tramoIndex) + " - Date: " + "[" + dateList.get(tramoIndex).getText() + "]");
             logger.info("Flight Info: " + "[" +
-                            formatInfo((driver.findElement(By.xpath("//label[@for='cluster0-choice" +
-                            tramoIndex + "-0']/div/am-flight-choice/div"))).getText() + "]"));
+                            formatInfo((driver.findElement(By.xpath("//label[@for='cluster0-choice" + tramoIndex + "-0']/div/am-flight-choice/div"))).getText() + "]"));
         }
     }
 
