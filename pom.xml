@@ -11,6 +11,10 @@
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 
+    <properties>
+        <jobDirectory>target</jobDirectory>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
