@@ -47,6 +47,9 @@ public class TestBaseSetup {
     public static String cartIdICBC = null;
     public static int retriesMaxCount;
     public static Boolean submitReservation = false;
+    public static String className;
+    public static String metodo;
+
 
     public static String countryPar;
 
@@ -82,7 +85,7 @@ public class TestBaseSetup {
         this.landingEnabled = landing;
         this.cartId = cart_id;
         this.cartIdICBC = cart_id_icbc;
-        this.retriesMaxCount = retries_Max_Count;
+            this.retriesMaxCount = retries_Max_Count;
         this.submitReservation = submit_Reservation;
 
         try {
@@ -173,10 +176,16 @@ public class TestBaseSetup {
 
                 String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
 
+                className = this.getClass().getName().substring(37);
+                metodo = methodName.getName();
+
+                if(baseURL.contains("st.almundo")){metodo = metodo + " - STG";}
+                else{metodo = metodo + " - PROD";}
+
                 if(baseURL.contains("st.almundo")){method = method + " - STG";}
                 else{method = method + " - PROD";}
 
-                logger.info("============ Method: " + method + " ============");
+                //logger.info("============ Method: " + method + " ============");
                 this.initSauceLabsDriver(method);
                 //this.initBrowserStackDriver(method);
 
@@ -295,9 +304,9 @@ public class TestBaseSetup {
     }
 
     public void logTestTitle(String testTitle) {
-        logger.info("--------------------------------------------------------------------------------");
-        logger.info(testTitle);
-        logger.info("--------------------------------------------------------------------------------");
+        logger.info("---------------------------------------------------------------------------------------------------------------------------");
+        logger.info(testTitle + " - Class: [" + className + "] - Method [" + metodo + "]");
+        logger.info("---------------------------------------------------------------------------------------------------------------------------");
     }
 
     public void replaceUrl(){
