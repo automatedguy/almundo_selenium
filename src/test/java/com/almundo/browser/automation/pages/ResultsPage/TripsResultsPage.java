@@ -29,6 +29,9 @@ public class TripsResultsPage extends TestBaseSetup {
     @FindBy(css = ".details>hotel-summary")
     private WebElement detailsHotelSummary;
 
+    @FindBy(css = "pricebox")
+    private WebElement tripPricebox;
+
 
     //############################################### Actions ##############################################
 
@@ -70,9 +73,14 @@ public class TripsResultsPage extends TestBaseSetup {
         displayReturnFlightInfo(flightSegmentsList.get(1));
     }
 
+    public void displayTripsRatesInfo(){
+        logger.info("Trip rates info: " + "[" + formatInfo(tripPricebox.getText())+ "]");
+    }
+
     public void displayTripInfo(){
         displayHotelInfo();
         displayFlightInfo();
+        displayTripsRatesInfo();
     }
 
     public TripsDetailPage clickContinuarBtn() {
