@@ -4,16 +4,12 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import static com.almundo.browser.automation.base.TestBaseSetup.logger;
-
 public class RetryAnalyzer implements IRetryAnalyzer {
     private int count;
 
     public int getMaxCount() {
         String env_path = System.getenv("PATH");
         int maxCount = 0;
-
-        logger.info("PATH: " + env_path);
 
         if(env_path.contains("jenkins")) {
             maxCount = 3;

@@ -65,9 +65,9 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
-//                                        @Optional() String osType,
+                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-                                        @Optional("Windows 10") String osType,
+//                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
@@ -178,9 +178,6 @@ public class TestBaseSetup {
 
                 className = this.getClass().getName().substring(37);
                 metodo = methodName.getName();
-
-                if(baseURL.contains("st.almundo")){metodo = metodo + " - STG";}
-                else{metodo = metodo + " - PROD";}
 
                 if(baseURL.contains("st.almundo")){method = method + " - STG";}
                 else{method = method + " - PROD";}
@@ -304,9 +301,9 @@ public class TestBaseSetup {
     }
 
     public void logTestTitle(String testTitle) {
-        logger.info("---------------------------------------------------------------------------------------------------------------------------");
+        logger.info("---------------------------------------------------------------------------------------------------------------------------------------------");
         logger.info(testTitle + " - Class: [" + className + "] - Method [" + metodo + "]");
-        logger.info("---------------------------------------------------------------------------------------------------------------------------");
+        logger.info("---------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
     public void replaceUrl(){
