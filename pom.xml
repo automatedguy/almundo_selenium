@@ -10,8 +10,12 @@
 
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependencies>
 
+    <properties>
+        <jobDirectory>target</jobDirectory>
+    </properties>
+
+    <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -52,7 +56,6 @@
         </dependency>
 
     </dependencies>
-
     <build>
         <outputDirectory>${jobDirectory}/classes</outputDirectory>
         <testOutputDirectory>${jobDirectory}/test-classes</testOutputDirectory>

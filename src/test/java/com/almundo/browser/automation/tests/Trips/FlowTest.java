@@ -76,7 +76,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
 
         if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(0);
+            CheckOutPageV3 checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
             replaceUrl();
             checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
                                                 dataManagement.getPaymentData("1_visa_visa"),
@@ -88,7 +88,7 @@ public class FlowTest extends TestBaseSetup {
             Assert.assertTrue(confirmationPage.confirmationOk());
 
         } else {
-            CheckOutPage checkOutPage = tripsDetailPage.clickComprarBtn(0);
+            CheckOutPage checkOutPage = tripsDetailPage.clickComprarBtn(FIRST_OPTION);
             checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                               dataManagement.getPaymentData("1_visa_visa"),
                                               dataManagement.getBillingData("local_Billing"),
