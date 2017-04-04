@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by leandro.efron on 25/11/2016.
@@ -33,6 +34,15 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
 
     @FindBy(id = "several-cards")
     public WebElement serveralCardsCbx;
+
+    @FindBy(id = "card-combo")
+    public Select cardComboDdl;
+
+    @FindBy(id = "banco-combo")
+    public Select bancoComboDdl;
+
+    @FindBy(id = "cuotas-combo")
+    public Select cuotasComboDdl;
 
     @FindBy(css = "credit-card-form > div > div > div > div:nth-child(3) > div > input")
     public WebElement card_holder;
@@ -136,6 +146,41 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
                 cardNameResult.click();
                 break;
             }
+        }
+    }
+
+    public void selectPaymentNew(String paymentNumber, String container) {
+        if(paymentNumber!=null) {
+            logger.info("Selecting Payment: [" + paymentNumber + "]");
+            cuotasComboDdl.selectByVisibleText(paymentNumber);
+
+        } else {
+            int random = new Random().nextInt(cuotasComboDdl.getOptions().size());
+            cuotasComboDdl.selectByIndex(random);
+            logger.info("Selecting Payment: [" + cuotasComboDdl.getFirstSelectedOption().getText() + "]");
+        }
+    }
+
+    public void selectBankNew(String bankName, String container) {
+        if(bankName!=null) {
+            bancoComboDdl.selectByVisibleText(bankName);
+            logger.info("Selecting Bank: [" + bankName + "]");
+        } else {
+            int random = new Random().nextInt(bancoComboDdl.getOptions().size());
+            bancoComboDdl.selectByIndex(random);
+            logger.info("Selecting Bank: [" + bancoComboDdl.getFirstSelectedOption().getText() + "]");
+        }
+    }
+
+    public void selectCreditCardNew(String cardName, String container) {
+        if(cardName!=null) {
+            logger.info("Selecting Credit Card: [" + cardName + "]");
+            cardComboDdl.selectByVisibleText(cardName);
+
+        } else {
+            int random = new Random().nextInt(cardComboDdl.getOptions().size());
+            cardComboDdl.selectByIndex(random);
+            logger.info("Selecting Credit Card: [" + cardComboDdl.getFirstSelectedOption().getText() + "]");
         }
     }
 

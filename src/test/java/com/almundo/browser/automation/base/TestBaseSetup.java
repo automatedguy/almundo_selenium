@@ -62,17 +62,17 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
-                                        @Optional() String osType,
+//                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-//                                        @Optional("Windows 10") String osType,
+                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
-                                        @Optional("false") Boolean submit_Reservation,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("3") int retries_Max_Count) {
+                                        @Optional("0") int retries_Max_Count,
+                                        @Optional("false") Boolean submit_Reservation) {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -98,6 +98,21 @@ public class TestBaseSetup {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        if(baseURL.equals(STAGING_URL)) {
+            switch (countryPar) {
+                case "ARGENTINA":
+                    baseURL = STAGING_URL.concat(".ar/");
+                    break;
+                case "COLOMBIA":
+                    baseURL = STAGING_URL.concat(".co/");
+                    break;
+                case "MEXICO":
+                    baseURL = STAGING_URL.concat(".mx/");
+                    break;
+            }
+            landingEnabled = false;
         }
 
         jsonDataObject = JsonRead.getJsonFile(countryPar.toLowerCase() + "_data.json");
@@ -167,35 +182,18 @@ public class TestBaseSetup {
 
             }
 
-
             logger.info("Maximizing Window...");
             driver.manage().window().maximize();
-
-            if(baseURL.equals(STAGING_URL)) {
-                switch (countryPar) {
-                    case "ARGENTINA":
-                        baseURL = STAGING_URL.concat(".ar/");
-                        break;
-                    case "COLOMBIA":
-                        baseURL = STAGING_URL.concat(".co/");
-                        break;
-                    case "MEXICO":
-                        baseURL = STAGING_URL.concat(".mx/");
-                        break;
-                }
-                landingEnabled = false;
-
-                logger.info("Navigating to baseURL: [" + baseURL + "]");
-                driver.navigate().to(baseURL);
-                basePage = initBasePage();
-            }
+            logger.info("Navigating to baseURL: [" + baseURL + "]");
 
             if(landingEnabled) {
-                logger.info("Navigating to baseURL: [" + baseURL + "]");
                 driver.navigate().to(baseURL);
                 LandingPage landingPage = initLandingPage();
                 logger.info("Selecting country page: [" + countryPar + "]");
                 basePage = landingPage.selectCountryPage(countryPar);
+            } else {
+                driver.navigate().to(baseURL);
+                basePage = initBasePage();
             }
 
         } catch (Exception e) {
