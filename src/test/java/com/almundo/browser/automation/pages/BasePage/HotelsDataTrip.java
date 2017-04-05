@@ -26,10 +26,10 @@ public class HotelsDataTrip extends BasePage {
     @FindBy(id = "destination-hotels")
     public WebElement destinationTxt;
 
-    @FindBy(id = "checkin-hotels")
+    @FindBy(css = "input[name^='am-range-datepicker-from']")
     public WebElement checkinCalendar;
 
-    @FindBy(id = "checkout-hotels")
+    @FindBy(css = "input[name^='am-range-datepicker-to']")
     public WebElement checkoutCalendar;
 
     @FindBy(css = ".row-rooms>.sub")

@@ -45,7 +45,6 @@ public class TestBaseSetup {
     public static Boolean landingEnabled = Boolean.TRUE;
     public static String cartId = null;
     public static String cartIdICBC = null;
-    public static int retriesMaxCount;
     public static Boolean submitReservation = false;
     public static String className;
     public static String metodo;
@@ -62,7 +61,7 @@ public class TestBaseSetup {
 
     public final static int FIRST_OPTION = 0;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "retries_Max_Count", "submit_Reservation"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
@@ -74,7 +73,6 @@ public class TestBaseSetup {
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("0") int retries_Max_Count,
                                         @Optional("false") Boolean submit_Reservation) {
 
         this.baseURL = env_url;
@@ -85,7 +83,6 @@ public class TestBaseSetup {
         this.landingEnabled = landing;
         this.cartId = cart_id;
         this.cartIdICBC = cart_id_icbc;
-            this.retriesMaxCount = retries_Max_Count;
         this.submitReservation = submit_Reservation;
 
         try {
@@ -179,8 +176,8 @@ public class TestBaseSetup {
                 className = this.getClass().getName().substring(37);
                 metodo = methodName.getName();
 
-                if(baseURL.contains("st.almundo")){method = method + " - STG";}
-                else{method = method + " - PROD";}
+                if(baseURL.contains("st.almundo")){metodo = metodo + " - STG";}
+                else{metodo = metodo + " - PROD";}
 
                 //logger.info("============ Method: " + method + " ============");
                 this.initSauceLabsDriver(method);
