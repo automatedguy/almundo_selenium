@@ -278,13 +278,13 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     private CheckOutPage openAlmundoCart(String cartId){
         logger.info("Navigating to: [" + PROD_URL + "cart/v2/" + cartId + "]");
-        driver.navigate().to(PROD_URL + "cart/v2/" + cartId);
+        driver.get(PROD_URL + "cart/v2/" + cartId);
         return initCheckOutPage();
     }
 
     private CheckOutPage openIcbcCart(String cartId){
         logger.info("Navigating to: [" + ICBC_URL + "cart/v2/" + cartId + "]");
-        driver.navigate().to(ICBC_URL + "cart/v2/" + cartId);
+        driver.get(ICBC_URL + "cart/v2/" + cartId);
         return initCheckOutPage();
     }
 
