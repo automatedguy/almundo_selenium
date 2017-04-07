@@ -35,12 +35,15 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "several-cards")
     public WebElement serveralCardsCbx;
 
+    //@FindBy(id = "cbo_credit_card")
     @FindBy(id = "card-combo")
     public Select cardComboDdl;
 
+    //@FindBy(id = "cbo_financial_entity")
     @FindBy(id = "banco-combo")
     public Select bancoComboDdl;
 
+    //@FindBy(id = "cbo_installment")
     @FindBy(id = "cuotas-combo")
     public Select cuotasComboDdl;
 
@@ -149,6 +152,18 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         }
     }
 
+    public void selectCreditCardNew(String cardName, String container) {
+        if(cardName!=null) {
+            logger.info("Selecting Credit Card: [" + cardName + "]");
+            cardComboDdl.selectByVisibleText(cardName);
+
+        } else {
+            int random = new Random().nextInt(cardComboDdl.getOptions().size());
+            cardComboDdl.selectByIndex(random);
+            logger.info("Selecting Credit Card: [" + cardComboDdl.getFirstSelectedOption().getText() + "]");
+        }
+    }
+
     public void selectPaymentNew(String paymentNumber, String container) {
         if(paymentNumber!=null) {
             logger.info("Selecting Payment: [" + paymentNumber + "]");
@@ -172,17 +187,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         }
     }
 
-    public void selectCreditCardNew(String cardName, String container) {
-        if(cardName!=null) {
-            logger.info("Selecting Credit Card: [" + cardName + "]");
-            cardComboDdl.selectByVisibleText(cardName);
 
-        } else {
-            int random = new Random().nextInt(cardComboDdl.getOptions().size());
-            cardComboDdl.selectByIndex(random);
-            logger.info("Selecting Credit Card: [" + cardComboDdl.getFirstSelectedOption().getText() + "]");
-        }
-    }
 
     public void setCardNumber(String cardNumber, String container) {
         WebElement cardNumberField = driver.findElement(By.cssSelector(container + " #credit_card_number"));

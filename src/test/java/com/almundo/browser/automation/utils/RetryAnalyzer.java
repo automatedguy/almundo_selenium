@@ -4,6 +4,8 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
+import static com.almundo.browser.automation.base.TestBaseSetup.retriesCount;
+
 public class RetryAnalyzer implements IRetryAnalyzer {
     private int count;
 
@@ -14,6 +16,9 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         if(env_path.contains("jenkins")) {
             maxCount = 3;
         }
+
+        if (retriesCount) {maxCount = 0;}
+
         return maxCount;
     }
 

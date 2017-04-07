@@ -6,12 +6,16 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
-import com.almundo.browser.automation.utils.*;
+import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.PageUtils;
+import com.almundo.browser.automation.utils.RetryAnalyzer;
+import com.almundo.browser.automation.utils.SauceHelpers;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
@@ -32,8 +36,8 @@ import static com.almundo.browser.automation.utils.Constants.*;
 
 public class TestBaseSetup {
 
-    public static Logger logger = Logger.getLogger( TestBaseSetup.class );
-    public static WebDriver driver;
+    public static Logger logger = Logger.getLogger(TestBaseSetup.class);
+    public WebDriver driver;
 
     public BasePage basePage = null;
 
@@ -42,15 +46,16 @@ public class TestBaseSetup {
     private static String browser = null;
     private static String browserVersion = null;
     public static String osName = System.getProperty("os.name");
-    public static Boolean landingEnabled = Boolean.TRUE;
+    public static Boolean landingEnabled = true;
     public static String cartId = null;
     public static String cartIdICBC = null;
     public static Boolean submitReservation = false;
+    public static Boolean retriesCount = false;
+
     public static String className;
     public static String metodo;
-
-
     public static String countryPar;
+    private static DesiredCapabilities capabilities = null;
 
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
@@ -61,7 +66,7 @@ public class TestBaseSetup {
 
     public final static int FIRST_OPTION = 0;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
@@ -73,7 +78,8 @@ public class TestBaseSetup {
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("false") Boolean submit_Reservation) {
+                                        @Optional("false") Boolean submit_Reservation,
+                                        @Optional("false") Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
         this.os = osType;
@@ -84,9 +90,11 @@ public class TestBaseSetup {
         this.cartId = cart_id;
         this.cartIdICBC = cart_id_icbc;
         this.submitReservation = submit_Reservation;
+        this.retriesCount = retries_Max_Count;
 
         try {
             if (os == null || browserVersion == null) {
+                capabilities = getCapabilities();
                 logger.info("OS: [" + osName + "]");
                 logger.info("Browser: [" + browser + "]");
                 logger.info("Environment: [" + baseURL + "]");
@@ -123,79 +131,47 @@ public class TestBaseSetup {
 
     @BeforeMethod
     public void setDriver(Method methodName) {
+
+        String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
+        className = this.getClass().getName().substring(37);
+
+        if(baseURL.contains("st.almundo")){
+            metodo = methodName.getName() + " - STG";
+        } else {
+            metodo = methodName.getName() + " - PROD";
+        }
+
         try {
             if (os == null || browserVersion == null) {
                 switch (browser) {
                     case "chrome":
-                        if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
-                        } else {
-                            System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver");
-                        }
-                        DesiredCapabilities capability = DesiredCapabilities.chrome();
-                        capability.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-                        driver = new ChromeDriver(capability);
+                        driver = new ChromeDriver(capabilities);
                         break;
 
                     case "firefox":
-                        if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver.exe");
-                        } else {
-                            System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver");
-                        }
-                        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-                        capabilities.setCapability("marionette", true);
                         driver = new FirefoxDriver(capabilities);
                         break;
 
                     case "phantomjs":
-                        if (osName.toLowerCase().contains("windows")){
-                            System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs.exe");
-                        } else {
-                            System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs");
-                        }
-                        DesiredCapabilities sCaps = new DesiredCapabilities();
-                        sCaps.setJavascriptEnabled(true);
-                        sCaps.setCapability("takesScreenshot", false);
-                        sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, new String[] {
-                                "--web-security=false",
-                                "--ssl-protocol=any",
-                                "--ignore-ssl-errors=true",
-                                "--webdriver-loglevel=NONE"
-                        });
-                        driver = new PhantomJSDriver(sCaps);
+                        driver = new PhantomJSDriver(capabilities);
                         break;
 
                     default:
                         throw new Exception("Browser [" + browser + "] not well defined. Allowed values are: 'firefox', 'chrome' or  'phantomjs'. WebDriver cannot be initialized!");
                 }
             } else {
-
-                String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
-
-                className = this.getClass().getName().substring(37);
-                metodo = methodName.getName();
-
-                if(baseURL.contains("st.almundo")){metodo = metodo + " - STG";}
-                else{metodo = metodo + " - PROD";}
-
-                //logger.info("============ Method: " + method + " ============");
                 this.initSauceLabsDriver(method);
                 //this.initBrowserStackDriver(method);
-
             }
 
-            logger.info("Maximizing Window...");
-            driver.manage().window().maximize();
             logger.info("Navigating to baseURL: [" + baseURL + "]");
+            driver.navigate().to(baseURL);
 
             if(landingEnabled) {
-                driver.navigate().to(baseURL);
                 LandingPage landingPage = initLandingPage();
                 logger.info("Selecting country page: [" + countryPar + "]");
                 basePage = landingPage.selectCountryPage(countryPar);
             } else {
-                driver.navigate().to(baseURL);
                 basePage = initBasePage();
             }
 
@@ -204,6 +180,54 @@ public class TestBaseSetup {
         }
     }
 
+    private DesiredCapabilities getCapabilities() throws Exception {
+        switch (browser) {
+            case "chrome":
+                if (osName.toLowerCase().contains("windows")){
+                    System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
+                } else {
+                    System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver");
+                }
+                DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
+                chromeCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("test-type", "start-maximized", "no-default-browser-check");
+                options.addArguments("--disable-extensions");
+                chromeCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
+
+                return chromeCapabilities;
+
+            case "firefox":
+                if (osName.toLowerCase().contains("windows")){
+                    System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver.exe");
+                } else {
+                    System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver");
+                }
+                DesiredCapabilities firefoxCapabilities = DesiredCapabilities.firefox();
+                firefoxCapabilities.setCapability("marionette", true);
+                return firefoxCapabilities;
+
+            case "phantomjs":
+                if (osName.toLowerCase().contains("windows")){
+                    System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs.exe");
+                } else {
+                    System.setProperty("phantomjs.binary.path", RESOURCES_PATH + "phantomjs");
+                }
+                DesiredCapabilities phantomCapabilities = new DesiredCapabilities();
+                phantomCapabilities.setJavascriptEnabled(true);
+                phantomCapabilities.setCapability("takesScreenshot", false);
+                phantomCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, new String[] {
+                        "--web-security=false",
+                        "--ssl-protocol=any",
+                        "--ignore-ssl-errors=true",
+                        "--webdriver-loglevel=NONE"
+                });
+                return phantomCapabilities;
+
+            default:
+                throw new Exception("Browser [" + browser + "] not well defined. Allowed values are: 'firefox', 'chrome' or  'phantomjs'. WebDriver cannot be initialized!");
+        }
+    }
 
     private void initSauceLabsDriver(String methodName)  {
         String USERNAME = "despegarpuntocom";
@@ -270,7 +294,7 @@ public class TestBaseSetup {
 
     /* This is to run retry analyzer for all the suites / tests  */
     @BeforeSuite(alwaysRun = true)
-    public void beforeSuite(ITestContext context) {
+    private void beforeSuite(ITestContext context) {
 
         //get the uri to send the commands to.
         seleniumURI = SauceHelpers.buildSauceUri();
@@ -293,7 +317,7 @@ public class TestBaseSetup {
     /**
      * @return the {@link WebDriver} for the current thread
      */
-    public WebDriver getWebDriver() {
+    private WebDriver getWebDriver() {
         return webDriver.get();
     }
 
