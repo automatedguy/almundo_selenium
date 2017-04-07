@@ -174,6 +174,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
+        logger.info("********************************************************************************************************************************");
         logger.info("----------------------------------------------------------------");
         logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
         logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
@@ -204,7 +205,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "] -----> No se está seleccionando un banco en este caso");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
         softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
-
+        logger.info("********************************************************************************************************************************");
+        
         softAssert.assertAll();
     }
 
