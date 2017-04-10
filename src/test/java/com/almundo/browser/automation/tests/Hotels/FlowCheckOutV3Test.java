@@ -30,11 +30,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
     @BeforeClass
     private void initDataTripList() {
-        dataManagement.getHotelsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+        dataManagement.getHotelsData();
     }
 
     @BeforeMethod

@@ -31,11 +31,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
-        dataManagement.getHotelsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+        dataManagement.getHotelsData();
     }
 
     @BeforeMethod
