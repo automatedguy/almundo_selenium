@@ -15,6 +15,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.utils.Constants.*;
+
 /**
  * Created by gabrielcespedes on 04/11/16.
  */

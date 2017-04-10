@@ -14,6 +14,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.utils.Constants.*;
+
 import static com.almundo.browser.automation.utils.Constants.FlightType.*;
 
 

@@ -65,4 +65,6 @@ public class Constants {
     public static final List<String> USER_MENU_LIST_CO = asList("Perfil", "Formas de pago", "Reservas", "Cerrar sesión");
     public static final List<String> USER_MENU_LIST_MX = asList("Perfil", "Medios de Pago", "Reservas", "Cerrar sesión");
 
+    public final static int FIRST_OPTION = 0;
+
 }
