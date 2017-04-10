@@ -31,8 +31,8 @@ public class FlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initItinerary() {
-        dataManagement.getHotelsItineraryInfo();
+    private void initItineraryData() {
+        dataManagement.getHotelsItineraryData();
     }
 
     @BeforeMethod
