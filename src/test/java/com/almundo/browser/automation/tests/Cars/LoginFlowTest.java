@@ -28,12 +28,8 @@ public class LoginFlowTest extends TestBaseSetup {
     //TODO: overload populateCheckOutPage
 
     @BeforeClass
-    private void initDataLists() {
-        dataManagement.getCarsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+    private void initItineraryData() {
+        dataManagement.getCarsItineraryData();
     }
 
     @BeforeMethod
