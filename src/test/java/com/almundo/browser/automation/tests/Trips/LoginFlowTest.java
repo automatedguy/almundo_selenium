@@ -32,13 +32,8 @@ public class LoginFlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataLists() {
-        dataManagement.getUsersDataList();
-        dataManagement.getTripsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+    private void initItineraryData() {
+        dataManagement.getTripsItineraryData();
     }
 
     @BeforeMethod
