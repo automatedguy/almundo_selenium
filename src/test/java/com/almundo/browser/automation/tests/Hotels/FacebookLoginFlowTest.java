@@ -31,6 +31,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
+        dataManagement.getUsersDataList();
         dataManagement.getHotelsItineraryData();
     }
 
