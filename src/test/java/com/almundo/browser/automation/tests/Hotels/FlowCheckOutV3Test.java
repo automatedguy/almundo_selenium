@@ -29,8 +29,8 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataTripList() {
-        dataManagement.getHotelsData();
+    private void initItinerary() {
+        dataManagement.getHotelsItineraryInfo();
     }
 
     @BeforeMethod

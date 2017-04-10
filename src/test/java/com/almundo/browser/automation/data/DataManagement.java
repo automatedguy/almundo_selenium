@@ -137,7 +137,7 @@ public class DataManagement extends TestBaseSetup {
 
     //HOTELES DATA TRIP
 
-    public void getHotelsData(){
+    public void getHotelsItineraryInfo(){
         getHotelsDataTripList();
         getPassengersList();
         getPaymentList();
