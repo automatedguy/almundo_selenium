@@ -72,7 +72,7 @@ public class TestBaseSetup {
 //                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
                                         @Optional("null") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,

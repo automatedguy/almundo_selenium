@@ -5,6 +5,7 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,6 +15,10 @@ import java.util.List;
  * Created by gabrielcespedes on 14/12/16.
  */
 public class TripsDetailPage extends TestBaseSetup {
+
+    public TripsDetailPage(WebDriver iDriver) {
+        this.driver = iDriver;
+    }
 
     //############################################### Locators ##############################################
 
