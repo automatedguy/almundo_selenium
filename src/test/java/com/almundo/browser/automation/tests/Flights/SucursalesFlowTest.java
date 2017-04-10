@@ -29,12 +29,8 @@ public class SucursalesFlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataLists() {
-        dataManagement.getFlightsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+    private void initItineraryData() {
+        dataManagement.getFlightsItineraryData();
     }
 
     @BeforeMethod

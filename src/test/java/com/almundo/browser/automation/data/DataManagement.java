@@ -62,6 +62,14 @@ public class DataManagement extends TestBaseSetup {
     //------------------------- HOME PAGE -----------------------------
     //VUELOS DATA TRIP
 
+    public void getFlightsItineraryData(){
+        getFlightsDataTripList();
+        getPassengersList();
+        getPaymentList();
+        getBillingList();
+        getContactList();
+    }
+
     public void getFlightsDataTripList() {
         vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "flights", countryPar.toLowerCase() + "_data.json");
     }
@@ -197,6 +205,7 @@ public class DataManagement extends TestBaseSetup {
     }
 
     //AUTOS DATA TRIP
+
     public void getCarsDataTripList() {
         autosDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "cars", countryPar.toLowerCase() + "_data.json");
     }
