@@ -41,7 +41,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     @Test
     public void latam() {
-        logTestTitle("ICBC Store - LATAM - " + countryPar );
+        logTestTitle("ICBC Store - LATAM");
         checkOutPage = openAlmundoCart(cartId);
 
         paymentSection = checkOutPage.paymentSection();
@@ -88,13 +88,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_18 = checkOutPage.getTotalPrice();
 
-        logger.info("----------------------------------------------------------------");
-        logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
-        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
-        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
-        logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
-        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
-        logger.info("----------------------------------------------------------------");
+        logger.info("********************************************************************************************************************************");
+        printItineraryData();
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
         softAssert.assertTrue(almundo_visa_1 == icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
@@ -114,13 +109,14 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("MASTERCARD - 18 Cuotas - Almundo: [" + almundo_master_18  + "] -----> No se está seleccionando un banco en este caso");
         logger.info("MASTERCARD - 18 Cuotas - ICBC   : [" + icbc_master_18  + "]" + "\n");
         softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: Almundo [" + almundo_master_18 + "] - ICBC [" + icbc_master_18 + "]");
+        logger.info("********************************************************************************************************************************");
 
         softAssert.assertAll();
     }
 
     @Test
     public void aerolineasArgentinas() {
-        logTestTitle("ICBC Store - Aerolíneas Argentinas - " + countryPar );
+        logTestTitle("ICBC Store - Aerolíneas Argentinas");
         checkOutPage = openAlmundoCart(cartId);
         paymentSection = checkOutPage.paymentSection();
 
@@ -175,13 +171,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         icbc_master_12 = checkOutPage.getTotalPrice();
 
         logger.info("********************************************************************************************************************************");
-        logger.info("----------------------------------------------------------------");
-        logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
-        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
-        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
-        logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
-        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
-        logger.info("----------------------------------------------------------------");
+        printItineraryData();
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
         softAssert.assertTrue(almundo_visa_1 == icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
@@ -212,7 +202,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     @Test
     public void airCanada() {
-        logTestTitle("ICBC Store - Air Canada - " + countryPar );
+        logTestTitle("ICBC Store - Air Canada - ");
         checkOutPage = openAlmundoCart(cartId);
         paymentSection = checkOutPage.paymentSection();
 
@@ -250,13 +240,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
-        logger.info("----------------------------------------------------------------");
-        logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
-        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
-        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
-        logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
-        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
-        logger.info("----------------------------------------------------------------");
+        logger.info("********************************************************************************************************************************");
+        printItineraryData();
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
         softAssert.assertTrue(almundo_visa_1 == icbc_visa_1, "VISA - 1 Cuota - Prices are not equal: Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
@@ -272,6 +257,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "]");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
         softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
+        logger.info("********************************************************************************************************************************");
 
         softAssert.assertAll();
     }
@@ -293,5 +279,15 @@ public class ICBCPriceCompare extends TestBaseSetup {
     private void selectCardAndBank(String creditCard, String bankName) {
         paymentSection.selectCreditCard(creditCard);
         paymentSection.selectBank(bankName);
+    }
+
+    private void printItineraryData() {
+        logger.info("--------------------------------------------------------------------------");
+        logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
+        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
+        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
+        logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
+        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
+        logger.info("--------------------------------------------------------------------------");
     }
 }
