@@ -122,11 +122,11 @@ public class BasePage extends TestBaseSetup {
         return this;
     }
 
-    public BasePage clicksTripsBtn() {
+    public TripsDataTrip clicksTripsBtn() {
         PageUtils.waitElementForClickable(driver, tripsIcon, 10, "Vuelos+Hotel button");
         logger.info("Clicking on Vuelos+Hotel button");
         tripsIcon.click();
-        return this;
+        return tripsDataTrip();
     }
 
     public PromoPage clickMainLeftBannerLnk() {

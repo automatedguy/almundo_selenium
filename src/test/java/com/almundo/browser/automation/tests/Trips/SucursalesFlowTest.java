@@ -46,8 +46,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         dataManagement.getTripsDataTripItinerary("domestic02_20days_2adults_1childs_1room");
 
-        basePage.tripsIcon.click();
-        tripsDataTrip = basePage.tripsDataTrip();
+        tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
@@ -71,4 +70,5 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "TripsCheckOutPageDomesticSucursal");
     }
+
 }

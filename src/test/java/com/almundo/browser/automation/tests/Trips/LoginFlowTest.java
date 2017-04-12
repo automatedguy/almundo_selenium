@@ -40,7 +40,7 @@ public class LoginFlowTest extends TestBaseSetup {
         JSONObject userData = dataManagement.getUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
-        basePage.clicksTripsBtn();
+        tripsDataTrip = basePage.clicksTripsBtn();
     }
 
     @AfterMethod
@@ -56,7 +56,6 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
 
-        tripsDataTrip = basePage.tripsDataTrip();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
@@ -89,7 +88,6 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.getTripsDataTripItinerary("domestic01_15days_2adults_1childs_1room");
 
-        tripsDataTrip = basePage.tripsDataTrip();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
