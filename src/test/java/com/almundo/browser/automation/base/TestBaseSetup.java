@@ -33,7 +33,6 @@ import java.net.URL;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 
-
 public class TestBaseSetup {
 
     public static Logger logger = Logger.getLogger(TestBaseSetup.class);
@@ -66,13 +65,13 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(SUC_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -116,6 +115,21 @@ public class TestBaseSetup {
                     break;
                 case "MEXICO":
                     baseURL = STAGING_URL.concat(".mx/");
+                    break;
+            }
+            landingEnabled = false;
+        }
+
+        if(baseURL.equals(SUC_URL)) {
+            switch (countryPar) {
+                case "ARGENTINA":
+                    baseURL = SUC_URL.concat(".ar/");
+                    break;
+                case "COLOMBIA":
+                    baseURL = SUC_URL.concat(".co/");
+                    break;
+                case "MEXICO":
+                    baseURL = SUC_URL.concat(".mx/");
                     break;
             }
             landingEnabled = false;

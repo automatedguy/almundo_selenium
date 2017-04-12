@@ -4,8 +4,6 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
@@ -17,7 +15,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -25,10 +23,11 @@ import static com.almundo.browser.automation.utils.Constants.*;
 
 public class FlowTest extends TestBaseSetup {
 
+    private DataManagement dataManagement = new DataManagement();
+    private TripsDataTrip tripsDataTrip = null;
     private TripsResultsPage tripsResultsPage = null;
     private TripsDetailPage tripsDetailPage = null;
-    private TripsDataTrip tripsDataTrip = null;
-    private DataManagement dataManagement = new DataManagement();
+    private CheckOutPageV3 checkOutPageV3 = null;
 
     @BeforeClass
     private void initItineraryData() {
@@ -73,29 +72,16 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
         dataManagement.getPassengerData("child_male_native");
 
-        if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-            replaceUrl();
-            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                                dataManagement.getPaymentData("1_visa_visa"),
-                                                dataManagement.getBillingData("local_Billing"),
-                                                dataManagement.getContactData("contact_cell_phone"),
-                                                "TripsCheckOutPageInternationalV3");
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
+                                            dataManagement.getPaymentData("1_visa_visa"),
+                                            dataManagement.getBillingData("local_Billing"),
+                                            dataManagement.getContactData("contact_cell_phone"),
+                                            "TripsCheckOutPageInternationalV3");
 
-            ConfirmationPageV3 confirmationPage = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPage.confirmationOk());
+        ConfirmationPageV3 confirmationPage = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());
 
-        } else {
-            CheckOutPage checkOutPage = tripsDetailPage.clickComprarBtn(FIRST_OPTION);
-            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_visa_visa"),
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_cell_phone"),
-                                              "TripsCheckOutPageInternational");
-
-            ConfirmationPage confirmationPage = checkOutPage.clickComprarBtn();
-            Assert.assertTrue(confirmationPage.confirmationOk());
-        }
     }
 
     @Test
@@ -121,21 +107,11 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("child_female_native");
 
-        if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-            replaceUrl();
-            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                                dataManagement.getPaymentData("1_amex_amex"),
-                                                dataManagement.getBillingData("local_Billing"),
-                                                dataManagement.getContactData("contact_cell_phone"),
-                                                "TripsCheckOutPageDomesticlV3");
-        } else {
-            CheckOutPage checkOutPage = tripsDetailPage.clickComprarBtn(FIRST_OPTION);
-            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_amex_amex"),
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_cell_phone"),
-                                              "TripsCheckOutPageDomestic");
-        }
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
+                                            dataManagement.getPaymentData("1_amex_amex"),
+                                            dataManagement.getBillingData("local_Billing"),
+                                            dataManagement.getContactData("contact_cell_phone"),
+                                            "TripsCheckOutPageDomesticlV3");
     }
 }
