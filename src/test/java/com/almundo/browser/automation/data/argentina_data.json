@@ -73,6 +73,16 @@
 				"rooms": 1
 			},
 
+		"miami_10days_2adults_1room": {
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 10,
+			"adults": 2,
+			"childs": 0,
+			"rooms": 1
+		},
+
 			"domestic01_15days_2adults_1room": {
 				"destinationAuto": "Bar",
 				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",

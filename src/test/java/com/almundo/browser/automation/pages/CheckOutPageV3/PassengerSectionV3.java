@@ -1,13 +1,16 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import com.almundo.browser.automation.utils.JsonRestReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -58,8 +61,10 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
     //############################################### Actions ###############################################
 
-    public PassengerSectionV3 populatePassengerSection(JSONArray passengerList){
+    public PassengerSectionV3 populatePassengerSection(JSONArray passengerList) throws IOException, ParseException {
         logger.info("------------- Filling Passenger Section -------------");
+        JsonRestReader inputDef = new JsonRestReader("http://apipr.almundo.it:8080/api/v3/cart/58f167aae4b0481e291d2690/input-definitions?site=ARG&language=es");
+
         JSONObject passengerInfo;
         setFirstNameList();
         setLastNameList();
@@ -68,32 +73,36 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         setBirthdayList();
         setGenderList();
         setNationalityList();
+
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
-            setFirstName(passengerIndex, passengerInfo.get("first_name").toString());
-            setlastName(passengerIndex, passengerInfo.get("last_name").toString());
+            if(inputDef.isRequired("passengers","first_name",passengerIndex)){
+            setFirstName(passengerIndex, passengerInfo.get("first_name").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "documentType0")) {
+            if(inputDef.isRequired("passengers","last_name",passengerIndex)){
+            setlastName(passengerIndex, passengerInfo.get("last_name").toString());}
+
+            if(inputDef.isRequired("passengers","type",passengerIndex)) {
                 setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "document_number")){
+            if(inputDef.isRequired("passengers","document",passengerIndex)){
                 setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "document_emisor")) {
+            if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
                 setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "document_expiration")) {
+            if(inputDef.isRequired("passengers","document_expiration",passengerIndex)) {
                 setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "birthday")) {
+            if(inputDef.isRequired("passengers","birthday",passengerIndex)) {
                 setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "gender")) {
+            if(inputDef.isRequired("passengers","gender",passengerIndex)) {
                 setGender(passengerIndex, passengerInfo.get("gender").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "nationality")) {
+            if(inputDef.isRequired("passengers","nationality",passengerIndex)) {
                 setNationality(passengerIndex, passengerInfo.get("nationality").toString());}
         }
         return this;

@@ -6,10 +6,13 @@ import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.IOException;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -78,8 +81,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject paymentData,
                                                JSONObject billingData,
                                                JSONObject contactData,
-                                               String productCheckOutPage)
-    {
+                                               String productCheckOutPage) throws IOException, ParseException {
         getCheckOutPageElements(productCheckOutPage);
         waitForCheckoutLoad();
         paymentSection().populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
@@ -97,8 +99,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject paymentData2,
                                                JSONObject billingData,
                                                JSONObject contactData,
-                                               String productCheckOutPage)
-    {
+                                               String productCheckOutPage) throws IOException, ParseException {
         getCheckOutPageElements(productCheckOutPage);
         paymentSection().populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
         paymentSection().populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);

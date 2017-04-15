@@ -9,11 +9,14 @@ import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 
@@ -51,11 +54,11 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void dom_Booking_Flow() {
+    public void dom_Booking_Flow() throws IOException, ParseException {
         logTestTitle("Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
         PageUtils.waitElementForVisibility(driver, basePage.hotelsIcon, 10, "Hoteles icon");
 
-        dataManagement.getHotelsDataTripItinerary("domestic01_15days_2adults_1room");
+        dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
