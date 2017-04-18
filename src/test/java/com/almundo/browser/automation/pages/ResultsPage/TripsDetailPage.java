@@ -28,6 +28,7 @@ public class TripsDetailPage extends TestBaseSetup {
     //############################################### Actions ##############################################
 
     public TripsDetailPage clickVerHabitacionBtn() {
+        logger.info("Detail URL: " + "[" + driver.getCurrentUrl() + "]");
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
         PageUtils.waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");
