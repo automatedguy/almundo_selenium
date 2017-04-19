@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static com.almundo.browser.automation.utils.Constants.Messages.*;
+import static com.almundo.browser.automation.utils.Constants.Messages.LISTADO_DE_SUCURSALES_LNK;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 
 /**
@@ -75,6 +76,16 @@ public class FlightsResultsPage extends TestBaseSetup {
         logger.info("Clicking on button: [Comprar]");
         comprarBtn.get(index).click();
         return initCheckOutPage();
+    }
+
+    public CheckOutPageV3 clickComprarV3Btn(int index) {
+        String cssSelectorName = ".flights-cluster-pricebox .button";
+        PageUtils.waitListContainResults(driver, cssSelectorName, 0);
+        List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
+        logger.info("Flight Rates Info: " + "[" + getPriceBoxInfo(index) + "]");
+        logger.info("Clicking on button: [Comprar]");
+        comprarBtn.get(index).click();
+        return initCheckOutPageV3();
     }
 
     public boolean vacancy(){

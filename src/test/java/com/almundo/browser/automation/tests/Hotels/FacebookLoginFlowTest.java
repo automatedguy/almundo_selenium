@@ -83,7 +83,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "HotelsCheckOutPageInternational");
     }
@@ -113,7 +113,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
+                                          dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_phone"),
                                           "HotelsCheckOutPageDomestic");
     }

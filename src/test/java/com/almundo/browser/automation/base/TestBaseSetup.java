@@ -339,24 +339,36 @@ public class TestBaseSetup {
         logger.info("---------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
-    public void replaceUrl(){
+    public void forceCheckoutV3(){
         try{
-            PageUtils.waitUrlContains(driver, 4, "checkout", "URL does not contain checkout");
+            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
         } catch(Exception time) {
-            String actualURL = driver.getCurrentUrl();
-            String newURL = actualURL.replace("cart", "checkout");
-            logger.info("new URL: " + newURL);
+            logger.info("Forcing to Checkout V3");
+            String newURL = driver.getCurrentUrl().replace("cart/v2", "checkout");
             driver.navigate().to(newURL);
         }
     }
 
-    public void replaceChkOutV2Url(){
+    public void forceCombosV3(){
         try{
-            PageUtils.waitUrlContains(driver, 10, "checkout", "URL does not contain checkout");
+            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+
+            logger.info("Forcing to Combos V3");
+            String currentUrl = driver.getCurrentUrl();
+
+            if(currentUrl.contains("sc=0")) {
+                logger.info("Replacing sc=0 with sc=1");
+                String newURL = currentUrl.replace("sc=0", "sc=1");
+                driver.navigate().to(newURL);
+            } else if(currentUrl.contains("sc=1")) {
+                logger.info("Nothing to replace, combos are displayed");
+            } else {
+                logger.info("Adding sc=1");
+                String newURL = currentUrl.concat("&sc=1");
+                driver.navigate().to(newURL);
+            }
         } catch(Exception time) {
-            String actualURL = driver.getCurrentUrl();
-            String newURL = actualURL.replace("cart/v2", "checkout");
-            driver.navigate().to(newURL);
+            time.printStackTrace();
         }
     }
 

@@ -100,11 +100,11 @@ public class BasePage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
-    public BasePage clickFlightsBtn() {
+    public FlightsDataTrip clickFlightsBtn() {
         PageUtils.waitElementForClickable(driver, flightsIcon, 10, "Vuelos button");
         logger.info("Clicking on Vuelos button");
         flightsIcon.click();
-        return this;
+        return flightsDataTrip();
     }
 
     public BasePage clickHotelsBtn() {
