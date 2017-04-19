@@ -67,6 +67,7 @@ public class HotelsResultsPage extends TestBaseSetup {
     }
 
     public boolean vacancy(){
+        logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         try {
             PageUtils.waitForNoVacancy(driver, By.cssSelector(".main-loader>am-alert>div>div:nth-of-type(2)"), 5, "[" + NO_DISPONIBILIDAD_MSG + "] message");
         } catch (Exception ex){
