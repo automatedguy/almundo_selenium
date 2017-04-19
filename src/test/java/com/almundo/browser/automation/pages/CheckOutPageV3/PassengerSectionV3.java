@@ -63,7 +63,7 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
     public PassengerSectionV3 populatePassengerSection(JSONArray passengerList) throws IOException, ParseException {
         logger.info("------------- Filling Passenger Section -------------");
-        JsonRestReader inputDef = new JsonRestReader("http://apipr.almundo.it:8080/api/v3/cart/58f167aae4b0481e291d2690/input-definitions?site=ARG&language=es");
+        JsonRestReader inputDef = new JsonRestReader("http://apipr.almundo.it:8080/api/v3/cart/58f7cb03e4b0481e291dd3b6/input-definitions?site=ARG&language=es");
 
         JSONObject passengerInfo;
         setFirstNameList();

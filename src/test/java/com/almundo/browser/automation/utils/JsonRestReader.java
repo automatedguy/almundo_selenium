@@ -26,14 +26,13 @@ public class JsonRestReader extends TestBaseSetup{
 
     public JsonRestReader(String URL) throws IOException, ParseException {
         url = URL;
-        createHttpRequest();
         getJsonObject();
         closeConnection();
     }
 
     private HttpGet createHttpRequest() throws IOException {
         HttpGet httpGetRequest = new HttpGet(url);
-        httpGetRequest.setHeader("X-Apikey", "581262206dae13c5c47b9af9");
+        httpGetRequest.setHeader("X-Apikey", "5512c8d59932b3da984cc7de");
         httpGetRequest.setHeader("Version", "v3");
         return httpGetRequest;
     }
