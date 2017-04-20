@@ -26,7 +26,6 @@ public class JsonRestReader extends TestBaseSetup{
 
     public JsonRestReader(String URL) throws IOException, ParseException {
         url = URL;
-        createHttpRequest();
         getJsonObject();
         closeConnection();
     }
