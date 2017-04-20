@@ -57,7 +57,9 @@ public class BillingSectionV3 extends CheckOutPageV3 {
 
     public BillingSectionV3 populateBillingSection(JSONObject billingData) {
         if (isElementRequiered(checkOutPageElements, "BillingInfoSection")) {
+
             logger.info("------------- Filling Billing Section -------------");
+
             if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
                 setBillingFiscalNameTxt(billingData.get("fiscal_name").toString());
             }
@@ -69,10 +71,20 @@ public class BillingSectionV3 extends CheckOutPageV3 {
             }
             setBillingFiscalDocumentTxt(billingData.get("billing_fiscal_document").toString());
             setBillingAddressTxt(billingData.get("billing_address").toString());
-            setAddressNumberTxt(billingData.get("address_number").toString());
-            setAddressFloorTxt(billingData.get("address_floor").toString());
-            setAddressDepartmentTxt(billingData.get("address_department").toString());
-            setAddressPostalCodeTxt(billingData.get("address_postal_code").toString());
+
+            if (isElementRequiered(checkOutPageElements, "address_number")){
+                setAddressNumberTxt(billingData.get("address_number").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "address_floor")) {
+                setAddressFloorTxt(billingData.get("address_floor").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "address_department")) {
+                setAddressDepartmentTxt(billingData.get("address_department").toString());
+            }
+            if (isElementRequiered(checkOutPageElements, "address_postal_code")) {
+                setAddressPostalCodeTxt(billingData.get("address_postal_code").toString());
+            }
+
             setAddressStateDdl(billingData.get("address_state").toString());
             setAddressCityTxt(billingData.get("address_city").toString());
         }

@@ -260,6 +260,20 @@
     },
 
     "payment":{
+            "random": {
+                "payment_qty" : "random",
+                "bank_name" :"random",
+                "credit_card_name" : "random",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
             "1_amex_amex": {
                 "payment_qty" : "1",
                 "bank_name" : "American Express",
@@ -285,6 +299,20 @@
                 "year_card_expire": "2018",
                 "security_code": "123",
                 "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "1_master_master": {
+                "payment_qty" : "1",
+                "bank_name" : "Mastercard",
+                "credit_card_name" : "Mastercard",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "Cédula de Ciudadanía",
                 "document_number": "29098766"
             },
 

@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
+
 /**
  * Created by gabrielcespedes on 20/12/16.
  */
@@ -22,12 +24,37 @@ public class CarsResultsPage extends TestBaseSetup {
 
     //############################################### Actions ###############################################
 
+    public void displayCarType(int index){
+        logger.info("Car Type: " + "[" + formatInfo(driver.findElement(By.cssSelector("article:nth-child(" + index + ") .epp-cl-1.epp-cl-1-2--ph.epp-cl-1-4--tb")).getText() + "]"));
+    }
+
+    public void displayAgency(int index){
+        logger.info("Agency: " + "[" + formatInfo(driver.findElement(By.cssSelector("article:nth-child(" + index + ") .agency.ng-scope.selected")).getText() + "]"));
+    }
+
+    public void displayCarInfo(int index){
+        logger.info("Car Info: " + "[" + formatInfo(driver.findElement(By.cssSelector("article:nth-child(" + index + ") .epp-cl-7-12--tb.ng-scope")).getText() + "]"));
+    }
+
+    public void displayCarRatesInfo(int index){
+        logger.info("Car Rates Info :" + "[" +  formatInfo(driver.findElement(By.cssSelector("article:nth-child(" + index + ") .price-box-ctn.epp-cl-1-4.epp-cl-1--ph.epp-cl-1--tb")).getText() + "]"));
+    }
+
+    public void displaySelectedCarInfo(int index){
+        displayCarType(index);
+        displayAgency(index);
+        displayCarInfo(index);
+        displayCarRatesInfo(index);
+    }
+
     public CheckOutPage clickReservarAhoraBtn(int index) {
+        logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         String cssSelectorName  = ".button.button--secondary.button--block.button--lg.crazy_week";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> detailCarsButtonResults = driver.findElements(By.cssSelector(cssSelectorName));
         PageUtils.waitElementForClickable(driver, detailCarsButtonResults.get(index), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
+        displaySelectedCarInfo(index + 3);
         detailCarsButtonResults.get(index).click();
         return initCheckOutPage();
     }

@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.utils.PageUtils;
 import junit.framework.Assert;
 import org.json.simple.JSONObject;
@@ -24,6 +25,9 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     private static WebElement paymentSelected = null;
     private static WebElement bankSelected = null;
 
+    private DataManagement dataManagement = new DataManagement();
+    JSONObject paymentDataObject = new JSONObject();
+
     //############################################### Locators ##############################################
 
     @FindBy(css = ".card-container-1")
@@ -35,17 +39,14 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "several-cards")
     public WebElement serveralCardsCbx;
 
-    //@FindBy(id = "cbo_credit_card")
-    @FindBy(id = "card-combo")
-    public Select cardComboDdl;
+    @FindBy(id = "cbo_credit_card")
+    private WebElement creditCardDdl;
 
-    //@FindBy(id = "cbo_financial_entity")
-    @FindBy(id = "banco-combo")
-    public Select bancoComboDdl;
+    @FindBy(id = "cbo_financial_entity")
+    public WebElement bankDdl;
 
-    //@FindBy(id = "cbo_installment")
-    @FindBy(id = "cuotas-combo")
-    public Select cuotasComboDdl;
+    @FindBy(id = "cbo_installment")
+    public WebElement paymentDdl;
 
     @FindBy(css = "credit-card-form > div > div > div > div:nth-child(3) > div > input")
     public WebElement card_holder;
@@ -74,11 +75,98 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     //############################################### Actions ###############################################
 
 
-    public PaymentSectionV3 populatePaymentSection(JSONObject paymentData, String container, String product) {
+    public PaymentSectionV3 populatePaymentSectionNew(String paymentData, String container) {
+
+        dataManagement.getPaymentList();
+
+        Select creditCardSelect = new Select(creditCardDdl);
+        Select bankSelect = new Select(bankDdl);
+        Select paymentSelect = new Select(paymentDdl);
+
         logger.info("------------- Selecting type of Payment "+ container + "-------------");
-        selectPayment(paymentData.get("payment_qty").toString(), container);
-        selectBank(paymentData.get("bank_name").toString(), container);
-        selectCreditCard(paymentData.get("credit_card_name").toString(), container);
+
+        if(paymentData.equals("random")) {
+            List<WebElement> availableCardsElements = creditCardSelect.getOptions();
+
+            for (WebElement availableCard : availableCardsElements) {
+                if (availableCard.getText().equals("Visa")) {
+                    selectCreditCardCombo(creditCardSelect, "Visa");
+                    paymentDataObject = dataManagement.getPaymentData("1_visa_visa");
+                    break;
+                } else if (availableCard.getText().equals("Mastercard")) {
+                    selectCreditCardCombo(creditCardSelect, "Mastercard");
+                    paymentDataObject = dataManagement.getPaymentData("1_master_master");
+                    break;
+                } else if (availableCard.getText().equals("American Express")) {
+                    selectCreditCardCombo(creditCardSelect, "American Express");
+                    paymentDataObject = dataManagement.getPaymentData("1_amex_amex");
+                    break;
+                }
+            }
+
+
+        } else {
+            paymentDataObject = dataManagement.getPaymentData(paymentData);
+
+            selectCreditCardCombo(creditCardSelect, paymentDataObject.get("credit_card_name").toString());
+        }
+
+        selectBankCombo(bankSelect);
+        selectPaymentCombo(paymentSelect);
+
+        logger.info("------------- Filling Payment Section -------------");
+        setCardNumber(paymentDataObject.get("card_number").toString(), container);
+        setCardHolder(paymentDataObject.get("card_holder").toString(), container);
+        selectMonthCardExpiration(paymentDataObject.get("month_card_expire").toString(), container);
+        selectYearCardExpiration(paymentDataObject.get("year_card_expire").toString(), container);
+        setSecurityCode(paymentDataObject.get("security_code").toString(), container);
+        if(isElementRequiered(checkOutPageElements, "documentType")) {
+            selectDocumentType(paymentDataObject.get("documentType").toString(), container);
+        }
+        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
+            setDocumentNumber(paymentDataObject.get("document_number").toString(), container);
+        }
+        return this;
+    }
+
+    public PaymentSectionV3 populatePaymentSection(JSONObject paymentData, String container) {
+
+        dataManagement.getPaymentList();
+
+        Select creditCardSelect = new Select(creditCardDdl);
+        Select bankSelect = new Select(bankDdl);
+        Select paymentSelect = new Select(paymentDdl);
+
+        logger.info("------------- Selecting type of Payment "+ container + "-------------");
+
+        if(paymentData.toString().contains("random")) {
+            List<WebElement> availableCardsElements = creditCardSelect.getOptions();
+
+            for (WebElement availableCard : availableCardsElements) {
+                if (availableCard.getText().equals("Visa")) {
+                    selectCreditCardCombo(creditCardSelect, "Visa");
+                    paymentData = dataManagement.getPaymentData("1_visa_visa");
+                    break;
+                } else if (availableCard.getText().equals("Mastercard")) {
+                    selectCreditCardCombo(creditCardSelect, "Mastercard");
+                    paymentData = dataManagement.getPaymentData("1_master_master");
+                    break;
+                } else if (availableCard.getText().equals("American Express")) {
+                    selectCreditCardCombo(creditCardSelect, "American Express");
+                    paymentData = dataManagement.getPaymentData("1_amex_amex");
+                    break;
+                }
+            }
+
+            selectBankCombo(bankSelect);
+            selectPaymentCombo(paymentSelect);
+        } else {
+            selectPayment(paymentData.get("payment_qty").toString(), container);
+            selectBank(paymentData.get("bank_name").toString(), container);
+            selectCreditCard(paymentData.get("credit_card_name").toString(), container);
+
+        }
+
         logger.info("------------- Filling Payment Section -------------");
         setCardNumber(paymentData.get("card_number").toString(), container);
         setCardHolder(paymentData.get("card_holder").toString(), container);
@@ -128,6 +216,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
             if (results.get(i).getAttribute("alt").equals(bankName)) {
                 logger.info("Selecting Bank: [" + bankName + "]");
                 PageUtils.scrollToElement(driver, results.get(i));
+                PageUtils.waitImplicitly(1000);
                 results.get(i).click();
                 isBankSelected = true;
                 bankSelected = banks.get(i);
@@ -152,42 +241,30 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         }
     }
 
-    public void selectCreditCardNew(String cardName, String container) {
-        if(cardName!=null) {
-            logger.info("Selecting Credit Card: [" + cardName + "]");
-            cardComboDdl.selectByVisibleText(cardName);
-
-        } else {
-            int random = new Random().nextInt(cardComboDdl.getOptions().size());
-            cardComboDdl.selectByIndex(random);
-            logger.info("Selecting Credit Card: [" + cardComboDdl.getFirstSelectedOption().getText() + "]");
-        }
+    public void selectCreditCardCombo(Select creditCardSelect, String cardName) {
+        logger.info("Selecting Card: [" + cardName + "]");
+        creditCardSelect.selectByVisibleText(cardName);
     }
 
-    public void selectPaymentNew(String paymentNumber, String container) {
-        if(paymentNumber!=null) {
-            logger.info("Selecting Payment: [" + paymentNumber + "]");
-            cuotasComboDdl.selectByVisibleText(paymentNumber);
+    public void selectBankCombo(Select bankSelect) {
+        int random=0;
+        do{
+            random = new Random().nextInt(bankSelect.getOptions().size());
+        } while(bankSelect.getOptions().size()!= 1 && random==0);
 
-        } else {
-            int random = new Random().nextInt(cuotasComboDdl.getOptions().size());
-            cuotasComboDdl.selectByIndex(random);
-            logger.info("Selecting Payment: [" + cuotasComboDdl.getFirstSelectedOption().getText() + "]");
-        }
+        logger.info("Selecting Bank: [" + bankSelect.getOptions().get(random).getText() + "]");
+        bankSelect.selectByIndex(random);
     }
 
-    public void selectBankNew(String bankName, String container) {
-        if(bankName!=null) {
-            bancoComboDdl.selectByVisibleText(bankName);
-            logger.info("Selecting Bank: [" + bankName + "]");
-        } else {
-            int random = new Random().nextInt(bancoComboDdl.getOptions().size());
-            bancoComboDdl.selectByIndex(random);
-            logger.info("Selecting Bank: [" + bancoComboDdl.getFirstSelectedOption().getText() + "]");
-        }
+    public void selectPaymentCombo(Select paymentSelect) {
+        int random=0;
+        do{
+            random = new Random().nextInt(paymentSelect.getOptions().size());
+        } while(paymentSelect.getOptions().size()!= 1 && random==0);
+
+        logger.info("Selecting Payment: [" + paymentSelect.getOptions().get(random).getText() + "]");
+        paymentSelect.selectByIndex(random);
     }
-
-
 
     public void setCardNumber(String cardNumber, String container) {
         WebElement cardNumberField = driver.findElement(By.cssSelector(container + " #credit_card_number"));

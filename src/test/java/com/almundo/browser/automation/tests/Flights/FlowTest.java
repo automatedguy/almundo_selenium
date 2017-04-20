@@ -4,8 +4,8 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -14,8 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.*;
-
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.*;
 
 
@@ -26,8 +25,8 @@ import static com.almundo.browser.automation.utils.Constants.FlightType.*;
 public class FlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
-    private CheckOutPage checkOutPage = null;
-    private ConfirmationPage confirmationPage = null;
+    private CheckOutPageV3 checkOutPageV3 = null;
+    private ConfirmationPageV3 confirmationPageV3 = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -41,7 +40,7 @@ public class FlowTest extends TestBaseSetup {
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
-        basePage.clickFlightsBtn();
+        flightsDataTrip = basePage.clickFlightsBtn();
     }
 
     @AfterMethod
@@ -57,7 +56,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
 
-        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ONE_WAY.toString());
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -69,18 +67,21 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
-        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("child_male_native");
         dataManagement.getPassengerData("child_male_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "FlightsCheckOutPageInternational");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                                              "1_visa_visa",
+                                               dataManagement.getBillingData("local_Billing"),
+                                               dataManagement.getContactData("contact_cell_phone"),
+                                              "FlightsCheckOutPageInternational");
     }
 
     @Test
@@ -89,7 +90,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getOneWayDataTripItinerary("domestic_20days_2adults_todas");
 
-        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ONE_WAY.toString());
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -101,16 +101,19 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
-        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_phone"),
-                                          "FlightsCheckOutPageDomestic");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                                              "random",
+                                               dataManagement.getBillingData("local_Billing"),
+                                               dataManagement.getContactData("contact_phone"),
+                                              "FlightsCheckOutPageDomestic");
     }
 
     @Test
@@ -119,7 +122,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
-        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP.toString());
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -133,21 +135,24 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
-        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("child_male_native");
         dataManagement.getPassengerData("child_male_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_visa_visa"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "FlightsCheckOutPageInternational");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
 
-        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                                              "random",
+                                               dataManagement.getBillingData("local_Billing"),
+                                               dataManagement.getContactData("contact_cell_phone"),
+                                              "FlightsCheckOutPageInternational");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
 
     @Test
@@ -156,7 +161,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getRoundTripDataTripItinerary("domestic_20days_2adults_todas");
 
-        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP.toString());
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -170,16 +174,19 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
-        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_phone"),
-                                          "FlightsCheckOutPageDomestic");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                                              "random",
+                                               dataManagement.getBillingData("local_Billing"),
+                                               dataManagement.getContactData("contact_phone"),
+                                              "FlightsCheckOutPageDomestic");
     }
 
     @Test
@@ -189,7 +196,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getMultiDestDataTripItinerary("multiDest_3Flights_2adults_todas");
 
-        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(MULTIDESTINATION.toString());
         flightsDataTrip.clickAddLegLnk();
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
@@ -207,18 +213,19 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-
         flightsResultsPage.displayMultidestinationInfo(TRANSFERS);
-        
-        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "FlightsCheckOutPageInternational");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                                              "random",
+                                               dataManagement.getBillingData("local_Billing"),
+                                               dataManagement.getContactData("contact_cell_phone"),
+                                              "FlightsCheckOutPageInternational");
     }
 }

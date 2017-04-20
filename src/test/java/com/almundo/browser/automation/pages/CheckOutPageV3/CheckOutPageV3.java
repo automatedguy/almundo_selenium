@@ -84,7 +84,25 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                String productCheckOutPage) throws IOException, ParseException {
         getCheckOutPageElements(productCheckOutPage);
         waitForCheckoutLoad();
-        paymentSection().populatePaymentSection(paymentData, ".card-container-1", productCheckOutPage);
+        paymentSection().populatePaymentSection(paymentData, ".card-container-1");
+        passengerSection().populatePassengerSection(passengerList);
+        //TODO: Refactor for Cars (when migrated to checkout V3)
+        //pickUpLocationSection().populatePickUpLocationSection();
+        billingSection().populateBillingSection(billingData);
+        contactSection().populateContactSection(contactData);
+        acceptConditions();
+        return this;
+    }
+
+    public CheckOutPageV3 populateCheckOutPageNew(JSONArray passengerList,
+                                               String paymentData,
+                                               JSONObject billingData,
+                                               JSONObject contactData,
+                                               String productCheckOutPage)
+    {
+        getCheckOutPageElements(productCheckOutPage);
+        waitForCheckoutLoad();
+        paymentSection().populatePaymentSectionNew(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -101,8 +119,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject contactData,
                                                String productCheckOutPage) throws IOException, ParseException {
         getCheckOutPageElements(productCheckOutPage);
-        paymentSection().populatePaymentSection(paymentData1, ".card-container-1", productCheckOutPage);
-        paymentSection().populatePaymentSection(paymentData2, ".card-container-2", productCheckOutPage);
+        paymentSection().populatePaymentSection(paymentData1, ".card-container-1");
+        paymentSection().populatePaymentSection(paymentData2, ".card-container-2");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();

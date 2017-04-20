@@ -23,10 +23,10 @@ public class FooterSectionV3 extends CheckOutPage {
     @FindBy(id = "accept")
     private WebElement readCbx;
 
-    @FindBy(id = "accepted")
+    @FindBy(id = "acceptItinerary")
     private WebElement acceptedCbx;
 
-    @FindBy(id = ".button.button--secondary.button--md")
+    @FindBy(css = ".error-modal .accept-button")
     private WebElement confirmar;
 
     //############################################### Actions ##############################################
@@ -38,7 +38,7 @@ public class FooterSectionV3 extends CheckOutPage {
     }
 
     public FooterSectionV3 acceptItinerary() {
-        logger.info("Checking Itinerary Check Box...");
+        logger.info("Checking Accept Itinerary Check Box...");
         acceptedCbx.click();
         return this;
     }

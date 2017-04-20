@@ -271,6 +271,20 @@
 	},
 
 	"payment":{
+			"random": {
+				"payment_qty" : "random",
+				"bank_name" :"random",
+				"credit_card_name" : "random",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "4242424242424242",
+				"card_expire": "12/18",
+				"month_card_expire": "12",
+				"year_card_expire": "2022",
+				"security_code": "1234",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
 			"1_amex_amex": {
 				"payment_qty" : "1",
 				"bank_name" : "American Express",
@@ -364,21 +378,7 @@
 
 	"billings": {
 			"local_Billing": {
-				"fiscal_name":"",
-				"billing_fiscal_type":"",
-				"billing_document_type":"",
-				"billing_fiscal_document": "23281685589",
-				"billing_address": "Carlos Pellegrini",
-				"address_number": 887,
-				"address_floor": 8,
-				"address_department": "A",
-				"address_postal_code": "C1009ABQ",
-				"address_state": "Buenos Aires",
-				"address_city": "C.A.B.A."
-			},
-
-			"local_Billing_v2": {
-				"fiscal_name":"Sarasa and Automation Inc. & Associates",
+				"fiscal_name":"Automation & Sarasa Associates Inc.",
 				"billing_fiscal_type":"",
 				"billing_document_type":"",
 				"billing_fiscal_document": "23281685589",

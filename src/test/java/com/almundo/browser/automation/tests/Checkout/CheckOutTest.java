@@ -50,7 +50,7 @@ public class CheckOutTest extends TestBaseSetup {
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                 dataManagement.getPaymentData("1_visa_visa"),
-                dataManagement.getBillingData("local_Billing_v2"),
+                dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_phone"),
                 "FlightsCheckOutPageInternational");
                 confirmationPage = checkOutPage.clickComprarBtn();

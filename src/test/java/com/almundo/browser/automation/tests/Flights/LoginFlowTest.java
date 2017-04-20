@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -22,7 +22,7 @@ import static com.almundo.browser.automation.utils.Constants.*;
 public class LoginFlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
-    private CheckOutPage checkOutPage = null;
+    private CheckOutPageV3 checkOutPageV3 = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -67,18 +67,21 @@ public class LoginFlowTest extends TestBaseSetup {
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
-        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("child_male_native");
         dataManagement.getPassengerData("child_male_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "FlightsCheckOutPageInternational");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                                              "random",
+                                               dataManagement.getBillingData("local_Billing"),
+                                               dataManagement.getContactData("contact_cell_phone"),
+                                              "FlightsCheckOutPageInternational");
     }
 
     @Test
@@ -100,15 +103,18 @@ public class LoginFlowTest extends TestBaseSetup {
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_phone"),
-                                          "FlightsCheckOutPageDomestic");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                                              "random",
+                                               dataManagement.getBillingData("local_Billing"),
+                                               dataManagement.getContactData("contact_phone"),
+                                              "FlightsCheckOutPageDomestic");
     }
 }
