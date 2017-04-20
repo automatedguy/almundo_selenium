@@ -24,31 +24,14 @@ public class JsonRestReader extends TestBaseSetup{
     private String url = null;
     private JSONObject jsonObject;
 
-    public JsonRestReader(String URL) throws IOException, ParseException {
+    public JsonRestReader (String URL) throws IOException, ParseException {
         url = URL;
         getJsonObject();
         closeConnection();
     }
 
-    private HttpGet createHttpRequest() throws IOException {
-        HttpGet httpGetRequest = new HttpGet(url);
-        httpGetRequest.setHeader("X-Apikey", "581262206dae13c5c47b9af9");
-        httpGetRequest.setHeader("Version", "v3");
-        return httpGetRequest;
-    }
-
-    private void closeConnection() {
-        httpClient.getConnectionManager().shutdown();
-    }
-
-    private HttpResponse getHttpResponse() throws IOException {
-        HttpResponse httpResponse = httpClient.execute(createHttpRequest());
-        displayStatusCode(httpResponse.getStatusLine().toString());
-        return httpResponse;
-    }
-
-    private void displayStatusCode(String statusCode) {
-        logger.info("HTTP Response Status Code: " + statusCode);
+    private void getJsonObject() throws IOException, ParseException {
+        jsonObject = new JSONObject(parseHttpResponse(getHttpResponse()));
     }
 
     private JSONObject parseHttpResponse(HttpResponse httpResponse) throws IOException, ParseException {
@@ -60,11 +43,28 @@ public class JsonRestReader extends TestBaseSetup{
         return jsonObject;
     }
 
-    private void getJsonObject() throws IOException, ParseException {
-        jsonObject = new JSONObject(parseHttpResponse(getHttpResponse()));
+    private HttpResponse getHttpResponse() throws IOException {
+        HttpResponse httpResponse = httpClient.execute(createHttpRequest());
+        displayStatusCode(httpResponse.getStatusLine().toString());
+        return httpResponse;
     }
 
-    public boolean isRequired(String section, String field, int index) throws IOException, ParseException {
+    private HttpGet createHttpRequest() throws IOException {
+        HttpGet httpGetRequest = new HttpGet(url);
+        httpGetRequest.setHeader("X-Apikey", "5512c8d59932b3da984cc7de");
+        httpGetRequest.setHeader("Version", "v3");
+        return httpGetRequest;
+    }
+
+    private void displayStatusCode(String statusCode) {
+        logger.info("HTTP Response Status Code: " + statusCode);
+    }
+
+    private void closeConnection() {
+        httpClient.getConnectionManager().shutdown();
+    }
+
+    public boolean isRequired(String section, String field, int index) {
         boolean isRequired;
         JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
         JSONObject jsonObjectSection = new JSONObject((Map) jsonArraySection.get(index));

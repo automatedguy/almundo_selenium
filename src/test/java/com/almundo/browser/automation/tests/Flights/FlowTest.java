@@ -74,10 +74,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-
-        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                                               "1_visa_visa",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
@@ -106,10 +103,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_foreign");
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-
-        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                                               "random",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
@@ -142,10 +136,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-
-        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                                               "random",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
@@ -179,10 +170,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_foreign");
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-
-        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                                               "random",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
@@ -219,10 +207,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_native");
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-
-        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                                               "random",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),

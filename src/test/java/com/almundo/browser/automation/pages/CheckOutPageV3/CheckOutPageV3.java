@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.PickUpLocationSection;
 import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.JsonRestReader;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,6 +15,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
 
+import static com.almundo.browser.automation.utils.Constants.*;
+
 /**
  * Created by gabrielcespedes on 04/11/16.
  */
@@ -22,6 +25,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public CheckOutPageV3(WebDriver driver) { super.driver = driver; }
 
     public static JSONObject checkOutPageElements = null;
+    public JsonRestReader inputDef = null;
 
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
@@ -81,9 +85,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject paymentData,
                                                JSONObject billingData,
                                                JSONObject contactData,
-                                               String productCheckOutPage) throws IOException, ParseException {
+                                               String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
-        waitForCheckoutLoad();
+        getCartId();
         paymentSection().populatePaymentSection(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
@@ -94,14 +98,23 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPageV3 populateCheckOutPageNew(JSONArray passengerList,
-                                               String paymentData,
-                                               JSONObject billingData,
-                                               JSONObject contactData,
-                                               String productCheckOutPage)
-    {
+    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
+                                                 String paymentData,
+                                                 JSONObject billingData,
+                                                 JSONObject contactData,
+                                                 String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
-        waitForCheckoutLoad();
+        forceCheckoutV3();
+        forceCombosV3();
+
+        try {
+            inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         paymentSection().populatePaymentSectionNew(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
@@ -117,7 +130,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                JSONObject paymentData2,
                                                JSONObject billingData,
                                                JSONObject contactData,
-                                               String productCheckOutPage) throws IOException, ParseException {
+                                               String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
         paymentSection().populatePaymentSection(paymentData1, ".card-container-1");
         paymentSection().populatePaymentSection(paymentData2, ".card-container-2");
@@ -130,9 +143,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    public void waitForCheckoutLoad(){
+    public String getCartId(){
         PageUtils.waitElementForVisibility(driver, By.id("first_name"), 45, "Checkout V3");
-        logger.info("Checkout URL: " + "[" + driver.getCurrentUrl() + "]");
+        String currentUrl = driver.getCurrentUrl();
+
+        logger.info("Checkout URL: " + "[" + currentUrl + "]");
+        String cartId = currentUrl.substring(currentUrl.indexOf("checkout/") + 9, currentUrl.lastIndexOf("checkout/") + 33);
+        return cartId;
     }
 
     private CheckOutPageV3 acceptConditions(){

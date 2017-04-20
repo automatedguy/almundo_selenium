@@ -1,16 +1,13 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.JsonRestReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -61,9 +58,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
     //############################################### Actions ###############################################
 
-    public PassengerSectionV3 populatePassengerSection(JSONArray passengerList) throws IOException, ParseException {
+    public PassengerSectionV3 populatePassengerSection(JSONArray passengerList) {
         logger.info("------------- Filling Passenger Section -------------");
-        JsonRestReader inputDef = new JsonRestReader("http://apipr.almundo.it:8080/api/v3/cart/58f167aae4b0481e291d2690/input-definitions?site=ARG&language=es");
+        //JsonRestReader inputDef = new JsonRestReader("http://apipr.almundo.it:8080/api/v3/cart/58f167aae4b0481e291d2690/input-definitions?site=ARG&language=es");
 
         JSONObject passengerInfo;
         setFirstNameList();
