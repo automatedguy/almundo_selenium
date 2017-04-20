@@ -88,7 +88,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_18 = checkOutPage.getTotalPrice();
 
-        logger.info("********************************************************************************************************************************");
+        logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
@@ -109,7 +109,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("MASTERCARD - 18 Cuotas - Almundo: [" + almundo_master_18  + "] -----> No se está seleccionando un banco en este caso");
         logger.info("MASTERCARD - 18 Cuotas - ICBC   : [" + icbc_master_18  + "]" + "\n");
         softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: Almundo [" + almundo_master_18 + "] - ICBC [" + icbc_master_18 + "]");
-        logger.info("********************************************************************************************************************************");
+        logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
         softAssert.assertAll();
     }
@@ -170,7 +170,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
-        logger.info("********************************************************************************************************************************");
+        logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
@@ -195,7 +195,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "] -----> No se está seleccionando un banco en este caso");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
         softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
-        logger.info("********************************************************************************************************************************");
+        logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
         
         softAssert.assertAll();
     }
@@ -240,7 +240,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
-        logger.info("********************************************************************************************************************************");
+        logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
         logger.info("VISA - 1 Cuota - Almundo: [" + almundo_visa_1 + "]");
         logger.info("VISA - 1 Cuota - ICBC   : [" + icbc_visa_1 + "]" + "\n");
@@ -257,7 +257,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("MASTERCARD - 12 Cuotas - Almundo: [" + almundo_master_12 + "]");
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
         softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
-        logger.info("********************************************************************************************************************************");
+        logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
         softAssert.assertAll();
     }
