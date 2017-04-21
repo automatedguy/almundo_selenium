@@ -65,7 +65,7 @@ public class DataManagement extends TestBaseSetup {
     public void getFlightsItineraryData(){
         getFlightsDataTripList();
         getPassengersList();
-        //getPaymentList();
+        getPaymentList();
         getBillingList();
         getContactList();
     }
