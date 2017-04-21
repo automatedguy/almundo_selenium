@@ -39,46 +39,59 @@ public class ContactSectionV3 extends CheckOutPageV3 {
 
     public ContactSectionV3 populateContactSection(JSONObject contactData) {
         logger.info("------------- Filling Contact Section -------------");
-        setEmail(contactData.get("email").toString());
-        setRepEmail(contactData.get("rep_email").toString());
-        selectPhoneType(contactData.get("tel").toString());
-        setCountryCode(contactData.get("country_code").toString());
-        setAreaCode(contactData.get("area").toString());
-        setPhoneNumber(contactData.get("phone_number").toString());
+
+        if(inputDef.isRequired("contacts","email",0)){
+            setEmail(contactData.get("email").toString());}
+
+        if(inputDef.isRequired("contacts","email",0)){
+            setRepEmail(contactData.get("rep_email").toString());}
+
+        if(inputDef.isRequired("contacts", "telephones", "telephone_type",0)){
+            setPhoneType(contactData.get("tel").toString());}
+
+        if(inputDef.isRequired("contacts", "telephones", "country_code",0)){
+            setCountryCode(contactData.get("country_code").toString());}
+
+        if(inputDef.isRequired("contacts", "telephones", "area_code",0)){
+            setAreaCode(contactData.get("area").toString());}
+
+        if(inputDef.isRequired("contacts", "telephones", "number",0)){
+            setPhoneNumber(contactData.get("phone_number").toString());}
+
         return this;
     }
 
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         logger.info("Entering Email: [" + email + "]");
         emailTxt.clear();
         emailTxt.sendKeys(email);
     }
 
-    public void setRepEmail(String repEmail) {
+    private void setRepEmail(String repEmail) {
         logger.info("Entering Repetí tu email: [" + repEmail + "]");
         repEmailTxt.clear();
         repEmailTxt.sendKeys(repEmail);
     }
 
-    public void selectPhoneType(String phoneType) {
+    private void setPhoneType(String phoneType) {
         logger.info("Selecting Teléfono: [" + phoneType + "]");
         Select selectPhoneType = new Select (phoneTypeDdl);
         selectPhoneType.selectByVisibleText(phoneType);
     }
 
-    public void setCountryCode(String countryCode) {
+    private void setCountryCode(String countryCode) {
         logger.info("Entering Código de país: [" + countryCode + "]");
         countryCodeTxt.clear();
         countryCodeTxt.sendKeys(countryCode);
     }
 
-    public void setAreaCode(String areaCode) {
+    private void setAreaCode(String areaCode) {
         logger.info("Selecting Cód. Area: [" + areaCode + "]");
         areaCodeTxt.clear();
         areaCodeTxt.sendKeys(areaCode);
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    private void setPhoneNumber(String phoneNumber) {
         logger.info("Entering Número de Teléfono: [" + phoneNumber + "]");
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);

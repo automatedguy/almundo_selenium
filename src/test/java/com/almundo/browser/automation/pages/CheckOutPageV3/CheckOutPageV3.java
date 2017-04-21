@@ -25,7 +25,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public CheckOutPageV3(WebDriver driver) { super.driver = driver; }
 
     public static JSONObject checkOutPageElements = null;
-    public JsonRestReader inputDef = null;
+    public static JsonRestReader inputDef = null;
 
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
@@ -115,7 +115,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             e.printStackTrace();
         }
 
-        paymentSection().populatePaymentSectionNew(paymentData, ".card-container-1");
+        paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();

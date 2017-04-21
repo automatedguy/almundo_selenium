@@ -23,11 +23,11 @@ public class BillingSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "fiscal_name")
     private WebElement fiscalNameTxt;
 
-    @FindBy(css = "billing-form > div > div:nth-child(2) > div.schema-form-section.col-12-xs.col-12-sm.col-3-md > div > select")
+    @FindBy(id = "fiscal_type")
     private WebElement billingFiscalTypeDdl;
 
-    @FindBy(css = "billing-form > div > div:nth-child(2) > div.schema-form-section.col-12-xs.col-12-sm.col-4-md > div > select")
-    private WebElement billingDocumentType;
+    @FindBy(id = "document_type")
+    private WebElement billingDocumentTypeDdl;
 
     @FindBy(id = "fiscal_document")
     private WebElement billingFiscalDocumentTxt;
@@ -60,108 +60,122 @@ public class BillingSectionV3 extends CheckOutPageV3 {
 
             logger.info("------------- Filling Billing Section -------------");
 
-            if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
-                setBillingFiscalNameTxt(billingData.get("fiscal_name").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
-                selectBillingFiscalType(billingData.get("billing_fiscal_type").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "billing_document_type")){
-                selectBillingDocumentType(billingData.get("billing_document_type").toString());
-            }
-            setBillingFiscalDocumentTxt(billingData.get("billing_fiscal_document").toString());
-            setBillingAddressTxt(billingData.get("billing_address").toString());
+            if(inputDef.isRequired("billings","fiscal_name",0)){
+                setBillingFiscalName(billingData.get("fiscal_name").toString());}
 
-            if (isElementRequiered(checkOutPageElements, "address_number")){
-                setAddressNumberTxt(billingData.get("address_number").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "address_floor")) {
-                setAddressFloorTxt(billingData.get("address_floor").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "address_department")) {
-                setAddressDepartmentTxt(billingData.get("address_department").toString());
-            }
-            if (isElementRequiered(checkOutPageElements, "address_postal_code")) {
-                setAddressPostalCodeTxt(billingData.get("address_postal_code").toString());
-            }
+            if(inputDef.isRequired("billings","fiscal_type",0)){
+                setBillingFiscalType(billingData.get("billing_fiscal_type").toString());}
 
-            setAddressStateDdl(billingData.get("address_state").toString());
-            setAddressCityTxt(billingData.get("address_city").toString());
+            if(inputDef.isRequired("billings","document_type",0)){
+                setBillingDocumentType(billingData.get("billing_document_type").toString());}
+
+            if(inputDef.isRequired("billings","fiscal_document",0)){
+                setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());}
+
+            if(inputDef.isRequired("billings", "address", "street")){
+                setBillingAddress(billingData.get("billing_address").toString());}
+
+            if(inputDef.isRequired("billings", "address","number")){
+                setAddressNumber(billingData.get("address_number").toString());}
+
+            if(inputDef.isRequired("billings", "address","floor")){
+                setAddressFloor(billingData.get("address_floor").toString());}
+
+            if(inputDef.isRequired("billings", "address","department")){
+                setAddressDepartment(billingData.get("address_department").toString());}
+
+            if(inputDef.isRequired("billings", "address","postal_code")){
+                setAddressPostalCode(billingData.get("address_postal_code").toString());}
+
+            if(inputDef.isRequired("billings", "address","states")){
+                setAddressState(billingData.get("address_state").toString());}
+
+            if(inputDef.isRequired("billings", "address","city")){
+                setAddressCity(billingData.get("address_city").toString());}
         }
         return this;
     }
 
-    public BillingSectionV3 setBillingFiscalNameTxt(String billingFiscalName) {
+
+    private BillingSectionV3 setBillingFiscalName(String billingFiscalName) {
         logger.info("Entering Nombre o Razón Social: [" + billingFiscalName + "]");
         fiscalNameTxt.clear();
         fiscalNameTxt.sendKeys(billingFiscalName);
         return this;
     }
 
-    public BillingSectionV3 selectBillingFiscalType(String billingFiscalType) {
-        logger.info("Selecting Situación: [" + billingFiscalType + "]");
-        Select situacionFiscalSelect = new Select(this.billingFiscalTypeDdl);
-        situacionFiscalSelect.selectByVisibleText(billingFiscalType);
+    private BillingSectionV3 setBillingFiscalType(String billingFiscalType) {
+        if(billingFiscalTypeDdl.isEnabled()) {
+            logger.info("Selecting Situación Fiscal: [" + billingFiscalType + "]");
+            Select situacionFiscalSelect = new Select(this.billingFiscalTypeDdl);
+            situacionFiscalSelect.selectByVisibleText(billingFiscalType);
+        } else {
+            logger.info("Situación Fiscal is disabled by default: [" + billingFiscalTypeDdl.getText() + "]");
+        }
         return this;
     }
 
-    public BillingSectionV3 selectBillingDocumentType(String billingDocumentType){
-        logger.info("Selecting Tipo de Documento: [" + billingDocumentType + "]");
-        Select tipoDeDocumento = new Select(this.billingDocumentType);
-        tipoDeDocumento.selectByVisibleText(billingDocumentType);
+    private BillingSectionV3 setBillingDocumentType(String billingDocumentType){
+        if(billingDocumentTypeDdl.isEnabled()) {
+            logger.info("Selecting Tipo de Documento: [" + billingDocumentType + "]");
+            Select tipoDeDocumento = new Select(this.billingDocumentTypeDdl);
+            tipoDeDocumento.selectByVisibleText(billingDocumentType);
+        } else {
+            logger.info("Tipo de Documento is disabled by default: [" + billingDocumentTypeDdl.getText() + "]");
+        }
         return this;
     }
 
-    public BillingSectionV3 setBillingFiscalDocumentTxt(String cuil) {
+    private BillingSectionV3 setBillingFiscalDocument(String cuil) {
         logger.info("Entering CUIL/CUIT: [" + cuil + "]");
         this.billingFiscalDocumentTxt.clear();
         this.billingFiscalDocumentTxt.sendKeys(cuil);
         return this;
     }
 
-    public BillingSectionV3 setBillingAddressTxt(String billingAddress) {
+    private BillingSectionV3 setBillingAddress(String billingAddress) {
         logger.info("Entering Domicilio: [" + billingAddress + "]");
         this.billingAddressTxt.clear();
         this.billingAddressTxt.sendKeys(billingAddress);
         return this;
     }
 
-    public BillingSectionV3 setAddressNumberTxt(String addressNumber) {
+    private BillingSectionV3 setAddressNumber(String addressNumber) {
         logger.info("Entering Número: [" + addressNumber + "]");
         List<WebElement> addressNumberList = driver.findElements(By.id("number"));
         addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumber);
         return this;
     }
 
-    public BillingSectionV3 setAddressFloorTxt(String addressFloor) {
+    private BillingSectionV3 setAddressFloor(String addressFloor) {
         logger.info("Entering Piso: [" + addressFloor + "]");
         this.addressFloorTxt.clear();
         this.addressFloorTxt.sendKeys(addressFloor);
         return this;
     }
 
-    public BillingSectionV3 setAddressDepartmentTxt(String addressDepartment) {
+    private BillingSectionV3 setAddressDepartment(String addressDepartment) {
         logger.info("Entering Departamento: [" + addressDepartment + "]");
         this.addressDepartmentTxt.clear();
         this.addressDepartmentTxt.sendKeys(addressDepartment);
         return this;
     }
 
-    public BillingSectionV3 setAddressPostalCodeTxt(String addressPostalCcode) {
+    private BillingSectionV3 setAddressPostalCode(String addressPostalCcode) {
         logger.info("Entering Código Postal: [" + addressPostalCcode + "]");
         addressPostalCodeTxt.clear();
         addressPostalCodeTxt.sendKeys(addressPostalCcode);
         return this;
     }
 
-    public BillingSectionV3 setAddressStateDdl(String addressStateDdl) {
+    private BillingSectionV3 setAddressState(String addressStateDdl) {
         logger.info("Selecting Provincia: [" + addressStateDdl + "]");
         Select addressStateSelect =  new Select(this.addressStateDdl);
         addressStateSelect.selectByVisibleText(addressStateDdl);
         return this;
     }
 
-    public BillingSectionV3 setAddressCityTxt(String addressCity) {
+    private BillingSectionV3 setAddressCity(String addressCity) {
         logger.info("Entering Ciudad: [" + addressCity + "]");
         this.addressCityTxt.clear();
         this.addressCityTxt.sendKeys(addressCity);

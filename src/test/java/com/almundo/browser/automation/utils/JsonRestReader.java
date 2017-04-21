@@ -75,4 +75,30 @@ public class JsonRestReader extends TestBaseSetup{
             { isRequired = false;}
         return isRequired;
     }
+
+    public boolean isRequired(String section, String subSection, String field) {
+        boolean isRequired;
+        JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
+        JSONObject jsonObjectSection = new JSONObject ((Map)jsonArraySection.get(0));
+        JSONObject jsonObjectSubSection = new JSONObject((Map) jsonObjectSection.get(subSection));
+        if(JsonPath.read(jsonObjectSubSection, field) != null &&
+                jsonObjectSubSection.get(field).toString().contains("required")){
+            isRequired = JsonPath.read(jsonObjectSubSection, "$." + field + ".required");
+        } else
+        { isRequired = false;}
+        return isRequired;
+    }
+
+    public boolean isRequired(String section, String subSection, String field, int index) {
+        boolean isRequired;
+        JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
+        JSONObject jsonObjectSection = new JSONObject ((Map)jsonArraySection.get(0));
+        JSONObject jsonObjectSubSection = new JSONObject((Map) jsonObjectSection.get(subSection));
+        if(JsonPath.read(jsonObjectSubSection, field) != null &&
+                jsonObjectSubSection.get(field).toString().contains("required")){
+            isRequired = JsonPath.read(jsonObjectSubSection, "$." + field + ".required");
+        } else
+        { isRequired = false;}
+        return isRequired;
+    }
 }

@@ -313,6 +313,20 @@
 				"document_number": "29098766"
 			},
 
+			"1_master_master": {
+				"payment_qty" : "1",
+				"bank_name" : "Mastercard",
+				"credit_card_name" : "Mastercard",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "4242424242424242",
+				"card_expire": "12/18",
+				"month_card_expire": "12",
+				"year_card_expire": "2018",
+				"security_code": "123",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
 			"6_visa_visa": {
 				"payment_qty" : "6",
 				"bank_name" : "Visa",
@@ -379,8 +393,8 @@
 	"billings": {
 			"local_Billing": {
 				"fiscal_name":"Automation & Sarasa Associates Inc.",
-				"billing_fiscal_type":"",
-				"billing_document_type":"",
+				"billing_fiscal_type":"Consumidor Final",
+				"billing_document_type":"CUIL",
 				"billing_fiscal_document": "23281685589",
 				"billing_address": "Carlos Pellegrini",
 				"address_number": 887,
@@ -393,8 +407,8 @@
 
 			"local_Billing_sucursales": {
 				"fiscal_name":"Sarasa and Automation Inc. & Associates",
-				"billing_fiscal_type":"",
-				"billing_document_type":"",
+				"billing_fiscal_type":"Consumidor Final",
+				"billing_document_type":"CUIL",
 				"billing_fiscal_document": "23281685589",
 				"billing_address": "Carlos Pellegrini",
 				"address_number": 887,
