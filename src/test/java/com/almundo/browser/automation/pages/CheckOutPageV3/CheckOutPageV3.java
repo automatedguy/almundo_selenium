@@ -5,6 +5,7 @@ import com.almundo.browser.automation.pages.CheckOutPage.PickUpLocationSection;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.JsonRestReader;
 import com.almundo.browser.automation.utils.PageUtils;
+import com.almundo.browser.automation.utils.sevices.Apikeys;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -25,6 +26,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public CheckOutPageV3(WebDriver driver) { super.driver = driver; }
 
     public static JSONObject checkOutPageElements = null;
+    public static String apikeyHeader =  null;
+    public static Apikeys apikeys = new Apikeys();
     public static JsonRestReader inputDef = null;
 
     public PassengerSectionV3 passengerSection() {
@@ -91,6 +94,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
         forceCombosV3();
 
         try {
+            String currentUrl = driver.getCurrentUrl();
+            apikeyHeader = apikeys.getApiKey(currentUrl);
             inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
         } catch (IOException e) {
             e.printStackTrace();

@@ -59,7 +59,7 @@ public class HotelsResultsPage extends TestBaseSetup {
     }
 
     public HotelsDetailPage clickVerHotelBtn(int index) {
-        displayHotelInfo(index);
+        //displayHotelInfo(index);
         List<WebElement> verHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary.button--block.button-detail"));
         logger.info("Clicking on button: [Ver Hotel]");
         verHotelButtonResults.get(index).click();
