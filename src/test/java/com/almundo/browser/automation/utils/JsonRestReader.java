@@ -61,10 +61,6 @@ public class JsonRestReader extends TestBaseSetup{
         logger.info("HTTP Response Status Code: " + statusCode);
     }
 
-    private void closeConnection() {
-        httpClient.getConnectionManager().shutdown();
-    }
-
     public boolean isRequired(String section, String field, int index) {
         boolean isRequired = false;
         JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
@@ -88,13 +84,24 @@ public class JsonRestReader extends TestBaseSetup{
         boolean isRequired = false;
         JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
         JSONObject jsonObjectSection = new JSONObject ((Map)jsonArraySection.get(0));
-        JSONArray jsonArraySubSection = (JSONArray) jsonObjectSection.get("telephones");
+        JSONArray jsonArraySubSection = (JSONArray) jsonObjectSection.get(subSection);
         JSONObject jsonObjectSubSection = new JSONObject((Map) jsonArraySubSection.get(index));
 
         if(JsonPath.read(jsonObjectSubSection, field) != null &&
                 jsonObjectSubSection.get(field).toString().contains("required")) {
             isRequired = true;
         }
+        return isRequired;
+    }
+
+    public boolean isRequired2(String section, String subSection, String field, int index) {
+        boolean isRequired = false;
+        JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
+        JSONObject jsonObjectSection = new JSONObject((Map) jsonArraySection.get(index));
+        JSONObject jsonObjectSubSection = new JSONObject((Map) jsonObjectSection.get(subSection));
+
+        if(JsonPath.read(jsonObjectSubSection, field) != null &&
+                jsonObjectSubSection.get(field).toString().contains("required")){isRequired = true;}
         return isRequired;
     }
 }

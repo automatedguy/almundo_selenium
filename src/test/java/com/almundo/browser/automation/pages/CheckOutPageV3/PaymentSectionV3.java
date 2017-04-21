@@ -273,6 +273,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
     private void setCardNumber(String cardNumber, String container) {
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " #credit_card_number"), 5, "Credit Card field");
         WebElement cardNumberField = driver.findElement(By.cssSelector(container + " #credit_card_number"));
         logger.info("Entering Número de tu tarjeta: [" + cardNumber + "]");
         cardNumberField.clear();

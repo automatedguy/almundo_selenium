@@ -26,7 +26,7 @@ public class BillingSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "fiscal_type")
     private WebElement billingFiscalTypeDdl;
 
-    @FindBy(id = "document_type")
+    @FindBy(css = "billing-section #document_type")
     private WebElement billingDocumentTypeDdl;
 
     @FindBy(id = "fiscal_document")

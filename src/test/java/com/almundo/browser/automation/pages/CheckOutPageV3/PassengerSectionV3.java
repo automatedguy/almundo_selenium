@@ -80,10 +80,10 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
             if(inputDef.isRequired("passengers","last_name",passengerIndex)){
             setlastName(passengerIndex, passengerInfo.get("last_name").toString());}
 
-            if(inputDef.isRequired("passengers","document", "document_type", passengerIndex)) {
+            if(inputDef.isRequired2("passengers","document", "document_type", passengerIndex)) {
                 setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}
 
-            if(inputDef.isRequired("passengers","document", "number", passengerIndex)){
+            if(inputDef.isRequired2("passengers","document", "number", passengerIndex)){
                 setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
 
             if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
@@ -104,33 +104,33 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public void setFirstNameList() {
+    private void setFirstNameList() {
         firstNameList = driver.findElements(By.id("first_name"));
     }
 
-    public void setLastNameList() {
+    private void setLastNameList() {
         lastNameList = driver.findElements(By.id("last_name"));
     }
 
-    public void setDocTypeList() {
+    private void setDocTypeList() {
         docTypeList = driver.findElements(By.cssSelector("passengers-form #document_type"));
     }
 
-    public void setDocNumberList() {
+    private void setDocNumberList() {
         docNumberList = driver.findElements(By.cssSelector("passengers-form #number"));
     }
 
-    public void setBirthdayList() {
+    private void setBirthdayList() {
         dayBirthdayList = driver.findElements(By.cssSelector(".section.persons .day"));
         monthBirthdayList = driver.findElements(By.cssSelector(".section.persons .month"));
         yearBirthdayList = driver.findElements(By.cssSelector(".section.persons .year"));
     }
 
-    public void setGenderList() {
+    private void setGenderList() {
         genderList = driver.findElements(By.id("gender"));
     }
 
-    public void setNationalityList() {
+    private void setNationalityList() {
         nationalityList = driver.findElements(By.id("nationality"));
     }
 
