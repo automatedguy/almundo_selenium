@@ -11,7 +11,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.Map;
@@ -24,8 +23,6 @@ import static com.almundo.browser.automation.utils.Constants.APIKEY_URL;
 public class Apikeys extends TestBaseSetup {
 
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-
-    String apikeyHeader = null;
 
     private String getName(){
         final String currentUrl = driver.getCurrentUrl();
@@ -91,7 +88,9 @@ public class Apikeys extends TestBaseSetup {
 
     public String getApiKey(){
         JSONArray apikeyList = getApikeysList();
-        JSONObject jsonApikeySection; boolean apikeyFound = false; int index = -1;
+        JSONObject jsonApikeySection;
+        boolean apikeyFound = false;
+        int index = -1;
         String name =getName();
         do{ index++; jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
             if(JsonPath.read(jsonApikeySection, "$.name").equals(name)){ apikeyFound = true;}
@@ -100,8 +99,4 @@ public class Apikeys extends TestBaseSetup {
         return JsonPath.read(jsonApikeySection, "$.value");
     }
 
-    @Test
-    public void showApiKey(){
-        apikeyHeader = getApiKey();
-    }
 }

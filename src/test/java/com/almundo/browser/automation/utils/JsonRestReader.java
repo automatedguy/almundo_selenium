@@ -1,11 +1,12 @@
 package com.almundo.browser.automation.utils;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.utils.sevices.Apikeys;
 import com.jayway.jsonpath.JsonPath;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,14 +21,15 @@ import java.util.Map;
  */
 public class JsonRestReader extends TestBaseSetup{
 
-    private HttpClient httpClient = new DefaultHttpClient();
+    CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     private String url = null;
     private JSONObject jsonObject;
+    private Apikeys apikey = new Apikeys();
+    private String apiKeyHeader = apikey.getApiKey();
 
     public JsonRestReader (String URL) throws IOException, ParseException {
         url = URL;
         getJsonObject();
-        closeConnection();
     }
 
     private void getJsonObject() throws IOException, ParseException {
@@ -51,7 +53,7 @@ public class JsonRestReader extends TestBaseSetup{
 
     private HttpGet createHttpRequest() throws IOException {
         HttpGet httpGetRequest = new HttpGet(url);
-        httpGetRequest.setHeader("X-Apikey", "5512c8d59932b3da984cc7de");
+        httpGetRequest.setHeader("X-Apikey", apiKeyHeader);
         httpGetRequest.setHeader("Version", "v3");
         return httpGetRequest;
     }
