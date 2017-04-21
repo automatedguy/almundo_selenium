@@ -134,35 +134,35 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         nationalityList = driver.findElements(By.id("nationality"));
     }
 
-    public PassengerSectionV3 setFirstName(int index, String firstName){
+    private PassengerSectionV3 setFirstName(int index, String firstName){
         logger.info("Entering Nombre/s: [" + firstName + "]");
         firstNameList.get(index).clear();
         firstNameList.get(index).sendKeys(firstName);
         return this;
     }
 
-    public PassengerSectionV3 setlastName(int index, String lastName){
+    private PassengerSectionV3 setlastName(int index, String lastName){
         logger.info("Entering Apellido/s: [" + lastName + "]");
         lastNameList.get(index).clear();
         lastNameList.get(index).sendKeys(lastName);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentType(int index, String documentType){
+    private PassengerSectionV3 setDocumentType(int index, String documentType){
         logger.info("Selecting Tipo de documento: [" + documentType + "]");
         Select tipoDeDocumento = new Select(docTypeList.get(index));
         tipoDeDocumento.selectByVisibleText(documentType);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentNumber(int index, String docNumber){
+    private PassengerSectionV3 setDocumentNumber(int index, String docNumber){
         logger.info("Entering Número: [" + docNumber + "]");
         docNumberList.get(index).clear();
         docNumberList.get(index).sendKeys(docNumber);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentEmisor(int index, String documentEmisorPassenger){
+    private PassengerSectionV3 setDocumentEmisor(int index, String documentEmisorPassenger){
         List<WebElement> documentEmisorList = driver.findElements(By.id("documentEmisor"));
         logger.info("Selecting País emisor del pasaporte: [" + documentEmisorPassenger + "]");
         Select paisEmisorDelPasaporte = new Select(documentEmisorList.get(index));
@@ -170,7 +170,7 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public PassengerSectionV3 setDocumentExpiration(int index, String documentExpirationPassenger){
+    private PassengerSectionV3 setDocumentExpiration(int index, String documentExpirationPassenger){
         List<WebElement> documentExpirationList = driver.findElements(By.id("documentExpiration"));
         logger.info("Entering Fecha de venc. del documento: [" + documentExpirationPassenger + "]");
         documentExpirationList.get(index).clear();
@@ -178,7 +178,7 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public PassengerSectionV3 setBirthDay(int index, String birthday){
+    private PassengerSectionV3 setBirthDay(int index, String birthday){
 
         String day;
         String month;
@@ -210,14 +210,14 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public PassengerSectionV3 setGender(int index, String gender){
+    private PassengerSectionV3 setGender(int index, String gender){
         logger.info("Selecting Sexo: [" + gender + "]");
         Select sexo = new Select(genderList.get(index));
         sexo.selectByVisibleText(gender);
         return this;
     }
 
-    public PassengerSectionV3 setNationality(int index, String nationality){
+    private PassengerSectionV3 setNationality(int index, String nationality){
         logger.info("Selecting Nacionalidad: [" + nationality + "]");
         Select nacionalidad = new Select(nationalityList.get(index));
         nacionalidad.selectByVisibleText(nationality);

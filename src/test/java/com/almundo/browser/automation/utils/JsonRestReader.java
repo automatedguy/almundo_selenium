@@ -65,40 +65,35 @@ public class JsonRestReader extends TestBaseSetup{
     }
 
     public boolean isRequired(String section, String field, int index) {
-        boolean isRequired;
+        boolean isRequired = false;
         JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
         JSONObject jsonObjectSection = new JSONObject((Map) jsonArraySection.get(index));
         if(JsonPath.read(jsonObjectSection, field) != null &&
-                jsonObjectSection.get(field).toString().contains("required")){
-            isRequired = JsonPath.read(jsonObjectSection, "$." + field + ".required");
-        } else
-            { isRequired = false;}
+                jsonObjectSection.get(field).toString().contains("required")){isRequired = true;}
         return isRequired;
     }
 
     public boolean isRequired(String section, String subSection, String field) {
-        boolean isRequired;
+        boolean isRequired = false;
         JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
         JSONObject jsonObjectSection = new JSONObject ((Map)jsonArraySection.get(0));
         JSONObject jsonObjectSubSection = new JSONObject((Map) jsonObjectSection.get(subSection));
         if(JsonPath.read(jsonObjectSubSection, field) != null &&
-                jsonObjectSubSection.get(field).toString().contains("required")){
-            isRequired = JsonPath.read(jsonObjectSubSection, "$." + field + ".required");
-        } else
-        { isRequired = false;}
+                jsonObjectSubSection.get(field).toString().contains("required")){isRequired = true;}
         return isRequired;
     }
 
     public boolean isRequired(String section, String subSection, String field, int index) {
-        boolean isRequired;
+        boolean isRequired = false;
         JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
         JSONObject jsonObjectSection = new JSONObject ((Map)jsonArraySection.get(0));
-        JSONObject jsonObjectSubSection = new JSONObject((Map) jsonObjectSection.get(subSection));
+        JSONArray jsonArraySubSection = (JSONArray) jsonObjectSection.get("telephones");
+        JSONObject jsonObjectSubSection = new JSONObject((Map) jsonArraySubSection.get(index));
+
         if(JsonPath.read(jsonObjectSubSection, field) != null &&
-                jsonObjectSubSection.get(field).toString().contains("required")){
-            isRequired = JsonPath.read(jsonObjectSubSection, "$." + field + ".required");
-        } else
-        { isRequired = false;}
+                jsonObjectSubSection.get(field).toString().contains("required")) {
+            isRequired = true;
+        }
         return isRequired;
     }
 }
