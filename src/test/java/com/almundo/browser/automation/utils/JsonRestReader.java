@@ -15,6 +15,8 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.Map;
 
+import static com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3.apikeyHeader;
+
 /**
  * Created by gabi on 13/04/17.
  */
@@ -50,7 +52,7 @@ public class JsonRestReader extends TestBaseSetup{
 
     private HttpGet createHttpRequest() throws IOException {
         HttpGet httpGetRequest = new HttpGet(url);
-        httpGetRequest.setHeader("X-Apikey", "");
+        httpGetRequest.setHeader("X-Apikey", apikeyHeader);
         httpGetRequest.setHeader("Version", "v3");
         return httpGetRequest;
     }
