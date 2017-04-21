@@ -26,25 +26,25 @@ public class HotelsResultsPage extends TestBaseSetup {
 
 
     public String getHotelName(int index){
-        PageUtils.waitListContainResults(driver, ".button.button--lg.button--secondary.button--block.button-detail", 0);
-        List<WebElement> hotelNameList = driver.findElements(By.cssSelector(".hotel-description"));
-        return formatInfo(hotelNameList.get(index).getText());
-    }
-
-    public List<WebElement> getHotelAmenities(int index){
-        List<WebElement> hotelAmenitiesList = driver.findElements(By.cssSelector("hotel:nth-child(" + (index+1) + ") article > div.col-5.col-12--ph > div > div.amenities-ctn.ng-scope > ul > li"));
-        logger.info("Checking Hotel Amenities...");
-        return hotelAmenitiesList;
+        PageUtils.waitListContainResults(driver, ".button.button--md.button--secondary.button-detail", 0);
+        WebElement hotelName = driver.findElement(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > a > h1"));
+        return formatInfo(hotelName.getText());
     }
 
     public String getHotelStars(int index){
-        List<WebElement> hotelStarsList = driver.findElements(By.cssSelector("hotel:nth-child(" + (index+1) + ") article > div.col-5.col-12--ph > div > p.star-ctn > span"));
+        List<WebElement> hotelStarsList = driver.findElements(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > p.star-ctn > span"));
         return String.valueOf(hotelStarsList.size());
     }
 
     public String getHotelRates(int index){
-        List<WebElement> hotelPriceBoxList = driver.findElements(By.cssSelector(".price-box-ctn.col-3.col-12--ph"));
-        return formatInfo(hotelPriceBoxList.get(index).getText());
+        WebElement hotelPriceBox = driver.findElement(By.cssSelector("div:nth-child(" + (index+1) +") > hotel-card > article > div > div.price-box-ctn"));
+        return formatInfo(hotelPriceBox.getText());
+    }
+
+    public List<WebElement> getHotelAmenities(int index){
+        List<WebElement> hotelAmenitiesList = driver.findElements(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > div.amenities-ctn.ng-scope > ul > li"));
+        logger.info("Checking Hotel Amenities...");
+        return hotelAmenitiesList;
     }
 
     public void displayHotelInfo(int index){
@@ -55,14 +55,13 @@ public class HotelsResultsPage extends TestBaseSetup {
         for(WebElement amenity : getHotelAmenities(index)){
             logger.info("Hotel amenity " + hotelAmenityIndex++ + ": [" +amenity.getAttribute("data-hint").toString() + "]");
         }
-
     }
 
     public HotelsDetailPage clickVerHotelBtn(int index) {
         displayHotelInfo(index);
-        List<WebElement> verHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary.button--block.button-detail"));
+        WebElement verHotelButton = driver.findElement(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.price-box-ctn > div > a"));
         logger.info("Clicking on button: [Ver Hotel]");
-        verHotelButtonResults.get(index).click();
+        verHotelButton.click();
         return initHotelsDetailPage();
     }
 

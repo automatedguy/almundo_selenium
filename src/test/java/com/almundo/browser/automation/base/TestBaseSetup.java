@@ -349,6 +349,16 @@ public class TestBaseSetup {
         }
     }
 
+    public void forceHotelsResultsCardTrue() {
+        try{
+            PageUtils.waitUrlContains(driver, 10, "card=true", "card=true string parameter");
+        } catch(Exception time) {
+            logger.info("Forcing to hotels results page with card=true");
+            String newURL = driver.getCurrentUrl().concat("&card=true");
+            driver.navigate().to(newURL);
+        }
+    }
+
     public void forceCombosV3(){
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
