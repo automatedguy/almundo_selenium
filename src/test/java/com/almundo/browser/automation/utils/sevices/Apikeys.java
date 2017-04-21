@@ -24,8 +24,7 @@ public class Apikeys extends TestBaseSetup {
 
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
-    private String getName(){
-        final String currentUrl = driver.getCurrentUrl();
+    private String getName(String currentUrl){
         String name = null;
 
         int mask = currentUrl.contains("ccr.") ? 1 : 0;
@@ -86,12 +85,12 @@ public class Apikeys extends TestBaseSetup {
         logger.info("value (X-Apikey): " + "[" + JsonPath.read(jsonApikeySection, "$.value") + "]");
     }
 
-    public String getApiKey(){
+    public String getApiKey(String currentUrl){
         JSONArray apikeyList = getApikeysList();
         JSONObject jsonApikeySection;
         boolean apikeyFound = false;
         int index = -1;
-        String name =getName();
+        String name =getName(currentUrl);
         do{ index++; jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
             if(JsonPath.read(jsonApikeySection, "$.name").equals(name)){ apikeyFound = true;}
         }while(!apikeyFound);

@@ -1,7 +1,6 @@
 package com.almundo.browser.automation.utils;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.utils.sevices.Apikeys;
 import com.jayway.jsonpath.JsonPath;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -24,8 +23,6 @@ public class JsonRestReader extends TestBaseSetup{
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     private String url = null;
     private JSONObject jsonObject;
-    private Apikeys apikey = new Apikeys();
-    private String apiKeyHeader = apikey.getApiKey();
 
     public JsonRestReader (String URL) throws IOException, ParseException {
         url = URL;
@@ -53,7 +50,7 @@ public class JsonRestReader extends TestBaseSetup{
 
     private HttpGet createHttpRequest() throws IOException {
         HttpGet httpGetRequest = new HttpGet(url);
-        httpGetRequest.setHeader("X-Apikey", apiKeyHeader);
+        httpGetRequest.setHeader("X-Apikey", "");
         httpGetRequest.setHeader("Version", "v3");
         return httpGetRequest;
     }
