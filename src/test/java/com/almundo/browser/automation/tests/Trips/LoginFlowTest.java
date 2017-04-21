@@ -70,19 +70,18 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
+
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
-
-
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_amex_amex"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "TripsCheckOutPageInternationalV3");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "TripsCheckOutPageInternationalV3");
     }
 
     @Test
@@ -102,17 +101,16 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("child_female_native");
 
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_amex_amex"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "VueloHotelCheckOutPageDomesticV3");
-
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "VueloHotelCheckOutPageDomesticV3");
     }
 }

@@ -81,23 +81,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList,
-                                               JSONObject paymentData,
-                                               JSONObject billingData,
-                                               JSONObject contactData,
-                                               String productCheckOutPage) {
-        getCheckOutPageElements(productCheckOutPage);
-        getCartId();
-        paymentSection().populatePaymentSection(paymentData, ".card-container-1");
-        passengerSection().populatePassengerSection(passengerList);
-        //TODO: Refactor for Cars (when migrated to checkout V3)
-        //pickUpLocationSection().populatePickUpLocationSection();
-        billingSection().populateBillingSection(billingData);
-        contactSection().populateContactSection(contactData);
-        acceptConditions();
-        return this;
-    }
-
     public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
                                                  String paymentData,
                                                  JSONObject billingData,
@@ -125,7 +108,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList,
+    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
                                                JSONObject paymentData1,
                                                JSONObject paymentData2,
                                                JSONObject billingData,

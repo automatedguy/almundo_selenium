@@ -31,6 +31,7 @@ public class FlowTest extends TestBaseSetup {
     private TripsResultsPage tripsResultsPage = null;
     private TripsDetailPage tripsDetailPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
+    private ConfirmationPageV3 confirmationPageV3 = null;
 
     @BeforeClass
     private void initItineraryData() {
@@ -75,14 +76,14 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_visa_visa"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "TripsCheckOutPageInternationalV3");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "TripsCheckOutPageInternationalV3");
 
-        ConfirmationPageV3 confirmationPage = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
 
     }
 
@@ -109,10 +110,10 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_amex_amex"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "TripsCheckOutPageDomesticlV3");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "TripsCheckOutPageDomesticlV3");
     }
 }

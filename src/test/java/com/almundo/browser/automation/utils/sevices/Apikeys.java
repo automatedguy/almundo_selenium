@@ -26,7 +26,7 @@ public class Apikeys extends TestBaseSetup {
 
     private String getName(){
         final String currentUrl = driver.getCurrentUrl();
-        String name = null;
+        String name;
 
         int mask = currentUrl.contains("ccr.") ? 1 : 0;
         mask |= currentUrl.contains("sucursales.") ? 2 : 0;
@@ -91,7 +91,7 @@ public class Apikeys extends TestBaseSetup {
         JSONObject jsonApikeySection;
         boolean apikeyFound = false;
         int index = -1;
-        String name =getName();
+        String name = getName();
         do{ index++; jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
             if(JsonPath.read(jsonApikeySection, "$.name").equals(name)){ apikeyFound = true;}
         }while(!apikeyFound);

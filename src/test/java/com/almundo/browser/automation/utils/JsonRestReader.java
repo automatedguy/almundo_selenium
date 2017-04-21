@@ -25,7 +25,7 @@ public class JsonRestReader extends TestBaseSetup{
     private String url = null;
     private JSONObject jsonObject;
     private Apikeys apikey = new Apikeys();
-    private String apiKeyHeader = apikey.getApiKey();
+    //private String apiKeyHeader = apikey.getApiKey();
 
     public JsonRestReader (String URL) throws IOException, ParseException {
         url = URL;
@@ -53,7 +53,7 @@ public class JsonRestReader extends TestBaseSetup{
 
     private HttpGet createHttpRequest() throws IOException {
         HttpGet httpGetRequest = new HttpGet(url);
-        httpGetRequest.setHeader("X-Apikey", apiKeyHeader);
+        httpGetRequest.setHeader("X-Apikey", "5512c8d59932b3da984cc7de");
         httpGetRequest.setHeader("Version", "v3");
         return httpGetRequest;
     }

@@ -80,10 +80,10 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
             if(inputDef.isRequired("passengers","last_name",passengerIndex)){
             setlastName(passengerIndex, passengerInfo.get("last_name").toString());}
 
-            if(inputDef.isRequired("passengers","type",passengerIndex)) {
+            if(inputDef.isRequired("passengers","document", "document_type", passengerIndex)) {
                 setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}
 
-            if(inputDef.isRequired("passengers","document",passengerIndex)){
+            if(inputDef.isRequired("passengers","document", "number", passengerIndex)){
                 setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
 
             if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
