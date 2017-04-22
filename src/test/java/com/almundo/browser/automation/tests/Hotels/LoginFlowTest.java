@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -25,7 +25,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
-    private CheckOutPage checkOutPage = null;
+    private CheckOutPageV3 checkOutPageV3 = null;
 
     private HotelsDataTrip hotelsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -69,18 +69,22 @@ public class LoginFlowTest extends TestBaseSetup {
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
-        checkOutPage = hotelsDetailPage.clickReservarAhoraBtn(FIRST_OPTION);
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("child_female_native");
         dataManagement.getPassengerData("child_female_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "HotelsCheckOutPageInternational");
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                "random",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_phone"),
+                "HotelsCheckOutPageDomesticV3");
     }
 
     @Test
@@ -101,15 +105,19 @@ public class LoginFlowTest extends TestBaseSetup {
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
-        checkOutPage = hotelsDetailPage.clickReservarAhoraBtn(FIRST_OPTION);
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing"),
-                                          dataManagement.getContactData("contact_phone"),
-                                          "HotelsCheckOutPageDomestic");
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+        forceCheckoutV3();
+        forceCombosV3();
+
+        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+                "random",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_phone"),
+                "HotelsCheckOutPageDomesticV3");
     }
 }
