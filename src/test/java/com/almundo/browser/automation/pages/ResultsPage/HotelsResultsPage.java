@@ -16,6 +16,8 @@ import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
  */
 public class HotelsResultsPage extends TestBaseSetup {
 
+    private boolean newPageLayout = false;
+
     public HotelsResultsPage(WebDriver iDriver) {
         this.driver = iDriver;
     }
@@ -26,24 +28,51 @@ public class HotelsResultsPage extends TestBaseSetup {
 
 
     public String getHotelName(int index){
-        PageUtils.waitListContainResults(driver, ".button.button--md.button--secondary.button-detail", 0);
-        WebElement hotelName = driver.findElement(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > a > h1"));
+        String hotelNameCssSelector = null;
+        PageUtils.waitListContainResults(driver, ".button-detail", 0);
+        if(newPageLayout) {
+            hotelNameCssSelector = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.hotel-description > a > h1" ;
+        }else {
+            hotelNameCssSelector = "hotel:nth-child(" + (index + 1) + ") > article > div.col-5.col-12--ph > div > a > h1";
+        }
+        WebElement hotelName = driver.findElement(By.cssSelector(hotelNameCssSelector));
         return formatInfo(hotelName.getText());
     }
 
     public String getHotelStars(int index){
-        List<WebElement> hotelStarsList = driver.findElements(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > p.star-ctn > span"));
+        String hotelStarsListCssSelector = null;
+        if(newPageLayout) {
+            hotelStarsListCssSelector = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.hotel-description > p.star-ctn > span";
+        }else {
+            hotelStarsListCssSelector = "hotel:nth-child(" + (index + 1) + ") > article > div.col-5.col-12--ph > div > p.star-ctn > span";
+        }
+        List<WebElement> hotelStarsList =  driver.findElements(By.cssSelector(hotelStarsListCssSelector));
         return String.valueOf(hotelStarsList.size());
     }
 
     public String getHotelRates(int index){
-        WebElement hotelPriceBox = driver.findElement(By.cssSelector("div:nth-child(" + (index+1) +") > hotel-card > article > div > div.price-box-ctn"));
+        String hotelPriceBoxCssSelector = null;
+        if(newPageLayout) {
+            hotelPriceBoxCssSelector = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn" ;
+        }else {
+            hotelPriceBoxCssSelector = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph > div";
+
+        }
+        WebElement hotelPriceBox = driver.findElement(By.cssSelector(hotelPriceBoxCssSelector));
         return formatInfo(hotelPriceBox.getText());
     }
 
     public List<WebElement> getHotelAmenities(int index){
-        List<WebElement> hotelAmenitiesList = driver.findElements(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > div.amenities-ctn.ng-scope > ul > li"));
+        String hotelAmenitiesListCssSelector = null;
         logger.info("Checking Hotel Amenities...");
+        if(newPageLayout){
+            hotelAmenitiesListCssSelector = "div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > div.amenities-ctn.ng-scope > ul > li";
+        }
+        else{
+            hotelAmenitiesListCssSelector = "hotel:nth-child(" + (index+1) + ") > article > div.col-5.col-12--ph > div > div.amenities-ctn.ng-scope > ul > li";
+
+        }
+        List<WebElement> hotelAmenitiesList = driver.findElements(By.cssSelector(hotelAmenitiesListCssSelector));
         return hotelAmenitiesList;
     }
 
@@ -57,10 +86,17 @@ public class HotelsResultsPage extends TestBaseSetup {
         }
     }
 
-    public HotelsDetailPage clickVerHotelBtn(int index) {
+    public HotelsDetailPage clickVerHotelBtn(int index, boolean cardTrue) {
+        newPageLayout = cardTrue;
         displayHotelInfo(index);
-        WebElement verHotelButton = driver.findElement(By.cssSelector("div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.price-box-ctn > div > a"));
+        String verHotelButtonCssSelector = null;
+        if(newPageLayout) {
+            verHotelButtonCssSelector = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn > div > a";
+        }else{
+            verHotelButtonCssSelector = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph > div > a";
+        }
         logger.info("Clicking on button: [Ver Hotel]");
+        WebElement verHotelButton = driver.findElement(By.cssSelector(verHotelButtonCssSelector));
         verHotelButton.click();
         return initHotelsDetailPage();
     }

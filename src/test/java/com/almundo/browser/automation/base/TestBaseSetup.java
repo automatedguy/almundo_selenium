@@ -349,14 +349,16 @@ public class TestBaseSetup {
         }
     }
 
-    public void forceHotelsResultsCardTrue() {
+    public boolean cardTrue() {
+        boolean cardTrue = false;
         try{
             PageUtils.waitUrlContains(driver, 10, "card=true", "card=true string parameter");
+            logger.info("card=true parameter found, using new results page layout.");
+            cardTrue = true;
         } catch(Exception time) {
-            logger.info("Forcing to hotels results page with card=true");
-            String newURL = driver.getCurrentUrl().concat("&card=true");
-            driver.navigate().to(newURL);
+            logger.info("card=true parameters not found in URL using old results page layout.");
         }
+        return cardTrue;
     }
 
     public void forceCombosV3(){
