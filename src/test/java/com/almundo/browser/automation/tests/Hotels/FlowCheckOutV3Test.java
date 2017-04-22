@@ -73,7 +73,7 @@ public class FlowCheckOutV3Test extends TestBaseSetup {
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
-        forceCheckoutV3();
+
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("1_amex_amex"),
