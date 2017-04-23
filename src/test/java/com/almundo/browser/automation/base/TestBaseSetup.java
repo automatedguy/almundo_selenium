@@ -65,7 +65,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(RET_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -120,16 +120,16 @@ public class TestBaseSetup {
             landingEnabled = false;
         }
 
-        if(baseURL.equals(SUC_URL)) {
+        if(baseURL.equals(RET_URL)) {
             switch (countryPar) {
                 case "ARGENTINA":
-                    baseURL = SUC_URL.concat(".ar/");
+                    baseURL = RET_URL.concat(".ar/");
                     break;
                 case "COLOMBIA":
-                    baseURL = SUC_URL.concat(".co/");
+                    baseURL = RET_URL.concat(".co/");
                     break;
                 case "MEXICO":
-                    baseURL = SUC_URL.concat(".mx/");
+                    baseURL = RET_URL.concat(".mx/");
                     break;
             }
             landingEnabled = false;
