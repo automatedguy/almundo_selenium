@@ -65,7 +65,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(RET_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -347,18 +347,6 @@ public class TestBaseSetup {
             String newURL = driver.getCurrentUrl().replace("cart/v2", "checkout");
             driver.navigate().to(newURL);
         }
-    }
-
-    public boolean cardTrue() {
-        boolean cardTrue = false;
-        try{
-            PageUtils.waitUrlContains(driver, 10, "card=true", "card=true string parameter");
-            logger.info("card=true parameter found, using new results page layout.");
-            cardTrue = true;
-        } catch(Exception time) {
-            logger.info("card=true parameters not found in URL using old results page layout.");
-        }
-        return cardTrue;
     }
 
     public void forceCombosV3(){

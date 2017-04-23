@@ -190,7 +190,23 @@ public class PageUtils {
         return sb.toString();
     }
 
-    public static String formatInfo(String itinerary){
-        return itinerary.replaceAll("[\\n\\r]+", " - ");
+    /*** Analyze current results page URL***/
+    public static String getHotelsResultsPageLayout(WebDriver driver) {
+        String layout = null;
+        try{
+            PageUtils.waitUrlContains(driver, 10, "results", "results page");
+            logger.info("results page loaded, analyzing current locators mapping...");
+            String currentUrl = driver.getCurrentUrl();
+            if(currentUrl.contains("card=true")){
+                layout = "card";
+            }else{
+                layout = "normal";}
+        } catch(Exception time) {
+            logger.error("results page was not displayed.");
+        } return layout;
+    }
+
+    public static String formatInfo(String info){
+        return info.replaceAll("[\\n\\r]+", " - ");
     }
 }
