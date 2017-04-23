@@ -17,6 +17,7 @@ import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 public class HotelsResultsPage extends TestBaseSetup {
 
     private boolean newPageLayout = false;
+    int index = 0;
 
     public HotelsResultsPage(WebDriver iDriver) {
         this.driver = iDriver;
@@ -27,7 +28,7 @@ public class HotelsResultsPage extends TestBaseSetup {
     //############################################### Actions ###############################################
 
 
-    public String getHotelName(int index){
+    public String getHotelName(){
         String hotelNameCssSelector = null;
         PageUtils.waitListContainResults(driver, ".button-detail", 0);
         if(newPageLayout) {
@@ -39,7 +40,7 @@ public class HotelsResultsPage extends TestBaseSetup {
         return formatInfo(hotelName.getText());
     }
 
-    public String getHotelStars(int index){
+    public String getHotelStars(){
         String hotelStarsListCssSelector = null;
         if(newPageLayout) {
             hotelStarsListCssSelector = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.hotel-description > p.star-ctn > span";
@@ -50,7 +51,7 @@ public class HotelsResultsPage extends TestBaseSetup {
         return String.valueOf(hotelStarsList.size());
     }
 
-    public String getHotelRates(int index){
+    public String getHotelRates(){
         String hotelPriceBoxCssSelector = null;
         if(newPageLayout) {
             hotelPriceBoxCssSelector = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn" ;
@@ -62,7 +63,7 @@ public class HotelsResultsPage extends TestBaseSetup {
         return formatInfo(hotelPriceBox.getText());
     }
 
-    public List<WebElement> getHotelAmenities(int index){
+    public List<WebElement> getHotelAmenities(){
         String hotelAmenitiesListCssSelector = null;
         logger.info("Checking Hotel Amenities...");
         if(newPageLayout){
@@ -76,19 +77,20 @@ public class HotelsResultsPage extends TestBaseSetup {
         return hotelAmenitiesList;
     }
 
-    public void displayHotelInfo(int index){
+    public void displayHotelInfo(){
         int hotelAmenityIndex = 1;
-        logger.info("Hotel name: " + getHotelName(index));
-        logger.info("Hotel category: " + "[" + getHotelStars(index) + " stars]");
-        logger.info("Hotel rates: " + "[" + getHotelRates(index) + "]");
-        for(WebElement amenity : getHotelAmenities(index)){
+        logger.info("Hotel name: " + getHotelName());
+        logger.info("Hotel category: " + "[" + getHotelStars() + " stars]");
+        logger.info("Hotel rates: " + "[" + getHotelRates() + "]");
+        for(WebElement amenity : getHotelAmenities()){
             logger.info("Hotel amenity " + hotelAmenityIndex++ + ": [" +amenity.getAttribute("data-hint").toString() + "]");
         }
     }
 
-    public HotelsDetailPage clickVerHotelBtn(int index, boolean cardTrue) {
-        newPageLayout = cardTrue;
-        displayHotelInfo(index);
+    public HotelsDetailPage clickVerHotelBtn(int option) {
+        newPageLayout = cardTrue();
+        index = option;
+        displayHotelInfo();
         String verHotelButtonCssSelector = null;
         if(newPageLayout) {
             verHotelButtonCssSelector = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn > div > a";

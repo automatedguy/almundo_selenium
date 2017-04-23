@@ -64,7 +64,7 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
-        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION, cardTrue());
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
@@ -100,7 +100,7 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
-        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION, cardTrue());
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();

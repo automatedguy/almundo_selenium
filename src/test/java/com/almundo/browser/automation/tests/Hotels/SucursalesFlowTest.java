@@ -60,7 +60,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
-        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION, cardTrue());
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
