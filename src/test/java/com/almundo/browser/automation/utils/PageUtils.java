@@ -194,7 +194,8 @@ public class PageUtils {
     public static String getHotelsResultsPageLayout(WebDriver driver) {
         String layout = null;
         try{
-            PageUtils.waitUrlContains(driver, 30, "results", "results page");
+            PageUtils.waitUrlContains(driver, 15, "results", "results page");
+            Thread.sleep(9000);
             logger.info("results page loaded, analyzing current locators mapping...");
             String currentUrl = driver.getCurrentUrl();
             if(currentUrl.contains("card=true")){
