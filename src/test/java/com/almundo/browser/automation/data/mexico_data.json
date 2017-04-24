@@ -1,8 +1,8 @@
 {
     "flights": {
             "miami_10days_2adults_2childs_turista": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
                 "startDate": 10,
@@ -14,8 +14,8 @@
             },
 
             "domestic_20days_2adults_todas": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Can",
                 "destinationFull": "Cancún, Quintana Roo, México",
                 "startDate": 30,
@@ -27,8 +27,8 @@
             },
 
             "multiDest_3Flights_2adults_todas": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
                 "originAuto2": "Mia",
@@ -49,8 +49,8 @@
             },
 
         "domestic_30days_2adults_todas": {
-            "originAuto": "Dis",
-            "originFull": "Ciudad de México, Distrito Federal, México",
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
             "destinationAuto": "Can",
             "destinationFull": "Cancún, Quintana Roo, México",
             "startDate": 25,
@@ -96,8 +96,8 @@
 
     "trips": {
             "miami_10days_2adults_2childs_1room": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
                 "startDate": 10,
@@ -109,8 +109,8 @@
             },
 
             "domestic01_15days_2adults_1childs_1room": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Can",
                 "destinationFull": "Cancún, Quintana Roo, México",
                 "startDate": 20,
@@ -122,8 +122,8 @@
             },
 
             "int02_20days_2adults_1childs_1room": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "San",
                 "destinationFull": "Santiago de Chile, Chile",
                 "startDate": 34,
@@ -134,8 +134,8 @@
                 "rooms": 1
             },
         "domestic02_20days_2adults_1childs_1room": {
-            "originAuto": "Dis",
-            "originFull": "Ciudad de México, Distrito Federal, México",
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
             "destinationAuto": "Can",
             "destinationFull": "Cancún, Quintana Roo, México",
             "startDate": 25,
@@ -149,8 +149,8 @@
 
     "cars": {
         "capital_10days_entre_21_24": {
-            "originAuto": "Dis",
-            "originFull": "Ciudad de México, Distrito Federal, México",
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
             "destinationAuto": "Dis",
             "destinationFull": "Ciudad de México, Distrito Federal, México",
             "startDate": 10,
@@ -161,8 +161,8 @@
         },
 
         "miami_10days_entre_21_24": {
-            "originAuto": "Mia",
-            "originFull": "Miami, Estados Unidos de América",
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
             "destinationAuto": "Mia",
             "destinationFull": "Miami, Estados Unidos de América",
             "startDate": 10,
