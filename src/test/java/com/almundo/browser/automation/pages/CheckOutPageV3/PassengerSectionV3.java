@@ -80,17 +80,17 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
             if(inputDef.isRequired("passengers","last_name",passengerIndex)){
             setlastName(passengerIndex, passengerInfo.get("last_name").toString());}
 
-            if(inputDef.isRequired2("passengers","document", "document_type", passengerIndex)) {
+            if(inputDef.isRequired("passengers","document", passengerIndex)) {
                 setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}
 
-            if(inputDef.isRequired2("passengers","document", "number", passengerIndex)){
+            if(inputDef.isRequired("passengers","document", passengerIndex)){
                 setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
 
             if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
                 setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());}
 
-            if(inputDef.isRequired("passengers","document_expiration",passengerIndex)) {
-                setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());}
+            //if(inputDef.isRequired("passengers","document_expiration",passengerIndex)) {
+            //    setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());}
 
             if(inputDef.isRequired("passengers","birthday",passengerIndex)) {
                 setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());}
