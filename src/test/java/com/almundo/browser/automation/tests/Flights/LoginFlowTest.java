@@ -38,7 +38,7 @@ public class LoginFlowTest extends TestBaseSetup {
         loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
         loginPopUp.setLoginPasswordTxt("gabi1981ce");
         basePage = loginPopUp.clickIngresarBtn();
-        basePage.clickFlightsBtn();
+        flightsDataTrip = basePage.clickFlightsBtn();
     }
 
     @AfterMethod
@@ -54,7 +54,6 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
-        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -87,7 +86,6 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.getRoundTripDataTripItinerary("domestic_20days_2adults_todas");
 
-        flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);

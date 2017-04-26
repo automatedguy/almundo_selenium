@@ -57,7 +57,6 @@ public class BillingSectionV3 extends CheckOutPageV3 {
 
     public BillingSectionV3 populateBillingSection(JSONObject billingData) {
         if (inputDef.isRequired("billings")) {
-            //if (isElementRequiered(checkOutPageElements, "BillingInfoSection")) {
 
             logger.info("------------- Filling Billing Section -------------");
 

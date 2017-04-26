@@ -92,16 +92,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         forceCheckoutV3();
         forceCombosV3();
-
-        try {
-            String currentUrl = driver.getCurrentUrl();
-            apikeyHeader = apikeys.getApiKey(currentUrl);
-            inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        setInputDef();
 
         paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
@@ -114,14 +105,18 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
-                                               JSONObject paymentData1,
-                                               JSONObject paymentData2,
-                                               JSONObject billingData,
-                                               JSONObject contactData,
-                                               String productCheckOutPage) {
+                                                 String paymentData1,
+                                                 String paymentData2,
+                                                 JSONObject billingData,
+                                                 JSONObject contactData,
+                                                 String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
-        paymentSection().populatePaymentSection(paymentData1, ".card-container-1");
-        paymentSection().populatePaymentSection(paymentData2, ".card-container-2");
+        forceCheckoutV3();
+        forceCombosV3();
+        setInputDef();
+
+        paymentSection().populatePaymentSectionV3(paymentData1, ".card-container-1");
+        paymentSection().populatePaymentSectionV3(paymentData2, ".card-container-2");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -131,14 +126,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    public String getCartId(){
-        PageUtils.waitElementForVisibility(driver, By.id("first_name"), 45, "Checkout V3");
-        String currentUrl = driver.getCurrentUrl();
 
-        logger.info("Checkout URL: " + "[" + currentUrl + "]");
-        String cartId = currentUrl.substring(currentUrl.indexOf("checkout/") + 9, currentUrl.lastIndexOf("checkout/") + 33);
-        return cartId;
-    }
 
     private CheckOutPageV3 acceptConditions(){
         FooterSectionV3 footerSection = initFooterSectionV3();
@@ -149,5 +137,26 @@ public class CheckOutPageV3 extends TestBaseSetup {
             footerSection.clickConfirmarBtn();
         }
         return this;
+    }
+
+    private void setInputDef() {
+        try {
+            String currentUrl = driver.getCurrentUrl();
+            apikeyHeader = apikeys.getApiKey(currentUrl);
+            inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getCartId(){
+        PageUtils.waitElementForVisibility(driver, By.id("first_name"), 45, "Checkout V3");
+        String currentUrl = driver.getCurrentUrl();
+
+        logger.info("Checkout URL: " + "[" + currentUrl + "]");
+        String cartId = currentUrl.substring(currentUrl.indexOf("checkout/") + 9, currentUrl.lastIndexOf("checkout/") + 33);
+        return cartId;
     }
 }

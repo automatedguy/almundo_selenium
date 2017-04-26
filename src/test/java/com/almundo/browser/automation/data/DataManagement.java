@@ -60,6 +60,7 @@ public class DataManagement extends TestBaseSetup {
     public String ageRange;
 
     //------------------------- HOME PAGE -----------------------------
+
     //VUELOS DATA TRIP
 
     public void getFlightsItineraryData(){
@@ -248,6 +249,7 @@ public class DataManagement extends TestBaseSetup {
     }
 
     //------------------------- CHECKOUT -----------------------------
+
     //PASSENGER DATA
     public void getPassengersList()  {
         passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");

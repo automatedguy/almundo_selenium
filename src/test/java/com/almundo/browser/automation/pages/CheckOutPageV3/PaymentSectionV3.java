@@ -104,10 +104,8 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
                 }
             }
 
-
         } else {
             paymentDataObject = dataManagement.getPaymentData(paymentData);
-
             setCreditCardCombo(creditCardSelect, paymentDataObject.get("credit_card_name").toString());
         }
 
@@ -135,58 +133,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public PaymentSectionV3 populatePaymentSection(JSONObject paymentData, String container) {
-
-        dataManagement.getPaymentList();
-
-        Select creditCardSelect = new Select(creditCardDdl);
-        Select bankSelect = new Select(bankDdl);
-        Select paymentSelect = new Select(paymentDdl);
-
-        logger.info("------------- Selecting type of Payment "+ container + "-------------");
-
-        if(paymentData.toString().contains("random")) {
-            List<WebElement> availableCardsElements = creditCardSelect.getOptions();
-
-            for (WebElement availableCard : availableCardsElements) {
-                if (availableCard.getText().equals("Visa")) {
-                    setCreditCardCombo(creditCardSelect, "Visa");
-                    paymentData = dataManagement.getPaymentData("1_visa_visa");
-                    break;
-                } else if (availableCard.getText().equals("Mastercard")) {
-                    setCreditCardCombo(creditCardSelect, "Mastercard");
-                    paymentData = dataManagement.getPaymentData("1_master_master");
-                    break;
-                } else if (availableCard.getText().equals("American Express")) {
-                    setCreditCardCombo(creditCardSelect, "American Express");
-                    paymentData = dataManagement.getPaymentData("1_amex_amex");
-                    break;
-                }
-            }
-
-            setBankCombo(bankSelect);
-            setPaymentCombo(paymentSelect);
-        } else {
-            setPayment(paymentData.get("payment_qty").toString(), container);
-            setBank(paymentData.get("bank_name").toString(), container);
-            setCreditCard(paymentData.get("credit_card_name").toString(), container);
-
-        }
-
-        logger.info("------------- Filling Payment Section -------------");
-        setCardNumber(paymentData.get("card_number").toString(), container);
-        setCardHolder(paymentData.get("card_holder").toString(), container);
-        setMonthCardExpiration(paymentData.get("month_card_expire").toString(), container);
-        setYearCardExpiration(paymentData.get("year_card_expire").toString(), container);
-        setSecurityCode(paymentData.get("security_code").toString(), container);
-        if(isElementRequiered(checkOutPageElements, "documentType")) {
-            selectDocumentType(paymentData.get("documentType").toString(), container);
-        }
-        if(isElementRequiered(checkOutPageElements, "document_number_card")) {
-            setDocumentNumber(paymentData.get("document_number").toString(), container);
-        }
-        return this;
-    }
 
     public void clickSeveralCardsCbx () {
         if (!serveralCardsCbx.isSelected()) {

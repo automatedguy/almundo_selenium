@@ -107,8 +107,9 @@ public class JsonRestReader extends TestBaseSetup{
 
     public boolean isRequired(String section) {
         boolean isRequired = false;
-        if(JsonPath.read(jsonObject, section) != null &&
-                jsonObject.get(section).toString().contains("required")){isRequired = true;}
+        if(JsonPath.read(jsonObject, section) != null && jsonObject.get(section).toString().contains("required")){
+            isRequired = true;
+        }
         return isRequired;
     }
 }
