@@ -16,9 +16,6 @@
             <class name="com.almundo.browser.automation.tests.Trips.FlowTest"/>
             <class name="com.almundo.browser.automation.tests.Cars.FlowTest"/>
 
-            <!--Checkout V3-->
-            <class name="com.almundo.browser.automation.tests.Hotels.FlowCheckOutV3Test"/>
-
             <!--Club AlMundo-->
             <class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>
 

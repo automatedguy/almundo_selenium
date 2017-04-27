@@ -3,13 +3,20 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.PickUpLocationSection;
 import com.almundo.browser.automation.utils.JsonRead;
+import com.almundo.browser.automation.utils.JsonRestReader;
 import com.almundo.browser.automation.utils.PageUtils;
+import com.almundo.browser.automation.utils.sevices.Apikeys;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.IOException;
+
+import static com.almundo.browser.automation.utils.Constants.*;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -19,6 +26,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public CheckOutPageV3(WebDriver driver) { super.driver = driver; }
 
     public static JSONObject checkOutPageElements = null;
+    public static String apikeyHeader =  null;
+    public static Apikeys apikeys = new Apikeys();
+    public static JsonRestReader inputDef = null;
 
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
@@ -74,15 +84,17 @@ public class CheckOutPageV3 extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
-    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList,
-                                               JSONObject paymentData,
-                                               JSONObject billingData,
-                                               JSONObject contactData,
-                                               String productCheckOutPage)
-    {
+    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
+                                                 String paymentData,
+                                                 JSONObject billingData,
+                                                 JSONObject contactData,
+                                                 String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
-        waitForCheckoutLoad();
-        paymentSection().populatePaymentSection(paymentData, ".card-container-1");
+        forceCheckoutV3();
+        forceCombosV3();
+        setInputDef();
+
+        paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -92,15 +104,19 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPageV3 populateCheckOutPageNew(JSONArray passengerList,
-                                               String paymentData,
-                                               JSONObject billingData,
-                                               JSONObject contactData,
-                                               String productCheckOutPage)
-    {
+    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
+                                                 String paymentData1,
+                                                 String paymentData2,
+                                                 JSONObject billingData,
+                                                 JSONObject contactData,
+                                                 String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
-        waitForCheckoutLoad();
-        paymentSection().populatePaymentSectionNew(paymentData, ".card-container-1");
+        forceCheckoutV3();
+        forceCombosV3();
+        setInputDef();
+
+        paymentSection().populatePaymentSectionV3(paymentData1, ".card-container-1");
+        paymentSection().populatePaymentSectionV3(paymentData2, ".card-container-2");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -110,29 +126,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPageV3 populateCheckOutPage(JSONArray passengerList,
-                                               JSONObject paymentData1,
-                                               JSONObject paymentData2,
-                                               JSONObject billingData,
-                                               JSONObject contactData,
-                                               String productCheckOutPage)
-    {
-        getCheckOutPageElements(productCheckOutPage);
-        paymentSection().populatePaymentSection(paymentData1, ".card-container-1");
-        paymentSection().populatePaymentSection(paymentData2, ".card-container-2");
-        passengerSection().populatePassengerSection(passengerList);
-        //TODO: Refactor for Cars (when migrated to checkout V3)
-        //pickUpLocationSection().populatePickUpLocationSection();
-        billingSection().populateBillingSection(billingData);
-        contactSection().populateContactSection(contactData);
-        acceptConditions();
-        return this;
-    }
 
-    public void waitForCheckoutLoad(){
-        PageUtils.waitElementForVisibility(driver, By.id("first_name"), 45, "Checkout V3");
-        logger.info("Checkout URL: " + "[" + driver.getCurrentUrl() + "]");
-    }
 
     private CheckOutPageV3 acceptConditions(){
         FooterSectionV3 footerSection = initFooterSectionV3();
@@ -143,5 +137,26 @@ public class CheckOutPageV3 extends TestBaseSetup {
             footerSection.clickConfirmarBtn();
         }
         return this;
+    }
+
+    private void setInputDef() {
+        try {
+            String currentUrl = driver.getCurrentUrl();
+            apikeyHeader = apikeys.getApiKey(currentUrl);
+            inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getCartId(){
+        PageUtils.waitElementForVisibility(driver, By.id("first_name"), 45, "Checkout V3");
+        String currentUrl = driver.getCurrentUrl();
+
+        logger.info("Checkout URL: " + "[" + currentUrl + "]");
+        String cartId = currentUrl.substring(currentUrl.indexOf("checkout/") + 9, currentUrl.lastIndexOf("checkout/") + 33);
+        return cartId;
     }
 }

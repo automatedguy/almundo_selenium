@@ -9,11 +9,14 @@ import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 
@@ -51,7 +54,7 @@ public class LoginFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void login_Int_Booking_Flow() {
+    public void login_Int_Booking_Flow() throws IOException, ParseException {
         logTestTitle("Login Trips Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
@@ -67,23 +70,22 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
+
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
-
-
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_amex_amex"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "TripsCheckOutPageInternationalV3");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "TripsCheckOutPageInternationalV3");
     }
 
     @Test
-    public void login_Dom_Booking_Flow() {
+    public void login_Dom_Booking_Flow() throws IOException, ParseException {
         logTestTitle("Login Trips Flow - Domestic - 15 days - 2 Adults/1 Child - 1 Room - " + countryPar );
 
         dataManagement.getTripsDataTripItinerary("domestic01_15days_2adults_1childs_1room");
@@ -99,17 +101,16 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("child_female_native");
 
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_amex_amex"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "VueloHotelCheckOutPageDomesticV3");
-
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "VueloHotelCheckOutPageDomesticV3");
     }
 }

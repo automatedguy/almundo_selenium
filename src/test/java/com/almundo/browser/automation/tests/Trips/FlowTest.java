@@ -9,11 +9,14 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 
@@ -28,6 +31,7 @@ public class FlowTest extends TestBaseSetup {
     private TripsResultsPage tripsResultsPage = null;
     private TripsDetailPage tripsDetailPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
+    private ConfirmationPageV3 confirmationPageV3 = null;
 
     @BeforeClass
     private void initItineraryData() {
@@ -49,7 +53,7 @@ public class FlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void int_Booking_Flow() {
+    public void int_Booking_Flow() throws IOException, ParseException {
         logTestTitle("Trips Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
 
         dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
@@ -72,19 +76,19 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_male_native");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_visa_visa"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "TripsCheckOutPageInternationalV3");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "TripsCheckOutPageInternationalV3");
 
-        ConfirmationPageV3 confirmationPage = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
 
     }
 
     @Test
-    public void dom_Booking_Flow() {
+    public void dom_Booking_Flow() throws IOException, ParseException {
         logTestTitle("Trips Flow - Domestic - 15 days - 2 Adults/1 Child - 1 Room - " + countryPar );
 
         dataManagement.getTripsDataTripItinerary("domestic01_15days_2adults_1childs_1room");
@@ -106,10 +110,10 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                            dataManagement.getPaymentData("1_amex_amex"),
-                                            dataManagement.getBillingData("local_Billing"),
-                                            dataManagement.getContactData("contact_cell_phone"),
-                                            "TripsCheckOutPageDomesticlV3");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_cell_phone"),
+                                             "TripsCheckOutPageDomesticlV3");
     }
 }
