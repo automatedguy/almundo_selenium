@@ -53,7 +53,9 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
         starsListLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.hotel-description > p.star-ctn > span";
         priceBoxLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn";
         amenitiesListLocator = "div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > div.amenities-ctn.ng-scope > ul > li";
-        verHotelButtonLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn > div > a";
+        //verHotelButtonLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn > div > a";
+
+        verHotelButtonLocator = "div:nth-child(" + (index + 1) + ") > hotel-card .price-box a";
     }
 
     /*** When URL does not contain card=true is the old one. ***/
