@@ -5,6 +5,7 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -29,6 +30,7 @@ public class FlowTest extends TestBaseSetup {
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
+    private ConfirmationPageV3 confirmationPageV3 = null;
 
     private HotelsDataTrip hotelsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -78,12 +80,14 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                                               "random",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
                                               "HotelsCheckOutPageInternationalV3");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
 
     @Test
@@ -110,7 +114,6 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_native");
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                                               "random",
                                                dataManagement.getBillingData("local_Billing"),

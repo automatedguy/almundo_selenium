@@ -80,7 +80,7 @@ public class LoginFlowTest extends TestBaseSetup {
         forceCheckoutV3();
         forceCombosV3();
 
-        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                 "random",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_phone"),
@@ -114,7 +114,7 @@ public class LoginFlowTest extends TestBaseSetup {
         forceCheckoutV3();
         forceCombosV3();
 
-        checkOutPageV3.populateCheckOutPageNew(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                 "random",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_phone"),

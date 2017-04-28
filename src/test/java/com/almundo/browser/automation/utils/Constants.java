@@ -16,6 +16,7 @@ public class Constants {
     public static final String CCR_URL = "https://ccr.almundo.com.ar/";
     public static final String ICBC_URL = "https://icbcstore.almundo.com.ar/";
     public static final String API_PROD_URL = "http://apipr.almundo.it:8080/";
+    public static final String API_STG_URL = "http://apist.almundo.it:8080/";
     public static final String APIKEY_URL = "http://abs.almundo.it:8080/abs/security/apikeys";
 
     //PATHS

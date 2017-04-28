@@ -92,6 +92,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         forceCheckoutV3();
         forceCombosV3();
+        forceTodoPagoOff();
         setInputDef();
 
         paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");

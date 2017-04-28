@@ -43,7 +43,7 @@ public class HotelsDetailPage extends TestBaseSetup {
     }
 
     public CheckOutPageV3 clickReservarAhoraV3Btn(int index) {
-        List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector(".button.button--lg.button--secondary"));
+        List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector("room-options .button.button--lg.button--secondary"));
         PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(1), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
         detailHotelButtonResults.get(index+1).click();

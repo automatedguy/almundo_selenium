@@ -69,9 +69,9 @@ public class TestBaseSetup {
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional("firefox") String browserType,
+                                        @Optional("phantomjs") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -242,8 +242,8 @@ public class TestBaseSetup {
     }
 
     private void initSauceLabsDriver(String methodName)  {
-        String USERNAME = "flyawayautomation";
-        String ACCESS_KEY = "fd5d97d7-0c9c-4c43-8c69-4039d89c88e1";
+        String USERNAME = "saucelabsfreeforalmundo";
+        String ACCESS_KEY = "66a2d2a5-0609-4762-83b8-dc90c26a81cf";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -366,6 +366,26 @@ public class TestBaseSetup {
                 logger.info("Adding sc=1");
                 String newURL = currentUrl.concat("&sc=1");
                 driver.navigate().to(newURL);
+            }
+        } catch(Exception time) {
+            time.printStackTrace();
+        }
+    }
+
+    public void forceTodoPagoOff(){
+        try{
+            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+
+            logger.info("Forcing to disable TodoPago");
+            String currentUrl = driver.getCurrentUrl();
+
+            if(currentUrl.contains("stp=1")) {
+                logger.info("Replacing stp=1 with stp=0");
+                String newURL = currentUrl.replace("stp=1", "stp=0");
+                PageUtils.waitImplicitly(5000);
+                driver.navigate().to(newURL);
+            } else {
+                logger.info("Nothing to replace, Todo Pago is not displayed");
             }
         } catch(Exception time) {
             time.printStackTrace();

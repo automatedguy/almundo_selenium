@@ -1,13 +1,10 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
 
 /**
  * Created by gabrielcespedes on 29/11/16.
@@ -75,17 +72,18 @@ public class BillingSectionV3 extends CheckOutPageV3 {
             if(inputDef.isRequired("billings", "address", "street")){
                 setBillingAddress(billingData.get("billing_address").toString());}
 
-            if(inputDef.isRequired("billings", "address","number")){
-                setAddressNumber(billingData.get("address_number").toString());}
-
-            if(inputDef.isRequired("billings", "address","floor")){
-                setAddressFloor(billingData.get("address_floor").toString());}
-
-            if(inputDef.isRequired("billings", "address","department")){
-                setAddressDepartment(billingData.get("address_department").toString());}
-
-            if(inputDef.isRequired("billings", "address","postal_code")){
-                setAddressPostalCode(billingData.get("address_postal_code").toString());}
+//            Waiting CP-269 fix
+//            if(inputDef.isRequired("billings", "address","number")){
+//                setAddressNumber(billingData.get("address_number").toString());}
+//
+//            if(inputDef.isRequired("billings", "address","floor")){
+//                setAddressFloor(billingData.get("address_floor").toString());}
+//
+//            if(inputDef.isRequired("billings", "address","department")){
+//                setAddressDepartment(billingData.get("address_department").toString());}
+//
+//            if(inputDef.isRequired("billings", "address","postal_code")){
+//                setAddressPostalCode(billingData.get("address_postal_code").toString());}
 
             if(inputDef.isRequired("billings", "address","states")){
                 setAddressState(billingData.get("address_state").toString());}
@@ -142,8 +140,12 @@ public class BillingSectionV3 extends CheckOutPageV3 {
 
     private BillingSectionV3 setAddressNumber(String addressNumber) {
         logger.info("Entering Número: [" + addressNumber + "]");
-        List<WebElement> addressNumberList = driver.findElements(By.id("number"));
-        addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumber);
+        this.addressNumberTxt.clear();
+        this.addressNumberTxt.sendKeys(addressNumber);
+
+//        logger.info("Entering Número: [" + addressNumber + "]");
+//        List<WebElement> addressNumberList = driver.findElements(By.id("number"));
+//        addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumber);
         return this;
     }
 

@@ -2,13 +2,13 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.utils.PageUtils;
-import junit.framework.Assert;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.List;
 import java.util.Random;

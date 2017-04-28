@@ -3,7 +3,7 @@ package com.almundo.browser.automation.tests.Hotels;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -24,7 +24,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
-    private CheckOutPageV3 checkOutPageV3 = null;
+    private CheckOutPage checkOutPage = null;
 
     private HotelsDataTrip hotelsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -65,14 +65,14 @@ public class SucursalesFlowTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+        checkOutPage = hotelsDetailPage.clickReservarAhoraBtn(FIRST_OPTION);
         forceCheckoutV3();
         forceCombosV3();
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
 
-        checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
+        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("cash"),
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_phone"),
