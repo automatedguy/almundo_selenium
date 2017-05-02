@@ -166,6 +166,7 @@ public class TestBaseSetup {
 
                     case "phantomjs":
                         driver = new PhantomJSDriver(capabilities);
+                        driver.manage().window().maximize();
                         break;
 
                     default:
