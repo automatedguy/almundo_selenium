@@ -66,8 +66,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
         hotelsDetailPage.clickVerHabitacionesBtn();
 
         checkOutPage = hotelsDetailPage.clickReservarAhoraBtn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
