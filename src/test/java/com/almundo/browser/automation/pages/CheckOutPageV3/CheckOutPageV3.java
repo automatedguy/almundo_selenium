@@ -100,13 +100,14 @@ public class CheckOutPageV3 extends TestBaseSetup {
     {
         getCheckOutPageElements(productCheckOutPage);
         waitForCheckoutLoad();
-        paymentSection().populatePaymentSectionNew(paymentData, ".card-container-1");
+        logger.warn("Checkout is not populated, due to current changes.");
+        /* paymentSection().populatePaymentSectionNew(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
-        acceptConditions();
+        acceptConditions(); */
         return this;
     }
 
