@@ -89,7 +89,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
-        getCheckOutPageElements(productCheckOutPage);
+        logger.warn("Populate Checkout Page V3 method is disabled.");
+        /*getCheckOutPageElements(productCheckOutPage);
         forceCheckoutV3();
         forceCombosV3();
         forceTodoPagoOff();
@@ -101,7 +102,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
-        acceptConditions();
+        acceptConditions();*/
         return this;
     }
 
