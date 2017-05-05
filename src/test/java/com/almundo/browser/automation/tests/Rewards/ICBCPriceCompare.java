@@ -48,7 +48,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSection.selectPaymentQty("1 cuota");
 
-        selectCardAndBank("VI", "Visa");
+        selectCardAndBank("VI", "ICBC");
         almundo_visa_1 = checkOutPage.getTotalPrice();
 
         selectCardAndBank("CA", "Mastercard");
