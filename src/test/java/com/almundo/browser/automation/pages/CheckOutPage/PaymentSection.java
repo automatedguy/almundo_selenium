@@ -58,8 +58,9 @@ public class PaymentSection extends CheckOutPage {
     //############################################### Actions ###############################################
 
     public PaymentSection populatePaymentSection(JSONObject paymentData, String product){
-        selectPaymentQty("1");
-        selectBankOption(paymentData.get("credit_card_name").toString());
+        selectPaymentQty(paymentData.get("payment_qty").toString());
+        selectCreditCard(paymentData.get("credit_card_code").toString());
+        selectBank(paymentData.get("credit_card_name").toString());
         setCardHolder(paymentData.get("card_holder").toString());
         setCardNumber(paymentData.get("card_number").toString());
         if(product.contains("Hotels") || product.contains("Cars") || product.contains("Flights")) {
@@ -111,7 +112,7 @@ public class PaymentSection extends CheckOutPage {
     }
 
     public void selectBank(String bankName) {
-        List<WebElement> bankList = creditCardSelected.findElements(By.cssSelector(".cards__definition__container__info__banks"));
+        List<WebElement> bankList = creditCardSelected.findElements(By.cssSelector(".cards__definition__container__info__banks label"));
         boolean found = false;
 
         for (WebElement bank : bankList) {
@@ -123,29 +124,6 @@ public class PaymentSection extends CheckOutPage {
             }
         }
         Assert.assertTrue(found, "Bank [" + bankName + "] " + "is not displayed");
-    }
-
-    private void selectPaymentQtyOption(int index) {
-        List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
-        PageUtils.scrollToElement(driver, results.get(0));
-        PageUtils.scrollToCoordinate(driver, -230);
-        results.get(index).click();
-    }
-
-    private void selectBankOption(String cardName) {
-        List<WebElement> cardNames = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>label>span"));
-        List<WebElement> radioButtons = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>input"));
-        for (int i = 0; i < cardNames.size(); ++i) {
-            WebElement cardNameElement = cardNames.get(i);
-            WebElement radioButtonElement = radioButtons.get(i);
-            if (cardNameElement.getText().equals(cardName)) {
-                logger.info("Selecting card name: [" + cardName + "]");
-                while (!radioButtonElement.isSelected()){
-                    radioButtonElement.click();
-                }
-                break;
-            }
-        }
     }
 
     private void setCardHolder(String cardHolder) {

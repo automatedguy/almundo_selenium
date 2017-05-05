@@ -52,7 +52,8 @@ public class CheckOutTest extends TestBaseSetup {
                 dataManagement.getPaymentData("1_visa_visa"),
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_phone"),
-                "FlightsCheckOutPageInternational");
+                "FlightsCheckOutPageInternational", false);
+
                 confirmationPage = checkOutPage.clickComprarBtn();
                 assertTrue(confirmationPage.confirmationOk());
     }

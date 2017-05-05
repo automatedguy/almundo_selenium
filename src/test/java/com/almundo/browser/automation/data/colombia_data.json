@@ -279,6 +279,7 @@
             "1_amex_amex": {
                 "payment_qty" : "1",
                 "bank_name" : "American Express",
+                "credit_card_code" : "AX",
                 "credit_card_name" : "American Express",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4242424242424242",
@@ -293,6 +294,7 @@
             "1_visa_visa": {
                 "payment_qty" : "1",
                 "bank_name" : "Visa",
+                "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4242424242424242",
@@ -307,6 +309,7 @@
             "1_master_master": {
                 "payment_qty" : "1",
                 "bank_name" : "Mastercard",
+                "credit_card_code" : "CA",
                 "credit_card_name" : "Mastercard",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4242424242424242",
@@ -321,6 +324,7 @@
             "6_visa_visa": {
                 "payment_qty" : "6",
                 "bank_name" : "Visa",
+                "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4242424242424242",

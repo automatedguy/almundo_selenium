@@ -62,8 +62,8 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".segments>div:nth-of-type(2)>div h2>span:nth-of-type(3)")
     public WebElement endDate;
 
-//    @FindBy(id = "assistance_yes")
-//    public WebElement assistanceRdb;
+    @FindBy(id = "assistance_yes")
+    public WebElement assistanceRdb;
 
     //############################################### Actions ##############################################
 
@@ -77,12 +77,12 @@ public class CheckOutPage extends TestBaseSetup {
         return initConfirmationPage();
     }
 
-/*    public CheckOutPage selectAssistanceRdb(){
+    public CheckOutPage selectAssistanceRdb(){
         PageUtils.waitElementForVisibility(driver, By.id("assistance_yes"), 45, "Include Insurance Radio Button.");
-        logger.info("Clicking on Insurance.");
+        logger.info("Clicking on Insurance Assistance");
         assistanceRdb.click();
         return this;
-    }*/
+    }
 
     public int getTotalPrice() {
         logger.info("Total Price: [" + totalPrice.getText() + "]");
@@ -108,29 +108,12 @@ public class CheckOutPage extends TestBaseSetup {
                                              JSONObject paymentData,
                                              JSONObject billingData,
                                              JSONObject contactData,
-                                             String productCheckOutPage)
-    {
-        getCheckOutPageElements(productCheckOutPage);
-        waitForCheckoutLoad();
-        passengerSection().populatePassengerSection(passengerList);
-        pickUpLocationSection().populatePickUpLocationSection();
-        paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
-        billingSection().populateBillingSection(billingData);
-        contactSection().populateContactSection(contactData);
-        acceptConditions();
-        return this;
-    }
-
-    public CheckOutPage populateCheckOutPage(JSONArray passengerList,
-                                             JSONObject paymentData,
-                                             JSONObject billingData,
-                                             JSONObject contactData,
                                              String productCheckOutPage,
                                              boolean includeAssistance)
     {
         getCheckOutPageElements(productCheckOutPage);
         waitForCheckoutLoad();
-//        if(includeAssistance){selectAssistanceRdb();}
+        if(includeAssistance){selectAssistanceRdb();}
         passengerSection().populatePassengerSection(passengerList);
         pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);

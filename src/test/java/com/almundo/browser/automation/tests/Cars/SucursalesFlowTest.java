@@ -66,6 +66,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           dataManagement.getPaymentData("booking24"),
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_cell_phone"),
-                                          "CarsCheckOutPageSucursales");
+                                          "CarsCheckOutPageSucursales", false);
     }
 }

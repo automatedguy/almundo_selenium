@@ -71,7 +71,7 @@ public class LoginFlowTest extends TestBaseSetup {
                                           dataManagement.getPaymentData("1_amex_amex"),
                                           dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_cell_phone"),
-                                          "CarsCheckOutPage");
+                                          "CarsCheckOutPage", false);
     }
 
     @Test
@@ -97,6 +97,6 @@ public class LoginFlowTest extends TestBaseSetup {
                                           dataManagement.getPaymentData("1_amex_amex"),
                                           dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_cell_phone"),
-                                          "CarsCheckOutPage");
+                                          "CarsCheckOutPage", false);
     }
 }
