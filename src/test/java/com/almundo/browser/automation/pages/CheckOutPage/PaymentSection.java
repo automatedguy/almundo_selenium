@@ -20,8 +20,8 @@ public class PaymentSection extends CheckOutPage {
         super(driver);
     }
 
-    private WebElement paymentQtySelected = null;
-    private WebElement creditCardSelected = null;
+    private static WebElement paymentQtySelected = null;
+    private static WebElement creditCardSelected = null;
 
     //############################################### Locators ##############################################
 

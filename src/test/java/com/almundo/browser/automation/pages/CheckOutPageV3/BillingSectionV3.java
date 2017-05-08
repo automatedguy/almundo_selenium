@@ -72,18 +72,17 @@ public class BillingSectionV3 extends CheckOutPageV3 {
             if(inputDef.isRequired("billings", "address", "street")){
                 setBillingAddress(billingData.get("billing_address").toString());}
 
-//            Waiting CP-269 fix
-//            if(inputDef.isRequired("billings", "address","number")){
-//                setAddressNumber(billingData.get("address_number").toString());}
-//
-//            if(inputDef.isRequired("billings", "address","floor")){
-//                setAddressFloor(billingData.get("address_floor").toString());}
-//
-//            if(inputDef.isRequired("billings", "address","department")){
-//                setAddressDepartment(billingData.get("address_department").toString());}
-//
-//            if(inputDef.isRequired("billings", "address","postal_code")){
-//                setAddressPostalCode(billingData.get("address_postal_code").toString());}
+            if(inputDef.isRequired("billings", "address","number")){
+                setAddressNumber(billingData.get("address_number").toString());}
+
+            if(inputDef.isRequired("billings", "address","floor")){
+                setAddressFloor(billingData.get("address_floor").toString());}
+
+            if(inputDef.isRequired("billings", "address","department")){
+                setAddressDepartment(billingData.get("address_department").toString());}
+
+            if(inputDef.isRequired("billings", "address","postal_code")){
+                setAddressPostalCode(billingData.get("address_postal_code").toString());}
 
             if(inputDef.isRequired("billings", "address","states")){
                 setAddressState(billingData.get("address_state").toString());}
@@ -97,8 +96,8 @@ public class BillingSectionV3 extends CheckOutPageV3 {
 
     private BillingSectionV3 setBillingFiscalName(String billingFiscalName) {
         logger.info("Entering Nombre o Razón Social: [" + billingFiscalName + "]");
-        fiscalNameTxt.clear();
-        fiscalNameTxt.sendKeys(billingFiscalName);
+        this.fiscalNameTxt.clear();
+        this.fiscalNameTxt.sendKeys(billingFiscalName);
         return this;
     }
 
@@ -142,10 +141,6 @@ public class BillingSectionV3 extends CheckOutPageV3 {
         logger.info("Entering Número: [" + addressNumber + "]");
         this.addressNumberTxt.clear();
         this.addressNumberTxt.sendKeys(addressNumber);
-
-//        logger.info("Entering Número: [" + addressNumber + "]");
-//        List<WebElement> addressNumberList = driver.findElements(By.id("number"));
-//        addressNumberList.get(addressNumberList.size() -2).sendKeys(addressNumber);
         return this;
     }
 
@@ -165,8 +160,8 @@ public class BillingSectionV3 extends CheckOutPageV3 {
 
     private BillingSectionV3 setAddressPostalCode(String addressPostalCcode) {
         logger.info("Entering Código Postal: [" + addressPostalCcode + "]");
-        addressPostalCodeTxt.clear();
-        addressPostalCodeTxt.sendKeys(addressPostalCcode);
+        this.addressPostalCodeTxt.clear();
+        this.addressPostalCodeTxt.sendKeys(addressPostalCcode);
         return this;
     }
 

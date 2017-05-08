@@ -26,7 +26,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     private static List<WebElement> docTypeList = null;
     private static List<WebElement> docNumberList = null;
     private static List<WebElement> docEmisorList = null;
-    private static List<WebElement> docExpirationList = null;
+    private static List<WebElement> dayDocExpirationList = null;
+    private static List<WebElement> monthDocExpirationList = null;
+    private static List<WebElement> yearDocExpirationList = null;
     private static List<WebElement> dayBirthdayList = null;
     private static List<WebElement> monthBirthdayList = null;
     private static List<WebElement> yearBirthdayList = null;
@@ -47,6 +49,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     @FindBy(css = "passengers-form #number")
     private WebElement doc_number;
 
+    @FindBy(id = "document_emisor")
+    private WebElement doc_emisor;
+
     @FindBy(id = "birthday")
     private WebElement birthday;
 
@@ -66,6 +71,8 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         setLastNameList();
         setDocTypeList();
         setDocNumberList();
+        setDocEmisorList();
+        setDocExpirationList();
         setBirthdayList();
         setGenderList();
         setNationalityList();
@@ -86,12 +93,11 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
             if(inputDef.isRequired("passengers","document", passengerIndex)){
                 setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
 
-//            Waiting CP-267 fix
-//            if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
-//                setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());}
-//
-//            if(inputDef.isRequired("passengers","document_expiration",passengerIndex)) {
-//                setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());}
+            if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
+                setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());}
+
+            if(inputDef.isRequired("passengers","document_expiration",passengerIndex)) {
+                setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());}
 
             if(inputDef.isRequired("passengers","birthday",passengerIndex)) {
                 setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());}
@@ -121,10 +127,20 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         docNumberList = driver.findElements(By.cssSelector("passengers-form #number"));
     }
 
+    private void setDocEmisorList() {
+        docEmisorList = driver.findElements(By.id("document_emisor"));
+    }
+
+    private void setDocExpirationList() {
+        dayDocExpirationList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de venc. del documento'] .day"));
+        monthDocExpirationList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de venc. del documento'] .month"));
+        yearDocExpirationList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de venc. del documento'] .year"));
+    }
+
     private void setBirthdayList() {
-        dayBirthdayList = driver.findElements(By.cssSelector(".section.persons .day"));
-        monthBirthdayList = driver.findElements(By.cssSelector(".section.persons .month"));
-        yearBirthdayList = driver.findElements(By.cssSelector(".section.persons .year"));
+        dayBirthdayList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de nacimiento'] .day"));
+        monthBirthdayList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de nacimiento'] .month"));
+        yearBirthdayList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de nacimiento'] .year"));
     }
 
     private void setGenderList() {
@@ -163,19 +179,43 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    private PassengerSectionV3 setDocumentEmisor(int index, String documentEmisorPassenger){
-        List<WebElement> documentEmisorList = driver.findElements(By.id("documentEmisor"));
-        logger.info("Selecting País emisor del pasaporte: [" + documentEmisorPassenger + "]");
-        Select paisEmisorDelPasaporte = new Select(documentEmisorList.get(index));
-        paisEmisorDelPasaporte.selectByVisibleText(documentEmisorPassenger);
+    private PassengerSectionV3 setDocumentEmisor(int index, String country){
+        List<WebElement> documentEmisorList = driver.findElements(By.id("document_emisor"));
+        logger.info("Selecting País emisor del pasaporte: [" + country + "]");
+        Select countryIssuingPassport = new Select(documentEmisorList.get(index));
+        countryIssuingPassport.selectByVisibleText(country);
         return this;
     }
 
-    private PassengerSectionV3 setDocumentExpiration(int index, String documentExpirationPassenger){
-        List<WebElement> documentExpirationList = driver.findElements(By.id("documentExpiration"));
-        logger.info("Entering Fecha de venc. del documento: [" + documentExpirationPassenger + "]");
-        documentExpirationList.get(index).clear();
-        documentExpirationList.get(index).sendKeys(documentExpirationPassenger);
+    private PassengerSectionV3 setDocumentExpiration(int index, String docExpirationDay){
+
+        String day;
+        String month;
+
+        if(String.valueOf(docExpirationDay.charAt(0)).equals("0")) {
+            day = String.valueOf(docExpirationDay.charAt(1));
+        } else {
+            day = String.valueOf(docExpirationDay.charAt(0)) + String.valueOf(docExpirationDay.charAt(1));
+        }
+
+        if(String.valueOf(docExpirationDay.charAt(3)).equals("0")) {
+            month = String.valueOf(docExpirationDay.charAt(4));
+        } else {
+            month = String.valueOf(docExpirationDay.charAt(3)) + String.valueOf(docExpirationDay.charAt(4));
+        }
+
+        String year = String.valueOf(docExpirationDay.charAt(6)) + String.valueOf(docExpirationDay.charAt(7)) + String.valueOf(docExpirationDay.charAt(8)) + String.valueOf(docExpirationDay.charAt(9));
+
+        logger.info("Entering Fecha de venc. del documento: [" + docExpirationDay + "]");
+        Select dayExpiration = new Select (dayDocExpirationList.get(index));
+        dayExpiration.selectByVisibleText(day);
+
+        Select monthBirthday = new Select (monthDocExpirationList.get(index));
+        monthBirthday.selectByValue(month);
+
+        Select yearBirthday = new Select (yearDocExpirationList.get(index));
+        yearBirthday.selectByVisibleText(year);
+
         return this;
     }
 

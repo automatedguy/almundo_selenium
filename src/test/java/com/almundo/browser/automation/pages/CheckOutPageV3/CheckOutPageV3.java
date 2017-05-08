@@ -89,20 +89,20 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
-        logger.warn("Populate Checkout Page V3 method is disabled.");
-        /*getCheckOutPageElements(productCheckOutPage);
+        //logger.warn("Populate Checkout Page V3 method is disabled.");
+        getCheckOutPageElements(productCheckOutPage);
         forceCheckoutV3();
         forceCombosV3();
         forceTodoPagoOff();
         setInputDef();
 
-        paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
+        //paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
-        acceptConditions();*/
+        acceptConditions();
         return this;
     }
 
@@ -145,7 +145,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         try {
             String currentUrl = driver.getCurrentUrl();
             apikeyHeader = apikeys.getApiKey(currentUrl);
-            inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
+            inputDef = new JsonRestReader(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
