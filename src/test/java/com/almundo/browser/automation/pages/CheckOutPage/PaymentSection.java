@@ -81,6 +81,7 @@ public class PaymentSection extends CheckOutPage {
 
     public void selectPaymentQty(String qty) {
         List<WebElement> paymentList = driver.findElements(By.cssSelector(".cards__definition"));
+        boolean found = false;
 
         for (WebElement payment : paymentList) {
             if(payment.getText().contains(qty)) {
@@ -88,10 +89,12 @@ public class PaymentSection extends CheckOutPage {
                 PageUtils.scrollToCoordinate(driver, -230);
                 logger.info("Selecting [" + qty + "] payment/s option");
                 payment.click();
+                found = true;
                 paymentQtySelected = payment;
                 break;
             }
         }
+        Assert.assertTrue(found, "Payment [" + qty + "] " + "is not displayed");
     }
 
     public void selectCreditCard(String creditCardCode) {

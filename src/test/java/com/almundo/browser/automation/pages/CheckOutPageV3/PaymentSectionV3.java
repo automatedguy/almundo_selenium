@@ -22,8 +22,8 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         super(driver);
     }
 
-    private static WebElement paymentSelected = null;
-    private static WebElement bankSelected = null;
+    private WebElement paymentSelected = null;
+    private WebElement bankSelected = null;
 
     private DataManagement dataManagement = new DataManagement();
     JSONObject paymentDataObject = new JSONObject();
@@ -71,6 +71,10 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
 
     @FindBy(id = "document_number")
     private WebElement document_number;
+
+    @FindBy(css = ".change-card")
+    public WebElement changeCardLnk;
+
 
     //############################################### Actions ###############################################
 
@@ -143,7 +147,8 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         PageUtils.waitElementForVisibility(driver, credit_card_container_2, 15, "Card container 2");
     }
 
-    private void setPayment(String paymentNumber, String container) {
+    public void setPayment(String paymentNumber, String container) {
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " .payment .monthly-payment>strong"), 5, "Payments");
         List<WebElement> results = driver.findElements(By.cssSelector(container + " .payment .monthly-payment>strong"));
         List<WebElement> payments = driver.findElements(By.cssSelector(container + " .payment"));
 
@@ -156,10 +161,10 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
                 break;
             }
         }
-        PageUtils.waitImplicitly(1000);
+
     }
 
-    private void setBank(String bankName, String container) {
+    public void setBank(String bankName, String container) {
         List<WebElement> results = paymentSelected.findElements(By.cssSelector(container + " .header-bank .logo"));
         List<WebElement> banks = paymentSelected.findElements(By.cssSelector(container + " .bank"));
         boolean isBankSelected = false;
@@ -180,7 +185,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         }
     }
 
-    private void setCreditCard(String cardName, String container) {
+    public void setCreditCard(String cardName, String container) {
         List<WebElement> cardNames = bankSelected.findElements(By.cssSelector(container + " .cards .logo .logo"));
 
         for(WebElement cardNameResult : cardNames){

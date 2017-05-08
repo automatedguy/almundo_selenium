@@ -55,6 +55,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = ".button-buy")
     public WebElement comprarBtn;
 
+    @FindBy(css = ".price__amount")
+    public WebElement totalPrice;
+
     @FindBy(css = ".main-title")
     public WebElement mainTitleLbl;
 
@@ -78,6 +81,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
             e.printStackTrace();
         }
         return isRequiered;
+    }
+
+    public int getTotalPrice() {
+        logger.info("Total Price: [" + totalPrice.getText() + "]");
+        String price = (totalPrice.getText().replace(".", ""));
+        return Integer.parseInt(price);
     }
 
     private static void getCheckOutPageElements(String productCheckOutPage)  {
