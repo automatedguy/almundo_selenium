@@ -265,8 +265,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     private CheckOutPage openAlmundoCart(String cartId){
-        logger.info("Navigating to: [" + PROD_URL + "checkout/" + cartId + "]");
-        driver.navigate().to(PROD_URL + "checkout/" + cartId);
+        logger.info("Navigating to: [" + PROD_URL + "cart/v2/" + cartId + "]");
+        driver.navigate().to(PROD_URL + "cart/v2/" + cartId);
         return initCheckOutPage();
     }
 
