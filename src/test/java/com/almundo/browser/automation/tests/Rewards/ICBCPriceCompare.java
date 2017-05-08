@@ -117,7 +117,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void aerolineasArgentinas() {
         logTestTitle("ICBC Store - Aerolíneas Argentinas");
-        checkOutPage = openAlmundoCart("5910b4b5e4b0481e2920ea15");
+        checkOutPage = openAlmundoCart(cartId);
         paymentSection = checkOutPage.paymentSection();
 
         paymentSection.selectPaymentQty("1 cuota");
@@ -144,7 +144,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "Mastercard");
         almundo_master_12 = checkOutPage.getTotalPrice();
 
-        checkOutPage = openIcbcCart("5910b4bfe4b0cc2b32a6fc52");
+        checkOutPage = openIcbcCart(cartIdICBC);
 
         paymentSection.selectPaymentQty("1 cuota");
 
