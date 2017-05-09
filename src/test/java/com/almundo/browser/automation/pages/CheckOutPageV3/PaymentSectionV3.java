@@ -148,7 +148,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
     public void setPayment(String paymentNumber, String container) {
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " .payment .monthly-payment>strong"), 5, "Payments");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " .payment .monthly-payment>strong"), 15, "Payments");
         List<WebElement> results = driver.findElements(By.cssSelector(container + " .payment .monthly-payment>strong"));
         List<WebElement> payments = driver.findElements(By.cssSelector(container + " .payment"));
 

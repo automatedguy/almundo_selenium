@@ -5,6 +5,8 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PaymentSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionV3;
+import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -74,6 +76,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 15, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
@@ -158,6 +161,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 15, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
@@ -239,6 +243,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 15, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
@@ -293,7 +298,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
     }
 
     private void selectPaymentV3(String payment, String bankName, String cardName) {
-
         paymentSectionV3.setPayment(payment, ".card-container-1");
         paymentSectionV3.setBank(bankName, ".card-container-1");
         paymentSectionV3.setCreditCard(cardName, ".card-container-1");
