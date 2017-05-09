@@ -76,7 +76,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 30, "Payments rows");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 40, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
@@ -161,7 +161,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 30, "Payments rows");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 40, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
@@ -243,7 +243,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 30, "Payments rows");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 40, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
