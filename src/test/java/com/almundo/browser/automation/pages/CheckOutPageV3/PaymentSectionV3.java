@@ -78,6 +78,11 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
 
     //############################################### Actions ###############################################
 
+    public void clickChangeCardLink() {
+        PageUtils.scrollToElement(driver, changeCardLnk);
+        logger.info("Clicking on Cambiar Forma de Pago link");
+        changeCardLnk.click();
+    }
 
     public PaymentSectionV3 populatePaymentSectionV3(String paymentData, String container) {
 

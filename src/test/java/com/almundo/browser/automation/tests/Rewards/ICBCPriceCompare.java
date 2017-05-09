@@ -54,17 +54,17 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("1","Mastercard", "Mastercard");
         almundo_master_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Visa");
         almundo_visa_12 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
@@ -76,7 +76,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 15, "Payments rows");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 30, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
@@ -134,34 +134,34 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("1","ICBC", "Mastercard");
         almundo_master_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("6","ICBC", "Visa");
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("6","ICBC", "Mastercard");
         almundo_master_6 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Visa");
         almundo_visa_12 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 15, "Payments rows");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 30, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
@@ -226,24 +226,24 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("1","Mastercard", "Mastercard");
         almundo_master_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Visa");
         almundo_visa_12 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.changeCardLnk.click();
+        paymentSectionV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 15, "Payments rows");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 30, "Payments rows");
 
         paymentSection.selectPaymentQty("1 cuota");
 
