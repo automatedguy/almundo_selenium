@@ -114,6 +114,6 @@ public class FlowTest extends TestBaseSetup {
                                              "random",
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
-                                             "TripsCheckOutPageDomesticlV3");
+                                             "TripsCheckOutPageDomesticV3");
     }
 }

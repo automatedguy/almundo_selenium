@@ -65,17 +65,17 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("MEXICO") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("false") Boolean submit_Reservation,
+                                        @Optional("true") Boolean submit_Reservation,
                                         @Optional("false") Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -344,7 +344,7 @@ public class TestBaseSetup {
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
         } catch(Exception time) {
-            logger.info("Forcing to Checkout V3");
+            logger.info("Forcing Checkout to V3");
             String newURL = driver.getCurrentUrl().replace("cart/v2", "checkout");
             driver.navigate().to(newURL);
         }
@@ -354,7 +354,7 @@ public class TestBaseSetup {
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
 
-            logger.info("Forcing to Combos V3");
+            logger.info("Forcing Checkout to Combos V3");
             String currentUrl = driver.getCurrentUrl();
 
             if(currentUrl.contains("sc=0")) {
@@ -377,7 +377,7 @@ public class TestBaseSetup {
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
 
-            logger.info("Forcing to disable TodoPago");
+            logger.info("Forcing Checkout to disable TodoPago");
             String currentUrl = driver.getCurrentUrl();
 
             if(currentUrl.contains("stp=1")) {

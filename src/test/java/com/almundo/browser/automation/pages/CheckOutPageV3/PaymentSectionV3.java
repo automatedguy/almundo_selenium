@@ -30,6 +30,13 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
 
     //############################################### Locators ##############################################
 
+
+    @FindBy(css = ".option-section input[value='creditCard']")
+    public WebElement creditCardRb;
+
+    @FindBy(css = ".option-section input[value='transfer']")
+    public WebElement trasnferRb;
+
     @FindBy(css = ".card-container-1")
     public WebElement credit_card_container_1;
 
@@ -276,5 +283,44 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         logger.info("Entering Número de Documento: [" + documentNumber + "]");
         documentNumberField.clear();
         documentNumberField.sendKeys(documentNumber);
+    }
+
+
+    public PaymentSectionV3 selectPaymentOption(String paymentData, String product) {
+        switch(paymentData){
+            case "cash":
+                logger.info("------------- Payment Option: CASH  -------------");
+                selectPayment("Pago en efectivo");
+                break;
+            case "deposit":
+                logger.info("------------- Payment Option: DEPOSIT  -------------");
+                selectPayment("Depósito");
+                break;
+            case "transfer":
+                logger.info("------------- Payment Option: TRANSFER  -------------");
+                selectPayment("Transferencia");
+                break;
+            case "booking24":
+                logger.info("------------- Payment Option: BOOKING 24HS.  -------------");
+                selectPayment("Reserva por 24 hs.");
+                break;
+            default:
+                logger.info("------------- Payment Option: CREDIT CARD  -------------");
+                if(!countryPar.equals("ARGENTINA")) {
+                    selectPayment("creditCard");
+                }
+                populatePaymentSectionV3(paymentData, product);
+        }
+        return this;
+    }
+
+    public void selectPayment(String paymentOptionSelected){
+        List<WebElement> paymentOptions = driver.findElements(By.cssSelector(".option-section input"));
+        for(WebElement paymentOption : paymentOptions){
+            if(paymentOption.getAttribute("value").equals(paymentOptionSelected)){
+                paymentOption.click();
+                break;
+            }
+        }
     }
 }

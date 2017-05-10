@@ -80,6 +80,8 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
                                              "FlightsCheckOutPageInternational");
+
+        logger.info("********** PASSED **********");
     }
 
     @Test

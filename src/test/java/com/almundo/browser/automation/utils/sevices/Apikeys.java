@@ -79,13 +79,14 @@ public class Apikeys extends TestBaseSetup {
     }
 
     private void displayApikeyInfo(JSONObject jsonApikeySection){
-        logger.info("name: " + "[" + JsonPath.read(jsonApikeySection, "$.name") + "]");
-        logger.info("brand: " + "[" + JsonPath.read(jsonApikeySection, "$.channel") + "]");
-        logger.info("channel: " + "[" + JsonPath.read(jsonApikeySection, "$.brand") + "]");
-        logger.info("value (X-Apikey): " + "[" + JsonPath.read(jsonApikeySection, "$.value") + "]");
+        logger.info("Name: " + "[" + JsonPath.read(jsonApikeySection, "$.name") + "]");
+        logger.info("Brand: " + "[" + JsonPath.read(jsonApikeySection, "$.channel") + "]");
+        logger.info("Channel: " + "[" + JsonPath.read(jsonApikeySection, "$.brand") + "]");
+        logger.info("Value (X-Apikey): " + "[" + JsonPath.read(jsonApikeySection, "$.value") + "]");
     }
 
     public String getApiKey(String currentUrl){
+        logger.info("Getting Api Key info");
         JSONArray apikeyList = getApikeysList();
         JSONObject jsonApikeySection;
         boolean apikeyFound = false;

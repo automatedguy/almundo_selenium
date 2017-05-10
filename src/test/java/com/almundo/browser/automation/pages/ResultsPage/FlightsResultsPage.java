@@ -89,7 +89,9 @@ public class FlightsResultsPage extends TestBaseSetup {
     }
 
     public boolean vacancy(){
+        PageUtils.waitUrlContains(driver, 5, "results", "Results url");
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
+
         try {
             PageUtils.waitForNoVacancy(driver, By.cssSelector("div:nth-child(4) > div > div > div.alert__text > p:nth-child(5) > a"), 5, "[" + LISTADO_DE_SUCURSALES_LNK + "] link");
         } catch (Exception ex){

@@ -65,6 +65,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public ConfirmationPageV3 clickComprarBtn(){
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
+            PageUtils.waitElementForClickable(driver, comprarBtn, 5, "Comprar button");
             logger.info("Clicking on Comprar Button");
             comprarBtn.click();
         } else {
@@ -100,12 +101,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  String productCheckOutPage) {
         //logger.warn("Populate Checkout Page V3 method is disabled.");
         getCheckOutPageElements(productCheckOutPage);
-        forceCheckoutV3();
+        //forceCheckoutV3();
         forceCombosV3();
         forceTodoPagoOff();
         setInputDef();
 
         //paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
+        paymentSection().selectPaymentOption(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -154,7 +156,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
         try {
             String currentUrl = driver.getCurrentUrl();
             apikeyHeader = apikeys.getApiKey(currentUrl);
-            inputDef = new JsonRestReader(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0,3) + "&language=es");
+            if(baseURL.contains(STAGING_URL)) {
+                inputDef = new JsonRestReader(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
+            } else{
+                inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
