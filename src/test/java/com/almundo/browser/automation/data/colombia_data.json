@@ -297,11 +297,11 @@
                 "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
-                "card_number": "4242424242424242",
-                "card_expire": "12/18",
-                "month_card_expire": "12",
-                "year_card_expire": "2022",
-                "security_code": "1234",
+                "card_number": "4559863683322976",
+                "card_expire": "08/18",
+                "month_card_expire": "08",
+                "year_card_expire": "2018",
+                "security_code": "559",
                 "documentType": "Cédula de Ciudadanía",
                 "document_number": "29098766"
             },
@@ -327,62 +327,62 @@
                 "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
-                "card_number": "4242424242424242",
-                "card_expire": "12/18",
-                "month_card_expire": "12",
-                "year_card_expire": "2022",
-                "security_code": "1234",
+                "card_number": "4559863683322976",
+                "card_expire": "08/18",
+                "month_card_expire": "08",
+                "year_card_expire": "2018",
+                "security_code": "559",
                 "documentType": "Cédula de Ciudadanía",
                 "document_number": "29098766"
             },
 
-        "cash": {
-            "credit_card_name" : "cash",
-            "card_holder": "",
-            "card_number": "",
-            "card_expire": "",
-            "month_card_expire": "",
-            "year_card_expire": "",
-            "security_code": "",
-            "documentType": "",
-            "document_number": ""
-        },
+            "cash": {
+                "credit_card_name" : "cash",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
 
-        "deposit": {
-            "credit_card_name" : "deposit",
-            "card_holder": "",
-            "card_number": "",
-            "card_expire": "",
-            "month_card_expire": "",
-            "year_card_expire": "",
-            "security_code": "",
-            "documentType": "",
-            "document_number": ""
-        },
+            "deposit": {
+                "credit_card_name" : "deposit",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
 
-        "transfer": {
-            "credit_card_name" : "transfer",
-            "card_holder": "",
-            "card_number": "",
-            "card_expire": "",
-            "month_card_expire": "",
-            "year_card_expire": "",
-            "security_code": "",
-            "documentType": "",
-            "document_number": ""
-        },
+            "transfer": {
+                "credit_card_name" : "transfer",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
 
-        "booking24": {
-            "credit_card_name" : "booking24",
-            "card_holder": "",
-            "card_number": "",
-            "card_expire": "",
-            "month_card_expire": "",
-            "year_card_expire": "",
-            "security_code": "",
-            "documentType": "",
-            "document_number": ""
-        }
+            "booking24": {
+                "credit_card_name" : "booking24",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            }
     },
 
     "billings": {

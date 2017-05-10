@@ -71,7 +71,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -342,7 +342,7 @@ public class TestBaseSetup {
 
     public void forceCheckoutV3(){
         try{
-            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+            PageUtils.waitUrlContains(driver, 20, "checkout", "Checkout V3");
         } catch(Exception time) {
             logger.info("Forcing Checkout to V3");
             String newURL = driver.getCurrentUrl().replace("cart/v2", "checkout");
@@ -352,7 +352,7 @@ public class TestBaseSetup {
 
     public void forceStaging(){
         try{
-            PageUtils.waitUrlContains(driver, 10, "staging.almundo", "Staging");
+            PageUtils.waitUrlContains(driver, 20, "staging.almundo", "Staging");
         } catch(Exception time) {
             logger.info("Forcing Staging: [st to staging]");
             String newURL = driver.getCurrentUrl().replace("st.almundo", "staging.almundo");
@@ -362,7 +362,7 @@ public class TestBaseSetup {
 
     public void forceCombosV3(){
         try{
-            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+            PageUtils.waitUrlContains(driver, 20, "checkout", "Checkout V3");
 
             logger.info("Forcing Checkout to Combos V3");
             String currentUrl = driver.getCurrentUrl();
@@ -385,7 +385,7 @@ public class TestBaseSetup {
 
     public void forceTodoPagoOff(){
         try{
-            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+            PageUtils.waitUrlContains(driver, 20, "checkout", "Checkout V3");
 
             logger.info("Forcing Checkout to disable TodoPago");
             String currentUrl = driver.getCurrentUrl();
