@@ -89,7 +89,7 @@ public class FlightsResultsPage extends TestBaseSetup {
     }
 
     public boolean vacancy(){
-        PageUtils.waitUrlContains(driver, 5, "results", "Results url");
+        PageUtils.waitUrlContains(driver, 10, "results", "Results url");
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
 
         try {

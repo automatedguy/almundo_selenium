@@ -75,7 +75,7 @@ public class TestBaseSetup {
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("true") Boolean submit_Reservation,
+                                        @Optional("false") Boolean submit_Reservation,
                                         @Optional("false") Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -147,7 +147,7 @@ public class TestBaseSetup {
         String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
         className = this.getClass().getName().substring(37);
 
-        if(baseURL.contains("st.almundo")){
+        if(baseURL.contains("staging.almundo")){
             metodo = methodName.getName() + " - STG";
         } else {
             metodo = methodName.getName() + " - PROD";
@@ -346,6 +346,16 @@ public class TestBaseSetup {
         } catch(Exception time) {
             logger.info("Forcing Checkout to V3");
             String newURL = driver.getCurrentUrl().replace("cart/v2", "checkout");
+            driver.navigate().to(newURL);
+        }
+    }
+
+    public void forceStaging(){
+        try{
+            PageUtils.waitUrlContains(driver, 10, "staging.almundo", "Staging");
+        } catch(Exception time) {
+            logger.info("Forcing Staging: [st to staging]");
+            String newURL = driver.getCurrentUrl().replace("st.almundo", "staging.almundo");
             driver.navigate().to(newURL);
         }
     }
