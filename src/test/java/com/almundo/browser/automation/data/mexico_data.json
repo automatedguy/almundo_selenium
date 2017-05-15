@@ -161,8 +161,8 @@
         },
 
         "miami_10days_entre_21_24": {
-            "originAuto": "Ciu",
-            "originFull": "Ciudad de México, Morelos, México",
+            "originAuto": "Mia",
+            "originFull": "Miami, Estados Unidos de América",
             "destinationAuto": "Mia",
             "destinationFull": "Miami, Estados Unidos de América",
             "startDate": 10,
