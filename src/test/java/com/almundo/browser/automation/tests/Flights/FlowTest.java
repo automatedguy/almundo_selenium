@@ -6,6 +6,7 @@ import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -27,6 +28,7 @@ public class FlowTest extends TestBaseSetup {
     private FlightsResultsPage flightsResultsPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
     private ConfirmationPageV3 confirmationPageV3 = null;
+    private AgreementPage agreementPage = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -142,6 +144,16 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
                                               "FlightsCheckOutPageInternational");
+
+        agreementPage = checkOutPageV3.termAndConditionsClick();
+
+        /******************* Assert The Country Agreement URL  ********************/
+        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
+
+        /******************* Assert The Country Agreement Contract  ********************/
+        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreementText()));
+
+        agreementPage.closeTermsAndConditions();
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());

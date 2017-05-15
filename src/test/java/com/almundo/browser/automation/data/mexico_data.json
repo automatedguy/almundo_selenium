@@ -2,6 +2,7 @@
     "flights": {
             "miami_10days_2adults_2childs_turista": {
                 "originAuto": "Ciu",
+                "originAuto": "Mex",
                 "originFull": "Ciudad de México, Morelos, México",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",

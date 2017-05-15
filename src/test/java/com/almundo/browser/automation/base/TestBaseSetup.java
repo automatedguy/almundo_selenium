@@ -69,9 +69,9 @@ public class TestBaseSetup {
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional("firefox") String browserType,
+                                        @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -535,6 +535,10 @@ public class TestBaseSetup {
 
     protected HeaderSection initHeaderSection() {
         return PageFactory.initElements(driver, HeaderSection.class);
+    }
+
+    protected AgreementPage initTermsAndConditonsPage(){
+        return PageFactory.initElements(driver, AgreementPage.class);
     }
 
 }

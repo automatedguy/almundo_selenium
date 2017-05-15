@@ -61,6 +61,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = ".main-title")
     public WebElement mainTitleLbl;
 
+    @FindBy(css = "div:nth-child(1) > label > a")
+    private WebElement terminosCondiciones;
+
     //############################################### Actions ##############################################
 
     public ConfirmationPageV3 clickComprarBtn(){
@@ -151,6 +154,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
             footerSection.clickConfirmarBtn();
         }
         return this;
+    }
+
+    public AgreementPage termAndConditionsClick(){
+        logger.info("Clicking on Terms and Conditions Link...");
+        if(countryPar == "COLOMBIA"){
+            terminosCondiciones = driver.findElement(By.cssSelector("div:nth-child(1) > label > a:nth-child(3)"));
+        }
+        terminosCondiciones.click();
+        PageUtils.switchToNewTab(driver);
+        return initTermsAndConditonsPage();
     }
 
     private void setInputDef() {
