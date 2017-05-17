@@ -82,6 +82,14 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getBillingData("local_Billing"),
                                               dataManagement.getContactData("contact_cell_phone"),
                                              "FlightsCheckOutPageInternational");
+
+        agreementPage = checkOutPageV3.termAndConditionsClick();
+        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
+        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        agreementPage.closeAgreementPage();
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
 
     @Test
@@ -111,6 +119,14 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
                                               "FlightsCheckOutPageDomestic");
+
+        agreementPage = checkOutPageV3.termAndConditionsClick();
+        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
+        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        agreementPage.closeAgreementPage();
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
 
     @Test
@@ -146,14 +162,9 @@ public class FlowTest extends TestBaseSetup {
                                               "FlightsCheckOutPageInternational");
 
         agreementPage = checkOutPageV3.termAndConditionsClick();
-
-        /******************* Assert The Country Agreement URL  ********************/
-        //Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
-
-        /******************* Assert The Country Agreement Contract  ********************/
-        //Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreementText()));
-
-        agreementPage.closeTermsAndConditions();
+        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
+        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        agreementPage.closeAgreementPage();
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -188,6 +199,14 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
                                               "FlightsCheckOutPageDomestic");
+
+        agreementPage = checkOutPageV3.termAndConditionsClick();
+        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
+        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        agreementPage.closeAgreementPage();
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
 
     @Test
@@ -225,5 +244,13 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
                                               "FlightsCheckOutPageInternational");
+
+        agreementPage = checkOutPageV3.termAndConditionsClick();
+        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
+        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        agreementPage.closeAgreementPage();
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
 }

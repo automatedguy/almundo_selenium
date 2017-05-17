@@ -126,7 +126,7 @@ public class PageUtils {
 
     //BROWSER TAB
     public static void switchToNewTab(WebDriver driver){
-        logger.info("Switching to new tab");
+        logger.info("Switching to child tab.");
         PageUtils.waitImplicitly(2000);
         ArrayList<String> newTab = new ArrayList(driver.getWindowHandles());
         driver.switchTo().window(newTab.get(1));
@@ -134,7 +134,7 @@ public class PageUtils {
     }
 
     public static void switchToParentTab(WebDriver driver){
-        logger.info("Switching to new tab");
+        logger.info("Switching back to parent tab.");
         PageUtils.waitImplicitly(2000);
         ArrayList<String> newTab = new ArrayList(driver.getWindowHandles());
         driver.switchTo().window(newTab.get(0));
