@@ -103,21 +103,21 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
         logger.warn("Populate Checkout Page V3 method is disabled.");
-        /*getCheckOutPageElements(productCheckOutPage);
-        forceCheckoutV3();
+        getCheckOutPageElements(productCheckOutPage);
+        //forceCheckoutV3();
         forceCombosV3();
         forceTodoPagoOff();
-        forceStaging();
+        //forceStaging();
         setInputDef();
 
         //paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
-        paymentSection().selectPaymentOption(paymentData, ".card-container-1");
+        //paymentSection().selectPaymentOption(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
-        acceptConditions();*/
+        acceptConditions();
         return this;
     }
 

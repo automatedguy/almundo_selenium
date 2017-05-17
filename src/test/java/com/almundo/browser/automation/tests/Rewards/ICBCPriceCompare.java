@@ -28,10 +28,12 @@ public class ICBCPriceCompare extends TestBaseSetup {
     int almundo_visa_1;
     int almundo_visa_6;
     int almundo_visa_12;
+    int almundo_visa_18;
 
     int icbc_visa_1;
     int icbc_visa_6;
     int icbc_visa_12;
+    int icbc_visa_18;
 
     int almundo_master_1;
     int almundo_master_6;
@@ -69,10 +71,15 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectPaymentV3("12","ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
-//        paymentSectionV3.changeCardLnk.click();
-//
-//        selectPaymentV3("18","Mastercard", "Mastercard");
-//        almundo_master_18 = checkOutPageV3.getTotalPrice();
+        paymentSectionV3.clickChangeCardLink();
+
+        selectPaymentV3("18","Visa", "Visa");
+        almundo_visa_18 = checkOutPageV3.getTotalPrice();
+
+        paymentSectionV3.clickChangeCardLink();
+
+        selectPaymentV3("18","Mastercard", "Mastercard");
+        almundo_master_18 = checkOutPageV3.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
@@ -94,10 +101,13 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectCardAndBank("CA", "ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
-//        paymentSection.selectPaymentQty("18 cuotas");
-//
-//        selectCardAndBank("CA", "ICBC");
-//        icbc_master_18 = checkOutPage.getTotalPrice();
+        paymentSection.selectPaymentQty("18 cuotas");
+
+        selectCardAndBank("VI", "ICBC");
+        icbc_visa_18 = checkOutPage.getTotalPrice();
+
+        selectCardAndBank("CA", "ICBC");
+        icbc_master_18 = checkOutPage.getTotalPrice();
 
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
@@ -117,9 +127,13 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("MASTERCARD - 12 Cuotas - ICBC   : [" + icbc_master_12  + "]" + "\n");
         softAssert.assertTrue(almundo_master_12 == icbc_master_12, "MASTERCARD - 12 Cuotas - Prices are not equal: Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
 
-//        logger.info("MASTERCARD - 18 Cuotas - Almundo: [" + almundo_master_18  + "] -----> No se está seleccionando un banco en este caso");
-//        logger.info("MASTERCARD - 18 Cuotas - ICBC   : [" + icbc_master_18  + "]" + "\n");
-//        softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: Almundo [" + almundo_master_18 + "] - ICBC [" + icbc_master_18 + "]");
+        logger.info("VISA - 18 Cuotas - Almundo: [" + almundo_visa_18  + "] -----> No se está seleccionando un banco en este caso");
+        logger.info("VISA - 18 Cuotas - ICBC   : [" + icbc_visa_18  + "]" + "\n");
+        softAssert.assertTrue(almundo_visa_18 == icbc_visa_18, "VISA - 18 Cuotas - Prices are not equal: Almundo [" + almundo_visa_18 + "] - ICBC [" + icbc_visa_18 + "]");
+
+        logger.info("MASTERCARD - 18 Cuotas - Almundo: [" + almundo_master_18  + "] -----> No se está seleccionando un banco en este caso");
+        logger.info("MASTERCARD - 18 Cuotas - ICBC   : [" + icbc_master_18  + "]" + "\n");
+        softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: Almundo [" + almundo_master_18 + "] - ICBC [" + icbc_master_18 + "]");
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
         softAssert.assertAll();

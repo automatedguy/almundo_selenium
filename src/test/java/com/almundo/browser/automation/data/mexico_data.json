@@ -2,7 +2,7 @@
     "flights": {
             "miami_10days_2adults_2childs_turista": {
                 "originAuto": "Ciu",
-                "originFull": "Ciudad de México, Morelos, México",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
                 "startDate": 10,
@@ -15,7 +15,7 @@
 
             "domestic_20days_2adults_todas": {
                 "originAuto": "Ciu",
-                "originFull": "Ciudad de México, Morelos, México",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Canc",
                 "destinationFull": "Cancún, Quintana Roo, México",
                 "startDate": 30,
@@ -28,7 +28,7 @@
 
             "multiDest_3Flights_2adults_todas": {
                 "originAuto": "Ciu",
-                "originFull": "Ciudad de México, Morelos, México",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
                 "originAuto2": "Mia",
@@ -38,7 +38,7 @@
                 "originAuto3": "Nue",
                 "originFull3": "Nueva York, Nueva York, Estados Unidos de América",
                 "destinationAuto3": "Ciu",
-                "destinationFull3": "Ciudad de México, Morelos, México",
+                "destinationFull3": "Ciudad de México, México",
                 "startDate": 15,
                 "startDate2": 20,
                 "startDate3": 25,
@@ -50,7 +50,7 @@
 
             "domestic_30days_2adults_todas": {
             "originAuto": "Ciu",
-            "originFull": "Ciudad de México, Morelos, México",
+            "originFull": "Ciudad de México, México",
             "destinationAuto": "Canc",
             "destinationFull": "Cancún, Quintana Roo, México",
             "startDate": 25,
@@ -97,7 +97,7 @@
     "trips": {
             "miami_10days_2adults_2childs_1room": {
                 "originAuto": "Ciu",
-                "originFull": "Ciudad de México, Morelos, México",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
                 "destinationFull": "Miami, Estados Unidos de América",
                 "startDate": 10,
@@ -110,7 +110,7 @@
 
             "domestic01_15days_2adults_1childs_1room": {
                 "originAuto": "Ciu",
-                "originFull": "Ciudad de México, Morelos, México",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Canc",
                 "destinationFull": "Cancún, Quintana Roo, México",
                 "startDate": 20,
@@ -123,7 +123,7 @@
 
             "int02_20days_2adults_1childs_1room": {
                 "originAuto": "Ciu",
-                "originFull": "Ciudad de México, Morelos, México",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "San",
                 "destinationFull": "Santiago de Chile, Chile",
                 "startDate": 34,
@@ -135,7 +135,7 @@
             },
         "domestic02_20days_2adults_1childs_1room": {
             "originAuto": "Ciu",
-            "originFull": "Ciudad de México, Morelos, México",
+            "originFull": "Ciudad de México, México",
             "destinationAuto": "Canc",
             "destinationFull": "Cancún, Quintana Roo, México",
             "startDate": 25,
@@ -150,9 +150,9 @@
     "cars": {
         "capital_10days_entre_21_24": {
             "originAuto": "Ciu",
-            "originFull": "Ciudad de México, Morelos, México",
+            "originFull": "Ciudad de México, México",
             "destinationAuto": "Ciu",
-            "destinationFull": "Ciudad de México, Morelos, México",
+            "destinationFull": "Ciudad de México, México",
             "startDate": 10,
             "endDate": 10,
             "pickUpTime": "12:00",
