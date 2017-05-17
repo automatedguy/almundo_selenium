@@ -52,7 +52,7 @@ public class TestBaseSetup {
     public static Boolean retriesCount = false;
 
     public static String className;
-    public static String metodo;
+    public static String method;
     public static String countryPar;
     private static DesiredCapabilities capabilities = null;
 
@@ -65,13 +65,13 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
-                                        @Optional() String osType,
+    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
+//                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-//                                        @Optional("Windows 10") String osType,
+                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -144,13 +144,13 @@ public class TestBaseSetup {
     @BeforeMethod
     public void setDriver(Method methodName) {
 
-        String method = this.getClass().getName().substring(37) + " - " + methodName.getName() + " - " + countryPar;
         className = this.getClass().getName().substring(37);
+        method = className + " - " + methodName.getName() + " - " + countryPar;
 
-        if(baseURL.contains("staging.almundo")){
-            metodo = methodName.getName() + " - STG";
+        if(baseURL.contains("st.almundo")){
+            method = method + " - STG";
         } else {
-            metodo = methodName.getName() + " - PROD";
+            method = method + " - PROD";
         }
 
         try {
@@ -336,7 +336,7 @@ public class TestBaseSetup {
 
     public void logTestTitle(String testTitle) {
         logger.info("-------------------------------------------------------------------------------------");
-        logger.info(testTitle + " - Class: [" + className + "] - Method [" + metodo + "]");
+        logger.info(testTitle + " - Method [" + method + "]");
         logger.info("-------------------------------------------------------------------------------------");
     }
 

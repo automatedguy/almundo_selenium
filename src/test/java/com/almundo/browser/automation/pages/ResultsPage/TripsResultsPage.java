@@ -103,6 +103,7 @@ public class TripsResultsPage extends TestBaseSetup {
     }
 
     public boolean vacancy(){
+        PageUtils.waitUrlContains(driver, 10, "results", "Results url");
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         try {
             PageUtils.waitForNoVacancy(driver, By.cssSelector("div.alert__text > p:nth-child(4)"), 5, "[" + VOLVE_A_INTENTARLO_MSG + "] message");

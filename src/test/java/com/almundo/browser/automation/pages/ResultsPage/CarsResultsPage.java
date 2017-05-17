@@ -48,6 +48,7 @@ public class CarsResultsPage extends TestBaseSetup {
     }
 
     public CheckOutPage clickReservarAhoraBtn(int index) {
+        PageUtils.waitUrlContains(driver, 10, "results", "Results url");
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         String cssSelectorName  = ".button.button--secondary.button--block.button--lg.crazy_week";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);

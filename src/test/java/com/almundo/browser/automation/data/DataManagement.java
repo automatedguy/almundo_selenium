@@ -69,6 +69,7 @@ public class DataManagement extends TestBaseSetup {
         getPaymentList();
         getBillingList();
         getContactList();
+        getUsersDataList();
     }
 
     public void getFlightsDataTripList() {
@@ -152,6 +153,7 @@ public class DataManagement extends TestBaseSetup {
         getPaymentList();
         getBillingList();
         getContactList();
+        getUsersDataList();
     }
 
     public void getHotelsDataTripList() {

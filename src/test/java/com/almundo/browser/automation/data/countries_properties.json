@@ -274,7 +274,7 @@
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"true",
+      "accepted":"false",
       "agentEmail":"false"
     },
 
@@ -298,7 +298,7 @@
       "birthday":"false",
       "gender":"false",
       "nationality":"false",
-      "accepted":"true"
+      "accepted":"false"
     },
 
     "HotelsCheckOutPageDomesticSucursal":{

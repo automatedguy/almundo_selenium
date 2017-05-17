@@ -9,6 +9,7 @@ import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -37,9 +38,9 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void doLogin(){
+        JSONObject userData = dataManagement.getUserData("email");
         LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
-        loginPopUp.setLoginPasswordTxt("gabi1981ce");
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
         basePage.clickHotelsBtn();
     }
