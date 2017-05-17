@@ -130,7 +130,15 @@ public class PageUtils {
         PageUtils.waitImplicitly(2000);
         ArrayList<String> newTab = new ArrayList(driver.getWindowHandles());
         driver.switchTo().window(newTab.get(1));
-        logger.info("Detail URL: " + "[" +  driver.getCurrentUrl() + "]");
+        logger.info("Child Tab URL: " + "[" +  driver.getCurrentUrl() + "]");
+    }
+
+    public static void switchToParentTab(WebDriver driver){
+        logger.info("Switching to new tab");
+        PageUtils.waitImplicitly(2000);
+        ArrayList<String> newTab = new ArrayList(driver.getWindowHandles());
+        driver.switchTo().window(newTab.get(0));
+        logger.info("Parent Tab URL: " + "[" +  driver.getCurrentUrl() + "]");
     }
 
     public static void setFocusOnWindow(WebDriver driver, String window){

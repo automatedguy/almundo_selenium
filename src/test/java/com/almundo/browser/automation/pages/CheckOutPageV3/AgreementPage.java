@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,8 +22,12 @@ public class AgreementPage extends CheckOutPageV3 {
         super(driver);
     }
 
+    //############################################### Locators ##############################################
+
     @FindBy(css = ".epp-ctn--lg.info")
     public WebElement conditionsInfo;
+
+    //############################################### Locators ##############################################
 
     public String getUrl(){
         TermsAndConditionURL = driver.getCurrentUrl();
@@ -42,7 +47,6 @@ public class AgreementPage extends CheckOutPageV3 {
         return countryDomain;
     }
 
-
     public String getCountryAgreementText() {
         String agreementText = "";
         try {
@@ -59,6 +63,7 @@ public class AgreementPage extends CheckOutPageV3 {
 
     public AgreementPage closeTermsAndConditions(){
         driver.close();
+        PageUtils.switchToParentTab(driver);
         return this;
     }
 }
