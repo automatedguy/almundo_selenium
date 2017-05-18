@@ -160,9 +160,8 @@ public class BasePage extends TestBaseSetup {
     }
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
-        PageUtils.waitImplicitly(1000);
         calendar.click();
-        PageUtils.waitImplicitly(2000);
+        PageUtils.waitImplicitly(1000);
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
 
         List<WebElement> availableDates = getAvailableDatesList();
@@ -179,6 +178,7 @@ public class BasePage extends TestBaseSetup {
             logger.info("Selecting date: [" + availableDatesNextCal.get(daysAhead-1).getText() + " " + monthLbl.getText() + " " + yearLbl.getText() + "]");
             availableDatesNextCal.get(daysAhead-1).click();
         }
+        PageUtils.waitImplicitly(1000);
         return this;
     }
 
