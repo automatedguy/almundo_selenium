@@ -28,12 +28,22 @@ public class AgreementPage extends CheckOutPageV3 {
 
     //############################################### Actions ##############################################
 
-    public String getUrl(){
+    /******************* URLs Validations **********************/
+    public boolean agreementUrlOk(){
+        logger.info("Validating Agreement Page URL.");
+        if(getUrl().contains(getCountryUrl())) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private String getUrl(){
         logger.info("Getting Current Agreement Page URL From Browser: " + countryPar);
         return driver.getCurrentUrl();
     }
 
-    public String getCountryUrl(){
+    private String getCountryUrl(){
         String countryDomain = null;
         logger.info("Getting Expected Agreement Page URL For Comparison: " + countryPar);
         switch(countryPar){
@@ -47,13 +57,23 @@ public class AgreementPage extends CheckOutPageV3 {
         return countryDomain;
     }
 
-    public String getAgreement(){
+    /******************* Agreement Text Validations **********************/
+    public boolean agreementOk(){
+        logger.info("Validating Agreement Terms and Conditions.");
+        if(getAgreement().equals(getCountryAgreement())){
+           return true;
+        }else{
+            return false;
+        }
+    }
+
+    private String getAgreement(){
         logger.info("Getting The Agreement Text From Page For Comparison.");
         PageUtils.waitElementForVisibility(driver, By.cssSelector(".epp-ctn.cover-top>h1"),10, "Agreement Text.");
         return agreementInfo.getText().replace(" ","");
     }
 
-    public String getCountryAgreement() {
+    private String getCountryAgreement() {
         String agreementText = "";
         logger.info("Getting The Expected Agreement Text For Comparison  From File: " + DATA_PATH + countryPar.toLowerCase() + "_agreement.txt");
         try {

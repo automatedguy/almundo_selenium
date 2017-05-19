@@ -84,8 +84,8 @@ public class FlowTest extends TestBaseSetup {
                                              "FlightsCheckOutPageInternational");
 
         agreementPage = checkOutPageV3.termAndConditionsClick();
-        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
-        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        Assert.assertTrue(agreementPage.agreementUrlOk());
+        Assert.assertTrue(agreementPage.agreementOk());
         agreementPage.closeAgreementPage();
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
@@ -121,8 +121,8 @@ public class FlowTest extends TestBaseSetup {
                                               "FlightsCheckOutPageDomestic");
 
         agreementPage = checkOutPageV3.termAndConditionsClick();
-        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
-        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        Assert.assertTrue(agreementPage.agreementUrlOk());
+        Assert.assertTrue(agreementPage.agreementOk());
         agreementPage.closeAgreementPage();
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
@@ -162,8 +162,8 @@ public class FlowTest extends TestBaseSetup {
                                               "FlightsCheckOutPageInternational");
 
         agreementPage = checkOutPageV3.termAndConditionsClick();
-        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
-        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        Assert.assertTrue(agreementPage.agreementUrlOk());
+        Assert.assertTrue(agreementPage.agreementOk());
         agreementPage.closeAgreementPage();
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
@@ -201,8 +201,8 @@ public class FlowTest extends TestBaseSetup {
                                               "FlightsCheckOutPageDomestic");
 
         agreementPage = checkOutPageV3.termAndConditionsClick();
-        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
-        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        Assert.assertTrue(agreementPage.agreementUrlOk());
+        Assert.assertTrue(agreementPage.agreementOk());
         agreementPage.closeAgreementPage();
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
@@ -246,8 +246,8 @@ public class FlowTest extends TestBaseSetup {
                                               "FlightsCheckOutPageInternational");
 
         agreementPage = checkOutPageV3.termAndConditionsClick();
-        Assert.assertTrue(agreementPage.getUrl().contains(agreementPage.getCountryUrl()));
-        Assert.assertTrue(agreementPage.getAgreement().equals(agreementPage.getCountryAgreement()));
+        Assert.assertTrue(agreementPage.agreementUrlOk());
+        Assert.assertTrue(agreementPage.agreementOk());
         agreementPage.closeAgreementPage();
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
