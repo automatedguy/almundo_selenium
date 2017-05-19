@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.randomString;
+
 /**
  * Created by gabrielcespedes on 12/12/16.
  */
@@ -81,11 +83,13 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
-            if(inputDef.isRequired("passengers","first_name",passengerIndex)){
-            setFirstName(passengerIndex, passengerInfo.get("first_name").toString());}
+            if(inputDef.isRequired("passengers","first_name",passengerIndex)) {
+                //setFirstName(passengerIndex, passengerInfo.get("first_name").toString());
+                setFirstName(passengerIndex, randomString(15));}
 
             if(inputDef.isRequired("passengers","last_name",passengerIndex)){
-            setlastName(passengerIndex, passengerInfo.get("last_name").toString());}
+                //setlastName(passengerIndex, passengerInfo.get("last_name").toString());
+                setlastName(passengerIndex, randomString(15));}
 
             if(inputDef.isRequired("passengers","document", passengerIndex)) {
                 setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}

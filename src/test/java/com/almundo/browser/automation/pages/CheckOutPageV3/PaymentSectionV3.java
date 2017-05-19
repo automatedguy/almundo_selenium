@@ -103,30 +103,33 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
 
         if(paymentData.equals("random")) {
             List<WebElement> availableCardsElements = creditCardSelect.getOptions();
+            availableCardsElements.remove(0);
 
             for (WebElement availableCard : availableCardsElements) {
                 if (availableCard.getText().equals("Visa")) {
-                    setCreditCardCombo(creditCardSelect, "Visa");
                     paymentDataObject = dataManagement.getPaymentData("1_visa_visa");
+                    setCreditCardCombo(creditCardSelect, "Visa");
                     break;
                 } else if (availableCard.getText().equals("Mastercard")) {
-                    setCreditCardCombo(creditCardSelect, "Mastercard");
                     paymentDataObject = dataManagement.getPaymentData("1_master_master");
+                    setCreditCardCombo(creditCardSelect, "Mastercard");
                     break;
                 } else if (availableCard.getText().equals("American Express")) {
-                    setCreditCardCombo(creditCardSelect, "American Express");
                     paymentDataObject = dataManagement.getPaymentData("1_amex_amex");
+                    setCreditCardCombo(creditCardSelect, "American Express");
                     break;
                 }
             }
-
+            setBankCombo(bankSelect, "random");
         } else {
             paymentDataObject = dataManagement.getPaymentData(paymentData);
             setCreditCardCombo(creditCardSelect, paymentDataObject.get("credit_card_name").toString());
+            setBankCombo(bankSelect, paymentDataObject.get("credit_card_code").toString());
         }
 
-        setBankCombo(bankSelect);
-        setPaymentCombo(paymentSelect);
+        if(paymentDdl.isDisplayed()) {
+            setPaymentCombo(paymentSelect);
+        }
 
         logger.info("------------- Filling Payment Section -------------");
         if(inputDef.isRequired("payments","credit_card_number",0)){
@@ -215,18 +218,28 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         creditCardSelect.selectByVisibleText(cardName);
     }
 
-    private void setBankCombo(Select bankSelect) {
-        int random=0;
-        do{
-            random = new Random().nextInt(bankSelect.getOptions().size());
-        } while(bankSelect.getOptions().size()!= 1 && random==0);
+    private void setBankCombo(Select bankSelect, String bankName) {
 
-        logger.info("Selecting Bank: [" + bankSelect.getOptions().get(random).getText() + "]");
-        bankSelect.selectByIndex(random);
+        switch(bankName){
+            case "random":
+                int random;
+                do{
+                    random = new Random().nextInt(bankSelect.getOptions().size());
+                } while(bankSelect.getOptions().size()!= 1 && random==0);
+
+                logger.info("Selecting Bank: [" + bankSelect.getOptions().get(random).getText() + "]");
+                bankSelect.selectByIndex(random);
+                break;
+
+            default:
+                logger.info("Selecting Bank: [" + bankName + "]");
+                bankSelect.selectByValue(bankName);
+        }
+
     }
 
     private void setPaymentCombo(Select paymentSelect) {
-        int random=0;
+        int random;
         do{
             random = new Random().nextInt(paymentSelect.getOptions().size());
         } while(paymentSelect.getOptions().size()!= 1 && random==0);
