@@ -142,7 +142,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void aerolineasArgentinas() {
         logTestTitle("ICBC Store - Aerolíneas Argentinas");
-        checkOutPageV3 = openAlmundoCart("59234427e4b0884e8490aaa5");
+        checkOutPageV3 = openAlmundoCart(cartId);
         paymentSectionV3 = checkOutPageV3.paymentSection();
 
         selectPaymentV3("1","ICBC", "Visa");
@@ -173,7 +173,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectPaymentV3("12","ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
-        checkOutPage = openIcbcCart("59234436e4b0884e8490aaa7");
+        checkOutPage = openIcbcCart(cartIdICBC);
         paymentSection = checkOutPage.paymentSection();
         PageUtils.waitElementForVisibility(driver, By.cssSelector(".cards__definition__header"), 40, "Payments rows");
 
