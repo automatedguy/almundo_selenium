@@ -30,7 +30,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
 
     //############################################### Locators ##############################################
 
-
     @FindBy(css = ".option-section input[value='creditCard']")
     public WebElement creditCardRb;
 

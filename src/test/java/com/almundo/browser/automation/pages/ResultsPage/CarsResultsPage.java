@@ -50,7 +50,7 @@ public class CarsResultsPage extends TestBaseSetup {
     public CheckOutPage clickReservarAhoraBtn(int index) {
         PageUtils.waitUrlContains(driver, 10, "results", "Results url");
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
-        String cssSelectorName  = ".button.button--secondary.button--block.button--lg.crazy_week";
+        String cssSelectorName  = "article .button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> detailCarsButtonResults = driver.findElements(By.cssSelector(cssSelectorName));
         PageUtils.waitElementForClickable(driver, detailCarsButtonResults.get(index), 20, "Reservar Ahora button");
