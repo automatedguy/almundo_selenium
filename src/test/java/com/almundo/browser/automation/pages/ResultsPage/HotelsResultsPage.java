@@ -25,6 +25,7 @@ public class HotelsResultsPage extends TestBaseSetup {
         hotelPriceBoxCssSelector = locators.setHotelPriceBoxLocator();
         hotelAmenitiesListCssSelector = locators.setHotelAmenitiesListLocator();
         verHotelButtonCssSelector = locators.setVerHotelButtonLocator();
+        hotelChoicesLocator = locators.sethotelChoicesLocator();
     }
 
     //############################################### Locators ##############################################
@@ -45,6 +46,9 @@ public class HotelsResultsPage extends TestBaseSetup {
 
     private String verHotelButtonCssSelector;
     private WebElement verHotelButton;
+
+    private String hotelChoicesLocator;
+    public List<WebElement> hotelChoices;
 
     //############################################### Actions ###############################################
 
@@ -99,5 +103,10 @@ public class HotelsResultsPage extends TestBaseSetup {
             return true;
         }
         return false;
+    }
+
+    public List<WebElement> getHotelChoices(){
+        hotelChoices = driver.findElements(By.cssSelector(hotelChoicesLocator));
+        return hotelChoices;
     }
 }
