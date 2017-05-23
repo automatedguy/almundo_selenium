@@ -43,6 +43,9 @@ public class FlightsResultsPage extends TestBaseSetup {
     @FindBy(css = ".choice-direction")
     public List<WebElement> directionList;
 
+    @FindBy(css ="#main-content am-flights-cluster-container")
+    public List<WebElement> flightChoices;
+
 
     //############################################### Actions ##############################################
 
@@ -113,5 +116,9 @@ public class FlightsResultsPage extends TestBaseSetup {
     public String getPriceBoxInfo(int index){
         List<WebElement> flightsClusterPricebox = driver.findElements(By.cssSelector(".flights-cluster-pricebox"));
         return formatInfo(flightsClusterPricebox.get(index).getText());
+    }
+
+    public List<WebElement> getFlightChoices(){
+        return flightChoices;
     }
 }
