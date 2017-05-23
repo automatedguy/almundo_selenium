@@ -20,7 +20,7 @@ public class HeaderSection extends BasePage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = ".account .pointer")
+    @FindBy(css = "#header .account")
     public WebElement myAccountMenuLnk;
 
     @FindBy(css = ".account>a>span:nth-of-type(2)")
@@ -28,11 +28,11 @@ public class HeaderSection extends BasePage {
 
     //############################################### Actions ###############################################
 
-    public HeaderSection clickMyAccountMenuLnk() {
+    public LoginPopUp clickMyAccountMenuLnk() {
         PageUtils.waitElementForVisibility(driver, myAccountMenuLnk, 10, "My account menu link");
         logger.info("Clicking on My Account menu link");
         myAccountMenuLnk.click();
-        return this;
+        return initLoginPopUp();
     }
 
     public List<String> getMyAccountMenuList() {
