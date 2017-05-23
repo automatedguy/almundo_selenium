@@ -505,7 +505,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, FooterSectionV3.class);
     }
 
-    protected HotelsResultsPage initHotelesResultsPage() {
+    protected HotelsResultsPage initHotelsResultsPage() {
         return PageFactory.initElements(driver, HotelsResultsPage.class);
     }
 

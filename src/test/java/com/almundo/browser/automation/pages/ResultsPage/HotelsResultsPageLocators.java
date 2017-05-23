@@ -20,6 +20,7 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
     String priceBoxLocator;
     String amenitiesListLocator;
     String verHotelButtonLocator;
+    String hotelChoicesLocator;
 
     public String setHotelNameLocator(){ return nameLocator; }
 
@@ -30,6 +31,8 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
     public String setHotelAmenitiesListLocator(){ return amenitiesListLocator; }
 
     public String setVerHotelButtonLocator(){ return verHotelButtonLocator;}
+
+    public String sethotelChoicesLocator(){ return hotelChoicesLocator;}
 
     /*** Set the locators based on getHotelsResultsPageLayout results. ***/
     private void setLocators(int index){
@@ -53,9 +56,8 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
         starsListLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.hotel-description > p.star-ctn > span";
         priceBoxLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn";
         amenitiesListLocator = "div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > div.amenities-ctn.ng-scope > ul > li";
-        //verHotelButtonLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn > div > a";
-
         verHotelButtonLocator = "div:nth-child(" + (index + 1) + ") > hotel-card .price-box a";
+        hotelChoicesLocator= "body section .content";
     }
 
     /*** When URL does not contain card=true is the old one. ***/
@@ -66,6 +68,7 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
         priceBoxLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph > div";
         amenitiesListLocator = "hotel:nth-child(" + (index+1) + ") > article > div.col-5.col-12--ph > div > div.amenities-ctn.ng-scope > ul > li";
         verHotelButtonLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph > div > a";
+        hotelChoicesLocator =  "body .hotel-ctn.am-ctn";
     }
 }
 
