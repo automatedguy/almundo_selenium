@@ -3,7 +3,7 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.PickUpLocationSection;
 import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.JsonRestReader;
+import com.almundo.browser.automation.utils.sevices.InputDefinitions;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.Apikeys;
 import org.json.simple.JSONArray;
@@ -28,7 +28,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public static JSONObject checkOutPageElements = null;
     public static String apikeyHeader =  null;
     public static Apikeys apikeys = new Apikeys();
-    public static JsonRestReader inputDef = null;
+    public static InputDefinitions inputDef = null;
 
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
@@ -172,9 +172,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
             String currentUrl = driver.getCurrentUrl();
             apikeyHeader = apikeys.getApiKey(currentUrl);
             if(baseURL.contains(STAGING_URL)) {
-                inputDef = new JsonRestReader(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
+                inputDef = new InputDefinitions(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
             } else{
-                inputDef = new JsonRestReader(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
+                inputDef = new InputDefinitions(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
             }
         } catch (IOException e) {
             e.printStackTrace();

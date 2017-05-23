@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.utils;
+package com.almundo.browser.automation.utils.sevices;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.jayway.jsonpath.JsonPath;
@@ -20,13 +20,13 @@ import static com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3
 /**
  * Created by gabi on 13/04/17.
  */
-public class JsonRestReader extends TestBaseSetup{
+public class InputDefinitions extends TestBaseSetup{
 
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     private String url = null;
     private JSONObject jsonObject;
 
-    public JsonRestReader (String URL) throws IOException, ParseException {
+    public InputDefinitions(String URL) throws IOException, ParseException {
         url = URL;
         getJsonObject();
     }
