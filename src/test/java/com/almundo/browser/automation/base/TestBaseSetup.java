@@ -350,16 +350,6 @@ public class TestBaseSetup {
         }
     }
 
-    public void forceStaging(){
-        try{
-            PageUtils.waitUrlContains(driver, 10, "staging.almundo", "Staging");
-        } catch(Exception time) {
-            logger.info("Forcing Staging: [st to staging]");
-            String newURL = driver.getCurrentUrl().replace("st.almundo", "staging.almundo");
-            driver.navigate().to(newURL);
-        }
-    }
-
     public void forceCombosV3(){
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");

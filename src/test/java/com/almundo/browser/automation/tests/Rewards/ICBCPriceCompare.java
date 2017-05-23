@@ -29,22 +29,18 @@ public class ICBCPriceCompare extends TestBaseSetup {
     int almundo_visa_1;
     int almundo_visa_6;
     int almundo_visa_12;
-    int almundo_visa_18;
 
     int icbc_visa_1;
     int icbc_visa_6;
     int icbc_visa_12;
-    int icbc_visa_18;
 
     int almundo_master_1;
     int almundo_master_6;
     int almundo_master_12;
-    int almundo_master_18;
 
     int icbc_master_1;
     int icbc_master_6;
     int icbc_master_12;
-    int icbc_master_18;
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
@@ -391,7 +387,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
     private void printPriceData(String cardName, String paymentQty, int almundoPrice, int icbcStorePrice) {
         logger.info(cardName + " - " + paymentQty + " Cuota/s - Almundo: [" + almundoPrice + "]");
         logger.info(cardName + " - " + paymentQty + " Cuota/s - ICBC   : [" + icbcStorePrice + "]" + "\n");
-
         difference = almundoPrice - icbcStorePrice;
     }
 }
