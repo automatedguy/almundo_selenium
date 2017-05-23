@@ -303,6 +303,27 @@ public class ICBCPriceCompare extends TestBaseSetup {
     private CheckOutPageV3 openAlmundoCart(String cartId){
         logger.info("Navigating to: [" + PROD_URL + "checkout/" + cartId + "]");
         driver.navigate().to("https://almundo.com.ar/" + "checkout/" + cartId);
+
+        try{
+            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+
+            logger.info("Forcing Checkout to Matrix");
+            String currentUrl = driver.getCurrentUrl();
+
+            if(currentUrl.contains("sc=1")) {
+                logger.info("Replacing sc=1 with sc=0");
+                String newURL = currentUrl.replace("sc=1", "sc=0");
+                driver.navigate().to(newURL);
+            } else if(currentUrl.contains("sc=0")) {
+                logger.info("Nothing to replace, matrix is displayed");
+            } else {
+                logger.info("Adding sc=0");
+                String newURL = currentUrl.concat("&sc=0");
+                driver.navigate().to(newURL);
+            }
+        } catch(Exception time) {
+            time.printStackTrace();
+        }
         return initCheckOutPageV3();
     }
 
