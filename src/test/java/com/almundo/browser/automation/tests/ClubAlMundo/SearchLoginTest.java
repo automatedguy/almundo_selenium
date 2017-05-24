@@ -183,4 +183,23 @@ public class SearchLoginTest extends TestBaseSetup {
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
+
+    @Test
+    public void carsAvailabilityLogin(){
+        logTestTitle("Club AlMundo - Search Car And Login With Email" + countryPar );
+
+        dataManagement.getCarsItineraryData();
+        dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
+
+        basePage.clickCarsBtn();
+        carsDataTrip = basePage.carsDataTrip();
+        carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
+        carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
+        carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
+        carsDataTrip.selectAgeRange(dataManagement.ageRange);
+        carsResultsPage = carsDataTrip.clickBuscarBtn();
+    }
 }
