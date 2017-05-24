@@ -6,6 +6,7 @@ import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class CarsResultsPage extends TestBaseSetup {
     }
 
     //############################################### Locators ##############################################
+
+    @FindBy(css = "body .epp-cl-1.ng-scope")
+    List<WebElement> carsChoices;
 
     //############################################### Actions ###############################################
 
@@ -59,4 +63,9 @@ public class CarsResultsPage extends TestBaseSetup {
         detailCarsButtonResults.get(index).click();
         return initCheckOutPage();
     }
+
+    public List<WebElement> getCarsChoices(){
+        return carsChoices;
+    }
+
 }

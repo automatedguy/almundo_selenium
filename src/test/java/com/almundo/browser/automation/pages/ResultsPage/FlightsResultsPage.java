@@ -118,7 +118,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         return formatInfo(flightsClusterPricebox.get(index).getText());
     }
 
-    public List<WebElement> getFlightChoices(){
+    public List<WebElement> getFlightsChoices(){
         return flightChoices;
     }
 }

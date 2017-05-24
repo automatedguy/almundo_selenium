@@ -105,7 +105,7 @@ public class HotelsResultsPage extends TestBaseSetup {
         return false;
     }
 
-    public List<WebElement> getHotelChoices(){
+    public List<WebElement> getHotelsChoices(){
         hotelChoices = driver.findElements(By.cssSelector(hotelChoicesLocator));
         return hotelChoices;
     }
