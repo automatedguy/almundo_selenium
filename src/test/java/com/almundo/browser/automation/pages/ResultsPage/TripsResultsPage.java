@@ -32,6 +32,9 @@ public class TripsResultsPage extends TestBaseSetup {
     @FindBy(css = "pricebox")
     private WebElement tripPricebox;
 
+    @FindBy(css = "#trip-options hotel-option-list-item")
+    public List<WebElement> tripsChoices;
+
 
     //############################################### Actions ##############################################
 
@@ -111,5 +114,9 @@ public class TripsResultsPage extends TestBaseSetup {
             return true;
         }
         return false;
+    }
+
+    public List<WebElement> getTripsChoices(){
+        return tripsChoices;
     }
 }

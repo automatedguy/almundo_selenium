@@ -2,19 +2,13 @@ package com.almundo.browser.automation.tests.ClubAlMundo;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
-import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
-import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
-import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
-import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
-import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
-import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
-import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -52,10 +46,19 @@ public class SearchLoginTest extends TestBaseSetup {
     private CarsDataTrip carsDataTrip =  null;
     private CarsResultsPage carsResultsPage = null;
 
-    /********** Common Objects: Checkout, Agreement and Confirmation Pages ***********/
+    /********** Trips Related Objects and Pages ***********/
+    private TripsDataTrip tripsDataTrip = null;
+    private TripsResultsPage tripsResultsPage = null;
+    private TripsDetailPage tripsDetailPage = null;
+
+    /********** Common Objects for (V3): Checkout, Agreement and Confirmation Pages ***********/
     private CheckOutPageV3 checkOutPageV3 = null;
     private AgreementPage agreementPage = null;
     private ConfirmationPageV3 confirmationPageV3 = null;
+
+    /********** Common Objects for (V2): Checkout, Agreement and Confirmation Pages ***********/
+    CheckOutPage checkOutPage = null;
+    ConfirmationPage confirmationPage = null;
 
     JSONObject userData = null;
 
@@ -80,8 +83,6 @@ public class SearchLoginTest extends TestBaseSetup {
     public void flightsAvailabilityLogin(){
         logTestTitle("Club AlMundo - Search Flight And Login With Email - " + countryPar );
 
-        List<WebElement> flightsChoicesListFirst;
-
         dataManagement.getFlightsItineraryData();
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
@@ -96,7 +97,7 @@ public class SearchLoginTest extends TestBaseSetup {
 
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsChoicesListFirst = flightsResultsPage.getFlightsChoices();
+        List<WebElement> flightsChoicesListFirst = flightsResultsPage.getFlightsChoices();
 
         loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
@@ -139,8 +140,6 @@ public class SearchLoginTest extends TestBaseSetup {
     public void hotelsAvailabilityLogin(){
         logTestTitle("Club AlMundo - Search Hotel And Login With Email - " + countryPar );
 
-        List<WebElement> hotelsChoicesListFirst;
-
         dataManagement.getHotelsItineraryData();
         dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
 
@@ -152,7 +151,7 @@ public class SearchLoginTest extends TestBaseSetup {
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
-        hotelsChoicesListFirst = hotelsResultsPage.getHotelsChoices();
+        List<WebElement> hotelsChoicesListFirst = hotelsResultsPage.getHotelsChoices();
 
         loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
@@ -190,11 +189,6 @@ public class SearchLoginTest extends TestBaseSetup {
     @Test
     public void carsAvailabilityLogin(){
         logTestTitle("Club AlMundo - Search Car And Login With Email" + countryPar );
-
-        CheckOutPage checkOutPage = null;
-        ConfirmationPage confirmationPage = null;
-        List<WebElement> carsChoicesListFirst;
-
         dataManagement.getCarsItineraryData();
         dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
 
@@ -209,7 +203,7 @@ public class SearchLoginTest extends TestBaseSetup {
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
-        carsChoicesListFirst = carsResultsPage.getCarsChoices();
+        List<WebElement> carsChoicesListFirst = carsResultsPage.getCarsChoices();
 
         loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
@@ -234,5 +228,56 @@ public class SearchLoginTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
+    }
+
+    @Test
+    public void tripsAvailabilityLogin(){
+        logTestTitle("Club AlMundo - Search Trips And Login With Email" + countryPar);
+
+        dataManagement.getTripsItineraryData();
+        dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
+
+        tripsDataTrip = basePage.clicksTripsBtn();
+        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(tripsResultsPage.vacancy());
+
+        List<WebElement> tripsChoicesListFirst = tripsResultsPage.getTripsChoices();
+
+        loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+
+        tripsResultsPage = loginPopUp.clickIngresarOnTripstBtn();
+
+        Assert.assertTrue(tripsResultsPage.vacancy());
+
+        logger.info("Validating trips (hotel) choices on results page are the same as before login.");
+        Assert.assertTrue(tripsChoicesListFirst.size() == tripsResultsPage.getTripsChoices().size());
+
+        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+        tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+        tripsDetailPage.clickVerHabitacionBtn();
+
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData("child_female_native");
+
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "random",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "TripsCheckOutPageDomesticV3");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
     }
 }
