@@ -143,6 +143,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         dataManagement.getHotelsItineraryData();
         dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
 
+        basePage.clickHotelsBtn();
+
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
