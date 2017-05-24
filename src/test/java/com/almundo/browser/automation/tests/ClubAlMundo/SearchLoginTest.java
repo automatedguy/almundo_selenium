@@ -79,7 +79,7 @@ public class SearchLoginTest extends TestBaseSetup {
     }
 
     @Test
-    public void searchFlightsAndLogin(){
+    public void flightsAvailabilityLogin(){
         logTestTitle("Club AlMundo - Search Flight And Login With Email - " + countryPar );
         dataManagement.getFlightsItineraryData();
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
@@ -135,7 +135,7 @@ public class SearchLoginTest extends TestBaseSetup {
     }
 
     @Test
-    public void searchHotelsAndLogin(){
+    public void hotelsAvailabilityLogin(){
         logTestTitle("Club AlMundo - Search Hotel And Login With Email - " + countryPar );
 
         dataManagement.getHotelsItineraryData();

@@ -63,11 +63,11 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
     /*** When URL does not contain card=true is the old one. ***/
     private void setNormalLocators(int index){
         logger.info("Setting results page layout with no card=true parameter");
-        nameLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.col-5.col-12--ph > div > a > h1";
-        starsListLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.col-5.col-12--ph > div > p.star-ctn > span";
-        priceBoxLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph > div";
-        amenitiesListLocator = "hotel:nth-child(" + (index+1) + ") > article > div.col-5.col-12--ph > div > div.amenities-ctn.ng-scope > ul > li";
-        verHotelButtonLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph > div > a";
+        nameLocator = "hotel:nth-child(" + (index + 1) + ") > article h1";
+        starsListLocator = "hotel:nth-child(" + (index + 1) + ") > article p.star-ctn > span";
+        priceBoxLocator = "hotel:nth-child(" + (index + 1) + ") > article .price-box-ctn.col-3.col-12--ph > div";
+        amenitiesListLocator = "hotel:nth-child(" + (index+1) + ") > article .hint--bottom.hint--rounded";
+        verHotelButtonLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph div a";
         hotelChoicesLocator =  "body .hotel-ctn.am-ctn";
     }
 }
