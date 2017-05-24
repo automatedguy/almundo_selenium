@@ -56,7 +56,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     private AgreementPage agreementPage = null;
     private ConfirmationPageV3 confirmationPageV3 = null;
 
-    /********** Common Objects for (V2): Checkout, Agreement and Confirmation Pages ***********/
+    /********** Common Objects for (V2): Checkout and Confirmation Pages ***********/
     CheckOutPage checkOutPage = null;
     ConfirmationPage confirmationPage = null;
 
@@ -148,8 +148,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
-        hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
+        hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
         Assert.assertTrue(hotelsResultsPage.vacancy());
         List<WebElement> hotelsChoicesListFirst = hotelsResultsPage.getHotelsChoices();
 
@@ -188,7 +188,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @Test
     public void carsAvailabilityLogin(){
-        logTestTitle("Club AlMundo - Search Car And Login With Email" + countryPar );
+        logTestTitle("Club AlMundo - Search Car And Login With Email - " + countryPar );
+
         dataManagement.getCarsItineraryData();
         dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
 
@@ -232,7 +233,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @Test
     public void tripsAvailabilityLogin(){
-        logTestTitle("Club AlMundo - Search Trips And Login With Email" + countryPar);
+        logTestTitle("Club AlMundo - Search Trips And Login With Email - " + countryPar);
 
         dataManagement.getTripsItineraryData();
         dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
@@ -243,17 +244,15 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
         tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
-
         Assert.assertTrue(tripsResultsPage.vacancy());
-
         List<WebElement> tripsChoicesListFirst = tripsResultsPage.getTripsChoices();
 
         loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
 
         tripsResultsPage = loginPopUp.clickIngresarOnTripstBtn();
-
         Assert.assertTrue(tripsResultsPage.vacancy());
 
         logger.info("Validating trips (hotel) choices on results page are the same as before login.");
