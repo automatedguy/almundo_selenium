@@ -27,7 +27,7 @@ import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TR
 /**
  * Created by gabrielcespedes on 23/05/17.
  */
-public class SearchLoginTest extends TestBaseSetup {
+public class AvailabilityLoginTest extends TestBaseSetup {
 
     private LoginPopUp loginPopUp = null;
 
