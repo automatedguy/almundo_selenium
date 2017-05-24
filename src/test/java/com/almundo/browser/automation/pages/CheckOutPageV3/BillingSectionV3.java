@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -64,7 +65,9 @@ public class BillingSectionV3 extends CheckOutPageV3 {
                 setBillingFiscalType(billingData.get("billing_fiscal_type").toString());}
 
             if(inputDef.isRequired("billings","document_type",0)){
-                setBillingDocumentType(billingData.get("billing_document_type").toString());}
+                if(PageUtils.isElementPresent(billingDocumentTypeDdl)) {
+                    setBillingDocumentType(billingData.get("billing_document_type").toString());}
+            }
 
             if(inputDef.isRequired("billings","fiscal_document",0)){
                 setBillingFiscalDocument(billingData.get("billing_fiscal_document").toString());}
