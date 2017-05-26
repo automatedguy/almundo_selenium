@@ -1,9 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
-import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
-import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
-import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -91,6 +88,13 @@ public class LoginPopUp extends BasePage {
         ingresarBtn.click();
         PageUtils.waitImplicitly(4000);
         return initHotelsResultsPage();
+    }
+
+    public HotelsDetailPage clickIngresarOnHotelsDetailBtn() {
+        logger.info("Clicking on Ingresar button");
+        ingresarBtn.click();
+        PageUtils.waitImplicitly(4000);
+        return initHotelsDetailPage();
     }
 
     public CarsResultsPage clickIngresarOnCarstBtn() {
