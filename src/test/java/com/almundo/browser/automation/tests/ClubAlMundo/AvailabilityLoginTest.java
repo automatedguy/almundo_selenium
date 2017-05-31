@@ -276,7 +276,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
                 "random",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageDomesticV3");
+                "TripsCheckOutPageInternationalV3");
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());

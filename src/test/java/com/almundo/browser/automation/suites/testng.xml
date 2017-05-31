@@ -18,6 +18,7 @@
             <!--Club AlMundo-->
             <class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>
             <class name="com.almundo.browser.automation.tests.ClubAlMundo.AvailabilityLoginTest"/>
+            <class name="com.almundo.browser.automation.tests.ClubAlMundo.DetailsLoginTest"/>
 
             <!--Home Page-->
             <class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>
