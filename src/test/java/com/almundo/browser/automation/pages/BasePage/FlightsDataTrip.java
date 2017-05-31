@@ -197,6 +197,7 @@ public class FlightsDataTrip extends BasePage{
     }
 
     public FlightsDataTrip selectPassenger(int adults, int childs) {
+        PageUtils.waitImplicitly(1000);
         personasTxt.click();
 
         if (adults>1){

@@ -39,6 +39,7 @@ public class BasePage extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
+    //Products elements
     @FindBy(css = ".icon.hotels")
     public WebElement hotelsIcon;
 
@@ -66,14 +67,18 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = ".icon.trains")
     public WebElement trainsIcon;
 
-    @FindBy(css = ".ui-datepicker-month")
-    public WebElement monthLbl;
+    //Calendar elements
+    @FindBy(css = ".ui-datepicker-group-first")
+    public WebElement firstCalendar;
 
-    @FindBy(css = ".ui-datepicker-year")
-    public WebElement yearLbl;
+    @FindBy(css = ".ui-datepicker-group-last")
+    public WebElement lastCalendar;
+
+    @FindBy(css = ".ui-datepicker")
+    public WebElement uniqueCalendar;
 
     @FindBy(css = ".ui-icon.ui-icon-circle-triangle-e")
-    public WebElement nextCalBtn;
+    public WebElement nextMonthCalBtn;
 
     @FindBy(css = ".button.button--sm")
     public WebElement listoBtn;
@@ -84,7 +89,7 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = ".button.button--secondary.button--lg.button-search.button--block.ellipsis.ng-binding")
     public WebElement buscarBtn;
 
-    //BANNERS
+    //Banners
     @FindBy(css = ".banners-container .banner-first-container")
     public WebElement mainLeftBannerLnk;
 
@@ -160,31 +165,52 @@ public class BasePage extends TestBaseSetup {
     }
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
+        PageUtils.waitImplicitly(1000);
         calendar.click();
-        PageUtils.waitImplicitly(1000);
-        PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar>tbody>tr>td>a", 0);
+        PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar a", 0);
 
-        List<WebElement> availableDates = getAvailableDatesList();
-        int totalAvailableDates = availableDates.size();
+        if(PageUtils.isElementPresent(firstCalendar)) {
+            int availableDates = getAvailableDatesSize(firstCalendar);
 
-        if(totalAvailableDates >= daysAhead){
-            logger.info("Selecting date: [" + availableDates.get(daysAhead-1).getText() + " " + monthLbl.getText() + " " + yearLbl.getText() + "]");
-            availableDates.get(daysAhead-1).click();
+            if (PageUtils.isElementPresent(nextMonthCalBtn)) {
+                while(availableDates <= daysAhead) {
+                    daysAhead = daysAhead - availableDates;
+                    nextMonthCalBtn.click();
+                    availableDates = getAvailableDatesSize(firstCalendar);
+                }
+                List<WebElement> availableDatesList = firstCalendar.findElements(By.cssSelector(".ui-datepicker-calendar a"));
+                logger.info("Selecting date: [" + availableDatesList.get(daysAhead-1).getText() + " " + getMonthSelected(firstCalendar) + "]");
+                availableDatesList.get(daysAhead-1).click();
+            } else {
+                if(daysAhead <= availableDates) {
+                    List<WebElement> availableDatesList = firstCalendar.findElements(By.cssSelector(".ui-datepicker-calendar a"));
+                    logger.info("Selecting date: [" + availableDatesList.get(daysAhead-1).getText() + " " + getMonthSelected(firstCalendar) + "]");
+                    availableDatesList.get(daysAhead-1).click();
+                } else {
+                    daysAhead = daysAhead - availableDates;
+                    List<WebElement> availableDatesList = lastCalendar.findElements(By.cssSelector(".ui-datepicker-calendar a"));
+                    logger.info("Selecting date: [" + availableDatesList.get(daysAhead-1).getText() + " " + getMonthSelected(lastCalendar) + "]");
+                    availableDatesList.get(daysAhead-1).click();
+                }
+            }
+        } else {
+            int availableDates = getAvailableDatesSize(uniqueCalendar);
+
+            while(availableDates < daysAhead) {
+                daysAhead = daysAhead - availableDates;
+                nextMonthCalBtn.click();
+                availableDates = getAvailableDatesSize(uniqueCalendar);
+            }
+            List<WebElement> availableDatesList = uniqueCalendar.findElements(By.cssSelector(".ui-datepicker-calendar a"));
+            logger.info("Selecting date: [" + availableDatesList.get(daysAhead-1).getText() + " " + getMonthSelected(uniqueCalendar) + "]");
+            availableDatesList.get(daysAhead-1).click();
         }
-        else{
-            daysAhead = daysAhead - totalAvailableDates;
-            hotelsDataTrip().nextCalBtn.click();
-            List<WebElement> availableDatesNextCal = getAvailableDatesList();
-            logger.info("Selecting date: [" + availableDatesNextCal.get(daysAhead-1).getText() + " " + monthLbl.getText() + " " + yearLbl.getText() + "]");
-            availableDatesNextCal.get(daysAhead-1).click();
-        }
-        PageUtils.waitImplicitly(1000);
         return this;
     }
 
-    public List<WebElement> getAvailableDatesList() {
-        List<WebElement> results = driver.findElements(By.cssSelector(".ui-datepicker-calendar>tbody>tr>td>a"));
-        return  results;
+    public int getAvailableDatesSize(WebElement calendar) {
+        List<WebElement> results = calendar.findElements(By.cssSelector(".ui-datepicker-calendar a"));
+        return results.size();
     }
 
     public BasePage selectAutoCompleteOption(String value) {
@@ -198,5 +224,9 @@ public class BasePage extends TestBaseSetup {
             }
         }
         return this;
+    }
+
+    private String getMonthSelected(WebElement calendar) {
+        return calendar.findElement(By.cssSelector(".ui-datepicker-title")).getText();
     }
 }
