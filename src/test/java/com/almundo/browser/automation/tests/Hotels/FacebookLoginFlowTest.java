@@ -75,8 +75,6 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         hotelsDetailPage.clickVerHabitacionesBtn();
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
@@ -105,9 +103,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         hotelsDetailPage.clickVerHabitacionesBtn();
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-        
+
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
 

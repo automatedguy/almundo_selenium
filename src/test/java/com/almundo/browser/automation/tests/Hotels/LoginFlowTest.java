@@ -77,14 +77,11 @@ public class LoginFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "random",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_phone"),
-                "HotelsCheckOutPageDomesticV3");
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_phone"),
+                                             "HotelsCheckOutPageDomesticV3");
     }
 
     @Test
@@ -110,13 +107,10 @@ public class LoginFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_native");
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        forceCheckoutV3();
-        forceCombosV3();
-
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "random",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_phone"),
-                "HotelsCheckOutPageDomesticV3");
+                                             "random",
+                                              dataManagement.getBillingData("local_Billing"),
+                                              dataManagement.getContactData("contact_phone"),
+                                             "HotelsCheckOutPageDomesticV3");
     }
 }

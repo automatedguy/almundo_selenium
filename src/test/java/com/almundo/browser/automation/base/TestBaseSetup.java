@@ -132,7 +132,7 @@ public class TestBaseSetup {
         className = this.getClass().getName().substring(37);
         method = className + " - " + methodName.getName() + " - " + countryPar;
 
-        if(baseURL.contains("st.almundo")){
+        if(baseURL.contains("st.almundo")) {
             method = method + " - STG";
         } else {
             method = method + " - PROD";
@@ -159,7 +159,6 @@ public class TestBaseSetup {
                 }
             } else {
                 this.initSauceLabsDriver(method);
-                //this.initBrowserStackDriver(method);
             }
 
             logger.info("Navigating to baseURL: [" + baseURL + "]");
