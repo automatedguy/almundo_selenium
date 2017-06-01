@@ -72,50 +72,64 @@ public class LoginPopUp extends BasePage {
     public BasePage clickIngresarBtn() {
         logger.info("Clicking on Ingresar button");
         ingresarBtn.click();
-        PageUtils.waitImplicitly(4000);
+        PageUtils.waitImplicitly(2000);
+        PageUtils.waitForUserNameDisplayed(driver);
         return initBasePage();
     }
 
     public FlightsResultsPage clickIngresarOnFlightBtn() {
         logger.info("Clicking on Ingresar button");
         ingresarBtn.click();
-        PageUtils.waitImplicitly(4000);
+        PageUtils.waitImplicitly(2000);
+        PageUtils.waitForUserNameDisplayed(driver);
         return initFlightsResultsPage();
     }
 
     public HotelsResultsPage clickIngresarOnHotelstBtn() {
         logger.info("Clicking on Ingresar button");
         ingresarBtn.click();
-        PageUtils.waitImplicitly(4000);
+        PageUtils.waitImplicitly(2000);
+        PageUtils.waitForUserNameDisplayed(driver);
         return initHotelsResultsPage();
     }
 
     public HotelsDetailPage clickIngresarOnHotelsDetailBtn() {
         logger.info("Clicking on Ingresar button");
         ingresarBtn.click();
-        PageUtils.waitImplicitly(4000);
+        PageUtils.waitImplicitly(2000);
+        PageUtils.waitForUserNameDisplayed(driver);
         return initHotelsDetailPage();
     }
 
     public CarsResultsPage clickIngresarOnCarstBtn() {
         logger.info("Clicking on Ingresar button");
         ingresarBtn.click();
-        PageUtils.waitImplicitly(4000);
+        PageUtils.waitImplicitly(2000);
+        PageUtils.waitForUserNameDisplayed(driver);
         return initCarsResultsPage();
     }
 
     public TripsResultsPage clickIngresarOnTripstBtn() {
         logger.info("Clicking on Ingresar button");
         ingresarBtn.click();
-        PageUtils.waitImplicitly(4000);
+        PageUtils.waitImplicitly(2000);
+        PageUtils.waitForUserNameDisplayed(driver);
         return initTripsResultsPage();
+    }
+
+    public TripsDetailPage clickIngresarOnTripsDetailBtn() {
+        logger.info("Clicking on Ingresar button");
+        ingresarBtn.click();
+        PageUtils.waitImplicitly(2000);
+        PageUtils.waitForUserNameDisplayed(driver);
+        return initTripsDetailPage();
     }
 
     public FacebookLoginPopUp clickFacebookLoginBtn() {
         logger.info("Clicking on Facebook Login button");
         PageUtils.waitElementForClickable(driver, facebookLoginBtn, 10, "Facebook login button");
         facebookLoginBtn.click();
-        PageUtils.waitImplicitly(4000);
+        PageUtils.waitImplicitly(3000);
         return initFacebookLoginPopUp();
     }
 

@@ -38,7 +38,7 @@ public class FlowTest extends TestBaseSetup {
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
-        basePage.clickCarsBtn();
+        carsDataTrip = basePage.clickCarsBtn();
     }
 
     @AfterMethod
@@ -54,7 +54,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
 
-        carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
@@ -80,7 +79,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
 
-        carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);

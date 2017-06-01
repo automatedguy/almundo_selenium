@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
@@ -11,6 +12,8 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
+import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
+import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -35,6 +38,12 @@ public class DetailsLoginTest extends TestBaseSetup {
     private HotelsDataTrip hotelsDataTrip = null;
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
+
+    /********** Trips Related Objects and Pages ***********/
+
+    private TripsDataTrip tripsDataTrip = null;
+    private TripsResultsPage tripsResultsPage = null;
+    private TripsDetailPage tripsDetailPage = null;
 
     /********** Common Objects for (V3): Checkout, Agreement and Confirmation Pages ***********/
     private CheckOutPageV3 checkOutPageV3 = null;
@@ -65,13 +74,12 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     @Test
     public void hotelsDetailsLogin(){
-        logTestTitle("Club AlMundo - Search Hotel And Login With Email - " + countryPar );
+        logTestTitle("Club AlMundo - Search Hotel And Login With Email on Detail Page - " + countryPar );
 
         dataManagement.getHotelsItineraryData();
         dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
 
         basePage.clickHotelsBtn();
-
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -106,6 +114,45 @@ public class DetailsLoginTest extends TestBaseSetup {
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "HotelsCheckOutPageInternationalV3");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+    }
+
+    @Test
+    public void tripsDetailsLogin(){
+        logTestTitle("Club AlMundo - Search Hotel And Login With Email on Detail Page - " + countryPar );
+
+        dataManagement.getTripsItineraryData();
+        dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
+
+        tripsDataTrip = basePage.clicksTripsBtn();
+        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(tripsResultsPage.vacancy());
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+        tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+        tripsDetailPage.clickVerHabitacionBtn();
+
+        loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+
+        tripsDetailPage = loginPopUp.clickIngresarOnTripsDetailBtn();
+
+        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "random",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "TripsCheckOutPageInternationalV3");
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
