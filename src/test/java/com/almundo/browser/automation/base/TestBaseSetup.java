@@ -65,13 +65,13 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -132,7 +132,7 @@ public class TestBaseSetup {
         className = this.getClass().getName().substring(37);
         method = className + " - " + methodName.getName() + " - " + countryPar;
 
-        if(baseURL.contains("st.almundo")){
+        if(baseURL.contains("st.almundo")) {
             method = method + " - STG";
         } else {
             method = method + " - PROD";
@@ -159,7 +159,6 @@ public class TestBaseSetup {
                 }
             } else {
                 this.initSauceLabsDriver(method);
-                //this.initBrowserStackDriver(method);
             }
 
             logger.info("Navigating to baseURL: [" + baseURL + "]");
