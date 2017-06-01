@@ -24,7 +24,7 @@ public class HotelsDataTrip extends BasePage {
     //############################################### Locators ##############################################
 
     @FindBy(id = "destination-hotels")
-    public WebElement destinationTxt;
+    public WebElement destinationHotelTxt;
 
     @FindBy(css = "input[name^='am-range-datepicker-from']")
     public WebElement checkinCalendar;
@@ -53,10 +53,10 @@ public class HotelsDataTrip extends BasePage {
     //############################################### Actions ###############################################
 
     public HotelsDataTrip setDestination(String destinationAuto, String destinationFull) {
-        PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
-        logger.info("Entering Destination: [" + destinationFull + "]");
-        destinationTxt.clear();
-        destinationTxt.sendKeys(destinationAuto);
+        PageUtils.waitElementForVisibility(driver, destinationHotelTxt, 10, "Destination text field");
+        logger.info("Entering Hotel Destination: [" + destinationFull + "]");
+        destinationHotelTxt.clear();
+        destinationHotelTxt.sendKeys(destinationAuto);
         selectAutoCompleteOption(destinationFull);
         return this;
     }

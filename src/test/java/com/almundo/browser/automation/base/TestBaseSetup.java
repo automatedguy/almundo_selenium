@@ -65,13 +65,13 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("COLOMBIA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -105,31 +105,16 @@ public class TestBaseSetup {
             e.printStackTrace();
         }
 
-        if(baseURL.equals(STAGING_URL)) {
+        if(baseURL.equals(STAGING_URL) || baseURL.equals(RET_URL) || baseURL.equals(CCR_URL)) {
             switch (countryPar) {
                 case "ARGENTINA":
-                    baseURL = STAGING_URL.concat(".ar/");
+                    baseURL = baseURL.concat(".ar/");
                     break;
                 case "COLOMBIA":
-                    baseURL = STAGING_URL.concat(".co/");
+                    baseURL = baseURL.concat(".co/");
                     break;
                 case "MEXICO":
-                    baseURL = STAGING_URL.concat(".mx/");
-                    break;
-            }
-            landingEnabled = false;
-        }
-
-        if(baseURL.equals(RET_URL)) {
-            switch (countryPar) {
-                case "ARGENTINA":
-                    baseURL = RET_URL.concat(".ar/");
-                    break;
-                case "COLOMBIA":
-                    baseURL = RET_URL.concat(".co/");
-                    break;
-                case "MEXICO":
-                    baseURL = RET_URL.concat(".mx/");
+                    baseURL = baseURL.concat(".mx/");
                     break;
             }
             landingEnabled = false;
