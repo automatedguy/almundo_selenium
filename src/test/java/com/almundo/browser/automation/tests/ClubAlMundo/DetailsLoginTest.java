@@ -121,7 +121,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     @Test
     public void tripsDetailsLogin(){
-        logTestTitle("Club AlMundo - Search Hotel And Login With Email on Detail Page - " + countryPar );
+        logTestTitle("Club AlMundo - Search Trip And Login With Email on Detail Page - " + countryPar );
 
         dataManagement.getTripsItineraryData();
         dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
