@@ -13,7 +13,7 @@ public class Constants {
     public static final String STAGING_URL = "http://st.almundo.com";
     public static final String PROD_URL = "http://almundo.com/";
     public static final String RET_URL = "https://sucursales.almundo.com";
-    public static final String CCR_URL = "https://ccr.almundo.com.ar/";
+    public static final String CCR_URL = "https://ccr.almundo.com";
     public static final String ICBC_URL = "https://icbcstore.almundo.com.ar/";
     public static final String API_PROD_URL = "http://apipr.almundo.it:8080/";
     public static final String API_STG_URL = "http://apist.almundo.it:8080/";
