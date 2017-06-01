@@ -36,7 +36,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void clickHotelsBtn() {
-        basePage.clickHotelsBtn();
+        hotelsDataTrip = basePage.clickHotelsBtn();
     }
 
     @AfterMethod
@@ -52,7 +52,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         dataManagement.getHotelsDataTripItinerary("domestic02_20days_2adults_1room");
 
-        hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);

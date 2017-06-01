@@ -46,7 +46,7 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
         facebookLoginPopUp.setPassTxt("almundo#01");
         basePage = facebookLoginPopUp.clickFacebookLoginBtn();
         PageUtils.setFocusOnWindow(driver, "parent");
-        basePage.clickHotelsBtn();
+        hotelsDataTrip = basePage.clickHotelsBtn();
     }
 
     @AfterMethod
@@ -62,7 +62,6 @@ public class FacebookLoginFlowTest extends TestBaseSetup {
 
         dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
 
-        hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);

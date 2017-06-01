@@ -42,6 +42,7 @@ public class PageUtils {
 
     public static void waitElementForVisibility(WebDriver driver, By element, int timeOutInSeconds, String message){
         try {
+            logger.info("Waiting for: " + message);
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -217,5 +218,9 @@ public class PageUtils {
 
     public static String formatInfo(String info){
         return info.replaceAll("[\\n\\r]+", " - ");
+    }
+
+    public static void waitForUserNameDisplayed(WebDriver driver){
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".account>a>span:nth-of-type(2)"),5,"User Name Displayed...");
     }
 }

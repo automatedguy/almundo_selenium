@@ -44,7 +44,7 @@ public class FlowTest extends TestBaseSetup {
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
-        basePage.clickHotelsBtn();
+        hotelsDataTrip = basePage.clickHotelsBtn();
     }
 
     @AfterMethod
@@ -60,7 +60,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
 
-        hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
@@ -96,7 +95,6 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getHotelsDataTripItinerary("domestic01_15days_2adults_1room");
 
-        hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);

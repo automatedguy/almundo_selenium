@@ -112,19 +112,19 @@ public class BasePage extends TestBaseSetup {
         return flightsDataTrip();
     }
 
-    public BasePage clickHotelsBtn() {
+    public HotelsDataTrip clickHotelsBtn() {
         PageUtils.waitElementForClickable(driver, hotelsIcon, 10, "Hoteles button");
         logger.info("Clicking on Hoteles button");
         hotelsIcon.click();
-        return this;
+        return initHotelsDataTrip();
     }
 
-    public BasePage clickCarsBtn() {
+    public CarsDataTrip clickCarsBtn() {
         PageUtils.waitElementForClickable(driver, carsIcon, 10, "Autos button");
         PageUtils.scrollToElement(driver,carsIcon);
         logger.info("Clicking on Autos button");
         carsIcon.click();
-        return this;
+        return initCarsDataTrip();
     }
 
     public TripsDataTrip clicksTripsBtn() {

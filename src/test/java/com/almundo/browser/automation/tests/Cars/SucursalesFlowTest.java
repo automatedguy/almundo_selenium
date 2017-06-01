@@ -33,7 +33,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void clickCarsBtn() {
-        basePage.clickCarsBtn();
+        carsDataTrip = basePage.clickCarsBtn();
     }
 
     @AfterMethod
@@ -49,7 +49,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
 
-        carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
