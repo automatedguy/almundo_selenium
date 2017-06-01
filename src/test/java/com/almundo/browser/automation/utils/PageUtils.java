@@ -221,6 +221,7 @@ public class PageUtils {
     }
 
     public static void waitForUserNameDisplayed(WebDriver driver){
+        PageUtils.waitImplicitly(10000);
         PageUtils.waitElementForVisibility(driver, By.cssSelector(".account>a>span:nth-of-type(2)"),5,"User Name Displayed...");
     }
 }
