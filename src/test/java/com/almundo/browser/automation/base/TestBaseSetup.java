@@ -281,6 +281,7 @@ public class TestBaseSetup {
 
     @AfterMethod
     public void tearDown() {
+        webDriver.get().quit();
         try {
             driver.manage().deleteAllCookies();
             driver.quit();
