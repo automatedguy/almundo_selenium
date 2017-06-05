@@ -48,7 +48,7 @@ public class FlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
-    @Test
+/*    @Test
     public void dom_Booking_Flow() {
         logTestTitle("Cars Flow - Domestic - 10 days - " + countryPar );
 
@@ -71,7 +71,7 @@ public class FlowTest extends TestBaseSetup {
                                           dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "CarsCheckOutPage", false);
-    }
+    }*/
 
     @Test
     public void int_Booking_Flow() {
