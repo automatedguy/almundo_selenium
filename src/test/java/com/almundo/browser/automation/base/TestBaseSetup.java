@@ -255,6 +255,12 @@ public class TestBaseSetup {
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
         sessionId.set(id);
 
+        System.out.println("Saucelabs Session ID 1: " + id );
+        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+                (((RemoteWebDriver) driver).getSessionId()).toString(), "Jenkins");
+        System.out.println(message);
+        System.out.println("Saucelabs Session ID 2: " + message );
+
         driver = this.getWebDriver();
     }
 
