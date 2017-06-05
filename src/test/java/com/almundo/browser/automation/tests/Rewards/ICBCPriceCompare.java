@@ -331,7 +331,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     private CheckOutPageV3 openAlmundoCart(String cartId){
         logger.info("Navigating to: [" + PROD_URL + "checkout/" + cartId + "]");
-        driver.navigate().to("https://almundo.com.ar/" + "checkout/" + cartId);
+        driver.navigate().to("https://almundo.com.ar/" + "checkout/" + cartId + "?");
 
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
