@@ -255,6 +255,7 @@ public class TestBaseSetup {
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
         sessionId.set(id);
 
+        logger.info("Current Saucelabs Session Id: " + id);
         driver = this.getWebDriver();
     }
 
