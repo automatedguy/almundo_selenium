@@ -260,7 +260,7 @@ public class TestBaseSetup {
         driver = this.getWebDriver();
 
         String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
-                (((RemoteWebDriver) driver).getSessionId()).toString(), method);
+                (((RemoteWebDriver) driver).getSessionId()).toString(), className);
         System.out.println(message);
         sessionId.set(message);
     }
