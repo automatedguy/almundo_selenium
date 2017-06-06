@@ -20,6 +20,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -87,7 +88,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
-        setPassed();
+        setResult(PASSED);
     }
 
     @Test
@@ -118,6 +119,6 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
                                               "HotelsCheckOutPageDomesticV3");
-        setPassed();
-        }
+        setResult(PASSED);
+    }
 }

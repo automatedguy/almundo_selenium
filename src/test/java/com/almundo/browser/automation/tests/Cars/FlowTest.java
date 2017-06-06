@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 
 /**
@@ -75,7 +76,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-        setPassed();
+        setResult(PASSED);
     }
 
     @Test
@@ -105,6 +106,6 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-        setPassed();
+        setResult(PASSED);
     }
 }

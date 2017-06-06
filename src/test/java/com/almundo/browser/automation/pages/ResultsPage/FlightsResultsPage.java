@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.LISTADO_DE_SUCURSALES_LNK;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 
 /**
@@ -100,7 +101,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
-        setFailed();
+        setResult(FAILED);
         return false;
     }
 

@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -74,6 +75,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_phone"),
                                           "HotelsCheckOutPageDomesticSucursal", false);
-        setPassed();
+        setResult(PASSED);
     }
 }

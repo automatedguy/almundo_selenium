@@ -69,12 +69,12 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
-                                        @Optional() String osType,
+//                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-//                                        @Optional("Windows 10") String osType,
+                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -386,17 +386,10 @@ public class TestBaseSetup {
 
     //################################################ Tests Results ########################################
 
-    public void setPassed(){
+    public void setResult(Results result) {
         if (runningRemote) {
-            ((JavascriptExecutor) driver).executeScript("sauce:job-result=passed");
-            logger.info("Test Passed!");
-        }
-    }
-
-    public void setFailed() {
-        if (runningRemote) {
-            ((JavascriptExecutor) driver).executeScript("sauce:job-result=failed");
-            logger.info("Test Failed!");
+            ((JavascriptExecutor) driver).executeScript("sauce:job-result=" + result);
+            logger.info("Test " + result + "!");
         }
     }
 

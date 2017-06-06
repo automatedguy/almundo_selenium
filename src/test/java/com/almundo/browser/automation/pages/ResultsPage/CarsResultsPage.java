@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.Constants.Messages.PRUEBA_CON_OTRAS_FECHAS;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 
@@ -77,7 +78,7 @@ public class CarsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
-        setFailed();
+        setResult(FAILED);
         return false;
     }
 

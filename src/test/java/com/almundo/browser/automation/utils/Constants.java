@@ -61,6 +61,22 @@ public class Constants {
         }
     }
 
+    public enum Results {
+        PASSED("passed"),
+        FAILED("failed");
+
+        public final String result;
+
+        Results(String result) {
+            this.result = result;
+        }
+
+        @Override
+        public String toString() {
+            return result;
+        }
+    }
+
     //LISTS
     public static final List<String> FLIGHT_TYPE_LIST = asList("Ida y vuelta", "Solo ida", "Varias ciudades");
     public static final List<String> FLIGHT_CLASS_LIST = asList("Todas", "Primera", "Business", "Premium", "Turista");

@@ -10,6 +10,7 @@ import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.Messages.NO_DISPONIBILIDAD_MSG;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 
 /**
@@ -102,7 +103,7 @@ public class HotelsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
-        setFailed();
+        setResult(FAILED);
         return false;
     }
 
