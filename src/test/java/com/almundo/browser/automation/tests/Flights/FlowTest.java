@@ -90,6 +90,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setPassed();
     }
 
     @Test
@@ -127,6 +128,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setPassed();
     }
 
     @Test
@@ -168,6 +170,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setPassed();
     }
 
     @Test
@@ -207,6 +210,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setPassed();
     }
 
     @Test
@@ -252,5 +256,6 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setPassed();
     }
 }
