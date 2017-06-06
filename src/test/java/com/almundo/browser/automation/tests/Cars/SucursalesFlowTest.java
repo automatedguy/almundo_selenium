@@ -7,6 +7,7 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import org.json.simple.JSONArray;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -57,14 +58,16 @@ public class SucursalesFlowTest extends TestBaseSetup {
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+
+        Assert.assertTrue(carsResultsPage.vacancy());
 
         dataManagement.getPassengerData("adult_male_native");
-
+        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("booking24"),
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "CarsCheckOutPageSucursal", false);
+        setPassed();
     }
 }

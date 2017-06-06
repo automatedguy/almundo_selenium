@@ -102,6 +102,7 @@ public class HotelsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
+        setFailed();
         return false;
     }
 

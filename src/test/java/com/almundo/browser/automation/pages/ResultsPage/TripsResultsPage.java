@@ -113,6 +113,7 @@ public class TripsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
+        setFailed();
         return false;
     }
 

@@ -100,6 +100,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
+        setFailed();
         return false;
     }
 
