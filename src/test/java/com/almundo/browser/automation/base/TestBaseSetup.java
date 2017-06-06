@@ -66,9 +66,9 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
-                                        @Optional() String osType,
+//                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-//                                        @Optional("Windows 10") String osType,
+                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
@@ -253,7 +253,7 @@ public class TestBaseSetup {
 
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
-        sessionId.set(id);
+        // sessionId.set(id);
 
         logger.info("Current Saucelabs Session Id: " + id);
 
@@ -262,6 +262,7 @@ public class TestBaseSetup {
         String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
                 (((RemoteWebDriver) driver).getSessionId()).toString(), method);
         System.out.println(message);
+        sessionId.set(message);
     }
 
     private void initBrowserStackDriver(String methodName) throws Exception {
