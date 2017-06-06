@@ -252,17 +252,11 @@ public class TestBaseSetup {
         }
 
         // set current sessionId
-        String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
-        // sessionId.set(id);
-
-        logger.info("Current Saucelabs Session Id: " + id);
-
         driver = this.getWebDriver();
-
-        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+        String id = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
                 (((RemoteWebDriver) driver).getSessionId()).toString(), method);
-        System.out.println(message);
-        sessionId.set(message);
+        logger.info("Current Saucelabs Session Id: " + id);
+        sessionId.set(id);
     }
 
     private void initBrowserStackDriver(String methodName) throws Exception {
