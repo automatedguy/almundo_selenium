@@ -256,7 +256,12 @@ public class TestBaseSetup {
         sessionId.set(id);
 
         logger.info("Current Saucelabs Session Id: " + id);
+
         driver = this.getWebDriver();
+
+        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+                (((RemoteWebDriver) driver).getSessionId()).toString(), method);
+        System.out.println(message);
     }
 
     private void initBrowserStackDriver(String methodName) throws Exception {
@@ -282,8 +287,9 @@ public class TestBaseSetup {
     @AfterMethod
     public void tearDown() {
         try {
-            driver.manage().deleteAllCookies();
-            driver.quit();
+            webDriver.get().quit();
+            //driver.manage().deleteAllCookies();
+            //driver.quit();
         } catch (WebDriverException exception){
             logger.info(exception.getMessage());
         } catch (Exception exception){
