@@ -62,20 +62,20 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(carsResultsPage.vacancy());
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
-
+        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("1_amex_amex"),
                                           dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "CarsCheckOutPage", false);
 
-       confirmationPage = checkOutPage.clickComprarBtn();
-       Assert.assertTrue(confirmationPage.confirmationOk());
-       setPassed();
+        confirmationPage = checkOutPage.clickComprarBtn();
+        Assert.assertTrue(confirmationPage.confirmationOk());
+        setPassed();
     }
 
     @Test
@@ -92,6 +92,8 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
+        Assert.assertTrue(carsResultsPage.vacancy());
+
         checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
