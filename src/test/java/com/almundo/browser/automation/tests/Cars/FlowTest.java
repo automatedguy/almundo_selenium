@@ -72,6 +72,10 @@ public class FlowTest extends TestBaseSetup {
                                           dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_cell_phone"),
                                           "CarsCheckOutPage", false);
+
+       confirmationPage = checkOutPage.clickComprarBtn();
+       Assert.assertTrue(confirmationPage.confirmationOk());
+       ((JavascriptExecutor)driver).executeScript("sauce:job-result=passed");
     }
 
     @Test
