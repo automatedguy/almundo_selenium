@@ -12,6 +12,7 @@ import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -63,6 +64,8 @@ public class TestBaseSetup {
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;
 
+    private boolean runningRemote = false;
+
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
@@ -71,7 +74,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("COLOMBIA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -227,6 +230,7 @@ public class TestBaseSetup {
     }
 
     private void initSauceLabsDriver(String methodName)  {
+        runningRemote =  true;
         String USERNAME = "viajesyplacerautomation";
         String ACCESS_KEY = "1deb3616-b504-4e7d-ad44-da6108d4f7c9";
         String url = "https://" + USERNAME + ":" + ACCESS_KEY + seleniumURI +"/wd/hub";
@@ -377,6 +381,22 @@ public class TestBaseSetup {
             }
         } catch(Exception time) {
             time.printStackTrace();
+        }
+    }
+
+    //################################################ Tests Results ########################################
+
+    public void setPassed(){
+        if (runningRemote) {
+            ((JavascriptExecutor) driver).executeScript("sauce:job-result=passed");
+            logger.info("Test Passed!");
+        }
+    }
+
+    public void setFailed() {
+        if (runningRemote) {
+            ((JavascriptExecutor) driver).executeScript("sauce:job-result=failed");
+            logger.info("Test Failed!");
         }
     }
 

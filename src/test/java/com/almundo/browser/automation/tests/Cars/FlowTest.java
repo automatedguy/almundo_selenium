@@ -8,7 +8,6 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import org.json.simple.JSONArray;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -63,6 +62,7 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
+        Assert.assertTrue(carsResultsPage.vacancy());
         checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
@@ -75,7 +75,7 @@ public class FlowTest extends TestBaseSetup {
 
        confirmationPage = checkOutPage.clickComprarBtn();
        Assert.assertTrue(confirmationPage.confirmationOk());
-       ((JavascriptExecutor)driver).executeScript("sauce:job-result=passed");
+       setPassed();
     }
 
     @Test
@@ -104,7 +104,6 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-
-        ((JavascriptExecutor)driver).executeScript("sauce:job-result=passed");
+        setPassed();
     }
 }
