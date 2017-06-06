@@ -173,7 +173,7 @@ public class BasePage extends TestBaseSetup {
             int availableDates = getAvailableDatesSize(firstCalendar);
 
             if (PageUtils.isElementPresent(nextMonthCalBtn)) {
-                while(availableDates <= daysAhead) {
+                while(availableDates < daysAhead) {
                     daysAhead = daysAhead - availableDates;
                     nextMonthCalBtn.click();
                     availableDates = getAvailableDatesSize(firstCalendar);
