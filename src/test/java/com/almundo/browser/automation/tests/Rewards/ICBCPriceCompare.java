@@ -7,11 +7,14 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import static com.almundo.browser.automation.utils.Constants.ICBC_URL;
 import static com.almundo.browser.automation.utils.Constants.PROD_URL;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by leandro.efron on 10/3/2017.
@@ -23,6 +26,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     private PaymentSection paymentSection = null;
     private PaymentSectionV3 paymentSectionV3 = null;
     private int difference = 0;
+    private boolean failTest = false;
 
     SoftAssert softAssert = new SoftAssert();
 
@@ -41,6 +45,12 @@ public class ICBCPriceCompare extends TestBaseSetup {
     int icbc_master_1;
     int icbc_master_6;
     int icbc_master_12;
+
+    @AfterMethod
+    private void setTestResult() {
+        if(!failTest){setResult(PASSED);}
+        failTest = false;
+    }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
@@ -126,22 +136,22 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
         printPriceData("VISA","1", almundo_visa_1, icbc_visa_1);
-        softAssert.assertTrue(difference >= -15, "VISA - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
 
         printPriceData("MASTERCARD","1", almundo_master_1, icbc_master_1);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_1 + "] - ICBC [" + icbc_master_1 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_1 + "] - ICBC [" + icbc_master_1 + "]");
 
         printPriceData("VISA","6", almundo_visa_6, icbc_visa_6);
-        softAssert.assertTrue(difference >= -15, "VISA - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_6 + "] - ICBC [" + icbc_visa_6 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_6 + "] - ICBC [" + icbc_visa_6 + "]");
 
         printPriceData("MASTERCARD","6", almundo_master_6, icbc_master_6);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_6 + "] - ICBC [" + icbc_master_6 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_6 + "] - ICBC [" + icbc_master_6 + "]");
 
         printPriceData("VISA","12", almundo_visa_12, icbc_visa_12);
-        softAssert.assertTrue(difference >= -15, "VISA - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_12 + "] - ICBC [" + icbc_visa_12 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_12 + "] - ICBC [" + icbc_visa_12 + "]");
 
         printPriceData("MASTERCARD","12", almundo_master_12, icbc_master_12);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
 
 //        logger.info("VISA - 18 Cuotas - Almundo: [" + almundo_visa_18  + "] -----> No se está seleccionando un banco en este caso");
 //        logger.info("VISA - 18 Cuotas - ICBC   : [" + icbc_visa_18  + "]" + "\n");
@@ -152,6 +162,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 //        softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: Almundo [" + almundo_master_18 + "] - ICBC [" + icbc_master_18 + "]");
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
+        if(failTest){setResult(FAILED);}
         softAssert.assertAll();
     }
 
@@ -219,25 +230,26 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
         printPriceData("VISA","1", almundo_visa_1, icbc_visa_1);
-        softAssert.assertTrue(difference >= -15, "VISA - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
 
         printPriceData("MASTERCARD","1", almundo_master_1, icbc_master_1);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_1 + "] - ICBC [" + icbc_master_1 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_1 + "] - ICBC [" + icbc_master_1 + "]");
 
         printPriceData("VISA","6", almundo_visa_6, icbc_visa_6);
-        softAssert.assertTrue(difference >= -15, "VISA - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_6 + "] - ICBC [" + icbc_visa_6 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_6 + "] - ICBC [" + icbc_visa_6 + "]");
 
         printPriceData("MASTERCARD","6", almundo_master_6, icbc_master_6);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_6 + "] - ICBC [" + icbc_master_6 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_6 + "] - ICBC [" + icbc_master_6 + "]");
 
         printPriceData("VISA","12", almundo_visa_12, icbc_visa_12);
-        softAssert.assertTrue(difference >= -15, "VISA - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_12 + "] - ICBC [" + icbc_visa_12 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_12 + "] - ICBC [" + icbc_visa_12 + "]");
 
         printPriceData("MASTERCARD","12", almundo_master_12, icbc_master_12);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
 
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
-        
+
+        if(failTest){setResult(FAILED);}
         softAssert.assertAll();
     }
 
@@ -305,29 +317,30 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
         printPriceData("VISA","1", almundo_visa_1, icbc_visa_1);
-        softAssert.assertTrue(difference >= -15, "VISA - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_1 + "] - ICBC [" + icbc_visa_1 + "]");
 
         printPriceData("MASTERCARD","1", almundo_master_1, icbc_master_1);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_1 + "] - ICBC [" + icbc_master_1 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 1 Cuota - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_1 + "] - ICBC [" + icbc_master_1 + "]");
 
         printPriceData("VISA","6", almundo_visa_6, icbc_visa_6);
-        softAssert.assertTrue(difference >= -15, "VISA - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_6 + "] - ICBC [" + icbc_visa_6 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_6 + "] - ICBC [" + icbc_visa_6 + "]");
 
         printPriceData("MASTERCARD","6", almundo_master_6, icbc_master_6);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_6 + "] - ICBC [" + icbc_master_6 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 6 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_6 + "] - ICBC [" + icbc_master_6 + "]");
 
         printPriceData("VISA","12", almundo_visa_12, icbc_visa_12);
-        softAssert.assertTrue(difference >= -15, "VISA - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_12 + "] - ICBC [" + icbc_visa_12 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "VISA - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_visa_12 + "] - ICBC [" + icbc_visa_12 + "]");
 
         printPriceData("MASTERCARD","12", almundo_master_12, icbc_master_12);
-        softAssert.assertTrue(difference >= -15, "MASTERCARD - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
+        softAssert.assertTrue(checkComparison(difference >= -15), "MASTERCARD - 12 Cuotas - Prices have big difference: [" + difference + "] - Almundo [" + almundo_master_12 + "] - ICBC [" + icbc_master_12 + "]");
 
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
+        if(failTest){setResult(FAILED);}
         softAssert.assertAll();
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /////////////////////////////////// ADDITIONAL METHODS ///////////////////////////////////
 
     private CheckOutPageV3 openAlmundoCart(String cartId){
         driver.navigate().to("https://almundo.com.ar/" + "checkout/" + cartId + "?");
@@ -390,5 +403,12 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info(cardName + " - " + paymentQty + " Cuota/s - Almundo: [" + almundoPrice + "]");
         logger.info(cardName + " - " + paymentQty + " Cuota/s - ICBC   : [" + icbcStorePrice + "]" + "\n");
         difference = almundoPrice - icbcStorePrice;
+    }
+
+    private boolean checkComparison(boolean softAssertResult){
+        if(!softAssertResult && !failTest){
+            failTest = true;
+        }
+        return softAssertResult;
     }
 }
