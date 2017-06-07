@@ -37,7 +37,7 @@ public class LoginTest extends TestBaseSetup {
 
     @AfterMethod
     private void setResults() {
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////

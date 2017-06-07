@@ -101,7 +101,7 @@ public class FlightsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
-        setResult(FAILED);
+        setResultSauceLabs(FAILED);
         return false;
     }
 

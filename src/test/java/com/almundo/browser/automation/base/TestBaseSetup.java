@@ -386,7 +386,7 @@ public class TestBaseSetup {
 
     //################################################ Tests Results ########################################
 
-    public void setResult(Results result) {
+    public void setResultSauceLabs(Results result) {
         if (runningRemote) {
             ((JavascriptExecutor) driver).executeScript("sauce:job-result=" + result);
             logger.info("Test " + result + "!");

@@ -77,7 +77,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -108,6 +108,6 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
     }
 }

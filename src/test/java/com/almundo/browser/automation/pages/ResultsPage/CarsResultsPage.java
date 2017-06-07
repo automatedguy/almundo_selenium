@@ -79,7 +79,7 @@ public class CarsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
-        setResult(FAILED);
+        setResultSauceLabs(FAILED);
         return false;
     }
 
@@ -89,7 +89,7 @@ public class CarsResultsPage extends TestBaseSetup {
         } catch (Exception ex){
             return true;
         }
-        setResult(FAILED);
+        setResultSauceLabs(FAILED);
         return false;
     }
 

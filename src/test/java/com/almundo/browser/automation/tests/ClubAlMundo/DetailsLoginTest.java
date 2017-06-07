@@ -70,7 +70,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
         dataManagement.passengerJsonList = new JSONArray();
     }
 

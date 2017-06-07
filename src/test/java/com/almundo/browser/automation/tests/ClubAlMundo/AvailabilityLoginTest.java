@@ -135,7 +135,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -188,7 +188,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -240,7 +240,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -290,6 +290,6 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
-        setResult(PASSED);
+        setResultSauceLabs(PASSED);
     }
 }
