@@ -66,8 +66,6 @@ public class TestBaseSetup {
 
     public static boolean runningRemote;
 
-    public boolean failedTest = false;
-
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
