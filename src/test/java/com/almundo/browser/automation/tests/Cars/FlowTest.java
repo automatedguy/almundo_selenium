@@ -44,6 +44,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
+        setResult(PASSED);
         dataManagement.passengerJsonList = new JSONArray();
     }
 
@@ -76,7 +77,6 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-        setResult(PASSED);
     }
 
     @Test
@@ -106,6 +106,5 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPage = checkOutPage.clickComprarBtn();
         Assert.assertTrue(confirmationPage.confirmationOk());
-        setResult(PASSED);
     }
 }
