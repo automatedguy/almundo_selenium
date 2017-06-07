@@ -66,6 +66,8 @@ public class TestBaseSetup {
 
     public static boolean runningRemote;
 
+    public boolean failedTest = false;
+
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
@@ -74,7 +76,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("COLOMBIA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,

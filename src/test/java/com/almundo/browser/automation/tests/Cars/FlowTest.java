@@ -44,8 +44,9 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        setResult(PASSED);
+        if(!failedTest){setResult(PASSED);}
         dataManagement.passengerJsonList = new JSONArray();
+        failedTest = false;
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
