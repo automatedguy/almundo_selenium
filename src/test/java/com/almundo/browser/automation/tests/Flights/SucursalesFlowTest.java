@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
@@ -41,6 +41,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
+        setResult(PASSED);
         dataManagement.passengerJsonList = new JSONArray();
     }
 
@@ -75,6 +76,5 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_phone"),
                                           "FlightsCheckOutPageDomesticSucursal", true);
-        setResult(PASSED);
     }
 }
