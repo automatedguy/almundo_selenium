@@ -26,7 +26,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     private PaymentSection paymentSection = null;
     private PaymentSectionV3 paymentSectionV3 = null;
     private int difference = 0;
-    private boolean failTest = false;
+    private boolean failedTest = false;
 
     SoftAssert softAssert = new SoftAssert();
 
@@ -48,11 +48,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     @AfterMethod
     private void setTestResult() {
-        if(!failTest){
-            setResult(PASSED);
-        } else {
-            setResult(FAILED);}
-        failTest = false;
+        if(!failedTest){setResult(PASSED);}
+        failedTest = false;
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -165,6 +162,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 //        softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: Almundo [" + almundo_master_18 + "] - ICBC [" + icbc_master_18 + "]");
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
+        setResult(FAILED);
         softAssert.assertAll();
     }
 
@@ -251,6 +249,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
+        setResult(FAILED);
         softAssert.assertAll();
     }
 
@@ -337,6 +336,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
+        setResult(FAILED);
         softAssert.assertAll();
     }
 
@@ -406,8 +406,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
     }
 
     private boolean checkComparison(boolean softAssertResult){
-        if(!softAssertResult && !failTest){
-            failTest = true;
+        if(!softAssertResult && !failedTest){
+            failedTest = true;
         }
         return softAssertResult;
     }
