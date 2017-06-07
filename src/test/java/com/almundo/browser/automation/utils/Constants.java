@@ -47,6 +47,7 @@ public class Constants {
         FELICITACIONES_V3_MSG("¡Felicitaciones, tu reserva fue exitosa!"),
         MANDATORY_FLD_MSG("Este campo es obligatorio."),
         LISTADO_DE_SUCURSALES_LNK("Ver listado de sucursales"),
+        NO_PUDIMOS_PROCESAR("No pudimos procesar la consulta. Intentá más tarde."),
         PRUEBA_CON_OTRAS_FECHAS("Uy, no encontramos resultados. Puedes probar con otras fechas.");
 
         public final String message;

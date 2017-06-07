@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.Messages.NO_PUDIMOS_PROCESAR;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.Constants.Messages.PRUEBA_CON_OTRAS_FECHAS;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
@@ -75,6 +76,16 @@ public class CarsResultsPage extends TestBaseSetup {
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         try {
             PageUtils.waitForNoVacancy(driver, By.cssSelector("#main-content  div.alert__text > p:nth-child(4)"), 5, "[" + PRUEBA_CON_OTRAS_FECHAS + "] link");
+        } catch (Exception ex){
+            return true;
+        }
+        setResult(FAILED);
+        return false;
+    }
+
+    public boolean processed(){
+        try {
+            PageUtils.waitForNoVacancy(driver, By.cssSelector("#main-content div.alert__text > p:nth-child(1)"), 5, "[" + NO_PUDIMOS_PROCESAR + "] link");
         } catch (Exception ex){
             return true;
         }

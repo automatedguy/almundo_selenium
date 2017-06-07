@@ -209,6 +209,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(carsResultsPage.vacancy());
+        Assert.assertTrue(carsResultsPage.processed());
 
         List<WebElement> carsChoicesListFirst = carsResultsPage.getCarsChoices();
 
@@ -216,6 +217,9 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
 
         carsResultsPage = loginPopUp.clickIngresarOnCarstBtn();
+
+        Assert.assertTrue(carsResultsPage.vacancy());
+        Assert.assertTrue(carsResultsPage.processed());
 
         logger.info("Validating cars choices on results page are the same as before login.");
         Assert.assertTrue(carsChoicesListFirst.size() == carsResultsPage.getCarsChoices().size());

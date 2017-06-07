@@ -66,6 +66,7 @@ public class FlowTest extends TestBaseSetup {
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(carsResultsPage.vacancy());
+        Assert.assertTrue(carsResultsPage.processed());
 
         dataManagement.getPassengerData("adult_male_native");
         checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
@@ -95,6 +96,7 @@ public class FlowTest extends TestBaseSetup {
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(carsResultsPage.vacancy());
+        Assert.assertTrue(carsResultsPage.processed());
 
         dataManagement.getPassengerData("adult_male_native");
         checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
