@@ -23,6 +23,7 @@ import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by gabrielcespedes on 23/05/17.
@@ -76,6 +77,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
+        setResult(PASSED);
         dataManagement.passengerJsonList = new JSONArray();
     }
 

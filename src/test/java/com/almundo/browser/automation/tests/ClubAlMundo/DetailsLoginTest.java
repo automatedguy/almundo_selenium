@@ -24,6 +24,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by gabrielcespedes on 26/05/17.
@@ -69,6 +70,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
+        setResult(PASSED);
         dataManagement.passengerJsonList = new JSONArray();
     }
 
