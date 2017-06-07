@@ -208,6 +208,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
+        Assert.assertTrue(carsResultsPage.vacancy());
+
         List<WebElement> carsChoicesListFirst = carsResultsPage.getCarsChoices();
 
         loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
