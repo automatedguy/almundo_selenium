@@ -162,7 +162,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 //        softAssert.assertTrue(almundo_master_18 == icbc_master_18, "MASTERCARD - 18 Cuotas - Prices are not equal: Almundo [" + almundo_master_18 + "] - ICBC [" + icbc_master_18 + "]");
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
-        setResult(FAILED);
+        if(failedTest){setResult(FAILED);}
         softAssert.assertAll();
     }
 
@@ -249,7 +249,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
-        setResult(FAILED);
+        if(failedTest){setResult(FAILED);}
         softAssert.assertAll();
     }
 
@@ -336,7 +336,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         logger.info("********************************************************** FIN DE PRUEBAS **********************************************************");
 
-        setResult(FAILED);
+        if(failedTest){setResult(FAILED);}
         softAssert.assertAll();
     }
 
