@@ -4,9 +4,9 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -48,7 +48,6 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        setResult(PASSED);
         dataManagement.passengerJsonList = new JSONArray();
     }
 
@@ -92,6 +91,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResult(PASSED);
     }
 
     @Test
@@ -129,6 +129,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResult(PASSED);
     }
 
     @Test
@@ -170,6 +171,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResult(PASSED);
     }
 
     @Test
@@ -209,6 +211,7 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResult(PASSED);
     }
 
     @Test
@@ -254,5 +257,6 @@ public class FlowTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResult(PASSED);
     }
 }

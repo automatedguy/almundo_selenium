@@ -41,7 +41,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        setResult(PASSED);
         dataManagement.passengerJsonList = new JSONArray();
     }
 
@@ -76,5 +75,6 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           dataManagement.getBillingData("local_Billing_sucursales"),
                                           dataManagement.getContactData("contact_phone"),
                                           "FlightsCheckOutPageDomesticSucursal", true);
+        setResult(PASSED);
     }
 }
