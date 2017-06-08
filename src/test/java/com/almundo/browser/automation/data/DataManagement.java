@@ -278,6 +278,12 @@ public class DataManagement extends TestBaseSetup {
     }
 
     public JSONObject getBillingData(String dataSet)  {
+        if(countryPar.equals("COLOMBIA") &&
+                dataSet.equals("local_Billing_sucursales") &&
+                (baseURL.contains("ccr.") || baseURL.contains("sucursales."))) {
+            logger.info("Changing local billing info COLOMBIA channel/brand: " + baseURL);
+            dataSet="local_Billing_sucursales_trips";
+        }
         JSONObject billingData = JsonRead.getJsonDataObject(billingsList, dataSet, countryPar.toLowerCase() + "_data.json");
         return billingData;
     }

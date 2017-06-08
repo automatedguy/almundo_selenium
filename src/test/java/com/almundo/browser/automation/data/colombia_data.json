@@ -413,6 +413,20 @@
             "address_state": "Bogotá D.C.",
             "address_city": "Bogotá"
         }
+
+        "local_Billing_sucursales_trips": {
+            "fiscal_name":"Sarasa and Automation Inc. & Associates",
+            "billing_fiscal_type":"Persona natural",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "23281685589",
+            "billing_address": "Calle Falsa 123 11 C",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Bogotá D.C.",
+            "address_city": "Bogotá"
+        }
     },
 
     "contacts": {
