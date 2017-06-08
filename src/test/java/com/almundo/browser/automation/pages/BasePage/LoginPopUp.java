@@ -49,7 +49,9 @@ public class LoginPopUp extends BasePage {
     }
 
     public LoginPopUp loginUser(String loginEmail, String loginPassword) {
-        if(driver.getCurrentUrl().contains("st")){loginEmail = loginEmail.replace("@","st@");}
+        if(driver.getCurrentUrl().contains("st.") || driver.getCurrentUrl().contains("staging.") ){
+            loginEmail = loginEmail.replace("@","st@");
+        }
         setLoginEmailTxt(loginEmail);
         setLoginPasswordTxt(loginPassword);
         return this;
