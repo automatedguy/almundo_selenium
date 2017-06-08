@@ -196,7 +196,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logTestTitle("Club AlMundo - Search Car And Login With Email - " + countryPar );
 
         dataManagement.getCarsItineraryData();
-        dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
+        dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
 
         basePage.clickCarsBtn();
         carsDataTrip = basePage.carsDataTrip();
