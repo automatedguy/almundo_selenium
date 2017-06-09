@@ -279,7 +279,7 @@ public class DataManagement extends TestBaseSetup {
 
     public JSONObject getBillingData(String dataSet)  {
         if(countryPar.equals("COLOMBIA") &&
-                dataSet.equals("local_Billing_sucursales") &&
+                dataSet.equals("local_Billing_sucursales") && method.contains("Trips.") &&
                 (baseURL.contains("ccr.") || baseURL.contains("sucursales."))) {
             logger.info("Changing local billing info COLOMBIA channel/brand: " + baseURL);
             dataSet="local_Billing_sucursales_trips";
