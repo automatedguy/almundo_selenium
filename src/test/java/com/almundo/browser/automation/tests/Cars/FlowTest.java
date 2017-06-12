@@ -3,7 +3,6 @@ package com.almundo.browser.automation.tests.Cars;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
-import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
@@ -37,8 +36,8 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.clickCloseLoginBtn();
+//        LoginPopUp loginPopUp = initLoginPopUp();
+//        loginPopUp.clickCloseLoginBtn();
         carsDataTrip = basePage.clickCarsBtn();
     }
 
