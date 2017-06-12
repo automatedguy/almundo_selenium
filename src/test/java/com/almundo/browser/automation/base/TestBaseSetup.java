@@ -286,9 +286,11 @@ public class TestBaseSetup {
     @AfterMethod
     public void tearDown() {
         try {
-            webDriver.get().quit();
-            //driver.manage().deleteAllCookies();
-            //driver.quit();
+            if(runningRemote){webDriver.get().quit();}
+            else {
+                driver.manage().deleteAllCookies();
+                driver.quit();
+            }
         } catch (WebDriverException exception){
             logger.info(exception.getMessage());
         } catch (Exception exception){
