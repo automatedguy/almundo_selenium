@@ -9,10 +9,7 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.*;
@@ -37,6 +34,8 @@ public class FlowTest extends TestBaseSetup {
     private void initItineraryData() {
         dataManagement.getFlightsItineraryData();
     }
+
+
 
     @BeforeMethod
     private void closeLoginPopUp(){

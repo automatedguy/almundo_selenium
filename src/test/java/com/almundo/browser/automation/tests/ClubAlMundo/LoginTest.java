@@ -32,7 +32,8 @@ public class LoginTest extends TestBaseSetup {
 
     @BeforeMethod
     private void initLoginPopUpElement(){
-        loginPopUp = initLoginPopUp();
+        // loginPopUp = initLoginPopUp();
+        loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
     }
 
     @AfterMethod
@@ -51,7 +52,7 @@ public class LoginTest extends TestBaseSetup {
         basePage = loginPopUp.clickIngresarBtn();
 
         logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
 
         basePage.headerSection().clickMyAccountMenuLnk();
 
@@ -70,10 +71,10 @@ public class LoginTest extends TestBaseSetup {
         Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
 
         logger.info("Logging out user");
-        basePage.headerSection().clickMyAccountMenuOption("Cerrar sesión");
+        basePage.headerSection().clickMyAccountMenuOption("Cerrar sesion");
         PageUtils.waitImplicitly(4000);
 
         logger.info("Validating user is logged out");
-        Assert.assertEquals("Ingresar", basePage.headerSection().textLnk.getText());
+        Assert.assertEquals("Ingresar", basePage.headerSection().textLoggedOutLnk.getText());
     }
 }

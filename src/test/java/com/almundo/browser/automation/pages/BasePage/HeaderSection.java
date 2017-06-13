@@ -24,7 +24,12 @@ public class HeaderSection extends BasePage {
     public WebElement myAccountMenuLnk;
 
     @FindBy(css = "#account-header > am-account-logged div:nth-child(1) > span")
-    public WebElement textLnk;
+    public WebElement textLoggedIntLnk;
+
+    @FindBy(css = "#account-header > am-account-logged div:nth-child(2) > span")
+    public WebElement textLoggedOutLnk;
+
+    String menuLocatorStr = "#account-header > am-account-logged > div > ul > li";
 
     //############################################### Actions ###############################################
 
@@ -37,7 +42,7 @@ public class HeaderSection extends BasePage {
 
     public List<String> getMyAccountMenuList() {
         List<String> stringList = new ArrayList<>();
-        List<WebElement> ElementList = driver.findElements(By.cssSelector(".sub-menu-my-account .link.pointer"));
+        List<WebElement> ElementList = driver.findElements(By.cssSelector(menuLocatorStr));
 
         for (WebElement result : ElementList) {
             String newResult = result.getText();
@@ -47,7 +52,7 @@ public class HeaderSection extends BasePage {
     }
 
     public void clickMyAccountMenuOption(String option) {
-        List<WebElement> results = driver.findElements(By.cssSelector(".sub-menu-my-account .link.pointer"));
+        List<WebElement> results = driver.findElements(By.cssSelector(menuLocatorStr));
 
         for (WebElement result : results) {
             if (result.getText().equals(option)) {

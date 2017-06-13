@@ -110,7 +110,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         Assert.assertTrue(flightsChoicesListFirst.equals(flightsResultsPage.getFlightsChoices()));
 
         logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
 
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
@@ -167,7 +167,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         Assert.assertTrue(hotelsChoicesListFirst.size() == hotelsResultsPage.getHotelsChoices().size());
 
         logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
@@ -226,7 +226,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         Assert.assertTrue(carsChoicesListFirst.size() == carsResultsPage.getCarsChoices().size());
 
         logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
 
         checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
@@ -271,7 +271,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         Assert.assertTrue(tripsChoicesListFirst.size() == tripsResultsPage.getTripsChoices().size());
 
         logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
 
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
