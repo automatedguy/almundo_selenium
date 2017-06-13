@@ -46,10 +46,10 @@ public class SucursalesFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void suc_Dom_Booking_Flow() {
-        logTestTitle("Sucursales Autos Flow - Domestic - 10 days - " + countryPar );
+    public void suc_Int_Booking_Flow() {
+        logTestTitle("Sucursales Autos Flow - International - 10 days - " + countryPar );
 
-        dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
+        dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
 
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
