@@ -154,6 +154,9 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        doNastyThing();
+
         Assert.assertTrue(hotelsResultsPage.vacancy());
         List<WebElement> hotelsChoicesListFirst = hotelsResultsPage.getHotelsChoices();
 
@@ -292,4 +295,10 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
+
+    public void doNastyThing(){
+        LoginPopUp loginPopUp = initLoginPopUp();
+        loginPopUp.clickCloseLoginBtn();
+    }
+
 }
