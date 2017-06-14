@@ -111,7 +111,6 @@ public class PageUtils {
             wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(element), number));
         }catch (TimeoutException exception) {
             logger.error("Incorrect number of results");
-            setFailureSauceLabs(driver);
             throw exception;
         }
     }
