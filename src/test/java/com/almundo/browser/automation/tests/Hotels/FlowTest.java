@@ -43,8 +43,8 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-//        LoginPopUp loginPopUp = initLoginPopUp();
-//        loginPopUp.clickCloseLoginBtn();
+        LoginPopUp loginPopUp = initLoginPopUp();
+        loginPopUp.clickCloseLoginBtn();
         hotelsDataTrip = basePage.clickHotelsBtn();
     }
 

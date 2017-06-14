@@ -3,13 +3,17 @@ package com.almundo.browser.automation.tests.Flights;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.*;
@@ -39,8 +43,8 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-//        LoginPopUp loginPopUp = initLoginPopUp();
-//        loginPopUp.clickCloseLoginBtn();
+        LoginPopUp loginPopUp = initLoginPopUp();
+        loginPopUp.clickCloseLoginBtn();
         flightsDataTrip = basePage.clickFlightsBtn();
     }
 
