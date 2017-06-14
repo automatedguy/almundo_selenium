@@ -67,8 +67,6 @@ public class FlowTest extends TestBaseSetup {
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
-        doNastyThing();
-
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
@@ -105,8 +103,6 @@ public class FlowTest extends TestBaseSetup {
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
-        doNastyThing();
-
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
@@ -124,10 +120,5 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getContactData("contact_phone"),
                                               "HotelsCheckOutPageDomesticV3");
         setResultSauceLabs(PASSED);
-    }
-
-    public void doNastyThing(){
-        LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.clickCloseLoginBtn();
     }
 }

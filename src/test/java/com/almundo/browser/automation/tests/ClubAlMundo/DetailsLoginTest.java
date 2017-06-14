@@ -90,8 +90,6 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
-        doNastyThing();
-
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
@@ -161,10 +159,5 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
-    }
-
-    public void doNastyThing(){
-        LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.clickCloseLoginBtn();
     }
 }
