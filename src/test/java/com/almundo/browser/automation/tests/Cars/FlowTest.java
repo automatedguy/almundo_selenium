@@ -53,8 +53,9 @@ public class FlowTest extends TestBaseSetup {
         logTestTitle("Cars Flow - Domestic - 10 days - " + countryPar );
 
         if(countryPar.equals("COLOMBIA")){
-            logger.warn("In Colombia they don't rent cars apparently, " +
-                    "Domestic test is not running and we just set it passed");}
+            logger.warn("Apparently, in Colombia they don't rent cars... " +
+                    "Domestic test is not running and we just set it passed");
+            logger.warn("This isssue was reported ticket is: " + "https://almundo.atlassian.net/browse/CARS-444");}
         else {
             dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
 
