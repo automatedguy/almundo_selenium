@@ -28,7 +28,6 @@ public class PageUtils {
             wait.until(ExpectedConditions.visibilityOf(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not displayed");
-            setFailureSauceLabs(driver);
             throw exception;
         }
     }
