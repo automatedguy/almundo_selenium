@@ -3,6 +3,7 @@ package com.almundo.browser.automation.tests.Hotels;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
@@ -66,6 +67,8 @@ public class FlowTest extends TestBaseSetup {
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
+        doNastyThing();
+
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
@@ -102,6 +105,8 @@ public class FlowTest extends TestBaseSetup {
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
+        doNastyThing();
+
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
@@ -119,5 +124,10 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getContactData("contact_phone"),
                                               "HotelsCheckOutPageDomesticV3");
         setResultSauceLabs(PASSED);
+    }
+
+    public void doNastyThing(){
+        LoginPopUp loginPopUp = initLoginPopUp();
+        loginPopUp.clickCloseLoginBtn();
     }
 }
