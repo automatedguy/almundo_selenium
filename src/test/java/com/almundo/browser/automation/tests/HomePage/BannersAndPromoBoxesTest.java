@@ -98,7 +98,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         }
     }
 
-    @Test
+/*    @Test
     public void openHomeMedioRightBanner () {
         logger.info("Wait");
         if (countryPar.equals("ARGENTINA")) {
@@ -109,7 +109,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL [" + driver.getCurrentUrl() + "]");
             Assert.assertEquals(driver.getCurrentUrl(), promo_path, "Incorrect URL");
         }
-    }
+    }*/
 
     @Test
     public void validateCarouselBanners () {
