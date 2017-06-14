@@ -67,7 +67,7 @@ public class LoginTest extends TestBaseSetup {
                 expectedList = Constants.USER_MENU_LIST_MX;
             }
         logger.info("Validating My Account menu options are displayed:");
-        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
+        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList, driver)), "Displayed options are not correct");
 
         logger.info("Logging out user");
         basePage.headerSection().clickMyAccountMenuOption("Cerrar sesion");

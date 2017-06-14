@@ -169,10 +169,10 @@ public class BasePage extends TestBaseSetup {
         calendar.click();
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar a", 0);
 
-        if(PageUtils.isElementPresent(firstCalendar)) {
+        if(PageUtils.isElementPresent(firstCalendar, driver)) {
             int availableDates = getAvailableDatesSize(firstCalendar);
 
-            if (PageUtils.isElementPresent(nextMonthCalBtn)) {
+            if (PageUtils.isElementPresent(nextMonthCalBtn, driver)) {
                 while(availableDates < daysAhead) {
                     daysAhead = daysAhead - availableDates;
                     nextMonthCalBtn.click();
