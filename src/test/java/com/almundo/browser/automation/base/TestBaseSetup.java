@@ -74,7 +74,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("COLOMBIA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -390,8 +390,14 @@ public class TestBaseSetup {
 
     public void setResultSauceLabs(Results result) {
         if (runningRemote) {
-            ((JavascriptExecutor) driver).executeScript("sauce:job-result=" + result);
-            logger.info("Test " + result + "!");
+            logger.info("Reporting results to Saucelabs...");
+            try {
+                ((JavascriptExecutor) driver).executeScript("sauce:job-result=" + result);
+                logger.info("Test " + result + "!");
+            }
+            catch(Exception ex){
+                logger.error("Communication with Saucelabs went wrong :( ");
+            }
         }
     }
 
