@@ -190,7 +190,6 @@ public class PageUtils {
             webElement.isDisplayed();
             return true;
         } catch (NoSuchElementException e) {
-            setFailureSauceLabs(driver);
             return false;
         }
         catch (Exception e)
