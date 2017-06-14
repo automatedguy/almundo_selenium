@@ -280,7 +280,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData("child_male_native");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
