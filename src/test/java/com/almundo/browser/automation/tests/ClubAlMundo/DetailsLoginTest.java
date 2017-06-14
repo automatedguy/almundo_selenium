@@ -64,8 +64,8 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-//        loginPopUp = initLoginPopUp();
-//        loginPopUp.clickCloseLoginBtn();
+        loginPopUp = initLoginPopUp();
+        loginPopUp.clickCloseLoginBtn();
     }
 
     @AfterMethod

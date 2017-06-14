@@ -32,8 +32,7 @@ public class LoginTest extends TestBaseSetup {
 
     @BeforeMethod
     private void initLoginPopUpElement(){
-        // loginPopUp = initLoginPopUp();
-        loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
+        loginPopUp = initLoginPopUp();
     }
 
     @AfterMethod
