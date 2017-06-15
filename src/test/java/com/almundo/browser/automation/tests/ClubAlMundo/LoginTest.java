@@ -13,6 +13,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+
 /**
  * Created by leandro.efron on 8/2/2017.
  */
@@ -67,5 +69,7 @@ public class LoginTest extends TestBaseSetup {
 
         logger.info("Validating user is logged out");
         Assert.assertEquals("Ingresar", basePage.headerSection().textLoggedOutLnk.getText());
+
+        setResultSauceLabs(PASSED);
     }
 }
