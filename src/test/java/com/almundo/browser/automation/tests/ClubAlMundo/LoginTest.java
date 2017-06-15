@@ -7,14 +7,11 @@ import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
-import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by leandro.efron on 8/2/2017.
@@ -33,11 +30,6 @@ public class LoginTest extends TestBaseSetup {
     @BeforeMethod
     private void initLoginPopUpElement(){
         loginPopUp = initLoginPopUp();
-    }
-
-    @AfterMethod
-    private void setResults() {
-        setResultSauceLabs(PASSED);
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
