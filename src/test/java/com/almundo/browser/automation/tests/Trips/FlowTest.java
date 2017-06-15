@@ -102,6 +102,7 @@ public class FlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
+
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
