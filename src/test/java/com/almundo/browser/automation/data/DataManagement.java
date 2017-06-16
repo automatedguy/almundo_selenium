@@ -19,6 +19,9 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject vueloHotelDataTripList = null;
     private JSONObject vueloHotelDataTripItinerary = null;
 
+    private JSONObject trippersDataTripList = null;
+    private JSONObject trippersDataTripItinerary = null;
+
     private JSONObject autosDataTripList = null;
     private JSONObject autosDataTripItinerary = null;
 
@@ -58,6 +61,9 @@ public class DataManagement extends TestBaseSetup {
     public String pickUpTime;
     public String dropOffTime;
     public String ageRange;
+
+    public String eventName;
+    public String eventDescription;
 
     //------------------------- HOME PAGE -----------------------------
 
@@ -194,6 +200,15 @@ public class DataManagement extends TestBaseSetup {
         getContactList();
     }
 
+    public void getTrippersItineraryData(){
+        getUsersDataList();
+        getTripsDataTripList();
+        getPassengersList();
+        getPaymentList();
+        getBillingList();
+        getContactList();
+    }
+
     public void getTripsDataTripList() {
         vueloHotelDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "trips", countryPar.toLowerCase() + "_data.json");
     }
@@ -214,6 +229,30 @@ public class DataManagement extends TestBaseSetup {
         childs = Integer.parseInt(vueloHotelDataTripItinerary.get("childs").toString());
 
         rooms = Integer.parseInt(vueloHotelDataTripItinerary.get("rooms").toString());
+    }
+
+    public void getTrippersDataTripList() {
+        trippersDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "trippers", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getTrippersDataTripsItinerary(String dataSet) {
+        trippersDataTripItinerary = JsonRead.getJsonDataObject(trippersDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        eventName = trippersDataTripItinerary.get("eventName").toString();
+        eventDescription = trippersDataTripItinerary.get("eventDescription").toString();
+
+        originAuto = trippersDataTripItinerary.get("originAuto").toString();
+        originFull = trippersDataTripItinerary.get("originFull").toString();
+
+        destinationAuto = trippersDataTripItinerary.get("destinationAuto").toString();
+        destinationFull = trippersDataTripItinerary.get("destinationFull").toString();
+
+        startDate = Integer.parseInt(trippersDataTripItinerary.get("startDate").toString());
+        endDate = Integer.parseInt(trippersDataTripItinerary.get("endDate").toString());
+
+        pickUpTime = trippersDataTripItinerary.get("pickUpTime").toString();
+        dropOffTime = trippersDataTripItinerary.get("dropOffTime").toString();
+
     }
 
     //AUTOS DATA TRIP

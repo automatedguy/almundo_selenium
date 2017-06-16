@@ -6,6 +6,9 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
+import com.almundo.browser.automation.pages.Trippers.TrippersAgregarEvento;
+import com.almundo.browser.automation.pages.Trippers.TrippersAgregarOtroEvento;
+import com.almundo.browser.automation.pages.Trippers.TrippersDashboard;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -69,10 +72,10 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
-//                                        @Optional() String osType,
+                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-                                        @Optional("Windows 10") String osType,
-                                        @Optional("chrome") String browserType,
+//                                        @Optional("Windows 10") String osType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
@@ -386,6 +389,11 @@ public class TestBaseSetup {
         }
     }
 
+    public TrippersDashboard goToTrippersDashboard(){
+        driver.navigate().to("https://staging.almundo.com.ar/trips/dashboard/311");
+        return initTrippersDashboard();
+    }
+
     //################################################ Tests Results ########################################
 
     public void setResultSauceLabs(Results result) {
@@ -537,6 +545,20 @@ public class TestBaseSetup {
 
     protected AgreementPage initTermsAndConditonsPage(){
         return PageFactory.initElements(driver, AgreementPage.class);
+    }
+
+    /*************************** Trippers Inits ***********************/
+
+    protected TrippersAgregarEvento initTrippersAgregarEvento(){
+        return PageFactory.initElements(driver, TrippersAgregarEvento.class);
+    }
+
+    protected TrippersDashboard initTrippersDashboard(){
+        return PageFactory.initElements(driver, TrippersDashboard.class);
+    }
+
+    protected TrippersAgregarOtroEvento initTrippersAgregarOtroEvento(){
+        return PageFactory.initElements(driver, TrippersAgregarOtroEvento.class);
     }
 
 }
