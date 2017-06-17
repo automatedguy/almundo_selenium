@@ -3,14 +3,11 @@ package com.almundo.browser.automation.tests.Trippers;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
-import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
-import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
-import com.almundo.browser.automation.pages.Trippers.TrippersAgregarEvento;
-import com.almundo.browser.automation.pages.Trippers.TrippersAgregarOtroEvento;
-import com.almundo.browser.automation.pages.Trippers.TrippersDashboard;
+import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
+import com.almundo.browser.automation.pages.Trippers.AgregarEvento;
+import com.almundo.browser.automation.pages.Trippers.AgregarOtroEvento;
+import com.almundo.browser.automation.pages.Trippers.BuscarEnAlmundo;
+import com.almundo.browser.automation.pages.Trippers.Dashboard;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.annotations.AfterMethod;
@@ -18,6 +15,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -29,16 +27,9 @@ public class FlowTest extends TestBaseSetup {
 
     private DataManagement dataManagement = new DataManagement();
 
-    /******** Trippers Sh*t ****/
-    private TrippersDashboard trippersDashboard = null;
-    private TrippersAgregarEvento trippersAgregarEvento = null;
-    private TrippersAgregarOtroEvento trippersAgregarOtroEvento = null;
-
-    private TripsDataTrip tripsDataTrip = null;
-    private TripsResultsPage tripsResultsPage = null;
-    private TripsDetailPage tripsDetailPage = null;
-    private CheckOutPageV3 checkOutPageV3 = null;
-    private ConfirmationPageV3 confirmationPageV3 = null;
+    /******** Trippers Stuff ****/
+    private Dashboard dashboard = null;
+    private AgregarEvento agregarEvento = null;
 
     @BeforeClass
     private void initItineraryData() {
@@ -61,22 +52,59 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void addPersonalizedEvent(){
+        AgregarOtroEvento agregarOtroEvento = null;
+
         logTestTitle("Trips Flow - Add Personalized Event " + countryPar );
 
         dataManagement.getTrippersDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
-        trippersDashboard = goToTrippersDashboard();
-        trippersAgregarEvento = trippersDashboard.clickAgregarEventoBtn();
-        trippersAgregarOtroEvento = trippersAgregarEvento.clickEventoPersonalizado();
-        trippersAgregarOtroEvento.setNombreDeEvento(dataManagement.eventName);
-        trippersAgregarOtroEvento.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        trippersAgregarOtroEvento.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        trippersAgregarOtroEvento.setDescription(dataManagement.eventDescription);
-        trippersAgregarOtroEvento.selectDateFromCalendar(trippersAgregarOtroEvento.checkinCalendar, dataManagement.startDate);
-        trippersAgregarOtroEvento.selectPickUpTime(dataManagement.pickUpTime);
-        trippersAgregarOtroEvento.selectDateFromCalendar(trippersAgregarOtroEvento.checkoutCalendar, dataManagement.endDate);
-        trippersAgregarOtroEvento.selectDropOffTime(dataManagement.dropOffTime);
-        trippersAgregarOtroEvento.clickAgregarBtn();
+        dashboard = goToTrippersDashboard();
+        agregarEvento = dashboard.clickAgregarEventoBtn();
+        agregarOtroEvento = agregarEvento.clickEventoPersonalizado();
+        agregarOtroEvento.setNombreDeEvento(dataManagement.eventName);
+        agregarOtroEvento.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        agregarOtroEvento.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        agregarOtroEvento.setDescription(dataManagement.eventDescription);
+        agregarOtroEvento.selectDateFromCalendar(agregarOtroEvento.checkinCalendar, dataManagement.startDate);
+        agregarOtroEvento.selectPickUpTime(dataManagement.pickUpTime);
+        agregarOtroEvento.selectDateFromCalendar(agregarOtroEvento.checkoutCalendar, dataManagement.endDate);
+        agregarOtroEvento.selectDropOffTime(dataManagement.dropOffTime);
+        agregarOtroEvento.clickAgregarBtn();
         waitImplicitly(7000);
+    }
+
+    @Test
+    public void addAlmundoEventFlight(){
+        BuscarEnAlmundo buscarEnAlmundo = null;
+        FlightsResultsPage flightsResultsPage = null;
+
+        logTestTitle("Trips Flow - Add Almundo Event Flight" + countryPar );
+
+        dataManagement.getTrippersDataTripsItinerary("miami_10days_2adults_2childs_1room");
+
+        dashboard = goToTrippersDashboard();
+        agregarEvento = dashboard.clickAgregarEventoBtn();
+        buscarEnAlmundo = agregarEvento.clickBuscarEnAlmundo();
+        buscarEnAlmundo.selectFlightType(ONE_WAY);
+        buscarEnAlmundo.setOrigin(dataManagement.originAuto,dataManagement.originFull);
+        buscarEnAlmundo.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        buscarEnAlmundo.selectDateFromCalendar(buscarEnAlmundo.checkinCalendar, dataManagement.startDate);
+        flightsResultsPage = buscarEnAlmundo.clickBuscarBtn();
+        waitImplicitly(7000);
+
+    }
+
+    @Test
+    public void addAlmundoEventHotel(){
+
+        logTestTitle("Trips Flow - Add Almundo Event Hotel" + countryPar );
+
+    }
+
+    @Test
+    public void addAlmundoEventCars(){
+
+        logTestTitle("Trips Flow - Add Almundo Event Car" + countryPar );
+
     }
 }

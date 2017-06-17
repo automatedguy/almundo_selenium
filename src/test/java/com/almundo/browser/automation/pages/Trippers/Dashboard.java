@@ -8,23 +8,22 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by gabrielcespedes on 16/06/17.
  */
-public class TrippersAgregarEvento extends BasePage {
+public class Dashboard extends BasePage {
 
-    public TrippersAgregarEvento(WebDriver iDriver) {
+    public Dashboard(WebDriver iDriver) {
         super(iDriver);
     }
 
     /***************************** Locators  **********************************/
 
-    @FindBy(css = "event-type-selector div.event-type li:nth-child(3) > div.title-ctn > p")
-    public WebElement eventoPersonalizado;
+    @FindBy(css = "trip-itinerary-tab > div.tab-ctn.ng-scope > div.side-bar-ctn.ng-scope > div > button")
+    WebElement agregarEventoBtn;
 
     /***************************** Actions  **********************************/
 
-    public TrippersAgregarOtroEvento clickEventoPersonalizado(){
-        logger.info("Click on [Evento Personalizado]");
-        eventoPersonalizado.click();
-        return initTrippersAgregarOtroEvento();
+    public AgregarEvento clickAgregarEventoBtn(){
+        logger.info("Clicking on [Agregar evento]");
+        agregarEventoBtn.click();
+        return initTrippersAgregarEvento();
     }
-
 }

@@ -6,9 +6,10 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
-import com.almundo.browser.automation.pages.Trippers.TrippersAgregarEvento;
-import com.almundo.browser.automation.pages.Trippers.TrippersAgregarOtroEvento;
-import com.almundo.browser.automation.pages.Trippers.TrippersDashboard;
+import com.almundo.browser.automation.pages.Trippers.AgregarEvento;
+import com.almundo.browser.automation.pages.Trippers.AgregarOtroEvento;
+import com.almundo.browser.automation.pages.Trippers.BuscarEnAlmundo;
+import com.almundo.browser.automation.pages.Trippers.Dashboard;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -36,6 +37,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 public class TestBaseSetup {
 
@@ -389,8 +391,9 @@ public class TestBaseSetup {
         }
     }
 
-    public TrippersDashboard goToTrippersDashboard(){
+    public Dashboard goToTrippersDashboard(){
         driver.navigate().to("https://staging.almundo.com.ar/trips/dashboard/311");
+        waitImplicitly(5000);
         return initTrippersDashboard();
     }
 
@@ -549,16 +552,20 @@ public class TestBaseSetup {
 
     /*************************** Trippers Inits ***********************/
 
-    protected TrippersAgregarEvento initTrippersAgregarEvento(){
-        return PageFactory.initElements(driver, TrippersAgregarEvento.class);
+    protected AgregarEvento initTrippersAgregarEvento(){
+        return PageFactory.initElements(driver, AgregarEvento.class);
     }
 
-    protected TrippersDashboard initTrippersDashboard(){
-        return PageFactory.initElements(driver, TrippersDashboard.class);
+    protected Dashboard initTrippersDashboard(){
+        return PageFactory.initElements(driver, Dashboard.class);
     }
 
-    protected TrippersAgregarOtroEvento initTrippersAgregarOtroEvento(){
-        return PageFactory.initElements(driver, TrippersAgregarOtroEvento.class);
+    protected AgregarOtroEvento initTrippersAgregarOtroEvento(){
+        return PageFactory.initElements(driver, AgregarOtroEvento.class);
+    }
+
+    protected BuscarEnAlmundo initBuscarEnAlmundo(){
+        return PageFactory.initElements(driver, BuscarEnAlmundo.class);
     }
 
 }
