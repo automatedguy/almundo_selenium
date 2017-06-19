@@ -29,7 +29,7 @@ public class HeaderSection extends BasePage {
     @FindBy(css = ".my-trips__toggle>span")
     public WebElement myTripsLnk;
 
-    @FindBy(css = "#account-header .header-link.ng-binding")
+    @FindBy(css = "#account-header .header-link")
     public WebElement textLoggedIntLnk;
 
     @FindBy(css = "#account-header .am-account-logged-login-desk")
