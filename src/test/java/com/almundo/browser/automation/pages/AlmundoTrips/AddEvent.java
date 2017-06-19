@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by gabrielcespedes on 16/06/17.
  */
-public class AgregarEvento extends BasePage {
+public class AddEvent extends BasePage {
 
-    public AgregarEvento(WebDriver iDriver) {
+    public AddEvent(WebDriver iDriver) {
         super(iDriver);
     }
 
@@ -24,13 +24,13 @@ public class AgregarEvento extends BasePage {
 
     /***************************** Actions  **********************************/
 
-    public AgregarOtroEvento clickEventoPersonalizado(){
+    public AddAnotherEvent clickEventoPersonalizado(){
         logger.info("Click on [Evento Personalizado]");
         eventoPersonalizado.click();
         return initTrippersAgregarOtroEvento();
     }
 
-    public BuscarEnAlmundo clickBuscarEnAlmundo(){
+    public SearchInAlmundo clickBuscarEnAlmundo(){
         logger.info("Click on [Buscar en Almundo]");
         buscarEnAlmundo.click();
         return initBuscarEnAlmundo();

@@ -16,9 +16,9 @@ import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 /**
  * Created by gabrielcespedes on 16/06/17.
  */
-public class BuscarEnAlmundo extends BasePage {
+public class SearchInAlmundo extends BasePage {
 
-    public BuscarEnAlmundo(WebDriver iDriver) {
+    public SearchInAlmundo(WebDriver iDriver) {
         super(iDriver);
     }
 
@@ -63,7 +63,7 @@ public class BuscarEnAlmundo extends BasePage {
 
     /***************************** Actions **********************************/
 
-    public BuscarEnAlmundo selectProduct(Constants.Products product){
+    public SearchInAlmundo selectProduct(Constants.Products product){
         PageUtils.waitElementForClickable(driver, selectProductDdl, 10, "Products drop down list");
         Select productSelect = new Select(selectProductDdl);
         logger.info("Selecting: " + product);
@@ -71,14 +71,14 @@ public class BuscarEnAlmundo extends BasePage {
         return this;
     }
 
-    public BuscarEnAlmundo selectFlightType(Constants.FlightType flightType){
+    public SearchInAlmundo selectFlightType(Constants.FlightType flightType){
         logger.info("Selecting Flight Type: " + "["+ flightType + "]");
         Select flightTypeDdl = new Select(tipoDeVueloDdl);
         flightTypeDdl.selectByVisibleText(flightType.toString());
         return this;
     }
 
-    public BuscarEnAlmundo setOrigin(String originAuto, String originFull){
+    public SearchInAlmundo setOrigin(String originAuto, String originFull){
         logger.info("Entering Flight Origin: " + "[" + originFull + "]");
         originTxt.clear();
         originTxt.sendKeys(originAuto);
@@ -87,7 +87,7 @@ public class BuscarEnAlmundo extends BasePage {
         return this;
     }
 
-    public BuscarEnAlmundo setDestination(String destinationAuto, String destinationFull) {
+    public SearchInAlmundo setDestination(String destinationAuto, String destinationFull) {
         WebElement destinationTxt = driver.findElement(By.cssSelector("#destination"));
         logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTxt.clear();

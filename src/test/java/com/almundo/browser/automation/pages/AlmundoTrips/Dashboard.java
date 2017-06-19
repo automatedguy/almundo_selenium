@@ -22,7 +22,7 @@ public class Dashboard extends BasePage {
 
     /***************************** Actions  **********************************/
 
-    public AgregarEvento clickAgregarEventoBtn(){
+    public AddEvent clickAgregarEventoBtn(){
         PageUtils.waitElementForClickable(driver, agregarEventoBtn, 10, "Agregar Evento Button");
         logger.info("Clicking on [Agregar evento]");
         agregarEventoBtn.click();

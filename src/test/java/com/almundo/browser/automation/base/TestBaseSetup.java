@@ -557,20 +557,20 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, ActivityFeed.class);
     }
 
-    protected AgregarEvento initTrippersAgregarEvento(){
-        return PageFactory.initElements(driver, AgregarEvento.class);
+    protected AddEvent initTrippersAgregarEvento(){
+        return PageFactory.initElements(driver, AddEvent.class);
     }
 
     protected Dashboard initTrippersDashboard(){
         return PageFactory.initElements(driver, Dashboard.class);
     }
 
-    protected AgregarOtroEvento initTrippersAgregarOtroEvento(){
-        return PageFactory.initElements(driver, AgregarOtroEvento.class);
+    protected AddAnotherEvent initTrippersAgregarOtroEvento(){
+        return PageFactory.initElements(driver, AddAnotherEvent.class);
     }
 
-    protected BuscarEnAlmundo initBuscarEnAlmundo(){
-        return PageFactory.initElements(driver, BuscarEnAlmundo.class);
+    protected SearchInAlmundo initBuscarEnAlmundo(){
+        return PageFactory.initElements(driver, SearchInAlmundo.class);
     }
 
     protected AlmundoTripsHotelsData initAlmundoTripsHotelsData(){
