@@ -14,6 +14,8 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.isElementClickable;
+import static com.almundo.browser.automation.utils.PageUtils.userNameOk;
 
 /**
  * Created by leandro.efron on 8/2/2017.
@@ -44,8 +46,7 @@ public class LoginTest extends TestBaseSetup {
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         basePage.headerSection().clickMyAccountMenuLnk();
 
@@ -56,10 +57,10 @@ public class LoginTest extends TestBaseSetup {
             expectedList = Constants.USER_MENU_LIST_AR;
         } else if(countryPar.equals("COLOMBIA")) {
             expectedList = Constants.USER_MENU_LIST_CO;
-        }
-            else {
+        } else {
                 expectedList = Constants.USER_MENU_LIST_MX;
-            }
+        }
+
         logger.info("Validating My Account menu options are displayed:");
         Assert.assertTrue((PageUtils.equalLists(actualList, expectedList, driver)), "Displayed options are not correct");
 
@@ -68,7 +69,7 @@ public class LoginTest extends TestBaseSetup {
         PageUtils.waitImplicitly(4000);
 
         logger.info("Validating user is logged out");
-        Assert.assertEquals("Ingresar", basePage.headerSection().textLoggedOutLnk.getText());
+        Assert.assertTrue(isElementClickable(driver, basePage.headerSection().textLoggedOutLnk, 10, "Login Link (from header)"));
 
         setResultSauceLabs(PASSED);
     }

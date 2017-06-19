@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
+import com.almundo.browser.automation.pages.AlmundoTrips.ActivityFeed;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,13 +21,18 @@ public class HeaderSection extends BasePage {
 
     //############################################### Locators ##############################################
 
+
+
     @FindBy(css = "#account-header > am-account-logged")
     public WebElement myAccountMenuLnk;
 
-    @FindBy(css = "#account-header > am-account-logged div:nth-child(1) > span")
+    @FindBy(css = ".my-trips__toggle>span")
+    public WebElement myTripsLnk;
+
+    @FindBy(css = "#account-header .header-link.ng-binding")
     public WebElement textLoggedIntLnk;
 
-    @FindBy(css = "#account-header > am-account-logged div:nth-child(2) > span")
+    @FindBy(css = "#account-header .am-account-logged-login-desk")
     public WebElement textLoggedOutLnk;
 
     String menuLocatorStr = "#account-header > am-account-logged > div > ul > li";
@@ -61,5 +67,12 @@ public class HeaderSection extends BasePage {
                 break;
             }
         }
+    }
+
+    public ActivityFeed clickMyTripsLnk(){
+        PageUtils.waitElementForVisibility(driver, myTripsLnk, 10, "[Mis Viajes] Header Link");
+        logger.info("Clicking on [Mis Viajes] from header");
+        myTripsLnk.click();
+        return initActivityFeed();
     }
 }

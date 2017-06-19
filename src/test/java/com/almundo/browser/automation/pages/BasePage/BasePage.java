@@ -165,7 +165,7 @@ public class BasePage extends TestBaseSetup {
     }
 
     public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
-        PageUtils.waitImplicitly(1000);
+        PageUtils.waitImplicitly(2000);
         calendar.click();
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar a", 0);
 
@@ -178,6 +178,7 @@ public class BasePage extends TestBaseSetup {
                     nextMonthCalBtn.click();
                     availableDates = getAvailableDatesSize(firstCalendar);
                 }
+                PageUtils.waitImplicitly(1000);
                 List<WebElement> availableDatesList = firstCalendar.findElements(By.cssSelector(".ui-datepicker-calendar a"));
                 logger.info("Selecting date: [" + availableDatesList.get(daysAhead-1).getText() + " " + getMonthSelected(firstCalendar) + "]");
                 availableDatesList.get(daysAhead-1).click();

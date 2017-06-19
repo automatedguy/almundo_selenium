@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.AlmundoTrips;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +23,7 @@ public class Dashboard extends BasePage {
     /***************************** Actions  **********************************/
 
     public AgregarEvento clickAgregarEventoBtn(){
+        PageUtils.waitElementForClickable(driver, agregarEventoBtn, 10, "Agregar Evento Button");
         logger.info("Clicking on [Agregar evento]");
         agregarEventoBtn.click();
         return initTrippersAgregarEvento();

@@ -1,8 +1,11 @@
 package com.almundo.browser.automation.pages.AlmundoTrips;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.utils.Constants;
+import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,18 +30,46 @@ public class BuscarEnAlmundo extends BasePage {
     @FindBy(css = "#origin")
     public WebElement originTxt;
 
-    @FindBy(css = "#destination")
-    public WebElement destinationTxt;
+/*    @FindBy(id = "destination")
+    public WebElement destinationTxt;*/
 
+    /****** Flights Calendars ******/
     @FindBy(id = "departure")
-    public WebElement checkinCalendar;
+    public WebElement checkinCalendarFlights;
+
+    @FindBy(id = "return")
+    public WebElement checkoutCalendarFlights;
+
+    @FindBy(css = ".select-product")
+    public WebElement selectProductDdl;
+
 
     @FindBy(css = ".flights-search-form .btn.btn-primary.btn-submit")
-    public WebElement buscarBtn;
+    public WebElement buscarVuelosBtn;
 
 
-    /***************************** Actions
-     * @param flightType**********************************/
+
+    @FindBy(css = ".cars-search-form .btn.btn-primary.btn-submit")
+    public WebElement buscarAutosBtn;
+
+    /****** Cars Calendars ******/
+
+    @FindBy(id = "pickUpDate")
+    public WebElement checkinCalendarCars;
+
+    @FindBy(id = "dropOffDate")
+    public WebElement checkoutCalendarCars;
+
+
+    /***************************** Actions **********************************/
+
+    public BuscarEnAlmundo selectProduct(Constants.Products product){
+        PageUtils.waitElementForClickable(driver, selectProductDdl, 10, "Products drop down list");
+        Select productSelect = new Select(selectProductDdl);
+        logger.info("Selecting: " + product);
+        productSelect.selectByVisibleText(product.toString());
+        return this;
+    }
 
     public BuscarEnAlmundo selectFlightType(Constants.FlightType flightType){
         logger.info("Selecting Flight Type: " + "["+ flightType + "]");
@@ -57,7 +88,8 @@ public class BuscarEnAlmundo extends BasePage {
     }
 
     public BuscarEnAlmundo setDestination(String destinationAuto, String destinationFull) {
-        logger.info("Entering Flight Destination: [" + destinationFull + "]");
+        WebElement destinationTxt = driver.findElement(By.cssSelector("#destination"));
+        logger.info("Entering Destination: [" + destinationFull + "]");
         destinationTxt.clear();
         destinationTxt.sendKeys(destinationAuto);
         waitImplicitly(5000);
@@ -65,10 +97,19 @@ public class BuscarEnAlmundo extends BasePage {
         return this;
     }
 
-    public FlightsResultsPage clickBuscarBtn(){
-        logger.info("Clicking on [Agregar] button.");
-        buscarBtn.click();
+    public FlightsResultsPage clickBuscarVuelosBtn(){
+        logger.info("Clicking on [Buscar] button (For Flights)");
+        waitImplicitly(1000);
+        buscarVuelosBtn.click();
         return initFlightsResultsPage();
+    }
+
+
+    public CarsResultsPage clickBuscarAutosBtn(){
+        logger.info("Clicking on [Buscar] button (For Cars)");
+        waitImplicitly(1000);
+        buscarAutosBtn.click();
+        return initCarsResultsPage();
     }
 
 }

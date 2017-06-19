@@ -2,12 +2,11 @@ package com.almundo.browser.automation.tests.AlmundoTrips;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.AlmundoTrips.*;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
+import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import com.almundo.browser.automation.pages.AlmundoTrips.AgregarEvento;
-import com.almundo.browser.automation.pages.AlmundoTrips.AgregarOtroEvento;
-import com.almundo.browser.automation.pages.AlmundoTrips.BuscarEnAlmundo;
-import com.almundo.browser.automation.pages.AlmundoTrips.Dashboard;
+import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.annotations.AfterMethod;
@@ -15,7 +14,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
+import static com.almundo.browser.automation.utils.Constants.Products.AUTOS;
+import static com.almundo.browser.automation.utils.Constants.Products.HOTELES;
+import static com.almundo.browser.automation.utils.Constants.Products.VUELOS;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -28,6 +31,8 @@ public class FlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     /******** AlmundoTrips Stuff ****/
+    private Home home = null;
+    private ActivityFeed activityFeed = null;
     private Dashboard dashboard = null;
     private AgregarEvento agregarEvento = null;
 
@@ -43,6 +48,10 @@ public class FlowTest extends TestBaseSetup {
         JSONObject userData = dataManagement.getUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
+        activityFeed =  basePage.headerSection().clickMyTripsLnk();
+        home = activityFeed.clickMyTripsTittle();
+        dashboard = home.selectTripFromList(FIRST_OPTION);
+        agregarEvento = dashboard.clickAgregarEventoBtn();
     }
 
     @AfterMethod
@@ -51,15 +60,13 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void addPersonalizedEvent(){
+    public void addEventPersonalized(){
         AgregarOtroEvento agregarOtroEvento = null;
 
         logTestTitle("Trips Flow - Add Personalized Event " + countryPar );
 
         dataManagement.getTrippersDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
-        dashboard = goToTrippersDashboard();
-        agregarEvento = dashboard.clickAgregarEventoBtn();
         agregarOtroEvento = agregarEvento.clickEventoPersonalizado();
         agregarOtroEvento.setNombreDeEvento(dataManagement.eventName);
         agregarOtroEvento.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -74,7 +81,7 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void addAlmundoEventFlight(){
+    public void addFlightAlmundoEvent(){
         BuscarEnAlmundo buscarEnAlmundo = null;
         FlightsResultsPage flightsResultsPage = null;
 
@@ -82,29 +89,59 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getTrippersDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
-        dashboard = goToTrippersDashboard();
-        agregarEvento = dashboard.clickAgregarEventoBtn();
         buscarEnAlmundo = agregarEvento.clickBuscarEnAlmundo();
+        buscarEnAlmundo.selectProduct(VUELOS);
         buscarEnAlmundo.selectFlightType(ONE_WAY);
         buscarEnAlmundo.setOrigin(dataManagement.originAuto,dataManagement.originFull);
         buscarEnAlmundo.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        buscarEnAlmundo.selectDateFromCalendar(buscarEnAlmundo.checkinCalendar, dataManagement.startDate);
-        flightsResultsPage = buscarEnAlmundo.clickBuscarBtn();
+        buscarEnAlmundo.selectDateFromCalendar(buscarEnAlmundo.checkinCalendarFlights, dataManagement.startDate);
+        flightsResultsPage = buscarEnAlmundo.clickBuscarVuelosBtn();
         waitImplicitly(7000);
 
     }
 
-/*    @Test
+    @Test
     public void addAlmundoEventHotel(){
+        BuscarEnAlmundo buscarEnAlmundo = null;
+        AlmundoTripsHotelsData almundoTripsHotelsData = null;
+        HotelsResultsPage hotelsResultsPage = null;
 
         logTestTitle("Trips Flow - Add Almundo Event Hotel" + countryPar );
 
-    }*/
+        dataManagement.getTrippersDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
-/*    @Test
+        buscarEnAlmundo = agregarEvento.clickBuscarEnAlmundo();
+        buscarEnAlmundo.selectProduct(HOTELES);
+
+        almundoTripsHotelsData =  initAlmundoTripsHotelsData();
+
+        almundoTripsHotelsData.setDestination(dataManagement.destinationAuto,dataManagement.destinationFull);
+        almundoTripsHotelsData.selectDateFromCalendar(almundoTripsHotelsData.checkinCalendarHotels, dataManagement.startDate);
+        almundoTripsHotelsData.selectDateFromCalendar(almundoTripsHotelsData.checkinCalendarHotels, dataManagement.startDate);
+
+        hotelsResultsPage = almundoTripsHotelsData.clickBuscarHotelesBtn();
+        waitImplicitly(7000);
+
+    }
+
+    @Test
     public void addAlmundoEventCars(){
+        BuscarEnAlmundo buscarEnAlmundo = null;
+        CarsResultsPage carsResultsPage = null;
 
         logTestTitle("Trips Flow - Add Almundo Event Car" + countryPar );
 
-    }*/
+        dataManagement.getTrippersDataTripsItinerary("miami_10days_2adults_2childs_1room");
+
+        buscarEnAlmundo = agregarEvento.clickBuscarEnAlmundo();
+        buscarEnAlmundo.selectProduct(AUTOS);
+
+        buscarEnAlmundo.setOrigin(dataManagement.originAuto,dataManagement.originFull);
+        buscarEnAlmundo.setDestination(dataManagement.destinationAuto,dataManagement.destinationFull);
+        buscarEnAlmundo.selectDateFromCalendar(buscarEnAlmundo.checkinCalendarCars, dataManagement.startDate);
+        buscarEnAlmundo.selectDateFromCalendar(buscarEnAlmundo.checkinCalendarCars, dataManagement.startDate);
+
+        carsResultsPage = buscarEnAlmundo.clickBuscarAutosBtn();
+        waitImplicitly(7000);
+    }
 }

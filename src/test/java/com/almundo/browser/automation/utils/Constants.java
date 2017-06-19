@@ -78,6 +78,19 @@ public class Constants {
         }
     }
 
+    public enum Products{
+        VUELOS("Vuelos"),
+        HOTELES("Hoteles"),
+        AUTOS("Autos");
+
+        public final String product;
+
+        Products(String product){this.product = product;}
+
+        @Override
+        public String toString() {return product;}
+    }
+
     //LISTS
     public static final List<String> FLIGHT_TYPE_LIST = asList("Ida y vuelta", "Solo ida", "Varias ciudades");
     public static final List<String> FLIGHT_CLASS_LIST = asList("Todas", "Primera", "Business", "Premium", "Turista");

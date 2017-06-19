@@ -24,6 +24,7 @@ import java.util.List;
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.userNameOk;
 
 /**
  * Created by gabrielcespedes on 23/05/17.
@@ -109,8 +110,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating flight choices on results page are the same as before login.");
         Assert.assertTrue(flightsChoicesListFirst.equals(flightsResultsPage.getFlightsChoices()));
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
@@ -167,8 +167,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating hotels choices on results page are the same as before login.");
         Assert.assertTrue(hotelsChoicesListFirst.size() == hotelsResultsPage.getHotelsChoices().size());
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
@@ -226,8 +225,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating cars choices on results page are the same as before login.");
         Assert.assertTrue(carsChoicesListFirst.size() == carsResultsPage.getCarsChoices().size());
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
@@ -271,8 +269,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating trips (hotel) choices on results page are the same as before login.");
         Assert.assertTrue(tripsChoicesListFirst.size() == tripsResultsPage.getTripsChoices().size());
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();

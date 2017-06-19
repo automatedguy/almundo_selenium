@@ -1,15 +1,12 @@
 package com.almundo.browser.automation.base;
 
+import com.almundo.browser.automation.pages.AlmundoTrips.*;
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
-import com.almundo.browser.automation.pages.AlmundoTrips.AgregarEvento;
-import com.almundo.browser.automation.pages.AlmundoTrips.AgregarOtroEvento;
-import com.almundo.browser.automation.pages.AlmundoTrips.BuscarEnAlmundo;
-import com.almundo.browser.automation.pages.AlmundoTrips.Dashboard;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -73,7 +70,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -552,6 +549,14 @@ public class TestBaseSetup {
 
     /*************************** AlmundoTrips Inits ***********************/
 
+    protected Home initHome(){
+        return PageFactory.initElements(driver, Home.class);
+    }
+
+    protected ActivityFeed initActivityFeed(){
+        return PageFactory.initElements(driver, ActivityFeed.class);
+    }
+
     protected AgregarEvento initTrippersAgregarEvento(){
         return PageFactory.initElements(driver, AgregarEvento.class);
     }
@@ -566,6 +571,10 @@ public class TestBaseSetup {
 
     protected BuscarEnAlmundo initBuscarEnAlmundo(){
         return PageFactory.initElements(driver, BuscarEnAlmundo.class);
+    }
+
+    protected AlmundoTripsHotelsData initAlmundoTripsHotelsData(){
+        return PageFactory.initElements(driver, AlmundoTripsHotelsData.class);
     }
 
 }

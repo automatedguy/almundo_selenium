@@ -253,4 +253,27 @@ public class PageUtils {
             }
         }
     }
+
+    public static boolean userNameOk(String expectedUserName , String currentUserName){
+        logger.info("Validating user name is displayed: [" + expectedUserName + "]");
+        if(currentUserName.equals(expectedUserName) ||
+                currentUserName.equals("¡Hola " + expectedUserName + " !")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public static boolean isElementClickable(WebDriver driver, WebElement webElement, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            return true;
+        }catch (TimeoutException exception) {
+            logger.error(message + " is not clickable");
+            setFailureSauceLabs(driver);
+            return false;
+        }
+    }
 }
