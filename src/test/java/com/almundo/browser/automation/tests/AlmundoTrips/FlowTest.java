@@ -94,17 +94,17 @@ public class FlowTest extends TestBaseSetup {
 
     }
 
-    @Test
+/*    @Test
     public void addAlmundoEventHotel(){
 
         logTestTitle("Trips Flow - Add Almundo Event Hotel" + countryPar );
 
-    }
+    }*/
 
-    @Test
+/*    @Test
     public void addAlmundoEventCars(){
 
         logTestTitle("Trips Flow - Add Almundo Event Car" + countryPar );
 
-    }
+    }*/
 }
