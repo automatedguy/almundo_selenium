@@ -1,13 +1,13 @@
-package com.almundo.browser.automation.tests.Trippers;
+package com.almundo.browser.automation.tests.AlmundoTrips;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import com.almundo.browser.automation.pages.Trippers.AgregarEvento;
-import com.almundo.browser.automation.pages.Trippers.AgregarOtroEvento;
-import com.almundo.browser.automation.pages.Trippers.BuscarEnAlmundo;
-import com.almundo.browser.automation.pages.Trippers.Dashboard;
+import com.almundo.browser.automation.pages.AlmundoTrips.AgregarEvento;
+import com.almundo.browser.automation.pages.AlmundoTrips.AgregarOtroEvento;
+import com.almundo.browser.automation.pages.AlmundoTrips.BuscarEnAlmundo;
+import com.almundo.browser.automation.pages.AlmundoTrips.Dashboard;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.annotations.AfterMethod;
@@ -27,7 +27,7 @@ public class FlowTest extends TestBaseSetup {
 
     private DataManagement dataManagement = new DataManagement();
 
-    /******** Trippers Stuff ****/
+    /******** AlmundoTrips Stuff ****/
     private Dashboard dashboard = null;
     private AgregarEvento agregarEvento = null;
 

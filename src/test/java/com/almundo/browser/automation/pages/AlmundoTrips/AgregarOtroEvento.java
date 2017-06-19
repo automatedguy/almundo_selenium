@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.pages.Trippers;
+package com.almundo.browser.automation.pages.AlmundoTrips;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import org.openqa.selenium.WebDriver;

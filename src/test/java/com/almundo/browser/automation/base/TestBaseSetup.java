@@ -6,10 +6,10 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
-import com.almundo.browser.automation.pages.Trippers.AgregarEvento;
-import com.almundo.browser.automation.pages.Trippers.AgregarOtroEvento;
-import com.almundo.browser.automation.pages.Trippers.BuscarEnAlmundo;
-import com.almundo.browser.automation.pages.Trippers.Dashboard;
+import com.almundo.browser.automation.pages.AlmundoTrips.AgregarEvento;
+import com.almundo.browser.automation.pages.AlmundoTrips.AgregarOtroEvento;
+import com.almundo.browser.automation.pages.AlmundoTrips.BuscarEnAlmundo;
+import com.almundo.browser.automation.pages.AlmundoTrips.Dashboard;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
@@ -550,7 +550,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, AgreementPage.class);
     }
 
-    /*************************** Trippers Inits ***********************/
+    /*************************** AlmundoTrips Inits ***********************/
 
     protected AgregarEvento initTrippersAgregarEvento(){
         return PageFactory.initElements(driver, AgregarEvento.class);
