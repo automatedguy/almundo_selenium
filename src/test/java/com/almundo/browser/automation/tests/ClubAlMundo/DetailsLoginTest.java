@@ -25,6 +25,7 @@ import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.userNameOk;
 
 /**
  * Created by gabrielcespedes on 26/05/17.
@@ -101,8 +102,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         hotelsDetailPage = loginPopUp.clickIngresarOnHotelsDetailBtn();
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         hotelsDetailPage.clickVerHabitacionesBtn();
 
@@ -147,8 +147,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         tripsDetailPage = loginPopUp.clickIngresarOnTripsDetailBtn();
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
