@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -56,14 +57,15 @@ public class Home extends BasePage {
         boolean created = false;
         waitImplicitly(5000);
         PageUtils.waitListContainResults(driver, tripListLocator, 0);
-        logger.info("Checking if the trip was created correctly.");
+        logger.info("Checking if the trip: " + "["+ finalTripName +"]" + " was created correctly.");
         for(WebElement tripName : tripsList ){
             if(tripName.getText().equals(finalTripName)){
-                logger.info("The trip was added to the trip list!");
+                logger.info("The trip: [" + finalTripName + "] was added to the trip list!");
                 created = true;
                 break;
             }
         }
+        if(!created){setResultSauceLabs(FAILED);}
         return created;
     }
 }

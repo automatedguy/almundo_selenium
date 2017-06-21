@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
 import static com.almundo.browser.automation.utils.Constants.Products.*;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 import static com.almundo.browser.automation.utils.PageUtils.randomString;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
@@ -86,7 +87,7 @@ public class FlowTest extends TestBaseSetup {
         home = activityFeed.clickMyTripsTittle();
 
         Assert.assertTrue(home.tripWasCreatedOk(finalTripName));
-
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -98,7 +99,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
-        addEvent = dashboard.clickAgregarEventoBtn();
+        addEvent = dashboard.clickAddEvent();
 
         addAnotherEvent = addEvent.clickEventoPersonalizado();
         addAnotherEvent.setNombreDeEvento(dataManagement.eventName);
@@ -124,7 +125,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
-        addEvent = dashboard.clickAgregarEventoBtn();
+        addEvent = dashboard.clickAddEvent();
 
         searchInAlmundo = addEvent.clickBuscarEnAlmundo();
         searchInAlmundo.selectProduct(VUELOS);
@@ -151,7 +152,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
-        addEvent = dashboard.clickAgregarEventoBtn();
+        addEvent = dashboard.clickAddEvent();
 
         searchInAlmundo = addEvent.clickBuscarEnAlmundo();
         searchInAlmundo.selectProduct(HOTELES);
@@ -178,7 +179,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
-        addEvent = dashboard.clickAgregarEventoBtn();
+        addEvent = dashboard.clickAddEvent();
 
         searchInAlmundo = addEvent.clickBuscarEnAlmundo();
         searchInAlmundo.selectProduct(AUTOS);
