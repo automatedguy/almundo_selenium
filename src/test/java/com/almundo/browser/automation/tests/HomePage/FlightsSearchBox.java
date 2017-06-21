@@ -174,7 +174,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         List<String> expectedList = Constants.FLIGHT_TYPE_LIST;
 
         logger.info("Validating flight type options are displayed:");
-        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
+        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList, driver)), "Displayed options are not correct");
     }
 
     @Test
@@ -190,7 +190,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         List<String> expectedList = Constants.CHILD_RANGE_LIST;
 
         logger.info("Validating child range options are displayed:");
-        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
+        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList, driver)), "Displayed options are not correct");
     }
 
     @Test
@@ -203,7 +203,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         List<String> expectedList = Constants.FLIGHT_CLASS_LIST;
 
         logger.info("Validating flight class options are displayed:");
-        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList)), "Displayed options are not correct");
+        Assert.assertTrue((PageUtils.equalLists(actualList, expectedList, driver)), "Displayed options are not correct");
     }
 
     @Test
@@ -258,7 +258,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(MULTIDESTINATION.toString());
 
-        while(PageUtils.isElementPresent(flightsDataTrip.addLegLnk)) {
+        while(PageUtils.isElementPresent(flightsDataTrip.addLegLnk, driver)) {
             flightsDataTrip.clickAddLegLnk();
         }
 
@@ -266,9 +266,9 @@ public class FlightsSearchBox extends TestBaseSetup {
         Assert.assertEquals(flightsDataTrip.getLegList().size(), flightLegLimit, "Leg limit is incorrect");
 
         logger.info("Validating [Agregar Vuelo] link is not displayed");
-        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.addLegLnk), "Agregar Vuelo link is displayed");
+        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.addLegLnk, driver), "Agregar Vuelo link is displayed");
 
-        while(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk)) {
+        while(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk, driver)) {
             flightsDataTrip.clickRemoveLegLnk();
         }
 
@@ -276,7 +276,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         Assert.assertEquals(flightsDataTrip.getLegList().size(), 1, "Flight legs are not removed");
 
         logger.info("Validating [Eliminar Vuelo] link is not displayed");
-        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk), "Eliminar Vuelo link is displayed");
+        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk, driver), "Eliminar Vuelo link is displayed");
     }
 
 
@@ -298,6 +298,4 @@ public class FlightsSearchBox extends TestBaseSetup {
             Assert.assertTrue(autoCompleteOption.getText().contains(value), "Option does not contain: [" + value + "]");
         }
     }
-
-
 }

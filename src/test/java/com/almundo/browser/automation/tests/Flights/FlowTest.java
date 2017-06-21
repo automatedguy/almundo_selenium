@@ -3,6 +3,7 @@ package com.almundo.browser.automation.tests.Flights;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
@@ -38,10 +39,12 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getFlightsItineraryData();
     }
 
+
+
     @BeforeMethod
     private void closeLoginPopUp(){
-//        LoginPopUp loginPopUp = initLoginPopUp();
-//        loginPopUp.clickCloseLoginBtn();
+        LoginPopUp loginPopUp = initLoginPopUp();
+        loginPopUp.clickCloseLoginBtn();
         flightsDataTrip = basePage.clickFlightsBtn();
     }
 

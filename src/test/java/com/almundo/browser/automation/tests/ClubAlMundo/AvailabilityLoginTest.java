@@ -24,6 +24,7 @@ import java.util.List;
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.userNameOk;
 
 /**
  * Created by gabrielcespedes on 23/05/17.
@@ -71,8 +72,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
-//        loginPopUp = initLoginPopUp();
-//        loginPopUp.clickCloseLoginBtn();
+        loginPopUp = initLoginPopUp();
+        loginPopUp.clickCloseLoginBtn();
     }
 
     @AfterMethod
@@ -92,6 +93,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
         flightsDataTrip.selectClass(dataManagement.flightClass);
@@ -109,8 +111,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating flight choices on results page are the same as before login.");
         Assert.assertTrue(flightsChoicesListFirst.equals(flightsResultsPage.getFlightsChoices()));
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
@@ -154,6 +155,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
 
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
         Assert.assertTrue(hotelsResultsPage.vacancy());
         List<WebElement> hotelsChoicesListFirst = hotelsResultsPage.getHotelsChoices();
 
@@ -166,8 +168,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating hotels choices on results page are the same as before login.");
         Assert.assertTrue(hotelsChoicesListFirst.size() == hotelsResultsPage.getHotelsChoices().size());
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
@@ -225,8 +226,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating cars choices on results page are the same as before login.");
         Assert.assertTrue(carsChoicesListFirst.size() == carsResultsPage.getCarsChoices().size());
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
@@ -270,8 +270,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating trips (hotel) choices on results page are the same as before login.");
         Assert.assertTrue(tripsChoicesListFirst.size() == tripsResultsPage.getTripsChoices().size());
 
-        logger.info("Validating user name is displayed: [" + userData.get("name").toString() + "]");
-        Assert.assertEquals(userData.get("name").toString(), basePage.headerSection().textLnk.getText());
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
@@ -279,7 +278,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData("child_male_native");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,

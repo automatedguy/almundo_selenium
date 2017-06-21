@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
+import com.almundo.browser.automation.pages.AlmundoTrips.ActivityFeed;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,11 +21,21 @@ public class HeaderSection extends BasePage {
 
     //############################################### Locators ##############################################
 
+
+
     @FindBy(css = "#account-header > am-account-logged")
     public WebElement myAccountMenuLnk;
 
-    @FindBy(css = "#account-header > am-account-logged div:nth-child(1) > span")
-    public WebElement textLnk;
+    @FindBy(css = ".my-trips__toggle>span")
+    public WebElement myTripsLnk;
+
+    @FindBy(css = "#account-header .header-link")
+    public WebElement textLoggedIntLnk;
+
+    @FindBy(css = "#account-header .am-account-logged-login-desk")
+    public WebElement textLoggedOutLnk;
+
+    String menuLocatorStr = "#account-header > am-account-logged > div > ul > li";
 
     //############################################### Actions ###############################################
 
@@ -37,7 +48,7 @@ public class HeaderSection extends BasePage {
 
     public List<String> getMyAccountMenuList() {
         List<String> stringList = new ArrayList<>();
-        List<WebElement> ElementList = driver.findElements(By.cssSelector(".sub-menu-my-account .link.pointer"));
+        List<WebElement> ElementList = driver.findElements(By.cssSelector(menuLocatorStr));
 
         for (WebElement result : ElementList) {
             String newResult = result.getText();
@@ -47,7 +58,7 @@ public class HeaderSection extends BasePage {
     }
 
     public void clickMyAccountMenuOption(String option) {
-        List<WebElement> results = driver.findElements(By.cssSelector(".sub-menu-my-account .link.pointer"));
+        List<WebElement> results = driver.findElements(By.cssSelector(menuLocatorStr));
 
         for (WebElement result : results) {
             if (result.getText().equals(option)) {
@@ -56,5 +67,12 @@ public class HeaderSection extends BasePage {
                 break;
             }
         }
+    }
+
+    public ActivityFeed clickMyTripsLnk(){
+        PageUtils.waitElementForVisibility(driver, myTripsLnk, 10, "[Mis Viajes] Header Link");
+        logger.info("Clicking on [Mis Viajes] from header");
+        myTripsLnk.click();
+        return initActivityFeed();
     }
 }

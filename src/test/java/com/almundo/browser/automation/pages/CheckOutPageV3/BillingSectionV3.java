@@ -51,10 +51,17 @@ public class BillingSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "city")
     private WebElement addressCityTxt;
 
+    @FindBy(css = "billing-section div:nth-child(2) > input")
+    private WebElement enableBillingRdb;
+
     //############################################### Actions ##############################################
 
     public BillingSectionV3 populateBillingSection(JSONObject billingData) {
         if (inputDef.isRequired("billings")) {
+
+            if(countryPar.equals("MEXICO")){
+                clickEnableBillingRdb();
+            }
 
             logger.info("------------- Filling Billing Section -------------");
 
@@ -65,7 +72,7 @@ public class BillingSectionV3 extends CheckOutPageV3 {
                 setBillingFiscalType(billingData.get("billing_fiscal_type").toString());}
 
             if(inputDef.isRequired("billings","document_type",0)){
-                if(PageUtils.isElementPresent(billingDocumentTypeDdl)) {
+                if(PageUtils.isElementPresent(billingDocumentTypeDdl, driver)) {
                     setBillingDocumentType(billingData.get("billing_document_type").toString());}
             }
 
@@ -179,6 +186,12 @@ public class BillingSectionV3 extends CheckOutPageV3 {
         logger.info("Entering Ciudad: [" + addressCity + "]");
         this.addressCityTxt.clear();
         this.addressCityTxt.sendKeys(addressCity);
+        return this;
+    }
+
+    private BillingSectionV3 clickEnableBillingRdb(){
+        logger.info("Enabling Billing For: [" + countryPar + "]");
+        enableBillingRdb.click();
         return this;
     }
 }

@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.tests.HomePage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
@@ -21,8 +22,8 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
     @BeforeMethod
     private void closeLoginPopUp(){
         if (!baseURL.contains("sucursales")) {
-//            LoginPopUp loginPopUp = initLoginPopUp();
-//            loginPopUp.clickCloseLoginBtn();
+            LoginPopUp loginPopUp = initLoginPopUp();
+            loginPopUp.clickCloseLoginBtn();
         }
     }
 
@@ -97,7 +98,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         }
     }
 
-    @Test
+/*    @Test
     public void openHomeMedioRightBanner () {
         logger.info("Wait");
         if (countryPar.equals("ARGENTINA")) {
@@ -108,7 +109,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL [" + driver.getCurrentUrl() + "]");
             Assert.assertEquals(driver.getCurrentUrl(), promo_path, "Incorrect URL");
         }
-    }
+    }*/
 
     @Test
     public void validateCarouselBanners () {

@@ -14,7 +14,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         int maxCount = 0;
 
         if(env_path.contains("jenkins")) {
-            maxCount = 3;
+            maxCount = 1;
         }
 
         if (retriesCount) {maxCount = 0;}

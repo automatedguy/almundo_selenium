@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import static com.almundo.browser.automation.base.TestBaseSetup.runningRemote;
+
 /**
  * Created by gabrielcespedes on 20/10/16.
  */
@@ -36,7 +38,8 @@ public class PageUtils {
             wait.withMessage(message);
             wait.until(ExpectedConditions.visibilityOf(element));
         }catch (TimeoutException exception) {
-            logger.warn("Login modal is not displayed");
+            logger.error("Login modal is not displayed");
+            setFailureSauceLabs(driver);
         }
     }
 
@@ -48,6 +51,7 @@ public class PageUtils {
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not displayed");
+            setFailureSauceLabs(driver);
             throw exception;
         }
     }
@@ -59,6 +63,7 @@ public class PageUtils {
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not clickable");
+            setFailureSauceLabs(driver);
             throw exception;
         }
     }
@@ -70,6 +75,7 @@ public class PageUtils {
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not clickable");
+            setFailureSauceLabs(driver);
             throw exception;
         }
     }
@@ -80,6 +86,7 @@ public class PageUtils {
             wait.withMessage(message);
             wait.until(ExpectedConditions.urlContains(text));
         }catch (TimeoutException exception) {
+            setFailureSauceLabs(driver);
             logger.error(message + " is not displayed");
             throw exception;
         }
@@ -94,6 +101,7 @@ public class PageUtils {
             throw exception;
         }
         logger.error(message + " is displayed");
+        setFailureSauceLabs(driver);
     }
 
     public static void waitListContainResults(WebDriver driver, String element, int number){
@@ -157,7 +165,7 @@ public class PageUtils {
         }
     }
 
-    public static boolean equalLists(List<String> actualList, List<String> expectedList) {
+    public static boolean equalLists(List<String> actualList, List<String> expectedList, WebDriver driver) {
         boolean equalLists = true;
 
         for (int i = 0; i < expectedList.size(); i++) {
@@ -165,17 +173,19 @@ public class PageUtils {
                 logger.info("Option [" + expectedList.get(i) + "] is displayed");
             }else {
                 logger.error("Option [" + expectedList.get(i) + "] is not displayed");
+                setFailureSauceLabs(driver);
                 equalLists = false;
             }
         }
         if(actualList.size()!=expectedList.size()) {
             logger.error("Lists have different size");
+            setFailureSauceLabs(driver);
             equalLists = false;
         }
         return equalLists;
     }
 
-    public static boolean isElementPresent(WebElement webElement) {
+    public static boolean isElementPresent(WebElement webElement, WebDriver driver) {
         try {
             webElement.isDisplayed();
             return true;
@@ -213,6 +223,7 @@ public class PageUtils {
                 layout = "normal";}
         } catch(Exception time) {
             logger.error("results page was not displayed.");
+            setFailureSauceLabs(driver);
         } return layout;
     }
 
@@ -222,6 +233,47 @@ public class PageUtils {
 
     public static void waitForUserNameDisplayed(WebDriver driver){
         PageUtils.waitImplicitly(10000);
-        PageUtils.waitElementForVisibility(driver, By.cssSelector("#account-header > am-account-logged div:nth-child(1) > span"),5,"User Name Displayed...");
+        try {
+            PageUtils.waitElementForVisibility(driver, By.cssSelector("#account-header > am-account-logged div:nth-child(1) > span"), 5, "User Name...");
+        }
+        catch(Exception ex){
+            logger.error("The Login failed :( ");
+        }
+    }
+
+    private static void setFailureSauceLabs(WebDriver driver){
+        if (runningRemote) {
+            logger.info("Reporting Failure to Saucelabs :( ");
+            try {
+                ((JavascriptExecutor) driver).executeScript("sauce:job-result=failed");
+                logger.error("Test Failed!");
+            }
+            catch(Exception ex){
+                logger.error("Communication with Saucelabs went wrong :( ");
+            }
+        }
+    }
+
+    public static boolean userNameOk(String expectedUserName , String currentUserName){
+        logger.info("Validating user name is displayed: [" + expectedUserName + "]");
+        if(currentUserName.equals(expectedUserName) ||
+                currentUserName.equals("¡Hola " + expectedUserName + " !")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public static boolean isElementClickable(WebDriver driver, WebElement webElement, int timeOutInSeconds, String message){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            return true;
+        }catch (TimeoutException exception) {
+            logger.error(message + " is not clickable");
+            setFailureSauceLabs(driver);
+            return false;
+        }
     }
 }

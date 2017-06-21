@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.base;
 
+import com.almundo.browser.automation.pages.AlmundoTrips.*;
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.*;
@@ -33,6 +34,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 public class TestBaseSetup {
 
@@ -72,7 +74,7 @@ public class TestBaseSetup {
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional("chrome") String browserType,
+                                        @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
@@ -386,12 +388,24 @@ public class TestBaseSetup {
         }
     }
 
+    public Dashboard goToTrippersDashboard(){
+        driver.navigate().to("https://staging.almundo.com.ar/trips/dashboard/311");
+        waitImplicitly(5000);
+        return initTrippersDashboard();
+    }
+
     //################################################ Tests Results ########################################
 
     public void setResultSauceLabs(Results result) {
         if (runningRemote) {
-            ((JavascriptExecutor) driver).executeScript("sauce:job-result=" + result);
-            logger.info("Test " + result + "!");
+            logger.info("Reporting results to Saucelabs...");
+            try {
+                ((JavascriptExecutor) driver).executeScript("sauce:job-result=" + result);
+                logger.info("Test " + result + "!");
+            }
+            catch(Exception ex){
+                logger.error("Communication with Saucelabs went wrong :( ");
+            }
         }
     }
 
@@ -531,6 +545,36 @@ public class TestBaseSetup {
 
     protected AgreementPage initTermsAndConditonsPage(){
         return PageFactory.initElements(driver, AgreementPage.class);
+    }
+
+    /*************************** AlmundoTrips Inits ***********************/
+
+    protected Home initHome(){
+        return PageFactory.initElements(driver, Home.class);
+    }
+
+    protected ActivityFeed initActivityFeed(){
+        return PageFactory.initElements(driver, ActivityFeed.class);
+    }
+
+    protected AddEvent initTrippersAgregarEvento(){
+        return PageFactory.initElements(driver, AddEvent.class);
+    }
+
+    protected Dashboard initTrippersDashboard(){
+        return PageFactory.initElements(driver, Dashboard.class);
+    }
+
+    protected AddAnotherEvent initTrippersAgregarOtroEvento(){
+        return PageFactory.initElements(driver, AddAnotherEvent.class);
+    }
+
+    protected SearchInAlmundo initBuscarEnAlmundo(){
+        return PageFactory.initElements(driver, SearchInAlmundo.class);
+    }
+
+    protected AlmundoTripsHotelsData initAlmundoTripsHotelsData(){
+        return PageFactory.initElements(driver, AlmundoTripsHotelsData.class);
     }
 
 }
