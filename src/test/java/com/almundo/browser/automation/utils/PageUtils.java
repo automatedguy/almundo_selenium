@@ -254,8 +254,7 @@ public class PageUtils {
 
     public static boolean userNameOk(String expectedUserName , String currentUserName){
         logger.info("Validating user name is displayed: [" + expectedUserName + "]");
-        if(currentUserName.equals(expectedUserName) ||
-                currentUserName.equals("¡Hola " + expectedUserName + " !")){
+        if(currentUserName.contains(expectedUserName)){
             return true;
         }else {
             return false;
