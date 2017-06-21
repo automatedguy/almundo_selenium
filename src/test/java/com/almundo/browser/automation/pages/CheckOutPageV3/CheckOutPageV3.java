@@ -88,9 +88,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public int getTotalPrice() {
-        logger.info("Total Price: [" + totalPrice.getText() + "]");
         String price = totalPrice.getText().replace(".", "");
         price = price.replace(" ", "");
+        logger.info("Total Price: [" + price + "]");
         return Integer.parseInt(price);
     }
 
