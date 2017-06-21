@@ -22,6 +22,8 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject trippersDataTripList = null;
     private JSONObject trippersDataTripItinerary = null;
 
+    private JSONObject almundoTripInfo = null;
+
     private JSONObject autosDataTripList = null;
     private JSONObject autosDataTripItinerary = null;
 
@@ -61,6 +63,8 @@ public class DataManagement extends TestBaseSetup {
     public String pickUpTime;
     public String dropOffTime;
     public String ageRange;
+
+    public String tripName;
 
     public String eventName;
     public String eventDescription;
@@ -235,7 +239,18 @@ public class DataManagement extends TestBaseSetup {
         trippersDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "trippers", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getTrippersDataTripsItinerary(String dataSet) {
+    public void getAlmundoTripInfo(String dataSet){
+
+        almundoTripInfo = JsonRead.getJsonDataObject(trippersDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        tripName = almundoTripInfo.get("tripName").toString();
+        destinationAuto = almundoTripInfo.get("destinationAuto").toString();
+        destinationFull = almundoTripInfo.get("destinationFull").toString();
+        startDate = Integer.parseInt(almundoTripInfo.get("startDate").toString());
+        endDate = Integer.parseInt(almundoTripInfo.get("endDate").toString());
+    }
+
+    public void getAlmundoDataTripsItinerary(String dataSet) {
         trippersDataTripItinerary = JsonRead.getJsonDataObject(trippersDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         eventName = trippersDataTripItinerary.get("eventName").toString();

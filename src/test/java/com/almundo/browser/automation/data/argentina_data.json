@@ -185,6 +185,14 @@
 	},
 
 	"trippers": {
+		"trip_90Days_NewYork": {
+			"destinationAuto": "Nue",
+			"destinationFull": "Nueva York, Nueva York, Estados Unidos de América",
+			"tripName": "Automation Trip NYC",
+			"startDate": 20,
+			"endDate": 110
+		},
+
 		"miami_10days_2adults_2childs_1room": {
 			"eventName": "Automation Event",
 			"eventDescription": "Frutas y mas Frutas",

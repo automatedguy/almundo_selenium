@@ -1,6 +1,9 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.AlmundoTrips.*;
+import com.almundo.browser.automation.pages.AlmundoTrips.DataTrips.TripsCarsData;
+import com.almundo.browser.automation.pages.AlmundoTrips.DataTrips.TripsFlightsData;
+import com.almundo.browser.automation.pages.AlmundoTrips.DataTrips.TripsHotelsData;
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.*;
@@ -70,7 +73,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -391,7 +394,7 @@ public class TestBaseSetup {
     public Dashboard goToTrippersDashboard(){
         driver.navigate().to("https://staging.almundo.com.ar/trips/dashboard/311");
         waitImplicitly(5000);
-        return initTrippersDashboard();
+        return initTripsDashboard();
     }
 
     //################################################ Tests Results ########################################
@@ -561,7 +564,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, AddEvent.class);
     }
 
-    protected Dashboard initTrippersDashboard(){
+    protected Dashboard initTripsDashboard(){
         return PageFactory.initElements(driver, Dashboard.class);
     }
 
@@ -573,8 +576,23 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, SearchInAlmundo.class);
     }
 
-    protected AlmundoTripsHotelsData initAlmundoTripsHotelsData(){
-        return PageFactory.initElements(driver, AlmundoTripsHotelsData.class);
+    protected TripsHotelsData initTripsHotelsData(){
+        return PageFactory.initElements(driver, TripsHotelsData.class);
     }
 
+    protected TripsFlightsData initTripsFlightsData(){
+        return PageFactory.initElements(driver, TripsFlightsData.class);
+    }
+
+    protected TripsCarsData initTripsCarsData(){
+        return PageFactory.initElements(driver, TripsCarsData.class);
+    }
+
+    protected CreateTrip initCreateTrip(){
+        return PageFactory.initElements(driver, CreateTrip.class);
+    }
+
+    protected TripConfirmation initTripConfirmation(){
+        return PageFactory.initElements(driver, TripConfirmation.class);
+    }
 }

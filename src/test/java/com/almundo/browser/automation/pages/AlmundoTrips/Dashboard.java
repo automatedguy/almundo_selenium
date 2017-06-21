@@ -17,7 +17,7 @@ public class Dashboard extends BasePage {
 
     /***************************** Locators  **********************************/
 
-    @FindBy(css = "trip-itinerary-tab > div.tab-ctn.ng-scope > div.side-bar-ctn.ng-scope > div > button")
+    @FindBy(css = "trip-itinerary-tab .btn.btn-sm")
     WebElement agregarEventoBtn;
 
     /***************************** Actions  **********************************/
