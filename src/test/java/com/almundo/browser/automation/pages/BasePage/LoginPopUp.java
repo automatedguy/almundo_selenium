@@ -73,7 +73,7 @@ public class LoginPopUp extends BasePage {
     }
 
     public BasePage clickIngresarBtn() {
-        logger.info("Clicking on Ingresar button");
+        logger.info("Clicking on [Ingresar] button");
         ingresarBtn.click();
         PageUtils.waitForUserNameDisplayed(driver);
         return initBasePage();

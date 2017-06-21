@@ -62,16 +62,15 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
-
     @Test
     public void createAlmundoTrip(){
         CreateTrip createTrip = null;
         String finalTripName = null;
         TripConfirmation tripConfirmation = null;
 
-        logTestTitle("Trips Flow - createTrip" + countryPar );
+        logTestTitle("Trips Flow - createAlmundoTrip " + countryPar );
 
-        dataManagement.getAlmundoTripInfo("trip_90Days_NewYork");
+        dataManagement.getAlmundoTripInfo("trip_111Days_NewYork");
 
         createTrip = home.clickCreateTrip();
         createTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -111,6 +110,7 @@ public class FlowTest extends TestBaseSetup {
         addAnotherEvent.selectDateFromCalendar(addAnotherEvent.checkoutCalendar, dataManagement.endDate);
         addAnotherEvent.selectDropOffTime(dataManagement.dropOffTime);
         addAnotherEvent.clickAgregarBtn();
+        setResultSauceLabs(PASSED);
         waitImplicitly(7000);
     }
 
