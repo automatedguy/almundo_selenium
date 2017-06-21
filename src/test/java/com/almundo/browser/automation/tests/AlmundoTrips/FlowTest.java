@@ -137,6 +137,7 @@ public class FlowTest extends TestBaseSetup {
         tripsFlightsData.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsFlightsData.selectDateFromCalendar(tripsFlightsData.checkinCalendarFlights, dataManagement.startDate);
         flightsResultsPage = tripsFlightsData.clickBuscarVuelosBtn();
+        setResultSauceLabs(PASSED);
         waitImplicitly(7000);
 
     }

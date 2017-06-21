@@ -63,7 +63,6 @@ public class PageUtils {
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not clickable");
-            setFailureSauceLabs(driver);
             throw exception;
         }
     }
@@ -75,7 +74,6 @@ public class PageUtils {
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not clickable");
-            setFailureSauceLabs(driver);
             throw exception;
         }
     }
