@@ -74,9 +74,9 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
     public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
-                                        @Optional() String osType,
+//                                        @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
-//                                        @Optional("Windows 10") String osType,
+                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,

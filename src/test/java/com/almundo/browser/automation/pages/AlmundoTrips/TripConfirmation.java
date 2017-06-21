@@ -17,7 +17,7 @@ public class TripConfirmation extends BasePage {
 
     /***************************** Locators  **********************************/
 
-    @FindBy(css = ".btn.btn-link")
+    @FindBy(css = ".form-container .modal-footer .btn.btn-link")
     public WebElement omitirLnk;
 
     @FindBy(css = ".btn.btn-small")
