@@ -109,7 +109,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         forceTodoPagoOff();
         setInputDef();
 
-        //paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
+        paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
         //paymentSection().selectPaymentOption(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)

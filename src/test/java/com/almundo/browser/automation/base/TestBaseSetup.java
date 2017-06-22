@@ -595,4 +595,8 @@ public class TestBaseSetup {
     protected TripConfirmation initTripConfirmation(){
         return PageFactory.initElements(driver, TripConfirmation.class);
     }
+
+    protected PaymentSelectorV3 initPaymentSelectorV3(){
+        return PageFactory.initElements(driver, PaymentSelectorV3.class);
+    }
 }
