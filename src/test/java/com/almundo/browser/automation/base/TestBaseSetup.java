@@ -79,7 +79,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("COLOMBIA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -351,21 +351,38 @@ public class TestBaseSetup {
     public void forceCombosV3(){
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
-
+            String newURL = null;
             logger.info("Forcing Checkout to Combos V3");
             String currentUrl = driver.getCurrentUrl();
 
             if(currentUrl.contains("sc=0")) {
                 logger.info("Replacing sc=0 with sc=1");
-                String newURL = currentUrl.replace("sc=0", "sc=1");
+                newURL = currentUrl.replace("sc=0", "sc=1");
                 driver.navigate().to(newURL);
             } else if(currentUrl.contains("sc=1")) {
                 logger.info("Nothing to replace, combos are displayed");
             } else {
                 logger.info("Adding sc=1");
-                String newURL = currentUrl.concat("&sc=1");
+                newURL = currentUrl.concat("&sc=1");
                 driver.navigate().to(newURL);
             }
+
+            if(countryPar.equals("ARGENTINA") && !method.contains("Trips")) {
+                if (!newURL.contains("&svd=1")) {
+                    logger.info("Adding &svd=1...");
+                    if (!newURL.contains("&svd=0")) {
+                        newURL = newURL.concat("&svd=1");
+                        driver.navigate().to(newURL);
+                    } else {
+                        newURL = newURL.replace("&svd=0", "&svd=1");
+                        driver.navigate().to(newURL);
+                    }
+                } else {
+                    logger.info("&svd=1 query is present in the URL.");
+                }
+            }
+
+
         } catch(Exception time) {
             time.printStackTrace();
         }
@@ -374,7 +391,6 @@ public class TestBaseSetup {
     public void forceTodoPagoOff(){
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
-
             logger.info("Forcing Checkout to disable TodoPago");
             String currentUrl = driver.getCurrentUrl();
 
