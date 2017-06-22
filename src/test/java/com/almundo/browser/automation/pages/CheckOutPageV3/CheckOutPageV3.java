@@ -109,7 +109,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         forceTodoPagoOff();
         setInputDef();
 
-        if(countryPar.equals("ARGENTINA") && !method.contains("Trips")) {
+        if(countryPar.equals("ARGENTINA") && (!method.contains("Trips") || !method.contains("trips"))) {
             paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
         }
         //paymentSection().selectPaymentOption(paymentData, ".card-container-1");

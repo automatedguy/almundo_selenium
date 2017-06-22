@@ -79,7 +79,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -367,7 +367,7 @@ public class TestBaseSetup {
                 driver.navigate().to(newURL);
             }
 
-            if(countryPar.equals("ARGENTINA") && !method.contains("Trips")) {
+            if(countryPar.equals("ARGENTINA") && (!method.contains("Trips") || !method.contains("trips"))) {
                 if (!newURL.contains("&svd=1")) {
                     logger.info("Adding &svd=1...");
                     if (!newURL.contains("&svd=0")) {
