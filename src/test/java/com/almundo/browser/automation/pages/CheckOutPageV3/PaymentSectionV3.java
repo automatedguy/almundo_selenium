@@ -206,6 +206,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
             if (cardNameResult.getAttribute("alt").equals(cardName)) {
                 logger.info("Selecting Card: [" + cardName + "]");
                 PageUtils.scrollToElement(driver, cardNameResult);
+                PageUtils.waitImplicitly(1000);
                 cardNameResult.click();
                 break;
             }
