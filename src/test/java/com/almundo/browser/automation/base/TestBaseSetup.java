@@ -1,6 +1,9 @@
 package com.almundo.browser.automation.base;
 
 import com.almundo.browser.automation.pages.AlmundoTrips.*;
+import com.almundo.browser.automation.pages.AlmundoTrips.DataTrips.TripsCarsData;
+import com.almundo.browser.automation.pages.AlmundoTrips.DataTrips.TripsFlightsData;
+import com.almundo.browser.automation.pages.AlmundoTrips.DataTrips.TripsHotelsData;
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.*;
@@ -348,21 +351,38 @@ public class TestBaseSetup {
     public void forceCombosV3(){
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
-
+            String newURL = null;
             logger.info("Forcing Checkout to Combos V3");
             String currentUrl = driver.getCurrentUrl();
 
             if(currentUrl.contains("sc=0")) {
                 logger.info("Replacing sc=0 with sc=1");
-                String newURL = currentUrl.replace("sc=0", "sc=1");
+                newURL = currentUrl.replace("sc=0", "sc=1");
                 driver.navigate().to(newURL);
             } else if(currentUrl.contains("sc=1")) {
                 logger.info("Nothing to replace, combos are displayed");
             } else {
                 logger.info("Adding sc=1");
-                String newURL = currentUrl.concat("&sc=1");
+                newURL = currentUrl.concat("&sc=1");
                 driver.navigate().to(newURL);
             }
+
+            if(countryPar.equals("ARGENTINA") && (!method.contains("Trips") || !method.contains("trips"))) {
+                if (!newURL.contains("&svd=1")) {
+                    logger.info("Adding &svd=1...");
+                    if (!newURL.contains("&svd=0")) {
+                        newURL = newURL.concat("&svd=1");
+                        driver.navigate().to(newURL);
+                    } else {
+                        newURL = newURL.replace("&svd=0", "&svd=1");
+                        driver.navigate().to(newURL);
+                    }
+                } else {
+                    logger.info("&svd=1 query is present in the URL.");
+                }
+            }
+
+
         } catch(Exception time) {
             time.printStackTrace();
         }
@@ -371,7 +391,6 @@ public class TestBaseSetup {
     public void forceTodoPagoOff(){
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
-
             logger.info("Forcing Checkout to disable TodoPago");
             String currentUrl = driver.getCurrentUrl();
 
@@ -391,7 +410,7 @@ public class TestBaseSetup {
     public Dashboard goToTrippersDashboard(){
         driver.navigate().to("https://staging.almundo.com.ar/trips/dashboard/311");
         waitImplicitly(5000);
-        return initTrippersDashboard();
+        return initTripsDashboard();
     }
 
     //################################################ Tests Results ########################################
@@ -561,7 +580,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, AddEvent.class);
     }
 
-    protected Dashboard initTrippersDashboard(){
+    protected Dashboard initTripsDashboard(){
         return PageFactory.initElements(driver, Dashboard.class);
     }
 
@@ -573,8 +592,27 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, SearchInAlmundo.class);
     }
 
-    protected AlmundoTripsHotelsData initAlmundoTripsHotelsData(){
-        return PageFactory.initElements(driver, AlmundoTripsHotelsData.class);
+    protected TripsHotelsData initTripsHotelsData(){
+        return PageFactory.initElements(driver, TripsHotelsData.class);
     }
 
+    protected TripsFlightsData initTripsFlightsData(){
+        return PageFactory.initElements(driver, TripsFlightsData.class);
+    }
+
+    protected TripsCarsData initTripsCarsData(){
+        return PageFactory.initElements(driver, TripsCarsData.class);
+    }
+
+    protected CreateTrip initCreateTrip(){
+        return PageFactory.initElements(driver, CreateTrip.class);
+    }
+
+    protected TripConfirmation initTripConfirmation(){
+        return PageFactory.initElements(driver, TripConfirmation.class);
+    }
+
+    protected PaymentSelectorV3 initPaymentSelectorV3(){
+        return PageFactory.initElements(driver, PaymentSelectorV3.class);
+    }
 }

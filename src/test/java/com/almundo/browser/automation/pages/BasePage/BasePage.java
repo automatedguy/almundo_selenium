@@ -215,8 +215,12 @@ public class BasePage extends TestBaseSetup {
     }
 
     public BasePage selectAutoCompleteOption(String value) {
-        PageUtils.waitListContainResults(driver, ".ellipsis.ng-binding", 1);
-        List <WebElement> autoCompleteList = driver.findElements(By.cssSelector(".ellipsis.ng-binding"));
+        String suggestionListLocator = ".ellipsis.ng-binding";
+        if(driver.getCurrentUrl().toString().contains("trips")){
+            suggestionListLocator = ".ellipsis";
+        }
+        PageUtils.waitListContainResults(driver, suggestionListLocator, 1);
+        List <WebElement> autoCompleteList = driver.findElements(By.cssSelector(suggestionListLocator));
 
         for (WebElement autoCompleteOption : autoCompleteList) {
             if (autoCompleteOption.getText().equals(value)) {

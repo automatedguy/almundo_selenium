@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.pages.AlmundoTrips;
+package com.almundo.browser.automation.pages.AlmundoTrips.DataTrips;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
@@ -18,15 +18,15 @@ import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 /**
  * Created by leandro.efron on 5/12/2016.
  */
-public class AlmundoTripsHotelsData extends BasePage {
+public class TripsHotelsData extends BasePage {
 
-    public AlmundoTripsHotelsData(WebDriver driver) {
+    public TripsHotelsData(WebDriver driver) {
         super(driver);
     }
 
-    //############################################### Locators ##############################################
+    /***************************** Locators *****************************/
 
-    @FindBy(css = "#destination")
+    @FindBy(css = ".hotels-search-form am-autocomplete #destination")
     public WebElement destinationHotelTxt;
 
     /****** Hotels Calendars ******/
@@ -58,9 +58,9 @@ public class AlmundoTripsHotelsData extends BasePage {
     @FindBy(css = ".hotels-search-form .btn.btn-primary.btn-submit")
     public WebElement buscarHotelesBtn;
 
-    //############################################### Actions ###############################################
+    /***************************** Actions *****************************/
 
-    public AlmundoTripsHotelsData setDestination(String destinationAuto, String destinationFull) {
+    public TripsHotelsData setDestination(String destinationAuto, String destinationFull) {
         PageUtils.waitElementForVisibility(driver, destinationHotelTxt, 10, "Destination text field");
         logger.info("Entering Hotel Destination: [" + destinationFull + "]");
         destinationHotelTxt.clear();
@@ -69,9 +69,8 @@ public class AlmundoTripsHotelsData extends BasePage {
         return this;
     }
 
-    public AlmundoTripsHotelsData selectPassenger(int adults, int childs, int rooms) {
+    public TripsHotelsData selectPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
-
         if (adults>2){
             for(int i=1; i<adults; i++) {
                 logger.info("Adding: [1 adult]");

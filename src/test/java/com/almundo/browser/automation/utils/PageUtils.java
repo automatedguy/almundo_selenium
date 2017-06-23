@@ -63,7 +63,6 @@ public class PageUtils {
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not clickable");
-            setFailureSauceLabs(driver);
             throw exception;
         }
     }
@@ -75,7 +74,6 @@ public class PageUtils {
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (TimeoutException exception) {
             logger.error(message + " is not clickable");
-            setFailureSauceLabs(driver);
             throw exception;
         }
     }
@@ -234,7 +232,7 @@ public class PageUtils {
     public static void waitForUserNameDisplayed(WebDriver driver){
         PageUtils.waitImplicitly(10000);
         try {
-            PageUtils.waitElementForVisibility(driver, By.cssSelector("#account-header > am-account-logged div:nth-child(1) > span"), 5, "User Name...");
+            PageUtils.waitElementForVisibility(driver, By.cssSelector("#account-header > am-account-logged div:nth-child(1) > span"), 5, "User Name");
         }
         catch(Exception ex){
             logger.error("The Login failed :( ");
@@ -256,8 +254,7 @@ public class PageUtils {
 
     public static boolean userNameOk(String expectedUserName , String currentUserName){
         logger.info("Validating user name is displayed: [" + expectedUserName + "]");
-        if(currentUserName.equals(expectedUserName) ||
-                currentUserName.equals("¡Hola " + expectedUserName + " !")){
+        if(currentUserName.contains(expectedUserName)){
             return true;
         }else {
             return false;

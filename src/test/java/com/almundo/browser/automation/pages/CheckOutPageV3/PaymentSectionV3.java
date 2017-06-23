@@ -81,6 +81,9 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     @FindBy(css = ".change-card")
     public WebElement changeCardLnk;
 
+    public PaymentSelectorV3 paymentSelectorV3() {
+        return initPaymentSelectorV3();
+    }
 
     //############################################### Actions ###############################################
 
@@ -91,8 +94,9 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
     public PaymentSectionV3 populatePaymentSectionV3(String paymentData, String container) {
-
         dataManagement.getPaymentList();
+
+        selectPaymentOption();
 
         Select creditCardSelect = new Select(creditCardDdl);
         Select bankSelect = new Select(bankDdl);
@@ -299,31 +303,8 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
 
-    public PaymentSectionV3 selectPaymentOption(String paymentData, String product) {
-        switch(paymentData){
-            case "cash":
-                logger.info("------------- Payment Option: CASH  -------------");
-                selectPayment("Pago en efectivo");
-                break;
-            case "deposit":
-                logger.info("------------- Payment Option: DEPOSIT  -------------");
-                selectPayment("Depósito");
-                break;
-            case "transfer":
-                logger.info("------------- Payment Option: TRANSFER  -------------");
-                selectPayment("Transferencia");
-                break;
-            case "booking24":
-                logger.info("------------- Payment Option: BOOKING 24HS.  -------------");
-                selectPayment("Reserva por 24 hs.");
-                break;
-            default:
-                logger.info("------------- Payment Option: CREDIT CARD  -------------");
-                if(!countryPar.equals("ARGENTINA")) {
-                    selectPayment("creditCard");
-                }
-                populatePaymentSectionV3(paymentData, product);
-        }
+    public PaymentSectionV3 selectPaymentOption() {
+        paymentSelectorV3().selectOneCreditCardRdb();
         return this;
     }
 
