@@ -79,7 +79,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("firefox") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -500,6 +500,10 @@ public class TestBaseSetup {
 
     protected PaymentSectionV3 initPaymentSectionV3() {
         return PageFactory.initElements(driver, PaymentSectionV3.class);
+    }
+
+    protected PaymentSectionGridV3 initPaymentSectionGridV3(){
+        return PageFactory.initElements(driver, PaymentSectionGridV3.class);
     }
 
     protected PickUpLocationSection initPickUpLocationSection() {

@@ -42,6 +42,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initPaymentSectionV3();
     }
 
+    public PaymentSectionGridV3 paymentSectionGrid() {
+        return initPaymentSectionGridV3();
+    }
+
     public BillingSectionV3 billingSection() {
         return initBillingSectionV3();
     }
@@ -105,9 +109,17 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
         //forceCheckoutV3();
-        forceCombosV3();
-        forceTodoPagoOff();
-        setInputDef();
+        //forceCombosV3();
+        //forceTodoPagoOff();
+        //setInputDef();
+
+        /***** Working Here *****/
+        logger.info("Check point");
+        PaymentSectionGridV3 paymentSectionGridV3 = initPaymentSectionGridV3();
+
+        paymentSectionGridV3.populatePaymentSection(paymentData);
+
+        /***** Working Here *****/
 
         if(countryPar.equals("ARGENTINA") && !method.contains("Trips")) {
             paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
@@ -144,7 +156,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
         acceptConditions();
         return this;
     }
-
 
     private CheckOutPageV3 acceptConditions(){
         FooterSectionV3 footerSection = initFooterSectionV3();
