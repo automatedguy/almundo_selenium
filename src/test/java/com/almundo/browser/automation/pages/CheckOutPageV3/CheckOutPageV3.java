@@ -111,13 +111,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
         //forceCheckoutV3();
         //forceCombosV3();
         //forceTodoPagoOff();
-        //setInputDef();
+        setInputDef();
 
         /***** Working Here *****/
         logger.info("Check point");
         PaymentSectionGridV3 paymentSectionGridV3 = initPaymentSectionGridV3();
 
-        paymentSectionGridV3.populatePaymentSection(paymentData);
+        paymentSectionGridV3.populatePaymentSectionV3(paymentData, ".card-container-1");
 
         /***** Working Here *****/
 
