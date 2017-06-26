@@ -119,7 +119,7 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "random",
+                                              "1_master_master",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
                                               "FlightsCheckOutPageDomestic");
@@ -161,7 +161,7 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "1_visa_visa",
+                                              "1_master_master",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
                                               "FlightsCheckOutPageInternational");
@@ -201,7 +201,7 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "random",
+                                              "1_visa_visa",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
                                               "FlightsCheckOutPageDomestic");
@@ -247,7 +247,7 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "random",
+                                              "1_visa_visa",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
                                               "FlightsCheckOutPageInternational");

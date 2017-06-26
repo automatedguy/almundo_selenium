@@ -59,7 +59,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
     public void latam() {
         logTestTitle("ICBC Store - LATAM");
         checkOutPageV3 = openAlmundoCart(cartId);
-        paymentSectionV3 = checkOutPageV3.paymentSection();
 
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
@@ -172,7 +171,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
     public void aerolineasArgentinas() {
         logTestTitle("ICBC Store - Aerolíneas Argentinas");
         checkOutPageV3 = openAlmundoCart(cartId);
-        paymentSectionV3 = checkOutPageV3.paymentSection();
 
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
@@ -260,7 +258,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
     public void airCanada() {
         logTestTitle("ICBC Store - Air Canada - ");
         checkOutPageV3 = openAlmundoCart(cartId);
-        paymentSectionV3 = checkOutPageV3.paymentSection();
 
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
