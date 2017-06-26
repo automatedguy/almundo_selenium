@@ -44,4 +44,12 @@ public class PaymentSelectorV3 extends BasePage {
         visaDebit.click();
         return this;
     }
+
+    public boolean selectOneCreditCardRdbIsDisplayed(){
+        if(oneCreditCardRdb.isDisplayed()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

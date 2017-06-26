@@ -116,6 +116,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if(paymentSelectorSvd){
             PaymentSelectorV3 paymentSelectorV3 = initPaymentSelectorV3();
             paymentSelectorV3.selectOneCreditCardRdb();
+        } else {
+            PaymentSelectorV3 paymentSelectorV3 = initPaymentSelectorV3();
+            if(paymentSelectorV3.selectOneCreditCardRdbIsDisplayed()){
+                paymentSelectorV3.selectOneCreditCardRdb();
+            }
         }
 
         if(creditCardComboSc){
