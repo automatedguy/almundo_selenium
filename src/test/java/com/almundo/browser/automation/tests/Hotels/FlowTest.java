@@ -81,7 +81,7 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "random",
+                                              "1_visa_visa",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
                                               "HotelsCheckOutPageInternationalV3");
@@ -115,7 +115,7 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "random",
+                                              "1_master_master",
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
                                               "HotelsCheckOutPageDomesticV3");

@@ -48,7 +48,6 @@ public class ICBCStoreLatam extends TestBaseSetup {
 
     private void getTotalPrices() {
         checkOutPageV3 = openAlmundoCart("59405038e4b07311bb4e5b12");
-        paymentSectionV3 = checkOutPageV3.paymentSection();
 
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
