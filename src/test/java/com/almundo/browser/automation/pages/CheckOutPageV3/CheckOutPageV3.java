@@ -105,10 +105,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
-        /***** Working Here *****/
-
         //TODO: Remove productCheckOutPage parameters and calls
-
         getCheckOutPageElements(productCheckOutPage);
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
