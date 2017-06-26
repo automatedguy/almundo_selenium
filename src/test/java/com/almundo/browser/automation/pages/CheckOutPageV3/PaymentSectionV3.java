@@ -212,8 +212,16 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
                 break;
 
             default:
-                logger.info("Selecting Bank: [" + bankName + "]");
-                bankSelect.selectByValue(bankName);
+
+                if(countryPar.equals("MEXICO")){
+                    logger.info("Selecting Bank: [" + bankSelect.getOptions().get(1).getText() + "]");
+                    bankSelect.selectByIndex(1);
+                } else {
+                    logger.info("Selecting Bank: [" + bankName + "]");
+                    bankSelect.selectByValue(bankName);
+                }
+
+
         }
 
     }
