@@ -17,6 +17,7 @@ import org.openqa.selenium.support.FindBy;
 import java.io.IOException;
 
 import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -30,6 +31,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public static Apikeys apikeys = new Apikeys();
     public static InputDefinitions inputDef = null;
 
+    private boolean todoPagoStc = false;
+    private boolean creditCardComboSc = false;
+    private boolean paymentSelectorSvd = false;
+
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
     }
@@ -40,10 +45,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public PaymentSectionV3 paymentSection() {
         return initPaymentSectionV3();
-    }
-
-    public PaymentSectionGridV3 paymentSectionGrid() {
-        return initPaymentSectionGridV3();
     }
 
     public BillingSectionV3 billingSection() {
@@ -107,24 +108,38 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
-        getCheckOutPageElements(productCheckOutPage);
-        //forceCheckoutV3();
-        //forceCombosV3();
-        //forceTodoPagoOff();
+        /***** Working Here *****/
+
+        //TODO: Remove productCheckOutPage parameters an calls
+        //TODO: normalize credit card data filling
+        //TODO: Move (dataManagement) dataManagement.getPaymentList() call to the CheckoutV3 class
+
+        setCheckOutSections(getCheckoutUrl());
         setInputDef();
 
-        /***** Working Here *****/
-        logger.info("Check point");
-        PaymentSectionGridV3 paymentSectionGridV3 = initPaymentSectionGridV3();
-
-        paymentSectionGridV3.populatePaymentSectionV3(paymentData, ".card-container-1");
-
-        /***** Working Here *****/
-
-        if(countryPar.equals("ARGENTINA") && !method.contains("Trips")) {
-            paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
+        if(paymentSelectorSvd){
+            PaymentSelectorV3 paymentSelectorV3 = initPaymentSelectorV3();
+            paymentSelectorV3.selectOneCreditCardRdb();
         }
-        //paymentSection().selectPaymentOption(paymentData, ".card-container-1");
+
+        if(creditCardComboSc){
+            PaymentSectionV3 paymentSectionV3 = initPaymentSectionV3();
+            paymentSectionV3.populatePaymentSectionV3(paymentData, ".card-container-1");
+
+        } else{
+            PaymentSectionGridV3 paymentSectionGridV3 = initPaymentSectionGridV3();
+            paymentSectionGridV3.populatePaymentSectionV3(paymentData, ".card-container-1");
+        }
+
+        if(todoPagoStc){
+
+        }
+
+        CreditCardDataV3 creditCardDataV3 = initCreditCardDataV3();
+        creditCardDataV3.populateCreditCardData(paymentData, ".card-container-1");
+
+        /***** Working Here *****/
+
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -202,5 +217,45 @@ public class CheckOutPageV3 extends TestBaseSetup {
         logger.info("Checkout URL: " + "[" + currentUrl + "]");
         String cartId = currentUrl.substring(currentUrl.indexOf("checkout/") + 9, currentUrl.lastIndexOf("checkout/") + 33);
         return cartId;
+    }
+
+    private void setCheckOutSections(String checkoutUrl){
+        if(checkoutUrl.contains("svd=1")){
+            logger.info("[svd=1] is enabled.");
+            paymentSelectorSvd = true;
+        } else{
+            logger.info("[svd=1] is not enabled.");
+            paymentSelectorSvd = false;
+        }
+
+        if(checkoutUrl.contains("sc=1")){
+            logger.info("[sc=1] is enabled.");
+            creditCardComboSc =  true;
+        } else {
+            logger.info("[sc=1] is not enabled.");
+            creditCardComboSc =  false;
+        }
+
+        if(checkoutUrl.contains("stc=1")){
+            logger.info("[stc=1] is enabled.");
+            todoPagoStc = true;
+        }else {
+            logger.info("[stc=1] is not enabled.");
+            todoPagoStc = false;
+        }
+    }
+
+    private String getCheckoutUrl(){
+        String checkoutUrl = null;
+        try{
+            PageUtils.waitElementForVisibility(driver, By.cssSelector("#first_name"),30, "Checkout Query String Parameters.");
+            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+            checkoutUrl =  driver.getCurrentUrl();
+
+        } catch(Exception time) {
+            logger.info("Checkout V3 was not loaded.");
+            setResultSauceLabs(FAILED);
+        }
+        return checkoutUrl;
     }
 }
