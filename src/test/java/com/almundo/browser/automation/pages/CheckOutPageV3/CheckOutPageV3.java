@@ -122,11 +122,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if(paymentSelectorSvd){
             paymentSelectorV3().selectOneCreditCardRdb();
         } else {
-            if(!countryPar.equals("ARGENTINA")) {
                 if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
                     paymentSelectorV3().selectOneCreditCardRdb();
                 }
-            }
         }
 
         if(creditCardComboSc){
