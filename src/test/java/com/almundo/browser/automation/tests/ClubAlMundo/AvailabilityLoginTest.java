@@ -182,7 +182,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "random",
+                "1_master_master",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "HotelsCheckOutPageInternationalV3");
@@ -233,7 +233,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_male_native");
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
+                dataManagement.getPaymentData("1_visa_visa"),
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "CarsCheckOutPage", false);
@@ -282,7 +282,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "random",
+                "1_master_master",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
