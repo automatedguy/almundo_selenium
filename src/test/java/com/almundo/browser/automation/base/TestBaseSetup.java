@@ -79,10 +79,10 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("MEXICO") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
-                                        @Optional("5952b032e4b05684eb5b4b91") String cart_id,
-                                        @Optional("5952b03ce4b018bdb73c08c0") String cart_id_icbc,
+                                        @Optional("") String cart_id,
+                                        @Optional("") String cart_id_icbc,
                                         @Optional("false") Boolean submit_Reservation,
                                         @Optional("false") Boolean retries_Max_Count) {
 
