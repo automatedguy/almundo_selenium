@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PaymentSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionComboV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
@@ -24,7 +24,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
     private PaymentSection paymentSection = null;
-    private PaymentSectionV3 paymentSectionV3 = null;
+    private PaymentSectionComboV3 paymentSectionV3 = null;
     private int difference = 0;
     private boolean failedTest = false;
 

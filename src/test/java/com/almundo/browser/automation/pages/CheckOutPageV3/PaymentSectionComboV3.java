@@ -15,9 +15,9 @@ import java.util.Random;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class PaymentSectionV3 extends CheckOutPageV3 {
+public class PaymentSectionComboV3 extends CheckOutPageV3 {
 
-    public PaymentSectionV3(WebDriver driver) {
+    public PaymentSectionComboV3(WebDriver driver) {
         super(driver);
     }
 
@@ -91,7 +91,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         changeCardLnk.click();
     }
 
-    public PaymentSectionV3 populatePaymentSectionV3(String paymentData, String container) {
+    public PaymentSectionComboV3 populatePaymentSectionV3(String paymentData, String container) {
         dataManagement.getPaymentList();
 
         Select creditCardSelect = new Select(creditCardDdl);
@@ -287,7 +287,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
 
-    public PaymentSectionV3 selectPaymentOption() {
+    public PaymentSectionComboV3 selectPaymentOption() {
         paymentSelectorV3().selectOneCreditCardRdb();
         return this;
     }

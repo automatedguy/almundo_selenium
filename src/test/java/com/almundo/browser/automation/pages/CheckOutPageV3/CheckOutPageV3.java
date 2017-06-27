@@ -39,6 +39,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean paymentSelectorSvd = false;
 
 
+    public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
+
+    public PaymentSectionComboV3 paymentSectionComboV3(){return initPaymentSectionComboV3();}
+
+    public PaymentSectionGridV3 paymentSectionGridV3(){return initPaymentSectionGridV3();}
+
+    public CreditCardDataV3 creditCardDataV3(){return initCreditCardDataV3();}
 
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
@@ -51,6 +58,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public ContactSectionV3 contactSection() {
         return initContactInfoSectionV3();
     }
+
+
 
     //############################################### Locators ##############################################
 
@@ -111,31 +120,26 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setInputDef();
 
         if(paymentSelectorSvd){
-            PaymentSelectorV3 paymentSelectorV3 = initPaymentSelectorV3();
-            paymentSelectorV3.selectOneCreditCardRdb();
+            paymentSelectorV3().selectOneCreditCardRdb();
         } else {
             if(!countryPar.equals("ARGENTINA")) {
-                PaymentSelectorV3 paymentSelectorV3 = initPaymentSelectorV3();
-                if (paymentSelectorV3.selectOneCreditCardRdbIsDisplayed()) {
-                    paymentSelectorV3.selectOneCreditCardRdb();
+                if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
+                    paymentSelectorV3().selectOneCreditCardRdb();
                 }
             }
         }
 
         if(creditCardComboSc){
-            PaymentSectionV3 paymentSectionV3 = initPaymentSectionV3();
-            paymentSectionV3.populatePaymentSectionV3(paymentData, ".card-container-1");
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
         } else{
-            PaymentSectionGridV3 paymentSectionGridV3 = initPaymentSectionGridV3();
-            paymentSectionGridV3.populatePaymentSectionV3(paymentData, ".card-container-1");
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
         }
 
         if(todoPagoStc){
             logger.warn("Todo Pago was Set!");
         }
 
-        CreditCardDataV3 creditCardDataV3 = initCreditCardDataV3();
-        creditCardDataV3.populateCreditCardData(paymentData, ".card-container-1");
+        creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
 
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
@@ -155,10 +159,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         setInputDef();
 
-        PaymentSectionV3 paymentSectionV3 = initPaymentSectionV3();
+        PaymentSectionComboV3 paymentSectionComboV3 = initPaymentSectionComboV3();
 
-        paymentSectionV3.populatePaymentSectionV3(paymentData1, ".card-container-1");
-        paymentSectionV3.populatePaymentSectionV3(paymentData2, ".card-container-2");
+        paymentSectionComboV3.populatePaymentSectionV3(paymentData1, ".card-container-1");
+        paymentSectionComboV3.populatePaymentSectionV3(paymentData2, ".card-container-2");
 
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
