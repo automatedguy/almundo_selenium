@@ -233,7 +233,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_male_native");
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_visa_visa"),
+                dataManagement.getPaymentData("1_amex_amex"),
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "CarsCheckOutPage", false);
