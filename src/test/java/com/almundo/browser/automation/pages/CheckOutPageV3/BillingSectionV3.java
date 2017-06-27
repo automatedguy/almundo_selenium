@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+
 /**
  * Created by gabrielcespedes on 29/11/16.
  */
@@ -192,6 +194,7 @@ public class BillingSectionV3 extends CheckOutPageV3 {
     private BillingSectionV3 clickEnableBillingRdb(){
         logger.info("Enabling Billing For: [" + countryPar + "]");
         enableBillingRdb.click();
+        waitImplicitly(1000);
         return this;
     }
 }

@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -16,16 +15,15 @@ import java.util.Random;
 /**
  * Created by leandro.efron on 25/11/2016.
  */
-public class PaymentSectionV3 extends CheckOutPageV3 {
+public class PaymentSectionComboV3 extends CheckOutPageV3 {
 
-    public PaymentSectionV3(WebDriver driver) {
+    public PaymentSectionComboV3(WebDriver driver) {
         super(driver);
     }
 
     private WebElement paymentSelected = null;
     private WebElement bankSelected = null;
 
-    private DataManagement dataManagement = new DataManagement();
     JSONObject paymentDataObject = new JSONObject();
 
     //############################################### Locators ##############################################
@@ -93,10 +91,8 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         changeCardLnk.click();
     }
 
-    public PaymentSectionV3 populatePaymentSectionV3(String paymentData, String container) {
+    public PaymentSectionComboV3 populatePaymentSectionV3(String paymentData, String container) {
         dataManagement.getPaymentList();
-
-        selectPaymentOption();
 
         Select creditCardSelect = new Select(creditCardDdl);
         Select bankSelect = new Select(bankDdl);
@@ -133,25 +129,6 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
         if(paymentDdl.isDisplayed()) {
             setPaymentCombo(paymentSelect);
         }
-
-        logger.info("------------- Filling Payment Section -------------");
-        if(inputDef.isRequired("payments","credit_card_number",0)){
-            setCardNumber(paymentDataObject.get("card_number").toString(), container);}
-
-        if(inputDef.isRequired("payments","credit_card_owner",0)){
-            setCardHolder(paymentDataObject.get("card_holder").toString(), container);}
-
-        if(inputDef.isRequired("payments","credit_card_expiration",0)){
-            setMonthCardExpiration(paymentDataObject.get("month_card_expire").toString(), container);
-            setYearCardExpiration(paymentDataObject.get("year_card_expire").toString(), container);}
-
-        if(inputDef.isRequired("payments","credit_card_security_code",0)){
-            setSecurityCode(paymentDataObject.get("security_code").toString(), container);}
-
-        if(inputDef.isRequired("payments","document",0)){
-            selectDocumentType(paymentDataObject.get("documentType").toString(), container);
-            setDocumentNumber(paymentDataObject.get("document_number").toString(), container);}
-
         return this;
     }
 
@@ -236,8 +213,16 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
                 break;
 
             default:
-                logger.info("Selecting Bank: [" + bankName + "]");
-                bankSelect.selectByValue(bankName);
+
+                if(countryPar.equals("MEXICO")){
+                    logger.info("Selecting Bank: [" + bankSelect.getOptions().get(1).getText() + "]");
+                    bankSelect.selectByIndex(1);
+                } else {
+                    logger.info("Selecting Bank: [" + bankName + "]");
+                    bankSelect.selectByValue(bankName);
+                }
+
+
         }
 
     }
@@ -303,7 +288,7 @@ public class PaymentSectionV3 extends CheckOutPageV3 {
     }
 
 
-    public PaymentSectionV3 selectPaymentOption() {
+    public PaymentSectionComboV3 selectPaymentOption() {
         paymentSelectorV3().selectOneCreditCardRdb();
         return this;
     }

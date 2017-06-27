@@ -77,7 +77,7 @@ public class TestBaseSetup {
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional("firefox") String browserType,
+                                        @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
                                         @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
@@ -498,8 +498,16 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, PaymentSection.class);
     }
 
-    protected PaymentSectionV3 initPaymentSectionV3() {
-        return PageFactory.initElements(driver, PaymentSectionV3.class);
+    protected PaymentSectionComboV3 initPaymentSectionComboV3() {
+        return PageFactory.initElements(driver, PaymentSectionComboV3.class);
+    }
+
+    protected PaymentSectionGridV3 initPaymentSectionGridV3(){
+        return PageFactory.initElements(driver, PaymentSectionGridV3.class);
+    }
+
+    protected CreditCardDataV3 initCreditCardDataV3(){
+        return PageFactory.initElements(driver, CreditCardDataV3.class);
     }
 
     protected PickUpLocationSection initPickUpLocationSection() {

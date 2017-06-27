@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,5 +44,19 @@ public class PaymentSelectorV3 extends BasePage {
         logger.info("Selecting payment with visa debit card");
         visaDebit.click();
         return this;
+    }
+
+    public boolean selectOneCreditCardRdbIsDisplayed(){
+        boolean doClick = false;
+        try {
+            if (oneCreditCardRdb.isDisplayed()) {
+                logger.info("Payment type selector is displayed.");
+                doClick = true;
+            }
+        }catch(NoSuchElementException ouch){
+            logger.info("Payment type selector not is displayed.");
+            doClick = false;
+        }
+        return doClick;
     }
 }

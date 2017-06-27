@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PaymentSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionComboV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -24,7 +24,7 @@ public class ICBCStoreLatam extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
     private PaymentSection paymentSection = null;
-    private PaymentSectionV3 paymentSectionV3 = null;
+    private PaymentSectionComboV3 paymentSectionV3 = null;
     private int difference = 0;
     private boolean failedTest = false;
 
@@ -48,7 +48,6 @@ public class ICBCStoreLatam extends TestBaseSetup {
 
     private void getTotalPrices() {
         checkOutPageV3 = openAlmundoCart("59405038e4b07311bb4e5b12");
-        paymentSectionV3 = checkOutPageV3.paymentSection();
 
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();

@@ -1,11 +1,11 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.CheckOutPage.PickUpLocationSection;
+import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.sevices.InputDefinitions;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.Apikeys;
+import com.almundo.browser.automation.utils.sevices.InputDefinitions;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -17,6 +17,7 @@ import org.openqa.selenium.support.FindBy;
 import java.io.IOException;
 
 import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -25,21 +26,29 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public CheckOutPageV3(WebDriver driver) { super.driver = driver; }
 
+
     public static JSONObject checkOutPageElements = null;
+    public DataManagement dataManagement = new DataManagement();
+
     public static String apikeyHeader =  null;
     public static Apikeys apikeys = new Apikeys();
     public static InputDefinitions inputDef = null;
 
+    private boolean todoPagoStc = false;
+    private boolean creditCardComboSc = false;
+    private boolean paymentSelectorSvd = false;
+
+
+    public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
+
+    public PaymentSectionComboV3 paymentSectionComboV3(){return initPaymentSectionComboV3();}
+
+    public PaymentSectionGridV3 paymentSectionGridV3(){return initPaymentSectionGridV3();}
+
+    public CreditCardDataV3 creditCardDataV3(){return initCreditCardDataV3();}
+
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
-    }
-
-    public PickUpLocationSection pickUpLocationSection() {
-        return initPickUpLocationSection();
-    }
-
-    public PaymentSectionV3 paymentSection() {
-        return initPaymentSectionV3();
     }
 
     public BillingSectionV3 billingSection() {
@@ -49,6 +58,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public ContactSectionV3 contactSection() {
         return initContactInfoSectionV3();
     }
+
+
 
     //############################################### Locators ##############################################
 
@@ -103,16 +114,33 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
+        //TODO: Remove productCheckOutPage parameters and calls
         getCheckOutPageElements(productCheckOutPage);
-        //forceCheckoutV3();
-        forceCombosV3();
-        forceTodoPagoOff();
+        setCheckOutSections(getCheckoutUrl());
         setInputDef();
 
-        if(countryPar.equals("ARGENTINA") && (!method.contains("Trips") || !method.contains("trips"))) {
-            paymentSection().populatePaymentSectionV3(paymentData, ".card-container-1");
+        if(paymentSelectorSvd){
+            paymentSelectorV3().selectOneCreditCardRdb();
+        } else {
+            if(!countryPar.equals("ARGENTINA")) {
+                if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
+                    paymentSelectorV3().selectOneCreditCardRdb();
+                }
+            }
         }
-        //paymentSection().selectPaymentOption(paymentData, ".card-container-1");
+
+        if(creditCardComboSc){
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+        } else{
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+        }
+
+        if(todoPagoStc){
+            logger.warn("Todo Pago was Set!");
+        }
+
+        creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
+
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -129,13 +157,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
-        //forceCheckoutV3();
-        forceCombosV3();
-        forceTodoPagoOff();
         setInputDef();
 
-        paymentSection().populatePaymentSectionV3(paymentData1, ".card-container-1");
-        paymentSection().populatePaymentSectionV3(paymentData2, ".card-container-2");
+        PaymentSectionComboV3 paymentSectionComboV3 = initPaymentSectionComboV3();
+
+        paymentSectionComboV3.populatePaymentSectionV3(paymentData1, ".card-container-1");
+        paymentSectionComboV3.populatePaymentSectionV3(paymentData2, ".card-container-2");
+
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)
         //pickUpLocationSection().populatePickUpLocationSection();
@@ -144,7 +172,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
         acceptConditions();
         return this;
     }
-
 
     private CheckOutPageV3 acceptConditions(){
         FooterSectionV3 footerSection = initFooterSectionV3();
@@ -191,5 +218,42 @@ public class CheckOutPageV3 extends TestBaseSetup {
         logger.info("Checkout URL: " + "[" + currentUrl + "]");
         String cartId = currentUrl.substring(currentUrl.indexOf("checkout/") + 9, currentUrl.lastIndexOf("checkout/") + 33);
         return cartId;
+    }
+
+    private void setCheckOutSections(String checkoutUrl){
+
+        if(checkoutUrl.contains("svd=1")){
+            logger.info("[svd=1] is enabled.");
+            paymentSelectorSvd = true;
+        } else{ logger.info("[svd=1] is not enabled."); }
+
+        if(checkoutUrl.contains("sc=1")){
+            logger.info("[sc=1] is enabled.");
+            creditCardComboSc =  true;
+        } else { logger.info("[sc=1] is not enabled."); }
+
+        if(checkoutUrl.contains("stc=1")){
+            logger.info("[stc=1] is enabled.");
+            todoPagoStc = true;
+        }else { logger.info("[stc=1] is not enabled."); }
+
+        if(checkoutUrl.contains("vuelohotel")){
+            logger.info("Selector de pago] is enabled.");
+            paymentSelectorSvd = true;
+        }else { logger.info("[Selector de pago] is not enabled.");}
+
+    }
+
+    private String getCheckoutUrl(){
+        String checkoutUrl = null;
+        try{
+            PageUtils.waitElementForVisibility(driver, By.cssSelector("#first_name"),30, "Checkout Query String Parameters.");
+            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
+            checkoutUrl =  driver.getCurrentUrl();
+        } catch(Exception time) {
+            logger.info("Checkout V3 was not loaded.");
+            setResultSauceLabs(FAILED);
+        }
+        return checkoutUrl;
     }
 }
