@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.AlmundoTrips;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,7 +44,7 @@ public class AddAnotherEvent extends BasePage {
     @FindBy(css = "time-select > #endTime")
     public WebElement dropOffTimeSelect;
 
-    @FindBy(css = "div.modal-footer > button.btn.btn-primary")
+    @FindBy(css = ".modal-footer .btn.btn-primary")
     public WebElement agregarBtn;
 
     /***************************** Actions  **********************************/
@@ -94,6 +95,7 @@ public class AddAnotherEvent extends BasePage {
 
     public AddAnotherEvent clickAgregarBtn(){
         logger.info("Clicking on [Agregar] button.");
+        PageUtils.scrollToElement(driver,agregarBtn);
         agregarBtn.click();
         return this;
     }

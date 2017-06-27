@@ -17,7 +17,7 @@ public class Dashboard extends BasePage {
 
     /***************************** Locators  **********************************/
 
-    @FindBy(css = ".btn.btn-md.ng-scope")
+    @FindBy(css = ".btn.btn-md")
     WebElement addFirstEventBtn;
 
     @FindBy(css = "trip-itinerary-tab .btn.btn-sm")
@@ -26,15 +26,15 @@ public class Dashboard extends BasePage {
     /***************************** Actions  **********************************/
 
     public AddEvent clickAddEvent(){
-        try{
-            PageUtils.waitElementForClickable(driver, addFirstEventBtn, 20, "[Agregar Evento] (First event button)");
-            logger.info("Clicking on [Agregar Evento] (First Event.)");
+        if(PageUtils.isElementPresent(addFirstEventBtn)) {
+            logger.info("Clicking on: [Agregar Evento] (First Event.)");
             addFirstEventBtn.click();
-        }catch(Exception ouch){
-            PageUtils.waitElementForClickable(driver, addEventBtn, 10, "Agregar Evento Button");
-            logger.info("Clicking on [Agregar evento] (there are events already for this trip)");
+        } else {
+            logger.info("Clicking on: [Agregar evento] (there are events already for this trip)");
+            PageUtils.waitElementForClickable(driver, addEventBtn, 8, "Agregar evento button");
             addEventBtn.click();
         }
         return initTrippersAgregarEvento();
     }
+
 }

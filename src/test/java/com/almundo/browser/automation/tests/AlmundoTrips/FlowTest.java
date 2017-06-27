@@ -62,6 +62,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
+
     @Test
     public void createAlmundoTrip(){
         CreateTrip createTrip = null;

@@ -258,7 +258,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(MULTIDESTINATION.toString());
 
-        while(PageUtils.isElementPresent(flightsDataTrip.addLegLnk, driver)) {
+        while(PageUtils.isElementPresent(flightsDataTrip.addLegLnk)) {
             flightsDataTrip.clickAddLegLnk();
         }
 
@@ -266,9 +266,9 @@ public class FlightsSearchBox extends TestBaseSetup {
         Assert.assertEquals(flightsDataTrip.getLegList().size(), flightLegLimit, "Leg limit is incorrect");
 
         logger.info("Validating [Agregar Vuelo] link is not displayed");
-        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.addLegLnk, driver), "Agregar Vuelo link is displayed");
+        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.addLegLnk), "Agregar Vuelo link is displayed");
 
-        while(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk, driver)) {
+        while(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk)) {
             flightsDataTrip.clickRemoveLegLnk();
         }
 
@@ -276,7 +276,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         Assert.assertEquals(flightsDataTrip.getLegList().size(), 1, "Flight legs are not removed");
 
         logger.info("Validating [Eliminar Vuelo] link is not displayed");
-        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk, driver), "Eliminar Vuelo link is displayed");
+        Assert.assertFalse(PageUtils.isElementPresent(flightsDataTrip.removeLegLnk), "Eliminar Vuelo link is displayed");
     }
 
 

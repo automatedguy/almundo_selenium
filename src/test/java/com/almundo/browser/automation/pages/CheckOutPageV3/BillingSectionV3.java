@@ -74,7 +74,7 @@ public class BillingSectionV3 extends CheckOutPageV3 {
                 setBillingFiscalType(billingData.get("billing_fiscal_type").toString());}
 
             if(inputDef.isRequired("billings","document_type",0)){
-                if(PageUtils.isElementPresent(billingDocumentTypeDdl, driver)) {
+                if(PageUtils.isElementPresent(billingDocumentTypeDdl)) {
                     setBillingDocumentType(billingData.get("billing_document_type").toString());}
             }
 
