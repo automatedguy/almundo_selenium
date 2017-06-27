@@ -16,24 +16,36 @@ public class AddEvent extends BasePage {
 
     /***************************** Locators  **********************************/
 
-    @FindBy(css = "event-type-selector div.event-type li:nth-child(3) > div.title-ctn > p")
-    public WebElement eventoPersonalizado;
+    @FindBy(css = ".trips-modal .icon-close")
+    public WebElement closeEventModal;
 
-    @FindBy(css = "div.event-type > ul > li:nth-child(1) > div.title-ctn > p")
+    @FindBy(css = ".event-type li:nth-child(1)")
     public WebElement buscarEnAlmundo;
+
+    @FindBy(css = ".event-type li:nth-child(2)")
+    public WebElement tengoUnaReserva;
+
+    @FindBy(css = ".event-type li:nth-child(3)")
+    public WebElement eventoPersonalizado;
 
     /***************************** Actions  **********************************/
 
-    public AddAnotherEvent clickEventoPersonalizado(){
-        logger.info("Click on [Evento Personalizado]");
-        eventoPersonalizado.click();
-        return initTrippersAgregarOtroEvento();
-    }
-
     public SearchInAlmundo clickBuscarEnAlmundo(){
-        logger.info("Click on [Buscar en Almundo]");
+        logger.info("Clicking on [Buscar en Almundo]");
         buscarEnAlmundo.click();
         return initBuscarEnAlmundo();
+    }
+
+    public SearchInAlmundo clickTengoUnaReserva(){
+        logger.info("Clicking on [Tengo una reserva]");
+        buscarEnAlmundo.click();
+        return initBuscarEnAlmundo();
+    }
+
+    public AddAnotherEvent clickEventoPersonalizado(){
+        logger.info("Clicking on [Evento Personalizado]");
+        eventoPersonalizado.click();
+        return initTrippersAgregarOtroEvento();
     }
 
 }

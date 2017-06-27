@@ -183,18 +183,16 @@ public class PageUtils {
         return equalLists;
     }
 
-    public static boolean isElementPresent(WebElement webElement, WebDriver driver) {
+    public static boolean isElementPresent(WebElement webElement) {
         try {
-            webElement.isDisplayed();
-            return true;
+            if(webElement.isDisplayed()){
+                return true;
+            } else {return false;}
         } catch (NoSuchElementException e) {
             return false;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return false;
         }
-
     }
 
     static final String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

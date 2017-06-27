@@ -21,8 +21,6 @@ public class HeaderSection extends BasePage {
 
     //############################################### Locators ##############################################
 
-
-
     @FindBy(css = "#account-header > am-account-logged")
     public WebElement myAccountMenuLnk;
 
