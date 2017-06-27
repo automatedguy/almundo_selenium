@@ -2,12 +2,10 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import java.util.List;
 import java.util.Random;
@@ -76,20 +74,11 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
     @FindBy(id = "document_number")
     private WebElement document_number;
 
-    @FindBy(css = ".change-card")
-    public WebElement changeCardLnk;
-
     public PaymentSelectorV3 paymentSelectorV3() {
         return initPaymentSelectorV3();
     }
 
     //############################################### Actions ###############################################
-
-    public void clickChangeCardLink() {
-        PageUtils.scrollToElement(driver, changeCardLnk);
-        logger.info("Clicking on Cambiar Forma de Pago link");
-        changeCardLnk.click();
-    }
 
     public PaymentSectionComboV3 populatePaymentSectionV3(String paymentData, String container) {
         dataManagement.getPaymentList();
@@ -132,7 +121,6 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
         return this;
     }
 
-
     public void clickSeveralCardsCbx () {
         if (!serveralCardsCbx.isSelected()) {
             logger.info("Clicking on [Con 2 Tarjetas] checkbox");
@@ -140,58 +128,6 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
         }
         PageUtils.waitElementForVisibility(driver, credit_card_container_1, 15, "Card container 1");
         PageUtils.waitElementForVisibility(driver, credit_card_container_2, 15, "Card container 2");
-    }
-
-    public void setPayment(String paymentNumber, String container) {
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " .payment .monthly-payment>strong"), 40, "Payments");
-        List<WebElement> results = driver.findElements(By.cssSelector(container + " .payment .monthly-payment>strong"));
-        List<WebElement> payments = driver.findElements(By.cssSelector(container + " .payment"));
-
-        for (int i = 0; i < results.size(); ++i) {
-            if (results.get(i).getText().equals(paymentNumber)) {
-                logger.info("Selecting Payment Quantity: [" + paymentNumber + "]");
-                PageUtils.scrollToElement(driver, results.get(i));
-                results.get(i).click();
-                paymentSelected = payments.get(i);
-                break;
-            }
-        }
-
-    }
-
-    public void setBank(String bankName, String container) {
-        List<WebElement> results = paymentSelected.findElements(By.cssSelector(container + " .header-bank .logo"));
-        List<WebElement> banks = paymentSelected.findElements(By.cssSelector(container + " .bank"));
-        boolean isBankSelected = false;
-
-        for (int i = 0; i < results.size(); ++i) {
-            if (results.get(i).getAttribute("alt").equals(bankName)) {
-                logger.info("Selecting Bank: [" + bankName + "]");
-                PageUtils.scrollToElement(driver, results.get(i));
-                PageUtils.waitImplicitly(1000);
-                results.get(i).click();
-                isBankSelected = true;
-                bankSelected = banks.get(i);
-                break;
-            }
-        }
-        if(isBankSelected == false) {
-            Assert.fail("Bank was not selected");
-        }
-    }
-
-    public void setCreditCard(String cardName, String container) {
-        List<WebElement> cardNames = bankSelected.findElements(By.cssSelector(container + " .cards .logo .logo"));
-
-        for(WebElement cardNameResult : cardNames){
-            if (cardNameResult.getAttribute("alt").equals(cardName)) {
-                logger.info("Selecting Card: [" + cardName + "]");
-                PageUtils.scrollToElement(driver, cardNameResult);
-                PageUtils.waitImplicitly(1000);
-                cardNameResult.click();
-                break;
-            }
-        }
     }
 
     private void setCreditCardCombo(Select creditCardSelect, String cardName) {
@@ -235,71 +171,5 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
 
         logger.info("Selecting Payment: [" + paymentSelect.getOptions().get(random).getText() + "]");
         paymentSelect.selectByIndex(random);
-    }
-
-    private void setCardNumber(String cardNumber, String container) {
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " #credit_card_number"), 5, "Credit Card field");
-        WebElement cardNumberField = driver.findElement(By.cssSelector(container + " #credit_card_number"));
-        logger.info("Entering Número de tu tarjeta: [" + cardNumber + "]");
-        cardNumberField.clear();
-        cardNumberField.sendKeys(cardNumber);
-    }
-
-    private void setCardHolder(String cardHolder, String container) {
-        WebElement cardHolderField = driver.findElement(By.cssSelector(container + " #credit_card_owner"));
-        logger.info("Entering Titular de la tarjeta: [" + cardHolder + "]");
-        cardHolderField.clear();
-        cardHolderField.sendKeys(cardHolder);
-    }
-
-    private void setMonthCardExpiration(String monthCardExpiration, String container) {
-        WebElement cardMonthExpField = driver.findElement(By.cssSelector(container + " .month"));
-        logger.info("Selecting Fecha de vencimiento - Mes: [" + monthCardExpiration + "]");
-        Select selectMonthCardExpiration = new Select (cardMonthExpField);
-        selectMonthCardExpiration.selectByVisibleText(monthCardExpiration);
-    }
-
-    private void setYearCardExpiration(String yearCardExpiration, String container) {
-        WebElement cardYearExpField = driver.findElement(By.cssSelector(container + " .year"));
-        logger.info("Selecting Fecha de vencimiento - Año: [" + yearCardExpiration + "]");
-        Select selectYearCardExpiration = new Select (cardYearExpField);
-        selectYearCardExpiration.selectByVisibleText(yearCardExpiration);
-    }
-
-    private void setSecurityCode(String code, String container) {
-        WebElement securityCodeField = driver.findElement(By.cssSelector(container + " #credit_card_security_code"));
-        logger.info("Entering Código de Seguridad: [" + code + "]");
-        securityCodeField.clear();
-        securityCodeField.sendKeys(code);
-    }
-
-    private void selectDocumentType(String documentType, String container) {
-        WebElement documentTypeField = driver.findElement(By.cssSelector(container + " #document_type"));
-        logger.info("Selecting Tipo de Documento: [" + documentType + "]");
-        Select documentTypeSelect = new Select(documentTypeField);
-        documentTypeSelect.selectByVisibleText(documentType);
-    }
-
-    private void setDocumentNumber(String documentNumber, String container) {
-        WebElement documentNumberField = driver.findElement(By.cssSelector(container + " #number"));
-        logger.info("Entering Número de Documento: [" + documentNumber + "]");
-        documentNumberField.clear();
-        documentNumberField.sendKeys(documentNumber);
-    }
-
-
-    public PaymentSectionComboV3 selectPaymentOption() {
-        paymentSelectorV3().selectOneCreditCardRdb();
-        return this;
-    }
-
-    public void selectPayment(String paymentOptionSelected){
-        List<WebElement> paymentOptions = driver.findElements(By.cssSelector(".option-section input"));
-        for(WebElement paymentOption : paymentOptions){
-            if(paymentOption.getAttribute("value").equals(paymentOptionSelected)){
-                paymentOption.click();
-                break;
-            }
-        }
     }
 }
