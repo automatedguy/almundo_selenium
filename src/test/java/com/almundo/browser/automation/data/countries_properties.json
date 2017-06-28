@@ -503,7 +503,7 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"false",
+      "accepted":"true",
       "agentEmail":"true"
     }
 
