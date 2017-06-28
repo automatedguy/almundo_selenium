@@ -64,7 +64,8 @@ public class Apikeys extends TestBaseSetup {
     }
 
     private JSONArray parseHttpResponse() throws IOException, ParseException {
-        Object json; JSONParser parser = new JSONParser();
+        Object json;
+        JSONParser parser = new JSONParser();
         json = parser.parse(EntityUtils.toString(getHttpResponse().getEntity(), "UTF-8"));
         JSONArray jsonArray = (JSONArray) json;
         return jsonArray;
@@ -91,7 +92,7 @@ public class Apikeys extends TestBaseSetup {
         JSONObject jsonApikeySection;
         boolean apikeyFound = false;
         int index = -1;
-        String name =getName(currentUrl);
+        String name = getName(currentUrl);
         do{ index++; jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
             if(JsonPath.read(jsonApikeySection, "$.name").equals(name)){ apikeyFound = true;}
         }while(!apikeyFound);

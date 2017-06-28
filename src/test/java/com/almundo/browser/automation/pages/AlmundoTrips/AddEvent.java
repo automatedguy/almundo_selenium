@@ -42,7 +42,7 @@ public class AddEvent extends BasePage {
         return initBuscarEnAlmundo();
     }
 
-    public AddAnotherEvent clickEventoPersonalizado(){
+    public AddCustomEvent clickEventoPersonalizado(){
         logger.info("Clicking on [Evento Personalizado]");
         eventoPersonalizado.click();
         return initTrippersAgregarOtroEvento();

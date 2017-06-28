@@ -69,7 +69,7 @@ public class HeaderSection extends BasePage {
 
     public ActivityFeed clickMyTripsLnk(){
         PageUtils.waitElementForVisibility(driver, myTripsLnk, 10, "[Mis Viajes] Header Link");
-        logger.info("Clicking on [Mis Viajes] from header");
+        logger.info("Clicking on: [Mis Viajes] from header");
         myTripsLnk.click();
         return initActivityFeed();
     }

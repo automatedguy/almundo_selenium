@@ -10,18 +10,23 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
+import com.almundo.browser.automation.utils.sevices.Trips;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
 import static com.almundo.browser.automation.utils.Constants.Products.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.Constants.TRIPS_URL;
 import static com.almundo.browser.automation.utils.PageUtils.randomString;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
@@ -39,22 +44,27 @@ public class FlowTest extends TestBaseSetup {
     private ActivityFeed activityFeed = null;
     private Dashboard dashboard = null;
     private AddEvent addEvent = null;
+    private JSONObject userData = null;
 
     @BeforeClass
-    private void initItineraryData() {
+    private void initItineraryData() throws IOException, ParseException {
         dataManagement.getUsersDataList();
         dataManagement.getTrippersDataTripList();
+
+        userData = dataManagement.getUserData("email");
+        String externalUserId = userData.get("externalUserId").toString();
+        String id_token = userData.get("id_token").toString();
+        Trips trips = new Trips(TRIPS_URL, externalUserId, id_token);
+        trips.cleanUserTrips();
     }
 
     @BeforeMethod
     private void initLoginPopUpElement(){
         loginPopUp = initLoginPopUp();
-        JSONObject userData = dataManagement.getUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
         activityFeed =  basePage.headerSection().clickMyTripsLnk();
         home = activityFeed.clickMyTripsTittle();
-
     }
 
     @AfterMethod
@@ -68,7 +78,7 @@ public class FlowTest extends TestBaseSetup {
     public void createAlmundoTrip(){
         CreateTrip createTrip = null;
         String finalTripName = null;
-        TripConfirmation tripConfirmation = null;
+        TripConfirmation tripConfirmation;
 
         logTestTitle("Trips Flow - createAlmundoTrip " + countryPar );
 
@@ -93,7 +103,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void addEventPersonalized(){
-        AddAnotherEvent addAnotherEvent = null;
+        AddCustomEvent addCustomEvent = null;
 
         logTestTitle("Trips Flow - Add Personalized Event " + countryPar );
 
@@ -102,16 +112,16 @@ public class FlowTest extends TestBaseSetup {
         dashboard = home.selectTripFromList(FIRST_OPTION);
         addEvent = dashboard.clickAddEvent();
 
-        addAnotherEvent = addEvent.clickEventoPersonalizado();
-        addAnotherEvent.setNombreDeEvento(dataManagement.eventName);
-        addAnotherEvent.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        addAnotherEvent.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        addAnotherEvent.setDescription(dataManagement.eventDescription);
-        addAnotherEvent.selectDateFromCalendar(addAnotherEvent.checkinCalendar, dataManagement.startDate);
-        addAnotherEvent.selectPickUpTime(dataManagement.pickUpTime);
-        addAnotherEvent.selectDateFromCalendar(addAnotherEvent.checkoutCalendar, dataManagement.endDate);
-        addAnotherEvent.selectDropOffTime(dataManagement.dropOffTime);
-        addAnotherEvent.clickAgregarBtn();
+        addCustomEvent = addEvent.clickEventoPersonalizado();
+        addCustomEvent.setNombreDeEvento(dataManagement.eventName);
+        addCustomEvent.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        addCustomEvent.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        addCustomEvent.setDescription(dataManagement.eventDescription);
+        addCustomEvent.selectDateFromCalendar(addCustomEvent.checkinCalendar, dataManagement.startDate);
+        addCustomEvent.selectPickUpTime(dataManagement.pickUpTime);
+        addCustomEvent.selectDateFromCalendar(addCustomEvent.checkoutCalendar, dataManagement.endDate);
+        addCustomEvent.selectDropOffTime(dataManagement.dropOffTime);
+        addCustomEvent.clickAgregarBtn();
         setResultSauceLabs(PASSED);
         waitImplicitly(7000);
     }

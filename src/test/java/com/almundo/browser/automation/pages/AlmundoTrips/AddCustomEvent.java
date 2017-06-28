@@ -12,9 +12,9 @@ import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 /**
  * Created by gabrielcespedes on 16/06/17.
  */
-public class AddAnotherEvent extends BasePage {
+public class AddCustomEvent extends BasePage {
 
-    public AddAnotherEvent(WebDriver iDriver) {
+    public AddCustomEvent(WebDriver iDriver) {
         super(iDriver);
     }
 
@@ -49,13 +49,13 @@ public class AddAnotherEvent extends BasePage {
 
     /***************************** Actions  **********************************/
 
-    public AddAnotherEvent setNombreDeEvento(String eventName){
+    public AddCustomEvent setNombreDeEvento(String eventName){
         logger.info("Entering Event Name: [" + eventName + "]");
         nombreDeEvento.sendKeys(eventName);
         return this;
     }
 
-    public AddAnotherEvent setOrigin(String originAuto, String originFull) {
+    public AddCustomEvent setOrigin(String originAuto, String originFull) {
         logger.info("Entering Event Origin: [" + originFull + "]");
         originTxt.clear();
         originTxt.sendKeys(originAuto);
@@ -64,7 +64,7 @@ public class AddAnotherEvent extends BasePage {
         return this;
     }
 
-    public AddAnotherEvent setDestination(String destinationAuto, String destinationFull) {
+    public AddCustomEvent setDestination(String destinationAuto, String destinationFull) {
         logger.info("Entering Event Destination: [" + destinationFull + "]");
         destinationTxt.clear();
         destinationTxt.sendKeys(destinationAuto);
@@ -73,27 +73,27 @@ public class AddAnotherEvent extends BasePage {
         return this;
     }
 
-    public AddAnotherEvent setDescription(String description){
+    public AddCustomEvent setDescription(String description){
         logger.info("Entering Event Description: [" + description + "]");
         descripcion.sendKeys(description);
         return this;
     }
 
-    public AddAnotherEvent selectPickUpTime(String pickUpTime){
+    public AddCustomEvent selectPickUpTime(String pickUpTime){
         Select pickUpTimeDdl = new Select(pickUpTimeSelect);
         logger.info("Selecting Pick Up Time: [" + pickUpTime + "]");
         pickUpTimeDdl.selectByVisibleText(pickUpTime);
         return this;
     }
 
-    public AddAnotherEvent selectDropOffTime(String dropOffTime){
+    public AddCustomEvent selectDropOffTime(String dropOffTime){
         Select pickUpTimeDdl = new Select(dropOffTimeSelect);
         logger.info("Selecting Drop Off Time: [" + dropOffTime + "]");
         pickUpTimeDdl.selectByVisibleText(dropOffTime);
         return this;
     }
 
-    public AddAnotherEvent clickAgregarBtn(){
+    public AddCustomEvent clickAgregarBtn(){
         logger.info("Clicking on [Agregar] button.");
         PageUtils.scrollToElement(driver,agregarBtn);
         agregarBtn.click();

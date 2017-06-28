@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.AlmundoTrips;
 
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.PageUtils.isElementPresent;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForVisibility;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -36,11 +39,14 @@ public class Home extends BasePage {
     /***************************** Actions  **********************************/
 
     public CreateTrip clickCreateTrip(){
-        try {
-            PageUtils.waitElementForVisibility(driver, createFirstTripBtn, 10, "[Create Trip] (Empty Dashboard)");
+        waitElementForVisibility(driver, By.cssSelector(".nav-tabs"), 8, "Trips home page is not displayed");
+        waitImplicitly(2000);
+        if (isElementPresent(createFirstTripBtn)) {
+            logger.info("Clicking on: [Crear Viaje] button (First Trip)");
             createFirstTripBtn.click();
-        }catch (Exception ouch) {
-            logger.info("There are trips created already, clicking on the other [Create Trip] button.");
+        } else {
+            logger.info("Clicking on: [Crear Viaje] button (there are trips already created for this user)");
+            PageUtils.waitElementForClickable(driver, createTripBtn, 8, "Crear Viaje button");
             createTripBtn.click();
         }
         return initCreateTrip();
@@ -55,7 +61,7 @@ public class Home extends BasePage {
 
     public boolean tripWasCreatedOk(String finalTripName){
         boolean created = false;
-        waitImplicitly(5000);
+        waitImplicitly(3000);
         PageUtils.waitListContainResults(driver, tripListLocator, 0);
         logger.info("Checking if the trip: " + "["+ finalTripName +"]" + " was created correctly.");
         for(WebElement tripName : tripsList ){
