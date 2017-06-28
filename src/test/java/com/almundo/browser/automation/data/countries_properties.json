@@ -697,6 +697,24 @@
         "accepted":"false"
     },
 
+    "TripsCheckOutPageDomesticV3":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"false",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"true",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "fiscal_name":"true",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"true",
+      "accepted":"false"
+    },
+
     "TripsCheckOutPageDomesticSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"false",
