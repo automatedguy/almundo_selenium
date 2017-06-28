@@ -3,8 +3,6 @@ package com.almundo.browser.automation.tests.ClubAlMundo;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.*;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
@@ -57,10 +55,6 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     private CheckOutPageV3 checkOutPageV3 = null;
     private AgreementPage agreementPage = null;
     private ConfirmationPageV3 confirmationPageV3 = null;
-
-    /********** Common Objects for (V2): Checkout and Confirmation Pages ***********/
-    CheckOutPage checkOutPage = null;
-    ConfirmationPage confirmationPage = null;
 
     JSONObject userData = null;
 
@@ -182,7 +176,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "random",
+                "1_master_master",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "HotelsCheckOutPageInternationalV3");
@@ -228,18 +222,18 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+        checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_male_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                dataManagement.getPaymentData("1_amex_amex"),
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
-                "CarsCheckOutPage", false);
+                "CarsCheckOutPage");
 
-        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -282,7 +276,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "random",
+                "1_master_master",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");

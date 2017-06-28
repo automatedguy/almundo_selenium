@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PaymentSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionComboV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionGridV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -24,7 +24,7 @@ public class ICBCStoreLatam extends TestBaseSetup {
     private CheckOutPage checkOutPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
     private PaymentSection paymentSection = null;
-    private PaymentSectionComboV3 paymentSectionV3 = null;
+    private PaymentSectionGridV3 paymentSectionGridV3 = null;
     private int difference = 0;
     private boolean failedTest = false;
 
@@ -52,37 +52,37 @@ public class ICBCStoreLatam extends TestBaseSetup {
         selectPaymentV3("1","ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         selectPaymentV3("1","Mastercard", "Mastercard");
         almundo_master_1 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         selectPaymentV3("6","ICBC", "Visa");
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         selectPaymentV3("6","ICBC", "Mastercard");
         almundo_master_6 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Visa");
         almundo_visa_12 = checkOutPageV3.getTotalPrice();
 
-        paymentSectionV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         selectPaymentV3("12","ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
-//        paymentSectionV3.clickChangeCardLink();
+//        paymentSectionGridV3.clickChangeCardLink();
 //
 //        selectPaymentV3("18","Visa", "Visa");
 //        almundo_visa_18 = checkOutPageV3.getTotalPrice();
 //
-//        paymentSectionV3.clickChangeCardLink();
+//        paymentSectionGridV3.clickChangeCardLink();
 //
 //        selectPaymentV3("18","Mastercard", "Mastercard");
 //        almundo_master_18 = checkOutPageV3.getTotalPrice();
@@ -221,9 +221,9 @@ public class ICBCStoreLatam extends TestBaseSetup {
     }
 
     private void selectPaymentV3(String payment, String bankName, String cardName) {
-        paymentSectionV3.setPayment(payment, ".card-container-1");
-        paymentSectionV3.setBank(bankName, ".card-container-1");
-        paymentSectionV3.setCreditCard(cardName, ".card-container-1");
+        paymentSectionGridV3.setPayment(payment, ".card-container-1");
+        paymentSectionGridV3.setBank(bankName, ".card-container-1");
+        paymentSectionGridV3.setCreditCard(cardName, ".card-container-1");
     }
 
     private void selectCardAndBank(String creditCard, String bankName) {

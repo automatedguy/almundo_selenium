@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,8 +12,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.NO_PUDIMOS_PROCESAR;
-import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.Constants.Messages.PRUEBA_CON_OTRAS_FECHAS;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 
 /**
@@ -54,7 +55,20 @@ public class CarsResultsPage extends TestBaseSetup {
         displayCarRatesInfo(index);
     }
 
-    public CheckOutPage clickReservarAhoraBtn(int index) {
+    public CheckOutPageV3 clickReservarAhoraBtn(int index) {
+        PageUtils.waitUrlContains(driver, 10, "results", "Results url");
+        logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
+        String cssSelectorName  = "article .button";
+        PageUtils.waitListContainResults(driver, cssSelectorName, 0);
+        List<WebElement> detailCarsButtonResults = driver.findElements(By.cssSelector(cssSelectorName));
+        PageUtils.waitElementForClickable(driver, detailCarsButtonResults.get(index), 20, "Reservar Ahora button");
+        logger.info("Clicking on Reservar button");
+        displaySelectedCarInfo(index + 3);
+        detailCarsButtonResults.get(index).click();
+        return initCheckOutPageV3();
+    }
+
+    public CheckOutPage clickReservarAhoraBtnV2(int index) {
         PageUtils.waitUrlContains(driver, 10, "results", "Results url");
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         String cssSelectorName  = "article .button";

@@ -26,7 +26,6 @@ public class Apikeys extends TestBaseSetup {
 
     private String getName(String currentUrl){
         String name = null;
-
         int mask = currentUrl.contains("ccr.") ? 1 : 0;
         mask |= currentUrl.contains("sucursales.") ? 2 : 0;
         mask |= currentUrl.contains("icbcstore.") ? 4 : 0;

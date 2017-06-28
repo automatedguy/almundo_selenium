@@ -72,5 +72,4 @@ public class SucursalesFlowTest extends TestBaseSetup {
                                           "TripsCheckOutPageDomesticSucursal", false);
         setResultSauceLabs(PASSED);
     }
-
 }

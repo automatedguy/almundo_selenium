@@ -12,13 +12,10 @@ public class RetryAnalyzer implements IRetryAnalyzer {
     public int getMaxCount() {
         String env_path = System.getenv("PATH");
         int maxCount = 0;
-
         if(env_path.contains("jenkins")) {
             maxCount = 1;
         }
-
         if (retriesCount) {maxCount = 0;}
-
         return maxCount;
     }
 
@@ -34,7 +31,6 @@ public class RetryAnalyzer implements IRetryAnalyzer {
                         " Retrying " + count + " times";
                 System.out.println(message);
                 Reporter.log(message);
-
                 return true;
             }
         }

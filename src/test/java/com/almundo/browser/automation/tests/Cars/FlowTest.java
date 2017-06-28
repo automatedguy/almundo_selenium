@@ -4,8 +4,8 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -24,8 +24,8 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 public class FlowTest extends TestBaseSetup {
 
     private CarsResultsPage carsResultsPage = null;
-    private CheckOutPage checkOutPage = null;
-    private ConfirmationPage confirmationPage = null;
+    private CheckOutPageV3 checkOutPageV3 = null;
+    private ConfirmationPageV3 confirmationPageV3 = null;
 
     private CarsDataTrip carsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -73,15 +73,15 @@ public class FlowTest extends TestBaseSetup {
             Assert.assertTrue(carsResultsPage.processed());
 
             dataManagement.getPassengerData("adult_male_native");
-            checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
-            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                    dataManagement.getPaymentData("1_amex_amex"),
+            checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                    "1_visa_visa",
                     dataManagement.getBillingData("local_Billing"),
                     dataManagement.getContactData("contact_cell_phone"),
-                    "CarsCheckOutPage", false);
+                    "CarsCheckOutPage");
 
-            confirmationPage = checkOutPage.clickComprarBtn();
-            Assert.assertTrue(confirmationPage.confirmationOk());
+            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         setResultSauceLabs(PASSED);
     }
@@ -105,15 +105,15 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(carsResultsPage.processed());
 
         dataManagement.getPassengerData("adult_male_native");
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
+        checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                          "1_master_master",
                                           dataManagement.getBillingData("local_Billing"),
                                           dataManagement.getContactData("contact_cell_phone"),
-                                          "CarsCheckOutPage", false);
+                                          "CarsCheckOutPage");
 
-        confirmationPage = checkOutPage.clickComprarBtn();
-        Assert.assertTrue(confirmationPage.confirmationOk());
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 }

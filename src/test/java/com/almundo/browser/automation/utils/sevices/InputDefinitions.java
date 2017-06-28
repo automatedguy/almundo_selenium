@@ -94,17 +94,6 @@ public class InputDefinitions extends TestBaseSetup{
         return isRequired;
     }
 
-    public boolean isRequired2(String section, String subSection, String field, int index) {
-        boolean isRequired = false;
-        JSONArray jsonArraySection = (JSONArray) jsonObject.get(section);
-        JSONObject jsonObjectSection = new JSONObject((Map) jsonArraySection.get(index));
-        JSONObject jsonObjectSubSection = new JSONObject((Map) jsonObjectSection.get(subSection));
-
-        if(JsonPath.read(jsonObjectSubSection, field) != null &&
-                jsonObjectSubSection.get(field).toString().contains("required")){isRequired = true;}
-        return isRequired;
-    }
-
     public boolean isRequired(String section) {
         boolean isRequired = false;
         if(JsonPath.read(jsonObject, section) != null && jsonObject.get(section).toString().contains("required")){

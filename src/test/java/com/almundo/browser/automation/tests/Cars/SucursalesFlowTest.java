@@ -63,7 +63,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
         Assert.assertTrue(carsResultsPage.vacancy());
 
         dataManagement.getPassengerData("adult_male_native");
-        checkOutPage = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+        checkOutPage = carsResultsPage.clickReservarAhoraBtnV2(FIRST_OPTION);
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("booking24"),
                                           dataManagement.getBillingData("local_Billing_sucursales"),
