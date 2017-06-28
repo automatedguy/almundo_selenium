@@ -89,6 +89,41 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
+    public void int_Booking_Flow_with2Cards() throws IOException, ParseException {
+        logTestTitle("Trips Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - Pay With 2 Credit Cards " + countryPar );
+
+        dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
+
+        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(tripsResultsPage.vacancy());
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+        tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+        tripsDetailPage.clickVerHabitacionBtn();
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
+
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa", "1_master_master",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "TripsCheckOutPageInternationalV3");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
     public void dom_Booking_Flow() throws IOException, ParseException {
         logTestTitle("Trips Flow - Domestic - 15 days - 2 Adults/1 Child - 1 Room - " + countryPar );
 

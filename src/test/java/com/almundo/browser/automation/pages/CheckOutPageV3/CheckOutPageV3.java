@@ -155,12 +155,32 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
+        setCheckOutSections(getCheckoutUrl());
         setInputDef();
 
-        PaymentSectionComboV3 paymentSectionComboV3 = initPaymentSectionComboV3();
+        if(paymentSelectorSvd){
+            paymentSelectorV3().selectTwoCreditCardsRdb();
+        } else {
+            if (paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
+                paymentSelectorV3().selectTwoCreditCardsRdb();
+            }
+        }
 
-        paymentSectionComboV3.populatePaymentSectionV3(paymentData1, ".card-container-1");
-        paymentSectionComboV3.populatePaymentSectionV3(paymentData2, ".card-container-2");
+        if(creditCardComboSc){
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+            creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+            creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+        } else{
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+            creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+            creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+        }
+
+        if(todoPagoStc){
+            logger.warn("Todo Pago was Set!");
+        }
 
         passengerSection().populatePassengerSection(passengerList);
         //TODO: Refactor for Cars (when migrated to checkout V3)

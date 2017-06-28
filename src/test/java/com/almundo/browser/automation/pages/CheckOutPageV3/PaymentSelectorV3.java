@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+
 /**
  * Created by gabrielcespedes on 22/06/17.
  */
@@ -37,6 +39,7 @@ public class PaymentSelectorV3 extends BasePage {
     public PaymentSelectorV3 selectTwoCreditCardsRdb(){
         logger.info("Selecting payment with two credit cards");
         twoCreditCardsRdb.click();
+        waitImplicitly(4000);
         return this;
     }
 
@@ -54,7 +57,21 @@ public class PaymentSelectorV3 extends BasePage {
                 doClick = true;
             }
         }catch(NoSuchElementException ouch){
-            logger.info("Payment type selector not is displayed.");
+            logger.info("Payment type selector is not displayed.");
+            doClick = false;
+        }
+        return doClick;
+    }
+
+    public boolean selectTwoCreditCardsRdbIsDisplayed(){
+        boolean doClick = false;
+        try {
+            if (twoCreditCardsRdb.isDisplayed()) {
+                logger.info("Payment type selector for 2 cards is displayed.");
+                doClick = true;
+            }
+        }catch(NoSuchElementException ouch){
+            logger.info("Payment type selector for 2 cards is not displayed.");
             doClick = false;
         }
         return doClick;
