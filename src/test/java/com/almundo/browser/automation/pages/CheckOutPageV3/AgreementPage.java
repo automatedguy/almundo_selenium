@@ -49,7 +49,7 @@ public class AgreementPage extends CheckOutPageV3 {
         switch(countryPar){
             case "ARGENTINA": countryDomain = "almundo.com.ar/legales/condiciones-generales";
             break;
-            case "COLOMBIA": countryDomain = "almundo.com.co/legales/politica-de-privacidad";
+            case "COLOMBIA": countryDomain = "almundo.com.co/legales/condiciones-generales";
             break;
             case "MEXICO": countryDomain = "almundo.com.mx/legales/condiciones-generales";
             break;
