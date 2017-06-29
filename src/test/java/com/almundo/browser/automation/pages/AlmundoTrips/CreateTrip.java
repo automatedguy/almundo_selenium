@@ -52,8 +52,7 @@ public class CreateTrip extends BasePage {
     }
 
     public TripConfirmation clickCreateTrip(){
-        logger.info("Clicking on [Create Trip] button");
-        waitImplicitly(2000);
+        logger.info("Clicking on: [Create Trip] button");
         createTripBtn.click();
         return initTripConfirmation();
     }

@@ -18,6 +18,7 @@ public class Constants {
     public static final String API_PROD_URL = "http://apipr.almundo.it:8080/";
     public static final String API_STG_URL = "http://apist.almundo.it:8080/";
     public static final String APIKEY_URL = "http://abs.almundo.it:8080/abs/security/apikeys";
+    public static final String TRIPS_URL = "http://apist.almundo.it:8080/api/trips";
 
     //PATHS
     public static final String RESOURCES_PATH = "src/test/resources/";

@@ -113,6 +113,17 @@ public class PageUtils {
         }
     }
 
+    public static void waitAttributeContains(WebDriver driver, String element, String attribute, String value){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver,5);
+            wait.withMessage("Attribute [" + attribute +  "] does not contain [" + value + "]");
+            wait.until(ExpectedConditions.attributeContains(By.cssSelector(element), attribute, value));
+        }catch (TimeoutException exception) {
+            logger.error("Attribute [" + attribute +  "] does not contain [" + value + "]");
+            throw exception;
+        }
+    }
+
     public static void waitImplicitly(int miliSeconds){
         try {
             Thread.sleep(miliSeconds);

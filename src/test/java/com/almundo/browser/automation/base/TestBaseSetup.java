@@ -79,7 +79,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -596,8 +596,8 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, Dashboard.class);
     }
 
-    protected AddAnotherEvent initTrippersAgregarOtroEvento(){
-        return PageFactory.initElements(driver, AddAnotherEvent.class);
+    protected AddCustomEvent initTrippersAgregarOtroEvento(){
+        return PageFactory.initElements(driver, AddCustomEvent.class);
     }
 
     protected SearchInAlmundo initBuscarEnAlmundo(){

@@ -24,7 +24,7 @@ public class ActivityFeed extends BasePage {
 
     public Home clickMyTripsTittle(){
         PageUtils.waitElementForVisibility(driver, myTripsTittle, 10, "[Mis Viajes] Feed Link");
-        logger.info("Clicking on [Mis Viajes] link from Activity Feed");
+        logger.info("Clicking on: [Mis Viajes] link from Activity Feed");
         myTripsTittle.click();
         return initHome();
     }

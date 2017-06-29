@@ -206,6 +206,7 @@ public class BasePage extends TestBaseSetup {
             logger.info("Selecting date: [" + availableDatesList.get(daysAhead-1).getText() + " " + getMonthSelected(uniqueCalendar) + "]");
             availableDatesList.get(daysAhead-1).click();
         }
+        PageUtils.waitAttributeContains(driver, "#ui-datepicker-div", "style", "display: none");
         return this;
     }
 

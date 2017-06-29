@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static com.almundo.browser.automation.utils.PageUtils.isElementPresent;
+
 /**
  * Created by gabrielcespedes on 16/06/17.
  */
@@ -26,11 +28,11 @@ public class Dashboard extends BasePage {
     /***************************** Actions  **********************************/
 
     public AddEvent clickAddEvent(){
-        if(PageUtils.isElementPresent(addFirstEventBtn)) {
-            logger.info("Clicking on: [Agregar Evento] (First Event.)");
+        if(isElementPresent(addFirstEventBtn)) {
+            logger.info("Clicking on: [Agregar Evento] button (First Event)");
             addFirstEventBtn.click();
         } else {
-            logger.info("Clicking on: [Agregar evento] (there are events already for this trip)");
+            logger.info("Clicking on: [Agregar evento] button (there are events already for this trip)");
             PageUtils.waitElementForClickable(driver, addEventBtn, 8, "Agregar evento button");
             addEventBtn.click();
         }
