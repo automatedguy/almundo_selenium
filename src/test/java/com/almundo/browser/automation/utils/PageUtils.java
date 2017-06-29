@@ -102,11 +102,11 @@ public class PageUtils {
         setFailureSauceLabs(driver);
     }
 
-    public static void waitListContainResults(WebDriver driver, String element, int number){
+    public static void waitListContainResults(WebDriver driver, String cssSelectorName, int number){
         try {
             WebDriverWait wait = new WebDriverWait(driver,30);
             wait.withMessage("Incorrect number of results");
-            wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(element), number));
+            wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(cssSelectorName), number));
         }catch (TimeoutException exception) {
             logger.error("Incorrect number of results");
             throw exception;

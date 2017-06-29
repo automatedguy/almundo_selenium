@@ -70,7 +70,6 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.selectClass(dataManagement.flightClass);
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
-        flightsResultsPage = initFlightsResultsPage();
         Assert.assertTrue(flightsResultsPage.vacancy());
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
 

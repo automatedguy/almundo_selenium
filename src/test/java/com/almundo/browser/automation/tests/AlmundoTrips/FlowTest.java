@@ -41,21 +41,17 @@ public class FlowTest extends TestBaseSetup {
 
     /******** AlmundoTrips Stuff ****/
     private Home home = null;
+    private SearchInAlmundo searchInAlmundo = null;
     private ActivityFeed activityFeed = null;
     private Dashboard dashboard = null;
     private AddEvent addEvent = null;
     private JSONObject userData = null;
 
     @BeforeClass
-    private void initItineraryData() throws IOException, ParseException {
+    private void initItineraryData() {
         dataManagement.getUsersDataList();
         dataManagement.getTrippersDataTripList();
-
         userData = dataManagement.getUserData("email");
-        String externalUserId = userData.get("externalUserId").toString();
-        String id_token = userData.get("id_token").toString();
-        Trips trips = new Trips(TRIPS_URL, externalUserId, id_token);
-        trips.cleanUserTrips();
     }
 
     @BeforeMethod
@@ -79,6 +75,7 @@ public class FlowTest extends TestBaseSetup {
         CreateTrip createTrip = null;
         String finalTripName = null;
         TripConfirmation tripConfirmation;
+        cleanUserTrips();
 
         logTestTitle("Trips Flow - createAlmundoTrip " + countryPar );
 
@@ -94,6 +91,8 @@ public class FlowTest extends TestBaseSetup {
 
         dashboard = tripConfirmation.clickOmitirLnk();
 
+        Assert.assertTrue(dashboard.checkTripTitle(finalTripName));
+
         activityFeed =  basePage.headerSection().clickMyTripsLnk();
         home = activityFeed.clickMyTripsTittle();
 
@@ -102,10 +101,10 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void addEventPersonalized(){
-        AddCustomEvent addCustomEvent = null;
+    public void addCustomEvent(){
+        AddCustomEvent addCustomEvent;
 
-        logTestTitle("Trips Flow - Add Personalized Event " + countryPar );
+        logTestTitle("Trips Flow - Add Custom Event " + countryPar );
 
         dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
@@ -122,21 +121,23 @@ public class FlowTest extends TestBaseSetup {
         addCustomEvent.selectDateFromCalendar(addCustomEvent.checkoutCalendar, dataManagement.endDate);
         addCustomEvent.selectDropOffTime(dataManagement.dropOffTime);
         addCustomEvent.clickAgregarBtn();
+
+        Assert.assertTrue(dashboard.eventCreated(dataManagement.eventName));
         setResultSauceLabs(PASSED);
-        waitImplicitly(7000);
     }
 
     @Test
     public void addFlightAlmundoEvent(){
-        SearchInAlmundo searchInAlmundo = null;
-        TripsFlightsData tripsFlightsData = null;
-        FlightsResultsPage flightsResultsPage = null;
+        TripsFlightsData tripsFlightsData;
+        FlightsResultsPage flightsResultsPage;
+        SaveFavourite saveFavourite;
 
         logTestTitle("Trips Flow - Add Almundo Event Flight" + countryPar );
 
         dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
+        String tripName = dashboard.getTripTitle();
         addEvent = dashboard.clickAddEvent();
 
         searchInAlmundo = addEvent.clickBuscarEnAlmundo();
@@ -149,15 +150,24 @@ public class FlowTest extends TestBaseSetup {
         tripsFlightsData.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsFlightsData.selectDateFromCalendar(tripsFlightsData.checkinCalendarFlights, dataManagement.startDate);
         flightsResultsPage = tripsFlightsData.clickBuscarVuelosBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        saveFavourite = flightsResultsPage.clickFavouriteIcon(FIRST_OPTION);
+
+        saveFavourite.selectTripFromList(tripName);
+        saveFavourite.guardarBtn.click();
+
+
+
+
         setResultSauceLabs(PASSED);
-        waitImplicitly(7000);
 
     }
 
     @Test
     public void addAlmundoEventHotel(){
-        SearchInAlmundo searchInAlmundo = null;
-        TripsHotelsData tripsHotelsData = null;
+        TripsHotelsData tripsHotelsData;
         HotelsResultsPage hotelsResultsPage = null;
 
         logTestTitle("Trips Flow - Add Almundo Event Hotel" + countryPar );
@@ -183,7 +193,6 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void addAlmundoEventCars(){
-        SearchInAlmundo searchInAlmundo = null;
         CarsResultsPage carsResultsPage = null;
         TripsCarsData tripsCarsData = null;
 
@@ -206,5 +215,21 @@ public class FlowTest extends TestBaseSetup {
 
         carsResultsPage = tripsCarsData.clickBuscarAutosBtn();
         waitImplicitly(7000);
+    }
+
+    /////////////////////////////////// TEST CASES ///////////////////////////////////
+
+    private void cleanUserTrips() {
+        String externalUserId = userData.get("externalUserId").toString();
+        String id_token = userData.get("id_token").toString();
+        Trips trips;
+        try {
+            trips = new Trips(TRIPS_URL, externalUserId, id_token);
+            trips.cleanUserTrips();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

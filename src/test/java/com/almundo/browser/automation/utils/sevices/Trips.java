@@ -80,9 +80,15 @@ public class Trips extends TestBaseSetup {
         return jsonObject;
     }
 
-    public void cleanUserTrips() throws IOException, ParseException {
-        getJsonObject();
-        removeUserTripList(getUserTripList("content"));
+    public void cleanUserTrips() {
+        try {
+            getJsonObject();
+            removeUserTripList(getUserTripList("content"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<String> getUserTripList(String section) {

@@ -52,15 +52,16 @@ public class TripsFlightsData extends BasePage {
         logger.info("Entering Flight Origin: " + "[" + originFull + "]");
         originTxt.clear();
         originTxt.sendKeys(originAuto);
+        waitImplicitly(3000);
         selectAutoCompleteOption(originFull);
         return this;
     }
 
     public TripsFlightsData setDestination(String destinationAuto, String destinationFull) {
-        logger.info("Entering Destination: [" + destinationFull + "]");
+        logger.info("Entering Flight Destination: [" + destinationFull + "]");
         destinationTxt.clear();
         destinationTxt.sendKeys(destinationAuto);
-        waitImplicitly(5000);
+        waitImplicitly(3000);
         selectAutoCompleteOption(destinationFull);
         return this;
     }

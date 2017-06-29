@@ -10,9 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
-import static com.almundo.browser.automation.utils.PageUtils.isElementPresent;
-import static com.almundo.browser.automation.utils.PageUtils.waitElementForVisibility;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 19/06/17.
@@ -54,6 +52,7 @@ public class Home extends BasePage {
 
     public Dashboard selectTripFromList(int index){
         PageUtils.waitListContainResults(driver, tripListLocator, 0);
+        waitElementForClickable(driver, By.cssSelector(tripListLocator), 5, "Trip");
         logger.info("Clicking on: " + "[" + tripsList.get(index).getText() +"]");
         tripsList.get(index).click();
         return initTripsDashboard();
@@ -66,7 +65,7 @@ public class Home extends BasePage {
         logger.info("Checking if the trip: " + "["+ finalTripName +"]" + " was created correctly.");
         for(WebElement tripName : tripsList ){
             if(tripName.getText().equals(finalTripName)){
-                logger.info("The trip: [" + finalTripName + "] was added to the trip list!");
+                //logger.info("The trip: [" + finalTripName + "] was added to the trip list!");
                 created = true;
                 break;
             }

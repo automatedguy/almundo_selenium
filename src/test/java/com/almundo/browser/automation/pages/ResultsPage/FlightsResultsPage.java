@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.ResultsPage;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
+import com.almundo.browser.automation.pages.AlmundoTrips.SaveFavourite;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -47,6 +48,8 @@ public class FlightsResultsPage extends TestBaseSetup {
     @FindBy(css ="#main-content am-flights-cluster-container")
     public List<WebElement> flightChoices;
 
+    @FindBy(css = ".trip-favorite")
+    private List<WebElement> favouriteIconList;
 
     //############################################### Actions ##############################################
 
@@ -123,4 +126,14 @@ public class FlightsResultsPage extends TestBaseSetup {
     public List<WebElement> getFlightsChoices(){
         return flightChoices;
     }
+
+    public SaveFavourite clickFavouriteIcon(int index) {
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".trip-favorite"),30, "Favourite icon");
+        logger.info("Selecting favourite icon");
+        favouriteIconList.get(index).click();
+
+        return initSaveFavourite();
+    }
+
+
 }

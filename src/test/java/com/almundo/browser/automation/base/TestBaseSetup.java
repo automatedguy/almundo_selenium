@@ -620,6 +620,10 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, TripConfirmation.class);
     }
 
+    protected SaveFavourite initSaveFavourite(){
+        return PageFactory.initElements(driver, SaveFavourite.class);
+    }
+
     protected PaymentSelectorV3 initPaymentSelectorV3(){
         return PageFactory.initElements(driver, PaymentSelectorV3.class);
     }
