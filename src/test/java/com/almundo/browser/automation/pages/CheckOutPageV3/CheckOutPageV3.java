@@ -47,6 +47,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public CreditCardDataV3 creditCardDataV3(){return initCreditCardDataV3();}
 
+    public DebitCardDataV3 debitCardDataV3(){return initDebitCardDataV3();}
+
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
     }
@@ -205,7 +207,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public AgreementPage termAndConditionsClick(){
         logger.info("Clicking on Terms and Conditions Link...");
         PageUtils.waitImplicitly(1000);
-        if(countryPar == "COLOMBIA"){
+        if(countryPar.equals("COLOMBIA")){
             terminosCondiciones = driver.findElement(By.cssSelector("div:nth-child(1) > label > a:nth-child(3)"));
         }
         terminosCondiciones.click();
