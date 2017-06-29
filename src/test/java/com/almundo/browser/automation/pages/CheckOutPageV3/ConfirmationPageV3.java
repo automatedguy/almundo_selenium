@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_V3_MSG;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 
 
 /**
@@ -40,6 +41,7 @@ public class ConfirmationPageV3 extends BasePage {
                 return true;
             } else {
                 logger.info("Reservation Failed! :( ");
+                setResultSauceLabs(FAILED);
                 return false;
             }
         } else {
