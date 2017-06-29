@@ -72,9 +72,9 @@ public class FlowTest extends TestBaseSetup {
         tripsDetailPage.clickVerHabitacionBtn();
 
         dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_female_native");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
