@@ -246,6 +246,18 @@
                 "nationality": "México"
             },
 
+            "child_female_native_trips_domestic": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
+                "document_number": "29098757",
+                "document_emisor": "México",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "México"
+            },
+
             "baby_male_native": {
                 "first_name": "Rosemary's",
                 "last_name": "Baby",

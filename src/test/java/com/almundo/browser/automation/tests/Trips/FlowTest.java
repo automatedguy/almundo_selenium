@@ -144,7 +144,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native_trips");
+        dataManagement.getPassengerData("child_female_native_trips_domestic");
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
