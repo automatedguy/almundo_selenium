@@ -91,7 +91,7 @@ public class TripsDataTrip extends BasePage {
             List<WebElement> dropDownList = driver.findElements(By.cssSelector(".row-yougers-details>.input--block"));
             for(int i=0; i<childs; i++) {
                 Random rand = new Random();
-                int randomNum = rand.nextInt((17 - 1) + 1) + 1;
+                int randomNum = rand.nextInt((11 - 1) + 1) + 1; //change child age < 12 (issue between flight and hotel)
                 Select dropdown = new Select (dropDownList.get(i));
                 dropdown.selectByVisibleText(String.valueOf(randomNum));
             }
