@@ -1,7 +1,7 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,23 +32,8 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
     @FindBy(css = ".option-section input[value='transfer']")
     public WebElement trasnferRb;
 
-    @FindBy(css = ".card-container-1")
-    public WebElement credit_card_container_1;
-
-    @FindBy(css = ".card-container-2")
-    public WebElement credit_card_container_2;
-
     @FindBy(id = "several-cards")
     public WebElement serveralCardsCbx;
-
-    @FindBy(id = "cbo_credit_card")
-    private WebElement creditCardDdl;
-
-    @FindBy(id = "cbo_financial_entity")
-    public WebElement bankDdl;
-
-    @FindBy(id = "cbo_installment")
-    public WebElement paymentDdl;
 
     @FindBy(css = "credit-card-form > div > div > div > div:nth-child(3) > div > input")
     public WebElement card_holder;
@@ -68,12 +53,6 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
     @FindBy(css = "credit-card-form > div > div > div > div:nth-child(4) > div:nth-child(2) > input")
     private WebElement security_code;
 
-    @FindBy(id = "documentType")
-    private WebElement documentType;
-
-    @FindBy(id = "document_number")
-    private WebElement document_number;
-
     public PaymentSelectorV3 paymentSelectorV3() {
         return initPaymentSelectorV3();
     }
@@ -82,6 +61,10 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
 
     public PaymentSectionComboV3 populatePaymentSectionV3(String paymentData, String container) {
         dataManagement.getPaymentList();
+
+        WebElement creditCardDdl =  driver.findElement(By.cssSelector(container + " #cbo_credit_card"));
+        WebElement bankDdl =  driver.findElement(By.cssSelector(container + " #cbo_financial_entity"));
+        WebElement paymentDdl =  driver.findElement(By.cssSelector(container + " #cbo_installment"));
 
         Select creditCardSelect = new Select(creditCardDdl);
         Select bankSelect = new Select(bankDdl);
@@ -121,22 +104,12 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public void clickSeveralCardsCbx () {
-        if (!serveralCardsCbx.isSelected()) {
-            logger.info("Clicking on [Con 2 Tarjetas] checkbox");
-            serveralCardsCbx.click();
-        }
-        PageUtils.waitElementForVisibility(driver, credit_card_container_1, 15, "Card container 1");
-        PageUtils.waitElementForVisibility(driver, credit_card_container_2, 15, "Card container 2");
-    }
-
     private void setCreditCardCombo(Select creditCardSelect, String cardName) {
         logger.info("Selecting Card: [" + cardName + "]");
         creditCardSelect.selectByVisibleText(cardName);
     }
 
     private void setBankCombo(Select bankSelect, String bankName) {
-
         switch(bankName){
             case "random":
                 int random;

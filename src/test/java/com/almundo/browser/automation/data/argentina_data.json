@@ -272,6 +272,18 @@
 				"nationality": "Argentina"
 			},
 
+			"child_female_native_trips": {
+				"first_name": "Ñímis",
+				"last_name": "O' Tool",
+				"documentType": "DNI",
+				"document_number": "29098666",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/2010",
+				"gender": "Femenino",
+				"nationality": "Argentina"
+			},
+
 			"baby_male_passport_native": {
 				"first_name": "Rosemary's",
 				"last_name": "Baby",

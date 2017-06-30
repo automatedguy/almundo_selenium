@@ -116,7 +116,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
-        //TODO: Remove productCheckOutPage parameters and calls
         getCheckOutPageElements(productCheckOutPage);
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
@@ -140,10 +139,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
 
         creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
-
         passengerSection().populatePassengerSection(passengerList);
-        //TODO: Refactor for Cars (when migrated to checkout V3)
-        //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();
@@ -185,8 +181,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
 
         passengerSection().populatePassengerSection(passengerList);
-        //TODO: Refactor for Cars (when migrated to checkout V3)
-        //pickUpLocationSection().populatePickUpLocationSection();
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();
