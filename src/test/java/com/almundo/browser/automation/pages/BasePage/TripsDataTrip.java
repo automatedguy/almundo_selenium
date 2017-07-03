@@ -93,6 +93,7 @@ public class TripsDataTrip extends BasePage {
                 Select dropdown = new Select (dropDownList.get(i));
                 int randomNum = getRandomNumberInRange(2, 11); //change child age < 12 (issue between flight and hotel)
                 dropdown.selectByVisibleText(String.valueOf(randomNum));
+                logger.info("Adding: [1 child - Age: " + randomNum + "]" );
             }
         }
         listoBtn.click();
