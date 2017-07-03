@@ -15,8 +15,6 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.Map;
 
-import static com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3.apikeyHeader;
-
 /**
  * Created by gabi on 13/04/17.
  */
@@ -25,6 +23,7 @@ public class InputDefinitions extends TestBaseSetup{
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     private String url = null;
     private JSONObject jsonObject;
+    public static Apikeys apikeys = new Apikeys();
 
     public InputDefinitions(String URL) throws IOException, ParseException {
         url = URL;
@@ -52,7 +51,7 @@ public class InputDefinitions extends TestBaseSetup{
 
     private HttpGet createHttpRequest() throws IOException {
         HttpGet httpGetRequest = new HttpGet(url);
-        httpGetRequest.setHeader("X-Apikey", apikeyHeader);
+        httpGetRequest.setHeader("X-Apikey", apikeys.getApiKey(baseURL));
         httpGetRequest.setHeader("Version", "v3");
         return httpGetRequest;
     }

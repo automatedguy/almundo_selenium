@@ -578,6 +578,10 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, AgreementPage.class);
     }
 
+    protected CarsOfficeModal initCarsOfficeModal(){
+        return PageFactory.initElements(driver, CarsOfficeModal.class);
+    }
+
     /*************************** AlmundoTrips Inits ***********************/
 
     protected Home initHome(){

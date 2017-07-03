@@ -22,13 +22,11 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ONE_WAY;
 import static com.almundo.browser.automation.utils.Constants.Products.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
-import static com.almundo.browser.automation.utils.Constants.TRIPS_URL;
-import static com.almundo.browser.automation.utils.PageUtils.randomString;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 16/06/17.

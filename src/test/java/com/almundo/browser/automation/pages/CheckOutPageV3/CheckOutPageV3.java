@@ -4,7 +4,6 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
-import com.almundo.browser.automation.utils.sevices.Apikeys;
 import com.almundo.browser.automation.utils.sevices.InputDefinitions;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -30,8 +29,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public static JSONObject checkOutPageElements = null;
     public DataManagement dataManagement = new DataManagement();
 
-    public static String apikeyHeader =  null;
-    public static Apikeys apikeys = new Apikeys();
     public static InputDefinitions inputDef = null;
 
     private boolean todoPagoStc = false;
@@ -217,9 +214,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     private void setInputDef() {
         try {
-            String currentUrl = driver.getCurrentUrl();
-            apikeyHeader = apikeys.getApiKey(currentUrl);
-            if(baseURL.contains(STAGING_URL)) {
+             if(baseURL.contains(STAGING_URL)) {
                 inputDef = new InputDefinitions(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
             } else{
                 inputDef = new InputDefinitions(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");

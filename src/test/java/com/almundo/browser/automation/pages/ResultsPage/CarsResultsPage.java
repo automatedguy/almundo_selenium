@@ -55,6 +55,15 @@ public class CarsResultsPage extends TestBaseSetup {
         displayCarRatesInfo(index);
     }
 
+    public CarsOfficeModal clickSeleccionarOficinas(int index) {
+        PageUtils.waitListContainResults(driver, ".see-offices", 0);
+        List<WebElement> selectOfficeButtonResults = driver.findElements(By.cssSelector(".see-offices"));
+        PageUtils.waitElementForClickable(driver, selectOfficeButtonResults.get(index), 20, "Seleccionar Oficinas button");
+        logger.info("Clicking on Seleccionar Oficinas button");
+        selectOfficeButtonResults.get(index).click();
+        return initCarsOfficeModal();
+    }
+
     public CheckOutPageV3 clickReservarAhoraBtn(int index) {
         PageUtils.waitUrlContains(driver, 10, "results", "Results url");
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");

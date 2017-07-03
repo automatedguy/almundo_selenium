@@ -87,6 +87,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
             if (results.get(i).getText().equals(qty)) {
                 logger.info("Selecting Payment Quantity: [" + qty + "]");
                 PageUtils.scrollToElement(driver, results.get(i));
+                PageUtils.waitImplicitly(2000);
                 results.get(i).click();
                 break;
             }
