@@ -33,6 +33,7 @@ public class PaymentSelectorV3 extends BasePage {
     public PaymentSelectorV3 selectOneCreditCardRdb(){
         logger.info("Selecting payment with one credit card");
         oneCreditCardRdb.click();
+        waitImplicitly(4000);
         return this;
     }
 

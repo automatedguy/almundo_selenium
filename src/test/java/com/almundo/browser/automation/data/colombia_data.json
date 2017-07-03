@@ -236,6 +236,30 @@
                 "nationality": "Colombia"
             },
 
+            "child_female_native_trips": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
+                "document_number": "29098757",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "Colombia"
+            },
+
+            "child_female_native_trips_domestic": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
+                "document_number": "29098757",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "Colombia"
+            },
+
             "baby_malenative": {
                 "first_name": "Rosemary's",
                 "last_name": "Baby",
