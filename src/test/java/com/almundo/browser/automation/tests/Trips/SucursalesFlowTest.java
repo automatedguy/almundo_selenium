@@ -63,7 +63,7 @@ public class SucursalesFlowTest extends TestBaseSetup {
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData("child_female_native_trips_domestic");
 
         checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
                                           dataManagement.getPaymentData("transfer"),
