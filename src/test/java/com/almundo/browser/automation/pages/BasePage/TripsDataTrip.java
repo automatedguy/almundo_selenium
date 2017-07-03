@@ -1,7 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
-import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
-import java.util.Random;
+
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by leandro.efron on 6/12/2016.
@@ -55,7 +55,7 @@ public class TripsDataTrip extends BasePage {
     //############################################### Actions ###############################################
 
     public TripsDataTrip setOrigin(String origin, String originFull) {
-        PageUtils.waitElementForVisibility(driver, originTripsTxt, 10, "Origin text field");
+        waitElementForVisibility(driver, originTripsTxt, 10, "Origin text field");
         logger.info("Entering Trips Origin: [" + originFull + "]");
         originTripsTxt.clear();
         originTripsTxt.sendKeys(origin);
@@ -64,7 +64,7 @@ public class TripsDataTrip extends BasePage {
     }
 
     public TripsDataTrip setDestination(String destination, String destinationFull) {
-        PageUtils.waitElementForVisibility(driver, destinationTripsTxt, 10, "Destination text field");
+        waitElementForVisibility(driver, destinationTripsTxt, 10, "Destination text field");
         logger.info("Entering Trips Destination: [" + destinationFull + "]");
         destinationTripsTxt.clear();
         destinationTripsTxt.sendKeys(destination);
@@ -90,9 +90,8 @@ public class TripsDataTrip extends BasePage {
 
             List<WebElement> dropDownList = driver.findElements(By.cssSelector(".row-yougers-details>.input--block"));
             for(int i=0; i<childs; i++) {
-                Random rand = new Random();
-                int randomNum = rand.nextInt((11 - 1) + 1) + 1; //change child age < 12 (issue between flight and hotel)
                 Select dropdown = new Select (dropDownList.get(i));
+                int randomNum = getRandomNumberInRange(2, 11); //change child age < 12 (issue between flight and hotel)
                 dropdown.selectByVisibleText(String.valueOf(randomNum));
             }
         }
