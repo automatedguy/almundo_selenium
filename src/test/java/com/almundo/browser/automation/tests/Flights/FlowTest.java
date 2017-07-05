@@ -39,8 +39,6 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getFlightsItineraryData();
     }
 
-
-
     @BeforeMethod
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
