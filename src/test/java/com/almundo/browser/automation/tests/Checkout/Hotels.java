@@ -42,7 +42,7 @@ public class Hotels extends TestBaseSetup {
     }
 
     private void getPassengersData(){
-        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
     }
 
