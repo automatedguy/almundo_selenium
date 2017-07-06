@@ -269,7 +269,7 @@ public class TestBaseSetup {
         logger.info("Current Saucelabs Session Id: " + id);
         sessionId.set(id);
     }
-    
+
     @AfterMethod
     public void tearDown() {
         try {
