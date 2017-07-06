@@ -2,14 +2,12 @@ package com.almundo.browser.automation.tests.Checkout;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
-import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
@@ -32,21 +30,14 @@ public class Flights extends TestBaseSetup {
         dataManagement.getContactList();
     }
 
-    @BeforeMethod
-    private void closeLoginPopUp(){
-        LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.clickCloseLoginBtn();
-    }
-
     @AfterMethod
     private void cleanPassengerJsonList() {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
     private CheckOutPageV3 openCart(String cartId, String parameters){
-        String currentURL = driver.getCurrentUrl();
-        logger.info("Opening checkout page with URL: " + currentURL + "checkout/" + cartId +  productURl + parameters);
-        driver.navigate().to( currentURL + "checkout/" + cartId + productURl + parameters);
+        logger.info("Opening checkout page with URL: " + baseURL + "checkout/" + cartId +  productURl + parameters);
+        driver.navigate().to( baseURL + "checkout/" + cartId + productURl + parameters);
         return initCheckOutPageV3();
     }
 

@@ -79,7 +79,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("COLOMBIA") String country,
+                                        @Optional("ARGENTINA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
@@ -169,15 +169,19 @@ public class TestBaseSetup {
                 this.initSauceLabsDriver(method);
             }
 
-            logger.info("Navigating to baseURL: [" + baseURL + "]");
-            driver.navigate().to(baseURL);
+            if(cartId.isEmpty()) {
+                logger.info("Navigating to baseURL: [" + baseURL + "]");
+                driver.navigate().to(baseURL);
 
-            if(landingEnabled) {
-                LandingPage landingPage = initLandingPage();
-                logger.info("Selecting country page: [" + countryPar + "]");
-                basePage = landingPage.selectCountryPage(countryPar);
+                if (landingEnabled) {
+                    LandingPage landingPage = initLandingPage();
+                    logger.info("Selecting country page: [" + countryPar + "]");
+                    basePage = landingPage.selectCountryPage(countryPar);
+                } else {
+                    basePage = initBasePage();
+                }
             } else {
-                basePage = initBasePage();
+                logger.info("cartId was provided, hence avoiding baseUrl navigation.");
             }
 
         } catch (Exception e) {
