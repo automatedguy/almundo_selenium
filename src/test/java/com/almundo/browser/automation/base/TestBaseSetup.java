@@ -11,7 +11,6 @@ import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
 import org.apache.log4j.Logger;
@@ -37,7 +36,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static com.almundo.browser.automation.utils.Constants.*;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 public class TestBaseSetup {
 
@@ -73,7 +71,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STAGING_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -271,27 +269,7 @@ public class TestBaseSetup {
         logger.info("Current Saucelabs Session Id: " + id);
         sessionId.set(id);
     }
-
-    private void initBrowserStackDriver(String methodName) throws Exception {
-        String USERNAME = "almundoautomatio1";
-        String ACCESS_KEY = "js5ijJ8iVtgeru8s1ULs";
-        String url = "https://" + USERNAME + ":" + ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
-        DesiredCapabilities caps = new DesiredCapabilities();
-
-        caps.setCapability("browser", "Firefox");
-        caps.setCapability("browser_version", "52.0");
-        if (os.contains("OSX")) caps.setCapability("os", "OS X");
-        else caps.setCapability("os", "Windows");
-        caps.setCapability("os_version", "10");
-        caps.setCapability("resolution", "1280x1024");
-
-        String className = getClass().getName().replace("com.almundo.browser.automation.tests.Flights.", "");
-        caps.setCapability("name", className + " - " + methodName);
-
-        driver = new RemoteWebDriver(new URL(url), caps);
-    }
-
-
+    
     @AfterMethod
     public void tearDown() {
         try {
@@ -342,81 +320,6 @@ public class TestBaseSetup {
         logger.info("-------------------------------------------------------------------------------------");
     }
 
-    public void forceCheckoutV3(){
-        try{
-            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
-        } catch(Exception time) {
-            logger.info("Forcing Checkout to V3");
-            String newURL = driver.getCurrentUrl().replace("cart/v2", "checkout");
-            driver.navigate().to(newURL);
-        }
-    }
-
-    public void forceCombosV3(){
-        try{
-            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
-            String newURL = null;
-            logger.info("Forcing Checkout to Combos V3");
-            String currentUrl = driver.getCurrentUrl();
-
-            if(currentUrl.contains("sc=0")) {
-                logger.info("Replacing sc=0 with sc=1");
-                newURL = currentUrl.replace("sc=0", "sc=1");
-                driver.navigate().to(newURL);
-            } else if(currentUrl.contains("sc=1")) {
-                logger.info("Nothing to replace, combos are displayed");
-            } else {
-                logger.info("Adding sc=1");
-                newURL = currentUrl.concat("&sc=1");
-                driver.navigate().to(newURL);
-            }
-
-            if(countryPar.equals("ARGENTINA") && (!method.contains("Trips") || !method.contains("trips"))) {
-                if (!newURL.contains("&svd=1")) {
-                    logger.info("Adding &svd=1...");
-                    if (!newURL.contains("&svd=0")) {
-                        newURL = newURL.concat("&svd=1");
-                        driver.navigate().to(newURL);
-                    } else {
-                        newURL = newURL.replace("&svd=0", "&svd=1");
-                        driver.navigate().to(newURL);
-                    }
-                } else {
-                    logger.info("&svd=1 query is present in the URL.");
-                }
-            }
-
-
-        } catch(Exception time) {
-            time.printStackTrace();
-        }
-    }
-
-    public void forceTodoPagoOff(){
-        try{
-            PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
-            logger.info("Forcing Checkout to disable TodoPago");
-            String currentUrl = driver.getCurrentUrl();
-
-            if(currentUrl.contains("stp=1")) {
-                logger.info("Replacing stp=1 with stp=0");
-                String newURL = currentUrl.replace("stp=1", "stp=0");
-                PageUtils.waitImplicitly(5000);
-                driver.navigate().to(newURL);
-            } else {
-                logger.info("Nothing to replace, Todo Pago is not displayed");
-            }
-        } catch(Exception time) {
-            time.printStackTrace();
-        }
-    }
-
-    public Dashboard goToTrippersDashboard(){
-        driver.navigate().to("https://staging.almundo.com.ar/trips/dashboard/311");
-        waitImplicitly(5000);
-        return initTripsDashboard();
-    }
-
     //################################################ Tests Results ########################################
 
     public void setResultSauceLabs(Results result) {
@@ -452,10 +355,6 @@ public class TestBaseSetup {
 
     protected BasePage initGoogleLoginPopUpEmail() {
         return PageFactory.initElements(driver, GoogleLoginPopUpEmail.class);
-    }
-
-    protected BasePage initGoogleLoginPopUpPasswd() {
-        return PageFactory.initElements(driver, GoogleLoginPopUpPasswd.class);
     }
 
     protected HotelsDataTrip initHotelsDataTrip() {

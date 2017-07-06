@@ -41,6 +41,13 @@ public class Flights extends TestBaseSetup {
         return initCheckOutPageV3();
     }
 
+    private void getPassengersData(){
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_male_native");
+
+    }
+
     /************************ Test Area ************************/
 
     @Test
@@ -48,9 +55,25 @@ public class Flights extends TestBaseSetup {
         logTestTitle("Flights – Grid With Todo Pago " + countryPar );
         checkOutPageV3 = openCart(cartId, "");
 
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("child_male_native");
+        getPassengersData();
+
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "FlightsCheckOutPageInternational");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
+    public void comboWithTodoPago() {
+        logTestTitle("Flights – Combo With Todo Pago " + countryPar );
+        checkOutPageV3 = openCart(cartId, "&sc=1");
+
+        getPassengersData();
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                 "1_visa_visa",
