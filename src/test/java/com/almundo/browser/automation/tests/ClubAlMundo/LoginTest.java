@@ -65,7 +65,7 @@ public class LoginTest extends TestBaseSetup {
         Assert.assertTrue((PageUtils.equalLists(actualList, expectedList, driver)), "Displayed options are not correct");
 
         logger.info("Logging out user");
-        basePage.headerSection().clickMyAccountMenuOption("Cerrar sesion");
+        basePage.headerSection().clickMyAccountMenuOption("Cerrar sesión");
         PageUtils.waitImplicitly(4000);
 
         logger.info("Validating user is logged out");
