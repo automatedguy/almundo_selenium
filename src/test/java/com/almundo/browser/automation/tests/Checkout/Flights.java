@@ -35,12 +35,6 @@ public class Flights extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
-    private CheckOutPageV3 openCart(String cartId, String parameters){
-        logger.info("Opening checkout page with URL: " + baseURL + "checkout/" + cartId +  productURl + parameters);
-        driver.navigate().to( baseURL + "checkout/" + cartId + productURl + parameters);
-        return initCheckOutPageV3();
-    }
-
     private void getPassengersData(){
         logger.info("Getting Passenger Data.");
         dataManagement.getPassengerData("adult_male_native");
@@ -53,7 +47,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridWithTodoPago() {
         logTestTitle("Flights – Grid With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "");
+        checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
 
@@ -71,7 +65,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridExplicitWithTodoPago() {
         logTestTitle("Flights – Grid (explicit) With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=0");
+        checkOutPageV3 = openCart(cartId, "&sc=0", productURl);
 
         getPassengersData();
 
@@ -89,7 +83,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridExplicitWithTodoPagoExplicit() {
         logTestTitle("Flights – Grid (explicit) With Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=0&stp=1");
+        checkOutPageV3 = openCart(cartId, "&sc=0&stp=1", productURl);
 
         getPassengersData();
 
@@ -107,7 +101,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridWithoutTodoPagoExplicit() {
         logTestTitle("Flights – Grid Without Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&stp=0");
+        checkOutPageV3 = openCart(cartId, "&stp=0", productURl);
 
         getPassengersData();
 
@@ -125,7 +119,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridWithDebitExplicitWithTodoPago() {
         logTestTitle("Flights – Grid With Debit (explicit)  With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&svd=1");
+        checkOutPageV3 = openCart(cartId, "&svd=1", productURl);
 
         getPassengersData();
 
@@ -143,7 +137,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridExplicitWithDebitExplicitWithTodoPago() {
         logTestTitle("Flights – Grid (explicit)  With Debit (explicit)  With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=0&svd=1");
+        checkOutPageV3 = openCart(cartId, "&sc=0&svd=1", productURl);
 
         getPassengersData();
 
@@ -161,7 +155,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridExplicitWithDebitExplicitWithTodoPagoExplicit() {
         logTestTitle("Flights – Grid (explicit)  With Debit (explicit)  With Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=0&svd=1&stp=1");
+        checkOutPageV3 = openCart(cartId, "&sc=0&svd=1&stp=1", productURl);
 
         getPassengersData();
 
@@ -179,7 +173,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridWithDebitExplicitWithoutTodoPago() {
         logTestTitle("Flights – Grid With Debit (explicit) Without Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&svd=1&stp=0");
+        checkOutPageV3 = openCart(cartId, "&svd=1&stp=0", productURl);
 
         getPassengersData();
 
@@ -197,7 +191,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void  gridWithoutDebitExplicitWithTodoPago() {
         logTestTitle("Flights – Grid Without Debit (explicit) Without Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&svd=0");
+        checkOutPageV3 = openCart(cartId, "&svd=0", productURl);
 
         getPassengersData();
 
@@ -215,7 +209,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void gridWithoutDebitExplicitWithoutTodoPagoExplicit() {
         logTestTitle("Flights – Grid Without Debit (explicit) Without Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&svd=0&stp=0");
+        checkOutPageV3 = openCart(cartId, "&svd=0&stp=0", productURl);
 
         getPassengersData();
 
@@ -235,7 +229,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithTodoPago() {
         logTestTitle("Flights – Combo With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1");
+        checkOutPageV3 = openCart(cartId, "&sc=1", productURl);
 
         getPassengersData();
 
@@ -253,7 +247,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithTodoPagoExplicit() {
         logTestTitle("Flights – Combo With Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&stp=1");
+        checkOutPageV3 = openCart(cartId, "&sc=1&stp=1", productURl);
 
         getPassengersData();
 
@@ -271,7 +265,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithoutTodoPago() {
         logTestTitle("Flights – Combo Without Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&stp=0");
+        checkOutPageV3 = openCart(cartId, "&sc=1&stp=0", productURl);
 
         getPassengersData();
 
@@ -289,7 +283,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithDebitExplicitWithTodoPago() {
         logTestTitle("Flights – Combo With Debit (explicit) With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&svd=1");
+        checkOutPageV3 = openCart(cartId, "&sc=1&svd=1", productURl);
 
         getPassengersData();
 
@@ -307,7 +301,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithDebitExplicitWithTodoPagoExplicit() {
         logTestTitle("Flights – Combo With Debit (explicit) With Todo Pago  (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&svd=1&stp=1");
+        checkOutPageV3 = openCart(cartId, "&sc=1&svd=1&stp=1", productURl);
 
         getPassengersData();
 
@@ -325,7 +319,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithDebitExplicitWithoutTodoPagoExplicit() {
         logTestTitle("Flights – Combo With Debit (explicit) Without Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&svd=1&stp=0");
+        checkOutPageV3 = openCart(cartId, "&sc=1&svd=1&stp=0", productURl);
 
         getPassengersData();
 
@@ -343,7 +337,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithoutDebitExplicitWithTodoPago() {
         logTestTitle("Flights – Combo Without Debit (explicit) With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&svd=0");
+        checkOutPageV3 = openCart(cartId, "&sc=1&svd=0", productURl);
 
         getPassengersData();
 
@@ -361,7 +355,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithoutDebitExplicitWithTodoPagoExplicit() {
         logTestTitle("Flights – Combo Without Debit (explicit) With Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&svd=0&stp=1");
+        checkOutPageV3 = openCart(cartId, "&sc=1&svd=0&stp=1", productURl);
 
         getPassengersData();
 
@@ -379,7 +373,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void comboWithoutDebitExplicitWithoutTodoPagoExplicit() {
         logTestTitle("Flights – Combo Without Debit (explicit) Without Todo Pago (explicit) " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1&svd=0&stp=0");
+        checkOutPageV3 = openCart(cartId, "&sc=1&svd=0&stp=0", productURl);
 
         getPassengersData();
 

@@ -35,12 +35,6 @@ public class Hotels extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
-    private CheckOutPageV3 openCart(String cartId, String parameters){
-        logger.info("Opening checkout page with URL: " + baseURL + "checkout/" + cartId +  productURl + parameters);
-        driver.navigate().to( baseURL + "checkout/" + cartId + productURl + parameters);
-        return initCheckOutPageV3();
-    }
-
     private void getPassengersData(){
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
@@ -51,7 +45,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void gridWithTodoPago() {
         logTestTitle("Hotels – Grid With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "");
+        checkOutPageV3 = openCart(cartId, "", productURl);
 
         getPassengersData();
 
@@ -69,7 +63,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void comboWithTodoPago() {
         logTestTitle("Hotels – Combo With Todo Pago " + countryPar );
-        checkOutPageV3 = openCart(cartId, "&sc=1");
+        checkOutPageV3 = openCart(cartId, "&sc=1", productURl);
 
         getPassengersData();
 
