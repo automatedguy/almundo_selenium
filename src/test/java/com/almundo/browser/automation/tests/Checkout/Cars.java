@@ -20,7 +20,7 @@ public class Cars extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
     private CheckOutPageV3 checkOutPageV3 = null;
     private ConfirmationPageV3 confirmationPageV3 = null;
-    private final String productURl = "";
+    private final String productURl = "?product=cars";
 
     @BeforeClass
     private void initDataLists() {
