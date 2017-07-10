@@ -117,7 +117,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
 
-        if(paymentSelectorSvd){
+        if(paymentSelectorSvd && !countryPar.equals("COLOMBIA")){
             paymentSelectorV3().selectOneCreditCardRdb();
         } else {
                 if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
