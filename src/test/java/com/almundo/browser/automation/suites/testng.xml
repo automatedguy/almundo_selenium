@@ -17,6 +17,8 @@
             <!--Checkout-->
             <class name="com.almundo.browser.automation.tests.Checkout.Flights"/>
             <class name="com.almundo.browser.automation.tests.Checkout.Hotels"/>
+            <class name="com.almundo.browser.automation.tests.Checkout.Cars"/>
+            <class name="com.almundo.browser.automation.tests.Checkout.Trips"/>
 
             <!--Club AlMundo-->
             <class name="com.almundo.browser.automation.tests.ClubAlMundo.LoginTest"/>
