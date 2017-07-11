@@ -69,7 +69,7 @@ public class LoginTest extends TestBaseSetup {
         PageUtils.waitImplicitly(4000);
 
         logger.info("Validating user is logged out");
-        Assert.assertTrue(isElementClickable(driver, basePage.headerSection().textLoggedOutLnk, 10, "Login Link (from header)"));
+        Assert.assertTrue(isElementClickable(driver, basePage.headerSection().myAccountMenuLnk, 10, "Login Link (from header)"));
 
         setResultSauceLabs(PASSED);
     }
