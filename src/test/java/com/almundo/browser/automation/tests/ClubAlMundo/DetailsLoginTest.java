@@ -24,6 +24,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 import static com.almundo.browser.automation.utils.PageUtils.userNameOk;
 
 /**
@@ -118,6 +119,8 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -156,5 +159,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
+
+        setResultSauceLabs(PASSED);
     }
 }
