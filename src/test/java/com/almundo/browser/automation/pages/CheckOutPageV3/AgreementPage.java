@@ -69,7 +69,7 @@ public class AgreementPage extends CheckOutPageV3 {
 
     private String getAgreement(){
         logger.info("Getting The Agreement Text From Page For Comparison.");
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".epp-ctn.cover-top>h1"),10, "Agreement Text.");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(".epp-ctn--lg.info"),10, "Agreement Text.");
         return agreementInfo.getText().replace(" ","");
     }
 
