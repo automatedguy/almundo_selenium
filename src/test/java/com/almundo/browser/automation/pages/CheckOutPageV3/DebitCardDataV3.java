@@ -1,9 +1,13 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForVisibility;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
  * Created by gabrielcespedes on 28/06/17.
@@ -13,6 +17,8 @@ public class DebitCardDataV3 extends CheckOutPageV3 {
     public DebitCardDataV3(WebDriver driver) {
         super(driver);
     }
+
+    JSONObject paymentDataObject = new JSONObject();
 
     /************************** Locators ***********************/
 
@@ -98,6 +104,24 @@ public class DebitCardDataV3 extends CheckOutPageV3 {
     private DebitCardDataV3 enterEmail(String email){
         logger.info("Entering [E-mail]: [" + email + "]");
         emailTxt.sendKeys(email);
+        return this;
+    }
+
+    public DebitCardDataV3 populateDebitCardData(String paymentData){
+        logger.info("Getting payment data for: " + "[" + paymentData + "]");
+        dataManagement.getPaymentList();
+        paymentDataObject = dataManagement.getPaymentData(paymentData);
+        waitElementForVisibility(driver, medioDePagoDdl, 5, "Debit Card Section.");
+        waitImplicitly(2000);
+        selectMedioDePago(paymentDataObject.get("Medio_de_pago").toString());
+        selectBanco(paymentDataObject.get("Banco").toString());
+        enterNumeroDeTarjeta(paymentDataObject.get("Numero_de_tarjeta").toString());
+        enterTitularDeLaTarjeta(paymentDataObject.get("Titular_de_la_tarjeta").toString());
+        enterFechVencMes(paymentDataObject.get("Fecha_de_vencimiento_mes").toString());
+        enterFechVenAno(paymentDataObject.get("Fecha_de_vencimiento_ano").toString());
+        enterTipoDeDocumento(paymentDataObject.get("Tipo_de_doc").toString());
+        enterNumeroDeDocumento(paymentDataObject.get("Numero_de_doc").toString());
+        enterEmail(paymentDataObject.get("E-mail").toString());
         return this;
     }
 }

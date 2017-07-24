@@ -25,7 +25,7 @@ public class PaymentSelectorV3 extends BasePage {
     @FindBy(css = "#lblPaymentOption12")
     private WebElement twoCreditCardsRdb;
 
-    @FindBy(css =".ng-pristine.ng-empty.ng-invalid.ng-invalid-required.ng-touched")
+    @FindBy(css ="#lblPaymentOption2")
     private WebElement visaDebit;
 
     /**************************** Actions **********************************/

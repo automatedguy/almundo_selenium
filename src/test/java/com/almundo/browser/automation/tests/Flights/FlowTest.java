@@ -53,6 +53,47 @@ public class FlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
+
+/*    @Test
+    public void debit_OneWay_Int_Booking_Flow() {
+        logTestTitle("Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - " + countryPar );
+
+        dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
+
+        flightsDataTrip.selectFlightType(ONE_WAY.toString());
+        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
+        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
+        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "visa_debit",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "FlightsCheckOutPageInternational");
+
+        agreementPage = checkOutPageV3.termAndConditionsClick();
+        Assert.assertTrue(agreementPage.agreementUrlOk());
+        Assert.assertTrue(agreementPage.agreementOk());
+        agreementPage.closeAgreementPage();
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }*/
+
     @Test
     public void oneWay_Int_Booking_Flow() {
         logTestTitle("Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - " + countryPar );

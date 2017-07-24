@@ -117,25 +117,27 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
 
-        if(paymentSelectorSvd && !countryPar.equals("COLOMBIA")){
-            paymentSelectorV3().selectOneCreditCardRdb();
-        } else {
+        if(!paymentData.contains("debit")) {
+            if (paymentSelectorSvd && !countryPar.equals("COLOMBIA")) {
+                paymentSelectorV3().selectOneCreditCardRdb();
+            } else {
                 if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
                     paymentSelectorV3().selectOneCreditCardRdb();
                 }
+            }
+            if(creditCardComboSc){
+                paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+            } else{
+                paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+            }
+            creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
+        }
+        else{
+            setUrlParameter("&svd=1");
+            paymentSelectorV3().selectVisaDebit();
+            debitCardDataV3().populateDebitCardData(paymentData);
         }
 
-        if(creditCardComboSc){
-            paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-        } else{
-            paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-        }
-
-        if(todoPagoStc){
-            logger.warn("Todo Pago was Set!");
-        }
-
-        creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
         passengerSection().populatePassengerSection(passengerList);
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
@@ -251,6 +253,25 @@ public class CheckOutPageV3 extends TestBaseSetup {
             paymentSelectorSvd = true;
         }else { logger.info("[Selector de pago] is not enabled.");}
 
+    }
+
+    public CheckOutPageV3 setUrlParameter(String parameter){
+        logger.info("Adding Parameter: " + parameter);
+        String currentUrl = driver.getCurrentUrl();
+        if(currentUrl.contains(parameter)){
+            logger.info("Parameter: " + parameter + " is already set.");
+        }
+        else {
+            if (currentUrl.contains(parameter.substring(0, parameter.length()-1))) {
+                //TODO: come up with something.
+                driver.navigate().to(currentUrl.replaceAll(parameter + "(0)", "1 $1"));
+            }else {
+                logger.info("Refreshing page URL: " +  currentUrl+parameter);
+                driver.navigate().to(currentUrl+parameter);
+            }
+            getCheckoutUrl();
+        }
+        return initCheckOutPageV3();
     }
 
     private String getCheckoutUrl(){
