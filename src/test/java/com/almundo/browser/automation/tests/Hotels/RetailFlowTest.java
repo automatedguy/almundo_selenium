@@ -21,7 +21,7 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
  * Created by gabrielcespedes on 04/11/16.
  */
 
-public class SucursalesFlowTest extends TestBaseSetup {
+public class RetailFlowTest extends TestBaseSetup {
 
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;

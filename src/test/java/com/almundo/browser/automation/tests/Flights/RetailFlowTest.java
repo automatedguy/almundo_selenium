@@ -4,8 +4,8 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -21,12 +21,12 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
  * Created by gabrielcespedes on 04/11/16.
  */
 
-public class SucursalesFlowTest extends TestBaseSetup {
+public class RetailFlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
     private CheckOutPage checkOutPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
-    private ConfirmationPage confirmationPage = null;
+    private ConfirmationPageV3 confirmationPageV3 = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -110,6 +110,8 @@ public class SucursalesFlowTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_phone"),
                 "FlightsCheckOutPageInternationalSucursal");
 
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 }
