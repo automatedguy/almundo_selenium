@@ -300,7 +300,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if(baseURL.contains("ccr") || baseURL.contains("sucursales")){
             retailChannel = true;
             logger.info("Replacing [cart/v2] with [checkout]");
-            driver.navigate().to(getCartUrl().replace("cart/v2","checkout"));
+            if(!getCartUrl().contains("product=vuelohotel")) {
+                driver.navigate().to(getCartUrl().replace("cart/v2", "checkout"));
+            }
+            else{
+                driver.navigate().to(getCartUrl().replace("cart", "checkout"));
+            }
             getCheckoutUrl();
         }
         return this;
@@ -310,7 +315,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         String cartUrl = null;
         try{
             PageUtils.waitElementForVisibility(driver, By.cssSelector("#first_name0"),30, "Cart v2 Query String Parameters.");
-            PageUtils.waitUrlContains(driver, 10, "cart/v2", "Cart V2");
+            PageUtils.waitUrlContains(driver, 10, "cart", "Cart V1/V2");
             cartUrl =  driver.getCurrentUrl();
         } catch(Exception time) {
             logger.info("Cart V2 was not loaded.");

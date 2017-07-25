@@ -168,7 +168,20 @@
 				"childs": 1,
 				"childAgeRange": "Entre 2 y 11 años",
 				"rooms": 1
-			}
+			},
+
+		    "int02_20days_2adults_1room": {
+			"originAuto": "Bue",
+			"originFull": "Buenos Aires, Buenos Aires, Argentina",
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 20,
+			"adults": 2,
+			"childs": 0,
+			"childAgeRange": "Entre 2 y 11 años",
+			"rooms": 1
+		}
 	},
 
 	"cars": {
@@ -535,7 +548,7 @@
 			"password": "almundo12345",
 			"name": "Automation",
 			"externalUserId": "539797",
-			"id_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG11bmRvYXJnZW50aW5hMnN0QGdtYWlsLmNvbSIsImF1dGgiOltdLCJjcmVhdGVkIjoxNDk4NjcyNDI5ODIyLCJleHAiOjE1MTQyMjI0MjksImp0aSI6IjUzOTc5NyJ9.vLXp-foiHhOUp8CHdzjYh2U_zeo5H-e4mJuNyZN7DaM",
+			"id_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG11bmRvYXJnZW50aW5hMnN0QGdtYWlsLmNvbSIsImF1dGgiOltdLCJjcmVhdGVkIjoxNDk4NjcyNDI5ODIyLCJleHAiOjE1MTQyMjI0MjksImp0aSI6IjUzOTc5NyJ9.vLXp-foiHhOUp8CHdzjYh2U_zeo5H-e4mJuNyZN7DaM"
 		},
 
 		"google": {
