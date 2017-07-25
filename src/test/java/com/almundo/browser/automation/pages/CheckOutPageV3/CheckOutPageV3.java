@@ -2,6 +2,10 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.AgentSectionV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.CreditCardDataRetailV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.PaymentSectionComboRetailV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.PaymentSelectorRetailV3;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.InputDefinitions;
@@ -34,15 +38,22 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean todoPagoStc = false;
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
+    private boolean retailChannel = false;
 
 
     public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
 
+    public PaymentSelectorRetailV3 paymentSelectorRetailV3(){return initPaymentSelectorRetailV3();}
+
     public PaymentSectionComboV3 paymentSectionComboV3(){return initPaymentSectionComboV3();}
+
+    public PaymentSectionComboRetailV3 paymentSectionComboRetailV3(){return initPaymentSectionComboRetailV3();}
 
     public PaymentSectionGridV3 paymentSectionGridV3(){return initPaymentSectionGridV3();}
 
     public CreditCardDataV3 creditCardDataV3(){return initCreditCardDataV3();}
+
+    public CreditCardDataRetailV3 creditCardDataRetailV3(){return initCreditCardDataRetailV3();}
 
     public DebitCardDataV3 debitCardDataV3(){return initDebitCardDataV3();}
 
@@ -58,7 +69,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initContactInfoSectionV3();
     }
 
-
+    public AgentSectionV3 agentSectionV3(){return initAgentSectionV3();}
 
     //############################################### Locators ##############################################
 
@@ -108,39 +119,51 @@ public class CheckOutPageV3 extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
+    private void dealWithPaymentForm(String paymentData){
+        if(retailChannel){
+            paymentSelectorRetailV3().selectCreditRbd();
+            paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+            creditCardDataRetailV3().populateCreditCardData(paymentData);
+        }
+        else {
+            if (!paymentData.contains("debit")) {
+                if (paymentSelectorSvd && !countryPar.equals("COLOMBIA")) {
+                    paymentSelectorV3().selectOneCreditCardRdb();
+                } else {
+                    if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
+                        paymentSelectorV3().selectOneCreditCardRdb();
+                    }
+                }
+                if (creditCardComboSc) {
+                    paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+                } else {
+                    paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+                }
+                creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
+            } else {
+                setUrlParameter("&svd=1");
+                paymentSelectorV3().selectVisaDebit();
+                debitCardDataV3().populateDebitCardData(paymentData);
+            }
+        }
+    }
+
     public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
                                                  String paymentData,
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
+        replaceCartWithCheckout();
         getCheckOutPageElements(productCheckOutPage);
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
-
-        if(!paymentData.contains("debit")) {
-            if (paymentSelectorSvd && !countryPar.equals("COLOMBIA")) {
-                paymentSelectorV3().selectOneCreditCardRdb();
-            } else {
-                if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
-                    paymentSelectorV3().selectOneCreditCardRdb();
-                }
-            }
-            if(creditCardComboSc){
-                paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-            } else{
-                paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-            }
-            creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
-        }
-        else{
-            setUrlParameter("&svd=1");
-            paymentSelectorV3().selectVisaDebit();
-            debitCardDataV3().populateDebitCardData(paymentData);
-        }
-
+        dealWithPaymentForm(paymentData);
         passengerSection().populatePassengerSection(passengerList);
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
+        if(retailChannel){
+            agentSectionV3().setAgentEmail("gabriel.cespedes@almundo.com");
+        }
         acceptConditions();
         return this;
     }
@@ -210,7 +233,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     private void setInputDef() {
         try {
-             if(baseURL.contains(STAGING_URL)) {
+             if(baseURL.contains("st.almundo")) {
                 inputDef = new InputDefinitions(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
             } else{
                 inputDef = new InputDefinitions(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
@@ -232,7 +255,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void setCheckOutSections(String checkoutUrl){
-
         if(checkoutUrl.contains("svd=1")){
             logger.info("[svd=1] is enabled.");
             paymentSelectorSvd = true;
@@ -272,6 +294,29 @@ public class CheckOutPageV3 extends TestBaseSetup {
             getCheckoutUrl();
         }
         return initCheckOutPageV3();
+    }
+
+    public CheckOutPageV3 replaceCartWithCheckout(){
+        if(baseURL.contains("ccr") || baseURL.contains("sucursales")){
+            retailChannel = true;
+            logger.info("Replacing [cart/v2] with [checkout]");
+            driver.navigate().to(getCartUrl().replace("cart/v2","checkout"));
+            getCheckoutUrl();
+        }
+        return this;
+    }
+
+    private String getCartUrl(){
+        String cartUrl = null;
+        try{
+            PageUtils.waitElementForVisibility(driver, By.cssSelector("#first_name0"),30, "Cart v2 Query String Parameters.");
+            PageUtils.waitUrlContains(driver, 10, "cart/v2", "Cart V2");
+            cartUrl =  driver.getCurrentUrl();
+        } catch(Exception time) {
+            logger.info("Cart V2 was not loaded.");
+            setResultSauceLabs(FAILED);
+        }
+        return cartUrl;
     }
 
     private String getCheckoutUrl(){

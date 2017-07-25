@@ -53,8 +53,8 @@ public class FlowTest extends TestBaseSetup {
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
-
-/*    @Test
+/*
+    @Test
     public void debit_OneWay_Int_Booking_Flow() {
         logTestTitle("Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - " + countryPar );
 

@@ -7,6 +7,10 @@ import com.almundo.browser.automation.pages.AlmundoTrips.DataTrips.TripsHotelsDa
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.*;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.AgentSectionV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.CreditCardDataRetailV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.PaymentSectionComboRetailV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.PaymentSelectorRetailV3;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
@@ -71,7 +75,7 @@ public class TestBaseSetup {
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(CCR_STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -81,7 +85,7 @@ public class TestBaseSetup {
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("false") Boolean submit_Reservation,
+                                        @Optional("true") Boolean submit_Reservation,
                                         @Optional("false") Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -111,7 +115,8 @@ public class TestBaseSetup {
             e.printStackTrace();
         }
 
-        if(baseURL.equals(STAGING_URL) || baseURL.equals(RET_URL) || baseURL.equals(CCR_URL)) {
+        if(baseURL.equals(STAGING_URL) || baseURL.equals(RET_URL) || baseURL.equals(RET_STG_URL)
+                || baseURL.equals(CCR_URL) || baseURL.equals(CCR_STG_URL)) {
             switch (countryPar) {
                 case "ARGENTINA":
                     baseURL = baseURL.concat(".ar/");
@@ -411,12 +416,20 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, PaymentSectionComboV3.class);
     }
 
+    protected PaymentSectionComboRetailV3 initPaymentSectionComboRetailV3() {
+        return PageFactory.initElements(driver, PaymentSectionComboRetailV3.class);
+    }
+
     protected PaymentSectionGridV3 initPaymentSectionGridV3(){
         return PageFactory.initElements(driver, PaymentSectionGridV3.class);
     }
 
     protected CreditCardDataV3 initCreditCardDataV3(){
         return PageFactory.initElements(driver, CreditCardDataV3.class);
+    }
+
+    protected CreditCardDataRetailV3 initCreditCardDataRetailV3(){
+        return PageFactory.initElements(driver, CreditCardDataRetailV3.class);
     }
 
     protected DebitCardDataV3 initDebitCardDataV3(){
@@ -543,5 +556,13 @@ public class TestBaseSetup {
 
     protected PaymentSelectorV3 initPaymentSelectorV3(){
         return PageFactory.initElements(driver, PaymentSelectorV3.class);
+    }
+
+    protected PaymentSelectorRetailV3 initPaymentSelectorRetailV3(){
+        return PageFactory.initElements(driver, PaymentSelectorRetailV3.class);
+    }
+
+    protected AgentSectionV3 initAgentSectionV3(){
+        return PageFactory.initElements(driver, AgentSectionV3.class);
     }
 }

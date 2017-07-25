@@ -107,12 +107,16 @@ public class DebitCardDataV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public DebitCardDataV3 populateDebitCardData(String paymentData){
+    private JSONObject getPaymentData(String paymentData){
         logger.info("Getting payment data for: " + "[" + paymentData + "]");
         dataManagement.getPaymentList();
-        paymentDataObject = dataManagement.getPaymentData(paymentData);
+        return dataManagement.getPaymentData(paymentData);
+    }
+
+    public DebitCardDataV3 populateDebitCardData(String paymentData){
+        paymentDataObject = getPaymentData(paymentData);
         waitElementForVisibility(driver, medioDePagoDdl, 5, "Debit Card Section.");
-        waitImplicitly(2000);
+        waitImplicitly(3000);
         selectMedioDePago(paymentDataObject.get("Medio_de_pago").toString());
         selectBanco(paymentDataObject.get("Banco").toString());
         enterNumeroDeTarjeta(paymentDataObject.get("Numero_de_tarjeta").toString());
