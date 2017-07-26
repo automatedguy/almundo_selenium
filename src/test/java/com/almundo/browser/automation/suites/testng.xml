@@ -33,10 +33,10 @@
             <class name="com.almundo.browser.automation.tests.HomePage.BannersAndPromoBoxesTest"/>
 
             <!--Sucursales channel-->
-            <class name="com.almundo.browser.automation.tests.Hotels.SucursalesFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Flights.SucursalesFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Trips.SucursalesFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Cars.SucursalesFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Hotels.RetailFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Flights.RetailFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Trips.RetailFlowTest"/>
+            <class name="com.almundo.browser.automation.tests.Cars.RetailFlowTest"/>
 
             <!--Login flows-->
             <class name="com.almundo.browser.automation.tests.Hotels.LoginFlowTest"/>
