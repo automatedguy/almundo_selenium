@@ -76,7 +76,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-    @Test
+/*    @Test
     public void suc_Int_Booking_FlowV3() {
         logTestTitle("Sucursales Autos Flow - International - 10 days - " + countryPar );
 
@@ -106,5 +106,5 @@ public class RetailFlowTest extends TestBaseSetup {
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
-    }
+    }*/
 }
