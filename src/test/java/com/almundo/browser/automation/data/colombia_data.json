@@ -13,6 +13,19 @@
                 "flightClass": "Turista"
             },
 
+            "miami_10days_2adults_turista": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 9,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "childAgeRange": "",
+                "flightClass": "Turista"
+            },
+
             "domestic_20days_2adults_todas": {
                 "originAuto": "Bog",
                 "originFull": "Bogotá, Bogotá D.C., Colombia",

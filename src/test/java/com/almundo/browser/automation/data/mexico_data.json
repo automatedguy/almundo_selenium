@@ -13,6 +13,19 @@
                 "flightClass": "Turista"
             },
 
+            "miami_10days_2adults_turista": {
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 10,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "childAgeRange": "",
+                "flightClass": "Turista"
+            },
+
             "domestic_20days_2adults_todas": {
                 "originAuto": "Ciu",
                 "originFull": "Ciudad de México, México",
