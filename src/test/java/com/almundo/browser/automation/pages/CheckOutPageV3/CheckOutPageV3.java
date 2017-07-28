@@ -38,7 +38,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean todoPagoStc = false;
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
-    private boolean retailChannel = false;
+    public boolean retailChannel = false;
 
 
     public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
