@@ -123,7 +123,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if(retailChannel){
             paymentSelectorRetailV3().selectCreditRbd();
             paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
-            creditCardDataRetailV3().populateCreditCardData(paymentData);
+            creditCardDataRetailV3().populateCreditCardData(paymentData, retailChannel);
         }
         else {
             if (!paymentData.contains("debit")) {

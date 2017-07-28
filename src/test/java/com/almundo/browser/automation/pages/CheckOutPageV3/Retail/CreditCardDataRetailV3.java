@@ -75,7 +75,7 @@ public class CreditCardDataRetailV3 extends CheckOutPageV3 {
         documentNumberField.sendKeys(documentNumber);
     }
 
-    public void populateCreditCardData(String paymentData){
+    public void populateCreditCardData(String paymentData, boolean retail){
 
         logger.info("Getting payment data for: " + "[" + paymentData + "]");
         dataManagement.getPaymentList();
@@ -95,7 +95,7 @@ public class CreditCardDataRetailV3 extends CheckOutPageV3 {
         if(inputDef.isRequired("payments","credit_card_security_code",0)){
             setSecurityCode(paymentDataObject.get("security_code").toString());}
 
-        if(!retailChannel) {
+        if(!retail) {
             if (inputDef.isRequired("payments", "document", 0)) {
                 selectDocumentType(paymentDataObject.get("documentType").toString());
                 setDocumentNumber(paymentDataObject.get("document_number").toString());
