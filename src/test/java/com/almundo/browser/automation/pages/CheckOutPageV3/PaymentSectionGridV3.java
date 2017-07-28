@@ -52,6 +52,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
                 logger.info("Selecting Card: [" + cardName + "]");
                 PageUtils.scrollToElement(driver, cardNameResult);
                 cardNameResult.click();
+                driver.findElement(By.className("option")).click();
                 break;
             }
         }
