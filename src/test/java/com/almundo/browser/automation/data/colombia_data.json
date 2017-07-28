@@ -86,6 +86,16 @@
                 "rooms": 1
             },
 
+            "miami_10days_2adults_1room": {
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 9,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "rooms": 1
+            },
+
             "domestic01_15days_2adults_1room": {
                 "destinationAuto": "Car",
                 "destinationFull": "Cartagena de Indias, Bolívar, Colombia",
