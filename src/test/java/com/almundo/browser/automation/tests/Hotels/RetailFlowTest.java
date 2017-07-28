@@ -3,7 +3,6 @@ package com.almundo.browser.automation.tests.Hotels;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
@@ -27,7 +26,6 @@ public class RetailFlowTest extends TestBaseSetup {
 
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
-    private CheckOutPage checkOutPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
     private ConfirmationPageV3 confirmationPageV3 = null;
 
@@ -69,16 +67,16 @@ public class RetailFlowTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        checkOutPage = hotelsDetailPage.clickReservarAhoraBtn(FIRST_OPTION);
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_native");
         dataManagement.getPassengerData("adult_female_native");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("cash"),
-                                          dataManagement.getBillingData("local_Billing_sucursales"),
-                                          dataManagement.getContactData("contact_phone"),
-                                          "HotelsCheckOutPageDomesticSucursal", false);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa",
+                dataManagement.getBillingData("local_Billing_sucursales"),
+                dataManagement.getContactData("contact_phone"),
+                "HotelsCheckOutPageDomesticSucursal");
         setResultSauceLabs(PASSED);
     }
 

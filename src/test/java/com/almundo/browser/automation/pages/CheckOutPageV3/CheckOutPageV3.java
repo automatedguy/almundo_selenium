@@ -299,12 +299,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public CheckOutPageV3 replaceCartWithCheckout(){
         if(baseURL.contains("ccr") || baseURL.contains("sucursales")){
             retailChannel = true;
-            logger.info("Replacing [cart/v2] with [checkout]");
-            if(!getCartUrl().contains("product=vuelohotel")) {
+            if(!method.contains("Trips") && !method.contains("Hotels")) {
+                logger.info("Replacing [cart/v2] with [checkout]");
                 driver.navigate().to(getCartUrl().replace("cart/v2", "checkout"));
             }
             else{
-                driver.navigate().to(getCartUrl().replace("cart", "checkout"));
+                if(!method.contains("Hotels")) {
+                    logger.info("Replacing [cart/v2] with [checkout]");
+                    driver.navigate().to(getCartUrl().replace("cart", "checkout"));
+                }
             }
             getCheckoutUrl();
         }
