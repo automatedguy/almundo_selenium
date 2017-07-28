@@ -95,8 +95,11 @@ public class CreditCardDataRetailV3 extends CheckOutPageV3 {
         if(inputDef.isRequired("payments","credit_card_security_code",0)){
             setSecurityCode(paymentDataObject.get("security_code").toString());}
 
-        if(inputDef.isRequired("payments","document",0)){
-            selectDocumentType(paymentDataObject.get("documentType").toString());
-            setDocumentNumber(paymentDataObject.get("document_number").toString());}
+        if(!retailChannel) {
+            if (inputDef.isRequired("payments", "document", 0)) {
+                selectDocumentType(paymentDataObject.get("documentType").toString());
+                setDocumentNumber(paymentDataObject.get("document_number").toString());
+            }
+        }
     }
 }

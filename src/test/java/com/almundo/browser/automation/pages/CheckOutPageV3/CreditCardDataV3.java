@@ -94,11 +94,9 @@ public class CreditCardDataV3 extends CheckOutPageV3 {
         if(inputDef.isRequired("payments","credit_card_security_code",0)){
             setSecurityCode(paymentDataObject.get("security_code").toString(), container);}
 
-        if(!retailChannel) {
-            if (inputDef.isRequired("payments", "document", 0)) {
-                selectDocumentType(paymentDataObject.get("documentType").toString(), container);
-                setDocumentNumber(paymentDataObject.get("document_number").toString(), container);
-            }
+        if (inputDef.isRequired("payments", "document", 0)) {
+            selectDocumentType(paymentDataObject.get("documentType").toString(), container);
+            setDocumentNumber(paymentDataObject.get("document_number").toString(), container);
         }
     }
 }
