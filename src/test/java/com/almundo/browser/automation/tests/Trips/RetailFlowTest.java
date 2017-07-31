@@ -3,7 +3,6 @@ package com.almundo.browser.automation.tests.Trips;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
@@ -28,7 +27,6 @@ public class RetailFlowTest extends TestBaseSetup {
     private TripsDataTrip tripsDataTrip = null;
     private TripsResultsPage tripsResultsPage = null;
     private TripsDetailPage tripsDetailPage = null;
-    private CheckOutPage checkOutPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
     private ConfirmationPageV3 confirmationPageV3 = null;
 
@@ -60,20 +58,26 @@ public class RetailFlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
+
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPage = tripsDetailPage.clickComprarBtn(FIRST_OPTION);
+
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("child_female_native_trips_domestic");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("transfer"),
-                                          dataManagement.getBillingData("local_Billing_sucursales"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "TripsCheckOutPageDomesticSucursal", false);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa",
+                dataManagement.getBillingData("local_Billing_sucursales"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "TripsCheckOutPageDomesticSucursal");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -93,9 +97,11 @@ public class RetailFlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
+
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
+
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
