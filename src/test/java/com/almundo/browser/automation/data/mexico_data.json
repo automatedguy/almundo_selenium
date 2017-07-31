@@ -156,7 +156,21 @@
                 "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
             },
-        "domestic02_20days_2adults_1childs_1room": {
+
+            "int02_20days_2adults_1room": {
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Estados Unidos de América",
+            "startDate": 34,
+            "endDate": 5,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "Entre 2 y 11 años",
+            "rooms": 1
+        },
+
+            "domestic02_20days_2adults_1childs_1room": {
             "originAuto": "Ciu",
             "originFull": "Ciudad de México, México",
             "destinationAuto": "Canc",
