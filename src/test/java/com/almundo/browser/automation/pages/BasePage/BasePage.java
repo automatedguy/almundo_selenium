@@ -221,7 +221,7 @@ public class BasePage extends TestBaseSetup {
         List <WebElement> autoCompleteList = driver.findElements(By.cssSelector(suggestionListLocator));
 
         for (WebElement autoCompleteOption : autoCompleteList) {
-            if (autoCompleteOption.getText().equals(value)) {
+            if (autoCompleteOption.getText().contains(value)) {
                 autoCompleteOption.click();
                 break;
             }
