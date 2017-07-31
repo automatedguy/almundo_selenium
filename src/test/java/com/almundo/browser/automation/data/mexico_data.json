@@ -329,7 +329,7 @@
             "1_visa_visa": {
                 "payment_qty" : "1",
                 "bank_name" : "BBVA Bancomer",
-                "credit_card_code" : "BBVA Bancomer (Hasta 6 meses sin interés)",
+                "credit_card_code" : "BCMR",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4242424242424242",
@@ -343,7 +343,7 @@
 
             "3_visa_visa": {
                 "payment_qty" : "3",
-                "bank_name" : "BBVA Bancomer (Hasta 6 meses sin interés)",
+                "bank_name" : "BCMR",
                 "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
@@ -374,7 +374,7 @@
             "6_visa_visa": {
                 "payment_qty" : "6",
                 "bank_name" : "Visa",
-                "credit_card_code" : "BBVA Bancomer (Hasta 6 meses sin interés)",
+                "credit_card_code" : "BCMR",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4263982640269299",

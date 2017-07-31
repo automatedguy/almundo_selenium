@@ -56,7 +56,7 @@ public class PaymentSectionComboRetailV3 extends CheckOutPageV3 {
 
     private void setBankCombo(Select bankSelect, String bankName) {
         logger.info("Selecting Bank: [" + bankName + "]");
-        bankSelect.selectByVisibleText(bankName);
+        bankSelect.selectByValue(bankName);
     }
 
     private void setPaymentCombo(Select paymentSelect) {

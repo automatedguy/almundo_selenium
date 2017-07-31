@@ -441,7 +441,31 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"false",
+      "accepted":"true",
+      "agentEmail":"true"
+    },
+
+    "FlightsCheckOutPageInternationalSucursal":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"true",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"false",
+      "fiscal_name":"true",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"false",
+      "accepted":"true",
       "agentEmail":"true"
     },
 
