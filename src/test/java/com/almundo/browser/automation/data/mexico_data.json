@@ -329,6 +329,21 @@
             "1_visa_visa": {
                 "payment_qty" : "1",
                 "bank_name" : "BBVA Bancomer",
+                "credit_card_code" : "BBVA Bancomer (Hasta 6 meses sin interés)",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "123",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "3_visa_visa": {
+                "payment_qty" : "3",
+                "bank_name" : "BBVA Bancomer (Hasta 6 meses sin interés)",
                 "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
@@ -359,7 +374,7 @@
             "6_visa_visa": {
                 "payment_qty" : "6",
                 "bank_name" : "Visa",
-                "credit_card_code" : "VI",
+                "credit_card_code" : "BBVA Bancomer (Hasta 6 meses sin interés)",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4263982640269299",
@@ -422,6 +437,20 @@
 
     "billings": {
         "local_Billing": {
+            "fiscal_name":"Automation & Sarasa Associates Inc.",
+            "billing_fiscal_type":"Persona Física",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "RICA800925PL7",
+            "billing_address": "Requete Chanfle",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Baja California",
+            "address_city": "Mexico D.F."
+        },
+
+        "local_Billing_sucursales": {
             "fiscal_name":"Automation & Sarasa Associates Inc.",
             "billing_fiscal_type":"Persona Física",
             "billing_document_type":"Cédula de Extranjería",
