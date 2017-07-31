@@ -157,7 +157,20 @@
                 "rooms": 1
             },
 
-        "domestic02_20days_2adults_1childs_1room": {
+            "int02_20days_2adults_1room": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "San",
+            "destinationFull": "Santiago de Chile, Chile",
+            "startDate": 30,
+            "endDate": 20,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "Entre 2 y 11 años",
+            "rooms": 1
+        },
+
+            "domestic02_20days_2adults_1childs_1room": {
             "originAuto": "Bog",
             "originFull": "Bogotá, Bogotá D.C., Colombia",
             "destinationAuto": "Car",
