@@ -51,7 +51,9 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
             if (cardNameResult.getAttribute("alt").equals(cardName)) {
                 logger.info("Selecting Card: [" + cardName + "]");
                 PageUtils.scrollToElement(driver, cardNameResult);
-                driver.findElement(By.className("option")).click();
+                cardNameResult.click();
+                // The line below is for selecting radio button directly
+                //driver.findElement(By.className("option")).click();
                 break;
             }
         }
