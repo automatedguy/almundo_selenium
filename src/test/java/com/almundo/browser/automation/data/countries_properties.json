@@ -70,6 +70,30 @@
       "agentEmail":"true"
     },
 
+    "HotelsCheckOutPageInternationalSucursal":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"true",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
+      "fiscal_name":"true",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"false",
+      "accepted":"false",
+      "agentEmail":"true"
+    },
+
     "FlightsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",
@@ -142,6 +166,30 @@
       "agentEmail":"true"
     },
 
+    "FlightsCheckOutPageInternationalSucursal":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"true",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
+      "fiscal_name":"true",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"false",
+      "accepted":"false",
+      "agentEmail":"true"
+    },
+
     "CarsCheckOutPage":{
       "PickUpLocationSection": "true",
       "BillingInfoSection":"true",
@@ -188,7 +236,7 @@
       "nationality":"false",
       "accepted":"false",
       "agentEmail":"true"
-    }
+    },
 
     "TripsCheckOutPageInternationalV3":{
       "PickUpLocationSection": "false",
@@ -248,7 +296,7 @@
       "nationality":"false",
       "accepted":"false",
       "agentEmail":"true"
-    },
+    }
 
   },
 
@@ -393,7 +441,31 @@
       "birthday":"true",
       "gender":"true",
       "nationality":"false",
-      "accepted":"false",
+      "accepted":"true",
+      "agentEmail":"true"
+    },
+
+    "FlightsCheckOutPageInternationalSucursal":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"true",
+      "documentType":"false",
+      "document_number":"true",
+      "document_number_card":"false",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"false",
+      "fiscal_name":"true",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"false",
+      "accepted":"true",
       "agentEmail":"true"
     },
 
@@ -559,6 +631,30 @@
       "agentEmail":"true"
     },
 
+    "HotelsCheckOutPageInternationalSucursal":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"false",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"false",
+      "documentType":"false",
+      "document_number":"false",
+      "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
+      "fiscal_name":"true",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"false",
+      "accepted":"false",
+      "agentEmail":"true"
+    },
+
     "FlightsCheckOutPageInternational":{
         "PickUpLocationSection": "false",
         "BillingInfoSection":"false",
@@ -608,6 +704,30 @@
     },
 
     "FlightsCheckOutPageDomesticSucursal":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"false",
+      "billing_fiscal_type": "false",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"false",
+      "documentType":"false",
+      "document_number":"false",
+      "document_number_card":"false",
+      "address_number":"true",
+      "address_floor":"true",
+      "address_department":"true",
+      "address_postal_code":"true",
+      "area":"true",
+      "fiscal_name":"true",
+      "birthday":"true",
+      "gender":"true",
+      "nationality":"false",
+      "accepted":"false",
+      "agentEmail":"true"
+    },
+
+    "FlightsCheckOutPageInternationalSucursal":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"false",
       "billing_fiscal_type": "false",

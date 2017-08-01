@@ -3,8 +3,8 @@ package com.almundo.browser.automation.tests.Flights;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -23,8 +23,8 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 public class RetailFlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
-    private CheckOutPage checkOutPage = null;
-    private ConfirmationPage confirmationPage = null;
+    private CheckOutPageV3 checkOutPageV3 = null;
+    private ConfirmationPageV3 confirmationPageV3 = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -63,18 +63,65 @@ public class RetailFlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
+
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
-        checkOutPage = flightsResultsPage.clickComprarBtn(FIRST_OPTION);
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("deposit"),
-                                          dataManagement.getBillingData("local_Billing_sucursales"),
-                                          dataManagement.getContactData("contact_phone"),
-                                          "FlightsCheckOutPageDomesticSucursal", true);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa",
+                dataManagement.getBillingData("local_Billing_sucursales"),
+                dataManagement.getContactData("contact_phone"),
+                "FlightsCheckOutPageDomesticSucursal");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
+    public void suc_Int_Booking_Flow() {
+        logTestTitle("Sucursales Flight Flow - International - 20 days - 2 Adults - Todas - " + countryPar );
+
+        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
+
+        flightsDataTrip = basePage.flightsDataTrip();
+        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
+        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+        flightsDataTrip.selectClass(dataManagement.flightClass);
+
+        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa",
+                dataManagement.getBillingData("local_Billing_sucursales"),
+                dataManagement.getContactData("contact_phone"),
+                "FlightsCheckOutPageInternationalSucursal");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 }

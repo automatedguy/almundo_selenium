@@ -13,6 +13,19 @@
                 "flightClass": "Turista"
             },
 
+            "miami_10days_2adults_turista": {
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Estados Unidos de América",
+                "startDate": 10,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "childAgeRange": "",
+                "flightClass": "Turista"
+            },
+
             "domestic_20days_2adults_todas": {
                 "originAuto": "Ciu",
                 "originFull": "Ciudad de México, México",
@@ -38,7 +51,7 @@
                 "originAuto3": "Nue",
                 "originFull3": "Nueva York, Nueva York, Estados Unidos de América",
                 "destinationAuto3": "Ciu",
-                "destinationFull3": "Ciudad de México, México",
+                "destinationFull3": "Ciudad de México, Ciudad de México, México",
                 "startDate": 15,
                 "startDate2": 20,
                 "startDate3": 25,
@@ -72,6 +85,16 @@
                 "childs": 2,
                 "rooms": 1
             },
+
+            "miami_10days_2adults_1room": {
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Estados Unidos de América",
+            "startDate": 10,
+            "endDate": 10,
+            "adults": 2,
+            "childs": 0,
+            "rooms": 1
+        },
 
             "domestic01_15days_2adults_1room": {
                 "destinationAuto": "Aca",
@@ -133,7 +156,21 @@
                 "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
             },
-        "domestic02_20days_2adults_1childs_1room": {
+
+            "int02_20days_2adults_1room": {
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Estados Unidos de América",
+            "startDate": 34,
+            "endDate": 5,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "Entre 2 y 11 años",
+            "rooms": 1
+        },
+
+            "domestic02_20days_2adults_1childs_1room": {
             "originAuto": "Ciu",
             "originFull": "Ciudad de México, México",
             "destinationAuto": "Canc",
@@ -316,6 +353,21 @@
             "1_visa_visa": {
                 "payment_qty" : "1",
                 "bank_name" : "BBVA Bancomer",
+                "credit_card_code" : "BCMR",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "123",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "3_visa_visa": {
+                "payment_qty" : "3",
+                "bank_name" : "BCMR",
                 "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
@@ -346,7 +398,7 @@
             "6_visa_visa": {
                 "payment_qty" : "6",
                 "bank_name" : "Visa",
-                "credit_card_code" : "VI",
+                "credit_card_code" : "BCMR",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "4263982640269299",
@@ -409,6 +461,20 @@
 
     "billings": {
         "local_Billing": {
+            "fiscal_name":"Automation & Sarasa Associates Inc.",
+            "billing_fiscal_type":"Persona Física",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "RICA800925PL7",
+            "billing_address": "Requete Chanfle",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Baja California",
+            "address_city": "Mexico D.F."
+        },
+
+        "local_Billing_sucursales": {
             "fiscal_name":"Automation & Sarasa Associates Inc.",
             "billing_fiscal_type":"Persona Física",
             "billing_document_type":"Cédula de Extranjería",
