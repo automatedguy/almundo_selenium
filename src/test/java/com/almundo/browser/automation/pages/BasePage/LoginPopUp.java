@@ -32,6 +32,9 @@ public class LoginPopUp extends BasePage {
     @FindBy(css = ".button.button--secondary.button--block.button--md.submit")
     public WebElement ingresarBtn;
 
+    @FindBy(css = "#section div:nth-child(4) > div.footer-login > span.link-button")
+    public WebElement firstIngresarBtn;
+
     @FindBy(css = ".login-background.modal-login")
     public WebElement background;
 
@@ -58,7 +61,12 @@ public class LoginPopUp extends BasePage {
     }
 
     public LoginPopUp setLoginEmailTxt(String loginEmail) {
-        PageUtils.waitElementForVisibility(driver, loginEmailTxt, 15, "Login Pop-Up...");
+        try {
+            PageUtils.waitElementForVisibility(driver, loginEmailTxt, 10, "Login Email box");
+        }catch(Exception ouch){
+            logger.info("Clicking on [Ingresar] in order to display login text boxes.");
+            firstIngresarBtn.click();
+        }
         logger.info("Entering Login Email: [" + loginEmail + "]");
         loginEmailTxt.clear();
         loginEmailTxt.sendKeys(loginEmail);
