@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+
 /**
  * Created by leandro.efron on 31/1/2017.
  */
@@ -45,6 +47,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL item property is enabled");
             Assert.assertTrue(promoPage.urlItemProperty.isEnabled());
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -63,6 +66,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promoDisplayed_path_fix + "]");
             Assert.assertTrue(driver.getCurrentUrl().contains(promoDisplayed_path_fix), "Current URL does not contain expected data");
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -84,6 +88,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         PageUtils.waitImplicitly(2000);
         logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promo_path + "]");
         Assert.assertTrue(driver.getCurrentUrl().contains(promo_path));
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -96,6 +101,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL [" + driver.getCurrentUrl() + "]");
             Assert.assertEquals(driver.getCurrentUrl(), promo_path, "Incorrect URL");
         }
+        setResultSauceLabs(PASSED);
     }
 
 /*    @Test
@@ -123,6 +129,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             Assert.assertTrue(bannerName.findElements(By.cssSelector(".banner-item")).size()>0);
             logger.info("Banner Items: " + bannerName.findElements(By.cssSelector(".banner-item")).size());
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -134,6 +141,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             Assert.assertFalse(dataLinkBanner.equals(""), "Data link banner [" + i + "] is empty");
             logger.info("Data link banner [" + i + "] - [" + dataLinkBanner + "]");
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
@@ -148,6 +156,6 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
                 logger.info("Promo box: [" + promoBox.getAttribute("href") + "] is displayed");
             }
         }
+        setResultSauceLabs(PASSED);
     }
 }
-
