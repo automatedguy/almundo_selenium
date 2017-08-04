@@ -38,8 +38,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean todoPagoStc = false;
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
-    public boolean retailChannel = false;
-
 
     public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
 
@@ -123,7 +121,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if(isRetailChannel()){
             paymentSelectorRetailV3().selectCreditRbd();
             paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
-            creditCardDataRetailV3().populateCreditCardData(paymentData, retailChannel);
+            creditCardDataRetailV3().populateCreditCardData(paymentData, true);
         }
         else {
             if (!paymentData.contains("debit")) {
@@ -296,6 +294,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public Boolean isRetailChannel(){
+        //TODO: Remove all the unnecessary parts here, retail apparently running against V3
+        boolean retailChannel = false;
         if(baseURL.contains("ccr") || baseURL.contains("sucursales")){
             retailChannel = true;
             if(!method.contains("Trips") && !method.contains("Hotels") && !method.contains("Flights") && !method.contains("Cars")) {
