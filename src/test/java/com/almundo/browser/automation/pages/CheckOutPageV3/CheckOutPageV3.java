@@ -120,7 +120,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithPaymentForm(String paymentData){
-        if(retailChannel){
+        if(isRetailChannel()){
             paymentSelectorRetailV3().selectCreditRbd();
             paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
             creditCardDataRetailV3().populateCreditCardData(paymentData, retailChannel);
@@ -153,7 +153,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
-        //replaceCartWithCheckout();
         getCheckOutPageElements(productCheckOutPage);
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
@@ -161,7 +160,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         passengerSection().populatePassengerSection(passengerList);
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
-        if(retailChannel){
+        if(isRetailChannel()){
             agentSectionV3().setAgentEmail("gabriel.cespedes@almundo.com");
         }
         acceptConditions();
@@ -296,7 +295,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initCheckOutPageV3();
     }
 
-    public CheckOutPageV3 replaceCartWithCheckout(){
+    public Boolean isRetailChannel(){
         if(baseURL.contains("ccr") || baseURL.contains("sucursales")){
             retailChannel = true;
             if(!method.contains("Trips") && !method.contains("Hotels") && !method.contains("Flights") && !method.contains("Cars")) {
@@ -311,7 +310,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             }
             getCheckoutUrl();
         }
-        return this;
+        return retailChannel;
     }
 
     private String getCartUrl(){
