@@ -153,7 +153,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject billingData,
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
-        replaceCartWithCheckout();
+        //replaceCartWithCheckout();
         getCheckOutPageElements(productCheckOutPage);
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
@@ -304,7 +304,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 driver.navigate().to(getCartUrl().replace("cart/v2", "checkout"));
             }
             else{
-                if(!method.contains("Hotels") && !method.contains("Flights") && !method.contains("Cars")) {
+                if(!method.contains("Hotels") && !method.contains("Flights") && !method.contains("Cars") && !method.contains("Trips"))  {
                     logger.info("Replacing [cart/v2] with [checkout]");
                     driver.navigate().to(getCartUrl().replace("cart", "checkout"));
                 }
