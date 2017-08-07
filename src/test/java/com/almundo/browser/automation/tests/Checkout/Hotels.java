@@ -24,6 +24,7 @@ public class Hotels extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
+        retriesCount = true;
         dataManagement.getPassengersList();
         dataManagement.getPaymentList();
         dataManagement.getBillingList();
