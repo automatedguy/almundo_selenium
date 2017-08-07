@@ -216,6 +216,10 @@ public class PageUtils {
         return sb.toString();
     }
 
+    public static void printSeparator(){
+        System.out.println("=======================================================================");
+    }
+
     /*** Analyze current results page URL***/
     public static String getHotelsResultsPageLayout(WebDriver driver) {
         String layout = null;
