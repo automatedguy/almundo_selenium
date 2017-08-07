@@ -17,6 +17,7 @@ import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.RetryAnalyzer;
 import com.almundo.browser.automation.utils.SauceHelpers;
+import com.almundo.browser.automation.utils.SeleniumProxy;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
@@ -64,6 +65,10 @@ public class TestBaseSetup {
     public static String countryPar;
     private static DesiredCapabilities capabilities = null;
 
+    /************* Selenium Proxy *************/
+    private static SeleniumProxy seleniumProxy = new SeleniumProxy();
+    private static Boolean initProxy = false;
+
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
     public static JSONObject jsonCountryPropertyObject = null;
@@ -76,7 +81,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(CCR_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -155,6 +160,10 @@ public class TestBaseSetup {
                 switch (browser) {
                     case "chrome":
                         driver = new ChromeDriver(capabilities);
+                        if(initProxy){
+                            logger.info("Initizalizing Selenium Proxy.");
+                            seleniumProxy.setBrowserMobProxy();
+                        }
                         break;
 
                     case "firefox":
@@ -207,7 +216,9 @@ public class TestBaseSetup {
                 options.addArguments("test-type", "start-maximized", "no-default-browser-check");
                 options.addArguments("--disable-extensions");
                 chromeCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
+                if(initProxy){
+                    chromeCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy.initSeleniumProxy());
+                }
                 return chromeCapabilities;
 
             case "firefox":
@@ -278,6 +289,8 @@ public class TestBaseSetup {
 
     @AfterMethod
     public void tearDown() {
+        if(initProxy){
+            seleniumProxy.displayHarInfo();}
         try {
             if(runningRemote){webDriver.get().quit();}
             else {
