@@ -2,13 +2,11 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
-import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.AgentSectionV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.CreditCardDataRetailV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.PaymentSectionComboRetailV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.PaymentSelectorRetailV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.InputDefinitions;
+import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -19,7 +17,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
 
-import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.API_PROD_URL;
+import static com.almundo.browser.automation.utils.Constants.API_STG_URL;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 
 /**
@@ -38,8 +37,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean todoPagoStc = false;
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
+    public int halfPrice = 0;
 
     public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
+
+    public BreakDownSectionV3 breakDownSectionV3(){return initBreakDownSectionV3();}
+
+    public PaymentSelectorRetailSplitV3 paymentSelectorRetailSplitV3(){
+        return initPaymentSelectorRetailSplitV3();
+    }
 
     public PaymentSelectorRetailV3 paymentSelectorRetailV3(){return initPaymentSelectorRetailV3();}
 
@@ -119,9 +125,23 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     private void dealWithPaymentForm(String paymentData){
         if(isRetailChannel()){
-            paymentSelectorRetailV3().selectCreditRbd();
-            paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
-            creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+            if(paymentData.contains("pago_dividido")) {
+
+                halfPrice = breakDownSectionV3().getFinalPrice()/2;
+
+                paymentSelectorRetailV3().selectPaymentMethod("PAGO DIVIDIDO");
+                String firstCreditCard = StringUtils.substringBetween(paymentData, "$", "@");
+                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(firstCreditCard, halfPrice);
+
+                paymentSelectorRetailSplitV3().agregarOtroMedioDePagoClick();
+                String secondCreditCard = StringUtils.substringBetween(paymentData, "@", "$");
+                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(secondCreditCard, halfPrice);
+            }
+            else {
+                paymentSelectorRetailV3().selectCreditRbd();
+                paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+                creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+            }
         }
         else {
             if (!paymentData.contains("debit")) {
@@ -193,10 +213,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
             creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
             paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
             creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
-        }
-
-        if(todoPagoStc){
-            logger.warn("Todo Pago was Set!");
         }
 
         passengerSection().populatePassengerSection(passengerList);

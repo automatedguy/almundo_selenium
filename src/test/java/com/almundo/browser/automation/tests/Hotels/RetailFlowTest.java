@@ -113,4 +113,34 @@ public class RetailFlowTest extends TestBaseSetup {
         Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
+
+    @Test
+    public void suc_Int_Booking_Flow_Splitted() {
+        logTestTitle("Sucursales Hotel Flow - International - Splitted - 10 days - 2 Adults - 1 Room - " + countryPar );
+
+        dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
+
+        hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(hotelsResultsPage.vacancy());
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+        PageUtils.switchToNewTab(driver);
+        hotelsDetailPage.clickVerHabitacionesBtn();
+
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("adult_female_native");
+
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "pago_dividido$1_visa_visa@1_master_master$",
+                dataManagement.getBillingData("local_Billing_sucursales"),
+                dataManagement.getContactData("contact_phone"),
+                "HotelsCheckOutPageInternationalSucursal");
+    }
 }

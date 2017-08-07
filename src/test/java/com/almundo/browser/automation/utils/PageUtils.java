@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.security.SecureRandom;
 import java.util.*;
 
+import static com.almundo.browser.automation.base.TestBaseSetup.countryPar;
 import static com.almundo.browser.automation.base.TestBaseSetup.runningRemote;
 
 /**
@@ -272,6 +273,23 @@ public class PageUtils {
         }else {
             return false;
         }
+    }
+
+    public static String getCountryCurrency(){
+        String currency = "";
+        switch(countryPar){
+            case "ARGENTINA" : currency = "ARS";
+                break;
+            case "COLOMBIA" : currency = "COL";
+                break;
+            case "MEXICO" : currency = "MXN";
+                break;
+            default:
+                logger.error("No currency found for: " + countryPar);
+                break;
+        }
+
+        return currency;
     }
 
     public static boolean isElementClickable(WebDriver driver, WebElement webElement, int timeOutInSeconds, String message){

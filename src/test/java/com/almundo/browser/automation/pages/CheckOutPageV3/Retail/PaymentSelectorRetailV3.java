@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -27,7 +29,20 @@ public class PaymentSelectorRetailV3 extends BasePage {
     @FindBy(css ="#am-split-payment .credit-card > label")
     private WebElement creditCard;
 
+    @FindBy(css ="#am-split-payment .title-payment")
+    private List<WebElement> paymentMethodList;
+
     /**************************** Actions **********************************/
+
+    public PaymentSelectorRetailSplitV3 selectPaymentMethod(String paymentMethodSelected){
+        for(WebElement paymentMethod : paymentMethodList){
+            if(paymentMethod.getText().equals(paymentMethodSelected)){
+                logger.info("Selecting Payment Method: " + paymentMethodSelected);
+                paymentMethod.click();
+            }
+        }
+        return initPaymentSelectorRetailSplitV3();
+    }
 
     public PaymentSelectorRetailV3 selectDepositRdb(){
         logger.info("Selecting payment type: [Depósito]" );
