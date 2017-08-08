@@ -83,6 +83,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
     private PaymentSelectorRetailSplitV3 enterImporte(String importe, int container){
         WebElement importeTxt = driver.findElement(By.cssSelector("#am-split-payment form-payment-split:nth-child(" + (container+1) + ") div:nth-child(2) credit-cards-split div:nth-child(2) div:nth-child(1) input"));
         logger.info("Entering [Importe]: " + "[" + importe + "]");
+        importeTxt.clear();
         importeTxt.sendKeys(importe);
         waitImplicitly(1000);
         return this;
@@ -152,28 +153,28 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public PaymentSelectorRetailSplitV3 populateSplittedCreditCardData(String paymentData, int  halfPrice, int container){
-        logger.info("Getting payment data for: " + "[" + paymentData + "]");
+    public PaymentSelectorRetailSplitV3 populateSplittedCreditCardData(List<String> paymentDataList, int  totalPrice){
+        int container = 0;
         dataManagement.getPaymentList();
-        paymentDataObject = dataManagement.getPaymentData(paymentData);
-
-        logger.info("------------- Filling Payment Section -------------");
-
-        selectMedioDePago("Tarjeta de crédito", container);
-
-        if(inputDef.isRequired("payments","credit_card_number",0)){
-            enterNumeroDeTarjeta(paymentDataObject.get("card_number").toString(), container);}
-
-        // selectTarjeta(paymentDataObject.get("credit_card_name").toString());
-        // selectBanco(paymentDataObject.get("bank_name").toString());
-
-        enterImporte(String.valueOf(halfPrice), container);
-        selectCargosPercepcionesGenerados("Incluirlos en el importe", container);
-        selectCuotas(paymentDataObject.get("payment_qty").toString(), halfPrice , container);
-        enterTitularDeLaTarjeta(paymentDataObject.get("card_holder").toString(), container);
-        selectFechaDeVencimientoMes(paymentDataObject.get("month_card_expire").toString(), container);
-        selectFechaDeVencimientoAno(paymentDataObject.get("year_card_expire").toString(), container);
-        enterCodigo(paymentDataObject.get("security_code").toString(), container);
+        for(String paymentData : paymentDataList) {
+            paymentDataObject = dataManagement.getPaymentData(paymentData);
+            logger.info("------------- Filling Payment Section -------------");
+            logger.info("Getting payment data for: " + "[" + paymentData + "]");
+            selectMedioDePago("Tarjeta de crédito", container);
+            enterNumeroDeTarjeta(paymentDataObject.get("card_number").toString(), container);
+            //TODO: Come up with a Solution for this. (/2)
+            enterImporte(String.valueOf(totalPrice/2), container);
+            selectCargosPercepcionesGenerados("Incluirlos en el importe", container);
+            selectCuotas(paymentDataObject.get("payment_qty").toString(), totalPrice/2, container);
+            enterTitularDeLaTarjeta(paymentDataObject.get("card_holder").toString(), container);
+            selectFechaDeVencimientoMes(paymentDataObject.get("month_card_expire").toString(), container);
+            selectFechaDeVencimientoAno(paymentDataObject.get("year_card_expire").toString(), container);
+            enterCodigo(paymentDataObject.get("security_code").toString(), container);
+            container = container + 1;
+            if(paymentDataList.size() > container) {
+                agregarOtroMedioDePagoClick();
+            }
+        }
         return this;
     }
 }

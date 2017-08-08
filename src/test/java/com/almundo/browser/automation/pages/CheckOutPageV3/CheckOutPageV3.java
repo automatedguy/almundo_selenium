@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.InputDefinitions;
-import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -16,6 +15,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import static com.almundo.browser.automation.utils.Constants.API_PROD_URL;
 import static com.almundo.browser.automation.utils.Constants.API_STG_URL;
@@ -37,7 +39,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean todoPagoStc = false;
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
-    public int halfPrice = 0;
 
     public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
 
@@ -123,20 +124,18 @@ public class CheckOutPageV3 extends TestBaseSetup {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
 
+    private List<String> getPaymentDataList(String paymentData){
+        final Pattern pattern = Pattern.compile("[\\$\"]");
+        final String[] result = pattern.split(paymentData);
+        List<String> paymentDataList = Arrays.asList(result);
+        return paymentDataList;
+    }
+
     private void dealWithPaymentForm(String paymentData){
         if(isRetailChannel()){
-            if(paymentData.contains("pago_dividido")) {
-
-                halfPrice = breakDownSectionV3().getFinalPrice()/2;
-
+            if(paymentData.contains("pago_dividido$")) {
                 paymentSelectorRetailV3().selectPaymentMethod("PAGO DIVIDIDO");
-                String firstCreditCard = StringUtils.substringBetween(paymentData, "$", "@");
-
-                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(firstCreditCard, halfPrice, 0);
-
-                paymentSelectorRetailSplitV3().agregarOtroMedioDePagoClick();
-                String secondCreditCard = StringUtils.substringBetween(paymentData, "@", "$");
-                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(secondCreditCard, halfPrice, 1);
+                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
             }
             else {
                 paymentSelectorRetailV3().selectCreditRbd();

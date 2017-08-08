@@ -115,7 +115,7 @@ public class RetailFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void suc_Int_Booking_Flow_Splitted() {
+    public void suc_Int_Booking_Flow_Splitted_2cards() {
         logTestTitle("Sucursales Hotel Flow - International - Splitted - 10 days - 2 Adults - 1 Room - " + countryPar );
 
         dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
@@ -138,7 +138,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_native");
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "pago_dividido$1_visa_visa@1_master_master$",
+                "pago_dividido$1_visa_visa$1_master_master$",
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_phone"),
                 "HotelsCheckOutPageInternationalSucursal");

@@ -124,4 +124,38 @@ public class RetailFlowTest extends TestBaseSetup {
 
         setResultSauceLabs(PASSED);
     }
+
+    @Test
+    public void suc_Int_Booking_Flow_Splitted_2cards() {
+        logTestTitle("Sucursales Flight Flow - International - Splitted 20 days - 2 Adults - Todas - " + countryPar);
+
+        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
+
+        flightsDataTrip = basePage.flightsDataTrip();
+        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
+        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+        flightsDataTrip.selectClass(dataManagement.flightClass);
+
+        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION + 1);
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "pago_dividido$1_visa_visa$1_master_master$",
+                dataManagement.getBillingData("local_Billing_sucursales"),
+                dataManagement.getContactData("contact_phone"),
+                "FlightsCheckOutPageInternationalSucursal");
+    }
 }
