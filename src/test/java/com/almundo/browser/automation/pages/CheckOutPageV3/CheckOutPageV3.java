@@ -131,11 +131,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
                 paymentSelectorRetailV3().selectPaymentMethod("PAGO DIVIDIDO");
                 String firstCreditCard = StringUtils.substringBetween(paymentData, "$", "@");
-                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(firstCreditCard, halfPrice);
+
+                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(firstCreditCard, halfPrice, 0);
 
                 paymentSelectorRetailSplitV3().agregarOtroMedioDePagoClick();
                 String secondCreditCard = StringUtils.substringBetween(paymentData, "@", "$");
-                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(secondCreditCard, halfPrice);
+                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(secondCreditCard, halfPrice, 1);
             }
             else {
                 paymentSelectorRetailV3().selectCreditRbd();
