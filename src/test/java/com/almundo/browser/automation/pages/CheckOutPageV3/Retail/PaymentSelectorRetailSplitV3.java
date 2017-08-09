@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3.Retail;
 
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -56,7 +57,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         logger.info("Selecting Payment Form: " + "[" + paymentForm + "]");
         Select medioDePagoSelect = new  Select (medioDePago.get(container));
         medioDePagoSelect.selectByVisibleText(paymentForm);
-        waitImplicitly(1000);
+        waitImplicitly(2000);
         return this;
     }
 
@@ -85,7 +86,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         logger.info("Entering [Importe]: " + "[" + importe + "]");
         importeTxt.clear();
         importeTxt.sendKeys(importe);
-        waitImplicitly(1000);
+        waitImplicitly(2000);
         return this;
     }
 
@@ -94,12 +95,12 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         WebElement cargosPercepcionesGenerados = driver.findElement(By.cssSelector("#am-split-payment form-payment-split:nth-child(" + (container+1) +") div:nth-child(2) credit-cards-split div:nth-child(2) > div:nth-child(2) select"));
         Select cargosPercepcionesGeneradosSelect =  new Select (cargosPercepcionesGenerados);
         cargosPercepcionesGeneradosSelect.selectByVisibleText(cargosPercepciones);
-        waitImplicitly(1000);
+        waitImplicitly(3000);
         return this;
     }
 
-    private String totalCuota(int halPrice){
-        StringBuilder str = new StringBuilder(Integer.toString(halPrice));
+    private String setTotalCuota(int paymentAmount){
+        StringBuilder str = new StringBuilder(Integer.toString(paymentAmount));
         int idx = str.length() - 3;
         while (idx > 0)
         {
@@ -109,12 +110,12 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         return str.toString();
     }
 
-    private PaymentSelectorRetailSplitV3 selectCuotas(String cuotas, int halfPrice, int container){
+    private PaymentSelectorRetailSplitV3 selectCuotas(String cuotas, int paymentAmount, int container){
         logger.info("Selecting [Cuotas]: " + "[" + cuotas + "]");
         List<WebElement> cuotasDdl = driver.findElements(By.cssSelector("#am-split-payment form-payment-split div:nth-child(2) > credit-cards-split div:nth-child(3) > div:nth-child(1) > select"));
         Select cuotasSelect = new Select (cuotasDdl.get(container));
         String currency = getCountryCurrency();
-        String totalPagarCuota = totalCuota(halfPrice);
+        String totalPagarCuota = setTotalCuota(paymentAmount);
         String cuotasFinal = cuotas + " de " + currency + " " + totalPagarCuota + " (Total: " + currency + " " + totalPagarCuota + ")";
         cuotasSelect.selectByVisibleText(cuotasFinal);
         return this;
@@ -150,28 +151,43 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
     public PaymentSelectorRetailSplitV3 agregarOtroMedioDePagoClick(){
         logger.info("Clicking on: [Agregar Medio de pago]");
         agregarOtroMedioDePago.click();
+        waitImplicitly(2000);
         return this;
+    }
+
+    private String getRemainingAmount(int container){
+        String remainingAmount = driver.findElement(By.cssSelector("#am-split-payment div:nth-child(2) div:nth-child(1) form-payment-split:nth-child(" + (container+1)+ ") div:nth-child(1) span.col-8-xs")).getText();
+        return StringUtils.substringBetween(remainingAmount, getCountryCurrency(), ")").replaceAll("\\s","");
     }
 
     public PaymentSelectorRetailSplitV3 populateSplittedCreditCardData(List<String> paymentDataList, int  totalPrice){
         int container = 0;
+        boolean isLastPayment;
+        int paymentAmount = totalPrice / paymentDataList.size();
         dataManagement.getPaymentList();
         for(String paymentData : paymentDataList) {
+            isLastPayment = paymentDataList.size() <= (container+1);
             paymentDataObject = dataManagement.getPaymentData(paymentData);
             logger.info("------------- Filling Payment Section -------------");
             logger.info("Getting payment data for: " + "[" + paymentData + "]");
             selectMedioDePago("Tarjeta de crédito", container);
             enterNumeroDeTarjeta(paymentDataObject.get("card_number").toString(), container);
-            //TODO: Come up with a Solution for this. (/2)
-            enterImporte(String.valueOf(totalPrice/2), container);
+            if(!isLastPayment) {
+                enterImporte(String.valueOf(paymentAmount), container);
+            }
             selectCargosPercepcionesGenerados("Incluirlos en el importe", container);
-            selectCuotas(paymentDataObject.get("payment_qty").toString(), totalPrice/2, container);
+            if(!isLastPayment) {
+                selectCuotas(paymentDataObject.get("payment_qty").toString(), paymentAmount, container);
+            }
+            else{
+                selectCuotas(paymentDataObject.get("payment_qty").toString(), Integer.valueOf(getRemainingAmount(container).replaceAll("\\.","")), container);
+            }
             enterTitularDeLaTarjeta(paymentDataObject.get("card_holder").toString(), container);
             selectFechaDeVencimientoMes(paymentDataObject.get("month_card_expire").toString(), container);
             selectFechaDeVencimientoAno(paymentDataObject.get("year_card_expire").toString(), container);
             enterCodigo(paymentDataObject.get("security_code").toString(), container);
             container = container + 1;
-            if(paymentDataList.size() > container) {
+            if(!isLastPayment) {
                 agregarOtroMedioDePagoClick();
             }
         }
