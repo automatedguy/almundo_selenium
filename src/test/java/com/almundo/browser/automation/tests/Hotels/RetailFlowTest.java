@@ -138,7 +138,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_native");
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "pago_dividido$1_visa_visa$1_master_master$1_amex_amex$",
+                "pago_dividido$1_visa_visa$1_master_master$",
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_phone"),
                 "HotelsCheckOutPageInternationalSucursal");
