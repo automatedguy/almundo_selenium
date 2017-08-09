@@ -157,5 +157,9 @@ public class RetailFlowTest extends TestBaseSetup {
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_phone"),
                 "FlightsCheckOutPageInternationalSucursal");
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
     }
 }

@@ -95,7 +95,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         WebElement cargosPercepcionesGenerados = driver.findElement(By.cssSelector("#am-split-payment form-payment-split:nth-child(" + (container+1) +") div:nth-child(2) credit-cards-split div:nth-child(2) > div:nth-child(2) select"));
         Select cargosPercepcionesGeneradosSelect =  new Select (cargosPercepcionesGenerados);
         cargosPercepcionesGeneradosSelect.selectByVisibleText(cargosPercepciones);
-        waitImplicitly(3000);
+        waitImplicitly(5000);
         return this;
     }
 
@@ -117,6 +117,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         String currency = getCountryCurrency();
         String totalPagarCuota = setTotalCuota(paymentAmount);
         String cuotasFinal = cuotas + " de " + currency + " " + totalPagarCuota + " (Total: " + currency + " " + totalPagarCuota + ")";
+        waitImplicitly(2000);
         cuotasSelect.selectByVisibleText(cuotasFinal);
         return this;
     }
