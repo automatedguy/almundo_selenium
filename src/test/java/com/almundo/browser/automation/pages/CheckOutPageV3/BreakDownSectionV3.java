@@ -22,6 +22,11 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
 
     public int getFinalPrice(){
         logger.info("Getting Total Final Price.");
-        return Integer.parseInt(finalPrice.getText().replace(".","").replaceAll("\\s",""));
+        if(!countryPar.equals("MEXICO")) {
+            return Integer.parseInt(finalPrice.getText().replace(".", "").replaceAll("\\s", ""));
+        }
+        else{
+            return Integer.parseInt(finalPrice.getText().replace(",", "").replaceAll("\\s", ""));
+        }
     }
 }
