@@ -112,12 +112,12 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
 
     private PaymentSelectorRetailSplitV3 selectCuotas(String cuotas, int paymentAmount, int container){
         logger.info("Selecting [Cuotas]: " + "[" + cuotas + "]");
+        waitImplicitly(4000);
         List<WebElement> cuotasDdl = driver.findElements(By.cssSelector("#am-split-payment form-payment-split div:nth-child(2) > credit-cards-split div:nth-child(3) > div:nth-child(1) > select"));
         Select cuotasSelect = new Select (cuotasDdl.get(container));
         String currency = getCountryCurrency();
         String totalPagarCuota = setTotalCuota(paymentAmount);
         String cuotasFinal = cuotas + " de " + currency + " " + totalPagarCuota + " (Total: " + currency + " " + totalPagarCuota + ")";
-        waitImplicitly(2000);
         cuotasSelect.selectByVisibleText(cuotasFinal);
         return this;
     }
