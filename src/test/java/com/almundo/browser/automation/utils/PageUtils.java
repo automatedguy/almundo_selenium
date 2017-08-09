@@ -280,7 +280,7 @@ public class PageUtils {
         switch(countryPar){
             case "ARGENTINA" : currency = "ARS";
                 break;
-            case "COLOMBIA" : currency = "COL";
+            case "COLOMBIA" : currency = "COP";
                 break;
             case "MEXICO" : currency = "MXN";
                 break;
