@@ -76,4 +76,37 @@ public class RetailFlowTest extends TestBaseSetup {
         Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
+
+    @Test
+    public void suc_Int_Booking_Flow_Splitted_2cards() {
+        logTestTitle("Sucursales Autos Flow - International - Splitted -  10 days - " + countryPar );
+        if(!countryPar.equals("MEXICO")) {
+            dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+
+            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
+            carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
+            carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
+            carsDataTrip.selectAgeRange(dataManagement.ageRange);
+            carsResultsPage = carsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(carsResultsPage.vacancy());
+
+            dataManagement.getPassengerData("adult_male_native");
+
+            checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                    "pago_dividido$1_visa_visa$1_master_master$",
+                    dataManagement.getBillingData("local_Billing_sucursales"),
+                    dataManagement.getContactData("contact_cell_phone"),
+                    "CarsCheckOutPageSucursal");
+
+            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(confirmationPageV3.confirmationOk());
+        }
+        setResultSauceLabs(PASSED);
+    }
 }
