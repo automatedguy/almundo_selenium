@@ -162,6 +162,9 @@ public class RetailFlowTest extends TestBaseSetup {
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
+        else{
+            logger.warn("We are not running this for MEXICO!");
+        }
         setResultSauceLabs(PASSED);
     }
 }

@@ -118,4 +118,46 @@ public class RetailFlowTest extends TestBaseSetup {
 
         setResultSauceLabs(PASSED);
     }
+
+    @Test
+    public void suc_Int_Booking_Flow_Splitted_2cards() {
+        logTestTitle("Sucursales Trips Flow - International - Splitted - 20 days - 2 Adults - 1 Room - " + countryPar );
+        if(!countryPar.equals("MEXICO")) {
+            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
+
+            dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1room");
+
+            tripsDataTrip = basePage.clicksTripsBtn();
+            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+            tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(tripsResultsPage.vacancy());
+
+            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+            tripsDetailPage.clickVerHabitacionBtn();
+
+            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+
+            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData("adult_female_foreign");
+
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                    "pago_dividido$1_visa_visa$1_master_master$",
+                    dataManagement.getBillingData("local_Billing_sucursales"),
+                    dataManagement.getContactData("contact_cell_phone"),
+                    "TripsCheckOutPageDomesticSucursal");
+
+            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(confirmationPageV3.confirmationOk());
+        }
+        else{
+            logger.warn("We are not running this for MEXICO!");
+        }
+        setResultSauceLabs(PASSED);
+    }
 }

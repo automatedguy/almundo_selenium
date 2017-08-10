@@ -121,7 +121,8 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
             String cuotasFinal = cuotas + " de " + currency + " " + totalPagarCuota + " (Total: " + currency + " " + totalPagarCuota + ")";
             cuotasSelect.selectByVisibleText(cuotasFinal);
         }else{
-            logger.info("This is STG Env and we are selecting Payment ramdomly :(");
+            logger.info("This is STG Env and we are selecting the first option available in the meantime :( ");
+            logger.info("Selected the following option: " + cuotasSelect.getOptions().get(1).getText());
             cuotasSelect.selectByIndex(1);
         }
         return this;

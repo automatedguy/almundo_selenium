@@ -22,7 +22,7 @@ public class PageUtils {
     //WAIT
     public static void waitElementForVisibility(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
-            logger.info("Waiting for" + message);
+            logger.info("Waiting for: [" + message + "]");
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
             wait.until(ExpectedConditions.visibilityOf(element));
