@@ -46,12 +46,12 @@ public class PageUtils {
 
     public static void waitElementForVisibility(WebDriver driver, By element, int timeOutInSeconds, String message){
         try {
-            logger.info("Waiting for: " + message);
+            logger.info("Waiting for: [" + message + "]");
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.withMessage(message);
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         }catch (TimeoutException exception) {
-            logger.error(message + " is not displayed");
+            logger.error("[" + message + "] is not displayed");
             setFailureSauceLabs(driver);
             throw exception;
         }

@@ -151,4 +151,80 @@ public class RetailFlowTest extends TestBaseSetup {
         }
         setResultSauceLabs(PASSED);
     }
+
+    @Test
+    public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
+        logTestTitle("Sucursales Hotel Flow - International - Splitted Deposit Credit - 10 days - 2 Adults - 1 Room - " + countryPar );
+        if(!countryPar.equals("MEXICO")) {
+            dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
+
+            hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+            hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(hotelsResultsPage.vacancy());
+            hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+            PageUtils.switchToNewTab(driver);
+            hotelsDetailPage.clickVerHabitacionesBtn();
+
+            checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+
+            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData("adult_female_native");
+
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                    "pago_dividido$deposit$1_visa_visa$",
+                    dataManagement.getBillingData("local_Billing_sucursales"),
+                    dataManagement.getContactData("contact_phone"),
+                    "HotelsCheckOutPageInternationalSucursal");
+
+            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(confirmationPageV3.confirmationOk());
+        }
+        else{
+            logger.warn("We are not running this for MEXICO!");
+        }
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
+    public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
+        logTestTitle("Sucursales Hotel Flow - International - Splitted Transfer Credit - 10 days - 2 Adults - 1 Room - " + countryPar );
+        if(!countryPar.equals("MEXICO")) {
+            dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
+
+            hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+            hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(hotelsResultsPage.vacancy());
+            hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+            PageUtils.switchToNewTab(driver);
+            hotelsDetailPage.clickVerHabitacionesBtn();
+
+            checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+
+            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData("adult_female_native");
+
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                    "pago_dividido$transfer$1_visa_visa$",
+                    dataManagement.getBillingData("local_Billing_sucursales"),
+                    dataManagement.getContactData("contact_phone"),
+                    "HotelsCheckOutPageInternationalSucursal");
+
+            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(confirmationPageV3.confirmationOk());
+        }
+        else{
+            logger.warn("We are not running this for MEXICO!");
+        }
+        setResultSauceLabs(PASSED);
+    }
 }

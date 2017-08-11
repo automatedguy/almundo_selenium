@@ -135,7 +135,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if(isRetailChannel()){
             if(paymentData.contains("pago_dividido$")) {
                 paymentSelectorRetailV3().selectPaymentMethod("PAGO DIVIDIDO");
-                paymentSelectorRetailSplitV3().populateSplittedCreditCardData(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
+                paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
             }
             else {
                 paymentSelectorRetailV3().selectCreditRbd();

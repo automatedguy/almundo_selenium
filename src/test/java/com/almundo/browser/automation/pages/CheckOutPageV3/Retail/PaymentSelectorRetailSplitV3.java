@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForVisibility;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -23,6 +24,8 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         super(iDriver);
     }
 
+    private boolean isLastPayment;
+    private int decreaseContainer = 0;
     JSONObject paymentDataObject = new JSONObject();
 
     /**************************** Locators **********************************/
@@ -51,13 +54,21 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
     @FindBy(css = "#am-split-payment form-payment-split div:nth-child(2) > credit-cards-split div.container-description div.total-description > span.price-description.col-4-xs")
     private WebElement totalPagar;
 
+    /**************************** Deposit / Transfers  Locators **********************************/
+
+    @FindBy(css = "#am-split-payment form-payment-split div:nth-child(2) .container-amounts input")
+    private WebElement importeDepTranfTxt;
+
+    @FindBy(css = "#am-split-payment form-payment-split div:nth-child(2) .container-charges select")
+    private WebElement cargosPercepcionesGeneradosDepTranfTxt;
+
     /**************************** Actions **********************************/
 
     private PaymentSelectorRetailSplitV3 selectMedioDePago(String paymentForm, int container) {
         logger.info("Selecting Payment Form: " + "[" + paymentForm + "]");
         Select medioDePagoSelect = new  Select (medioDePago.get(container));
         medioDePagoSelect.selectByVisibleText(paymentForm);
-        waitImplicitly(2000);
+        waitImplicitly(4000);
         return this;
     }
 
@@ -167,9 +178,43 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         return StringUtils.substringBetween(remainingAmount, getCountryCurrency(), ")").replaceAll("\\s","");
     }
 
-    public PaymentSelectorRetailSplitV3 populateSplittedCreditCardData(List<String> paymentDataList, int  totalPrice){
+    /**************************** Deposit / Transfers Actions **********************************/
+
+    private PaymentSelectorRetailSplitV3 populateDepositTranfPaymentInfo(String depositTranfAmount){
+        logger.info("Entering amount [" + depositTranfAmount +  "]");
+        importeDepTranfTxt.sendKeys(depositTranfAmount);
+        logger.info("Selecting [Cargos/Percepciones generados]: [Incluirlos en el importe]");
+        cargosPercepcionesGeneradosDepTranfTxt.sendKeys("Incluirlos en el importe");
+        decreaseContainer = 1;
+        String totalToPay = "#am-split-payment form-payment-split div:nth-child(2) .container-description .total-description span.price-description.col-4-xs";
+        waitElementForVisibility(driver, By.cssSelector(totalToPay), 10, "Total a pagar");
+        // waitImplicitly(2000);
+        return this;
+    }
+
+    /**************************** Credit Card Actions **********************************/
+
+    private PaymentSelectorRetailSplitV3 populateCreditCardPaymentInfo(int paymentAmount, int container){
+        enterNumeroDeTarjeta(paymentDataObject.get("card_number").toString(), container);
+        if (!isLastPayment) {
+            enterImporte(String.valueOf(paymentAmount), container);
+        }
+        selectCargosPercepcionesGenerados("Incluirlos en el importe", container);
+        if (!isLastPayment) {
+            selectCuotas(paymentDataObject.get("payment_qty").toString(), paymentAmount, (container - decreaseContainer));
+        } else {
+            selectCuotas(paymentDataObject.get("payment_qty").toString(), Integer.valueOf(getRemainingAmount(container).replaceAll("\\.", "")), (container - decreaseContainer));
+        }
+        enterTitularDeLaTarjeta(paymentDataObject.get("card_holder").toString(), (container - decreaseContainer));
+        selectFechaDeVencimientoMes(paymentDataObject.get("month_card_expire").toString(), (container - decreaseContainer));
+        selectFechaDeVencimientoAno(paymentDataObject.get("year_card_expire").toString(), (container - decreaseContainer));
+        enterCodigo(paymentDataObject.get("security_code").toString(), (container - decreaseContainer));
+        decreaseContainer = 0;
+        return this;
+    }
+
+    public PaymentSelectorRetailSplitV3 populateSplittedPaymentInfo(List<String> paymentDataList, int  totalPrice){
         int container = 0;
-        boolean isLastPayment;
         int paymentAmount = totalPrice / paymentDataList.size();
         dataManagement.getPaymentList();
         for(String paymentData : paymentDataList) {
@@ -177,22 +222,20 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
             paymentDataObject = dataManagement.getPaymentData(paymentData);
             logger.info("------------- Filling Payment Section -------------");
             logger.info("Getting payment data for: " + "[" + paymentData + "]");
-            selectMedioDePago("Tarjeta de crédito", container);
-            enterNumeroDeTarjeta(paymentDataObject.get("card_number").toString(), container);
-            if(!isLastPayment) {
-                enterImporte(String.valueOf(paymentAmount), container);
+            switch(paymentData){
+                case "deposit" :
+                    selectMedioDePago("Depósito", container);
+                    populateDepositTranfPaymentInfo(String.valueOf(paymentAmount));
+                    break;
+                case "transfer" :
+                    selectMedioDePago("Transferencia", container);
+                    populateDepositTranfPaymentInfo(String.valueOf(paymentAmount));
+                    break;
+                default:
+                    selectMedioDePago("Tarjeta de crédito", container);
+                    populateCreditCardPaymentInfo(paymentAmount, container);
+                    break;
             }
-            selectCargosPercepcionesGenerados("Incluirlos en el importe", container);
-            if(!isLastPayment) {
-                selectCuotas(paymentDataObject.get("payment_qty").toString(), paymentAmount, container);
-            }
-            else{
-                selectCuotas(paymentDataObject.get("payment_qty").toString(), Integer.valueOf(getRemainingAmount(container).replaceAll("\\.","")), container);
-            }
-            enterTitularDeLaTarjeta(paymentDataObject.get("card_holder").toString(), container);
-            selectFechaDeVencimientoMes(paymentDataObject.get("month_card_expire").toString(), container);
-            selectFechaDeVencimientoAno(paymentDataObject.get("year_card_expire").toString(), container);
-            enterCodigo(paymentDataObject.get("security_code").toString(), container);
             container = container + 1;
             if(!isLastPayment) {
                 agregarOtroMedioDePagoClick();
