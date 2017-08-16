@@ -373,6 +373,30 @@
       "agentEmail":"true"
     },
 
+    "HotelsCheckOutPageInternationalSucursal":{
+      "PickUpLocationSection": "false",
+      "BillingInfoSection":"true",
+      "billing_fiscal_type": "true",
+      "billing_document_type": "false",
+      "document_emisor":"false",
+      "document_expiration":"false",
+      "documentType0":"false",
+      "documentType":"false",
+      "document_number":"false",
+      "document_number_card":"false",
+      "address_number":"false",
+      "address_floor":"false",
+      "address_department":"false",
+      "address_postal_code":"false",
+      "area":"false",
+      "fiscal_name":"true",
+      "birthday":"false",
+      "gender":"false",
+      "nationality":"false",
+      "accepted":"false",
+      "agentEmail":"true"
+    },
+
     "FlightsCheckOutPageInternational":{
       "PickUpLocationSection": "false",
       "BillingInfoSection":"true",

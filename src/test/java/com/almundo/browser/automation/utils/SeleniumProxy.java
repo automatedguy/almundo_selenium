@@ -41,6 +41,15 @@ public class SeleniumProxy extends TestBaseSetup{
         return requestUrl;
     }
 
+    private void displayRequestBody(Har har, int i){
+        printSeparator();
+        try {
+            logger.info("Body:" + har.getLog().getEntries().get(i).getRequest().getPostData().getText().toString());
+        }catch(NullPointerException ouch){
+            logger.info("NullPointerException while trying to get Request Body");
+        }
+    }
+
     private void displayRequestMethod(String requestMethod){
         printSeparator();
         logger.info("Method:" + requestMethod);
@@ -77,9 +86,10 @@ public class SeleniumProxy extends TestBaseSetup{
             requestMethod = har.getLog().getEntries().get(i).getRequest().getMethod().toString();
             if(requestMethod.toString().equals("POST")) {
                 requestUrl = getRequestUrl(har, i);
-                if(requestUrl.contains("/checkout") || requestUrl.contains("/fops")) {
+                if(requestUrl.contains("/checkout") && !requestUrl.contains("bam.nr-data.net")) {
                     displayRequestMethod(requestMethod);
                     displayRequestUrl(requestUrl);
+                    displayRequestBody(har, i);
                     displayStatusCode(har, i);
                     displayPostData(har, i);
                     displayResponseData(har, i);
