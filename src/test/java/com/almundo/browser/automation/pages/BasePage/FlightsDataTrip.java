@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.BasePage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
  * Created by gabrielcespedes on 05/12/16.
@@ -24,6 +27,15 @@ public class FlightsDataTrip extends BasePage{
 
     @FindBy(name = "type-flights")
     public WebElement flightTypeDdl;
+
+    @FindBy(css = "#main-content div:nth-child(1) > label > input")
+    private WebElement roundTripRbn;
+
+    @FindBy(css = "#main-content div:nth-child(2) > label > input")
+    private WebElement oneWayRbn;
+
+    @FindBy(css = "#main-content div:nth-child(3) > label > input")
+    private WebElement multiDestinationRbn;
 
     @FindBy(id = "origin-flights")
     public WebElement originFlightsTxt;
@@ -152,10 +164,24 @@ public class FlightsDataTrip extends BasePage{
     }
 
     public FlightsDataTrip selectFlightType(String flightType) {
-        PageUtils.waitElementForVisibility(driver, flightTypeDdl, 10, "Flight type drop down");
-        Select flightTypeSelect = new Select(flightTypeDdl);
+        //PageUtils.waitElementForVisibility(driver, flightTypeDdl, 10, "Flight type drop down");
+        waitImplicitly(1500);
         logger.info("Selecting Flight Type: [" + flightType + "]");
-        flightTypeSelect.selectByVisibleText(flightType);
+        try {
+            Select flightTypeSelect = new Select(flightTypeDdl);
+            flightTypeSelect.selectByVisibleText(flightType);
+        }
+        catch(NoSuchElementException ouch){
+            logger.info("We Have Radio Buttons Here! :) ");
+            switch (flightType){
+                case "Solo ida": oneWayRbn.click();
+                    break;
+                case "Ida y vuelta": roundTripRbn.click();
+                    break;
+                case "Varias ciudades": multiDestinationRbn.click();
+                    break;
+            }
+        }
         return this;
     }
 
@@ -173,7 +199,7 @@ public class FlightsDataTrip extends BasePage{
         logger.info("Entering Flight Origin: [" + origin + "]");
         originFlightsTxt.clear();
         originFlightsTxt.sendKeys(origin);
-        PageUtils.waitImplicitly(3000);
+        waitImplicitly(3000);
         return this;
     }
 
@@ -197,7 +223,7 @@ public class FlightsDataTrip extends BasePage{
     }
 
     public FlightsDataTrip selectPassenger(int adults, int childs) {
-        PageUtils.waitImplicitly(1000);
+        waitImplicitly(1000);
         personasTxt.click();
 
         if (adults>1){
