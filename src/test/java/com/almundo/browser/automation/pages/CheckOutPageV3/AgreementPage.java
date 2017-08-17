@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static com.almundo.browser.automation.utils.Constants.DATA_PATH;
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 
 /**
  * Created by gabrielcespedes on 11/05/17.
@@ -34,6 +35,7 @@ public class AgreementPage extends CheckOutPageV3 {
         if(getUrl().contains(getCountryUrl())) {
             return true;
         }else{
+            setResultSauceLabs(FAILED);
             return false;
         }
     }
@@ -63,6 +65,7 @@ public class AgreementPage extends CheckOutPageV3 {
         if(getAgreement().equals(getCountryAgreement())){
            return true;
         }else{
+            setResultSauceLabs(FAILED);
             return false;
         }
     }
