@@ -64,7 +64,7 @@ public class TestBaseSetup {
 
     /************* Selenium Proxy *************/
     private static SeleniumProxy seleniumProxy = new SeleniumProxy();
-    private static Boolean initProxy = true;
+    private static Boolean initProxy = false;
 
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
