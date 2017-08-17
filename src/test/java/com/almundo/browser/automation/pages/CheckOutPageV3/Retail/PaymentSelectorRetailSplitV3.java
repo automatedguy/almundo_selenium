@@ -180,9 +180,14 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
 
     /**************************** Deposit / Transfers Actions **********************************/
 
-    private PaymentSelectorRetailSplitV3 populateDepositTranfPaymentInfo(String depositTranfAmount){
-        logger.info("Entering amount [" + depositTranfAmount +  "]");
-        importeDepTranfTxt.sendKeys(depositTranfAmount);
+    private PaymentSelectorRetailSplitV3 populateDepositTranfPaymentInfo(String depositTranfAmount, int container){
+        if (!isLastPayment) {
+            logger.info("Entering amount [" + depositTranfAmount + "]");
+            importeDepTranfTxt.sendKeys(depositTranfAmount);
+        }
+        else{
+            logger.info("Remaininng Amount to Pay: [" + getRemainingAmount(container) + "]");
+        }
         logger.info("Selecting [Cargos/Percepciones generados]: [Incluirlos en el importe]");
         cargosPercepcionesGeneradosDepTranfTxt.sendKeys("Incluirlos en el importe");
         decreaseContainer = 1;
@@ -225,11 +230,11 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
             switch(paymentData){
                 case "deposit" :
                     selectMedioDePago("Depósito", container);
-                    populateDepositTranfPaymentInfo(String.valueOf(paymentAmount));
+                    populateDepositTranfPaymentInfo(String.valueOf(paymentAmount), container);
                     break;
                 case "transfer" :
                     selectMedioDePago("Transferencia", container);
-                    populateDepositTranfPaymentInfo(String.valueOf(paymentAmount));
+                    populateDepositTranfPaymentInfo(String.valueOf(paymentAmount), container);
                     break;
                 default:
                     selectMedioDePago("Tarjeta de crédito", container);
