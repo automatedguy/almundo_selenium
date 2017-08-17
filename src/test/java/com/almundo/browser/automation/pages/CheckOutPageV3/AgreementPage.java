@@ -35,6 +35,7 @@ public class AgreementPage extends CheckOutPageV3 {
         if(getUrl().contains(getCountryUrl())) {
             return true;
         }else{
+            logger.error("Agreement URL Assertion Failed!");
             setResultSauceLabs(FAILED);
             return false;
         }
@@ -65,6 +66,7 @@ public class AgreementPage extends CheckOutPageV3 {
         if(getAgreement().equals(getCountryAgreement())){
            return true;
         }else{
+            logger.error("Agreement Terms and Conditions Assertion Failed!");
             setResultSauceLabs(FAILED);
             return false;
         }
