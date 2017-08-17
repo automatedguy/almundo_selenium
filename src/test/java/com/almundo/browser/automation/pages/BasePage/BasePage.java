@@ -35,6 +35,10 @@ public class BasePage extends TestBaseSetup {
         return initCarsDataTrip();
     }
 
+    public AssistanceDataTrip assistanceDataTrip() {
+        return initAssistanceDataTrip();
+    }
+
     public HeaderSection headerSection() { return initHeaderSection(); }
 
     //############################################### Locators ##############################################
@@ -56,7 +60,7 @@ public class BasePage extends TestBaseSetup {
     private WebElement disneyIcon;
 
     @FindBy(css = ".icon.assistance")
-    private WebElement insuranceIcon;
+    private WebElement assistanceIcon;
 
     @FindBy(css = ".icon.cars")
     private WebElement carsIcon;
@@ -132,6 +136,13 @@ public class BasePage extends TestBaseSetup {
         logger.info("Clicking on Vuelos+Hotel button");
         tripsIcon.click();
         return tripsDataTrip();
+    }
+
+    public AssistanceDataTrip clickAssistanceBtn() {
+        PageUtils.waitElementForClickable(driver, assistanceIcon, 10, "Seguros button");
+        logger.info("Clicking on Seguros button");
+        assistanceIcon.click();
+        return assistanceDataTrip();
     }
 
     public PromoPage clickMainLeftBannerLnk() {

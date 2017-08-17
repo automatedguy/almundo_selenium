@@ -395,6 +395,10 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CarsDataTrip.class);
     }
 
+    protected AssistanceDataTrip initAssistanceDataTrip(){
+        return PageFactory.initElements(driver, AssistanceDataTrip.class);
+    }
+
     protected CheckOutPage initCheckOutPage() {
         return PageFactory.initElements(driver, CheckOutPage.class);
     }

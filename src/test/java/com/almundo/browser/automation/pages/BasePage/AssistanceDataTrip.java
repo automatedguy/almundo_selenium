@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by gabrielcespedes on 17/08/17.
  */
-public class InsuranceDataTrip extends BasePage  {
+public class AssistanceDataTrip extends BasePage  {
 
-    public InsuranceDataTrip(WebDriver driver) { super(driver); }
+    public AssistanceDataTrip(WebDriver driver) { super(driver); }
 
     /****************** Locators ******************/
 
@@ -24,18 +24,18 @@ public class InsuranceDataTrip extends BasePage  {
 
     /****************** Actions ******************/
 
-    public InsuranceDataTrip selectTipoDeViaje(String tipoDeViaje){
+    public AssistanceDataTrip selectTipoDeViaje(String tipoDeViaje){
         logger.info("Selecting [Tipo de viaje]: [" + tipoDeViaje + "]" );
         return this;
     }
 
-    public InsuranceDataTrip enterDestino(String destinoAuto, String destinoFull){
+    public AssistanceDataTrip enterDestino(String destinoAuto, String destinoFull){
         logger.info("Entering [Destino]: [" + destinoFull + "]" );
 
         return this;
     }
 
-    public InsuranceDataTrip selectPersonas(String personas){
+    public AssistanceDataTrip selectPersonas(String personas){
         logger.info("Selecting [Personas]: [" + personas + "]" );
         return this;
     }
