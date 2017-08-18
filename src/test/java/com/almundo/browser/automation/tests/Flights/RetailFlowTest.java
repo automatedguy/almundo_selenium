@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
@@ -53,6 +54,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getRoundTripDataTripItinerary("domestic_30days_2adults_todas");
 
         flightsDataTrip = basePage.flightsDataTrip();
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -92,6 +94,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -133,6 +136,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
 
             flightsDataTrip = basePage.flightsDataTrip();
+            flightsDataTrip.selectFlightType(ROUND_TRIP);
             flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -176,6 +180,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
 
             flightsDataTrip = basePage.flightsDataTrip();
+            flightsDataTrip.selectFlightType(ROUND_TRIP);
             flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -219,6 +224,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
 
             flightsDataTrip = basePage.flightsDataTrip();
+            flightsDataTrip.selectFlightType(ROUND_TRIP);
             flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -262,6 +268,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
 
             flightsDataTrip = basePage.flightsDataTrip();
+            flightsDataTrip.selectFlightType(ROUND_TRIP);
             flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);

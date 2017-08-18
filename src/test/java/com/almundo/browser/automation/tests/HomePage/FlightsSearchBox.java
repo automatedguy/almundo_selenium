@@ -256,7 +256,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         logTestTitle("Flights Search Box - Validate flight limit for multi destination - " + countryPar );
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.selectFlightType(MULTIDESTINATION.toString());
+        flightsDataTrip.selectFlightType(MULTIDESTINATION);
 
         while(PageUtils.isElementPresent(flightsDataTrip.addLegLnk)) {
             flightsDataTrip.clickAddLegLnk();

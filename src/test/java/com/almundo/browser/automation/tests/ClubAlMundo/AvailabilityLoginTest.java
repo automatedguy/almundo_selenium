@@ -83,7 +83,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.clickFlightsBtn();
-        flightsDataTrip.selectFlightType(ROUND_TRIP.toString());
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);

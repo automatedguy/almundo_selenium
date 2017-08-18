@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
+import com.almundo.browser.automation.utils.Constants.FlightType;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -163,17 +164,17 @@ public class FlightsDataTrip extends BasePage{
         return elementList;
     }
 
-    public FlightsDataTrip selectFlightType(String flightType) {
+    public FlightsDataTrip selectFlightType(FlightType flightType) {
         //PageUtils.waitElementForVisibility(driver, flightTypeDdl, 10, "Flight type drop down");
         waitImplicitly(1500);
         logger.info("Selecting Flight Type: [" + flightType + "]");
         try {
             Select flightTypeSelect = new Select(flightTypeDdl);
-            flightTypeSelect.selectByVisibleText(flightType);
+            flightTypeSelect.selectByVisibleText(flightType.toString());
         }
         catch(NoSuchElementException ouch){
             logger.info("We Have Radio Buttons Here! :) ");
-            switch (flightType){
+            switch (flightType.toString()){
                 case "Solo ida": oneWayRbn.click();
                     break;
                 case "Ida y vuelta": roundTripRbn.click();

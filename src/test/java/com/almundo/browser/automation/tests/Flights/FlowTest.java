@@ -113,7 +113,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
 
-        flightsDataTrip.selectFlightType(ONE_WAY.toString());
+        flightsDataTrip.selectFlightType(ONE_WAY);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -150,7 +150,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getOneWayDataTripItinerary("domestic_20days_2adults_todas");
 
-        flightsDataTrip.selectFlightType(ONE_WAY.toString());
+        flightsDataTrip.selectFlightType(ONE_WAY);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -185,7 +185,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
-        flightsDataTrip.selectFlightType(ROUND_TRIP.toString());
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -224,7 +224,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getRoundTripDataTripItinerary("domestic_20days_2adults_todas");
 
-        flightsDataTrip.selectFlightType(ROUND_TRIP.toString());
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
@@ -262,7 +262,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.getMultiDestDataTripItinerary("multiDest_3Flights_2adults_todas");
 
-        flightsDataTrip.selectFlightType(MULTIDESTINATION.toString());
+        flightsDataTrip.selectFlightType(MULTIDESTINATION);
         flightsDataTrip.clickAddLegLnk();
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -292,6 +292,44 @@ public class FlowTest extends TestBaseSetup {
                                               "FlightsCheckOutPageInternational");
 
         validateTermsAndConditions();
+
+        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
+    public void roundTrip_Int_Booking_Flow_2CreditCards() {
+        logTestTitle("Flight Flow - Round Trip - Int 2 Credit Cards - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
+
+        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
+
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
+        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
+        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+
+        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData("child_male_native");
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                "1_visa_visa", "1_master_master",
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
+                "TripsCheckOutPageInternationalV3");
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());

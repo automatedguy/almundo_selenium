@@ -94,6 +94,21 @@ public class Constants {
         public String toString() {return product;}
     }
 
+    public enum PaymentTypes {
+        VISA_1("1_visa_visa"),
+        MASTER_1("1_master_master"),
+        AMEX_1("1_amex_amex"),
+        DEPOSIT("deposit"),
+        TRANSFER("transfer");
+
+        public final String paymentType;
+
+        PaymentTypes(String paymentType){this.paymentType = paymentType;}
+
+        @Override
+        public String toString(){return paymentType;}
+    }
+
     //LISTS
     public static final List<String> FLIGHT_TYPE_LIST = asList("Ida y vuelta", "Solo ida", "Varias ciudades");
     public static final List<String> FLIGHT_CLASS_LIST = asList("Todas", "Primera", "Business", "Premium", "Turista");
