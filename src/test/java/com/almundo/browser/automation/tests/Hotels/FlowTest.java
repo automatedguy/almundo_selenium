@@ -20,7 +20,9 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.MASTER_1;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.Constants.VISA_1;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -80,8 +82,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("child_female_native");
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "1_visa_visa",
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_cell_phone"),
                                               "HotelsCheckOutPageInternationalV3");
@@ -114,8 +115,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_native");
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              "1_master_master",
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
                                                dataManagement.getBillingData("local_Billing"),
                                                dataManagement.getContactData("contact_phone"),
                                               "HotelsCheckOutPageDomesticV3");

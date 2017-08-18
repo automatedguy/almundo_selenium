@@ -39,7 +39,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void Int_Booking_Flow() {
-        logTestTitle("Seguros Flow - Int - 2 Persons - Turista - " + countryPar );
+        logTestTitle("International - 2 Persons");
         dataManagement.getAssistanceDataTripItinerary("miami_10days_2persons_unique");
         assistanceDataTrip.selectTipoDeViaje(dataManagement.tripType);
         assistanceDataTrip.enterDestino(dataManagement.destinationAuto, dataManagement.destinationFull);

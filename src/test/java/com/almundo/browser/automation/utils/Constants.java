@@ -81,33 +81,90 @@ public class Constants {
         }
     }
 
-    public enum Products{
+    public enum Products {
         VUELOS("Vuelos"),
         HOTELES("Hoteles"),
         AUTOS("Autos");
 
         public final String product;
 
-        Products(String product){this.product = product;}
+        Products(String product) {
+            this.product = product;
+        }
 
         @Override
-        public String toString() {return product;}
+        public String toString() {
+            return product;
+        }
     }
 
-    public enum PaymentTypes {
-        VISA_1("1_visa_visa"),
-        MASTER_1("1_master_master"),
-        AMEX_1("1_amex_amex"),
-        DEPOSIT("deposit"),
-        TRANSFER("transfer");
+    //PAYMENTS
 
-        public final String paymentType;
+    public static final String VISA_1 = "1_visa_visa";
+    public static final String MASTER_1 = "1_master_master";
+    public static final String AMEX_1 = "1_amex_amex";
 
-        PaymentTypes(String paymentType){this.paymentType = paymentType;}
+    public static final String DEPOSIT = "deposit";
+    public static final String TRANSFER = "transfer";
 
-        @Override
-        public String toString(){return paymentType;}
-    }
+    public static final String VISA_MASTER = "pago_dividido$1_visa_visa$1_master_master$";
+    public static final String MASTER_VISA = "pago_dividido$1_master_master$1_visa_visa$";
+
+    public static final String VISA_AMEX = "pago_dividido$1_visa_visa$1_amex_amex$";
+    public static final String AMEX_VISA = "pago_dividido$1_amex_amex$1_visa_visa$";
+
+    public static final String DEPOSIT_VISA = "pago_dividido$deposit$1_visa_visa$";
+    public static final String VISA_DEPOSIT = "pago_dividido$1_visa_visa$deposit$";
+
+    public static final String DEPOSIT_MASTER = "pago_dividido$deposit$1_master_master$";
+    public static final String MASTER_DEPOSIT = "pago_dividido$1_master_master$deposit$";
+
+    public static final String DEPOSIT_AMEX = "pago_dividido$deposit$1_amex_amex$";
+    public static final String AMEX_DEPOSIT = "pago_dividido$1_amex_amex$deposit$";
+
+    public static final String TRANSFER_VISA = "pago_dividido$transfer$1_visa_visa$";
+    public static final String VISA_TRANSFER = "pago_dividido$1_visa_visa$transfer$";
+
+    public static final String TRANSFER_MASTER = "pago_dividido$transfer$1_master_master$";
+    public static final String MASTER_TRANSFER = "pago_dividido$1_master_master$transfer$";
+
+    public static final String TRANSFER_AMEX = "pago_dividido$transfer$1_amex_amex$";
+    public static final String AMEX_TRANSFER = "pago_dividido$1_amex_amex$transfer$";
+
+    public static final String VISA_MASTER_AMEX = "pago_dividido$1_visa_visa$1_master_master$1_amex_amex$";
+    public static final String AMEX_VISA_MASTER = "pago_dividido$1_amex_amex$1_visa_visa$1_master_master$";
+
+    //BILLINGS
+    public static final String LOCAL_BILLING = "local_Billing";
+    public static final String LOCAL_BILLING_SUCURSALES = "local_Billing_sucursales";
+
+    //CONTACTS
+    public static final String CONTACT_CELL_PHONE = "contact_cell_phone";
+    public static final String CONTACT_PHONE = "contact_phone";
+
+    //CHECKOUT PAGES
+    public static final String CARS_CHECKOUT_PAGE = "CarsCheckOutPage";
+    public static final String CARS_CHECKOUT_PAGE_SUCURSAL ="CarsCheckOutPageSucursal";
+
+    //PASSENGERS
+    public static final String ADULT_MALE_NATIVE = "adult_male_native";
+    public static final String ADULT_FEMALE_NATIVE = "adult_female_native";
+
+    //COUNTRIES
+
+    public static final String ARGENTINA = "ARGENTINA";
+    public static final String COLOMBIA = "COLOMBIA";
+    public static final String MEXICO = "MEXICO";
+
+    //MESSAGES
+    public static final String NO_DOMESTIC_CARS_COLOMBIA = "Apparently, in Colombia they don't rent cars Domestic test is not running and we just set it passed";
+    public static final String NO_DOMESTIC_CARS_COLOMBIA_TICKET = "This isssue was reported ticket is: " + "https://almundo.atlassian.net/browse/CARS-444";
+
+    //ITINERARIES
+    //CARS
+    public static final String CAP_10D_21_24 = "capital_10days_entre_21_24";
+    public static final String MIA_10D_21_24 = "miami_10days_entre_21_24";
+    public static final String NOT_RUNNING_MEXICO = "We are not running this for MEXICO!";
 
     //LISTS
     public static final List<String> FLIGHT_TYPE_LIST = asList("Ida y vuelta", "Solo ida", "Varias ciudades");

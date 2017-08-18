@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
@@ -74,8 +74,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_visa_visa",
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_phone"),
                 "FlightsCheckOutPageDomesticSucursal");
@@ -115,8 +114,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_male_native");
         dataManagement.getPassengerData("adult_female_native");
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_visa_visa",
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_phone"),
                 "FlightsCheckOutPageInternationalSucursal");
@@ -130,7 +128,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
-        logTestTitle("Sucursales Flight Flow - International - Splitted 2 Cards - 20 days - 2 Adults - Todas - " + countryPar);
+        logTestTitle("Sucursales Flight Flow - International - Splitted VISA_MASTER - 20 days - 2 Adults - Todas - " + countryPar);
 
         if(!countryPar.equals("MEXICO")) {
             dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
@@ -157,8 +155,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getPassengerData("adult_male_native");
             dataManagement.getPassengerData("adult_female_native");
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_visa_visa$1_master_master$",
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER,
                     dataManagement.getBillingData("local_Billing_sucursales"),
                     dataManagement.getContactData("contact_phone"),
                     "FlightsCheckOutPageInternationalSucursal");
@@ -174,7 +171,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
-        logTestTitle("Sucursales Flight Flow - International - Splitted Deposit / Credit - 20 days - 2 Adults - Todas - " + countryPar);
+        logTestTitle("Sucursales Flight Flow - International - Splitted DEPOSIT_MASTER - 20 days - 2 Adults - Todas - " + countryPar);
 
         if(!countryPar.equals("MEXICO")) {
             dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
@@ -201,8 +198,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getPassengerData("adult_male_native");
             dataManagement.getPassengerData("adult_female_native");
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$deposit$1_master_master$",
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_MASTER,
                     dataManagement.getBillingData("local_Billing_sucursales"),
                     dataManagement.getContactData("contact_phone"),
                     "FlightsCheckOutPageInternationalSucursal");
@@ -218,7 +214,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
-        logTestTitle("Sucursales Flight Flow - International - Splitted 20 days - 2 Adults - Todas - " + countryPar);
+        logTestTitle("Sucursales Flight Flow - International - Splitted TRANSFER_VISA - 2 Adults - Todas - " + countryPar);
 
         if(!countryPar.equals("MEXICO")) {
             dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
@@ -245,8 +241,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getPassengerData("adult_male_native");
             dataManagement.getPassengerData("adult_female_native");
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$transfer$1_visa_visa$",
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_VISA,
                     dataManagement.getBillingData("local_Billing_sucursales"),
                     dataManagement.getContactData("contact_phone"),
                     "FlightsCheckOutPageInternationalSucursal");
@@ -289,8 +284,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getPassengerData("adult_male_native");
             dataManagement.getPassengerData("adult_female_native");
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_amex_amex$1_visa_visa$1_master_master$",
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, AMEX_VISA_MASTER,
                     dataManagement.getBillingData("local_Billing_sucursales"),
                     dataManagement.getContactData("contact_phone"),
                     "FlightsCheckOutPageInternationalSucursal");

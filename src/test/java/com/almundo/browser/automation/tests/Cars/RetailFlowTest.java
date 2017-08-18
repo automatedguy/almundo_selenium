@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
@@ -47,9 +47,8 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow() {
-        logTestTitle("Sucursales Autos Flow - International - 10 days - " + countryPar );
-
-        dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+        logTestTitle("International - 10 days");
+        dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
 
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -62,15 +61,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
         Assert.assertTrue(carsResultsPage.vacancy());
 
-        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "CarsCheckOutPageSucursal");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -79,9 +76,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
-        logTestTitle("Sucursales Autos Flow - International - Splitted 2 Cards -  10 days - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+        logTestTitle("International - 10 days - VISA_MASTER");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -94,30 +91,28 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_visa_visa$1_master_master$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "CarsCheckOutPageSucursal");
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
-        logTestTitle("Sucursales Autos Flow - International - Splitted Deposit / Credit -  10 days - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+        logTestTitle("International - 10 days - DEPOSIT_MASTER");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -130,30 +125,28 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_master_master$deposit$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "CarsCheckOutPageSucursal");
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransaferCredit() {
-        logTestTitle("Sucursales Autos Flow - International - Splitted Transfer / Credit -  10 days - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+        logTestTitle("International - 10 days - TRANSFER_MASTER");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -166,30 +159,28 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$transfer$1_master_master$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "CarsCheckOutPageSucursal");
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_3cards() {
-        logTestTitle("Sucursales Autos Flow - International - Splitted 3 Cards -  10 days - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+        logTestTitle("International - 10 days - VISA_MASTER_AMEX");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -202,21 +193,19 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_visa_visa$1_master_master$1_amex_amex$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "CarsCheckOutPageSucursal");
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER_AMEX,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }

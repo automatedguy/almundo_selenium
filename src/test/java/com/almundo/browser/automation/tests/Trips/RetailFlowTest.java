@@ -15,7 +15,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.MASTER_1;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.Constants.VISA_1;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -69,8 +71,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("child_female_native_trips_domestic");
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_visa_visa",
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageDomesticSucursal");
@@ -107,8 +108,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.getPassengerData("adult_female_foreign");
         dataManagement.getPassengerData("adult_female_foreign");
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_visa_visa",
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
                 dataManagement.getBillingData("local_Billing_sucursales"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageDomesticSucursal");

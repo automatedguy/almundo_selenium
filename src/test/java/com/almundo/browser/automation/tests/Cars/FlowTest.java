@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 
@@ -51,14 +51,12 @@ public class FlowTest extends TestBaseSetup {
 
    @Test
     public void dom_Booking_Flow() {
-        logTestTitle("Cars Flow - Domestic - 10 days - " + countryPar );
-
-        if(countryPar.equals("COLOMBIA")){
-            logger.warn("Apparently, in Colombia they don't rent cars... " +
-                    "Domestic test is not running and we just set it passed");
-            logger.warn("This isssue was reported ticket is: " + "https://almundo.atlassian.net/browse/CARS-444");}
+        logTestTitle("Domestic - 10 days");
+        if(countryPar.equals(COLOMBIA)){
+            logger.warn(NO_DOMESTIC_CARS_COLOMBIA);
+            logger.warn(NO_DOMESTIC_CARS_COLOMBIA_TICKET);}
         else {
-            dataManagement.getCarsDataTripItinerary("capital_10days_entre_21_24");
+            dataManagement.getCarsDataTripItinerary(CAP_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -67,18 +65,18 @@ public class FlowTest extends TestBaseSetup {
             carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
             carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
             carsDataTrip.selectAgeRange(dataManagement.ageRange);
+
             carsResultsPage = carsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(carsResultsPage.vacancy());
             Assert.assertTrue(carsResultsPage.processed());
 
-            dataManagement.getPassengerData("adult_male_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "1_visa_visa",
-                    dataManagement.getBillingData("local_Billing"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "CarsCheckOutPage");
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
+                    dataManagement.getBillingData(LOCAL_BILLING),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -88,9 +86,8 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void int_Booking_Flow() {
-        logTestTitle("Cars Flow - International - 10 days - " + countryPar );
-
-        dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+        logTestTitle("International - 10 days");
+        dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
 
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -99,18 +96,18 @@ public class FlowTest extends TestBaseSetup {
         carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
         carsDataTrip.selectAgeRange(dataManagement.ageRange);
+
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(carsResultsPage.vacancy());
         Assert.assertTrue(carsResultsPage.processed());
 
-        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                          "1_visa_visa",
-                                          dataManagement.getBillingData("local_Billing"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "CarsCheckOutPage");
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
