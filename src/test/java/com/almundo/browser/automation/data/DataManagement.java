@@ -27,6 +27,9 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject autosDataTripList = null;
     private JSONObject autosDataTripItinerary = null;
 
+    private JSONObject assistanceDataTripList = null;
+    private JSONObject assistanceDataTripItinerary = null;
+
     public JSONObject passengersList = null;
     private JSONObject passengerData = null;
     public JSONArray passengerJsonList = new JSONArray();
@@ -58,6 +61,8 @@ public class DataManagement extends TestBaseSetup {
     public int adults;
     public int childs;
     public int rooms;
+    public String tripType;
+    public int persons;
     public String childAgeRange;
     public String flightClass;
     public String pickUpTime;
@@ -153,6 +158,15 @@ public class DataManagement extends TestBaseSetup {
         childAgeRange = vueloDataTripItinerary.get("childAgeRange").toString();
 
         flightClass = vueloDataTripItinerary.get("flightClass").toString();
+    }
+
+    public void getAssistanceItineraryData(){
+        getAssistanceDataTripList();
+        getPassengersList();
+        getPaymentList();
+        getBillingList();
+        getContactList();
+        getUsersDataList();
     }
 
     //HOTELES DATA TRIP
@@ -293,6 +307,27 @@ public class DataManagement extends TestBaseSetup {
 
         ageRange = autosDataTripItinerary.get("ageRange").toString();
     }
+
+    //ASSISTANCE DATA TRIP
+
+    public void getAssistanceDataTripList() {
+        assistanceDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "assistance", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getAssistanceDataTripItinerary(String dataSet) {
+        assistanceDataTripItinerary = JsonRead.getJsonDataObject(assistanceDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        tripType = assistanceDataTripItinerary.get("tripType").toString();
+
+        destinationAuto = assistanceDataTripItinerary.get("destinationAuto").toString();
+        destinationFull = assistanceDataTripItinerary.get("destinationFull").toString();
+
+        startDate = Integer.parseInt(assistanceDataTripItinerary.get("startDate").toString());
+        endDate = Integer.parseInt(assistanceDataTripItinerary.get("endDate").toString());
+
+        persons = Integer.parseInt(assistanceDataTripItinerary.get("persons").toString());
+    }
+
 
     //LOGIN
     public void getUsersDataList() {

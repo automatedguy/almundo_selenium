@@ -237,6 +237,17 @@
 		}
 	},
 
+	"assistance": {
+		"miami_10days_2persons_unique": {
+			"tripType": "Único viaje",
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 10,
+			"persons": 2
+		}
+	},
+
 	"passengers":{
 			"adult_male_native": {
 				"first_name": "Pepe",
