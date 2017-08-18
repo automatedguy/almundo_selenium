@@ -143,7 +143,7 @@ public class RetailFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void suc_Int_Booking_Flow_Splitted_TransaferCredit() {
+    public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
         logTestTitle("International - 10 days - TRANSFER_MASTER");
         if(!countryPar.equals(MEXICO)) {
             dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);

@@ -74,6 +74,7 @@ public class FlowTest extends TestBaseSetup {
             dataManagement.getPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
                     dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE);
@@ -105,6 +106,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
                 dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE);
