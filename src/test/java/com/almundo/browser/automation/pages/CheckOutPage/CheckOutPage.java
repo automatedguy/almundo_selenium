@@ -44,7 +44,7 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
-    @FindBy(css = ".price-box__price .price")
+    @FindBy(css = ".price__amount")
     public WebElement totalPrice;
 
     @FindBy(css = ".segments>div:nth-of-type(1) h2 span:nth-of-type(5)")
@@ -87,6 +87,7 @@ public class CheckOutPage extends TestBaseSetup {
     public int getTotalPrice() {
         logger.info("Total Price: [" + totalPrice.getText() + "]");
         String price = (totalPrice.getText().replace(".", ""));
+        price = price.replaceAll("\\s","");
         return Integer.parseInt(price);
     }
 

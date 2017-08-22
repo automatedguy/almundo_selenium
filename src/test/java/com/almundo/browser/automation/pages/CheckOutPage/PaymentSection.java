@@ -11,6 +11,9 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+
 /**
  * Created by leandro.efron on 25/11/2016.
  */
@@ -55,6 +58,9 @@ public class PaymentSection extends CheckOutPage {
     @FindBy(id = "cantselect")
     public WebElement paymentQtyDdl;
 
+    @FindBy(css = "#changeFOP")
+    public WebElement changeCardLnk;
+
     //############################################### Actions ###############################################
 
     public PaymentSection populatePaymentSection(JSONObject paymentData, String product){
@@ -80,11 +86,11 @@ public class PaymentSection extends CheckOutPage {
     }
 
     public void selectPaymentQty(String qty) {
-        List<WebElement> paymentList = driver.findElements(By.cssSelector(".cards__definition"));
+        List<WebElement> paymentList = driver.findElements(By.cssSelector(".payment"));
         boolean found = false;
 
         for (WebElement payment : paymentList) {
-            if(payment.getText().contains(qty)) {
+            if(payment.getText().replace("\n", " ").contains(qty)) {
                 PageUtils.scrollToElement(driver, payment);
                 PageUtils.scrollToCoordinate(driver, -230);
                 logger.info("Selecting [" + qty + "] payment/s option");
@@ -98,15 +104,12 @@ public class PaymentSection extends CheckOutPage {
     }
 
     public void selectCreditCard(String creditCardCode) {
-        List<WebElement> creditCardList = paymentQtySelected.findElements(By.cssSelector(".cards-more-options"));
-        WebElement creditCardIterator;
+        List<WebElement> creditCardList = driver.findElements(By.cssSelector(".payment-method-info .logo"));
         boolean found = false;
-
         for (WebElement creditCard : creditCardList) {
-            creditCardIterator = creditCard.findElement(By.cssSelector(".cards__definition__name p img"));
-            if(creditCardIterator.getAttribute("alt").equals(creditCardCode)) {
-                logger.info("Getting [" + creditCardCode + "] credit card row");
-                creditCardSelected = creditCard;
+            if(creditCard.getAttribute("alt").equals(creditCardCode)) {
+                logger.info("Getting [" + creditCard.getAttribute("alt").toString() + "] credit card row");
+                creditCard.click();
                 found = true;
                 break;
             }
@@ -115,12 +118,12 @@ public class PaymentSection extends CheckOutPage {
     }
 
     public void selectBank(String bankName) {
-        List<WebElement> bankList = creditCardSelected.findElements(By.cssSelector(".cards__definition__container__info__banks label"));
+        List<WebElement> bankList = driver.findElements(By.cssSelector(".bank .header-bank .logo-banks"));
         boolean found = false;
 
         for (WebElement bank : bankList) {
-            if(bank.getText().equals(bankName)) {
-                logger.info("Selecting [" + bank.getText() + "] bank option");
+            if(bank.getAttribute("alt").toString().equals(bankName)) {
+                logger.info("Selecting [" + bank.getAttribute("alt").toString() + "] bank option");
                 bank.click();
                 found = true;
                 break;
@@ -187,7 +190,6 @@ public class PaymentSection extends CheckOutPage {
         selectPaymentQty.selectByVisibleText(paymentQty);
     }
 
-
     public PaymentSection selectPaymentOption(JSONObject paymentData, String product) {
         switch(paymentData.get("credit_card_name").toString()){
             case "cash":
@@ -221,6 +223,15 @@ public class PaymentSection extends CheckOutPage {
                 break;
             }
         }
+        return this;
+    }
+
+    public PaymentSection clickChangeCardLink(){
+        waitElementForClickable(driver, changeCardLnk, 10, "Cambiar Forma de Pago link");
+        waitImplicitly(1000);
+        PageUtils.scrollToElement(driver, changeCardLnk);
+        logger.info("Clicking on Cambiar Forma de Pago link");
+        changeCardLnk.click();
         return this;
     }
 }

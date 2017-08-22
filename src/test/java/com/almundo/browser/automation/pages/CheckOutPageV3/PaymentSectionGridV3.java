@@ -11,6 +11,9 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+
 /**
  * Created by gabrielcespedes on 23/06/17.
  */
@@ -107,6 +110,8 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
     /****************** REWARDS related methods ****************************/
 
     public void clickChangeCardLink() {
+        waitElementForClickable(driver, changeCardLnk, 10, "Cambiar Forma de Pago link");
+        waitImplicitly(1000);
         PageUtils.scrollToElement(driver, changeCardLnk);
         logger.info("Clicking on Cambiar Forma de Pago link");
         changeCardLnk.click();
