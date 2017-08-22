@@ -152,6 +152,10 @@ public class Constants {
     public static final String FLIGHTS_CHECKOUT_DOM_RET = "FlightsCheckOutPageDomesticSucursal";
     public static final String FLIGHTS_CHECKOUT_INT_RET = "FlightsCheckOutPageInternationalSucursal";
 
+    public static final String TRIPS_CHECKOUT_DOM_RET = "TripsCheckOutPageDomesticSucursal";
+    public static final String TRIPS_CHECKOUT_INTV3= "TripsCheckOutPageInternationalV3";
+    public static final String TRIPS_CHECKOUT_DOMV3 = "TripsCheckOutPageDomesticV3";
+
     //PASSENGERS
     public static final String ADULT_MALE_NATIVE = "adult_male_native";
     public static final String ADULT_FEMALE_NATIVE = "adult_female_native";
@@ -159,6 +163,10 @@ public class Constants {
     public static final String ADULT_FEMALE_FOREIGN = "adult_female_foreign";
     public static final String CHILD_MALE_NATIVE = "child_male_native";
     public static final String CHILD_FEMALE_NATIVE = "child_female_native";
+
+    public static final String CHILD_FEMALE_NAT_TRIPS = "child_female_native_trips";
+
+    public static final String CHILD_FEM_NAT_TRIPS_DOM = "child_female_native_trips_domestic";
 
     //COUNTRIES
 
@@ -169,6 +177,7 @@ public class Constants {
     //MESSAGES
     public static final String NO_DOMESTIC_CARS_COLOMBIA = "Apparently, in Colombia they don't rent cars Domestic test is not running and we just set it passed";
     public static final String NO_DOMESTIC_CARS_COLOMBIA_TICKET = "This isssue was reported ticket is: " + "https://almundo.atlassian.net/browse/CARS-444";
+    public static final String NOT_RUNNING_MEXICO = "We are not running this for MEXICO!";
 
     //ITINERARIES
     //CARS
@@ -183,7 +192,12 @@ public class Constants {
     public static final String MIAMI_10D_2A_2C_TOURIST ="miami_10days_2adults_2childs_turista";
     public static final String MULTI_3LEGS_2A_ALL = "multiDest_3Flights_2adults_todas";
 
-    public static final String NOT_RUNNING_MEXICO = "We are not running this for MEXICO!";
+    //TRIPS
+    public static final String INT02_20D_2A_1R = "int02_20days_2adults_1room";
+    public static final String DOM02_20D_2A_1C_1R ="domestic02_20days_2adults_1childs_1room";
+    public static final String MIA_10D_2A_2C_1R = "miami_10days_2adults_2childs_1room";
+    public static final String DOM01_15D_2A_1C_1R = "domestic01_15days_2adults_1childs_1room";
+
 
     //LISTS
     public static final List<String> FLIGHT_TYPE_LIST = asList("Ida y vuelta", "Solo ida", "Varias ciudades");
@@ -194,5 +208,8 @@ public class Constants {
     public static final List<String> USER_MENU_LIST_MX = asList("Perfil", "Medios de pago", "Reservas", "Cerrar sesión");
 
     public final static int FIRST_OPTION = 0;
+
+    //INCONS
+    public static final String TRIPS_ICO = "Vuelo+Hotel icon";
 
 }

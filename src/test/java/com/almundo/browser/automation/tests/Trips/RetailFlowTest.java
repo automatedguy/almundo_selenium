@@ -14,10 +14,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
-import static com.almundo.browser.automation.utils.Constants.MASTER_1;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
-import static com.almundo.browser.automation.utils.Constants.VISA_1;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -46,10 +44,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Dom_Booking_Flow() {
-        logTestTitle("Sucursales Trips Flow - Domestic - 20 days - 2 Adults/1 Child - 1 Room - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
+        logTestTitle("Domestic - 20 days - 2 Adults/1 Child - 1 Room");
+        PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-        dataManagement.getTripsDataTripItinerary("domestic02_20days_2adults_1childs_1room");
+        dataManagement.getTripsDataTripItinerary(DOM02_20D_2A_1C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -67,14 +65,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native_trips_domestic");
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageDomesticSucursal");
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),TRIPS_CHECKOUT_DOM_RET);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -84,10 +81,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow() {
-        logTestTitle("Sucursales Trips Flow - International - 20 days - 2 Adults - 1 Room - " + countryPar );
-        PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
+        logTestTitle("International - 20 days - 2 Adults - 1 Room");
+        PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-        dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1room");
+        dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -105,13 +102,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageDomesticSucursal");
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -119,13 +115,14 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
-        logTestTitle("Sucursales Trips Flow - International - Splitted 2 Cards - 20 days - 2 Adults - 1 Room - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
+        logTestTitle("International - VISA_MASTER - 20 days - 2 Adults - 1 Room");
+        if(!countryPar.equals(MEXICO)) {
+            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1room");
+            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -143,31 +140,30 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_female_foreign");
-            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_visa_visa$1_master_master$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageDomesticSucursal");
+                    VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
-        logTestTitle("Sucursales Trips Flow - International - Splitted Deposit / Credit - 20 days - 2 Adults - 1 Room - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
+        logTestTitle("International - DEPOSIT_MASTER - 20 days - 2 Adults - 1 Room");
+        if(!countryPar.equals(MEXICO)) {
+            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1room");
+            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -185,31 +181,30 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_female_foreign");
-            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$deposit$1_master_master$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageDomesticSucursal");
+                    DEPOSIT_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
-        logTestTitle("Sucursales Trips Flow - International - Splitted Transfer/ Credit - 20 days - 2 Adults - 1 Room - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
+        logTestTitle("International - VISA_TRANSFER - 20 days - 2 Adults - 1 Room");
+        if(!countryPar.equals(MEXICO)) {
+            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1room");
+            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -227,31 +222,30 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_female_foreign");
-            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_visa_visa$transfer$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageDomesticSucursal");
+                    VISA_TRANSFER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_3cards() {
-        logTestTitle("Sucursales Trips Flow - International - Splitted 3 Cards - 20 days - 2 Adults - 1 Room - " + countryPar );
-        if(!countryPar.equals("MEXICO")) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, "Vuelo+Hotel icon");
+        logTestTitle("International - AMEX_VISA_MASTER - 20 days - 2 Adults - 1 Room");
+        if(!countryPar.equals(MEXICO)) {
+            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary("int02_20days_2adults_1room");
+            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -269,20 +263,18 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_female_foreign");
-            dataManagement.getPassengerData("adult_female_foreign");
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    "pago_dividido$1_amex_amex$1_visa_visa$1_master_master$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageDomesticSucursal");
+                    AMEX_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
