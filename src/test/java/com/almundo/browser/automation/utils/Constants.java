@@ -143,12 +143,22 @@ public class Constants {
     public static final String CONTACT_PHONE = "contact_phone";
 
     //CHECKOUT PAGES
-    public static final String CARS_CHECKOUT_PAGE = "CarsCheckOutPage";
-    public static final String CARS_CHECKOUT_PAGE_SUCURSAL ="CarsCheckOutPageSucursal";
+    public static final String CARS_CHECKOUT = "CarsCheckOutPage";
+    public static final String CARS_CHECKOUT_RET ="CarsCheckOutPageSucursal";
+
+    public static final String FLIGHTS_CHECKOUT_INT = "FlightsCheckOutPageInternational";
+    public static final String FLIGHTS_CHECKOUT_DOM = "FlightsCheckOutPageDomestic";
+
+    public static final String FLIGHTS_CHECKOUT_DOM_RET = "FlightsCheckOutPageDomesticSucursal";
+    public static final String FLIGHTS_CHECKOUT_INT_RET = "FlightsCheckOutPageInternationalSucursal";
 
     //PASSENGERS
     public static final String ADULT_MALE_NATIVE = "adult_male_native";
     public static final String ADULT_FEMALE_NATIVE = "adult_female_native";
+    public static final String ADULT_MALE_FOREIGN = "adult_male_foreign";
+    public static final String ADULT_FEMALE_FOREIGN = "adult_female_foreign";
+    public static final String CHILD_MALE_NATIVE = "child_male_native";
+    public static final String CHILD_FEMALE_NATIVE = "child_female_native";
 
     //COUNTRIES
 
@@ -164,6 +174,15 @@ public class Constants {
     //CARS
     public static final String CAP_10D_21_24 = "capital_10days_entre_21_24";
     public static final String MIA_10D_21_24 = "miami_10days_entre_21_24";
+
+    //FLIGHTS
+
+    public static final String DOMESTIC_30D_2A_ALL = "domestic_30days_2adults_todas";
+    public static final String DOMESTIC_20D_2A_ALL =  "domestic_20days_2adults_todas";
+    public static final String MIAMI_10D_2A_TOURIST ="miami_10days_2adults_turista";
+    public static final String MIAMI_10D_2A_2C_TOURIST ="miami_10days_2adults_2childs_turista";
+    public static final String MULTI_3LEGS_2A_ALL = "multiDest_3Flights_2adults_todas";
+
     public static final String NOT_RUNNING_MEXICO = "We are not running this for MEXICO!";
 
     //LISTS

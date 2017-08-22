@@ -75,6 +75,13 @@ public class TestBaseSetup {
 
     public static boolean runningRemote;
 
+    // Multidestination Calendars
+    public String originCalendarLegOne = "origin-flights-0";
+    public String originCalendarLegTwo = "origin-flights-1";
+
+    public String destinationCalendarLegOne = "destination-flights-0";
+    public String destinationCalendarLegTwo = "destination-flights-1";
+
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 

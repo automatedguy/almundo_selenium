@@ -49,9 +49,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Dom_Booking_Flow() {
-        logTestTitle("Sucursales Flight Flow - Domestic - 20 days - 2 Adults - Todas - " + countryPar );
+        logTestTitle("Domestic - 20 days - 2 Adults - Todas");
 
-        dataManagement.getRoundTripDataTripItinerary("domestic_30days_2adults_todas");
+        dataManagement.getRoundTripDataTripItinerary(DOMESTIC_30D_2A_ALL);
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -71,13 +71,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_phone"),
-                "FlightsCheckOutPageDomesticSucursal");
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM_RET);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -88,9 +87,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow() {
-        logTestTitle("Sucursales Flight Flow - International - 20 days - 2 Adults - Todas - " + countryPar );
+        logTestTitle("International - 20 days - 2 Adults - Tourist");
 
-        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
+        dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -111,13 +110,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_phone"),
-                "FlightsCheckOutPageInternationalSucursal");
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -126,12 +124,13 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
-        logTestTitle("Sucursales Flight Flow - International - Splitted VISA_MASTER - 20 days - 2 Adults - Todas - " + countryPar);
+        logTestTitle("International - Splitted VISA_MASTER - 20 days - 2 Adults - Tourist");
 
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -152,29 +151,29 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_male_native");
-            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER,
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_phone"),
-                    "FlightsCheckOutPageInternationalSucursal");
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
-        logTestTitle("Sucursales Flight Flow - International - Splitted DEPOSIT_MASTER - 20 days - 2 Adults - Todas - " + countryPar);
+        logTestTitle("International - DEPOSIT_MASTER - 20 days - 2 Adults - Tourist");
 
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -195,29 +194,29 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_male_native");
-            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_MASTER,
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_phone"),
-                    "FlightsCheckOutPageInternationalSucursal");
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
-        logTestTitle("Sucursales Flight Flow - International - Splitted TRANSFER_VISA - 2 Adults - Todas - " + countryPar);
+        logTestTitle("International - TRANSFER_VISA - 2 Adults - Tourist");
 
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -238,29 +237,29 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_male_native");
-            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_VISA,
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_phone"),
-                    "FlightsCheckOutPageInternationalSucursal");
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_3cards() {
-        logTestTitle("Sucursales Flight Flow - International - 3 Cards - Splitted 20 days - 2 Adults - Todas - " + countryPar);
+        logTestTitle("International - 3 Cards - 20 days - 2 Adults - Tourist");
 
-        if(!countryPar.equals("MEXICO")) {
-            dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_turista");
+        if(!countryPar.equals(MEXICO)) {
+            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -281,19 +280,18 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_male_native");
-            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, AMEX_VISA_MASTER,
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_phone"),
-                    "FlightsCheckOutPageInternationalSucursal");
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }

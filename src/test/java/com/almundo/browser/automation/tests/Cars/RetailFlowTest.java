@@ -67,7 +67,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
+                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -97,7 +97,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -131,7 +131,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_MASTER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -165,7 +165,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_MASTER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
@@ -199,7 +199,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER_AMEX,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_PAGE_SUCURSAL);
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             confirmationPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(confirmationPageV3.confirmationOk());
