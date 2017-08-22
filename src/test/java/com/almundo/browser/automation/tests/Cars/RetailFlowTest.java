@@ -74,6 +74,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
         logTestTitle("International - 10 days - VISA_MASTER");
@@ -108,6 +109,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
         logTestTitle("International - 10 days - DEPOSIT_MASTER");
@@ -142,6 +144,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
         logTestTitle("International - 10 days - TRANSFER_MASTER");
@@ -176,6 +179,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_3cards() {
         logTestTitle("International - 10 days - VISA_MASTER_AMEX");
