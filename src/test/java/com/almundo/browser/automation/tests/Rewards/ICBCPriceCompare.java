@@ -62,7 +62,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSectionGridV3 = initPaymentSectionGridV3();
 
-        selectPaymentV3("1","ICBC", "Visa");
+        selectPaymentV3("1","Banco ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
@@ -72,22 +72,22 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("6","ICBC", "Visa");
+        selectPaymentV3("6","Banco ICBC", "Visa");
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("6","ICBC", "Mastercard");
+        selectPaymentV3("6","Banco ICBC", "Mastercard");
         almundo_master_6 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("12","ICBC", "Visa");
+        selectPaymentV3("12","Banco ICBC", "Visa");
         almundo_visa_12 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("12","ICBC", "Mastercard");
+        selectPaymentV3("12","Banco ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
 //        paymentSectionGridV3.clickChangeCardLink();
@@ -105,26 +105,26 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSection.selectPaymentQty("1 cuota");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
         paymentSection.selectPaymentQty("6 cuotas");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_6 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_6 = checkOutPage.getTotalPrice();
 
         paymentSection.selectPaymentQty("12 cuotas");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
 //        paymentSection.selectPaymentQty("18 cuotas");
@@ -176,32 +176,32 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSectionGridV3 = initPaymentSectionGridV3();
 
-        selectPaymentV3("1","ICBC", "Visa");
+        selectPaymentV3("1","Banco ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("1","ICBC", "Mastercard");
+        selectPaymentV3("1","Banco ICBC", "Mastercard");
         almundo_master_1 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("6","ICBC", "Visa");
+        selectPaymentV3("6","Banco ICBC", "Visa");
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("6","ICBC", "Mastercard");
+        selectPaymentV3("6","Banco ICBC", "Mastercard");
         almundo_master_6 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("12","ICBC", "Visa");
+        selectPaymentV3("12","Banco ICBC", "Visa");
         almundo_visa_12 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("12","ICBC", "Mastercard");
+        selectPaymentV3("12","Banco ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
@@ -209,26 +209,26 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSection.selectPaymentQty("1 cuota");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
         paymentSection.selectPaymentQty("6 cuotas");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_6 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_6 = checkOutPage.getTotalPrice();
 
         paymentSection.selectPaymentQty("12 cuotas");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
@@ -265,7 +265,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSectionGridV3 = initPaymentSectionGridV3();
 
-        selectPaymentV3("1","ICBC", "Visa");
+        selectPaymentV3("1","Banco ICBC", "Visa");
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
@@ -275,22 +275,22 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("6","ICBC", "Visa");
+        selectPaymentV3("6","Banco ICBC", "Visa");
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("6","ICBC", "Mastercard");
+        selectPaymentV3("6","Banco ICBC", "Mastercard");
         almundo_master_6 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("12","ICBC", "Visa");
+        selectPaymentV3("12","Banco ICBC", "Visa");
         almundo_visa_12 = checkOutPageV3.getTotalPrice();
 
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("12","ICBC", "Mastercard");
+        selectPaymentV3("12","Banco ICBC", "Mastercard");
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
         checkOutPage = openIcbcCart(cartIdICBC);
@@ -298,26 +298,26 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         paymentSection.selectPaymentQty("1 cuota");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_1 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_1 = checkOutPage.getTotalPrice();
 
         paymentSection.selectPaymentQty("6 cuotas");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_6 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_6 = checkOutPage.getTotalPrice();
 
         paymentSection.selectPaymentQty("12 cuotas");
 
-        selectCardAndBank("VI", "ICBC");
+        selectCardAndBank("VI", "Banco ICBC");
         icbc_visa_12 = checkOutPage.getTotalPrice();
 
-        selectCardAndBank("CA", "ICBC");
+        selectCardAndBank("CA", "Banco ICBC");
         icbc_master_12 = checkOutPage.getTotalPrice();
 
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");

@@ -349,7 +349,7 @@
             "1_amex_amex": {
                 "payment_qty" : "1",
                 "bank_name" : "American Express",
-                "credit_card_code" : "AX",
+                "credit_card_code" : "AMEXMX",
                 "credit_card_name" : "American Express",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "376636212881194",

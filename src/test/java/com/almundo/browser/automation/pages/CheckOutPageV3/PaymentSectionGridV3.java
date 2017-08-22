@@ -128,7 +128,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
     }
 
     public void setCreditCard(String cardName, String container) {
-        List<WebElement> cardNames = bankSelected.findElements(By.cssSelector(container + " .cards .logo .logo"));
+        List<WebElement> cardNames = bankSelected.findElements(By.cssSelector(container + " .cards .logo"));
         for(WebElement cardNameResult : cardNames){
             if (cardNameResult.getAttribute("alt").equals(cardName)) {
                 logger.info("Selecting Card: [" + cardName + "]");

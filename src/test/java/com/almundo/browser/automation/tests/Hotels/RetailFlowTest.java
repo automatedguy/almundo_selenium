@@ -53,7 +53,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Dom_Booking_Flow() {
-        logTestTitle("Sucursales Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("Domestic - 15 days - 2 Adults - 1 Room");
 
         dataManagement.getHotelsDataTripItinerary("domestic02_20days_2adults_1room");
 
@@ -83,7 +83,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow() {
-        logTestTitle("Sucursales Hotel Flow - International -  10 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("International -  10 days - 2 Adults - 1 Room");
 
         dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
@@ -117,7 +117,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
-        logTestTitle("Sucursales Hotel Flow - International - Splitted 2 Credit Cards - 10 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("International - 2 Credit Cards - 10 days - 2 Adults - 1 Room");
         if(!countryPar.equals("MEXICO")) {
             dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
@@ -155,7 +155,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
-        logTestTitle("Sucursales Hotel Flow - International - Splitted Deposit Credit - 10 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("International - Deposit Credit - 10 days - 2 Adults - 1 Room");
         if(!countryPar.equals("MEXICO")) {
             dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
@@ -193,7 +193,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
-        logTestTitle("Sucursales Hotel Flow - International - Splitted Transfer Credit - 10 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("International - Transfer Credit - 10 days - 2 Adults - 1 Room");
         if(!countryPar.equals("MEXICO")) {
             dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
@@ -231,7 +231,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Int_Booking_Flow_Splitted_3cards() {
-        logTestTitle("Sucursales Hotel Flow - International - Splitted 3 Cards - 10 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("International - 3 Cards - 10 days - 2 Adults - 1 Room");
         if(!countryPar.equals("MEXICO")) {
             dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
