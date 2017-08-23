@@ -73,9 +73,9 @@ public class ICBCPriceCompare extends TestBaseSetup {
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
+/*        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
         almundo_master_1 = checkOutPageV3.getTotalPrice();
-        paymentSectionGridV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();*/
 
         selectPaymentV3("6",BANCO_ICBC, VISA);
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
