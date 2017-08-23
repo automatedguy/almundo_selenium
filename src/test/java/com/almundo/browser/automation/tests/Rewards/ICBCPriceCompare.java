@@ -32,21 +32,21 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     SoftAssert softAssert = new SoftAssert();
 
-    int almundo_visa_1;
-    int almundo_visa_6;
-    int almundo_visa_12;
+    int almundo_visa_1 = 0;
+    int almundo_visa_6 = 0;
+    int almundo_visa_12 = 0;
 
-    int icbc_visa_1;
-    int icbc_visa_6;
-    int icbc_visa_12;
+    int icbc_visa_1 = 0;
+    int icbc_visa_6 = 0;
+    int icbc_visa_12 = 0;
 
-    int almundo_master_1;
-    int almundo_master_6;
-    int almundo_master_12;
+    int almundo_master_1 = 0;
+    int almundo_master_6 = 0;
+    int almundo_master_12 = 0;
 
-    int icbc_master_1;
-    int icbc_master_6;
-    int icbc_master_12;
+    int icbc_master_1 = 0;
+    int icbc_master_6 = 0;
+    int icbc_master_12 = 0;
 
     final String VISA = "Visa";
     final String MASTERCARD = "Mastercard";
