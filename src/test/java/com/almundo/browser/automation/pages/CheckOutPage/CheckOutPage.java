@@ -47,19 +47,19 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".price__amount")
     public WebElement totalPrice;
 
-    @FindBy(css = ".segments>div:nth-of-type(1) h2 span:nth-of-type(5)")
+    @FindBy(css = "#product-resume product-detail div.flight-detail-content > am-flights-cluster > div > div:nth-child(1) am-flight-choice  div.origin > div.time-airport > tooltip > tip-cont > span")
     public WebElement originAirport;
 
-    @FindBy(css = ".segments>div:nth-of-type(1) h2 span:nth-of-type(7)")
+    @FindBy(css = "#product-resume product-detail div.flight-detail-content > am-flights-cluster > div > div:nth-child(2) am-flight-choice  div.origin > div.time-airport > tooltip > tip-cont > span")
     public WebElement destinationAirport;
 
-    @FindBy(css = ".segments>div:nth-of-type(1) .airline-name")
+    @FindBy(css = "#product-resume flight-detail am-flights-cluster div:nth-child(1) > div > div > label > div > am-flight-choice div.airline > span")
     public WebElement airlineName;
 
-    @FindBy(css = ".segments>div:nth-of-type(1)>div h2>span:nth-of-type(3)")
+    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(1) > h3 > span.date")
     public WebElement startDate;
 
-    @FindBy(css = ".segments>div:nth-of-type(2)>div h2>span:nth-of-type(3)")
+    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(2) > h3 > span.date")
     public WebElement endDate;
 
     @FindBy(id = "assistance_yes")
