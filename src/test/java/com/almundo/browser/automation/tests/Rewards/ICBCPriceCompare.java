@@ -73,7 +73,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("1",MASTERCARD, MASTERCARD);
+        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
         almundo_master_1 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
 
@@ -117,22 +117,22 @@ public class ICBCPriceCompare extends TestBaseSetup {
         icbc_master_1 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
         icbc_visa_6 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
         icbc_master_6 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
         icbc_visa_12 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
         icbc_master_12 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
@@ -190,9 +190,9 @@ public class ICBCPriceCompare extends TestBaseSetup {
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
+/*        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
         almundo_master_1 = checkOutPageV3.getTotalPrice();
-        paymentSectionGridV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();*/
 
         selectPaymentV3("6",BANCO_ICBC, VISA);
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
@@ -224,22 +224,22 @@ public class ICBCPriceCompare extends TestBaseSetup {
         icbc_master_1 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
         icbc_visa_6 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
         icbc_master_6 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
         icbc_visa_12 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
         icbc_master_12 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
@@ -282,9 +282,9 @@ public class ICBCPriceCompare extends TestBaseSetup {
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
 
-        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
+/*        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
         almundo_master_1 = checkOutPageV3.getTotalPrice();
-        paymentSectionGridV3.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();*/
 
         selectPaymentV3("6",BANCO_ICBC, VISA);
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
@@ -316,22 +316,22 @@ public class ICBCPriceCompare extends TestBaseSetup {
         icbc_master_1 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
         icbc_visa_6 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuotas");
+        paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
         icbc_master_6 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
         icbc_visa_12 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuotas");
+        paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
         icbc_master_12 = checkOutPage.getTotalPrice();
         paymentSection.clickChangeCardLink();
