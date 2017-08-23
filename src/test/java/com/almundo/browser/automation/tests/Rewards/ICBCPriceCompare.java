@@ -417,8 +417,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
         logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
         logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
         logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
-        logger.info("Desde: [" + checkOutPage.originAirport.getText() + "]");
-        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + "]");
+        logger.info("Desde: [" + checkOutPage.originAirport.getText() + " - " + checkOutPage.originAirport.getAttribute("tooltip-template") + "]");
+        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + " - " + checkOutPage.destinationAirport.getAttribute("tooltip-template") + "]");
         logger.info("--------------------------------------------------------------------------");
     }
 
