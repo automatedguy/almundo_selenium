@@ -1,8 +1,13 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 /**
  * Created by gabrielcespedes on 24/08/17.
@@ -13,79 +18,109 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
         super(driver);
     }
 
-    /**************************** Locators Tarjetas **********************************/
+    JSONObject paymentDataObject = new JSONObject();
+
+    /**************************** Static Locators **********************************/
 
     @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(1) > input")
     private WebElement importeTarjetaTxt;
 
-    @FindBy(css ="am-form-split-web:nth-child(1) div:nth-child(2) > input")
-    private WebElement numeroDeTarjetaTxt;
+    /**************************** Dynamic Actions **********************************/
 
-    @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(3) > select")
-    private WebElement tarjetaDdl;
-
-    @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(4) > select")
-    private WebElement bancoTxt;
-
-    @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(5) > select")
-    private WebElement cuotasDdl;
-
-    @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(7) > input")
-    private WebElement titularTarjetaTxt;
-
-    @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(8) > select")
-    private WebElement fechaDeVencimientoMesDdl;
-
-    @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(9) > select")
-    private WebElement fechaDeVencimientoAnoDdl;
-
-    @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(10) input")
-    private WebElement codigoDeSeguridadTxt;
-    /**************************** Actions **********************************/
-
-    public PaymentTwoCreditCardsV3 setImporteTarjeta(String importeTarjeta){
-        logger.info("Entering [Importe a pagar con la tarjeta 1]: " + importeTarjeta);
+    private PaymentTwoCreditCardsV3 setImporteTarjeta(String importeTarjeta){
+        logger.info("Entering [Importe a pagar con la tarjeta 1]: [" + importeTarjeta + "]");
         importeTarjetaTxt.sendKeys(importeTarjeta);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 setNumeroTarjeta(String numeroTarjeta, String indexTarjeta){
-        logger.info("Entering [Número de tarjeta ]: " + numeroTarjeta);
+    private PaymentTwoCreditCardsV3 setNumeroTarjeta(String numeroTarjeta, int indexTarjeta){
+        WebElement numeroDeTarjetaTxt =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child(" + indexTarjeta + ") div:nth-child(2) > input"));
+        logger.info("Entering [Número de tarjeta ]: [" + numeroTarjeta + "]");
+        numeroDeTarjetaTxt.sendKeys(numeroTarjeta);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 selectTarjeta(String tarjeta, String indexTarjeta){
-        logger.info("Selecting [Tarjeta]: " + tarjeta);
+    private PaymentTwoCreditCardsV3 selectTarjeta(String tarjeta, int indexTarjeta){
+        WebElement tarjetaDdl =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+ indexTarjeta +") div:nth-child(3) > select"));
+        Select tarjetaSelect = new Select (tarjetaDdl);
+        logger.info("Selecting [Tarjeta]: [" + tarjeta + "]");
+        tarjetaSelect.selectByVisibleText(tarjeta);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 selectBanco(String banco, String indexTarjeta){
-        logger.info("Selecting [Banco]: " + banco);
+    private PaymentTwoCreditCardsV3 selectBanco(String banco, int indexTarjeta){
+        WebElement bancoDdl =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+ indexTarjeta +") div:nth-child(4) > select"));
+        Select bancoSelect = new Select (bancoDdl);
+        logger.info("Selecting [Banco]: [" + banco + "]");
+        bancoSelect.selectByVisibleText(banco);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 selectCuotas(String cuotas, String indexTarjeta){
-        logger.info("Selecting [Cuotas]: " + cuotas);
+    private PaymentTwoCreditCardsV3 selectCuotas(String cuotas, int indexTarjeta){
+        WebElement cuotasDdl =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+indexTarjeta+") div:nth-child(5) > select"));
+        Select cuotasSelect = new Select (cuotasDdl);
+        logger.info("Selecting [Cuotas]: [" + cuotas + "]");
+        cuotasSelect.selectByVisibleText(cuotas);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 setTitularTarjeta(String titularTarjeta, String indexTarjeta){
-        logger.info("Entering [Titular de tarjeta]: " + titularTarjeta);
+    private PaymentTwoCreditCardsV3 setTitularTarjeta(String titularTarjeta, int indexTarjeta){
+        WebElement titularTarjetaTxt =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+ indexTarjeta + ") div:nth-child(7) > input"));
+        logger.info("Entering [Titular de tarjeta]: [" + titularTarjeta + "]");
+        titularTarjetaTxt.sendKeys(titularTarjeta);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 selectVencMes(String mes, String indexTarjeta){
-        logger.info("Selecting [Fecha de vencimiento - Mes]: " + mes);
+    private PaymentTwoCreditCardsV3 selectVencMes(String mes, int indexTarjeta){
+        WebElement fechaDeVencimientoMesDdl =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+ indexTarjeta +") div:nth-child(8) > select"));
+        Select vencMesSelect = new Select(fechaDeVencimientoMesDdl);
+        logger.info("Selecting [Fecha de vencimiento - Mes]: [" + mes + "]");
+        vencMesSelect.selectByVisibleText(mes);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 selectVencAno(String ano, String indexTarjeta){
-        logger.info("Selecting [Fecha de vencimiento - Año]: " + ano);
+    private PaymentTwoCreditCardsV3 selectVencAno(String ano, int indexTarjeta){
+        WebElement fechaDeVencimientoAnoDdl =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+ indexTarjeta +") div:nth-child(9) > select"));
+        Select vencAnoSelect =  new Select(fechaDeVencimientoAnoDdl);
+        logger.info("Selecting [Fecha de vencimiento - Año]: [" + ano + "]");
+        vencAnoSelect.selectByVisibleText(ano);
         return this;
     }
 
-    public PaymentTwoCreditCardsV3 setCodigoDeSeguridad(String codigoDeSeguridad, String indexTarjeta){
-        logger.info("Entering [Código de seguridad]: " + codigoDeSeguridad);
+    private PaymentTwoCreditCardsV3 setCodigoDeSeguridad(String codigoDeSeguridad, int indexTarjeta){
+        WebElement codigoDeSeguridadTxt =
+                driver.findElement(By.cssSelector("am-form-split-web:nth-child(" + indexTarjeta + ") div:nth-child(10) input"));
+        logger.info("Entering [Código de seguridad]: [" + codigoDeSeguridad + "]");
+        codigoDeSeguridadTxt.sendKeys(codigoDeSeguridad);
+        return this;
+    }
+
+    public PaymentTwoCreditCardsV3 populateTwoCreditCards(List<String> paymentDataList, int totalPrice){
+        int container = 1;
+        int paymentAmount = totalPrice / paymentDataList.size();
+        dataManagement.getPaymentList();
+        setImporteTarjeta(String.valueOf(paymentAmount));
+        logger.info("Populating 2 Credit Cards Payments");
+        for(String paymentData : paymentDataList) {
+            logger.info("Populating credit card N°: [" + container + "]");
+            paymentDataObject = dataManagement.getPaymentData(paymentData);
+            setNumeroTarjeta(paymentDataObject.get("card_number").toString(), container);
+            selectTarjeta(paymentDataObject.get("credit_card_name").toString(), container);
+            selectCuotas(paymentDataObject.get("payment_qty").toString(), container);
+            selectBanco(paymentDataObject.get("bank_name").toString(), container);
+            setTitularTarjeta(paymentDataObject.get("card_holder").toString(), container);
+            selectVencMes(paymentDataObject.get("month_card_expire").toString(), container);
+            selectVencAno(paymentDataObject.get("year_card_expire").toString(), container);
+            setCodigoDeSeguridad(paymentDataObject.get("security_code").toString(), container);
+            container = container++;
+        }
         return this;
     }
 }
