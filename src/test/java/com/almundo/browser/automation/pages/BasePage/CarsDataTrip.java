@@ -18,26 +18,29 @@ public class CarsDataTrip extends BasePage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "origin")
+    @FindBy(css = "#origin")
     public WebElement originTxt;
 
-    @FindBy(id = "destination")
+    @FindBy(css = "#destination")
     public WebElement destinationTxt;
 
-    @FindBy(id = "pickUpDate")
+    @FindBy(css = "#pickUpDate")
     public WebElement pickUpDateCalendar;
 
-    @FindBy(id = "dropOffDate")
+    @FindBy(css = "#dropOffDate")
     public WebElement dropOffDateCalendar;
 
-    @FindBy(css = "div:nth-child(2)>div:nth-child(3)>div>select")
+    @FindBy(css = "#main-content am-searchbox div:nth-child(2) .ng-scope.epp-cl-1-6--dt > div > select")
     public WebElement pickUpTimeSelect;
 
-    @FindBy(css = "div:nth-child(2)>div:nth-child(6)>div>select")
+    @FindBy(css = "#main-content am-searchbox div:nth-child(2) .ng-scope.epp-cl-1-6 > div > select")
     public WebElement dropOffTimeSelect;
 
-    @FindBy(css = "div:nth-child(2)>div:nth-child(7)>div>select")
+    @FindBy(css = "#main-content am-searchbox div:nth-child(2) > .ng-scope.epp-cl-1-3 > div > select")
     public WebElement ageRangeSelect;
+
+    @FindBy(css = "#main-content am-searchbox div:nth-child(2) .epp-cl-1--tb.space-top-16 > div > input")
+    private WebElement droppOffInDestiny;
 
     //############################################### Actions ###############################################
 
@@ -51,6 +54,7 @@ public class CarsDataTrip extends BasePage {
     }
 
     public CarsDataTrip setDestination(String destination, String destinationFull) {
+        clickDropOffInDestiny();
         PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Drop Off Destination text field");
         logger.info("Entering Drop Off Destination: [" + destinationFull + "]");
         destinationTxt.clear();
@@ -77,6 +81,12 @@ public class CarsDataTrip extends BasePage {
         Select ageRangeDdl = new Select(ageRangeSelect);
         logger.info("Selecting Age Range: [" + ageRange + "]");
         ageRangeDdl.selectByVisibleText(ageRange);
+        return this;
+    }
+
+    public CarsDataTrip clickDropOffInDestiny(){
+        logger.info("Clicking on [Devolverlo en otro destino]");
+        droppOffInDestiny.click();
         return this;
     }
 
