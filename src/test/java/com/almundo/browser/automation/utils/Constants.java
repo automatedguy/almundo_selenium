@@ -110,6 +110,8 @@ public class Constants {
     public static final String VISA_MASTER = "pago_dividido$1_visa_visa$1_master_master$";
     public static final String MASTER_VISA = "pago_dividido$1_master_master$1_visa_visa$";
 
+    public static final String TWOCARDS_VISA_MASTER = "two_cards$1_visa_visa$1_master_master$";
+
     public static final String VISA_AMEX = "pago_dividido$1_visa_visa$1_amex_amex$";
     public static final String AMEX_VISA = "pago_dividido$1_amex_amex$1_visa_visa$";
 
@@ -211,5 +213,9 @@ public class Constants {
 
     //INCONS
     public static final String TRIPS_ICO = "Vuelo+Hotel icon";
+
+    //MISC
+
+    public static final String AGENT_EMAIL = "gabriel.cespedes@almundo.com";
 
 }

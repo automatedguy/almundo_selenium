@@ -110,16 +110,6 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         return this;
     }
 
-    private String setTotalCuota(int paymentAmount){
-        StringBuilder str = new StringBuilder(Integer.toString(paymentAmount));
-        int idx = str.length() - 3;
-        while (idx > 0)
-        {
-            str.insert(idx, ".");
-            idx = idx - 3;
-        }
-        return str.toString();
-    }
 
     private PaymentSelectorRetailSplitV3 selectCuotas(String cuotas, int paymentAmount, int container){
         logger.info("Selecting [Cuotas]: " + "[" + cuotas + "]");

@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
+
 /**
  * Created by gabrielcespedes on 24/08/17.
  */
@@ -59,12 +61,14 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
         return this;
     }
 
-    private PaymentTwoCreditCardsV3 selectCuotas(String cuotas, int indexTarjeta){
+    private PaymentTwoCreditCardsV3 selectCuotas(String cuotas, int paymentAmount, int indexTarjeta){
         WebElement cuotasDdl =
                 driver.findElement(By.cssSelector("am-form-split-web:nth-child("+indexTarjeta+") div:nth-child(5) > select"));
         Select cuotasSelect = new Select (cuotasDdl);
-        logger.info("Selecting [Cuotas]: [" + cuotas + "]");
-        cuotasSelect.selectByVisibleText(cuotas);
+        String currency = getCountryCurrency();
+        String cuotasFinal = cuotas + " de " + currency + " " + paymentAmount + " (Total a pagar: " + currency + " " + paymentAmount + ")";
+        logger.info("Selecting [Cuotas]: [" + cuotasFinal + "]");
+        cuotasSelect.selectByVisibleText(cuotasFinal);
         return this;
     }
 
@@ -113,13 +117,13 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
             paymentDataObject = dataManagement.getPaymentData(paymentData);
             setNumeroTarjeta(paymentDataObject.get("card_number").toString(), container);
             selectTarjeta(paymentDataObject.get("credit_card_name").toString(), container);
-            selectCuotas(paymentDataObject.get("payment_qty").toString(), container);
-            selectBanco(paymentDataObject.get("bank_name").toString(), container);
+            //selectBanco(paymentDataObject.get("bank_name").toString(), container);
+            selectCuotas(paymentDataObject.get("payment_qty").toString(), paymentAmount, container);
             setTitularTarjeta(paymentDataObject.get("card_holder").toString(), container);
             selectVencMes(paymentDataObject.get("month_card_expire").toString(), container);
             selectVencAno(paymentDataObject.get("year_card_expire").toString(), container);
             setCodigoDeSeguridad(paymentDataObject.get("security_code").toString(), container);
-            container = container++;
+            container = container + 1;
         }
         return this;
     }

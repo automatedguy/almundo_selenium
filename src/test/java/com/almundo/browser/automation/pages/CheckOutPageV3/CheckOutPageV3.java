@@ -19,8 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static com.almundo.browser.automation.utils.Constants.API_PROD_URL;
-import static com.almundo.browser.automation.utils.Constants.API_STG_URL;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 
 /**
@@ -52,6 +51,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public PaymentSectionComboV3 paymentSectionComboV3(){return initPaymentSectionComboV3();}
 
+    public PaymentTwoCreditCardsV3 paymentTwoCreditCardsV3(){return initPaymentTwoCreditCardsV3();}
+
     public PaymentSectionComboRetailV3 paymentSectionComboRetailV3(){return initPaymentSectionComboRetailV3();}
 
     public PaymentSectionGridV3 paymentSectionGridV3(){return initPaymentSectionGridV3();}
@@ -75,6 +76,17 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public AgentSectionV3 agentSectionV3(){return initAgentSectionV3();}
+
+    public String setTotalCuota(int paymentAmount){
+        StringBuilder str = new StringBuilder(Integer.toString(paymentAmount));
+        int idx = str.length() - 3;
+        while (idx > 0)
+        {
+            str.insert(idx, ".");
+            idx = idx - 3;
+        }
+        return str.toString();
+    }
 
     //############################################### Locators ##############################################
 
@@ -131,40 +143,69 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return paymentDataList;
     }
 
+    /*********************** Checkout Payment Population Methods ***********************/
+    /************ For the different payment forms credit, combos, grid, etc ************/
+
+    private void dealWithRetail(String paymentData){
+        if(paymentData.contains("pago_dividido$")) {
+            paymentSelectorRetailV3().selectPaymentMethod("PAGO DIVIDIDO");
+            paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
+        }
+        else {
+            paymentSelectorRetailV3().selectCreditRbd();
+            paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+            creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+        }
+    }
+
+    private void dealWithTwoCards(String paymentData){
+        setUrlParameter("&stc=1");
+        paymentSelectorV3().selectTwoCreditCardsRdb();
+        paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
+    }
+
+    private void dealWithGridAndCombos(String paymentData){
+        if (paymentSelectorSvd && !countryPar.equals(COLOMBIA)) {
+            paymentSelectorV3().selectOneCreditCardRdb();
+        } else {
+            if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
+                paymentSelectorV3().selectOneCreditCardRdb();
+            }
+        }
+
+        if (creditCardComboSc) {
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+        } else {
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+        }
+        creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
+    }
+
+    private void dealWithDebitCard(String paymentData){
+        setUrlParameter("&svd=1");
+        paymentSelectorV3().selectVisaDebit();
+        debitCardDataV3().populateDebitCardData(paymentData);
+    }
+
     private void dealWithPaymentForm(String paymentData){
         if(isRetailChannel()){
-            if(paymentData.contains("pago_dividido$")) {
-                paymentSelectorRetailV3().selectPaymentMethod("PAGO DIVIDIDO");
-                paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
-            }
-            else {
-                paymentSelectorRetailV3().selectCreditRbd();
-                paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
-                creditCardDataRetailV3().populateCreditCardData(paymentData, true);
-            }
+            dealWithRetail(paymentData);
         }
         else {
             if (!paymentData.contains("debit")) {
-                if (paymentSelectorSvd && !countryPar.equals("COLOMBIA")) {
-                    paymentSelectorV3().selectOneCreditCardRdb();
-                } else {
-                    if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
-                        paymentSelectorV3().selectOneCreditCardRdb();
-                    }
+                if (paymentData.contains("two_cards")){
+                    dealWithTwoCards(paymentData);
                 }
-                if (creditCardComboSc) {
-                    paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-                } else {
-                    paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
+                else {
+                    dealWithGridAndCombos(paymentData);
                 }
-                creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
             } else {
-                setUrlParameter("&svd=1");
-                paymentSelectorV3().selectVisaDebit();
-                debitCardDataV3().populateDebitCardData(paymentData);
+                dealWithDebitCard(paymentData);
             }
         }
     }
+
+    /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/
 
     public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
                                                  String paymentData,
@@ -179,11 +220,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         if(isRetailChannel()){
-            agentSectionV3().setAgentEmail("gabriel.cespedes@almundo.com");
+            agentSectionV3().setAgentEmail(AGENT_EMAIL);
         }
         acceptConditions();
         return this;
     }
+
+    /*************** Checkout full Population Methods Calls (2 Cards - Trips) ***********/
 
     public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
                                                  String paymentData1,
