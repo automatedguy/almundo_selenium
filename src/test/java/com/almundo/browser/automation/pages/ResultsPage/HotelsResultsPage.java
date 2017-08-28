@@ -5,6 +5,7 @@ import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.Messages.NO_DISPONIBILIDAD_MSG;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
  * Created by leandro.efron on 13/12/2016.
@@ -32,6 +34,9 @@ public class HotelsResultsPage extends TestBaseSetup {
     //############################################### Locators ##############################################
 
     int index = 0;
+
+    @FindBy(css = "#PAY_AT_DESTINATION")
+    public WebElement payAtDestination;
 
     private String hotelNameCssSelector;
     private WebElement hotelName;
@@ -110,5 +115,12 @@ public class HotelsResultsPage extends TestBaseSetup {
     public List<WebElement> getHotelsChoices(){
         hotelChoices = driver.findElements(By.cssSelector(hotelChoicesLocator));
         return hotelChoices;
+    }
+
+    public HotelsResultsPage clickPayAtDestination(){
+        logger.info("Selecting [Pago en destino]");
+        payAtDestination.click();
+        waitImplicitly(4000);
+        return this;
     }
 }

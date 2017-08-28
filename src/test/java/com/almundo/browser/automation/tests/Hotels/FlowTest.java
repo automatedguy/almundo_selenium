@@ -10,19 +10,14 @@ import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
-import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
-import static com.almundo.browser.automation.utils.Constants.MASTER_1;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
-import static com.almundo.browser.automation.utils.Constants.VISA_1;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -58,10 +53,10 @@ public class FlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void int_Booking_Flow() throws IOException, ParseException {
-        logTestTitle("Hotel Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+    public void int_Booking_Flow() {
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -76,27 +71,27 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("child_female_native");
-        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                               dataManagement.getBillingData("local_Billing"),
-                                               dataManagement.getContactData("contact_cell_phone"),
-                                              "HotelsCheckOutPageInternationalV3");
+                                               dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         confirmationPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(confirmationPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
-    @Test
-    public void dom_Booking_Flow() throws IOException, ParseException {
-        logTestTitle("Hotel Flow - Dom - 15 days - 2 Adults - 1 Room - " + countryPar );
 
-        dataManagement.getHotelsDataTripItinerary("domestic01_15days_2adults_1room");
+    @Test
+    public void dom_Booking_Flow() {
+        logTestTitle("Domestic - 15 days - 2 Adults - 1 Room");
+
+        dataManagement.getHotelsDataTripItinerary(DOM01_15D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -111,14 +106,47 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                                               dataManagement.getBillingData("local_Billing"),
-                                               dataManagement.getContactData("contact_phone"),
-                                              "HotelsCheckOutPageDomesticV3");
+                                               dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void dom_Booking_Flow_PayAtDestination() {
+        logTestTitle("Domestic - Pay At Destination - 15 days - 2 Adults - 1 Room");
+
+        dataManagement.getHotelsDataTripItinerary(DOM01_15D_2A_1R);
+
+        hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(hotelsResultsPage.vacancy());
+
+        hotelsResultsPage.clickPayAtDestination();
+
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+        PageUtils.switchToNewTab(driver);
+
+        hotelsDetailPage.clickPayAtDestination();
+        hotelsDetailPage.clickVerHabitacionesBtn();
+
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
         setResultSauceLabs(PASSED);
     }
 }

@@ -22,6 +22,9 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
 
     JSONObject paymentDataObject = new JSONObject();
 
+    private int cuotasIndex = 0;
+    private boolean secondPayment = false;
+
     /**************************** Static Locators **********************************/
 
     @FindBy(css = "am-form-split-web:nth-child(1) div:nth-child(1) > input")
@@ -65,10 +68,17 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
         WebElement cuotasDdl =
                 driver.findElement(By.cssSelector("am-form-split-web:nth-child("+indexTarjeta+") div:nth-child(5) > select"));
         Select cuotasSelect = new Select (cuotasDdl);
-        String currency = getCountryCurrency();
-        String cuotasFinal = cuotas + " de " + currency + " " + paymentAmount + " (Total a pagar: " + currency + " " + paymentAmount + ")";
-        logger.info("Selecting [Cuotas]: [" + cuotasFinal + "]");
-        cuotasSelect.selectByVisibleText(cuotasFinal);
+        if(!secondPayment) {
+            String currency = getCountryCurrency();
+            String cuotasFinal = cuotas + " de " + currency + " " + paymentAmount + " (Total a pagar: " + currency + " " + paymentAmount + ")";
+            logger.info("Selecting [Cuotas]: [" + cuotasFinal + "]");
+            cuotasSelect.selectByVisibleText(cuotasFinal);
+        }
+        else{
+            logger.info("Selecting by index position: ["+cuotasSelect.getOptions().get(cuotasIndex).getText()+"]");
+            cuotasSelect.selectByIndex(cuotasIndex);
+        }
+        secondPayment = true;
         return this;
     }
 

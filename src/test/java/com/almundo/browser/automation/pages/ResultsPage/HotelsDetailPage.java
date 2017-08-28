@@ -25,6 +25,9 @@ public class HotelsDetailPage extends TestBaseSetup {
     @FindBy(id = "more-rooms")
     public WebElement verHabitacionesBtn;
 
+    @FindBy(css = ".choice.agreggate>span")
+    public WebElement payAtDestination;
+
     //############################################### Actions ###############################################
 
     public HotelsDetailPage clickVerHabitacionesBtn() {
@@ -48,5 +51,11 @@ public class HotelsDetailPage extends TestBaseSetup {
         logger.info("Clicking on Reservar button");
         detailHotelButtonResults.get(index).click();
         return initCheckOutPageV3();
+    }
+
+    public HotelsDetailPage clickPayAtDestination(){
+        logger.info("Clicking on [Pago en destino] Tab");
+        payAtDestination.click();
+        return this;
     }
 }

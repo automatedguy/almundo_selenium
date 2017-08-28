@@ -158,6 +158,9 @@ public class Constants {
     public static final String TRIPS_CHECKOUT_INTV3= "TripsCheckOutPageInternationalV3";
     public static final String TRIPS_CHECKOUT_DOMV3 = "TripsCheckOutPageDomesticV3";
 
+    public static final String HOTELS_CHECKOUT_DOM = "HotelsCheckOutPageDomesticV3";
+    public static final String HOTELS_CHECKOUT_INT = "HotelsCheckOutPageInternationalV3";
+
     //PASSENGERS
     public static final String ADULT_MALE_NATIVE = "adult_male_native";
     public static final String ADULT_FEMALE_NATIVE = "adult_female_native";
@@ -167,8 +170,9 @@ public class Constants {
     public static final String CHILD_FEMALE_NATIVE = "child_female_native";
 
     public static final String CHILD_FEMALE_NAT_TRIPS = "child_female_native_trips";
-
     public static final String CHILD_FEM_NAT_TRIPS_DOM = "child_female_native_trips_domestic";
+
+    public static final String DOM01_15D_2A_1R = "domestic01_15days_2adults_1room";
 
     //COUNTRIES
 
