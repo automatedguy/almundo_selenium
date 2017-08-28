@@ -5,7 +5,7 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.*;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
@@ -54,7 +54,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     /********** Common Objects for (V3): Checkout, Agreement and Confirmation Pages ***********/
     private CheckOutPageV3 checkOutPageV3 = null;
     private AgreementPage agreementPage = null;
-    private ConfirmationPageV3 confirmationPageV3 = null;
+    private ThanksPageV3 thanksPageV3 = null;
 
     JSONObject userData = null;
 
@@ -128,8 +128,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         Assert.assertTrue(agreementPage.agreementOk());
         agreementPage.closeAgreementPage();
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -181,8 +181,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "HotelsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -232,8 +232,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "CarsCheckOutPage");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -281,8 +281,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 }

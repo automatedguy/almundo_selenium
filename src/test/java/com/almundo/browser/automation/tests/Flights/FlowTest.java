@@ -6,7 +6,7 @@ import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -28,7 +28,7 @@ public class FlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
-    private ConfirmationPageV3 confirmationPageV3 = null;
+    private ThanksPageV3 thanksPageV3 = null;
     private AgreementPage agreementPage = null;
 
     private FlightsDataTrip flightsDataTrip = null;
@@ -102,8 +102,8 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(agreementPage.agreementOk());
         agreementPage.closeAgreementPage();
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }*/
 
@@ -137,8 +137,8 @@ public class FlowTest extends TestBaseSetup {
 
         validateTermsAndConditions();
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -170,8 +170,8 @@ public class FlowTest extends TestBaseSetup {
 
         validateTermsAndConditions();
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -208,8 +208,8 @@ public class FlowTest extends TestBaseSetup {
 
         validateTermsAndConditions();
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -242,8 +242,8 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData(LOCAL_BILLING),
                                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -277,8 +277,8 @@ public class FlowTest extends TestBaseSetup {
 
         validateTermsAndConditions();
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -318,8 +318,8 @@ public class FlowTest extends TestBaseSetup {
 
         validateTermsAndConditions();
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 }

@@ -104,7 +104,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     //############################################### Actions ##############################################
 
-    public ConfirmationPageV3 clickComprarBtn(){
+    public ThanksPageV3 clickComprarBtn(){
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
             PageUtils.waitElementForClickable(driver, comprarBtn, 5, "Comprar button");
             logger.info("Clicking on Comprar Button");

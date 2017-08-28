@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
@@ -25,7 +25,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
-    private ConfirmationPageV3 confirmationPageV3 = null;
+    private ThanksPageV3 thanksPageV3 = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -78,9 +78,9 @@ public class RetailFlowTest extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM_RET);
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.confirmationOk());
 
         setResultSauceLabs(PASSED);
     }
@@ -117,9 +117,9 @@ public class RetailFlowTest extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.confirmationOk());
 
         setResultSauceLabs(PASSED);
     }
@@ -158,8 +158,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn(NOT_RUNNING_MEXICO);
@@ -201,8 +201,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn(NOT_RUNNING_MEXICO);
@@ -244,8 +244,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn(NOT_RUNNING_MEXICO);
@@ -287,8 +287,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn(NOT_RUNNING_MEXICO);

@@ -4,7 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.HotelsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -29,7 +29,7 @@ public class RetailFlowTest extends TestBaseSetup {
     private HotelsResultsPage hotelsResultsPage = null;
     private HotelsDetailPage hotelsDetailPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
-    private ConfirmationPageV3 confirmationPageV3 = null;
+    private ThanksPageV3 thanksPageV3 = null;
 
     private HotelsDataTrip hotelsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
@@ -110,8 +110,8 @@ public class RetailFlowTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_phone"),
                 "HotelsCheckOutPageInternationalSucursal");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -144,8 +144,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getContactData("contact_phone"),
                     "HotelsCheckOutPageInternationalSucursal");
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn("We are not running this for MEXICO!");
@@ -182,8 +182,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getContactData("contact_phone"),
                     "HotelsCheckOutPageInternationalSucursal");
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn("We are not running this for MEXICO!");
@@ -220,8 +220,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getContactData("contact_phone"),
                     "HotelsCheckOutPageInternationalSucursal");
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn("We are not running this for MEXICO!");
@@ -258,8 +258,8 @@ public class RetailFlowTest extends TestBaseSetup {
                     dataManagement.getContactData("contact_phone"),
                     "HotelsCheckOutPageInternationalSucursal");
 
-            confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(confirmationPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
             logger.warn("We are not running this for MEXICO!");

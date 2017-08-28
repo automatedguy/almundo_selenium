@@ -3,7 +3,7 @@ package com.almundo.browser.automation.tests.Checkout;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -19,7 +19,7 @@ public class Trips extends TestBaseSetup {
 
     private DataManagement dataManagement = new DataManagement();
     private CheckOutPageV3 checkOutPageV3 = null;
-    private ConfirmationPageV3 confirmationPageV3 = null;
+    private ThanksPageV3 thanksPageV3 = null;
     private final String productURl = "?product=vuelohotel";
 
     @BeforeClass
@@ -58,8 +58,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -76,8 +76,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -94,8 +94,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -112,8 +112,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -130,8 +130,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -148,8 +148,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -166,8 +166,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -184,8 +184,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -202,8 +202,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -220,8 +220,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -240,8 +240,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -258,8 +258,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -276,8 +276,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -294,8 +294,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -312,8 +312,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -330,8 +330,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -348,8 +348,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -366,8 +366,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 
@@ -384,8 +384,8 @@ public class Trips extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
 }

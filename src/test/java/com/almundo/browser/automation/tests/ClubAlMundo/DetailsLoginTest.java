@@ -9,7 +9,7 @@ import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
-import com.almundo.browser.automation.pages.CheckOutPageV3.ConfirmationPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
@@ -50,7 +50,7 @@ public class DetailsLoginTest extends TestBaseSetup {
     /********** Common Objects for (V3): Checkout, Agreement and Confirmation Pages ***********/
     private CheckOutPageV3 checkOutPageV3 = null;
     private AgreementPage agreementPage = null;
-    private ConfirmationPageV3 confirmationPageV3 = null;
+    private ThanksPageV3 thanksPageV3 = null;
 
     CheckOutPage checkOutPage = null;
     ConfirmationPage confirmationPage = null;
@@ -117,8 +117,8 @@ public class DetailsLoginTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "HotelsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
 
         setResultSauceLabs(PASSED);
     }
@@ -157,8 +157,8 @@ public class DetailsLoginTest extends TestBaseSetup {
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");
 
-        confirmationPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(confirmationPageV3.confirmationOk());
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
 
         setResultSauceLabs(PASSED);
     }

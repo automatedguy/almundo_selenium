@@ -418,8 +418,8 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, ConfirmationPage.class);
     }
 
-    protected ConfirmationPageV3 initConfirmationPageV3() {
-        return PageFactory.initElements(driver, ConfirmationPageV3.class);
+    protected ThanksPageV3 initConfirmationPageV3() {
+        return PageFactory.initElements(driver, ThanksPageV3.class);
     }
 
     protected PassengerSection initPassengerInfoSection() {

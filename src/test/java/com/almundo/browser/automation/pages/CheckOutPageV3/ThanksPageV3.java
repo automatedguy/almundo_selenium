@@ -14,9 +14,9 @@ import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 /**
  * Created by leandro.efron on 29/3/2017.
  */
-public class ConfirmationPageV3 extends BasePage {
+public class ThanksPageV3 extends BasePage {
 
-    public ConfirmationPageV3(WebDriver iDriver) {
+    public ThanksPageV3(WebDriver iDriver) {
         super(iDriver);
     }
 
