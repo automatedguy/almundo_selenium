@@ -22,7 +22,7 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
 
     JSONObject paymentDataObject = new JSONObject();
 
-    private int cuotasIndex = 0;
+    private int cuotasIndex = 1;
     private boolean secondPayment = false;
 
     /**************************** Static Locators **********************************/
