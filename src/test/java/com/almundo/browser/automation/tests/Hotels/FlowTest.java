@@ -86,7 +86,6 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-
     @Test
     public void dom_Booking_Flow() {
         logTestTitle("Domestic - 15 days - 2 Adults - 1 Room");
