@@ -403,6 +403,21 @@
 				"document_number": "29098766"
 			},
 
+			"1_visa_todopago": {
+				"payment_qty" : "1",
+				"bank_name" : "Visa",
+				"credit_card_code" : "VI",
+				"credit_card_name" : "Visa",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "4507990000000010",
+				"card_expire": "09/18",
+				"month_card_expire": "09",
+				"year_card_expire": "2018",
+				"security_code": "123",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
 			"3_visa_visa": {
 				"payment_qty" : "3",
 				"bank_name" : "Visa",
