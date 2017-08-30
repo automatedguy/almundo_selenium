@@ -110,7 +110,7 @@ public class Constants {
     public static final String VISA_MASTER = "pago_dividido$1_visa_visa$1_master_master$";
     public static final String MASTER_VISA = "pago_dividido$1_master_master$1_visa_visa$";
 
-    public static final String TWOCARDS_VISA_MASTER = "two_cards$1_visa_visa$1_master_master$";
+    public static final String TWOCARDS_VISA_MASTER = "two_cards$1_visa_todopago$1_master_master$";
 
     public static final String VISA_AMEX = "pago_dividido$1_visa_visa$1_amex_amex$";
     public static final String AMEX_VISA = "pago_dividido$1_amex_amex$1_visa_visa$";
@@ -184,6 +184,7 @@ public class Constants {
     public static final String NO_DOMESTIC_CARS_COLOMBIA = "Apparently, in Colombia they don't rent cars Domestic test is not running and we just set it passed";
     public static final String NO_DOMESTIC_CARS_COLOMBIA_TICKET = "This isssue was reported ticket is: " + "https://almundo.atlassian.net/browse/CARS-444";
     public static final String NOT_RUNNING_MEXICO = "We are not running this for MEXICO!";
+    public static final String NOT_RUNNING_MEXICO_COLOMBIA = "We are not running this for MEXICO and COLOMBIA!";
 
     //ITINERARIES
     //CARS

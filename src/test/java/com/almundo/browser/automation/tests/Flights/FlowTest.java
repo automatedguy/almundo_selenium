@@ -213,39 +213,42 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-/*    @SuppressWarnings("Duplicates")
+    @SuppressWarnings("Duplicates")
     @Test
     public void roundTrip_Dom_Booking_2Credit_Cards_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults - Todas");
+        if(countryPar.equals(ARGENTINA)) {
+            dataManagement.getRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
-        dataManagement.getRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
+            flightsDataTrip.selectFlightType(ROUND_TRIP);
+            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
+            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
+            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
-        flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
-        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+            Assert.assertTrue(flightsResultsPage.vacancy());
+            flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+            flightsResultsPage.clickTicketVuelta(FIRST_OPTION + 1);
 
-        Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
-        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TWOCARDS_VISA_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
 
-        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TWOCARDS_VISA_MASTER,
-                                               dataManagement.getBillingData(LOCAL_BILLING),
-                                               dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
-
-        thanksPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(thanksPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
+        }else{
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
+        }
         setResultSauceLabs(PASSED);
-    }*/
+    }
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {

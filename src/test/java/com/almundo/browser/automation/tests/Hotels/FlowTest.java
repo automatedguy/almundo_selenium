@@ -115,7 +115,7 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-    @SuppressWarnings("Duplicates")
+/*    @SuppressWarnings("Duplicates")
     @Test
     public void dom_Booking_Flow_PayAtDestination() {
         logTestTitle("Domestic - Pay At Destination - 15 days - 2 Adults - 1 Room");
@@ -147,5 +147,5 @@ public class FlowTest extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
         setResultSauceLabs(PASSED);
-    }
+    }*/
 }
