@@ -213,8 +213,7 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-/*
-    @SuppressWarnings("Duplicates")
+/*    @SuppressWarnings("Duplicates")
     @Test
     public void roundTrip_Dom_Booking_2Credit_Cards_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults - Todas");
@@ -249,8 +248,7 @@ public class FlowTest extends TestBaseSetup {
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
-    }
-*/
+    }*/
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {

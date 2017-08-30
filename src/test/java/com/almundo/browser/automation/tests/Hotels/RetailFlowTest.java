@@ -69,12 +69,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_phone"),
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE),
                 "HotelsCheckOutPageDomesticSucursal");
         setResultSauceLabs(PASSED);
     }
@@ -99,13 +99,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                 AMEX_1,
-                dataManagement.getBillingData("local_Billing_sucursales"),
-                dataManagement.getContactData("contact_phone"),
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE),
                 "HotelsCheckOutPageInternationalSucursal");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -116,7 +116,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
         logTestTitle("International - 2 Credit Cards - 10 days - 2 Adults - 1 Room");
-        if(!countryPar.equals("MEXICO")) {
+        if(!countryPar.equals(MEXICO)) {
             dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
             hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -133,20 +133,20 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_female_native");
-            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                     "pago_dividido$1_visa_visa$1_master_master$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_phone"),
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE),
                     "HotelsCheckOutPageInternationalSucursal");
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
     }
@@ -209,20 +209,20 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData("adult_female_native");
-            dataManagement.getPassengerData("adult_female_native");
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                     "pago_dividido$transfer$1_visa_visa$",
-                    dataManagement.getBillingData("local_Billing_sucursales"),
-                    dataManagement.getContactData("contact_phone"),
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE),
                     "HotelsCheckOutPageInternationalSucursal");
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO and ARGENTINA!");
+            logger.warn(NOT_RUNNING_MEXICO_ARGENTINA);
         }
         setResultSauceLabs(PASSED);
     }

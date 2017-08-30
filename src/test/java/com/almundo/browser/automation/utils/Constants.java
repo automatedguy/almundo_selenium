@@ -185,6 +185,7 @@ public class Constants {
     public static final String NO_DOMESTIC_CARS_COLOMBIA_TICKET = "This isssue was reported ticket is: " + "https://almundo.atlassian.net/browse/CARS-444";
     public static final String NOT_RUNNING_MEXICO = "We are not running this for MEXICO!";
     public static final String NOT_RUNNING_MEXICO_COLOMBIA = "We are not running this for MEXICO and COLOMBIA!";
+    public static final String NOT_RUNNING_MEXICO_ARGENTINA = "We are not running this for MEXICO and ARGENTINA!";
 
     //ITINERARIES
     //CARS
