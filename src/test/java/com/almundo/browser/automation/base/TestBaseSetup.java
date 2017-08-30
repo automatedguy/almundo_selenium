@@ -338,8 +338,11 @@ public class TestBaseSetup {
     }
 
     public void logTestTitle(String testTitle) {
+        System.lineSeparator();
         logger.info("-------------------------------------------------------------------------------------");
-        logger.info(testTitle + " - Method [" + method + "]");
+        logger.info("Method: [" + method + "]");
+        logger.info("-------------------------------------------------------------------------------------");
+        logger.info("Tittle: [" + testTitle + "]");
         logger.info("-------------------------------------------------------------------------------------");
     }
 
