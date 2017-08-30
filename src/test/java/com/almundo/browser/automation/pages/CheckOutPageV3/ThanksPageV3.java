@@ -66,4 +66,44 @@ public class ThanksPageV3 extends BasePage {
             return true;
         }
     }
+
+    public boolean isFlightDetailInfoOk(String flightDetailInfo){
+        logger.info("Asserting Flights Info...");
+        return true;
+    }
+
+    public boolean isHotelDetailInfoOk(String hotelDetailInfo){
+        logger.info("Asserting Hotels Info...");
+        return true;
+    }
+
+    public boolean isTripsDetailInfoOk(String tripsDetailInfo){
+        logger.info("Asserting Trips Info...");
+        return true;
+    }
+
+    public boolean isCarsDetailInfoOk(String carsDetailInfo){
+        logger.info("Asserting Cars Info...");
+        return true;
+    }
+
+    public boolean isFinalPriceOk(int finalPrice){
+        logger.info("Asserting Final Price...");
+        return true;
+    }
+
+    public boolean isPaymentInfoOk(String paymentData){
+        logger.info("Asserting Payment Information...");
+        return true;
+    }
+
+    public boolean isContactInfoOk(String contactInfo){
+        logger.info("Asserting Contact Info...");
+        return true;
+    }
+
+    public boolean isPassengersInfoOk(List<String> passengersList){
+        logger.info("Asserting Passengers Info...");
+        return true;
+    }
 }

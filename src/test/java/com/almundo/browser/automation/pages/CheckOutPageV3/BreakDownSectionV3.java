@@ -18,6 +18,9 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     @FindBy(css = "#product-resume span.price__amount")
     public WebElement finalPrice;
 
+    @FindBy(css = ".flight-detail-content")
+    public WebElement flightDetailContent;
+
     /**************************** Actions **********************************/
 
     public int getFinalPrice(){
@@ -28,5 +31,9 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
         else{
             return Integer.parseInt(finalPrice.getText().replace(",", "").replaceAll("\\s", ""));
         }
+    }
+
+    public String getFlightDetailContent(){
+        return flightDetailContent.getText();
     }
 }
