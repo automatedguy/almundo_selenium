@@ -210,7 +210,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-    @SuppressWarnings("Duplicates")
+/*    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
         logTestTitle("International - TRANSFER_VISA - 2 Adults - Tourist");
@@ -251,7 +251,7 @@ public class RetailFlowTest extends TestBaseSetup {
             logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
-    }
+    }*/
 
     @SuppressWarnings("Duplicates")
     @Test

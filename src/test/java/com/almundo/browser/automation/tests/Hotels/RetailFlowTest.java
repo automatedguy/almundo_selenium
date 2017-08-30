@@ -15,10 +15,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.AMEX_1;
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
-import static com.almundo.browser.automation.utils.Constants.VISA_1;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -194,7 +192,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
         logTestTitle("International - Transfer Credit - 10 days - 2 Adults - 1 Room");
-        if(!countryPar.equals("MEXICO")) {
+        if(!countryPar.equals(MEXICO) && !countryPar.equals(ARGENTINA)) {
             dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_1room");
 
             hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -224,7 +222,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn("We are not running this for MEXICO!");
+            logger.warn("We are not running this for MEXICO and ARGENTINA!");
         }
         setResultSauceLabs(PASSED);
     }

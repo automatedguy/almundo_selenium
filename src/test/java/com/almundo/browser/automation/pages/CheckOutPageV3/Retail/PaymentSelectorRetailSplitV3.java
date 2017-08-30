@@ -116,14 +116,13 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         waitImplicitly(4000);
         List<WebElement> cuotasDdl = driver.findElements(By.cssSelector("#am-split-payment form-payment-split div:nth-child(2) > credit-cards-split div:nth-child(3) > div:nth-child(1) > select"));
         Select cuotasSelect = new Select (cuotasDdl.get(container));
-        if(!baseURL.contains("st.")) {
+        if(false) {
             String currency = getCountryCurrency();
             String totalPagarCuota = setTotalCuota(paymentAmount);
             String cuotasFinal = cuotas + " de " + currency + " " + totalPagarCuota + " (Total: " + currency + " " + totalPagarCuota + ")";
             cuotasSelect.selectByVisibleText(cuotasFinal);
         }else{
-            logger.info("This is STG Env and we are selecting the first option available in the meantime :( ");
-            logger.info("Selected the following option: " + cuotasSelect.getOptions().get(1).getText());
+            logger.warn("Selected the following option, because it is available: " + cuotasSelect.getOptions().get(1).getText());
             cuotasSelect.selectByIndex(1);
         }
         return this;
