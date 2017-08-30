@@ -287,6 +287,7 @@ public class TestBaseSetup {
         driver = this.getWebDriver();
         String id = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
                 (((RemoteWebDriver) driver).getSessionId()).toString(), method);
+        System.out.println("\n");
         logger.info("Current Saucelabs Session Id: " + id);
         sessionId.set(id);
     }
