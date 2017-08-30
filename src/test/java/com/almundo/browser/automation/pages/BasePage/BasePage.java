@@ -111,14 +111,14 @@ public class BasePage extends TestBaseSetup {
 
     public FlightsDataTrip clickFlightsBtn() {
         PageUtils.waitElementForClickable(driver, flightsIcon, 10, "Vuelos button");
-        logger.info("Clicking on Vuelos button");
+        logger.info("Clicking on [Vuelos button]");
         flightsIcon.click();
         return flightsDataTrip();
     }
 
     public HotelsDataTrip clickHotelsBtn() {
         PageUtils.waitElementForClickable(driver, hotelsIcon, 10, "Hoteles button");
-        logger.info("Clicking on Hoteles button");
+        logger.info("Clicking on [Hoteles button]");
         hotelsIcon.click();
         return initHotelsDataTrip();
     }
@@ -126,35 +126,35 @@ public class BasePage extends TestBaseSetup {
     public CarsDataTrip clickCarsBtn() {
         PageUtils.waitElementForClickable(driver, carsIcon, 10, "Autos button");
         PageUtils.scrollToElement(driver,carsIcon);
-        logger.info("Clicking on Autos button");
+        logger.info("Clicking on [Autos button]");
         carsIcon.click();
         return initCarsDataTrip();
     }
 
     public TripsDataTrip clicksTripsBtn() {
         PageUtils.waitElementForClickable(driver, tripsIcon, 10, "Vuelos+Hotel button");
-        logger.info("Clicking on Vuelos+Hotel button");
+        logger.info("Clicking on [Vuelos+Hotel button]");
         tripsIcon.click();
         return tripsDataTrip();
     }
 
     public AssistanceDataTrip clickAssistanceBtn() {
         PageUtils.waitElementForClickable(driver, assistanceIcon, 10, "Seguros button");
-        logger.info("Clicking on Seguros button");
+        logger.info("Clicking on [Seguros button]");
         assistanceIcon.click();
         return assistanceDataTrip();
     }
 
     public PromoPage clickMainLeftBannerLnk() {
         PageUtils.waitElementForClickable(driver, mainLeftBannerLnk, 15, "Home Main Left Banner");
-        logger.info("Clicking on Home Main left Banner");
+        logger.info("Clicking on [Home Main left Banner]");
         mainLeftBannerLnk.click();
         return initPromoPage();
     }
 
     public PromoPage clickMainRightBannerLnk() {
         PageUtils.waitElementForClickable(driver, mainRightBannerLnk, 15, "Home Main Right Banner");
-        logger.info("Clicking on Home Main right Banner");
+        logger.info("Clicking on [Home Main right Banner]");
         mainRightBannerLnk.click();
         return initPromoPage();
     }
@@ -162,7 +162,7 @@ public class BasePage extends TestBaseSetup {
     public PromoPage clickHomeMedioLeftBannerLnk() {
         PageUtils.waitElementForClickable(driver, homeMedioLeftBannerLnk, 15, "Home Medio Left Banner");
         PageUtils.scrollToElement(driver, homeMedioLeftBannerLnk);
-        logger.info("Clicking on Home Medio left Banner");
+        logger.info("Clicking on [Home Medio left Banner]");
         homeMedioLeftBannerLnk.click();
         return initPromoPage();
     }
@@ -170,7 +170,7 @@ public class BasePage extends TestBaseSetup {
     public PromoPage clickHomeMedioRightBannerLnk() {
         PageUtils.waitElementForClickable(driver, homeMedioRightBannerLnk, 15, "Home Medio Right Banner");
         PageUtils.scrollToElement(driver, homeMedioRightBannerLnk);
-        logger.info("Clicking on Home Medio right Banner");
+        logger.info("Clicking on [Home Medio right Banner]");
         homeMedioRightBannerLnk.click();
         return initPromoPage();
     }
