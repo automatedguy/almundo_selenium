@@ -10,6 +10,7 @@ import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_V3_MSG;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
 
 
 /**
@@ -29,8 +30,8 @@ public class ThanksPageV3 extends BasePage {
     @FindBy(css = ".code")
     public WebElement reservationCode;
 
-    @FindBy(css =".price-container > span")
-    public WebElement finalPrice;
+    @FindBy(css =".amount")
+    public WebElement finalPricePaid;
 
     @FindBy(css = ".email")
     public WebElement contactInfo;
@@ -46,15 +47,18 @@ public class ThanksPageV3 extends BasePage {
 
     /*************************** Actions ***************************/
 
-    @SuppressWarnings("Duplicates")
+    private void printReservationCode(String reservationCode){
+        logger.info("Reservation Confirmed! :) ");
+        logger.info("***************************************************");
+        logger.info("Your Reservation Code:" + reservationCode);
+        logger.info("***************************************************");
+    }
+
     public boolean confirmationOk(){
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
             PageUtils.waitElementForVisibility(driver, felicitacionesLbl, 70, "Reservation Confirmation");
             if (felicitacionesLbl.getText().equals(FELICITACIONES_V3_MSG.toString())) {
-                logger.info("Reservation Confirmed! :) ");
-                logger.info("***************************************************");
-                logger.info("Your Reservation Code:" + reservationCode.getText());
-                logger.info("***************************************************");
+                printReservationCode(reservationCode.getText());
                 return true;
             } else {
                 logger.info("Reservation Failed! :( ");
@@ -67,38 +71,44 @@ public class ThanksPageV3 extends BasePage {
         }
     }
 
-    public boolean isFlightDetailInfoOk(String flightDetailInfo){
-        logger.info("Asserting Flights Info...");
-        return true;
-    }
-
-    public boolean isHotelDetailInfoOk(String hotelDetailInfo){
-        logger.info("Asserting Hotels Info...");
-        return true;
-    }
-
-    public boolean isTripsDetailInfoOk(String tripsDetailInfo){
-        logger.info("Asserting Trips Info...");
-        return true;
-    }
-
-    public boolean isCarsDetailInfoOk(String carsDetailInfo){
-        logger.info("Asserting Cars Info...");
-        return true;
-    }
-
     public boolean isFinalPriceOk(int finalPrice){
         logger.info("Asserting Final Price...");
-        return true;
+        if(finalPricePaid.getText().toString().equals(" "+ getCountryCurrency() + finalPrice)) {
+            logger.info("Amount Paid is Ok.");
+            return true;
+        }
+        else{
+            logger.error("Amount paid assertion failure.");
+            setResultSauceLabs(FAILED);
+            return false;
+        }
+    }
+
+    public boolean isContactInfoOk(String contactEmail){
+        logger.info("Asserting Contact Info...");
+        if(contactInfo.getText().toString().equals(contactEmail)) {
+            logger.info("Contact Info is Ok.");
+            return true;
+        }else{
+            logger.error("Contact Info assertion failure.");
+            setResultSauceLabs(FAILED);
+            return false;
+        }
+    }
+
+    public boolean isFlightDetailInfoOk(String flightDetailInfo){
+        logger.info("Asserting Flights Info...");
+        if(flightDetailContent.getText().toString().equals(flightDetailInfo)){
+            logger.info("Flight Detail Info is Ok.");
+            return true;
+        }else{
+            logger.error("Flight Detail assertion failure.");
+            return false;
+        }
     }
 
     public boolean isPaymentInfoOk(String paymentData){
         logger.info("Asserting Payment Information...");
-        return true;
-    }
-
-    public boolean isContactInfoOk(String contactInfo){
-        logger.info("Asserting Contact Info...");
         return true;
     }
 
