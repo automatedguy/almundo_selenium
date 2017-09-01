@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.*;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -54,9 +54,9 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @Test
     public void login_Int_Booking_Flow() {
-        logTestTitle("Login Hotel Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -71,24 +71,22 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("child_female_native");
-        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             "random",
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_phone"),
-                                             "HotelsCheckOutPageDomesticV3");
+                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                              dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
     }
 
     @Test
     public void login_Dom_Booking_Flow() {
-        logTestTitle("Login Hotel Flow - Domestic - 15 days - 2 Adults - 1 Room - " + countryPar );
+        logTestTitle("Domestic - 15 days - 2 Adults - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary("domestic01_15days_2adults_1room");
+        dataManagement.getHotelsDataTripItinerary(DOM01_15D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -103,14 +101,12 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             "random",
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_phone"),
-                                             "HotelsCheckOutPageDomesticV3");
+                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                              dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
     }
 }

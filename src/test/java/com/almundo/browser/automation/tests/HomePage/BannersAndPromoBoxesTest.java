@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.ARGENTINA;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
@@ -33,7 +34,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @Test
     public void openMainLeftBanner () {
-        logTestTitle("HomePage - Open Home Main left banner - " + countryPar );
+        logTestTitle("Open Home Main left banner");
         String promo_path = basePage.mainLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
         if(promo_path.contains("https://goo.")) {
             logger.info("Can't validate URL for: [" + promo_path + "]");
@@ -52,7 +53,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @Test
     public void openMainRightBanner () {
-        logTestTitle("HomePage - Open Home Main right banner - " + countryPar );
+        logTestTitle("Open Home Main right banner");
         String promoDisplayed_path = basePage.mainRightBannerLnk.findElement(By.cssSelector(" li[aria-hidden='false']>a")).getAttribute("href");
         String promoDisplayed_path_fix = promoDisplayed_path.replaceAll("\\s","");
 
@@ -71,7 +72,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @Test
     public void openPromoBox () {
-        logTestTitle("HomePage - Open Promotion box - " + countryPar );
+        logTestTitle("Open Promotion box");
         String promo_path = null;
         List<WebElement> promoBoxList = driver.findElements(By.cssSelector(".promo-section .promo-ctn"));
         for (WebElement promoBox: promoBoxList) {
@@ -93,8 +94,8 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @Test
     public void openHomeMedioLeftBanner () {
-        if (countryPar.equals("ARGENTINA")) {
-            logTestTitle("HomePage - Open Home Medio left banner - " + countryPar);
+        if (countryPar.equals(ARGENTINA)) {
+            logTestTitle("Open Home Medio left banner");
             String promo_path = basePage.homeMedioLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
             promoPage = basePage.clickHomeMedioLeftBannerLnk();
             PageUtils.waitImplicitly(2000);
@@ -119,7 +120,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @Test
     public void validateCarouselBanners () {
-        logTestTitle("HomePage - Validate carousel banners are displayed - " + countryPar );
+        logTestTitle("Validate carousel banners are displayed");
         logger.info("Validating Home Principal carousel banners are displayed");
         List<WebElement> bannerNamesList = driver.findElements(By.cssSelector("#main-content .banner-list"));
         Assert.assertTrue(bannerNamesList.size()>0);
@@ -134,7 +135,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @Test
     public void validateMainRightBannerDataLinks () {
-        logTestTitle("HomePage - Validate Main right banners contain data links in carousel - " + countryPar );
+        logTestTitle("Validate Main right banners contain data links in carousel");
         List <WebElement> elementList = driver.findElements(By.cssSelector("ul[name$='Home Principal Buscador Derecha'] a"));
         for (int i=1; i<=elementList.size(); i++) {
             String dataLinkBanner = elementList.get(i-1).getAttribute("href");
@@ -146,7 +147,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
 
     @Test
     public void validatePromoBoxesDisplayed () {
-        logTestTitle("HomePage - Validate promotion boxes are displayed - " + countryPar );
+        logTestTitle("Validate promotion boxes are displayed");
         logger.info("Validating promotion boxes are displayed");
         List<WebElement> promoBoxList = driver.findElements(By.cssSelector(".promo-section .promo-ctn"));
         Assert.assertTrue(promoBoxList.size()>0);

@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.FlightType.ROUND_TRIP;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 import static com.almundo.browser.automation.utils.PageUtils.userNameOk;
@@ -77,10 +77,10 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @Test
     public void flightsAvailabilityLogin(){
-        logTestTitle("Club AlMundo - Search Flight And Login With Email - " + countryPar );
+        logTestTitle("Search Flight And Login With Email");
 
         dataManagement.getFlightsItineraryData();
-        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
+        dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
         flightsDataTrip = basePage.clickFlightsBtn();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -110,18 +110,16 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "FlightsCheckOutPageInternational");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
         agreementPage = checkOutPageV3.termAndConditionsClick();
         Assert.assertTrue(agreementPage.agreementUrlOk());
@@ -135,10 +133,10 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @Test
     public void hotelsAvailabilityLogin(){
-        logTestTitle("Club AlMundo - Search Hotel And Login With Email - " + countryPar );
+        logTestTitle("Search Hotel And Login With Email");
 
         dataManagement.getHotelsItineraryData();
-        dataManagement.getHotelsDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         basePage.clickHotelsBtn();
 
@@ -169,17 +167,15 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("child_female_native");
-        dataManagement.getPassengerData("child_female_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_master_master",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "HotelsCheckOutPageInternationalV3");
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -188,10 +184,10 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @Test
     public void carsAvailabilityLogin(){
-        logTestTitle("Club AlMundo - Search Car And Login With Email - " + countryPar );
+        logTestTitle("Search Car And Login With Email");
 
         dataManagement.getCarsItineraryData();
-        dataManagement.getCarsDataTripItinerary("miami_10days_entre_21_24");
+        dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
 
         basePage.clickCarsBtn();
         carsDataTrip = basePage.carsDataTrip();
@@ -224,13 +220,11 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-        dataManagement.getPassengerData("adult_male_native");
+        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "CarsCheckOutPage");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -239,10 +233,10 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @Test
     public void tripsAvailabilityLogin(){
-        logTestTitle("Club AlMundo - Search Trips And Login With Email - " + countryPar);
+        logTestTitle("Search Trips And Login With Email");
 
         dataManagement.getTripsItineraryData();
-        dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.getTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -270,16 +264,14 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_male_native");
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "1_master_master",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

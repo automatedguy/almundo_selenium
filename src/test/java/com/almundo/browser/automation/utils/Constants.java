@@ -100,6 +100,8 @@ public class Constants {
 
     //PAYMENTS
 
+    public static final String RANDOM = "random";
+
     public static final String VISA_1 = "1_visa_visa";
     public static final String MASTER_1 = "1_master_master";
     public static final String AMEX_1 = "1_amex_amex";
