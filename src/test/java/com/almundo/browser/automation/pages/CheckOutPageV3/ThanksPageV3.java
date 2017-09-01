@@ -107,7 +107,7 @@ public class ThanksPageV3 extends BasePage {
                 return false;
             }
         } else{
-            logger.info("Condition is not approved for validation");
+            logger.info("Condition is not approved for Payment validation");
             return true;
         }
     }
@@ -124,7 +124,7 @@ public class ThanksPageV3 extends BasePage {
                 return false;
             }
         }else {
-            logger.info("Condition is not approved for validation");
+            logger.info("Condition is not approved for Contact validation");
             return true;
         }
     }
@@ -140,7 +140,7 @@ public class ThanksPageV3 extends BasePage {
                 return false;
             }
         } else {
-            logger.info("Condition is not approved for validation");
+            logger.info("Condition is not approved for Flights validation");
             return true;
         }
     }
@@ -156,7 +156,7 @@ public class ThanksPageV3 extends BasePage {
                 return false;
             }
         }else {
-            logger.info("Condition is not approved for validation");
+            logger.info("Condition is not approved for Hotel validation");
             return true;
         }
     }
@@ -172,7 +172,7 @@ public class ThanksPageV3 extends BasePage {
                 return false;
             }
         }else{
-            logger.info("Condition is not approved for validation");
+            logger.info("Condition is not approved for Cars validation");
             return true;
         }
     }
@@ -251,7 +251,7 @@ public class ThanksPageV3 extends BasePage {
             }
             return passengersOk;
         }else{
-            logger.info("Condition is not approved for validation");
+            logger.info("Condition is not approved for Passengers validation");
             return true;
         }
     }
