@@ -11,10 +11,7 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
-import com.almundo.browser.automation.utils.JsonRead;
-import com.almundo.browser.automation.utils.RetryAnalyzer;
-import com.almundo.browser.automation.utils.SauceHelpers;
-import com.almundo.browser.automation.utils.SeleniumProxy;
+import com.almundo.browser.automation.utils.*;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
@@ -69,6 +66,10 @@ public class TestBaseSetup {
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
     public static JSONObject jsonCountryPropertyObject = null;
+
+    /************* For Final Assertions on the Thanks Page *************/
+
+    public ThanksPageAssertInfo thanksPageAssertInfo = new ThanksPageAssertInfo();
 
     // Selenium URI -- static same for everyone.
     public static String seleniumURI = null;

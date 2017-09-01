@@ -100,6 +100,8 @@ public class Constants {
 
     //PAYMENTS
 
+    public static final String RANDOM = "random";
+
     public static final String VISA_1 = "1_visa_visa";
     public static final String MASTER_1 = "1_master_master";
     public static final String AMEX_1 = "1_amex_amex";
@@ -146,7 +148,7 @@ public class Constants {
 
     //CHECKOUT PAGES
     public static final String CARS_CHECKOUT = "CarsCheckOutPage";
-    public static final String CARS_CHECKOUT_RET ="CarsCheckOutPageSucursal";
+    public static final String CARS_CHECKOUT_RET = "CarsCheckOutPageSucursal";
 
     public static final String FLIGHTS_CHECKOUT_INT = "FlightsCheckOutPageInternational";
     public static final String FLIGHTS_CHECKOUT_DOM = "FlightsCheckOutPageDomestic";
@@ -155,14 +157,14 @@ public class Constants {
     public static final String FLIGHTS_CHECKOUT_INT_RET = "FlightsCheckOutPageInternationalSucursal";
 
     public static final String TRIPS_CHECKOUT_DOM_RET = "TripsCheckOutPageDomesticSucursal";
-    public static final String TRIPS_CHECKOUT_INTV3= "TripsCheckOutPageInternationalV3";
+    public static final String TRIPS_CHECKOUT_INTV3 = "TripsCheckOutPageInternationalV3";
     public static final String TRIPS_CHECKOUT_DOMV3 = "TripsCheckOutPageDomesticV3";
 
     public static final String HOTELS_CHECKOUT_DOM = "HotelsCheckOutPageDomesticV3";
     public static final String HOTELS_CHECKOUT_INT = "HotelsCheckOutPageInternationalV3";
 
     public static final String HOTELS_CHECKOUT_INT_RET = "HotelsCheckOutPageInternationalSucursal";
-    public static final String HOTELS_CHECKOUT_DOM_RET ="HotelsCheckOutPageDomesticSucursal";
+    public static final String HOTELS_CHECKOUT_DOM_RET = "HotelsCheckOutPageDomesticSucursal";
 
     //PASSENGERS
     public static final String ADULT_MALE_NATIVE = "adult_male_native";
@@ -198,9 +200,9 @@ public class Constants {
     //FLIGHTS
 
     public static final String DOMESTIC_30D_2A_ALL = "domestic_30days_2adults_todas";
-    public static final String DOMESTIC_20D_2A_ALL =  "domestic_20days_2adults_todas";
-    public static final String MIAMI_10D_2A_TOURIST ="miami_10days_2adults_turista";
-    public static final String MIAMI_10D_2A_2C_TOURIST ="miami_10days_2adults_2childs_turista";
+    public static final String DOMESTIC_20D_2A_ALL = "domestic_20days_2adults_todas";
+    public static final String MIAMI_10D_2A_TOURIST = "miami_10days_2adults_turista";
+    public static final String MIAMI_10D_2A_2C_TOURIST = "miami_10days_2adults_2childs_turista";
     public static final String MULTI_3LEGS_2A_ALL = "multiDest_3Flights_2adults_todas";
 
     //HOTELS
@@ -210,7 +212,7 @@ public class Constants {
 
     //TRIPS
     public static final String INT02_20D_2A_1R = "int02_20days_2adults_1room";
-    public static final String DOM02_20D_2A_1C_1R ="domestic02_20days_2adults_1childs_1room";
+    public static final String DOM02_20D_2A_1C_1R = "domestic02_20days_2adults_1childs_1room";
     public static final String MIA_10D_2A_2C_1R = "miami_10days_2adults_2childs_1room";
     public static final String DOM01_15D_2A_1C_1R = "domestic01_15days_2adults_1childs_1room";
 
@@ -231,5 +233,8 @@ public class Constants {
     //MISC
 
     public static final String AGENT_EMAIL = "gabriel.cespedes@almundo.com";
+
+    //CSS ATTRIBUTES
+    public static final String VALUE = "value";
 
 }

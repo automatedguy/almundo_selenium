@@ -34,9 +34,6 @@ public class FlowTest extends TestBaseSetup {
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
 
-    private String flightDetailInfo = null;
-    private int finalPrice = 0;
-
     @BeforeClass
     private void initItineraryData() {
         dataManagement.getFlightsItineraryData();
@@ -67,8 +64,13 @@ public class FlowTest extends TestBaseSetup {
         }
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    private void getAssertionInfo(){
+        thanksPageAssertInfo.finalAmountPaid = checkOutPageV3.breakDownSectionV3().getFinalPriceString();
+        thanksPageAssertInfo.flightDetailInfo = checkOutPageV3.breakDownSectionV3().getFlightDetailContent();
+        thanksPageAssertInfo.contactEmailEntered = checkOutPageV3.contactSection().getContactEmail();
+    }
 
+    /***************************** Test Cases *****************************/
 
 /*    @Test
     public void debit_OneWay_Int_Booking_Flow() {
@@ -208,10 +210,15 @@ public class FlowTest extends TestBaseSetup {
                                               VISA_1,
                                                dataManagement.getBillingData(LOCAL_BILLING),
                                                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
-
+        getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(thanksPageV3.confirmationOk());
 
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+        
         setResultSauceLabs(PASSED);
     }
 

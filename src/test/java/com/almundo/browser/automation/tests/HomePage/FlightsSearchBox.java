@@ -44,11 +44,11 @@ public class FlightsSearchBox extends TestBaseSetup {
         basePage.clickFlightsBtn();
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /***************************** Test Cases *****************************/
 
     @Test
     public void originEmpty() {
-        logTestTitle("Flights Search Box - Leave origin field empty - " + countryPar );
+        logTestTitle("Flights Search Box - Leave origin field empty");
 
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
@@ -62,7 +62,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void destinationEmpty() {
-        logTestTitle("Flights Search Box - Leave destination field empty - " + countryPar );
+        logTestTitle("Flights Search Box - Leave destination field empty");
 
         dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
@@ -76,7 +76,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void autocompleteCountry() {
-        logTestTitle("Flights Search Box - Autocomplete - Enter country name - " + countryPar );
+        logTestTitle("Flights Search Box - Autocomplete - Enter country name");
         String country = "Estados Unidos";
 
         flightsDataTrip = basePage.flightsDataTrip();
@@ -90,7 +90,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void autocompleteCity() {
-        logTestTitle("Flights Search Box - Autocomplete - Enter city name - " + countryPar );
+        logTestTitle("Flights Search Box - Autocomplete - Enter city name");
         String city = "Río de Janeiro";
 
         flightsDataTrip = basePage.flightsDataTrip();
@@ -104,7 +104,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void autocompleteCityCode() {
-        logTestTitle("Flights Search Box - Autocomplete - Enter city code - " + countryPar );
+        logTestTitle("Flights Search Box - Autocomplete - Enter city code");
         String cityCode = "NYC";
 
         flightsDataTrip = basePage.flightsDataTrip();
@@ -118,7 +118,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void autocompleteAirport() {
-        logTestTitle("Flights Search Box - Autocomplete - Enter airport name - " + countryPar );
+        logTestTitle("Flights Search Box - Autocomplete - Enter airport name");
         String airport = "Fiumicino";
 
         flightsDataTrip = basePage.flightsDataTrip();
@@ -132,7 +132,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void autocompleteAirportCode() {
-        logTestTitle("Flights Search Box - Autocomplete - Enter airport code - " + countryPar );
+        logTestTitle("Flights Search Box - Autocomplete - Enter airport code");
         String airportCode = "JFK";
 
         flightsDataTrip = basePage.flightsDataTrip();
@@ -146,7 +146,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void addHotelToFlight() {
-        logTestTitle("Flights Search Box - Select Add Hotel option - " + countryPar );
+        logTestTitle("Flights Search Box - Select Add Hotel option");
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.clickAddHotelCbk();
@@ -166,7 +166,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void flightTypeOptions() {
-        logTestTitle("Flights Search Box - Validate flight type options - " + countryPar );
+        logTestTitle("Flights Search Box - Validate flight type options");
 
         flightsDataTrip = basePage.flightsDataTrip();
 
@@ -179,7 +179,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void childRangeOptions() {
-        logTestTitle("Flights Search Box - Validate child range options - " + countryPar );
+        logTestTitle("Flights Search Box - Validate child range options");
 
         flightsDataTrip = basePage.flightsDataTrip();
 
@@ -195,7 +195,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void flightClassOptions() {
-        logTestTitle("Flights Search Box - Validate flight class options - " + countryPar );
+        logTestTitle("Flights Search Box - Validate flight class options");
 
         flightsDataTrip = basePage.flightsDataTrip();
 
@@ -208,7 +208,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void passengerLimitAdults() {
-        logTestTitle("Flights Search Box - Validate passenger limit for adults - " + countryPar );
+        logTestTitle("Flights Search Box - Validate passenger limit for adults");
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.personasTxt.click();
@@ -228,7 +228,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void passengerLimitMix() {
-        logTestTitle("Flights Search Box - Validate passenger limit for adults and childs - " + countryPar );
+        logTestTitle("Flights Search Box - Validate passenger limit for adults and childs");
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.personasTxt.click();
@@ -253,7 +253,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @Test
     public void multiDestFlightLimit() {
-        logTestTitle("Flights Search Box - Validate flight limit for multi destination - " + countryPar );
+        logTestTitle("Flights Search Box - Validate flight limit for multi destination");
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(MULTIDESTINATION);

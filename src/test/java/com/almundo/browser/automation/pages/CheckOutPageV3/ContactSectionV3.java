@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.almundo.browser.automation.utils.Constants.VALUE;
+
 /**
  * Created by leandro.efron on 6/12/2016.
  */
@@ -95,5 +97,10 @@ public class ContactSectionV3 extends CheckOutPageV3 {
         logger.info("Entering Número de Teléfono: [" + phoneNumber + "]");
         phoneNumberTxt.clear();
         phoneNumberTxt.sendKeys(phoneNumber);
+    }
+
+    public String getContactEmail(){
+        logger.info("Retrieving Entered Contact Email: [" + emailTxt.getAttribute(VALUE).toString() + "]");
+        return emailTxt.getAttribute(VALUE).toString();
     }
 }

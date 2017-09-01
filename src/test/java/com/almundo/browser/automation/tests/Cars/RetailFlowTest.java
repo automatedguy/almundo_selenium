@@ -43,7 +43,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /***************************** Test Cases *****************************/
 
     @Test
     public void suc_Int_Booking_Flow() {

@@ -50,7 +50,13 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    private void getAssertionInfo(){
+        thanksPageAssertInfo.finalAmountPaid = checkOutPageV3.breakDownSectionV3().getFinalPriceString();
+        thanksPageAssertInfo.hotelDetailInfo = checkOutPageV3.breakDownSectionV3().getHotelDetailContent();
+        thanksPageAssertInfo.contactEmailEntered = checkOutPageV3.contactSection().getContactEmail();
+    }
+
+    /***************************** Test Cases *****************************/
 
     @Test
     public void int_Booking_Flow() {
@@ -80,9 +86,15 @@ public class FlowTest extends TestBaseSetup {
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
                                                dataManagement.getBillingData(LOCAL_BILLING),
                                                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
-
+        getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.hotelDetailInfo));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 
