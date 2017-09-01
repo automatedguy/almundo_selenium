@@ -74,7 +74,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-    @SuppressWarnings("Duplicates")
+/*    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
         logTestTitle("International - 10 days - VISA_MASTER");
@@ -212,5 +212,5 @@ public class RetailFlowTest extends TestBaseSetup {
             logger.warn(NOT_RUNNING_MEXICO);
         }
         setResultSauceLabs(PASSED);
-    }
+    }*/
 }
