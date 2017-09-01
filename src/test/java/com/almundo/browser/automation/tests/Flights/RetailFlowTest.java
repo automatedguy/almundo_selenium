@@ -49,7 +49,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @Test
     public void suc_Dom_Booking_Flow() {
-        logTestTitle("Domestic - 20 days - 2 Adults - Todas");
+        logTestTitle("Domestic - 20 days - 2 Adults - All");
 
         dataManagement.getRoundTripDataTripItinerary(DOMESTIC_30D_2A_ALL);
 

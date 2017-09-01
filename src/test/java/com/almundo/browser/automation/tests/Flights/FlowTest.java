@@ -149,7 +149,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void oneWay_Dom_Booking_Flow() {
-        logTestTitle("Domestic - 2 Adults - Todas");
+        logTestTitle("Domestic - 2 Adults - All");
 
         dataManagement.getOneWayDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
@@ -182,7 +182,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void roundTrip_Int_Booking_Flow() {
-        logTestTitle("International - 10 days - 2 Adults/2 Childs - Turista");
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - Tourist");
 
         dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
@@ -218,7 +218,7 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
         Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
-        
+
         setResultSauceLabs(PASSED);
     }
 
@@ -261,7 +261,7 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {
-        logTestTitle("Domestic - 20 days - 2 Adults - Todas");
+        logTestTitle("Domestic - 20 days - 2 Adults - All");
 
         dataManagement.getRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
@@ -297,7 +297,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void multiDest_Int_Booking_Flow() {
         final int TRANSFERS = 3;
-        logTestTitle("International - 2 Adults - Todas");
+        logTestTitle("International - 2 Adults - All");
 
         dataManagement.getMultiDestDataTripItinerary(MULTI_3LEGS_2A_ALL);
 
