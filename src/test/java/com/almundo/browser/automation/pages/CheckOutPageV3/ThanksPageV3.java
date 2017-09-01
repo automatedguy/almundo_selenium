@@ -217,35 +217,42 @@ public class ThanksPageV3 extends BasePage {
     }
 
     public boolean isPassengersInfoOk(){
-        logger.info("Asserting Passengers Info...");
-        boolean passengersOk = true;
-        int passengerIndex = 0;
-        for(ThanksPageAssertInfo.Passenger passenger : thanksPageAssertInfo.passengersList){
-            logger.info("Asserting Passenger N°: " + (passengerIndex +1));
-            logger.info("Full Name: [" + passenger.fullName + "]");
-            if(!passenger.fullName.equals(passengersNameList.get(passengerIndex).getText())){
-                logger.error("Passenger Full Name Assertion failure.");
-                logger.error("The Full Name found was: [" + passengersNameList.get(passengerIndex).getText() + "]");
-                setResultSauceLabs(FAILED);
-                passengersOk = false;
-                break;
-            }
-            if(method.contains("Flights.")){
-                logger.info("Document Number: [" + passenger.documentNumber + "]");
-                if(!passenger.documentNumber.equals(passengerDocumentList.get(passengerIndex).getText())) {
-                    logger.error("Passenger Document Number Assertion failure.");
-                    logger.error("The Document found was: [" + passengerDocumentList.get(passengerIndex).getText() + "]");
+        if(assertThanksPageElements) {
+            logger.info("Asserting Passengers Info...");
+            boolean passengersOk = true;
+            int passengerIndex = 0;
+            for (ThanksPageAssertInfo.Passenger passenger : thanksPageAssertInfo.passengersList) {
+                logger.info("Asserting Passenger N°: " + (passengerIndex + 1));
+                logger.info("Full Name: [" + passenger.fullName + "]");
+                if (!passenger.fullName.equals(passengersNameList.get(passengerIndex).getText())) {
+                    logger.error("Passenger Full Name Assertion failure.");
+                    logger.error("The Full Name found was: [" + passengersNameList.get(passengerIndex).getText() + "]");
                     setResultSauceLabs(FAILED);
                     passengersOk = false;
                     break;
                 }
+                if (method.contains("Flights.")) {
+                    logger.info("Document Number: [" + passenger.documentNumber + "]");
+                    if (!passenger.documentNumber.equals(passengerDocumentList.get(passengerIndex).getText())) {
+                        logger.error("Passenger Document Number Assertion failure.");
+                        logger.error("The Document found was: [" + passengerDocumentList.get(passengerIndex).getText() + "]");
+                        setResultSauceLabs(FAILED);
+                        passengersOk = false;
+                        break;
+                    }
+                }
+                if (!method.contains("Cars.")) {
+                    passengerIndex = passengerIndex + 1;
+                    clickNextPassenger();
+                }
             }
-            if(!method.contains("Cars.")) {
-                passengerIndex = passengerIndex + 1;
-                clickNextPassenger();
+            if (passengersOk) {
+                logger.info("Passengers Info is Ok.");
             }
+            return passengersOk;
+        }else{
+            logger.info("Condition is not approved for validation");
+            return true;
         }
-        if(passengersOk){logger.info("Passengers Info is Ok.");}
-        return passengersOk;
     }
 }
