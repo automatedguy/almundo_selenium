@@ -44,7 +44,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         basePage.clickFlightsBtn();
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /***************************** Test Cases *****************************/
 
     @Test
     public void originEmpty() {

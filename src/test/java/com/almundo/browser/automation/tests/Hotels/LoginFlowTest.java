@@ -50,7 +50,7 @@ public class LoginFlowTest extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /***************************** Test Cases *****************************/
 
     @Test
     public void login_Int_Booking_Flow() {

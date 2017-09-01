@@ -8,20 +8,28 @@ import java.util.List;
  */
 public class ThanksPageAssertInfo {
 
-    public int finalAmountPaid = 0;
+    public String finalAmountPaid = null;
     public String contactEmailEntered = null;
 
     public String flightDetailInfo = null;
+    public String hotelDetailInfo = null;
+    public String carsDetailInfo = null;
+    public String tripsDetailInfo = null;
 
-    public class paymentForms{
+    public static class Passenger{
+        public String fullName = null;
+        public String documentNumber = null;
+
+        public Passenger(String passengerName, String passengerDocument) {
+            fullName = passengerName;
+            documentNumber =  passengerDocument;
+        }
+    }
+    public static List<Passenger> passengersList = new ArrayList<Passenger>();
+
+    public static class paymentForms{
         String paymentType = null;
         String paymentAmount = null;
     }
-    List<paymentForms> paymentFormsList = new ArrayList<paymentForms>();
-
-    public class passengers{
-        String fullName = null;
-        String documentNumber = null;
-    }
-    List<passengers> passengersList = new ArrayList<passengers>();
+    public static List<paymentForms> paymentFormsList = new ArrayList<paymentForms>();
 }

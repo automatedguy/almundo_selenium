@@ -29,7 +29,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         }
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /***************************** Test Cases *****************************/
 
     @Test
     public void openMainLeftBanner () {

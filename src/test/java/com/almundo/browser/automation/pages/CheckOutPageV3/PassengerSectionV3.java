@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import com.almundo.browser.automation.utils.ThanksPageAssertInfo;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -79,23 +80,29 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         setGenderList();
         setNationalityList();
 
+        String randomFirstName = "";
+        String randomLastName = "";
+        String documentNumber = "";
+
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
+
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
             if(inputDef.isRequired("passengers","first_name",passengerIndex)) {
-                //setFirstName(passengerIndex, passengerInfo.get("first_name").toString());
-                setFirstName(passengerIndex, randomString(15));}
+                randomFirstName = randomString(15);
+                setFirstName(passengerIndex, randomFirstName);}
 
             if(inputDef.isRequired("passengers","last_name",passengerIndex)){
-                //setlastName(passengerIndex, passengerInfo.get("last_name").toString());
-                setlastName(passengerIndex, randomString(15));}
+                randomLastName = randomString(15);
+                setlastName(passengerIndex, randomLastName);}
 
             if(inputDef.isRequired("passengers","document", passengerIndex)) {
                 setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}
 
             if(inputDef.isRequired("passengers","document", passengerIndex)){
-                setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
+                documentNumber = passengerInfo.get("document_number").toString();
+                setDocumentNumber(passengerIndex, documentNumber);}
 
             if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
                 setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());}
@@ -111,6 +118,8 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
             if(inputDef.isRequired("passengers","nationality",passengerIndex)) {
                 setNationality(passengerIndex, passengerInfo.get("nationality").toString());}
+
+            thanksPageAssertInfo.passengersList.add(new ThanksPageAssertInfo.Passenger(randomFirstName + " " + randomLastName , documentNumber));
         }
         return this;
     }

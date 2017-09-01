@@ -37,6 +37,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
+    /***************************** Test Cases *****************************/
+
     @Test
     public void Int_Booking_Flow() {
         logTestTitle("International - 2 Persons");
