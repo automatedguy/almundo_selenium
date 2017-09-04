@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.utils;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -316,5 +317,15 @@ public class PageUtils {
 
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
+    }
+
+    public static void closeExpertsPopUp(WebDriver driver){
+        try {
+            driver.findElement(By.cssSelector("body > am-experts-contact > div > div.header > span")).click();
+            logger.info("Closing [Contacta un Experto de Almundo] Pop-Up");
+            waitImplicitly(1500);
+        }catch(ElementNotFoundException ouch){
+            logger.info("The Experts Pop Up didn't showed up.");
+        }
     }
 }

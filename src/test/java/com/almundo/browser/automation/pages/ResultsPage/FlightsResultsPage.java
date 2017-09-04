@@ -14,6 +14,7 @@ import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.LISTADO_DE_SUCURSALES_LNK;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.PageUtils.closeExpertsPopUp;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
 
 /**
@@ -86,6 +87,7 @@ public class FlightsResultsPage extends TestBaseSetup {
     }
 
     public CheckOutPageV3 clickComprarV3Btn(int index) {
+        closeExpertsPopUp(driver);
         String cssSelectorName = ".flights-cluster-pricebox .button";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
