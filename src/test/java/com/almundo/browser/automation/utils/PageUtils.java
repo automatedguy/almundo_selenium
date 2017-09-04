@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.utils;
 
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -81,6 +80,18 @@ public class PageUtils {
         }catch (TimeoutException exception) {
             logger.error("[" + message + "] is not clickable");
             throw exception;
+        }
+    }
+
+    @SuppressWarnings("Duplicates")
+    public static void waitElementForClickableCatch(WebDriver driver, By element, int timeOutInSeconds, String message){
+        try {
+            logger.info("Waiting for: [" + message + "]");
+            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            wait.withMessage(message);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        }catch (Exception exception) {
+            logger.info("[" + message + "] is not clickable");
         }
     }
 
@@ -324,11 +335,11 @@ public class PageUtils {
     public static void closeExpertsPopUp(WebDriver driver){
         String closeButtonLocator = "body > am-experts-contact > div > div.header > span";
         try {
-            waitElementForClickable(driver, By.cssSelector(closeButtonLocator), 10 ,"Experts Pop-Up");
+            waitElementForClickableCatch(driver, By.cssSelector(closeButtonLocator), 10 ,"Experts Pop-Up");
             driver.findElement(By.cssSelector(closeButtonLocator)).click();
             logger.info("Closing [Contacta un Experto de Almundo] Pop-Up");
             waitImplicitly(1500);
-        }catch(ElementNotFoundException ouch){
+        }catch(ElementNotVisibleException ouch){
             logger.info("The Experts Pop Up didn't showed up.");
         }
     }
