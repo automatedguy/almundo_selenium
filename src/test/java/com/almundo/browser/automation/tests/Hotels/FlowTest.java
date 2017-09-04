@@ -127,7 +127,7 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-/*    @SuppressWarnings("Duplicates")
+    @SuppressWarnings("Duplicates")
     @Test
     public void dom_Booking_Flow_PayAtDestination() {
         logTestTitle("Domestic - Pay At Destination - 15 days - 2 Adults - 1 Room");
@@ -155,9 +155,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DESTINATION_MASTER_1,
+                                        dataManagement.getBillingData(LOCAL_BILLING),
+                                        dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
         setResultSauceLabs(PASSED);
-    }*/
+    }
 }

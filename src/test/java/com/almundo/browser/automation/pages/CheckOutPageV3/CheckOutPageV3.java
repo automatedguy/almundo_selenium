@@ -173,9 +173,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
             }
         }
 
-        if (creditCardComboSc) {
+        if (creditCardComboSc && !paymentData.contains("destination")) {
             paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-        } else {
+        } else if (!paymentData.contains("destination")){
             paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
         }
         creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
@@ -217,7 +217,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setInputDef();
         dealWithPaymentForm(paymentData);
         passengerSection().populatePassengerSection(passengerList);
-        billingSection().populateBillingSection(billingData);
+        if(!paymentData.contains("destination")) {
+            billingSection().populateBillingSection(billingData);
+        }
         contactSection().populateContactSection(contactData);
         if(isRetailChannel()){
             agentSectionV3().setAgentEmail(AGENT_EMAIL);
