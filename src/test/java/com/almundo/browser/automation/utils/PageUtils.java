@@ -58,6 +58,7 @@ public class PageUtils {
         }
     }
 
+    @SuppressWarnings("Duplicates")
     public static void waitElementForClickable(WebDriver driver, WebElement element, int timeOutInSeconds, String message){
         try {
             logger.info("Waiting for: [" + message + "]");
@@ -70,6 +71,7 @@ public class PageUtils {
         }
     }
 
+    @SuppressWarnings("Duplicates")
     public static void waitElementForClickable(WebDriver driver, By element, int timeOutInSeconds, String message){
         try {
             logger.info("Waiting for: [" + message + "]");
@@ -320,8 +322,10 @@ public class PageUtils {
     }
 
     public static void closeExpertsPopUp(WebDriver driver){
+        String closeButtonLocator = "body > am-experts-contact > div > div.header > span";
         try {
-            driver.findElement(By.cssSelector("body > am-experts-contact > div > div.header > span")).click();
+            waitElementForClickable(driver, By.cssSelector(closeButtonLocator), 10 ,"Experts Pop-Up");
+            driver.findElement(By.cssSelector(closeButtonLocator)).click();
             logger.info("Closing [Contacta un Experto de Almundo] Pop-Up");
             waitImplicitly(1500);
         }catch(ElementNotFoundException ouch){

@@ -158,6 +158,10 @@ public class FlowTest extends TestBaseSetup {
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DESTINATION_MASTER_1,
                                         dataManagement.getBillingData(LOCAL_BILLING),
                                         dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         setResultSauceLabs(PASSED);
     }
 }
