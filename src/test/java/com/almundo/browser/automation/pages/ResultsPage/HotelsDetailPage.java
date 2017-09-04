@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.PageUtils.closeExpertsPopUp;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
 
 /**
  * Created by leandro.efron on 13/12/2016.
@@ -48,6 +49,7 @@ public class HotelsDetailPage extends TestBaseSetup {
 
     public HotelsDetailPage clickPayAtDestination(){
         closeExpertsPopUp(driver);
+        waitElementForClickable(driver, payAtDestination, 10, "Pago En Destino Tab");
         logger.info("Clicking on [Pago en destino] Tab");
         payAtDestination.click();
         return this;

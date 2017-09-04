@@ -162,6 +162,12 @@ public class FlowTest extends TestBaseSetup {
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.hotelDetailInfo));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 }
