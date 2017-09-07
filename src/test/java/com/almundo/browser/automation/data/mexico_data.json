@@ -191,7 +191,7 @@
             "destinationAuto": "Ciu",
             "destinationFull": "Ciudad de México, México",
             "startDate": 25,
-            "endDate": 10,
+            "endDate": 40,
             "pickUpTime": "12:00",
             "dropOffTime": "12:00",
             "ageRange": "Entre 21 y 24 años"
@@ -203,7 +203,7 @@
             "destinationAuto": "Mia",
             "destinationFull": "Miami, Estados Unidos de América",
             "startDate": 25,
-            "endDate": 10,
+            "endDate": 40,
             "pickUpTime": "12:00",
             "dropOffTime": "12:00",
             "ageRange": "Entre 21 y 24 años"
