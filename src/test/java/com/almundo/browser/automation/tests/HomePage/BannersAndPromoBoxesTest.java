@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.almundo.browser.automation.utils.Constants.ARGENTINA;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
@@ -92,7 +91,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-    @Test
+/*    @Test
     public void openHomeMedioLeftBanner () {
         if (countryPar.equals(ARGENTINA)) {
             logTestTitle("Open Home Medio left banner");
@@ -103,7 +102,7 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             Assert.assertEquals(driver.getCurrentUrl(), promo_path, "Incorrect URL");
         }
         setResultSauceLabs(PASSED);
-    }
+    }*/
 
 /*    @Test
     public void openHomeMedioRightBanner () {
