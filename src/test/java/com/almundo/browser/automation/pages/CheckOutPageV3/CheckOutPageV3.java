@@ -304,7 +304,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private String getCartId(){
-        PageUtils.waitElementForVisibility(driver, By.id("first_name"), 45, "Checkout V3");
         String currentUrl = driver.getCurrentUrl();
 
         logger.info("Checkout URL: " + "[" + currentUrl + "]");
