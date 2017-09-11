@@ -409,7 +409,7 @@
             "1_master_master": {
                 "payment_qty" : "1",
                 "bank_name" : "BBVA Bancomer",
-                "credit_card_code" : "CA",
+                "credit_card_code" : "BCMR",
                 "credit_card_name" : "Mastercard",
                 "card_holder": "Titular Tarjeta",
                 "card_number": "5425233430109903",
