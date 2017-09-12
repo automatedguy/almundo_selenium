@@ -14,8 +14,7 @@ import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.Messages.LISTADO_DE_SUCURSALES_LNK;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
-import static com.almundo.browser.automation.utils.PageUtils.closeExpertsPopUp;
-import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 13/12/16.
@@ -52,6 +51,8 @@ public class FlightsResultsPage extends TestBaseSetup {
     @FindBy(css = ".trip-favorite")
     private List<WebElement> favouriteIconList;
 
+    String clusterPriceboxButton = ".flights-cluster-pricebox .button";
+
     //############################################### Actions ##############################################
 
     public String getDirectionLabel(int index){
@@ -61,6 +62,7 @@ public class FlightsResultsPage extends TestBaseSetup {
     public FlightsResultsPage clickTicketIdaRdb(int index) {
         PageUtils.waitElementForVisibility(driver,ticketIdaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de: " + "[" + getDirectionLabel(index) + "]");
+        scrollToElement(driver, ticketIdaRdb);
         ticketIdaRdb.click();
         logger.info("Departure Flight Date: " + "[" + dateList.get(index).getText() + "]");
         logger.info("Departure Flight Info: " + "[" + formatInfo(tramoUnoInfo.getText())  + "]");
@@ -70,6 +72,7 @@ public class FlightsResultsPage extends TestBaseSetup {
     public FlightsResultsPage clickTicketVuelta(int index) {
         PageUtils.waitElementForVisibility(driver,ticketVueltaRdb,30, "Ticket Ida Radio Button");
         logger.info("Selecting Ticket de: " + "[" + getDirectionLabel(index) + "]");
+        scrollToElement(driver, ticketVueltaRdb);
         ticketVueltaRdb.click();
         logger.info("Return Flight Date: " + "[" + dateList.get(index).getText() + "]");
         logger.info("Return Flight Info: " + "[" + formatInfo(tramoDosInfo.getText()) + "]");
@@ -88,10 +91,11 @@ public class FlightsResultsPage extends TestBaseSetup {
 
     public CheckOutPageV3 clickComprarV3Btn(int index) {
         closeExpertsPopUp(driver);
-        String cssSelectorName = ".flights-cluster-pricebox .button";
-        PageUtils.waitListContainResults(driver, cssSelectorName, 0);
-        List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
+        PageUtils.waitListContainResults(driver, clusterPriceboxButton, 0);
+        List<WebElement> comprarBtn = driver.findElements(By.cssSelector(clusterPriceboxButton));
         logger.info("Flight Rates Info: " + "[" + getPriceBoxInfo(index) + "]");
+        waitElementForClickable(driver, comprarBtn.get(index), 5, "[Comprar] button clickable.");
+        scrollToElement(driver, comprarBtn.get(index));
         logger.info("Clicking on button: [Comprar]");
         comprarBtn.get(index).click();
         return initCheckOutPageV3();

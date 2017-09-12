@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
+
 /**
  * Created by gabrielcespedes on 06/12/16.
  */
@@ -33,6 +35,7 @@ public class FooterSectionV3 extends CheckOutPage {
 
     public FooterSectionV3 acceptTermsAndConditions() {
         logger.info("Checking Terms and Conditions Check Box...");
+        scrollToElement(driver, readCbx);
         readCbx.click();
         return this;
     }
