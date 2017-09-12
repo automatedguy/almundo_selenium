@@ -42,7 +42,6 @@
             <class name="com.almundo.browser.automation.tests.Hotels.LoginFlowTest"/>
             <class name="com.almundo.browser.automation.tests.Flights.LoginFlowTest"/>
             <class name="com.almundo.browser.automation.tests.Trips.LoginFlowTest"/>
-            <class name="com.almundo.browser.automation.tests.Hotels.FacebookLoginFlowTest"/>
 
         </classes>
     </test>
