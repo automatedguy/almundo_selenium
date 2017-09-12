@@ -61,7 +61,7 @@ public class TestBaseSetup {
 
     /************* Selenium Proxy *************/
     private static SeleniumProxy seleniumProxy = new SeleniumProxy();
-    private static Boolean initProxy = true;
+    private static Boolean initProxy = false;
 
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
@@ -92,11 +92,11 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional("chrome") String browserType,
                                         @Optional("latest") String browserTypeVersion,
-                                        @Optional("ARGENTINA") String country,
+                                        @Optional("COLOMBIA") String country,
                                         @Optional("true") Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("false") Boolean submit_Reservation,
+                                        @Optional("true") Boolean submit_Reservation,
                                         @Optional("false") Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
