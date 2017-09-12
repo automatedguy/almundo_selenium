@@ -98,7 +98,13 @@ public class ThanksPageV3 extends BasePage {
     public boolean isPaymentInfoOk(String finalPrice){
         if(assertThanksPageElements) {
             logger.info("Asserting Final Amount paid [" + finalPrice + "]");
-            if (finalPricePaid.getText().toString().equals(getCountryCurrency() + " " + finalPrice)) {
+            String checkoutFinalPrice = getCountryCurrency() + " " + finalPrice;
+
+            if (countryPar.equals("COLOMBIA")) {
+                checkoutFinalPrice = getCountryCurrency() + "  " + finalPrice;
+            }
+
+            if (finalPricePaid.getText().toString().equals(checkoutFinalPrice)) {
                 logger.info("Amount Paid is Ok.");
                 return true;
             } else {
