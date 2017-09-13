@@ -219,6 +219,7 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+/*
     @SuppressWarnings("Duplicates")
     @Test
     public void roundTrip_Dom_Booking_2Credit_Cards_Flow() {
@@ -255,6 +256,7 @@ public class FlowTest extends TestBaseSetup {
         }
         setResultSauceLabs(PASSED);
     }
+*/
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {
