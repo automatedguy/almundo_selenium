@@ -86,7 +86,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -463,8 +463,8 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CreditCardDataRetailV3.class);
     }
 
-    protected DebitCardDataV3 initDebitCardDataV3(){
-        return PageFactory.initElements(driver, DebitCardDataV3.class);
+    protected TodoPagoDataV3 initDebitCardDataV3(){
+        return PageFactory.initElements(driver, TodoPagoDataV3.class);
     }
 
     protected PickUpLocationSection initPickUpLocationSection() {

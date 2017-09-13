@@ -61,7 +61,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public CreditCardDataRetailV3 creditCardDataRetailV3(){return initCreditCardDataRetailV3();}
 
-    public DebitCardDataV3 debitCardDataV3(){return initDebitCardDataV3();}
+    public TodoPagoDataV3 todoPagoDataV3(){return initDebitCardDataV3();}
 
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
@@ -172,36 +172,37 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 paymentSelectorV3().selectOneCreditCardRdb();
             }
         }
-
-        if (creditCardComboSc && !paymentData.contains("destination")) {
+        if (creditCardComboSc && !paymentData.contains(DESTINATION)) {
             paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-        } else if (!paymentData.contains("destination")){
+        } else if (!paymentData.contains(DESTINATION)){
             paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
         }
-        creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
+
+        if (paymentData.contains(TODOPAGO)){
+            todoPagoDataV3().populateTodoPagoData(paymentData);
+        }else {
+            creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
+        }
     }
 
     private void dealWithDebitCard(String paymentData){
         setUrlParameter("&svd=1");
         paymentSelectorV3().selectVisaDebit();
-        debitCardDataV3().populateDebitCardData(paymentData);
+        todoPagoDataV3().populateTodoPagoData(paymentData);
     }
 
     private void dealWithPaymentForm(String paymentData){
         if(isRetailChannel()){
             dealWithRetail(paymentData);
-        }
-        else {
-            if (paymentData.contains("debit")) {
+        } else {
+            if (paymentData.contains(DEBIT)) {
                 dealWithDebitCard(paymentData);
-            } else if (paymentData.contains("two_cards")){
+            } else if (paymentData.contains(TWO_CARDS)){
                     dealWithTwoCards(paymentData);
-            } else if (paymentData.contains("todopago")) {
-                //TODO: DO PAGO HERE
             } else {
                 dealWithGridAndCombos(paymentData);
-                }
             }
+        }
     }
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/
@@ -216,7 +217,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setInputDef();
         dealWithPaymentForm(paymentData);
         passengerSection().populatePassengerSection(passengerList);
-        if(!paymentData.contains("destination")) {
+        if(!paymentData.contains(DESTINATION)) {
             billingSection().populateBillingSection(billingData);
         }
         contactSection().populateContactSection(contactData);
@@ -280,7 +281,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public AgreementPage termAndConditionsClick(){
         logger.info("Clicking on Terms and Conditions Link...");
         PageUtils.waitImplicitly(1000);
-        if(countryPar.equals("COLOMBIA")){
+        if(countryPar.equals(COLOMBIA)){
             terminosCondiciones = driver.findElement(By.cssSelector("div:nth-child(1) > label > a:nth-child(3)"));
         }
         terminosCondiciones.click();

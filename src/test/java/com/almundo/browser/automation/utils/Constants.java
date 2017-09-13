@@ -102,8 +102,14 @@ public class Constants {
 
     public static final String RANDOM = "random";
 
+    public static final String DEBIT = "debit";
+    public static final String TWO_CARDS = "two_cards";
+    public static final String DESTINATION = "destination";
+    public static final String TODOPAGO = "todopago";
+
     public static final String VISA_1 = "1_visa_visa";
     public static final String VISA_3_TODOPAGO = "3_visa_todopago";
+    public static final String CABAL_3_TODOPAGO = "3_cabal_todopago";
     public static final String MASTER_1 = "1_master_master";
     public static final String DESTINATION_MASTER_1 = "destination$1_master_master";
     public static final String AMEX_1 = "1_amex_amex";

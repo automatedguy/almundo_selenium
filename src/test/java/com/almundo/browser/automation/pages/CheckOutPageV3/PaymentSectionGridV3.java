@@ -11,6 +11,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
 import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
@@ -53,6 +54,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
         for(WebElement cardNameResult : cardNames){
             if (cardNameResult.getAttribute("alt").equals(cardName)) {
                 logger.info("Selecting Card: [" + cardName + "]");
+                waitElementForClickable(driver, cardNameResult, 5, "Credit Card Clickable.");
                 PageUtils.scrollToElement(driver, cardNameResult);
                 cardNameResult.click();
                 // The line below is for selecting radio button directly
@@ -93,6 +95,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
                 logger.info("Selecting Payment Quantity: [" + qty + "]");
                 PageUtils.scrollToElement(driver, results.get(i));
                 PageUtils.waitImplicitly(2000);
+                scrollToElement(driver, results.get(i));
                 results.get(i).click();
                 break;
             }

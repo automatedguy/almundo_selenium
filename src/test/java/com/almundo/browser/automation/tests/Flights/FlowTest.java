@@ -74,9 +74,9 @@ public class FlowTest extends TestBaseSetup {
 
     @Test
     public void todoPago_OneWay_Int_Booking_Flow() {
-        logTestTitle("Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - ");
+        logTestTitle("International - 2 Adults/2 Childs - Turista - Todo Pago");
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
+            dataManagement.getOneWayDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
             flightsDataTrip.selectFlightType(ONE_WAY);
             flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -100,11 +100,6 @@ public class FlowTest extends TestBaseSetup {
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
                     VISA_3_TODOPAGO, dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
-
-            agreementPage = checkOutPageV3.termAndConditionsClick();
-            Assert.assertTrue(agreementPage.agreementUrlOk());
-            Assert.assertTrue(agreementPage.agreementOk());
-            agreementPage.closeAgreementPage();
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -224,7 +219,7 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-/*    @SuppressWarnings("Duplicates")
+    @SuppressWarnings("Duplicates")
     @Test
     public void roundTrip_Dom_Booking_2Credit_Cards_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults - Todas");
@@ -259,7 +254,7 @@ public class FlowTest extends TestBaseSetup {
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
-    }*/
+    }
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {

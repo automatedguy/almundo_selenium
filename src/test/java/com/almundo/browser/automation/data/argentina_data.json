@@ -420,7 +420,7 @@
 
 			"3_visa_todopago": {
 				"payment_qty" : "3",
-				"bank_name" : "BANCO SANTANDER RIO S.A.",
+				"bank_name" : "Banco Santander Rio S.A.",
 				"credit_card_code" : "VI",
 				"credit_card_name" : "Visa",
 				"card_holder": "Titular Tarjeta",
@@ -432,9 +432,9 @@
 				"documentType": "DNI",
 				"document_number": "29098766",
 
-				"Medio_de_pago" : "VISA DEBITO",
-				"Banco" : "SANTANDER RIO",
-				"Numero_de_tarjeta" : "1111222233334444",
+				"Medio_de_pago" : "VISA",
+				"Banco" : "OTROS",
+				"Numero_de_tarjeta" : "4242424242424242",
 				"Titular_de_la_tarjeta" : "Titular Tarjeta",
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "18",

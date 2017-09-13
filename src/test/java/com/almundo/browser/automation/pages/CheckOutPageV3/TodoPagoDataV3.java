@@ -12,9 +12,9 @@ import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 /**
  * Created by gabrielcespedes on 28/06/17.
  */
-public class DebitCardDataV3 extends CheckOutPageV3 {
+public class TodoPagoDataV3 extends CheckOutPageV3 {
 
-    public DebitCardDataV3(WebDriver driver) {
+    public TodoPagoDataV3(WebDriver driver) {
         super(driver);
     }
 
@@ -40,6 +40,9 @@ public class DebitCardDataV3 extends CheckOutPageV3 {
     @FindBy(css = "#anioTxt")
     private WebElement fechaDeVencimientoAnoTxt;
 
+    @FindBy(css = "#codigoSeguridadTxt")
+    private WebElement codigoDeSeguridadTxt;
+
     @FindBy(css = "#tipoDocCbx")
     private WebElement tipoDeDocumentDdl;
 
@@ -51,57 +54,63 @@ public class DebitCardDataV3 extends CheckOutPageV3 {
 
     /************************** Actions ***********************/
 
-    private DebitCardDataV3 selectMedioDePago(String medioDePago){
+    private TodoPagoDataV3 selectMedioDePago(String medioDePago){
         Select medioDePagoSelect = new Select(medioDePagoDdl);
         logger.info("Selecting [Medio de pago]: [" + medioDePago + "]");
         medioDePagoSelect.selectByVisibleText(medioDePago);
         return this;
     }
 
-    private DebitCardDataV3 selectBanco(String banco){
+    private TodoPagoDataV3 selectBanco(String banco){
         Select bancoSelect = new Select(bancoDdl);
         logger.info("Selecting [Banco]: [" + banco + "]");
         bancoSelect.selectByVisibleText(banco);
         return this;
     }
 
-    private DebitCardDataV3 enterNumeroDeTarjeta(String numeroDeTarjeta){
+    private TodoPagoDataV3 enterNumeroDeTarjeta(String numeroDeTarjeta){
         logger.info("Entering [Número de tarjeta]: [" + numeroDeTarjeta + "]");
         numeroDeTarjetaTxt.sendKeys(numeroDeTarjeta);
         return this;
     }
 
-    private DebitCardDataV3 enterTitularDeLaTarjeta(String titularDeLaTarjeta){
+    private TodoPagoDataV3 enterTitularDeLaTarjeta(String titularDeLaTarjeta){
         logger.info("Entering [Titular de la tarjeta]: [" + titularDeLaTarjeta + "]");
         titularDeLaTarjetaTxt.sendKeys(titularDeLaTarjeta);
         return this;
     }
 
-    private DebitCardDataV3 enterFechVencMes(String mesVencimiento){
+    private TodoPagoDataV3 enterFechVencMes(String mesVencimiento){
         logger.info("Selecting [Fecha de vencimiento - Mes]: [" + mesVencimiento + "]");
         fechaDeVencimientoMesTxt.sendKeys(mesVencimiento);
         return this;
     }
 
-    private DebitCardDataV3 enterFechVenAno(String anoVencimiento){
+    private TodoPagoDataV3 enterFechVenAno(String anoVencimiento){
         logger.info("Selecting [Fecha de vencimiento - Año]: [" + anoVencimiento + "]");
         fechaDeVencimientoAnoTxt.sendKeys(anoVencimiento);
         return this;
     }
 
-    private DebitCardDataV3 enterTipoDeDocumento(String tipoDeDocumento){
+    private TodoPagoDataV3 enterCodigoDeSeguridad(String codigoDeSeguridad){
+        logger.info("Entering [Código de seguridad]: [" + codigoDeSeguridad + "]");
+        codigoDeSeguridadTxt.sendKeys(codigoDeSeguridad);
+        return this;
+    }
+
+    private TodoPagoDataV3 enterTipoDeDocumento(String tipoDeDocumento){
         logger.info("Selecting [Tipo de doc.]: [" + tipoDeDocumento + "]");
         tipoDeDocumentDdl.sendKeys(tipoDeDocumento);
         return this;
     }
 
-    private DebitCardDataV3 enterNumeroDeDocumento(String numeroDeDocumento){
+    private TodoPagoDataV3 enterNumeroDeDocumento(String numeroDeDocumento){
         logger.info("Entering [Número de doc.]: [" + numeroDeDocumento + "]");
         numeroDeDocumentoTxt.sendKeys(numeroDeDocumento);
         return this;
     }
 
-    private DebitCardDataV3 enterEmail(String email){
+    private TodoPagoDataV3 enterEmail(String email){
         logger.info("Entering [E-mail]: [" + email + "]");
         emailTxt.sendKeys(email);
         return this;
@@ -113,9 +122,9 @@ public class DebitCardDataV3 extends CheckOutPageV3 {
         return dataManagement.getPaymentData(paymentData);
     }
 
-    public DebitCardDataV3 populateDebitCardData(String paymentData){
+    public TodoPagoDataV3 populateTodoPagoData(String paymentData){
         paymentDataObject = getPaymentData(paymentData);
-        waitElementForVisibility(driver, medioDePagoDdl, 5, "Debit Card Section.");
+        waitElementForVisibility(driver, medioDePagoDdl, 5, "Todo Pago Data");
         waitImplicitly(3000);
         selectMedioDePago(paymentDataObject.get("Medio_de_pago").toString());
         selectBanco(paymentDataObject.get("Banco").toString());
@@ -123,6 +132,7 @@ public class DebitCardDataV3 extends CheckOutPageV3 {
         enterTitularDeLaTarjeta(paymentDataObject.get("Titular_de_la_tarjeta").toString());
         enterFechVencMes(paymentDataObject.get("Fecha_de_vencimiento_mes").toString());
         enterFechVenAno(paymentDataObject.get("Fecha_de_vencimiento_ano").toString());
+        enterCodigoDeSeguridad(paymentDataObject.get("security_code").toString());
         enterTipoDeDocumento(paymentDataObject.get("Tipo_de_doc").toString());
         enterNumeroDeDocumento(paymentDataObject.get("Numero_de_doc").toString());
         enterEmail(paymentDataObject.get("E-mail").toString());
