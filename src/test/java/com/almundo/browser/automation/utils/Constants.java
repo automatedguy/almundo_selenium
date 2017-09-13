@@ -103,6 +103,7 @@ public class Constants {
     public static final String RANDOM = "random";
 
     public static final String VISA_1 = "1_visa_visa";
+    public static final String VISA_3_TODOPAGO = "3_visa_todopago";
     public static final String MASTER_1 = "1_master_master";
     public static final String DESTINATION_MASTER_1 = "destination$1_master_master";
     public static final String AMEX_1 = "1_amex_amex";
@@ -138,6 +139,8 @@ public class Constants {
 
     public static final String VISA_MASTER_AMEX = "pago_dividido$1_visa_visa$1_master_master$1_amex_amex$";
     public static final String AMEX_VISA_MASTER = "pago_dividido$1_amex_amex$1_visa_visa$1_master_master$";
+
+    public static final String VISA_DEBIT = "visa_debit";
 
     //BILLINGS
     public static final String LOCAL_BILLING = "local_Billing";

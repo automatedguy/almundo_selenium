@@ -192,17 +192,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
             dealWithRetail(paymentData);
         }
         else {
-            if (!paymentData.contains("debit")) {
-                if (paymentData.contains("two_cards")){
-                    dealWithTwoCards(paymentData);
-                }
-                else {
-                    dealWithGridAndCombos(paymentData);
-                }
-            } else {
+            if (paymentData.contains("debit")) {
                 dealWithDebitCard(paymentData);
+            } else if (paymentData.contains("two_cards")){
+                    dealWithTwoCards(paymentData);
+            } else if (paymentData.contains("todopago")) {
+                //TODO: DO PAGO HERE
+            } else {
+                dealWithGridAndCombos(paymentData);
+                }
             }
-        }
     }
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/

@@ -418,9 +418,9 @@
 				"document_number": "29098766"
 			},
 
-			"3_visa_visa": {
+			"3_visa_todopago": {
 				"payment_qty" : "3",
-				"bank_name" : "Visa",
+				"bank_name" : "BANCO SANTANDER RIO S.A.",
 				"credit_card_code" : "VI",
 				"credit_card_name" : "Visa",
 				"card_holder": "Titular Tarjeta",
@@ -430,7 +430,18 @@
 				"year_card_expire": "2018",
 				"security_code": "123",
 				"documentType": "DNI",
-				"document_number": "29098766"
+				"document_number": "29098766",
+
+				"Medio_de_pago" : "VISA DEBITO",
+				"Banco" : "SANTANDER RIO",
+				"Numero_de_tarjeta" : "1111222233334444",
+				"Titular_de_la_tarjeta" : "Titular Tarjeta",
+				"Fecha_de_vencimiento_mes": "12",
+				"Fecha_de_vencimiento_ano": "18",
+				"Tipo_de_doc": "DNI",
+				"Numero_de_doc": "30786876",
+				"E-mail": "automationthings@gmail.com"
+
 			},
 
 			"visa_debit": {

@@ -72,45 +72,47 @@ public class FlowTest extends TestBaseSetup {
 
     /***************************** Test Cases *****************************/
 
-/*    @Test
-    public void debit_OneWay_Int_Booking_Flow() {
-        logTestTitle("Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - " + countryPar );
+    @Test
+    public void todoPago_OneWay_Int_Booking_Flow() {
+        logTestTitle("Flight Flow - One Way - Int - 2 Adults/2 Childs - Turista - ");
+        if(countryPar.equals(ARGENTINA)) {
+            dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
 
-        dataManagement.getOneWayDataTripItinerary("miami_10days_2adults_2childs_turista");
+            flightsDataTrip.selectFlightType(ONE_WAY);
+            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
+            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
+            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
+            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
-        flightsDataTrip.selectFlightType(ONE_WAY);
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
-        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+            Assert.assertTrue(flightsResultsPage.vacancy());
+            flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
 
-        Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
 
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
+            checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                "visa_debit",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "FlightsCheckOutPageInternational");
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                    VISA_3_TODOPAGO, dataManagement.getBillingData(LOCAL_BILLING),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
-        agreementPage = checkOutPageV3.termAndConditionsClick();
-        Assert.assertTrue(agreementPage.agreementUrlOk());
-        Assert.assertTrue(agreementPage.agreementOk());
-        agreementPage.closeAgreementPage();
+            agreementPage = checkOutPageV3.termAndConditionsClick();
+            Assert.assertTrue(agreementPage.agreementUrlOk());
+            Assert.assertTrue(agreementPage.agreementOk());
+            agreementPage.closeAgreementPage();
 
-        thanksPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(thanksPageV3.confirmationOk());
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
+        } else {
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
+        }
         setResultSauceLabs(PASSED);
-    }*/
+    }
 
     @Test
     public void oneWay_Int_Booking_Flow() {
