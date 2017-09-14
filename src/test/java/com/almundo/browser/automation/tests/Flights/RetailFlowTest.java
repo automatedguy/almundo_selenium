@@ -124,12 +124,12 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-/*    @SuppressWarnings("Duplicates")
+    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
         logTestTitle("International - Splitted VISA_MASTER - 20 days - 2 Adults - Tourist");
 
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
@@ -162,7 +162,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
@@ -172,7 +172,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
         logTestTitle("International - DEPOSIT_MASTER - 20 days - 2 Adults - Tourist");
 
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
@@ -205,7 +205,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
@@ -215,7 +215,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
         logTestTitle("International - TRANSFER_VISA - 2 Adults - Tourist");
 
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
@@ -248,7 +248,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
@@ -258,7 +258,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow_Splitted_3cards() {
         logTestTitle("International - 3 Cards - 20 days - 2 Adults - Tourist");
 
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
@@ -291,8 +291,8 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
-    }*/
+    }
 }
