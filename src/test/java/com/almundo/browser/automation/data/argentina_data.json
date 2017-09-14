@@ -438,6 +438,31 @@
 				"document_number": "29098766"
 			},
 
+			"3_cabal_todopago": {
+				"payment_qty" : "3",
+				"bank_name" : "Cabal",
+				"credit_card_code" : "VI",
+				"credit_card_name" : "Cabal",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "5896570000000008",
+				"card_expire": "12/18",
+				"month_card_expire": "12",
+				"year_card_expire": "2018",
+				"security_code": "123",
+				"documentType": "DNI",
+				"document_number": "29098766",
+
+				"Medio_de_pago" : "Cabal",
+				"Banco" : "OTROS",
+				"Numero_de_tarjeta" : "5896570000000008",
+				"Titular_de_la_tarjeta" : "Titular Tarjeta",
+				"Fecha_de_vencimiento_mes": "12",
+				"Fecha_de_vencimiento_ano": "18",
+				"Tipo_de_doc": "DNI",
+				"Numero_de_doc": "30786876",
+				"E-mail": "automationthings@gmail.com"
+			},
+
 			"3_visa_todopago": {
 				"payment_qty" : "3",
 				"bank_name" : "Banco Santander Rio S.A.",
