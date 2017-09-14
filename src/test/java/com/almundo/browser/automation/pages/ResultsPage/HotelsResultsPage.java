@@ -12,8 +12,7 @@ import java.util.List;
 import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
 import static com.almundo.browser.automation.utils.Constants.Messages.NO_DISPONIBILIDAD_MSG;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
-import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by leandro.efron on 13/12/2016.
@@ -92,9 +91,12 @@ public class HotelsResultsPage extends TestBaseSetup {
 
     public HotelsDetailPage clickVerHotelBtn(int option) {
         index = option;
+        closeExpertsPopUp(driver);
         displayHotelInfo();
         logger.info("Clicking on button: [Ver Hotel]");
         verHotelButton = driver.findElement(By.cssSelector(verHotelButtonCssSelector));
+        waitElementForClickable(driver, verHotelButton, 5, "[Ver Hotel] clickable." );
+        scrollToElement(driver, verHotelButton);
         verHotelButton.click();
         return initHotelsDetailPage();
     }
@@ -118,7 +120,9 @@ public class HotelsResultsPage extends TestBaseSetup {
     }
 
     public HotelsResultsPage clickPayAtDestination(){
+        waitElementForClickable(driver, payAtDestination, 5, "[Pago en destino] Tab");
         logger.info("Selecting [Pago en destino]");
+        scrollToElement(driver, payAtDestination);
         payAtDestination.click();
         waitImplicitly(4000);
         return this;

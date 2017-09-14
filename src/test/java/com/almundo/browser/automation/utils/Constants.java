@@ -9,6 +9,17 @@ import static java.util.Arrays.asList;
  */
 public class Constants {
 
+    //BROWSERS
+    public static final String CHROME = "chrome";
+    public static final String FIREFOX = "firefox";
+
+    //VERSIONS
+    public static final String LATEST = "latest";
+
+    //BOOLEAN
+    public static final String TRUE = "true";
+    public static final String FALSE = "false";
+
     //URLS
     public static final String STG_URL = "https://st.almundo.com";
     public static final String PROD_URL = "http://almundo.com/";
@@ -106,6 +117,7 @@ public class Constants {
     public static final String TWO_CARDS = "two_cards";
     public static final String DESTINATION = "destination";
     public static final String TODOPAGO = "todopago";
+    public static final String PAGO_DIVIDIDO = "PAGO DIVIDIDO";
 
     public static final String VISA_1 = "1_visa_visa";
     public static final String VISA_3_TODOPAGO = "3_visa_todopago";

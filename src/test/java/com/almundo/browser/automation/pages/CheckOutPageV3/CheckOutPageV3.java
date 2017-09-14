@@ -6,10 +6,12 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.InputDefinitions;
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +37,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public static InputDefinitions inputDef = null;
 
-    private boolean todoPagoStc = false;
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
 
@@ -132,6 +133,18 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return Integer.parseInt(price);
     }
 
+    public boolean isTodoPagoEnabled(){
+        try{
+            logger.info("Checking if [TodoPago] is Enabled.");
+            driver.findElement(By.cssSelector("div.logos-container > img.bank"));
+        }catch(NoSuchElementException ouch){
+            logger.info("[TodoPago] is not enabled.");
+            return false;
+        }
+        logger.info("[TodoPago] is enabled.");
+        return true;
+    }
+
     private static void getCheckOutPageElements(String productCheckOutPage)  {
         checkOutPageElements = JsonRead.getJsonDataObject(jsonCountryPropertyObject, productCheckOutPage, "countries_properties.json");
     }
@@ -148,7 +161,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     private void dealWithRetail(String paymentData){
         if(paymentData.contains("pago_dividido$")) {
-            paymentSelectorRetailV3().selectPaymentMethod("PAGO DIVIDIDO");
+            paymentSelectorRetailV3().selectPaymentMethod(PAGO_DIVIDIDO);
             paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
         }
         else {
@@ -178,7 +191,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
         }
 
-        if (paymentData.contains(TODOPAGO)){
+        if (paymentData.contains(TODOPAGO) || isTodoPagoEnabled()){
             todoPagoDataV3().populateTodoPagoData(paymentData);
         }else {
             creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
@@ -322,16 +335,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
             creditCardComboSc =  true;
         } else { logger.info("[sc=1] is not enabled."); }
 
-        if(checkoutUrl.contains("stc=1")){
-            logger.info("[stc=1] is enabled.");
-            todoPagoStc = true;
-        }else { logger.info("[stc=1] is not enabled."); }
-
         if(checkoutUrl.contains("vuelohotel")){
-            logger.info("Selector de pago] is enabled.");
+            logger.info("[Selector de pago] is enabled.");
             paymentSelectorSvd = true;
         }else { logger.info("[Selector de pago] is not enabled.");}
-
     }
 
     public CheckOutPageV3 setUrlParameter(String parameter){

@@ -400,7 +400,17 @@
 				"year_card_expire": "2018",
 				"security_code": "123",
 				"documentType": "DNI",
-				"document_number": "29098766"
+				"document_number": "29098766",
+
+				"Medio_de_pago" : "VISA",
+				"Banco" : "OTROS",
+				"Numero_de_tarjeta" : "4242424242424242",
+				"Titular_de_la_tarjeta" : "Titular Tarjeta",
+				"Fecha_de_vencimiento_mes": "12",
+				"Fecha_de_vencimiento_ano": "18",
+				"Tipo_de_doc": "DNI",
+				"Numero_de_doc": "30786876",
+				"E-mail": "automationthings@gmail.com"
 			},
 
 			"1_visa_todopago": {

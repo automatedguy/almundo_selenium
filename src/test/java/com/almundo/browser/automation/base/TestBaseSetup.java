@@ -90,14 +90,14 @@ public class TestBaseSetup {
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional("chrome") String browserType,
-                                        @Optional("latest") String browserTypeVersion,
+                                        @Optional(CHROME) String browserType,
+                                        @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
-                                        @Optional("true") Boolean landing,
+                                        @Optional(TRUE) Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional("false") Boolean submit_Reservation,
-                                        @Optional("false") Boolean retries_Max_Count) {
+                                        @Optional(FALSE) Boolean submit_Reservation,
+                                        @Optional(FALSE) Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
         this.os = osType;

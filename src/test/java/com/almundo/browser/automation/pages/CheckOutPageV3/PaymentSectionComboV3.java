@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.Random;
 
+import static com.almundo.browser.automation.utils.Constants.*;
+
 /**
  * Created by leandro.efron on 25/11/2016.
  */
@@ -78,15 +80,15 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
 
             for (WebElement availableCard : availableCardsElements) {
                 if (availableCard.getText().equals("Visa")) {
-                    paymentDataObject = dataManagement.getPaymentData("1_visa_visa");
+                    paymentDataObject = dataManagement.getPaymentData(VISA_1);
                     setCreditCardCombo(creditCardSelect, "Visa");
                     break;
                 } else if (availableCard.getText().equals("Mastercard")) {
-                    paymentDataObject = dataManagement.getPaymentData("1_master_master");
+                    paymentDataObject = dataManagement.getPaymentData(MASTER_1);
                     setCreditCardCombo(creditCardSelect, "Mastercard");
                     break;
                 } else if (availableCard.getText().equals("American Express")) {
-                    paymentDataObject = dataManagement.getPaymentData("1_amex_amex");
+                    paymentDataObject = dataManagement.getPaymentData(AMEX_1);
                     setCreditCardCombo(creditCardSelect, "American Express");
                     break;
                 }
@@ -120,20 +122,18 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
                 logger.info("Selecting Bank: [" + bankSelect.getOptions().get(random).getText() + "]");
                 bankSelect.selectByIndex(random);
                 break;
-
             default:
-
-                if(countryPar.equals("MEXICO")){
+                if(countryPar.equals(MEXICO)){
                     logger.info("Selecting Bank: [" + bankSelect.getOptions().get(1).getText() + "]");
                     bankSelect.selectByIndex(1);
                 } else {
                     logger.info("Selecting Bank: [" + bankName + "]");
                     bankSelect.selectByValue(bankName);
+                    if(bankSelect.getFirstSelectedOption().getText().contains("TodoPago")){
+                        logger.info("[TodoPago] is enabled for this form of payment.");
+                    }
                 }
-
-
         }
-
     }
 
     private void setPaymentCombo(Select paymentSelect) {
@@ -141,7 +141,6 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
         do{
             random = new Random().nextInt(paymentSelect.getOptions().size());
         } while(paymentSelect.getOptions().size()!= 1 && random==0);
-
         logger.info("Selecting Payment: [" + paymentSelect.getOptions().get(random).getText() + "]");
         paymentSelect.selectByIndex(random);
     }
