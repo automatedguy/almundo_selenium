@@ -134,15 +134,19 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public boolean isTodoPagoEnabled(){
-        try{
-            logger.info("Checking if [TodoPago] is Enabled.");
-            driver.findElement(By.cssSelector("div.logos-container > img.bank"));
-        }catch(NoSuchElementException ouch){
-            logger.info("[TodoPago] is not enabled.");
+        if(!countryPar.equals(MEXICO)){
+            try{
+                logger.info("Checking if [TodoPago] is Enabled.");
+                driver.findElement(By.cssSelector("div.logos-container > img.bank"));
+            }catch(NoSuchElementException ouch){
+                logger.info("[TodoPago] is not enabled.");
+                return false;
+            }
+            logger.info("[TodoPago] is enabled.");
+            return true;
+        }else{
             return false;
         }
-        logger.info("[TodoPago] is enabled.");
-        return true;
     }
 
     private static void getCheckOutPageElements(String productCheckOutPage)  {

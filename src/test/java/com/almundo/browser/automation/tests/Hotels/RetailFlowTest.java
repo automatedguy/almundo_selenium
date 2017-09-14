@@ -118,7 +118,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow_Splitted_2cards() {
         logTestTitle("International - 2 Credit Cards - 10 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -147,7 +147,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
@@ -156,7 +156,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
         logTestTitle("International - Deposit Credit - 10 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -185,7 +185,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
@@ -194,7 +194,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
         logTestTitle("International - Transfer Credit - 10 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO) && !countryPar.equals(ARGENTINA)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -223,7 +223,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO_ARGENTINA);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
@@ -232,7 +232,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow_Splitted_3cards() {
         logTestTitle("International - 3 Cards - 10 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -261,7 +261,7 @@ public class RetailFlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
         }
         else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }*/
