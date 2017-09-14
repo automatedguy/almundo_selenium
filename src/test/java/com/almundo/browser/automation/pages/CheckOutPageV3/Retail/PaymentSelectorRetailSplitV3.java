@@ -193,7 +193,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         if (!isLastPayment) {
             enterImporte(String.valueOf(paymentAmount), container);
         }
-        selectCargosPercepcionesGenerados("Incluirlos en el importe", container);
+        selectCargosPercepcionesGenerados("Sumarlos al importe", container);
         if (!isLastPayment) {
             selectCuotas(paymentDataObject.get("payment_qty").toString(), paymentAmount, (container - decreaseContainer));
         } else {

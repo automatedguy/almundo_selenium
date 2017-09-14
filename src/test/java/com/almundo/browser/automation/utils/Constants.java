@@ -158,6 +158,8 @@ public class Constants {
     public static final String VISA_MASTER_AMEX = "pago_dividido$1_visa_visa$1_master_master$1_amex_amex$";
     public static final String AMEX_VISA_MASTER = "pago_dividido$1_amex_amex$1_visa_visa$1_master_master$";
 
+    public static final String VISATP_VISA_AMEX = "pago_dividido$1_visa_todopago$1_visa_visa$1_amex_amex";
+
     public static final String VISA_DEBIT = "visa_debit";
 
     //BILLINGS

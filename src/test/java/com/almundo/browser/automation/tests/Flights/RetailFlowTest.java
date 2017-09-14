@@ -45,6 +45,12 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
+    private void getAssertionInfo(){
+        thanksPageAssertInfo.finalAmountPaid = checkOutPageV3.breakDownSectionV3().getFinalPriceString();
+        thanksPageAssertInfo.flightDetailInfo = checkOutPageV3.breakDownSectionV3().getFlightDetailContent();
+        thanksPageAssertInfo.contactEmailEntered = checkOutPageV3.contactSection().getContactEmail();
+    }
+
     /***************************** Test Cases *****************************/
 
     @Test
@@ -154,12 +160,17 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getPassengerData(ADULT_MALE_NATIVE);
             dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
-
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_AMEX,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
             Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         }
         else{
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
@@ -170,7 +181,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
-        logTestTitle("International - DEPOSIT_MASTER - 20 days - 2 Adults - Tourist");
+        logTestTitle("International - DEPOSIT_VISA - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
             dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
@@ -197,12 +208,17 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getPassengerData(ADULT_MALE_NATIVE);
             dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
-
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_VISA,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
             Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         }
         else{
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
@@ -284,11 +300,16 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, AMEX_VISA_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
-
+                                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
             Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         }
         else{
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
