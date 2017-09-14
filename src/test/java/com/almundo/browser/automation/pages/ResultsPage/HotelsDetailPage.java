@@ -43,7 +43,7 @@ public class HotelsDetailPage extends TestBaseSetup {
     }
 
     public CheckOutPageV3 clickReservarAhoraV3Btn(int index) {
-        if(countryPar.equals(MEXICO)){
+        if(!countryPar.equals(MEXICO)){
         closeExpertsPopUp(driver);}
         List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector("room-options .button.button--lg.button--secondary"));
         PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(index), 20, "Reservar Ahora button");
