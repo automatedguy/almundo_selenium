@@ -107,8 +107,8 @@
 			},
 
 			"domestic02_20days_2adults_1room": {
-				"destinationAuto": "Sal",
-				"destinationFull": "Salta, Salta, Argentina",
+				"destinationAuto": "Bar",
+				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
 				"startDate": 25,
 				"endDate": 20,
 				"adults": 2,
@@ -117,8 +117,8 @@
 			},
 
 			"domestic03_20days_2adults_1room":{
-				"destinationAuto": "Bar",
-				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
+				"destinationAuto": "Sal",
+				"destinationFull": "Salta, Salta, Argentina",
 				"startDate": 25,
 				"endDate": 20,
 				"adults": 2,
