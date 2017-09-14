@@ -343,4 +343,21 @@ public class PageUtils {
             logger.info("The Experts Pop Up didn't showed up.");
         }
     }
+
+    public static void setUrlParameter(WebDriver driver, String parameter){
+        logger.info("Adding Parameter: " + parameter);
+        String currentUrl = driver.getCurrentUrl();
+        if(currentUrl.contains(parameter)){
+            logger.info("Parameter: " + parameter + " is already set.");
+        }
+        else {
+            if (currentUrl.contains(parameter.substring(0, parameter.length()-1))) {
+                //TODO: come up with something.
+                driver.navigate().to(currentUrl.replaceAll(parameter + "(0)", "1 $1"));
+            }else {
+                logger.info("Refreshing page URL: " +  currentUrl+parameter);
+                driver.navigate().to(currentUrl+parameter);
+            }
+        }
+    }
 }

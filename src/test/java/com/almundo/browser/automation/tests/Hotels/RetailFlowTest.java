@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.setUrlParameter;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -60,6 +61,8 @@ public class RetailFlowTest extends TestBaseSetup {
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        setUrlParameter(driver, "&PAYMENT_METHOD=PREPAID");
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
