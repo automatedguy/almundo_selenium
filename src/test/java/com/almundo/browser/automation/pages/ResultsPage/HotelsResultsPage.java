@@ -37,6 +37,9 @@ public class HotelsResultsPage extends TestBaseSetup {
     @FindBy(css = "#PAY_AT_DESTINATION")
     public WebElement payAtDestination;
 
+    @FindBy(css = "#PREPAID")
+    public WebElement prePaid;
+
     private String hotelNameCssSelector;
     private WebElement hotelName;
 
@@ -120,10 +123,19 @@ public class HotelsResultsPage extends TestBaseSetup {
     }
 
     public HotelsResultsPage clickPayAtDestination(){
-        waitElementForClickable(driver, payAtDestination, 5, "[Pago en destino] Tab");
+        waitElementForClickable(driver, payAtDestination, 5, "[Pago en destino] Checkbox");
         logger.info("Selecting [Pago en destino]");
         scrollToElement(driver, payAtDestination);
         payAtDestination.click();
+        waitImplicitly(4000);
+        return this;
+    }
+
+    public HotelsResultsPage clickPrePaid(){
+        waitElementForClickable(driver, prePaid, 5, "[Paga En Cuotas] Checkbox");
+        logger.info("Selecting [Paga En Cuotas]");
+        scrollToElement(driver, prePaid);
+        prePaid.click();
         waitImplicitly(4000);
         return this;
     }

@@ -61,6 +61,8 @@ public class RetailFlowTest extends TestBaseSetup {
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
+        hotelsResultsPage.clickPrePaid();
+
         Assert.assertTrue(hotelsResultsPage.vacancy());
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
@@ -89,6 +91,8 @@ public class RetailFlowTest extends TestBaseSetup {
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        hotelsResultsPage.clickPrePaid();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
