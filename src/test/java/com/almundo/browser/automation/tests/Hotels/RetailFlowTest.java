@@ -54,7 +54,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Dom_Booking_Flow() {
         logTestTitle("Domestic - 15 days - 2 Adults - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary(DOM02_20D_2A_1R);
+        dataManagement.getHotelsDataTripItinerary(DOM03_20D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);

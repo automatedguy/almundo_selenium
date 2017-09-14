@@ -231,6 +231,7 @@ public class Constants {
 
     public static final String MIA_10D_2A_1R = "miami_10days_2adults_1room";
     public static final String DOM02_20D_2A_1R = "domestic02_20days_2adults_1room";
+    public static final String DOM03_20D_2A_1R = "domestic03_20days_2adults_1room";
 
     //TRIPS
     public static final String INT02_20D_2A_1R = "int02_20days_2adults_1room";
