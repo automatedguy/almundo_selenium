@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.MEXICO;
 import static com.almundo.browser.automation.utils.PageUtils.closeExpertsPopUp;
 import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
 import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
@@ -42,7 +43,8 @@ public class HotelsDetailPage extends TestBaseSetup {
     }
 
     public CheckOutPageV3 clickReservarAhoraV3Btn(int index) {
-        closeExpertsPopUp(driver);
+        if(countryPar.equals(MEXICO)){
+        closeExpertsPopUp(driver);}
         List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector("room-options .button.button--lg.button--secondary"));
         PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(index), 20, "Reservar Ahora button");
         logger.info("Clicking on Reservar button");
