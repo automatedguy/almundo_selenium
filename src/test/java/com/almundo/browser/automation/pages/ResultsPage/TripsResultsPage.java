@@ -12,6 +12,8 @@ import java.util.List;
 import static com.almundo.browser.automation.utils.Constants.Messages.*;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.formatInfo;
+import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
 
 /**
  * Created by gabrielcespedes on 14/12/16.
@@ -100,7 +102,9 @@ public class TripsResultsPage extends TestBaseSetup {
         String cssSelectorNameElegir = ".button.button--secondary.button--block.button--md";
         PageUtils.waitListContainResults(driver, cssSelectorNameElegir, 0);
         List<WebElement> elegirBtn = driver.findElements(By.cssSelector(cssSelectorNameElegir));
-        logger.info("Clicking on Elegir button index: [" + index + "]");
+        waitElementForClickable(driver, elegirBtn.get(index), 5, "[Elegir] button clickable.");
+        logger.info("Clicking on [Elegir] button index: [" + index + "]");
+        scrollToElement(driver, elegirBtn.get(index));
         elegirBtn.get(index).click();
         PageUtils.waitImplicitly(2000);
         return this;
