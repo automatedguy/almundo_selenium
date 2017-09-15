@@ -38,6 +38,8 @@ public class TripsResultsPage extends TestBaseSetup {
     @FindBy(css = "#trip-options hotel-option-list-item")
     public List<WebElement> tripsChoices;
 
+    private final String cssSelectorNameElegir = ".button.button--secondary.button--block.button--md";
+
 
     //############################################### Actions ##############################################
 
@@ -99,7 +101,6 @@ public class TripsResultsPage extends TestBaseSetup {
     }
 
     public TripsResultsPage clickElegirBtn(int index) {
-        String cssSelectorNameElegir = ".button.button--secondary.button--block.button--md";
         PageUtils.waitListContainResults(driver, cssSelectorNameElegir, 0);
         List<WebElement> elegirBtn = driver.findElements(By.cssSelector(cssSelectorNameElegir));
         waitElementForClickable(driver, elegirBtn.get(index), 5, "[Elegir] button clickable.");

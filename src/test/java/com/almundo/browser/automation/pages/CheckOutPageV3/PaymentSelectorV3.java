@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -40,6 +41,9 @@ public class PaymentSelectorV3 extends BasePage {
 
     public PaymentSelectorV3 selectTwoCreditCardsRdb(){
         scrollToElement(driver, twoCreditCardsRdb);
+        waitImplicitly(1000);
+        scrollToElement(driver, twoCreditCardsRdb);
+        waitElementForClickable(driver, twoCreditCardsRdb, 5 , "[Two Credit Card Radio Button.");
         logger.info("Selecting payment with two credit cards");
         twoCreditCardsRdb.click();
         waitImplicitly(4000);
