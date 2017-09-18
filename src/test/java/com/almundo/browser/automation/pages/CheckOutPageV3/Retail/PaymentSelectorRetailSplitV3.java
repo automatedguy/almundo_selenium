@@ -11,9 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
-import static com.almundo.browser.automation.utils.PageUtils.waitElementForVisibility;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 22/06/17.
@@ -110,6 +108,14 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         return this;
     }
 
+    private PaymentSelectorRetailSplitV3 selectCargosPercepcionesGeneradosCash(String cargosPercepciones, int container){
+        logger.info("Selecting [Cargos/Percepciones generados]: " + "[" + cargosPercepciones + "]");
+        WebElement cargosPercepcionesGenerados = driver.findElement(By.cssSelector("#am-split-payment form-payment-split:nth-child(" + (container+1) +") div:nth-child(2) .container-charges > select"));
+        Select cargosPercepcionesGeneradosSelect =  new Select (cargosPercepcionesGenerados);
+        cargosPercepcionesGeneradosSelect.selectByVisibleText(cargosPercepciones);
+        waitImplicitly(5000);
+        return this;
+    }
 
     private PaymentSelectorRetailSplitV3 selectCuotas(String cuotas, int paymentAmount, int container){
         logger.info("Selecting [Cuotas]: " + "[" + cuotas + "]");
@@ -156,6 +162,8 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
     }
 
     public PaymentSelectorRetailSplitV3 agregarOtroMedioDePagoClick(){
+        scrollToElement(driver, agregarOtroMedioDePago);
+        waitElementForClickable(driver, agregarOtroMedioDePago, 5, "[Agregar Medio de pago] button");
         logger.info("Clicking on: [Agregar Medio de pago]");
         agregarOtroMedioDePago.click();
         waitImplicitly(2000);
@@ -177,12 +185,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         else{
             logger.info("Remaininng Amount to Pay: [" + getRemainingAmount(container) + "]");
         }
-        logger.info("Selecting [Cargos/Percepciones generados]: [Incluirlos en el importe]");
-        cargosPercepcionesGeneradosDepTranfTxt.sendKeys("Incluirlos en el importe");
-        decreaseContainer = 1;
-        String totalToPay = "#am-split-payment form-payment-split div:nth-child(2) .container-description .total-description span.price-description.col-4-xs";
-        waitElementForVisibility(driver, By.cssSelector(totalToPay), 10, "Total a pagar");
-        // waitImplicitly(2000);
+        selectCargosPercepcionesGeneradosCash("Incluirlos en el importe", container);
         return this;
     }
 
@@ -217,6 +220,10 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
             logger.info("------------- Filling Payment Section -------------");
             logger.info("Getting payment data for: " + "[" + paymentData + "]");
             switch(paymentData){
+                case "cash" :
+                    selectMedioDePago("Efectivo", container);
+                    populateDepositTranfPaymentInfo(String.valueOf(paymentAmount), container);
+                    break;
                 case "deposit" :
                     selectMedioDePago("Depósito", container);
                     populateDepositTranfPaymentInfo(String.valueOf(paymentAmount), container);

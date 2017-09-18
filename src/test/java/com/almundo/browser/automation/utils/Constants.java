@@ -140,6 +140,9 @@ public class Constants {
     public static final String DEPOSIT_VISA = "pago_dividido$deposit$1_visa_visa$";
     public static final String VISA_DEPOSIT = "pago_dividido$1_visa_visa$deposit$";
 
+    public static final String CASH_DEPOSIT = "pago_dividido$cash$deposit$";
+    public static final String CASH_TRANSFER = "pago_dividido$cash$transfer$";
+
     public static final String DEPOSIT_MASTER = "pago_dividido$deposit$1_master_master$";
     public static final String MASTER_DEPOSIT = "pago_dividido$1_master_master$deposit$";
 

@@ -11,6 +11,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+
 /**
  * Created by gabrielcespedes on 14/12/16.
  */
@@ -30,7 +33,7 @@ public class TripsDetailPage extends TestBaseSetup {
     public TripsDetailPage clickVerHabitacionBtn() {
         logger.info("Detail URL: " + "[" + driver.getCurrentUrl() + "]");
         PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
-        PageUtils.waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
+        waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");
         verHabitacionBtn.click();
         //TODO: we can try to make this explicit.
@@ -51,6 +54,8 @@ public class TripsDetailPage extends TestBaseSetup {
         String cssSelectorName = ".select-room-button.button.button--md.button--secondary";
         PageUtils.waitListContainResults(driver, cssSelectorName, 0);
         List<WebElement> comprarBtn = driver.findElements(By.cssSelector(cssSelectorName));
+        scrollToElement(driver,comprarBtn.get(index));
+        waitElementForClickable(driver, comprarBtn.get(index), 10, "[Comprar] button clickable");
         logger.info("Clicking on Comprar button index: [" + index + "]");
         comprarBtn.get(index).click();
         return initCheckOutPageV3();

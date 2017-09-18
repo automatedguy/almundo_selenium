@@ -10,6 +10,9 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+
 /**
  * Created by leandro.efron on 5/12/2016.
  */
@@ -39,6 +42,8 @@ public class HeaderSection extends BasePage {
 
     public LoginPopUp clickMyAccountMenuLnk() {
         PageUtils.waitElementForVisibility(driver, myAccountMenuLnk, 20, "My account menu link");
+        scrollToElement(driver, myAccountMenuLnk);
+        waitElementForClickable(driver, myAccountMenuLnk, 5, "[My Account Menu]");
         logger.info("Clicking on My Account menu link");
         myAccountMenuLnk.click();
         return initLoginPopUp();
