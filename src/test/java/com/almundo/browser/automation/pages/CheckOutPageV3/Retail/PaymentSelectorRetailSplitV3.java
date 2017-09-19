@@ -162,9 +162,11 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
     }
 
     public PaymentSelectorRetailSplitV3 agregarOtroMedioDePagoClick(){
-        scrollToElement(driver, agregarOtroMedioDePago);
         waitElementForClickable(driver, agregarOtroMedioDePago, 5, "[Agregar Medio de pago] button");
+        scrollToElement(driver, agregarOtroMedioDePago);
         logger.info("Clicking on: [Agregar Medio de pago]");
+        scrollToElement(driver, agregarOtroMedioDePago);
+        waitImplicitly(2000);
         agregarOtroMedioDePago.click();
         waitImplicitly(2000);
         return this;
