@@ -24,6 +24,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
 
     private boolean isLastPayment;
     private int decreaseContainer = 0;
+    //private int containerCash = 0;
     JSONObject paymentDataObject = new JSONObject();
 
     /**************************** Locators **********************************/
@@ -113,6 +114,8 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         WebElement cargosPercepcionesGenerados = driver.findElement(By.cssSelector("#am-split-payment form-payment-split:nth-child(" + (container+1) +") div:nth-child(2) .container-charges > select"));
         Select cargosPercepcionesGeneradosSelect =  new Select (cargosPercepcionesGenerados);
         cargosPercepcionesGeneradosSelect.selectByVisibleText(cargosPercepciones);
+        //containerCash= containerCash +1;
+        decreaseContainer = 1;
         waitImplicitly(5000);
         return this;
     }
