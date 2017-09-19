@@ -40,6 +40,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
 
+    public ClubAlmundoRewards clubAlmundoRewards() {return initclubAlmundoRewards();}
+
     public PaymentSelectorV3 paymentSelectorV3(){return initPaymentSelectorV3();}
 
     public BreakDownSectionV3 breakDownSectionV3(){return initBreakDownSectionV3();}
@@ -182,6 +184,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithGridAndCombos(String paymentData){
+        if(paymentData.contains(REWARDS)){
+            paymentData = clubAlmundoRewards().useRewardsYesClick(paymentData);
+        }
+
         if (paymentSelectorSvd && !countryPar.equals(COLOMBIA)) {
             paymentSelectorV3().selectOneCreditCardRdb();
         } else {

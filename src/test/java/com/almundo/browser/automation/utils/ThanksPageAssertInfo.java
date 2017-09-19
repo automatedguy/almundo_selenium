@@ -32,4 +32,17 @@ public class ThanksPageAssertInfo {
         String paymentAmount = null;
     }
     public static List<paymentForms> paymentFormsList = new ArrayList<paymentForms>();
+
+    public void setFinalAmountPaid(String finalAmountPaidCheckout){
+        finalAmountPaid = finalAmountPaidCheckout;
+    }
+
+    public void setFlightDetailInfo(String flightDetailInfoCheckout){
+        flightDetailInfo = flightDetailInfoCheckout;
+    }
+
+    public void setContactEmailEntered(String contactEmailEnteredCheckout){
+        contactEmailEntered = contactEmailEnteredCheckout;
+    }
+
 }

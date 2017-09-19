@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.almundo.browser.automation.utils.Constants.MEXICO;
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForVisibility;
 
 /**
  * Created by gabrielcespedes on 07/08/17.
@@ -48,6 +49,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     }
 
     public String getFinalPriceString(){
+        waitElementForVisibility(driver, finalPrice, 15, "[Breakdown Final Price]");
         logger.info("Getting Total Final Price: [" + finalPrice.getText().replaceAll("\\s", "") + "]");
         return finalPrice.getText().replaceAll("\\s", "");
     }

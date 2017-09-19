@@ -86,7 +86,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(CCR_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -96,7 +96,7 @@ public class TestBaseSetup {
                                         @Optional(TRUE) Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional(FALSE) Boolean submit_Reservation,
+                                        @Optional(TRUE) Boolean submit_Reservation,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -540,6 +540,10 @@ public class TestBaseSetup {
     }
 
     /*************************** AlmundoTrips Inits ***********************/
+
+    protected ClubAlmundoRewards initclubAlmundoRewards(){
+        return PageFactory.initElements(driver, ClubAlmundoRewards.class);
+    }
 
     protected Home initHome(){
         return PageFactory.initElements(driver, Home.class);

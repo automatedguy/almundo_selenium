@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
-import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 22/06/17.
@@ -34,6 +32,9 @@ public class PaymentSelectorV3 extends BasePage {
 
     public PaymentSelectorV3 selectOneCreditCardRdb(){
         logger.info("Selecting payment with one credit card");
+        waitElementForVisibility(driver, oneCreditCardRdb, 20, "[1 tarjeta de crédito] radio button.");
+        waitElementForClickable(driver, oneCreditCardRdb, 20, "[1 tarjeta de crédito] radio button.");
+        scrollToElement(driver, oneCreditCardRdb);
         oneCreditCardRdb.click();
         waitImplicitly(4000);
         return this;
