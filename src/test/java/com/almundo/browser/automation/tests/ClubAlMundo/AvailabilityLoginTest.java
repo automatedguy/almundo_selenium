@@ -295,8 +295,6 @@ public class AvailabilityLoginTest extends TestBaseSetup {
                             MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
                             dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
-        getAssertionInfo();
-
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);

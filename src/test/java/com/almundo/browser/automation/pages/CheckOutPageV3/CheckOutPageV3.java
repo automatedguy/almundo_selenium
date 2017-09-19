@@ -190,16 +190,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
         if (paymentSelectorSvd && !countryPar.equals(COLOMBIA)) {
             paymentSelectorV3().selectOneCreditCardRdb();
-        } else {
-            if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
-                paymentSelectorV3().selectOneCreditCardRdb();
-            }
-        }
+        } else if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
+                paymentSelectorV3().selectOneCreditCardRdb(); }
+
         if (creditCardComboSc && !paymentData.contains(DESTINATION)) {
             paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
         } else if (!paymentData.contains(DESTINATION)){
-            paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1");
-        }
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1"); }
 
         if (paymentData.contains(TODOPAGO) || isTodoPagoEnabled()){
             todoPagoDataV3().populateTodoPagoData(paymentData);
@@ -215,17 +212,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithPaymentForm(String paymentData){
-        if(isRetailChannel()){
-            dealWithRetail(paymentData);
-        } else {
-            if (paymentData.contains(DEBIT)) {
-                dealWithDebitCard(paymentData);
-            } else if (paymentData.contains(TWO_CARDS)){
-                    dealWithTwoCards(paymentData);
-            } else {
-                dealWithGridAndCombos(paymentData);
-            }
-        }
+        if(isRetailChannel()){ dealWithRetail(paymentData);
+        } else if (paymentData.contains(DEBIT)) { dealWithDebitCard(paymentData);
+            } else if (paymentData.contains(TWO_CARDS)){ dealWithTwoCards(paymentData);
+            } else { dealWithGridAndCombos(paymentData); }
     }
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/
@@ -265,10 +255,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
         if(paymentSelectorSvd){
             paymentSelectorV3().selectTwoCreditCardsRdb();
-        } else {
-            if (paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
-                paymentSelectorV3().selectTwoCreditCardsRdb();
-            }
+        } else if(paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
+                    paymentSelectorV3().selectTwoCreditCardsRdb();
         }
 
         if(creditCardComboSc){

@@ -31,10 +31,11 @@ public class PaymentSelectorV3 extends BasePage {
     /**************************** Actions **********************************/
 
     public PaymentSelectorV3 selectOneCreditCardRdb(){
-        logger.info("Selecting payment with one credit card");
-        waitElementForVisibility(driver, oneCreditCardRdb, 20, "[1 tarjeta de crédito] radio button.");
-        waitElementForClickable(driver, oneCreditCardRdb, 20, "[1 tarjeta de crédito] radio button.");
         scrollToElement(driver, oneCreditCardRdb);
+        waitImplicitly(1000);
+        scrollToElement(driver, oneCreditCardRdb);
+        waitElementForClickable(driver, oneCreditCardRdb, 5 , "[One Credit Card Radio Button.");
+        logger.info("Selecting payment with one credit card");
         oneCreditCardRdb.click();
         waitImplicitly(4000);
         return this;
