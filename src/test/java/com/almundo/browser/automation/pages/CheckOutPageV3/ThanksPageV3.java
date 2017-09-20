@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.ThanksPageAssertInfo;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -80,7 +81,12 @@ public class ThanksPageV3 extends BasePage {
     public boolean confirmationOk(){
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
             assertThanksPageElements = true;
-            PageUtils.waitElementForVisibility(driver, felicitacionesLbl, 70, "Reservation Confirmation");
+            try {
+                PageUtils.waitElementForVisibility(driver, felicitacionesLbl, 70, "Reservation Confirmation");
+            }catch (TimeoutException ouch){
+                logger.info("Waited so long for the [Reservation Confirmation]");
+                setResultSauceLabs(FAILED);
+            }
             if (felicitacionesLbl.getText().equals(FELICITACIONES_V3_MSG.toString())) {
                 printReservationCode(reservationCode.getText());
                 return true;
