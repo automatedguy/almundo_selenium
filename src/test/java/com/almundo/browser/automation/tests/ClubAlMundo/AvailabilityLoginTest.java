@@ -194,61 +194,6 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-    @SuppressWarnings("Duplicates")
-    @Test
-    public void flightsLoginBooking(){
-        logTestTitle("Login With Email and Book Flight using Rewards Points.");
-        if(countryPar.equals(ARGENTINA)) {
-            loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
-            loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
-            basePage = loginPopUp.clickIngresarBtn();
-
-            Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
-
-            dataManagement.getFlightsItineraryData();
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
-
-            flightsDataTrip = basePage.clickFlightsBtn();
-            flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
-
-            flightsResultsPage = flightsDataTrip.clickBuscarBtn();
-
-            flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
-            flightsResultsPage.clickTicketVuelta(FIRST_OPTION + 1);
-
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-
-            checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-
-            thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
-
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
-            getAssertionInfo();
-            thanksPageV3 = checkOutPageV3.clickComprarBtn();
-
-            Assert.assertTrue(thanksPageV3.confirmationOk());
-            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
-            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
-            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
-            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
-        }else {
-            logger.info(NOT_RUNNING_MEXICO_COLOMBIA);
-        }
-        setResultSauceLabs(PASSED);
-    }
-
     @Test
     public void hotelsAvailabilityLogin(){
         logTestTitle("Search Hotel And Login With Email");
