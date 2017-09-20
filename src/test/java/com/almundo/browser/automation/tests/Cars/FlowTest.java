@@ -48,9 +48,9 @@ public class FlowTest extends TestBaseSetup {
     }
 
     private void getAssertionInfo(){
-        thanksPageAssertInfo.finalAmountPaid = checkOutPageV3.breakDownSectionV3().getFinalPriceString();
-        thanksPageAssertInfo.carsDetailInfo = checkOutPageV3.breakDownSectionV3().getCarsDetailContent();
-        thanksPageAssertInfo.contactEmailEntered = checkOutPageV3.contactSection().getContactEmail();
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setCarsDetailInfo(checkOutPageV3.breakDownSectionV3().getCarsDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
 
     /***************************** Test Cases *****************************/
@@ -85,8 +85,14 @@ public class FlowTest extends TestBaseSetup {
                     dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
 
+            getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
+
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+            Assert.assertTrue(thanksPageV3.isCarsDetailInfoOk(thanksPageAssertInfo.carsDetailInfo));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         }
         setResultSauceLabs(PASSED);
     }

@@ -28,6 +28,12 @@ public class RetailFlowTest extends TestBaseSetup {
     private CarsDataTrip carsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
 
+    private void getAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setCarsDetailInfo(checkOutPageV3.breakDownSectionV3().getCarsDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
     @BeforeClass
     private void initItineraryData() {
         dataManagement.getCarsItineraryData();
@@ -66,11 +72,18 @@ public class RetailFlowTest extends TestBaseSetup {
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+                            dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                            dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
+        getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+        Assert.assertTrue(thanksPageV3.isCarsDetailInfoOk(thanksPageAssertInfo.carsDetailInfo));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 

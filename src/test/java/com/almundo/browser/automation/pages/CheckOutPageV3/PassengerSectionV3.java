@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.PageUtils.randomString;
@@ -83,6 +84,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         String randomFirstName = "";
         String randomLastName = "";
         String documentNumber = "";
+
+        logger.info("Initializing Passenger List Info for Assertions.");
+        thanksPageAssertInfo.passengersList = new ArrayList<ThanksPageAssertInfo.Passenger>();
 
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
 

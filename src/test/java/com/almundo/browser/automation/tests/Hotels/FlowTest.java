@@ -51,9 +51,9 @@ public class FlowTest extends TestBaseSetup {
     }
 
     private void getAssertionInfo(){
-        thanksPageAssertInfo.finalAmountPaid = checkOutPageV3.breakDownSectionV3().getFinalPriceString();
-        thanksPageAssertInfo.hotelDetailInfo = checkOutPageV3.breakDownSectionV3().getHotelDetailContent();
-        thanksPageAssertInfo.contactEmailEntered = checkOutPageV3.contactSection().getContactEmail();
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setHotelsDetailInfo(checkOutPageV3.breakDownSectionV3().getHotelDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
 
     /***************************** Test Cases *****************************/
@@ -94,7 +94,7 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.confirmationOk());
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
-        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.hotelDetailInfo));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.hotelsDetailInfo));
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);
@@ -169,7 +169,7 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.confirmationOk());
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
-        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.hotelDetailInfo));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.hotelsDetailInfo));
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);

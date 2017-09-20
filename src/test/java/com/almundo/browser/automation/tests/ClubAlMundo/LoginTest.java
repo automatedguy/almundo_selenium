@@ -2,15 +2,19 @@ package com.almundo.browser.automation.tests.ClubAlMundo;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
+import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -38,6 +42,11 @@ public class LoginTest extends TestBaseSetup {
     private FlightsDataTrip flightsDataTrip = null;
     private FlightsResultsPage flightsResultsPage = null;
 
+    /********** Cars Related Objects and Pages ***********/
+    private CarsDataTrip carsDataTrip =  null;
+    private CarsResultsPage carsResultsPage = null;
+
+
     /********** Common Objects for (V3): Checkout, Agreement and Confirmation Pages ***********/
     private CheckOutPageV3 checkOutPageV3 = null;
     private ThanksPageV3 thanksPageV3 = null;
@@ -52,8 +61,18 @@ public class LoginTest extends TestBaseSetup {
         loginPopUp = initLoginPopUp();
     }
 
+    @AfterMethod
+    private void cleanPassengerJsonList() {
+        dataManagement.passengerJsonList = new JSONArray();
+    }
+
     private void getFlightsAssertionInfo(){
-        thanksPageAssertInfo.setFlightDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
+        thanksPageAssertInfo.setFlightsDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
+    private void getCarsAssertionInfo(){
+        thanksPageAssertInfo.setCarsDetailInfo(checkOutPageV3.breakDownSectionV3().getCarsDetailContent());
         thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
 
@@ -61,7 +80,7 @@ public class LoginTest extends TestBaseSetup {
 
     @Test
     public void login_email () {
-        logTestTitle("Club AlMundo - Login with email - " + countryPar );
+        logTestTitle("Login with email and validate menu elements");
 
         JSONObject userData = dataManagement.getUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
@@ -137,15 +156,15 @@ public class LoginTest extends TestBaseSetup {
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+                                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
             getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
             Assert.assertTrue(thanksPageV3.confirmationOk());
             Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
             Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
-            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.carsDetailInfo));
             Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         }else {
             logger.info(NOT_RUNNING_MEXICO_COLOMBIA);
@@ -153,6 +172,60 @@ public class LoginTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void carsLoginBooking(){
+        logTestTitle("Search Car And Login With Email");
+        if(countryPar.equals(ARGENTINA)) {
+            loginPopUp.clickCloseLoginBtn();
+            loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
+            dataManagement.getUsersDataList();
+            userData = dataManagement.getUserData("email");
+            loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+            basePage = loginPopUp.clickIngresarBtn();
+
+            Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
+
+            dataManagement.getCarsItineraryData();
+            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+
+            basePage.clickCarsBtn();
+            carsDataTrip = basePage.carsDataTrip();
+            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
+            carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
+            carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
+            carsDataTrip.selectAgeRange(dataManagement.ageRange);
+            carsResultsPage = carsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(carsResultsPage.vacancy());
+            Assert.assertTrue(carsResultsPage.processed());
 
 
+            checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
+
+            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+
+            thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+            getCarsAssertionInfo();
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+            Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.carsDetailInfo));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        }
+        else {
+            logger.info(NOT_RUNNING_MEXICO_COLOMBIA);
+        }
+        setResultSauceLabs(PASSED);
+    }
 }

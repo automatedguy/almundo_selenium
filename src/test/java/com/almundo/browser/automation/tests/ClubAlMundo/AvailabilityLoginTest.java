@@ -3,7 +3,6 @@ package com.almundo.browser.automation.tests.ClubAlMundo;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.*;
-import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.*;
@@ -58,7 +57,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     JSONObject userData = null;
 
     private void getAssertionInfo(){
-        thanksPageAssertInfo.setFlightDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
+        thanksPageAssertInfo.setFlightsDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
         thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
 

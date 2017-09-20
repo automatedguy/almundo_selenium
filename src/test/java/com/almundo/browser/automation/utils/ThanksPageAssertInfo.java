@@ -1,5 +1,8 @@
 package com.almundo.browser.automation.utils;
 
+import com.almundo.browser.automation.base.TestBaseSetup;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +11,13 @@ import java.util.List;
  */
 public class ThanksPageAssertInfo {
 
+    private static Logger logger = Logger.getLogger(ThanksPageAssertInfo.class);
+
     public String finalAmountPaid = null;
     public String contactEmailEntered = null;
 
     public String flightDetailInfo = null;
-    public String hotelDetailInfo = null;
+    public String hotelsDetailInfo = null;
     public String carsDetailInfo = null;
     public String tripsDetailInfo = null;
 
@@ -37,12 +42,22 @@ public class ThanksPageAssertInfo {
         finalAmountPaid = finalAmountPaidCheckout;
     }
 
-    public void setFlightDetailInfo(String flightDetailInfoCheckout){
-        flightDetailInfo = flightDetailInfoCheckout;
+    public void setFlightsDetailInfo(String flightsDetailInfoCheckout){
+        logger.info("Setting flights detail assertion info.");
+        flightDetailInfo = flightsDetailInfoCheckout;
     }
 
-    public void setContactEmailEntered(String contactEmailEnteredCheckout){
-        contactEmailEntered = contactEmailEnteredCheckout;
-    }
+    public void setHotelsDetailInfo(String hotelsDetailInfoCheckout){
+        logger.info("Setting hotels detail assertion info.");
+        hotelsDetailInfo = hotelsDetailInfoCheckout; }
 
+    public void setCarsDetailInfo(String carsDetailInfoCheckout){
+        logger.info("Setting cars detail assertion info.");
+        carsDetailInfo = carsDetailInfoCheckout; }
+
+    public void setTripsDetailInfo(String tripsDetailInfoCheckout){
+        logger.info("Setting trips detail assertion info.");
+        tripsDetailInfo = tripsDetailInfoCheckout; }
+
+    public void setContactEmailEntered(String contactEmailEnteredCheckout){ contactEmailEntered = contactEmailEnteredCheckout; }
 }

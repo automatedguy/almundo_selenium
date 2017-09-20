@@ -65,9 +65,9 @@ public class FlowTest extends TestBaseSetup {
     }
 
     private void getAssertionInfo(){
-        thanksPageAssertInfo.finalAmountPaid = checkOutPageV3.breakDownSectionV3().getFinalPriceString();
-        thanksPageAssertInfo.flightDetailInfo = checkOutPageV3.breakDownSectionV3().getFlightDetailContent();
-        thanksPageAssertInfo.contactEmailEntered = checkOutPageV3.contactSection().getContactEmail();
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setFlightsDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
 
     /***************************** Test Cases *****************************/
