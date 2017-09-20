@@ -19,19 +19,19 @@ public class ContactSectionV3 extends CheckOutPageV3 {
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "email")
+    @FindBy(css = "contact-form #email")
     public WebElement emailTxt;
 
-    @FindBy(id = "email_confirmation")
+    @FindBy(css = "contact-form #email_confirmation")
     public WebElement repEmailTxt;
 
-    @FindBy(name = "telephone_type")
+    @FindBy(css = "contact-form #telephone_type")
     public WebElement phoneTypeDdl;
 
-    @FindBy(id = "country_code")
+    @FindBy(css = "contact-form #country_code")
     public WebElement countryCodeTxt;
 
-    @FindBy(id = "area_code")
+    @FindBy(css = "contact-form #area_code")
     public WebElement areaCodeTxt;
 
     @FindBy(css = "contact-form #number")

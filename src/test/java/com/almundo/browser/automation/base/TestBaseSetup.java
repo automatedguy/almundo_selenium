@@ -12,6 +12,7 @@ import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.*;
+import com.gargoylesoftware.htmlunit.Page;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
@@ -433,6 +434,10 @@ public class TestBaseSetup {
 
     protected PassengerSectionV3 initPassengerInfoSectionV3() {
         return PageFactory.initElements(driver, PassengerSectionV3.class);
+    }
+
+    protected EmergencyContact initEmergencyContactSection(){
+        return PageFactory.initElements(driver, EmergencyContact.class);
     }
 
     protected PaymentSection initPaymentSection() {

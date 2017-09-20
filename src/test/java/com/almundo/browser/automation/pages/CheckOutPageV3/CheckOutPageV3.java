@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.InputDefinitions;
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -68,6 +67,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
+    }
+
+    public EmergencyContact emergencyContact(){
+        return initEmergencyContactSection();
     }
 
     public BillingSectionV3 billingSection() {
@@ -230,6 +233,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setInputDef();
         dealWithPaymentForm(paymentData);
         passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
         if(!paymentData.contains(DESTINATION)) {
             billingSection().populateBillingSection(billingData);
         }
