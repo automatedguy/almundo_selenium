@@ -180,8 +180,8 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, CASH_DEPOSIT,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
