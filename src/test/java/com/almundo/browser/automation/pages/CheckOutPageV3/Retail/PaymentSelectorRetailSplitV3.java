@@ -192,11 +192,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         else{
             logger.info("Remaininng Amount to Pay: [" + getRemainingAmount(container) + "]");
         }
-        if(isLastPayment){
-            selectCargosPercepcionesGeneradosCash(ADD_AMOUNT, container);
-        }else{
-            selectCargosPercepcionesGeneradosCash(INCLUDE_AMOUNT, container);
-        }
+        selectCargosPercepcionesGeneradosCash(ADD_AMOUNT, container);
         return this;
     }
 
@@ -207,11 +203,7 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         if (!isLastPayment) {
             enterImporte(String.valueOf(paymentAmount), container);
         }
-        if(isLastPayment) {
-            selectCargosPercepcionesGenerados(ADD_AMOUNT, container);
-        }else{
-            selectCargosPercepcionesGenerados(INCLUDE_AMOUNT, container);
-        }
+        selectCargosPercepcionesGenerados(ADD_AMOUNT, container);
         if (!isLastPayment) {
             selectCuotas(paymentDataObject.get("payment_qty").toString(), paymentAmount, (container - decreaseContainer));
         } else {

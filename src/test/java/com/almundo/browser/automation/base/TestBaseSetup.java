@@ -59,10 +59,6 @@ public class TestBaseSetup {
     public static String countryPar;
     private static DesiredCapabilities capabilities = null;
 
-    /************* Selenium Proxy *************/
-    private static SeleniumProxy seleniumProxy = new SeleniumProxy();
-    private static Boolean initProxy = false;
-
     public static JSONObject jsonDataObject = null;
     public static JSONObject jsonPropertiesObject = null;
     public static JSONObject jsonCountryPropertyObject = null;
@@ -83,10 +79,14 @@ public class TestBaseSetup {
     public String destinationCalendarLegOne = "destination-flights-0";
     public String destinationCalendarLegTwo = "destination-flights-1";
 
+    /************* Selenium Proxy *************/
+    private static SeleniumProxy seleniumProxy = new SeleniumProxy();
+    private static Boolean initProxy = false;
+
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(CCR_STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
