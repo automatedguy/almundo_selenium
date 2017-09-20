@@ -86,7 +86,7 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         String documentNumber = "";
 
         logger.info("Initializing Passenger List Info for Assertions.");
-        thanksPageAssertInfo.passengersList = new ArrayList<ThanksPageAssertInfo.Passenger>();
+        thanksPageAssertInfo.initPassengerList();
 
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
 

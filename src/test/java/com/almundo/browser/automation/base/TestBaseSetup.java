@@ -96,7 +96,7 @@ public class TestBaseSetup {
                                         @Optional(TRUE) Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional(FALSE) Boolean submit_Reservation,
+                                        @Optional(TRUE) Boolean submit_Reservation,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
 
         this.baseURL = env_url;

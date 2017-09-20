@@ -30,9 +30,14 @@ public class ThanksPageAssertInfo {
             documentNumber =  passengerDocument;
         }
     }
-    public static List<Passenger> passengersList = new ArrayList<Passenger>();
 
-    public static class paymentForms{
+    public List<Passenger> passengersList = new ArrayList<Passenger>();
+
+    public void initPassengerList(){
+        passengersList = new ArrayList<Passenger>();
+    }
+
+    public class paymentForms{
         String paymentType = null;
         String paymentAmount = null;
     }
