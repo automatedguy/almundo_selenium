@@ -21,7 +21,7 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
  * Created by gabrielcespedes on 04/11/16.
  */
 
-public class RetailFlowTestSplitted extends TestBaseSetup {
+public class RetailFlowSplittedTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
     private CheckOutPageV3 checkOutPageV3 = null;
