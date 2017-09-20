@@ -164,7 +164,7 @@ public class LoginTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.confirmationOk());
             //Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
             Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
-            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.carsDetailInfo));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
             Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         }else {
             logger.info(NOT_RUNNING_MEXICO_COLOMBIA);
