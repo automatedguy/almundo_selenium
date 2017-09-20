@@ -237,7 +237,7 @@ public class ThanksPageV3 extends BasePage {
                     passengersOk = false;
                     break;
                 }
-                if (method.contains("Flights.")) {
+                if (method.contains("Flights.")||method.contains("flights")) {
                     logger.info("Document Number: [" + passenger.documentNumber + "]");
                     if (!passenger.documentNumber.equals(passengerDocumentList.get(passengerIndex).getText())) {
                         logger.error("Passenger Document Number Assertion failure.");

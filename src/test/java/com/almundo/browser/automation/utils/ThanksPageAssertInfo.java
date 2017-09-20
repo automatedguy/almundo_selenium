@@ -31,7 +31,7 @@ public class ThanksPageAssertInfo {
         }
     }
 
-    public List<Passenger> passengersList = new ArrayList<Passenger>();
+    public static List<Passenger> passengersList = new ArrayList<Passenger>();
 
     public void initPassengerList(){
         passengersList = new ArrayList<Passenger>();
@@ -44,25 +44,28 @@ public class ThanksPageAssertInfo {
     public static List<paymentForms> paymentFormsList = new ArrayList<paymentForms>();
 
     public void setFinalAmountPaid(String finalAmountPaidCheckout){
+        logger.info("Final amount paid: [" + finalAmountPaidCheckout + "]");
         finalAmountPaid = finalAmountPaidCheckout;
     }
 
     public void setFlightsDetailInfo(String flightsDetailInfoCheckout){
-        logger.info("Setting flights detail assertion info.");
+        logger.info("Setting flights detail assertion info: [" + flightsDetailInfoCheckout + "]");
         flightDetailInfo = flightsDetailInfoCheckout;
     }
 
     public void setHotelsDetailInfo(String hotelsDetailInfoCheckout){
-        logger.info("Setting hotels detail assertion info.");
+        logger.info("Setting hotels detail assertion info: [" + hotelsDetailInfoCheckout + "]");
         hotelsDetailInfo = hotelsDetailInfoCheckout; }
 
     public void setCarsDetailInfo(String carsDetailInfoCheckout){
-        logger.info("Setting cars detail assertion info.");
+        logger.info("Setting cars detail assertion info: " + carsDetailInfoCheckout + "]");
         carsDetailInfo = carsDetailInfoCheckout; }
 
     public void setTripsDetailInfo(String tripsDetailInfoCheckout){
-        logger.info("Setting trips detail assertion info.");
+        logger.info("Setting trips detail assertion info: [" + tripsDetailInfoCheckout + "]");
         tripsDetailInfo = tripsDetailInfoCheckout; }
 
-    public void setContactEmailEntered(String contactEmailEnteredCheckout){ contactEmailEntered = contactEmailEnteredCheckout; }
+    public void setContactEmailEntered(String contactEmailEnteredCheckout){
+        logger.info("Setting contact email assertion info: [" + contactEmailEnteredCheckout + "]");
+        contactEmailEntered = contactEmailEnteredCheckout; }
 }

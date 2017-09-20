@@ -56,7 +56,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     JSONObject userData = null;
 
-    private void getAssertionInfo(){
+    private void getFlightsAssertionInfo(){
         thanksPageAssertInfo.setFlightsDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
         thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
@@ -179,7 +179,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
                     REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
-            getAssertionInfo();
+            getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
             Assert.assertTrue(thanksPageV3.confirmationOk());

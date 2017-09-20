@@ -50,6 +50,11 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     JSONObject userData = null;
 
+    private void getHotelsAssertionInfo(){
+        thanksPageAssertInfo.setHotelsDetailInfo(checkOutPageV3.breakDownSectionV3().getHotelDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
     @BeforeClass
     private void initUserList() {
         dataManagement.getUsersDataList();
@@ -110,6 +115,63 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void hotelsDetailsBookingLogin(){
+        logTestTitle("Search Hotel And Login With Email on Detail Page");
+
+        dataManagement.getHotelsItineraryData();
+        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
+
+        basePage.clickHotelsBtn();
+        hotelsDataTrip = basePage.hotelsDataTrip();
+        hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+
+        hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(hotelsResultsPage.vacancy());
+
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+        PageUtils.switchToNewTab(driver);
+
+        loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+
+        hotelsDetailPage = loginPopUp.clickIngresarOnHotelsDetailBtn();
+
+        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
+
+        hotelsDetailPage.clickVerHabitacionesBtn();
+
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+                REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+
+        getHotelsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);
     }

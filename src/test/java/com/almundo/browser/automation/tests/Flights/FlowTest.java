@@ -64,7 +64,7 @@ public class FlowTest extends TestBaseSetup {
         }
     }
 
-    private void getAssertionInfo(){
+    private void getFlightsAssertionInfo(){
         thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
         thanksPageAssertInfo.setFlightsDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
         thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
@@ -137,10 +137,16 @@ public class FlowTest extends TestBaseSetup {
                                               dataManagement.getBillingData(LOCAL_BILLING),
                                               dataManagement.getContactData(CONTACT_CELL_PHONE),FLIGHTS_CHECKOUT_INT);
 
-        validateTermsAndConditions();
-
+        getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.contactEmailEntered));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.flightDetailInfo));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
         setResultSauceLabs(PASSED);
     }
 
@@ -207,7 +213,7 @@ public class FlowTest extends TestBaseSetup {
                                               VISA_1,
                                                dataManagement.getBillingData(LOCAL_BILLING),
                                                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
-        getAssertionInfo();
+        getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -220,6 +226,7 @@ public class FlowTest extends TestBaseSetup {
     }
 
 /*
+    TODO: Ask if needs to be enabled.
     @SuppressWarnings("Duplicates")
     @Test
     public void roundTrip_Dom_Booking_2Credit_Cards_Flow() {
