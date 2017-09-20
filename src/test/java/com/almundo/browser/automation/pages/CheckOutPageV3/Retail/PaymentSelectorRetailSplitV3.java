@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.ADD_AMOUNT;
+import static com.almundo.browser.automation.utils.Constants.INCLUDE_AMOUNT;
 import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
@@ -190,7 +192,11 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         else{
             logger.info("Remaininng Amount to Pay: [" + getRemainingAmount(container) + "]");
         }
-        selectCargosPercepcionesGeneradosCash("Incluirlos en el importe", container);
+        if(isLastPayment){
+            selectCargosPercepcionesGeneradosCash(ADD_AMOUNT, container);
+        }else{
+            selectCargosPercepcionesGeneradosCash(INCLUDE_AMOUNT, container);
+        }
         return this;
     }
 
@@ -201,7 +207,11 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
         if (!isLastPayment) {
             enterImporte(String.valueOf(paymentAmount), container);
         }
-        selectCargosPercepcionesGenerados("Sumarlos al importe", container);
+        if(isLastPayment) {
+            selectCargosPercepcionesGenerados(ADD_AMOUNT, container);
+        }else{
+            selectCargosPercepcionesGenerados(INCLUDE_AMOUNT, container);
+        }
         if (!isLastPayment) {
             selectCuotas(paymentDataObject.get("payment_qty").toString(), paymentAmount, (container - decreaseContainer));
         } else {

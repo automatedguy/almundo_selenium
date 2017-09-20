@@ -168,6 +168,11 @@ public class Constants {
 
     public static final String VISA_DEBIT = "visa_debit";
 
+    //PERCEPTIONS
+
+    public static final String INCLUDE_AMOUNT = "Incluirlos en el importe";
+    public static final String ADD_AMOUNT = "Sumarlos al importe";
+
     //BILLINGS
     public static final String LOCAL_BILLING = "local_Billing";
     public static final String LOCAL_BILLING_SUCURSALES = "local_Billing_sucursales";
