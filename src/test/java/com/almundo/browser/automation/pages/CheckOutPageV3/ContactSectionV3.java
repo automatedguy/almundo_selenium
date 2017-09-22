@@ -31,11 +31,20 @@ public class ContactSectionV3 extends CheckOutPageV3 {
     @FindBy(css = "contact-form #country_code")
     public WebElement countryCodeTxt;
 
+    @FindBy(css = "contact-form div > div div.row > div:nth-child(1) div:nth-child(2) input")
+    public WebElement countryCodeStgTxt;
+
     @FindBy(css = "contact-form #area_code")
     public WebElement areaCodeTxt;
 
+    @FindBy(css =  "contact-form div:nth-child(1) div:nth-child(3) input")
+    public WebElement areaCodeStgTxt;
+
     @FindBy(css = "contact-form #number")
     public WebElement phoneNumberTxt;
+
+    @FindBy(css = "contact-form div:nth-child(1) div:nth-child(4) input")
+    public WebElement phoneNumberStgTxt;
 
     //############################################### Actions ###############################################
 
@@ -81,22 +90,40 @@ public class ContactSectionV3 extends CheckOutPageV3 {
         selectPhoneType.selectByVisibleText(phoneType);
     }
 
+    @SuppressWarnings("Duplicates")
     private void setCountryCode(String countryCode) {
         logger.info("Entering Código de país: [" + countryCode + "]");
-        countryCodeTxt.clear();
-        countryCodeTxt.sendKeys(countryCode);
+        if(baseURL.contains("st.")){
+            countryCodeStgTxt.clear();
+            countryCodeStgTxt.sendKeys(countryCode);
+        }else {
+            countryCodeTxt.clear();
+            countryCodeTxt.sendKeys(countryCode);
+        }
     }
 
+    @SuppressWarnings("Duplicates")
     private void setAreaCode(String areaCode) {
         logger.info("Selecting Cód. Area: [" + areaCode + "]");
-        areaCodeTxt.clear();
-        areaCodeTxt.sendKeys(areaCode);
+        if(baseURL.contains("st.")) {
+            areaCodeStgTxt.clear();
+            areaCodeStgTxt.sendKeys(areaCode);
+        }else{
+            areaCodeTxt.clear();
+            areaCodeTxt.sendKeys(areaCode);
+        }
     }
 
+    @SuppressWarnings("Duplicates")
     private void setPhoneNumber(String phoneNumber) {
         logger.info("Entering Número de Teléfono: [" + phoneNumber + "]");
-        phoneNumberTxt.clear();
-        phoneNumberTxt.sendKeys(phoneNumber);
+        if(baseURL.contains("st.")) {
+            phoneNumberStgTxt.clear();
+            phoneNumberStgTxt.sendKeys(phoneNumber);
+        }else{
+            phoneNumberTxt.clear();
+            phoneNumberTxt.sendKeys(phoneNumber);
+        }
     }
 
     public String getContactEmail(){
