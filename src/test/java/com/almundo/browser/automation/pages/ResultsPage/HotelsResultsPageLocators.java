@@ -66,11 +66,11 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
     /*** When URL does not contain card=true is the old one. ***/
     private void setNormalLocators(int index){
         logger.info("Setting results page layout with no card=true parameter");
-        nameLocator = "hotel:nth-child(" + (index + 1) + ") > article h1";
-        starsListLocator = "div:nth-child(" + (index + 1) + ") article p.star-ctn > span";
-        priceBoxLocator = "hotel:nth-child(" + (index + 1) + ") > article .price-box-ctn.col-3.col-12--ph > div";
-        amenitiesListLocator = "div:nth-child(" + (index + 1) + ") article .amenities-ctn .list > li";
-        verHotelButtonLocator = "hotel:nth-child(" + (index + 1) + ") > article > div.price-box-ctn.col-3.col-12--ph div a";
+        nameLocator = "section div:nth-child(" + (index + 1) + ") .hotel-description .hotel-name";
+        starsListLocator = "section div:nth-child(" + (index + 1) + ") article p.star-ctn > span";
+        priceBoxLocator = "section div:nth-child(" + (index + 1) + ") article .price-box-ctn.col-3.col-12--ph > div";
+        amenitiesListLocator = "section div:nth-child(" + (index + 1) + ") article .amenities-ctn .list > li";
+        verHotelButtonLocator = "section div:nth-child(" + (index + 1) + ") article .button-detail";
         hotelChoicesLocator =  "body .hotel-ctn.am-ctn";
     }
 }
