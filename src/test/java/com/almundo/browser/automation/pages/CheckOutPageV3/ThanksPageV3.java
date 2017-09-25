@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage.getAssertHotelInfo;
 import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_V3_MSG;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
@@ -158,7 +159,7 @@ public class ThanksPageV3 extends BasePage {
     }
 
     public boolean isHotelDetailInfoOk(String hotelDetailInfo){
-        if(assertThanksPageElements) {
+        if(assertThanksPageElements && getAssertHotelInfo()) {
             logger.info("Asserting Hotel Info: [" + hotelDetailInfo + "]");
             if (normalizeItineraryInfo(hotelDetailContent.getText()).equals(normalizeItineraryInfo(hotelDetailInfo))) {
                 logger.info("Hotel Detail Info is Ok.");

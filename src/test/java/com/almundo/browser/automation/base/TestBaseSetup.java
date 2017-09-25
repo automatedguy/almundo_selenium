@@ -72,6 +72,7 @@ public class TestBaseSetup {
     public static String seleniumURI = null;
 
     public static boolean runningRemote;
+    public static boolean redirectCheckout = false;
 
     // Multidestination Calendars
     public String originCalendarLegOne = "origin-flights-0";

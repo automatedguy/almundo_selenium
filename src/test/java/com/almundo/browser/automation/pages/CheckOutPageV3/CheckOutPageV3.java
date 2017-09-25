@@ -229,6 +229,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
+        redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
         dealWithPaymentForm(paymentData);
@@ -254,6 +255,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                                  JSONObject contactData,
                                                  String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
+        redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
         setInputDef();
 
@@ -341,6 +343,19 @@ public class CheckOutPageV3 extends TestBaseSetup {
             logger.info("[Selector de pago] is enabled.");
             paymentSelectorSvd = true;
         }else { logger.info("[Selector de pago] is not enabled.");}
+    }
+
+    public CheckOutPageV3 redirectCheckout(){
+        if(redirectCheckout) {
+            getCheckoutUrl();
+            logger.info("Redirecting Checkout to: [" + CHECKOUT_HOST + "]");
+            String currentUrl = driver.getCurrentUrl();
+            driver.navigate().to(currentUrl.replace(baseURL, CHECKOUT_HOST));
+            getCheckoutUrl();
+        }else{
+            logger.info("Not doing checkout redirection.");
+        }
+        return initCheckOutPageV3();
     }
 
     public CheckOutPageV3 setUrlParameter(String parameter){

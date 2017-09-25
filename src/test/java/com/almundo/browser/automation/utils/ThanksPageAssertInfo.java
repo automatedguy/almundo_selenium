@@ -13,13 +13,13 @@ public class ThanksPageAssertInfo {
 
     private static Logger logger = Logger.getLogger(ThanksPageAssertInfo.class);
 
-    public String finalAmountPaid = null;
-    public String contactEmailEntered = null;
+    private String finalAmountPaid = null;
+    private String contactEmailEntered = null;
 
-    public String flightDetailInfo = null;
-    public String hotelsDetailInfo = null;
-    public String carsDetailInfo = null;
-    public String tripsDetailInfo = null;
+    private String flightDetailInfo = null;
+    private String hotelsDetailInfo = null;
+    private String carsDetailInfo = null;
+    private String tripsDetailInfo = null;
 
     public static class Passenger{
         public String fullName = null;
@@ -48,24 +48,48 @@ public class ThanksPageAssertInfo {
         finalAmountPaid = finalAmountPaidCheckout;
     }
 
+    public String getFinalAmountPaid(){
+        return finalAmountPaid;
+    }
+
     public void setFlightsDetailInfo(String flightsDetailInfoCheckout){
         logger.info("Setting flights detail assertion info: [" + flightsDetailInfoCheckout + "]");
         flightDetailInfo = flightsDetailInfoCheckout;
+    }
+
+    public String getFlightDetailInfo(){
+        return flightDetailInfo;
     }
 
     public void setHotelsDetailInfo(String hotelsDetailInfoCheckout){
         logger.info("Setting hotels detail assertion info: [" + hotelsDetailInfoCheckout + "]");
         hotelsDetailInfo = hotelsDetailInfoCheckout; }
 
+    public String getHotelsDetailInfo(){
+        return hotelsDetailInfo;
+    }
+
     public void setCarsDetailInfo(String carsDetailInfoCheckout){
         logger.info("Setting cars detail assertion info: " + carsDetailInfoCheckout + "]");
         carsDetailInfo = carsDetailInfoCheckout; }
+
+    public String getCarsDetailInfo(){
+        return carsDetailInfo;
+    }
 
     public void setTripsDetailInfo(String tripsDetailInfoCheckout){
         logger.info("Setting trips detail assertion info: [" + tripsDetailInfoCheckout + "]");
         tripsDetailInfo = tripsDetailInfoCheckout; }
 
+    public String getTripsDetailInfo(){
+        return tripsDetailInfo;
+    }
+
     public void setContactEmailEntered(String contactEmailEnteredCheckout){
         logger.info("Setting contact email assertion info: [" + contactEmailEnteredCheckout + "]");
         contactEmailEntered = contactEmailEnteredCheckout; }
+
+    public String getContactEmailEntered(){
+        return contactEmailEntered;
+    }
 }
