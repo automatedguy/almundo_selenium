@@ -163,6 +163,7 @@ public class TestBaseSetup {
 
         try {
             if (os == null || browserVersion == null) {
+                logger.info("Setting up: [" + browser + "] browser.");
                 switch (browser) {
                     case "chrome":
                         driver = new ChromeDriver(capabilities);
@@ -170,6 +171,10 @@ public class TestBaseSetup {
                             logger.info("Initizalizing Selenium Proxy.");
                             seleniumProxy.setBrowserMobProxy();
                         }
+                        break;
+
+                    case "chrome-headless":
+                        driver = new ChromeDriver(capabilities);
                         break;
 
                     case "firefox":
@@ -226,6 +231,25 @@ public class TestBaseSetup {
                     chromeCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy.initSeleniumProxy());
                 }
                 return chromeCapabilities;
+
+            case "chrome-headless":
+                if (osName.toLowerCase().contains("windows")){
+                    System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
+                } else {
+                    System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver");
+                }
+                DesiredCapabilities chromeHeadlessCapabilities = DesiredCapabilities.chrome();
+                chromeHeadlessCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+                ChromeOptions optionsHeadless = new ChromeOptions();
+                optionsHeadless.addArguments("headless");
+                optionsHeadless.addArguments("--window-size=1280,768");
+                optionsHeadless.addArguments("test-type", "start-maximized", "no-default-browser-check");
+                optionsHeadless.addArguments("--disable-extensions");
+                chromeHeadlessCapabilities.setCapability(ChromeOptions.CAPABILITY, optionsHeadless);
+                if(initProxy){
+                    chromeHeadlessCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy.initSeleniumProxy());
+                }
+                return chromeHeadlessCapabilities;
 
             case "firefox":
                 if (osName.toLowerCase().contains("windows")){
