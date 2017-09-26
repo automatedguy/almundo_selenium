@@ -201,7 +201,7 @@
 				"destinationAuto": "Bue",
 				"destinationFull": "Buenos Aires, Buenos Aires, Argentina",
 				"startDate": 55,
-				"endDate": 20,
+				"endDate": 30,
 				"pickUpTime": "12:00",
 				"dropOffTime": "12:00",
 				"ageRange": "Entre 21 y 24 años"
@@ -213,7 +213,7 @@
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
 				"startDate": 55,
-				"endDate": 20,
+				"endDate": 30,
 				"pickUpTime": "12:00",
 				"dropOffTime": "12:00",
 				"ageRange": "Entre 21 y 24 años"
