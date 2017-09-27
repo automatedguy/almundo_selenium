@@ -225,14 +225,12 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-/*
-    TODO: Ask if needs to be enabled.
     @SuppressWarnings("Duplicates")
     @Test
-    public void roundTrip_Dom_Booking_2Credit_Cards_Flow() {
-        logTestTitle("Domestic - 20 days - 2 Adults - Todas");
+    public void roundTrip_Int_Booking_2Credit_Cards_Flow() {
+        logTestTitle("International - 10 days - 2 Adults - Tourist");
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
+            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip.selectFlightType(ROUND_TRIP);
             flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -253,17 +251,22 @@ public class FlowTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TWOCARDS_VISA_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
-
+                                                dataManagement.getBillingData(LOCAL_BILLING),
+                                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
+            getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
             Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         }else{
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
-*/
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {

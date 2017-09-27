@@ -360,4 +360,25 @@ public class PageUtils {
             }
         }
     }
+
+    public static WebElement waitWithTryCatch(WebDriver driver, String elementLocator, String elementDescription, int attempts){
+        int tryNumber = 1;
+        boolean elementShowedUp = false;
+        WebElement webElement = null;
+        logger.info("Waiting for " + elementDescription + " drop down list.");
+        do {
+            logger.info(elementDescription + " not loaded completely yet, try N°: [" + tryNumber + "]");
+            try {
+                webElement =
+                        driver.findElement(By.cssSelector(elementLocator));
+                logger.info(elementDescription + " WebElement finally appeared.");
+                elementShowedUp=true;
+            } catch (NoSuchElementException ouch) {
+                waitImplicitly(2000);
+                tryNumber = tryNumber +1;
+                if(tryNumber == attempts){logger.error("Waited so long for: [" + elementDescription + "]");}
+            }
+        }while((tryNumber <= attempts) && !elementShowedUp);
+        return webElement;
+    }
 }

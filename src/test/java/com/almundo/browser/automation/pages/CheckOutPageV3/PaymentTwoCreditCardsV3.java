@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 24/08/17.
@@ -47,8 +48,8 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     }
 
     private PaymentTwoCreditCardsV3 selectTarjeta(String tarjeta, int indexTarjeta){
-        WebElement tarjetaDdl =
-                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+ indexTarjeta +") div:nth-child(3) > select"));
+        String webElementLocator = "am-form-split-web:nth-child("+ indexTarjeta +") div:nth-child(3) > select";
+        WebElement tarjetaDdl = waitWithTryCatch(driver, webElementLocator, "Tarjeta Drop Down List", 10);
         Select tarjetaSelect = new Select (tarjetaDdl);
         logger.info("Selecting [Tarjeta]: [" + tarjeta + "]");
         tarjetaSelect.selectByVisibleText(tarjeta);
@@ -65,9 +66,10 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     }
 
     private PaymentTwoCreditCardsV3 selectCuotas(String cuotas, int paymentAmount, int indexTarjeta){
-        WebElement cuotasDdl =
-                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+indexTarjeta+") div:nth-child(5) > select"));
+        String webElementLocator = "am-form-split-web:nth-child("+indexTarjeta+") div:nth-child(5) > select";
+        WebElement cuotasDdl = waitWithTryCatch(driver, webElementLocator, "Cuotas", 10);
         Select cuotasSelect = new Select (cuotasDdl);
+        waitImplicitly(4000);
         if(!secondPayment) {
             String currency = getCountryCurrency();
             String cuotasFinal = cuotas + " de " + currency + " " + paymentAmount + " (Total a pagar: " + currency + " " + paymentAmount + ")";
@@ -83,8 +85,9 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     }
 
     private PaymentTwoCreditCardsV3 setTitularTarjeta(String titularTarjeta, int indexTarjeta){
-        WebElement titularTarjetaTxt =
-                driver.findElement(By.cssSelector("am-form-split-web:nth-child("+ indexTarjeta + ") div:nth-child(7) > input"));
+        String webElementLocator = "am-form-split-web:nth-child("+ indexTarjeta + ") div:nth-child(7) > input";
+        WebElement titularTarjetaTxt = waitWithTryCatch(driver, webElementLocator, "Titular de tarjeta", 10);
+        waitElementForVisibility(driver, titularTarjetaTxt, 5, "Titular de tarjeta");
         logger.info("Entering [Titular de tarjeta]: [" + titularTarjeta + "]");
         titularTarjetaTxt.sendKeys(titularTarjeta);
         return this;
