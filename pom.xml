@@ -106,9 +106,7 @@
                 <configuration>
                     <!--<parallel>methods</parallel>-->
                     <reportsDirectory>${jobDirectory}/reports</reportsDirectory>
-                    <parallel>classes</parallel>
                     <threadCount>20</threadCount>
-                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     <properties>
                         <property>
                             <name>dataproviderthreadcount</name>
