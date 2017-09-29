@@ -420,7 +420,7 @@
 				"Fecha_de_vencimiento_ano": "18",
 				"Tipo_de_doc": "DNI",
 				"Numero_de_doc": "30786876",
-				"E-mail": "almundoautomationtests@gmail.com"
+				"E-mail": "almundoturismo@gmail.com"
 			},
 
 			"1_visa_todopago": {
@@ -460,7 +460,7 @@
 				"Fecha_de_vencimiento_ano": "18",
 				"Tipo_de_doc": "DNI",
 				"Numero_de_doc": "30786876",
-				"E-mail": "almundoautomationtests@gmail.com"
+				"E-mail": "almundoturismo@gmail.com"
 			},
 
 			"3_visa_todopago": {
@@ -485,7 +485,7 @@
 				"Fecha_de_vencimiento_ano": "18",
 				"Tipo_de_doc": "DNI",
 				"Numero_de_doc": "30786876",
-				"E-mail": "almundoautomationtests@gmail.com"
+				"E-mail": "almundoturismo@gmail.com"
 
 			},
 
@@ -498,7 +498,7 @@
 				"Fecha_de_vencimiento_ano": "18",
 				"Tipo_de_doc": "DNI",
 				"Numero_de_doc": "30786876",
-				"E-mail": "almundoautomationtests@gmail.com"
+				"E-mail": "almundoturismo@gmail.com"
 		},
 
 			"1_master_master": {
@@ -612,8 +612,8 @@
 
 	"contacts": {
 			"contact_cell_phone": {
-				"email": "almundoautomationtests@gmail.com",
-				"rep_email": "almundoautomationtests@gmail.com",
+				"email": "almundoturismo@gmail.com",
+				"rep_email": "almundoturismo@gmail.com",
 				"tel": "Celular",
 				"country_code": 54,
 				"area": "911",
@@ -621,8 +621,8 @@
 			},
 
 			"contact_phone": {
-				"email": "almundoautomationtests@gmail.com",
-				"rep_email": "almundoautomationtests@gmail.com",
+				"email": "almundoturismo@gmail.com",
+				"rep_email": "almundoturismo@gmail.com",
 				"tel": "Teléfono",
 				"country_code": 54,
 				"area": "011",
@@ -649,13 +649,13 @@
 		},
 
 		"google": {
-			"userEmail": "almundoautomationtests@gmail.com",
+			"userEmail": "almundoturismo@gmail.com",
 			"password": "almundo12345",
 			"name": "Automation"
 		},
 
 		"facebook": {
-			"userEmail": "almundoautomationtests@gmail.com",
+			"userEmail": "almundoturismo@gmail.com",
 			"password": "almundo12345",
 			"name": "Automation"
 		}
