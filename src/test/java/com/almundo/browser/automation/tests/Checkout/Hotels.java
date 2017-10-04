@@ -69,9 +69,9 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TWOCARDS_VISA_MASTER,
-                dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1, MASTER_1,
+                                                dataManagement.getBillingData(LOCAL_BILLING),
+                                                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
