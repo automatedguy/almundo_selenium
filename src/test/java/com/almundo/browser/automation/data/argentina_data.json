@@ -401,6 +401,7 @@
 			"1_visa_visa": {
 				"payment_qty" : "1",
 				"bank_name" : "Visa",
+				"bank_name_two_cards" : "Todos los bancos",
 				"credit_card_code" : "VI",
 				"credit_card_name" : "Visa",
 				"card_holder": "Titular Tarjeta",
@@ -463,7 +464,7 @@
 				"E-mail": "almundoturismo@gmail.com"
 			},
 
-			"3_visa_todopago": {
+		"3_visa_todopago": {
 				"payment_qty" : "3",
 				"bank_name" : "Banco Santander Rio S.A.",
 				"credit_card_code" : "VI",
@@ -504,6 +505,7 @@
 			"1_master_master": {
 				"payment_qty" : "1",
 				"bank_name" : "Mastercard",
+				"bank_name_two_cards" : "Todos los bancos",
 				"credit_card_code" : "CA",
 				"credit_card_name" : "Mastercard",
 				"card_holder": "Titular Tarjeta",
