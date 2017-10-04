@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
@@ -36,6 +37,12 @@ public class Flights extends TestBaseSetup {
         dataManagement.passengerJsonList = new JSONArray();
     }
 
+    private void getFlightsAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setFlightsDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
     private void getPassengersData(){
         logger.info("Getting Passenger Data.");
         dataManagement.getPassengerData("adult_male_native");
@@ -45,6 +52,7 @@ public class Flights extends TestBaseSetup {
     
     /************************ Grid Test Area ************************/
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void gridWithTodoPago() {
         logTestTitle("Flights – Grid With Todo Pago " + countryPar );
@@ -57,6 +65,23 @@ public class Flights extends TestBaseSetup {
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void twoCards() {
+        logTestTitle("Flights – Grid With Todo Pago " + countryPar );
+        checkOutPageV3 = openCart(cartId, "&stc=1",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TWOCARDS_VISA_MASTER,
+                                dataManagement.getBillingData(LOCAL_BILLING),
+                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
