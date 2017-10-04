@@ -48,7 +48,7 @@ public class BillingSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "postal_code")
     private WebElement addressPostalCodeTxt;
 
-    @FindBy(css = "#states")
+    @FindBy(id = "state")
     private WebElement addressStateDdl;
 
     @FindBy(id = "city")
