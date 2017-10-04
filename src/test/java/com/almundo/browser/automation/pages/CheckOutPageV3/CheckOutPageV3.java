@@ -201,7 +201,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         } else if (!paymentData.contains(DESTINATION)){
             paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1"); }
 
-        if (paymentData.contains(TODOPAGO) || isTodoPagoEnabled()){
+        if (paymentData.contains(TODOPAGO)){
             todoPagoDataV3().populateTodoPagoData(paymentData);
         }else {
             creditCardDataV3().populateCreditCardData(paymentData, ".card-container-1");
@@ -278,6 +278,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
 
         passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
         billingSection().populateBillingSection(billingData);
         contactSection().populateContactSection(contactData);
         acceptConditions();

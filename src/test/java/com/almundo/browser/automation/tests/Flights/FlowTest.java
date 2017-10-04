@@ -98,7 +98,7 @@ public class FlowTest extends TestBaseSetup {
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    VISA_3_TODOPAGO, dataManagement.getBillingData(LOCAL_BILLING),
+                    VISA_3, dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
