@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.SecureRandom;
@@ -361,11 +362,12 @@ public class PageUtils {
         }
     }
 
+    @SuppressWarnings("Duplicates")
     public static WebElement waitWithTryCatch(WebDriver driver, String elementLocator, String elementDescription, int attempts){
         int tryNumber = 1;
         boolean elementShowedUp = false;
         WebElement webElement = null;
-        logger.info("Waiting for " + elementDescription + " drop down list.");
+        logger.info("Waiting for [" + elementDescription + "]");
         do {
             logger.info(elementDescription + " not loaded completely yet, try N°: [" + tryNumber + "]");
             try {
@@ -380,5 +382,47 @@ public class PageUtils {
             }
         }while((tryNumber <= attempts) && !elementShowedUp);
         return webElement;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public static List<WebElement> waitWithTryCatchList(WebDriver driver, String elementLocator, String elementDescription, int attempts){
+        int tryNumber = 1;
+        boolean elementShowedUp = false;
+        List<WebElement> webElementList = null;
+        logger.info("Waiting for " + elementDescription + " list");
+        do {
+            logger.info(elementDescription + " not loaded completely yet, try N°: [" + tryNumber + "]");
+            try {
+                webElementList =
+                        driver.findElements(By.cssSelector(elementLocator));
+                logger.info(elementDescription + " WebElement finally appeared.");
+                elementShowedUp=true;
+            } catch (NoSuchElementException ouch) {
+                waitImplicitly(2000);
+                tryNumber = tryNumber +1;
+                if(tryNumber == attempts){logger.error("Waited so long for: [" + elementDescription + "]");}
+            }
+        }while((tryNumber <= attempts) && !elementShowedUp);
+        return webElementList;
+    }
+
+    public static Select waitSelectContainsResults(Select select, String elementDescription ,int attempts, int expectedSize) {
+        int tryNumber = 1;
+        boolean elementShowedUp = false;
+        do {
+            logger.info("Waiting for select contains results.");
+            waitImplicitly(1000);
+            try {
+                if (select.getOptions().size() >= expectedSize) {
+                    elementShowedUp = true;
+                }
+            } catch (NoSuchElementException ouch) {
+                tryNumber = tryNumber + 1;
+                if (tryNumber == attempts) {
+                    logger.error("Waited so long for: [" + elementDescription + "]");
+                }
+            }
+        }while((tryNumber <= attempts) && !elementShowedUp);
+        return select;
     }
 }

@@ -28,18 +28,14 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
 
     /**************************** Static Locators **********************************/
 
-    @FindBy(css = "#am-split-payment-web am-payment-web div:nth-child(1) > div:nth-child(1) > input")
-    private WebElement importeTarjetaTxt;
+    final String importeTarjetaLocator = "#am-split-payment-web am-payment-web div:nth-child(1) > div:nth-child(1) > input";
 
     @FindBy(css = "#am-split-payment-web div:nth-child(1) am-payment-web div:nth-child(1) > div:nth-child(2) > input")
     private List<WebElement> numeroDeTarjetaList;
 
-    String tarjetaLocator = "#am-split-payment-web div:nth-child(1) am-payment-web div:nth-child(2) > div:nth-child(1) > select";
-    @FindBy(css = "#am-split-payment-web div:nth-child(1) am-payment-web div:nth-child(2) > div:nth-child(1) > select")
-    private List<WebElement> tarjetaList;
+    final String tarjetaLocator = "#am-split-payment-web div:nth-child(1) am-payment-web div:nth-child(2) > div:nth-child(1) > select";
 
-    @FindBy(css = "#am-split-payment-web div:nth-child(1) am-payment-web div:nth-child(2) > div:nth-child(2) > select")
-    private List<WebElement> bancoList;
+    final String bancoListLocator = "#am-split-payment-web div:nth-child(1) am-payment-web div:nth-child(2) > div:nth-child(2) > select";
 
     @FindBy(css = "#am-split-payment-web div:nth-child(1) am-payment-web div:nth-child(3) > div > select")
     private WebElement firstCuotaElement;
@@ -47,8 +43,7 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     @FindBy(css = "#am-split-payment-web div:nth-child(2) am-payment-web div:nth-child(3) > div > select")
     private WebElement secondCuotaElement;
 
-    @FindBy(css = "#am-split-payment-web am-payment-web div:nth-child(4) > .container-field > input")
-    private List<WebElement> titularDeTarjetaList;
+    final String titularDeTarjetaListLocator = "#am-split-payment-web am-payment-web div:nth-child(4) > .container-field > input";
 
     @FindBy(css = "#am-split-payment-web am-payment-web div:nth-child(4) > div:nth-child(2) > select")
     private List<WebElement> fechaDeVencimientoMesList;
@@ -62,60 +57,56 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     /**************************** Dynamic Actions **********************************/
 
     private PaymentTwoCreditCardsV3 setImporteTarjeta(String importeTarjeta){
-        waitImplicitly(2000);
         logger.info("Entering [Importe a pagar con la tarjeta]: [" + importeTarjeta + "]");
-        importeTarjetaTxt.sendKeys(importeTarjeta);
+        waitWithTryCatch(driver, importeTarjetaLocator, "Importe", 5).sendKeys(importeTarjeta);
         return this;
     }
 
     private PaymentTwoCreditCardsV3 setNumeroTarjeta(String numeroTarjeta, int indexTarjeta){
-        waitImplicitly(2000);
         logger.info("Entering [Número de tarjeta ]: [" + numeroTarjeta + "]");
         numeroDeTarjetaList.get(indexTarjeta).sendKeys(numeroTarjeta);
         return this;
     }
 
     private PaymentTwoCreditCardsV3 selectTarjeta(String tarjeta, int indexTarjeta){
-        waitImplicitly(2000);
-        // waitWithTryCatch(driver,)
-        Select tarjetaSelect = new Select (tarjetaList.get(indexTarjeta));
+        Select tarjetaSelect =
+                new Select (waitWithTryCatchList(driver, tarjetaLocator, "Tarjeta", 5).get(indexTarjeta));
         logger.info("Selecting [Tarjeta]: [" + tarjeta + "]");
+        waitSelectContainsResults(tarjetaSelect, "Tarjeta", 5, 3);
         tarjetaSelect.selectByVisibleText(tarjeta);
         return this;
     }
 
     private PaymentTwoCreditCardsV3 selectBanco(String banco, int indexTarjeta){
-        waitImplicitly(2000);
-        Select bancoSelect = new Select (bancoList.get(indexTarjeta));
+        Select bancoSelect =
+                new Select (waitWithTryCatchList(driver, bancoListLocator, "Banco DDL", 5).get(indexTarjeta));
         logger.info("Selecting [Banco]: [" + banco + "]");
-        bancoSelect.selectByVisibleText(banco);
+        waitSelectContainsResults(bancoSelect, "Tarjeta", 5, 2).selectByVisibleText(banco);
         return this;
     }
 
     private PaymentTwoCreditCardsV3 selectCuotas(){
-        waitImplicitly(2000);
         Select cuotaSelect;
         if(!secondPayment) {
             cuotaSelect = new Select(firstCuotaElement);
+            secondPayment = true;
         }
         else{
             cuotaSelect = new Select(secondCuotaElement);
         }
+        waitSelectContainsResults(cuotaSelect, "Tarjeta", 3, 5);
         logger.info("Selecting [Cuotas]: [" + cuotaSelect.getOptions().get(1).getText() + "]");
         cuotaSelect.selectByIndex(1);
-        secondPayment = true;
         return this;
     }
 
     private PaymentTwoCreditCardsV3 setTitularTarjeta(String titularTarjeta, int indexTarjeta){
-        waitImplicitly(2000);
-        logger.info("Entering [Titular de tarjeta]: [" + titularTarjeta + "]");
-        titularDeTarjetaList.get(indexTarjeta).sendKeys(titularTarjeta);
+        waitWithTryCatchList(driver, titularDeTarjetaListLocator, "Titular Tarjeta", 5 ).get(indexTarjeta).sendKeys(titularTarjeta);
+        logger.info("Entered [Titular de tarjeta]: [" + titularTarjeta + "]");
         return this;
     }
 
     private PaymentTwoCreditCardsV3 selectVencMes(String mes, int indexTarjeta){
-        waitImplicitly(2000);
         Select fechaDeVencimientoMes = new Select(fechaDeVencimientoMesList.get(indexTarjeta));
         logger.info("Selecting [Fecha de vencimiento - Mes]: [" + mes + "]");
         fechaDeVencimientoMes.selectByVisibleText(mes);
@@ -123,7 +114,6 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     }
 
     private PaymentTwoCreditCardsV3 selectVencAno(String ano, int indexTarjeta){
-        waitImplicitly(2000);
         Select fechaDeVencimientoAno = new Select(fechaDeVencimientoAnoList.get(indexTarjeta));
         logger.info("Selecting [Fecha de vencimiento - Año]: [" + ano + "]");
         fechaDeVencimientoAno.selectByVisibleText(ano);
@@ -131,7 +121,6 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     }
 
     private PaymentTwoCreditCardsV3 setCodigoDeSeguridad(String codigoDeSeguridad, int indexTarjeta){
-        waitImplicitly(2000);
         logger.info("Entering [Código de seguridad]: [" + codigoDeSeguridad + "]");
         codigoDeSeguridadList.get(indexTarjeta).sendKeys(codigoDeSeguridad);
         return this;
