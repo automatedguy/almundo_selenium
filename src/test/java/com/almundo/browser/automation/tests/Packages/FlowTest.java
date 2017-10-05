@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.tests.Package;
+package com.almundo.browser.automation.tests.Packages;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
@@ -30,8 +30,8 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void packageBookingToSomePlace() {
-        logTestTitle("Booking Package To Some Place.");
+    public void packagesBookingToSomePlace() {
+        logTestTitle("Booking Packages To Some Place.");
 
         dataManagement.getPackagesDataTripItinerary(PKG_10D_2A);
 
