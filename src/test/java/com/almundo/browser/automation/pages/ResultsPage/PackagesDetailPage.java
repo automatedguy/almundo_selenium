@@ -24,7 +24,7 @@ public class PackagesDetailPage extends TestBaseSetup {
     public CheckOutPageV3 comprarClick(){
         logger.info("Details URL: " + "[" + driver.getCurrentUrl() + "]");
         logger.info("Clicking on: [Comprar] button");
-        WebElement comprarBtn = waitWithTryCatch(driver, comprarBtnLocator ,"Comprar", 5);
+        WebElement comprarBtn = waitWithTryCatch(driver, comprarBtnLocator ,"Comprar", 30);
         waitElementForClickable(driver, comprarBtn, 10, "Comprar Button");
         comprarBtn.click();
         return initCheckOutPageV3();

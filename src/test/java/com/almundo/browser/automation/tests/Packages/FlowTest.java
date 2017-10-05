@@ -16,12 +16,11 @@ import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 public class FlowTest extends TestBaseSetup {
 
     private final int option = 7;
-    private final int season = 2;
+    private final int season = 1;
 
     private PackagesDataTrip packagesDataTrip = null;
     private PackagesResultsPage packagesResultsPage = null;

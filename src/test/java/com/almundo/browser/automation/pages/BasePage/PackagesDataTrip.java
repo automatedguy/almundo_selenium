@@ -48,6 +48,7 @@ public class PackagesDataTrip extends BasePage {
     public PackagesDataTrip selectOrigin(String origin){
         logger.info("Selecting origin: [" + origin + "]");
         Select selectOriginSelect =  new Select(salgoDeDdl);
+        waitSelectContainsResults(selectOriginSelect, "Origin List", 5, 2);
         selectOriginSelect.selectByVisibleText(origin);
         return this;
     }
