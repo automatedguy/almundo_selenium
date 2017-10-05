@@ -269,6 +269,8 @@ public class Constants {
 
     public final static int FIRST_OPTION = 0;
 
+    public final static int FIRST_OPTION_O1 = 1;
+
     //INCONS
     public static final String TRIPS_ICO = "Vuelo+Hotel icon";
 

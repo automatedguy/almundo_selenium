@@ -551,7 +551,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CarsResultsPage.class);
     }
 
-    // protected PackagesDataTrip initPackagesResultsPage() { return PageFactory.initElements(driver, PackagesDataTrip.class); }
+    protected PackagesResultsPage initPackagesResultsPage() { return PageFactory.initElements(driver, PackagesResultsPage.class); }
 
     protected AssistanceResultsPage initAssistanceResultsPage(){
         return PageFactory.initElements(driver, AssistanceResultsPage.class);

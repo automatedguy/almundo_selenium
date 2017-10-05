@@ -4,10 +4,13 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.PackagesDataTrip;
+import com.almundo.browser.automation.pages.ResultsPage.PackagesResultsPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION;
+import static com.almundo.browser.automation.utils.Constants.FIRST_OPTION_O1;
 import static com.almundo.browser.automation.utils.Constants.PKG_10D_2A;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
@@ -17,6 +20,7 @@ public class FlowTest extends TestBaseSetup {
     private final int season = 2;
 
     private PackagesDataTrip packagesDataTrip = null;
+    private PackagesResultsPage packagesResultsPage = null;
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
@@ -39,8 +43,11 @@ public class FlowTest extends TestBaseSetup {
         packagesDataTrip.setDestination(option);
         packagesDataTrip.selectSeason(season);
         packagesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
-        packagesDataTrip.clickBuscarBtn();
-        waitImplicitly(1000);
+        packagesResultsPage = packagesDataTrip.clickBuscarBtn();
+        packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
+
+
+        waitImplicitly(5000);
 
     }
 }

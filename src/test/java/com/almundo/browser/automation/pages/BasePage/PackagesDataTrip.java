@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
+import com.almundo.browser.automation.pages.ResultsPage.PackagesResultsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -103,9 +104,9 @@ public class PackagesDataTrip extends BasePage {
         return this;
     }
 
-    public PackagesDataTrip clickBuscarBtn() {
+    public PackagesResultsPage clickBuscarBtn() {
         logger.info("Clicking on button: [Buscar]");
         buscarBtn.click();
-        return this;
+        return initPackagesResultsPage();
     }
 }
