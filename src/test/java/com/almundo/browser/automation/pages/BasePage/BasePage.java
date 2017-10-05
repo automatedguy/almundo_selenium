@@ -35,6 +35,10 @@ public class BasePage extends TestBaseSetup {
         return initCarsDataTrip();
     }
 
+    public PackagesDataTrip packagesDataTrip(){
+        return initPackagesDataTrip();
+    }
+
     public AssistanceDataTrip assistanceDataTrip() {
         return initAssistanceDataTrip();
     }
@@ -136,6 +140,13 @@ public class BasePage extends TestBaseSetup {
         logger.info("Clicking on [Vuelos+Hotel button]");
         tripsIcon.click();
         return tripsDataTrip();
+    }
+
+    public PackagesDataTrip clickPackagesBtn(){
+        PageUtils.waitElementForClickable(driver, packagesIcon, 10, "Paquetes button");
+        logger.info("Clicking on [Paquetes button]");
+        packagesIcon.click();
+        return packagesDataTrip();
     }
 
     public AssistanceDataTrip clickAssistanceBtn() {

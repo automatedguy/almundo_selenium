@@ -255,6 +255,9 @@ public class Constants {
     public static final String MIA_10D_2A_2C_1R = "miami_10days_2adults_2childs_1room";
     public static final String DOM01_15D_2A_1C_1R = "domestic01_15days_2adults_1childs_1room";
 
+    //PACKAGES
+    public static final String PKG_10D_2A = "10days_2adults";
+
 
     //LISTS
     public static final List<String> FLIGHT_TYPE_LIST = asList("Ida y vuelta", "Solo ida", "Varias ciudades");

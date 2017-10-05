@@ -27,6 +27,9 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject autosDataTripList = null;
     private JSONObject autosDataTripItinerary = null;
 
+    private JSONObject packagesDataTripList = null;
+    private JSONObject packagesDataTripItinerary = null;
+
     private JSONObject assistanceDataTripList = null;
     private JSONObject assistanceDataTripItinerary = null;
 
@@ -158,6 +161,15 @@ public class DataManagement extends TestBaseSetup {
         childAgeRange = vueloDataTripItinerary.get("childAgeRange").toString();
 
         flightClass = vueloDataTripItinerary.get("flightClass").toString();
+    }
+
+    public void getPackagesInitneraryData(){
+        getPackagesDataTripList();
+        getPassengersList();
+        getPaymentList();
+        getBillingList();
+        getContactList();
+        getUsersDataList();
     }
 
     public void getAssistanceItineraryData(){
@@ -306,6 +318,23 @@ public class DataManagement extends TestBaseSetup {
         dropOffTime = autosDataTripItinerary.get("dropOffTime").toString();
 
         ageRange = autosDataTripItinerary.get("ageRange").toString();
+    }
+
+
+    // PAQUETES DATA TRIP
+    public void getPackagesDataTripList() {
+        packagesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "packages", countryPar.toLowerCase() + "_data.json");
+    }
+
+    public void getPackagesDataTripItinerary(String dataSet){
+        packagesDataTripItinerary = JsonRead.getJsonDataObject(packagesDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
+
+        originFull = packagesDataTripItinerary.get("originFull").toString();
+
+        adults = Integer.parseInt(packagesDataTripItinerary.get("adults").toString());
+        childs = Integer.parseInt(packagesDataTripItinerary.get("childs").toString());
+
+        rooms = Integer.parseInt(packagesDataTripItinerary.get("rooms").toString());
     }
 
     //ASSISTANCE DATA TRIP

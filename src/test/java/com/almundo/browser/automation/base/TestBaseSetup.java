@@ -433,6 +433,8 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CarsDataTrip.class);
     }
 
+    protected PackagesDataTrip initPackagesDataTrip(){ return PageFactory.initElements(driver, PackagesDataTrip.class); }
+
     protected AssistanceDataTrip initAssistanceDataTrip(){
         return PageFactory.initElements(driver, AssistanceDataTrip.class);
     }
@@ -548,6 +550,8 @@ public class TestBaseSetup {
     protected CarsResultsPage initCarsResultsPage() {
         return PageFactory.initElements(driver, CarsResultsPage.class);
     }
+
+    // protected PackagesDataTrip initPackagesResultsPage() { return PageFactory.initElements(driver, PackagesDataTrip.class); }
 
     protected AssistanceResultsPage initAssistanceResultsPage(){
         return PageFactory.initElements(driver, AssistanceResultsPage.class);
