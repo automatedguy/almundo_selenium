@@ -52,7 +52,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
     public void selectCreditCard(String cardName, String container) {
         List<WebElement> cardNames = bankSelected.findElements(By.cssSelector(container + " .cards .logo"));
         for(WebElement cardNameResult : cardNames){
-            if (cardNameResult.getAttribute("alt").equals(cardName)) {
+            if (cardNameResult.getAttribute("alt").equalsIgnoreCase(cardName)) {
                 logger.info("Selecting Card: [" + cardName + "]");
                 waitElementForClickable(driver, cardNameResult, 5, "Credit Card Clickable.");
                 PageUtils.scrollToElement(driver, cardNameResult);
@@ -67,7 +67,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
     private WebElement findBank(List<WebElement> results, List<WebElement> banks, String bankName ){
         int i;
         for (i = 0; i < results.size(); ++i) {
-            if (results.get(i).getAttribute("alt").equals(bankName)) {
+            if (results.get(i).getAttribute("alt").equalsIgnoreCase(bankName)) {
                 logger.info("Selecting Bank: [" + bankName + "]");
                 PageUtils.scrollToElement(driver, results.get(i));
                 PageUtils.waitImplicitly(1000);
