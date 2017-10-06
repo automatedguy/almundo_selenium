@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -96,7 +97,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = ".button-buy")
+    @FindBy(css = "input.button-buy")
     public WebElement comprarBtn;
 
     @FindBy(css = ".price__amount")
@@ -114,6 +115,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
             PageUtils.waitElementForClickable(driver, comprarBtn, 5, "Comprar button");
             logger.info("Clicking on Comprar Button");
+            waitImplicitly(1000);
             comprarBtn.click();
         } else {
             logger.info("Condition is not approved to submit reservation");
@@ -298,7 +300,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public AgreementPage termAndConditionsClick(){
         logger.info("Clicking on Terms and Conditions Link...");
-        PageUtils.waitImplicitly(1000);
+        waitImplicitly(1000);
         if(countryPar.equals(COLOMBIA)){
             terminosCondiciones = driver.findElement(By.cssSelector("div:nth-child(1) > label > a:nth-child(3)"));
         }
