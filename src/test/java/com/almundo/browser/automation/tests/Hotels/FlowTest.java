@@ -35,7 +35,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getHotelsItineraryData();
+        dataManagement.setHotelsItineraryData();
     }
 
     @BeforeMethod
@@ -62,7 +62,7 @@ public class FlowTest extends TestBaseSetup {
     public void int_Booking_Flow() {
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -79,15 +79,15 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                               dataManagement.getBillingData(LOCAL_BILLING),
-                                               dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+                                               dataManagement.setBillingData(LOCAL_BILLING),
+                                               dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -104,7 +104,7 @@ public class FlowTest extends TestBaseSetup {
     public void dom_Booking_Flow() {
         logTestTitle("Domestic - 15 days - 2 Adults - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary(DOM01_15D_2A_1R);
+        dataManagement.setHotelsDataTripItinerary(DOM01_15D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -121,13 +121,13 @@ public class FlowTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                                               dataManagement.getBillingData(LOCAL_BILLING),
-                                               dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+                                               dataManagement.setBillingData(LOCAL_BILLING),
+                                               dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
 
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -146,7 +146,7 @@ public class FlowTest extends TestBaseSetup {
     public void dom_Booking_Flow_PayAtDestination() {
         logTestTitle("Domestic - Pay At Destination - 15 days - 2 Adults - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary(DOM01_15D_2A_1R);
+        dataManagement.setHotelsDataTripItinerary(DOM01_15D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -165,13 +165,13 @@ public class FlowTest extends TestBaseSetup {
         hotelsDetailPage.clickPayAtDestination();
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DESTINATION_MASTER_1,
-                                        dataManagement.getBillingData(LOCAL_BILLING),
-                                        dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+                                        dataManagement.setBillingData(LOCAL_BILLING),
+                                        dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
 
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();

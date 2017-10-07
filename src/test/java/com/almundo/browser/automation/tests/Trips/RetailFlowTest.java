@@ -32,7 +32,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getTripsItineraryData();
+        dataManagement.setTripsItineraryData();
     }
 
     @AfterMethod
@@ -47,7 +47,7 @@ public class RetailFlowTest extends TestBaseSetup {
         logTestTitle("Domestic - 20 days - 2 Adults/1 Child - 1 Room");
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-        dataManagement.getTripsDataTripItinerary(DOM02_20D_2A_1C_1R);
+        dataManagement.setTripsDataTripItinerary(DOM02_20D_2A_1C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -65,13 +65,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE),TRIPS_CHECKOUT_DOM_RET);
+                dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.setContactData(CONTACT_CELL_PHONE),TRIPS_CHECKOUT_DOM_RET);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -84,7 +84,7 @@ public class RetailFlowTest extends TestBaseSetup {
         logTestTitle("International - 20 days - 2 Adults - 1 Room");
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-        dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+        dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -102,12 +102,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+                dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -122,7 +122,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -140,12 +140,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+                    VISA_MASTER, dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -163,7 +163,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -181,12 +181,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    DEPOSIT_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+                    DEPOSIT_MASTER, dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -204,7 +204,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -222,12 +222,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    VISA_TRANSFER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+                    VISA_TRANSFER, dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -245,7 +245,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -263,12 +263,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    AMEX_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+                    AMEX_VISA_MASTER, dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());

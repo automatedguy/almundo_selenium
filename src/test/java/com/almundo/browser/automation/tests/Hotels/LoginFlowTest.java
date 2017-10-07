@@ -33,12 +33,12 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getHotelsItineraryData();
+        dataManagement.setHotelsItineraryData();
     }
 
     @BeforeMethod
     private void doLogin(){
-        JSONObject userData = dataManagement.getUserData("email");
+        JSONObject userData = dataManagement.setUserData("email");
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
@@ -56,7 +56,7 @@ public class LoginFlowTest extends TestBaseSetup {
     public void login_Int_Booking_Flow() {
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -71,22 +71,22 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
-                                              dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+                                             RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
+                                              dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
     }
 
     @Test
     public void login_Dom_Booking_Flow() {
         logTestTitle("Domestic - 15 days - 2 Adults - 1 Room");
 
-        dataManagement.getHotelsDataTripItinerary(DOM01_15D_2A_1R);
+        dataManagement.setHotelsDataTripItinerary(DOM01_15D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
@@ -101,12 +101,12 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelsDetailPage.clickVerHabitacionesBtn();
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
-                                              dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+                                             RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
+                                              dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
     }
 }

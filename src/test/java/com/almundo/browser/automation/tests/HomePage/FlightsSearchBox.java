@@ -32,7 +32,7 @@ public class FlightsSearchBox extends TestBaseSetup {
 
     @BeforeClass
     private void initDataLists() {
-        dataManagement.getFlightsDataTripList();
+        dataManagement.setFlightsDataTripList();
     }
 
     @BeforeMethod
@@ -50,7 +50,7 @@ public class FlightsSearchBox extends TestBaseSetup {
     public void originEmpty() {
         logTestTitle("Flights Search Box - Leave origin field empty");
 
-        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
+        dataManagement.setRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -64,7 +64,7 @@ public class FlightsSearchBox extends TestBaseSetup {
     public void destinationEmpty() {
         logTestTitle("Flights Search Box - Leave destination field empty");
 
-        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
+        dataManagement.setRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);

@@ -22,7 +22,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getAssistanceItineraryData();
+        dataManagement.setAssistanceItineraryData();
     }
 
     @BeforeMethod
@@ -42,7 +42,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void Int_Booking_Flow() {
         logTestTitle("International - 2 Persons");
-        dataManagement.getAssistanceDataTripItinerary("miami_10days_2persons_unique");
+        dataManagement.setAssistanceDataTripItinerary("miami_10days_2persons_unique");
         assistanceDataTrip.selectTipoDeViaje(dataManagement.tripType);
         assistanceDataTrip.enterDestino(dataManagement.destinationAuto, dataManagement.destinationFull);
         assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.departureAssistanceCalendar, dataManagement.startDate);

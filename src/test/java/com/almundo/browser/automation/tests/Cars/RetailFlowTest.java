@@ -36,7 +36,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getCarsItineraryData();
+        dataManagement.setCarsItineraryData();
     }
 
     @BeforeMethod
@@ -54,7 +54,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow() {
         logTestTitle("International - 10 days");
-        dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+        dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -67,13 +67,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
         Assert.assertTrue(carsResultsPage.vacancy());
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                            dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                            dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+                            dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                            dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -92,7 +92,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow_Splitted_2cards() {
         logTestTitle("International - 10 days - VISA_MASTER");
         if(!countryPar.equals(MEXICO)) {
-            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+            dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -105,13 +105,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -127,7 +127,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
         logTestTitle("International - 10 days - DEPOSIT_MASTER");
         if(!countryPar.equals(MEXICO)) {
-            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+            dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -140,13 +140,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -162,7 +162,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
         logTestTitle("International - 10 days - TRANSFER_MASTER");
         if(!countryPar.equals(MEXICO)) {
-            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+            dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -175,13 +175,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -197,7 +197,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow_Splitted_3cards() {
         logTestTitle("International - 10 days - VISA_MASTER_AMEX");
         if(!countryPar.equals(MEXICO)) {
-            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+            dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -210,13 +210,13 @@ public class RetailFlowTest extends TestBaseSetup {
 
             Assert.assertTrue(carsResultsPage.vacancy());
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER_AMEX,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());

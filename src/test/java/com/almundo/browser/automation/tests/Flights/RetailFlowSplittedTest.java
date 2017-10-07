@@ -32,7 +32,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getFlightsItineraryData();
+        dataManagement.setFlightsItineraryData();
     }
 
     @BeforeMethod
@@ -59,7 +59,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - Splitted VISA_MASTER - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -80,12 +80,12 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_AMEX,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -107,7 +107,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - DEPOSIT_VISA - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -128,12 +128,12 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_VISA,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -155,7 +155,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - Splitted CASH_DEPOSIT - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -176,12 +176,12 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, CASH_DEPOSIT,
-                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -203,7 +203,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - Splitted CASH_TRANSFER - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -224,12 +224,12 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, CASH_TRANSFER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -251,7 +251,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - TRANSFER_VISA - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -272,12 +272,12 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_VISA,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -294,7 +294,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - 3 Cards - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -315,12 +315,12 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, AMEX_VISA_MASTER,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

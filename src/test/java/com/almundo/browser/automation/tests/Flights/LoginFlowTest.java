@@ -30,12 +30,12 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getFlightsItineraryData();
+        dataManagement.setFlightsItineraryData();
     }
 
     @BeforeMethod
     private void doLogin(){
-        JSONObject userData = dataManagement.getUserData("email");
+        JSONObject userData = dataManagement.setUserData("email");
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
@@ -53,7 +53,7 @@ public class LoginFlowTest extends TestBaseSetup {
     public void login_Int_Booking_Flow() {
         logTestTitle("International - 10 days - 2 Adults/2 Childs - Tourist");
 
-        dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -68,22 +68,22 @@ public class LoginFlowTest extends TestBaseSetup {
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
-                                               dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+                                              RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
+                                               dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
     }
 
     @Test
     public void login_Dom_Booking_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults - All");
 
-        dataManagement.getRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
+        dataManagement.setRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
         flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -98,12 +98,12 @@ public class LoginFlowTest extends TestBaseSetup {
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                              RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
-                                               dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
+                                              RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
+                                               dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
     }
 }

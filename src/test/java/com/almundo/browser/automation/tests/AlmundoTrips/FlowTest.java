@@ -47,9 +47,9 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getUsersDataList();
-        dataManagement.getTrippersDataTripList();
-        userData = dataManagement.getUserData("email");
+        dataManagement.setUsersDataList();
+        dataManagement.setTrippersDataTripList();
+        userData = dataManagement.setUserData("email");
     }
 
     @BeforeMethod
@@ -77,7 +77,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - createAlmundoTrip " + countryPar );
 
-        dataManagement.getAlmundoTripInfo("trip_111Days_NewYork");
+        dataManagement.setAlmundoTripInfo("trip_111Days_NewYork");
 
         createTrip = home.clickCreateTrip();
         createTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -104,7 +104,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Custom Event " + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         addEvent = dashboard.clickAddEvent();
@@ -132,7 +132,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Almundo Event Flight" + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         String tripName = dashboard.getTripTitle();
@@ -170,7 +170,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Almundo Event Hotel" + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         addEvent = dashboard.clickAddEvent();
@@ -196,7 +196,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Almundo Event Car" + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         addEvent = dashboard.clickAddEvent();

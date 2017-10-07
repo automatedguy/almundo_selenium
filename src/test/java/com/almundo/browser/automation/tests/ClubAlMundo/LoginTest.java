@@ -53,7 +53,7 @@ public class LoginTest extends TestBaseSetup {
 
     @BeforeClass
     private void initUserList() {
-        dataManagement.getUsersDataList();
+        dataManagement.setUsersDataList();
     }
 
     @BeforeMethod
@@ -82,7 +82,7 @@ public class LoginTest extends TestBaseSetup {
     public void login_email () {
         logTestTitle("Login with email and validate menu elements");
 
-        JSONObject userData = dataManagement.getUserData("email");
+        JSONObject userData = dataManagement.setUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
 
@@ -121,15 +121,15 @@ public class LoginTest extends TestBaseSetup {
         if(countryPar.equals(ARGENTINA)) {
             loginPopUp.clickCloseLoginBtn();
             loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
-            dataManagement.getUsersDataList();
-            userData = dataManagement.getUserData("email");
+            dataManagement.setUsersDataList();
+            userData = dataManagement.setUserData("email");
             loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
             basePage = loginPopUp.clickIngresarBtn();
 
             Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
-            dataManagement.getFlightsItineraryData();
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
+            dataManagement.setFlightsItineraryData();
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
             flightsDataTrip = basePage.clickFlightsBtn();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -146,18 +146,18 @@ public class LoginTest extends TestBaseSetup {
             flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
             flightsResultsPage.clickTicketVuelta(FIRST_OPTION + 1);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+                                    REWARDS_VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
+                                    dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
             getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -179,15 +179,15 @@ public class LoginTest extends TestBaseSetup {
         if(countryPar.equals(ARGENTINA)) {
             loginPopUp.clickCloseLoginBtn();
             loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
-            dataManagement.getUsersDataList();
-            userData = dataManagement.getUserData("email");
+            dataManagement.setUsersDataList();
+            userData = dataManagement.setUserData("email");
             loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
             basePage = loginPopUp.clickIngresarBtn();
 
             Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
-            dataManagement.getCarsItineraryData();
-            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+            dataManagement.setCarsItineraryData();
+            dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
             basePage.clickCarsBtn();
             carsDataTrip = basePage.carsDataTrip();
@@ -206,13 +206,13 @@ public class LoginTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+                                    REWARDS_VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
+                                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
             getCarsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

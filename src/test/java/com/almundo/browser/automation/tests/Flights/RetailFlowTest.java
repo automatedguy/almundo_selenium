@@ -32,7 +32,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getFlightsItineraryData();
+        dataManagement.setFlightsItineraryData();
     }
 
     @BeforeMethod
@@ -57,7 +57,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Dom_Booking_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults - All");
 
-        dataManagement.getRoundTripDataTripItinerary(DOMESTIC_30D_2A_ALL);
+        dataManagement.setRoundTripDataTripItinerary(DOMESTIC_30D_2A_ALL);
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -77,12 +77,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM_RET);
+                                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM_RET);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -99,7 +99,7 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow() {
         logTestTitle("International - 20 days - 2 Adults - Tourist");
 
-        dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -120,12 +120,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                                dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                                dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

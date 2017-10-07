@@ -33,7 +33,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getTripsItineraryData();
+        dataManagement.setTripsItineraryData();
     }
 
     @BeforeMethod
@@ -54,7 +54,7 @@ public class FlowTest extends TestBaseSetup {
     public void int_Booking_Flow(){
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
 
-        dataManagement.getTripsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -68,15 +68,15 @@ public class FlowTest extends TestBaseSetup {
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NAT_TRIPS);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NAT_TRIPS);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                              dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                              dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+                                              dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                                              dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -87,7 +87,7 @@ public class FlowTest extends TestBaseSetup {
     public void int_Booking_Flow_with2Cards(){
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room - VISA_1 and MASTER_1");
 
-        dataManagement.getTripsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -101,15 +101,15 @@ public class FlowTest extends TestBaseSetup {
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1, MASTER_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+                dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -120,7 +120,7 @@ public class FlowTest extends TestBaseSetup {
     public void dom_Booking_Flow(){
         logTestTitle("Domestic - 15 days - 2 Adults/1 Child - 1 Room");
 
-        dataManagement.getTripsDataTripItinerary(DOM01_15D_2A_1C_1R);
+        dataManagement.setTripsDataTripItinerary(DOM01_15D_2A_1C_1R);
 
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -135,14 +135,14 @@ public class FlowTest extends TestBaseSetup {
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                                              dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                              dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
+                                              dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
+                                              dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

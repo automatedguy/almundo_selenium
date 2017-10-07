@@ -30,7 +30,7 @@ public class FlowTest extends TestBaseSetup {
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initItineraryData(){ dataManagement.getPackagesInitneraryData();}
+    private void initItineraryData(){ dataManagement.setPackagesInitneraryData();}
 
     @BeforeMethod
     private void closeLoginPopUp(){
@@ -43,7 +43,7 @@ public class FlowTest extends TestBaseSetup {
     public void packagesBookingToSomePlace() {
         logTestTitle("Booking Packages To Some Place.");
 
-        dataManagement.getPackagesDataTripItinerary(PKG_10D_2A);
+        dataManagement.setPackagesDataTripItinerary(PKG_10D_2A);
 
         packagesDataTrip.selectOrigin(dataManagement.originFull);
         packagesDataTrip.setDestination(option);
@@ -57,8 +57,8 @@ public class FlowTest extends TestBaseSetup {
         checkOutPageV3 = packagesDetailPage.comprarClick();
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                        dataManagement.getBillingData(LOCAL_BILLING),
-                                        dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+                                        dataManagement.setBillingData(LOCAL_BILLING),
+                                        dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

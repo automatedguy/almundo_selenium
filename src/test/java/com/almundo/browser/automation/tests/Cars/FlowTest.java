@@ -32,7 +32,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getCarsItineraryData();
+        dataManagement.setCarsItineraryData();
     }
 
     @BeforeMethod
@@ -62,7 +62,7 @@ public class FlowTest extends TestBaseSetup {
             logger.warn(NO_DOMESTIC_CARS_COLOMBIA);
             logger.warn(NO_DOMESTIC_CARS_COLOMBIA_TICKET);}
         else {
-            dataManagement.getCarsDataTripItinerary(CAP_10D_21_24);
+            dataManagement.setCarsDataTripItinerary(CAP_10D_21_24);
 
             carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -77,13 +77,13 @@ public class FlowTest extends TestBaseSetup {
             Assert.assertTrue(carsResultsPage.vacancy());
             Assert.assertTrue(carsResultsPage.processed());
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                    dataManagement.getBillingData(LOCAL_BILLING),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+                    dataManagement.setBillingData(LOCAL_BILLING),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
 
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -100,7 +100,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void int_Booking_Flow() {
         logTestTitle("International - 10 days");
-        dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+        dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
         carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
@@ -115,13 +115,13 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(carsResultsPage.vacancy());
         Assert.assertTrue(carsResultsPage.processed());
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                                    dataManagement.getBillingData(LOCAL_BILLING),
-                                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+                                    dataManagement.setBillingData(LOCAL_BILLING),
+                                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

@@ -63,8 +63,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
     @BeforeClass
     private void initUserList() {
-        dataManagement.getUsersDataList();
-        userData = dataManagement.getUserData("email");
+        dataManagement.setUsersDataList();
+        userData = dataManagement.setUserData("email");
     }
 
     @BeforeMethod
@@ -83,8 +83,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     public void flightsAvailabilityLogin(){
         logTestTitle("Search Flight And Login With Email");
 
-        dataManagement.getFlightsItineraryData();
-        dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
+        dataManagement.setFlightsItineraryData();
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
         flightsDataTrip = basePage.clickFlightsBtn();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -114,16 +114,16 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+                VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
+                dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -135,8 +135,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     public void flightsAvailabilityLoginBooking(){
         logTestTitle("Search Flight - Login With Email On Result Page - And book using Rewards Points");
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getFlightsItineraryData();
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
+            dataManagement.setFlightsItineraryData();
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
             flightsDataTrip = basePage.clickFlightsBtn();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -166,18 +166,18 @@ public class AvailabilityLoginTest extends TestBaseSetup {
             flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
             flightsResultsPage.clickTicketVuelta(FIRST_OPTION + 1);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+                    REWARDS_VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
             getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -197,8 +197,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     public void hotelsAvailabilityLogin(){
         logTestTitle("Search Hotel And Login With Email");
 
-        dataManagement.getHotelsItineraryData();
-        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setHotelsItineraryData();
+        dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         basePage.clickHotelsBtn();
 
@@ -229,15 +229,15 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                            MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
-                            dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+                            MASTER_1, dataManagement.setBillingData(LOCAL_BILLING),
+                            dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -248,8 +248,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     public void carsAvailabilityLogin(){
         logTestTitle("Search Car And Login With Email");
 
-        dataManagement.getCarsItineraryData();
-        dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+        dataManagement.setCarsItineraryData();
+        dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
         basePage.clickCarsBtn();
         carsDataTrip = basePage.carsDataTrip();
@@ -282,11 +282,11 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+                VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
+                dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -297,8 +297,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
     public void tripsAvailabilityLogin(){
         logTestTitle("Search Trips And Login With Email");
 
-        dataManagement.getTripsItineraryData();
-        dataManagement.getTripsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setTripsItineraryData();
+        dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -326,14 +326,14 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+                MASTER_1, dataManagement.setBillingData(LOCAL_BILLING),
+                dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

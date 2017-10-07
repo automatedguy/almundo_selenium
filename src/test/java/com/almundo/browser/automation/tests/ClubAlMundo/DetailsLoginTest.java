@@ -57,8 +57,8 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     @BeforeClass
     private void initUserList() {
-        dataManagement.getUsersDataList();
-        userData = dataManagement.getUserData("email");
+        dataManagement.setUsersDataList();
+        userData = dataManagement.setUserData("email");
     }
 
     @BeforeMethod
@@ -76,8 +76,8 @@ public class DetailsLoginTest extends TestBaseSetup {
     public void hotelsDetailsLogin(){
         logTestTitle("Search Hotel And Login With Email on Detail Page");
 
-        dataManagement.getHotelsItineraryData();
-        dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setHotelsItineraryData();
+        dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         basePage.clickHotelsBtn();
         hotelsDataTrip = basePage.hotelsDataTrip();
@@ -103,15 +103,15 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         hotelsDetailPage.clickVerHabitacionesBtn();
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
-        dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+                VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
+                dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -125,8 +125,8 @@ public class DetailsLoginTest extends TestBaseSetup {
         logTestTitle("Search Hotel And Login With Email on Detail Page");
         if(countryPar.equals(ARGENTINA)) {
 
-            dataManagement.getHotelsItineraryData();
-            dataManagement.getHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
+            dataManagement.setHotelsItineraryData();
+            dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
             basePage.clickHotelsBtn();
             hotelsDataTrip = basePage.hotelsDataTrip();
@@ -152,18 +152,18 @@ public class DetailsLoginTest extends TestBaseSetup {
 
             hotelsDetailPage.clickVerHabitacionesBtn();
 
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
-            dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
-            dataManagement.getPassengerData(CHILD_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
             checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
             checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+                    REWARDS_VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
+                    dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
             getHotelsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -184,8 +184,8 @@ public class DetailsLoginTest extends TestBaseSetup {
     public void tripsDetailsLogin(){
         logTestTitle("Search Trip And Login With Email on Detail Page");
 
-        dataManagement.getTripsItineraryData();
-        dataManagement.getTripsDataTripItinerary(MIA_10D_2A_2C_1R);
+        dataManagement.setTripsItineraryData();
+        dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
@@ -209,8 +209,8 @@ public class DetailsLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+                MASTER_1, dataManagement.setBillingData(LOCAL_BILLING),
+                dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
