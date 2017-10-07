@@ -45,7 +45,7 @@ public class FlightsDataTrip extends BasePage{
     public WebElement destinationFlightsTxt;
 
     @FindBy(id = "departure-flights")
-    public WebElement departureFlightsCalendar;
+    private WebElement departureFlightsCalendar;
 
     @FindBy(id = "arrival-flights")
     public WebElement arrivalFlightsCalendar;
@@ -91,10 +91,27 @@ public class FlightsDataTrip extends BasePage{
     public WebElement flightLegRow;
 
     @FindBy(id = "departure-flights-0")
-    public WebElement departureFlights0Calendar;
+    private WebElement departureFlights0Calendar;
 
     @FindBy(id = "departure-flights-1")
-    public WebElement departureFlights1Calendar;
+    private WebElement departureFlights1Calendar;
+
+
+    /********************************* Getters ********************************/
+
+    public WebElement getDepartureFlightsCalendar() {
+        return departureFlightsCalendar;
+    }
+
+    public WebElement getDepartureFlights0Calendar(){
+        return departureFlights0Calendar;
+    }
+
+    public WebElement getDepartureFlights1Calendar(){
+        return departureFlights1Calendar;
+    }
+
+
 
     //############################################### Actions ###############################################
 
