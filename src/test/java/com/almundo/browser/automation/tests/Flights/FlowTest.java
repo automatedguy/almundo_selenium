@@ -316,10 +316,10 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.setMultiDestFlight(dataManagement.getOriginAuto2(), dataManagement.getOriginFull2(), originCalendarLegOne);
-        flightsDataTrip.setMultiDestFlight(dataManagement.destinationAuto2, dataManagement.destinationFull2, destinationCalendarLegOne);
+        flightsDataTrip.setMultiDestFlight(dataManagement.getDestinationAuto2(), dataManagement.destinationFull2, destinationCalendarLegOne);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlights0Calendar, dataManagement.startDate2);
         flightsDataTrip.setMultiDestFlight(dataManagement.getOriginAuto3(), dataManagement.getOriginFull3(), originCalendarLegTwo);
-        flightsDataTrip.setMultiDestFlight(dataManagement.destinationAuto3, dataManagement.destinationFull3, destinationCalendarLegTwo);
+        flightsDataTrip.setMultiDestFlight(dataManagement.getDestinationAuto3(), dataManagement.getDestinationFull3(), destinationCalendarLegTwo);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlights1Calendar, dataManagement.startDate3);
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);

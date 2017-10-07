@@ -54,12 +54,12 @@ public class DataManagement extends TestBaseSetup {
     private String originFull3;
 
     public String destinationAuto;
-    public String destinationAuto2;
-    public String destinationAuto3;
+    private String destinationAuto2;
+    private String destinationAuto3;
 
     public String destinationFull;
     public String destinationFull2;
-    public String destinationFull3;
+    private String destinationFull3;
 
     public int startDate;
     public int startDate2;
@@ -107,6 +107,18 @@ public class DataManagement extends TestBaseSetup {
 
     public String getOriginFull3(){
         return originFull3;
+    }
+
+    public String getDestinationAuto2(){
+        return destinationAuto2;
+    }
+
+    public String getDestinationAuto3(){
+        return destinationAuto3;
+    }
+
+    public String getDestinationFull3(){
+        return destinationFull3;
     }
 
 
