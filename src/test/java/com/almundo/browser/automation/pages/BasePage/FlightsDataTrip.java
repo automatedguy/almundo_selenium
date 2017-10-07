@@ -103,11 +103,11 @@ public class FlightsDataTrip extends BasePage{
         return departureFlightsCalendar;
     }
 
-    public WebElement getDepartureFlights0Calendar(){
+    public WebElement getDepartureFlights2Calendar(){
         return departureFlights0Calendar;
     }
 
-    public WebElement getDepartureFlights1Calendar(){
+    public WebElement getDepartureFlights3Calendar(){
         return departureFlights1Calendar;
     }
 

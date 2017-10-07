@@ -57,7 +57,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setHotelsDataTripItinerary(DOM02_20D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -88,7 +88,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setHotelsDataTripItinerary("miami_10days_2adults_1room");
 
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -122,7 +122,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
             hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
             hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -160,7 +160,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
             hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
             hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -198,7 +198,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
             hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
             hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -236,7 +236,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
             hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
             hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();

@@ -61,9 +61,9 @@ public class DataManagement extends TestBaseSetup {
     private String destinationFull2;
     private String destinationFull3;
 
-    public int startDate;
-    public int startDate2;
-    public int startDate3;
+    private int startDate;
+    private int startDate2;
+    private int startDate3;
 
     public int endDate;
     public int adults;
@@ -84,6 +84,18 @@ public class DataManagement extends TestBaseSetup {
     public String eventDescription;
 
     /******************* Getters *******************/
+
+    public int getStartDate(){
+        return startDate;
+    }
+
+    public int getStartDate2(){
+        return startDate2;
+    }
+
+    public int getStartDate3(){
+        return startDate3;
+    }
 
      public String getOriginAuto(){
          return originAuto;

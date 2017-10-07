@@ -66,7 +66,7 @@ public class FlowTest extends TestBaseSetup {
 
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.getStartDate());
             carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
             carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
             carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
@@ -104,7 +104,7 @@ public class FlowTest extends TestBaseSetup {
 
         carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.getStartDate());
         carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
         carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
         carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
