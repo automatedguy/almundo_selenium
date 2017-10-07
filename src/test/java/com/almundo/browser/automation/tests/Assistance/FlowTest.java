@@ -44,7 +44,7 @@ public class FlowTest extends TestBaseSetup {
         logTestTitle("International - 2 Persons");
         dataManagement.setAssistanceDataTripItinerary("miami_10days_2persons_unique");
         assistanceDataTrip.selectTipoDeViaje(dataManagement.tripType);
-        assistanceDataTrip.enterDestino(dataManagement.destinationAuto, dataManagement.destinationFull);
+        assistanceDataTrip.enterDestino(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.departureAssistanceCalendar, dataManagement.startDate);
         assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.arrivalAssistanceCalendar, dataManagement.endDate);
         assistanceDataTrip.selectPersonas(dataManagement.persons);

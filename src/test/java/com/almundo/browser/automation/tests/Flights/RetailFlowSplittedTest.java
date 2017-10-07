@@ -63,8 +63,8 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -111,8 +111,8 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -159,8 +159,8 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -207,8 +207,8 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -255,8 +255,8 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -298,8 +298,8 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);

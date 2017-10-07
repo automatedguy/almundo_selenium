@@ -64,8 +64,8 @@ public class FlowTest extends TestBaseSetup {
         else {
             dataManagement.setCarsDataTripItinerary(CAP_10D_21_24);
 
-            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
             carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
@@ -102,8 +102,8 @@ public class FlowTest extends TestBaseSetup {
         logTestTitle("International - 10 days");
         dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
-        carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-        carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
         carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);

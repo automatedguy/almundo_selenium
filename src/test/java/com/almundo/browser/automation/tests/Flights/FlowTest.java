@@ -79,8 +79,8 @@ public class FlowTest extends TestBaseSetup {
             dataManagement.setOneWayDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
             flightsDataTrip.selectFlightType(ONE_WAY);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
             flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
@@ -116,8 +116,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setOneWayDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
         flightsDataTrip.selectFlightType(ONE_WAY);
-        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull );
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull() );
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
@@ -157,8 +157,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setOneWayDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
         flightsDataTrip.selectFlightType(ONE_WAY);
-        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
         flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
@@ -190,8 +190,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
         flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -233,8 +233,8 @@ public class FlowTest extends TestBaseSetup {
             dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
             flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -275,8 +275,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
         flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
         flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
@@ -312,11 +312,11 @@ public class FlowTest extends TestBaseSetup {
 
         flightsDataTrip.selectFlightType(MULTIDESTINATION);
         flightsDataTrip.clickAddLegLnk();
-        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull );
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull() );
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.setMultiDestFlight(dataManagement.getOriginAuto2(), dataManagement.getOriginFull2(), originCalendarLegOne);
-        flightsDataTrip.setMultiDestFlight(dataManagement.getDestinationAuto2(), dataManagement.destinationFull2, destinationCalendarLegOne);
+        flightsDataTrip.setMultiDestFlight(dataManagement.getDestinationAuto2(), dataManagement.getDestinationFull2(), destinationCalendarLegOne);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlights0Calendar, dataManagement.startDate2);
         flightsDataTrip.setMultiDestFlight(dataManagement.getOriginAuto3(), dataManagement.getOriginFull3(), originCalendarLegTwo);
         flightsDataTrip.setMultiDestFlight(dataManagement.getDestinationAuto3(), dataManagement.getDestinationFull3(), destinationCalendarLegTwo);

@@ -56,8 +56,8 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
-        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
         tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
@@ -89,8 +89,8 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
-        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
         tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
@@ -122,8 +122,8 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.setTripsDataTripItinerary(DOM01_15D_2A_1C_1R);
 
-        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
         tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);

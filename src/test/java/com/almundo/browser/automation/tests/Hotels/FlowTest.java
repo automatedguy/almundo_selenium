@@ -64,7 +64,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
 
-        hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
@@ -106,7 +106,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.setHotelsDataTripItinerary(DOM01_15D_2A_1R);
 
-        hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
@@ -148,7 +148,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.setHotelsDataTripItinerary(DOM01_15D_2A_1R);
 
-        hotelsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.startDate);
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
         hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);

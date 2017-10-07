@@ -53,7 +53,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         dataManagement.setRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.clickBuscarBtn();
 
         logger.info("Validating message: [" + MANDATORY_FLD_MSG + "]");
@@ -67,7 +67,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         dataManagement.setRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         flightsDataTrip.clickBuscarBtn();
 
         logger.info("Validating message: [" + MANDATORY_FLD_MSG + "]");
