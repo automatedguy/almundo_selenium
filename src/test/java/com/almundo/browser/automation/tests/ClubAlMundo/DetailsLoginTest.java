@@ -188,7 +188,7 @@ public class DetailsLoginTest extends TestBaseSetup {
         dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);

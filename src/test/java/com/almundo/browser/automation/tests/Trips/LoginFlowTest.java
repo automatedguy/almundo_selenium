@@ -59,7 +59,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
@@ -88,7 +88,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.setTripsDataTripItinerary(DOM01_15D_2A_1C_1R);
 
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);

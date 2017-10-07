@@ -55,7 +55,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
@@ -85,7 +85,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
         dataManagement.setRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);

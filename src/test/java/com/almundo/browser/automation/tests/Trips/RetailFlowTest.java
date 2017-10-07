@@ -50,7 +50,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setTripsDataTripItinerary(DOM02_20D_2A_1C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
@@ -87,7 +87,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
@@ -125,7 +125,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
@@ -166,7 +166,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
@@ -207,7 +207,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
@@ -248,7 +248,7 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
             tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);

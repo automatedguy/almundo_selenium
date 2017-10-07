@@ -88,7 +88,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         flightsDataTrip = basePage.clickFlightsBtn();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull );
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull );
         flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
@@ -140,7 +140,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
             flightsDataTrip = basePage.clickFlightsBtn();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
@@ -253,7 +253,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         basePage.clickCarsBtn();
         carsDataTrip = basePage.carsDataTrip();
-        carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
@@ -301,7 +301,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);

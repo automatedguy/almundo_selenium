@@ -56,7 +56,7 @@ public class RetailFlowTest extends TestBaseSetup {
         logTestTitle("International - 10 days");
         dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
-        carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
         carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
@@ -94,7 +94,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
-            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
@@ -129,7 +129,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
-            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
@@ -164,7 +164,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
-            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
@@ -199,7 +199,7 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
-            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
             carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
             carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);

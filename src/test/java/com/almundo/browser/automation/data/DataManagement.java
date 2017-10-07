@@ -45,24 +45,30 @@ public class DataManagement extends TestBaseSetup {
 
     private static JSONObject usersDataList = null;
 
-    public String originAuto;
+    private String originAuto;
+    private String originAuto2;
+    private String originAuto3;
+
     public String originFull;
-    public String originAuto2;
     public String originFull2;
-    public String originAuto3;
-    public String originFull3;
+    private String originFull3;
+
     public String destinationAuto;
-    public String destinationFull;
     public String destinationAuto2;
-    public String destinationFull2;
     public String destinationAuto3;
+
+    public String destinationFull;
+    public String destinationFull2;
     public String destinationFull3;
+
     public int startDate;
     public int startDate2;
     public int startDate3;
+
     public int endDate;
     public int adults;
     public int childs;
+
     public int rooms;
     public String tripType;
     public int persons;
@@ -76,6 +82,33 @@ public class DataManagement extends TestBaseSetup {
 
     public String eventName;
     public String eventDescription;
+
+    /******************* Getters *******************/
+
+     public String getOriginAuto(){
+         return originAuto;
+     }
+
+     public String getOriginAuto2(){
+         return originAuto2;
+     }
+
+    public String getOriginAuto3(){
+        return originAuto3;
+    }
+
+    public String getOriginFull(){
+        return originFull;
+    }
+
+    public String getOriginFull2(){
+        return originFull2;
+    }
+
+    public String getOriginFull3(){
+        return originFull3;
+    }
+
 
     //------------------------- HOME PAGE -----------------------------
 

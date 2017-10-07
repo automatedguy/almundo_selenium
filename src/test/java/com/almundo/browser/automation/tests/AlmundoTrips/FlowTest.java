@@ -111,7 +111,7 @@ public class FlowTest extends TestBaseSetup {
 
         addCustomEvent = addEvent.clickEventoPersonalizado();
         addCustomEvent.setNombreDeEvento(dataManagement.eventName);
-        addCustomEvent.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        addCustomEvent.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         addCustomEvent.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         addCustomEvent.setDescription(dataManagement.eventDescription);
         addCustomEvent.selectDateFromCalendar(addCustomEvent.checkinCalendar, dataManagement.startDate);
@@ -144,7 +144,7 @@ public class FlowTest extends TestBaseSetup {
         tripsFlightsData = initTripsFlightsData();
 
         tripsFlightsData.selectFlightType(ONE_WAY);
-        tripsFlightsData.setOrigin(dataManagement.originAuto,dataManagement.originFull);
+        tripsFlightsData.setOrigin(dataManagement.getOriginAuto(),dataManagement.originFull);
         tripsFlightsData.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
         tripsFlightsData.selectDateFromCalendar(tripsFlightsData.checkinCalendarFlights, dataManagement.startDate);
         flightsResultsPage = tripsFlightsData.clickBuscarVuelosBtn();
@@ -206,7 +206,7 @@ public class FlowTest extends TestBaseSetup {
 
         tripsCarsData = initTripsCarsData();
 
-        //searchInAlmundo.setOrigin(dataManagement.originAuto,dataManagement.originFull);
+        //searchInAlmundo.setOrigin(dataManagement.getOriginAuto(),dataManagement.originFull);
         tripsCarsData.setDestination(dataManagement.destinationAuto,dataManagement.destinationFull);
         tripsCarsData.selectDateFromCalendar(searchInAlmundo.checkinCalendarCars, dataManagement.startDate);
         tripsCarsData.selectDateFromCalendar(searchInAlmundo.checkinCalendarCars, dataManagement.startDate);

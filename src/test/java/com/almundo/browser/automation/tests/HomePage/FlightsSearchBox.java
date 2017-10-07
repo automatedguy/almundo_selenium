@@ -67,7 +67,7 @@ public class FlightsSearchBox extends TestBaseSetup {
         dataManagement.setRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
 
         flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.originFull);
         flightsDataTrip.clickBuscarBtn();
 
         logger.info("Validating message: [" + MANDATORY_FLD_MSG + "]");
