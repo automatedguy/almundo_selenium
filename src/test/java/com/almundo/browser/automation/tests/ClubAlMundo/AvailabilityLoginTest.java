@@ -7,7 +7,6 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -90,8 +89,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull() );
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
         flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
         flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
         flightsDataTrip.selectClass(dataManagement.getFlightClass());
@@ -121,7 +120,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
@@ -142,8 +141,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
             flightsDataTrip.selectFlightType(ROUND_TRIP);
             flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
             flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
             flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
             flightsDataTrip.selectClass(dataManagement.getFlightClass());
@@ -175,7 +174,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                     REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
@@ -204,8 +203,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+        hotelsDataTrip.setDate(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+        hotelsDataTrip.setDate(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
         hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
 
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -235,7 +234,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                             MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
                             dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
@@ -255,8 +254,8 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+        carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+        carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
         carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
         carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
         carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
@@ -284,7 +283,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
 
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
 
@@ -303,9 +302,9 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
-        tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+        tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
 
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
         Assert.assertTrue(tripsResultsPage.vacancy());
@@ -331,7 +330,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 

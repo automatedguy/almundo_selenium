@@ -186,7 +186,7 @@ public class BasePage extends TestBaseSetup {
         return initPromoPage();
     }
 
-    public BasePage selectDateFromCalendar(WebElement calendar, int daysAhead) {
+    public BasePage setDate(WebElement calendar, int daysAhead) {
         PageUtils.waitImplicitly(2000);
         calendar.click();
         PageUtils.waitListContainResults(driver, ".ui-datepicker-calendar a", 0);

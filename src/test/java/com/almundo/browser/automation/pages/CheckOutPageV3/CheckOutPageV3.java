@@ -225,11 +225,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/
 
-    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
-                                                 String paymentData,
-                                                 JSONObject billingData,
-                                                 JSONObject contactData,
-                                                 String productCheckOutPage) {
+    public CheckOutPageV3 setCheckOutInfo(JSONArray passengerList,
+                                          String paymentData,
+                                          JSONObject billingData,
+                                          JSONObject contactData,
+                                          String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
@@ -250,12 +250,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     /*************** Checkout full Population Methods Calls (2 Cards - Trips) ***********/
 
-    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
-                                                 String paymentData1,
-                                                 String paymentData2,
-                                                 JSONObject billingData,
-                                                 JSONObject contactData,
-                                                 String productCheckOutPage) {
+    public CheckOutPageV3 setCheckOutInfo(JSONArray passengerList,
+                                          String paymentData1,
+                                          String paymentData2,
+                                          JSONObject billingData,
+                                          JSONObject contactData,
+                                          String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());

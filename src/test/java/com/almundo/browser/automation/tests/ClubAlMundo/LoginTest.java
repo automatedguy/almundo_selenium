@@ -11,7 +11,6 @@ import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -135,8 +134,8 @@ public class LoginTest extends TestBaseSetup {
             flightsDataTrip.selectFlightType(ROUND_TRIP);
             flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
             flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
             flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
             flightsDataTrip.selectClass(dataManagement.getFlightClass());
@@ -155,7 +154,7 @@ public class LoginTest extends TestBaseSetup {
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
             getFlightsAssertionInfo();
@@ -193,8 +192,8 @@ public class LoginTest extends TestBaseSetup {
             carsDataTrip = basePage.carsDataTrip();
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
             carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
             carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
             carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
@@ -210,7 +209,7 @@ public class LoginTest extends TestBaseSetup {
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
             getCarsAssertionInfo();

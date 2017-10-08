@@ -78,7 +78,7 @@ public class TripsDataTrip extends BasePage {
         return this;
     }
 
-    public TripsDataTrip selectPassenger(int adults, int childs, int rooms) {
+    public TripsDataTrip setPassengers(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){

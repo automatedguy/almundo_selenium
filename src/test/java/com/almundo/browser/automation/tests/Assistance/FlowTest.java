@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.AssistanceDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.ResultsPage.AssistanceResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -45,8 +44,8 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setAssistanceDataTripItinerary("miami_10days_2persons_unique");
         assistanceDataTrip.selectTipoDeViaje(dataManagement.tripType);
         assistanceDataTrip.enterDestino(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.departureAssistanceCalendar, dataManagement.getStartDate());
-        assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.arrivalAssistanceCalendar, dataManagement.getEndDate());
+        assistanceDataTrip.setDate(assistanceDataTrip.departureAssistanceCalendar, dataManagement.getStartDate());
+        assistanceDataTrip.setDate(assistanceDataTrip.arrivalAssistanceCalendar, dataManagement.getEndDate());
         assistanceDataTrip.selectPersonas(dataManagement.persons);
         assistanceResultsPage = assistanceDataTrip.clickBuscarBtn();
     }

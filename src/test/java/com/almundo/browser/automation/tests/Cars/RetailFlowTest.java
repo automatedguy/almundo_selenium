@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.CarsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -58,8 +57,8 @@ public class RetailFlowTest extends TestBaseSetup {
 
         carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+        carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+        carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
         carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
         carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
         carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
@@ -71,7 +70,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                             dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                             dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
@@ -96,8 +95,8 @@ public class RetailFlowTest extends TestBaseSetup {
 
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
             carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
             carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
             carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
@@ -109,7 +108,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_MASTER,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_MASTER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
@@ -131,8 +130,8 @@ public class RetailFlowTest extends TestBaseSetup {
 
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
             carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
             carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
             carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
@@ -144,7 +143,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), DEPOSIT_MASTER,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DEPOSIT_MASTER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
@@ -166,8 +165,8 @@ public class RetailFlowTest extends TestBaseSetup {
 
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
             carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
             carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
             carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
@@ -179,7 +178,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), TRANSFER_MASTER,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TRANSFER_MASTER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
@@ -201,8 +200,8 @@ public class RetailFlowTest extends TestBaseSetup {
 
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
             carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
             carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
             carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
@@ -214,7 +213,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_MASTER_AMEX,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_MASTER_AMEX,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
