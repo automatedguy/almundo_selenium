@@ -52,8 +52,8 @@ public class RetailFlowTest extends TestBaseSetup {
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
         tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
@@ -89,8 +89,8 @@ public class RetailFlowTest extends TestBaseSetup {
         tripsDataTrip = basePage.clicksTripsBtn();
         tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
         tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
@@ -127,8 +127,8 @@ public class RetailFlowTest extends TestBaseSetup {
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
             tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
@@ -168,8 +168,8 @@ public class RetailFlowTest extends TestBaseSetup {
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
             tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
@@ -209,8 +209,8 @@ public class RetailFlowTest extends TestBaseSetup {
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
             tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
@@ -250,8 +250,8 @@ public class RetailFlowTest extends TestBaseSetup {
             tripsDataTrip = basePage.clicksTripsBtn();
             tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
             tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
