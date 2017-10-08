@@ -136,7 +136,7 @@ public class LoginTest extends TestBaseSetup {
             flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
+            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
             flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
             flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
             flightsDataTrip.selectClass(dataManagement.getFlightClass());
@@ -193,11 +193,11 @@ public class LoginTest extends TestBaseSetup {
             carsDataTrip = basePage.carsDataTrip();
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.getStartDate());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-            carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-            carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-            carsDataTrip.selectAgeRange(dataManagement.ageRange);
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
+            carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
+            carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
             carsResultsPage = carsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(carsResultsPage.vacancy());

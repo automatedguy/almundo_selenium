@@ -91,7 +91,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull() );
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
+        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
         flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
         flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
         flightsDataTrip.selectClass(dataManagement.getFlightClass());
@@ -143,7 +143,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
             flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
+            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
             flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
             flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
             flightsDataTrip.selectClass(dataManagement.getFlightClass());
@@ -205,7 +205,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
         hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
 
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -255,11 +255,11 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         carsDataTrip = basePage.carsDataTrip();
         carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.getStartDate());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-        carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-        carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-        carsDataTrip.selectAgeRange(dataManagement.ageRange);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+        carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
+        carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
+        carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(carsResultsPage.vacancy());
@@ -304,7 +304,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
         tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
 
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();

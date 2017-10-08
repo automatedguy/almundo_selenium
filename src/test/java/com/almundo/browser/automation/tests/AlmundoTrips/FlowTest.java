@@ -83,7 +83,7 @@ public class FlowTest extends TestBaseSetup {
         createTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         createTrip.setTripName(finalTripName = dataManagement.tripName + " " + randomString(7));
         createTrip.selectDateFromCalendar(createTrip.tripStartDateCalendar, dataManagement.getStartDate());
-        createTrip.selectDateFromCalendar(createTrip.tripEndDateCalendar, dataManagement.endDate);
+        createTrip.selectDateFromCalendar(createTrip.tripEndDateCalendar, dataManagement.getEndDate());
 
         tripConfirmation = createTrip.clickCreateTrip();
 
@@ -115,9 +115,9 @@ public class FlowTest extends TestBaseSetup {
         addCustomEvent.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         addCustomEvent.setDescription(dataManagement.eventDescription);
         addCustomEvent.selectDateFromCalendar(addCustomEvent.checkinCalendar, dataManagement.getStartDate());
-        addCustomEvent.selectPickUpTime(dataManagement.pickUpTime);
-        addCustomEvent.selectDateFromCalendar(addCustomEvent.checkoutCalendar, dataManagement.endDate);
-        addCustomEvent.selectDropOffTime(dataManagement.dropOffTime);
+        addCustomEvent.selectPickUpTime(dataManagement.getPickUpTime());
+        addCustomEvent.selectDateFromCalendar(addCustomEvent.checkoutCalendar, dataManagement.getEndDate());
+        addCustomEvent.selectDropOffTime(dataManagement.getDropOffTime());
         addCustomEvent.clickAgregarBtn();
 
         Assert.assertTrue(dashboard.eventCreated(dataManagement.eventName));

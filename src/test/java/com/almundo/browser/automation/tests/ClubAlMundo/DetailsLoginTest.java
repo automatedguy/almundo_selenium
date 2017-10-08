@@ -83,7 +83,7 @@ public class DetailsLoginTest extends TestBaseSetup {
         hotelsDataTrip = basePage.hotelsDataTrip();
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
         hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
 
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -132,7 +132,7 @@ public class DetailsLoginTest extends TestBaseSetup {
             hotelsDataTrip = basePage.hotelsDataTrip();
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
             hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
 
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
@@ -191,7 +191,7 @@ public class DetailsLoginTest extends TestBaseSetup {
         tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
         tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 

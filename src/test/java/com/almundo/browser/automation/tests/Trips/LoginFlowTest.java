@@ -62,7 +62,7 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
         tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
@@ -91,7 +91,7 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
+        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.getEndDate());
         tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 

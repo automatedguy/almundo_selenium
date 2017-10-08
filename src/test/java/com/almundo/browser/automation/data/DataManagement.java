@@ -65,7 +65,7 @@ public class DataManagement extends TestBaseSetup {
     private int startDate2;
     private int startDate3;
 
-    public int endDate;
+    private int endDate;
     private int adults;
     private int childs;
 
@@ -74,9 +74,9 @@ public class DataManagement extends TestBaseSetup {
     public int persons;
     private String childAgeRange;
     private String flightClass;
-    public String pickUpTime;
-    public String dropOffTime;
-    public String ageRange;
+    private String pickUpTime;
+    private String dropOffTime;
+    private String ageRange;
 
     public String tripName;
 
@@ -99,6 +99,10 @@ public class DataManagement extends TestBaseSetup {
 
     public int getStartDate(){
         return startDate;
+    }
+
+    public int getEndDate(){
+        return endDate;
     }
 
     public int getStartDate2(){
@@ -157,6 +161,17 @@ public class DataManagement extends TestBaseSetup {
         return destinationFull3;
     }
 
+    public String getPickUpTime(){
+        return pickUpTime;
+    }
+
+    public String getDropOffTime(){
+        return dropOffTime;
+    }
+
+    public String getAgeRange(){
+        return ageRange;
+    }
 
     //------------------------- HOME PAGE -----------------------------
 

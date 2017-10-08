@@ -25,10 +25,10 @@ public class CarsDataTrip extends BasePage {
     public WebElement destinationTxt;
 
     @FindBy(css = "#pickUpDate")
-    public WebElement pickUpDateCalendar;
+    private WebElement pickUpDateCalendar;
 
     @FindBy(css = "#dropOffDate")
-    public WebElement dropOffDateCalendar;
+    private WebElement dropOffDateCalendar;
 
     @FindBy(css = "#main-content am-searchbox div:nth-child(2) .ng-scope.epp-cl-1-6--dt > div > select")
     public WebElement pickUpTimeSelect;
@@ -41,6 +41,12 @@ public class CarsDataTrip extends BasePage {
 
     @FindBy(css = "#main-content am-searchbox div:nth-child(2) .epp-cl-1--tb.space-top-16 > div > input")
     private WebElement droppOffInDestiny;
+
+    /*****************************************  ***********************************************/
+
+    public WebElement getPickUpDateCalendar(){return pickUpDateCalendar;}
+
+    public WebElement getDropOffDateCalendar(){return dropOffDateCalendar;}
 
     //############################################### Actions ###############################################
 

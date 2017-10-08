@@ -46,7 +46,7 @@ public class FlowTest extends TestBaseSetup {
         assistanceDataTrip.selectTipoDeViaje(dataManagement.tripType);
         assistanceDataTrip.enterDestino(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.departureAssistanceCalendar, dataManagement.getStartDate());
-        assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.arrivalAssistanceCalendar, dataManagement.endDate);
+        assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.arrivalAssistanceCalendar, dataManagement.getEndDate());
         assistanceDataTrip.selectPersonas(dataManagement.persons);
         assistanceResultsPage = assistanceDataTrip.clickBuscarBtn();
     }

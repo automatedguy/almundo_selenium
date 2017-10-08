@@ -66,11 +66,11 @@ public class FlowTest extends TestBaseSetup {
 
             carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.getStartDate());
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-            carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-            carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-            carsDataTrip.selectAgeRange(dataManagement.ageRange);
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
+            carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
+            carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
 
             carsResultsPage = carsDataTrip.clickBuscarBtn();
 
@@ -104,11 +104,11 @@ public class FlowTest extends TestBaseSetup {
 
         carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.getStartDate());
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-        carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-        carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-        carsDataTrip.selectAgeRange(dataManagement.ageRange);
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+        carsDataTrip.selectDateFromCalendar(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+        carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
+        carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
+        carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
 
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
