@@ -47,7 +47,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     /***************************** Test Cases *****************************/
@@ -61,7 +61,7 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -77,9 +77,9 @@ public class LoginFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
-                                              dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                              dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
     }
 
     @Test
@@ -91,7 +91,7 @@ public class LoginFlowTest extends TestBaseSetup {
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -105,8 +105,8 @@ public class LoginFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
-                                              dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                              dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
     }
 }

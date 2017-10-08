@@ -48,7 +48,7 @@ public class LoginFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -63,7 +63,7 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
@@ -77,9 +77,9 @@ public class LoginFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
-                                              dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                              dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class LoginFlowTest extends TestBaseSetup {
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
@@ -105,8 +105,8 @@ public class LoginFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                             RANDOM, dataManagement.setBillingData(LOCAL_BILLING),
-                                              dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                                             RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                              dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
     }
 }

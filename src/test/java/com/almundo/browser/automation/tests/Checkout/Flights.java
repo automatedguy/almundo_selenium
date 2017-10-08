@@ -34,7 +34,7 @@ public class Flights extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getFlightsAssertionInfo(){
@@ -60,10 +60,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -79,9 +79,9 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TWOCARDS_VISA_MASTER,
-                                dataManagement.setBillingData(LOCAL_BILLING),
-                                dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
+                                dataManagement.getBillingData(LOCAL_BILLING),
+                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -95,10 +95,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -113,10 +113,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -131,10 +131,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -149,10 +149,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -167,10 +167,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -185,10 +185,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -203,10 +203,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -221,10 +221,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -239,10 +239,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -259,10 +259,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -277,10 +277,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -295,10 +295,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -313,10 +313,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -331,10 +331,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -349,10 +349,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -367,10 +367,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -385,10 +385,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -403,10 +403,10 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
-                dataManagement.setBillingData("local_Billing"),
-                dataManagement.setContactData("contact_cell_phone"),
+                dataManagement.getBillingData("local_Billing"),
+                dataManagement.getContactData("contact_cell_phone"),
                 "FlightsCheckOutPageInternational");
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();

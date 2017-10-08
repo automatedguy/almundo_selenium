@@ -8,7 +8,6 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.AgreementPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -48,7 +47,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void validateTermsAndConditions(){
@@ -82,9 +81,9 @@ public class FlowTest extends TestBaseSetup {
             flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(flightsResultsPage.vacancy());
@@ -97,9 +96,9 @@ public class FlowTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    VISA_3, dataManagement.setBillingData(LOCAL_BILLING),
-                    dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                    VISA_3, dataManagement.getBillingData(LOCAL_BILLING),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -119,9 +118,9 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull() );
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -133,9 +132,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                              dataManagement.setBillingData(LOCAL_BILLING),
-                                              dataManagement.setContactData(CONTACT_CELL_PHONE),FLIGHTS_CHECKOUT_INT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                                              dataManagement.getBillingData(LOCAL_BILLING),
+                                              dataManagement.getContactData(CONTACT_CELL_PHONE),FLIGHTS_CHECKOUT_INT);
 
         getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -160,9 +159,9 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -172,9 +171,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                                               dataManagement.setBillingData(LOCAL_BILLING),
-                                               dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_DOM);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), MASTER_1,
+                                               dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_DOM);
 
         validateTermsAndConditions();
 
@@ -194,9 +193,9 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -209,10 +208,10 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
                                               VISA_1,
-                                               dataManagement.setBillingData(LOCAL_BILLING),
-                                               dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+                                               dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
         getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -237,9 +236,9 @@ public class FlowTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(flightsResultsPage.vacancy());
@@ -250,9 +249,9 @@ public class FlowTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TWOCARDS_VISA_MASTER,
-                                                dataManagement.setBillingData(LOCAL_BILLING),
-                                                dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
+                                                dataManagement.getBillingData(LOCAL_BILLING),
+                                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
             getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -279,9 +278,9 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -292,9 +291,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                dataManagement.setBillingData(LOCAL_BILLING),
-                dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
 
         validateTermsAndConditions();
 
@@ -321,9 +320,9 @@ public class FlowTest extends TestBaseSetup {
         flightsDataTrip.setMultiDestFlight(dataManagement.getOriginAuto3(), dataManagement.getOriginFull3(), originCalendarLegTwo);
         flightsDataTrip.setMultiDestFlight(dataManagement.getDestinationAuto3(), dataManagement.getDestinationFull3(), destinationCalendarLegTwo);
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlights3Calendar(), dataManagement.getStartDate3());
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -333,9 +332,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                               dataManagement.setBillingData(LOCAL_BILLING),
-                                               dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                                               dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

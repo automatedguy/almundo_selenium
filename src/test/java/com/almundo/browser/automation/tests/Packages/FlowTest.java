@@ -48,7 +48,7 @@ public class FlowTest extends TestBaseSetup {
         packagesDataTrip.selectOrigin(dataManagement.getOriginFull());
         packagesDataTrip.setDestination(option);
         packagesDataTrip.selectSeason(season);
-        packagesDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         packagesResultsPage = packagesDataTrip.clickBuscarBtn();
         packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
 
@@ -56,9 +56,9 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = packagesDetailPage.comprarClick();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                        dataManagement.setBillingData(LOCAL_BILLING),
-                                        dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                                        dataManagement.getBillingData(LOCAL_BILLING),
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

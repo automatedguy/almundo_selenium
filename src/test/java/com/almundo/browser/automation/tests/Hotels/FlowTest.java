@@ -47,7 +47,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getAssertionInfo(){
@@ -67,7 +67,7 @@ public class FlowTest extends TestBaseSetup {
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -85,9 +85,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                               dataManagement.setBillingData(LOCAL_BILLING),
-                                               dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                                               dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -109,7 +109,7 @@ public class FlowTest extends TestBaseSetup {
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -125,9 +125,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                                               dataManagement.setBillingData(LOCAL_BILLING),
-                                               dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), MASTER_1,
+                                               dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
 
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -151,7 +151,7 @@ public class FlowTest extends TestBaseSetup {
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -169,9 +169,9 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DESTINATION_MASTER_1,
-                                        dataManagement.setBillingData(LOCAL_BILLING),
-                                        dataManagement.setContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), DESTINATION_MASTER_1,
+                                        dataManagement.getBillingData(LOCAL_BILLING),
+                                        dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
 
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();

@@ -46,7 +46,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     /***************************** Test Cases *****************************/
@@ -71,9 +71,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                            dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                            dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                            dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                            dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -109,9 +109,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -144,9 +144,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_MASTER,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), DEPOSIT_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -179,9 +179,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_MASTER,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), TRANSFER_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -214,9 +214,9 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_MASTER_AMEX,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_MASTER_AMEX,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());

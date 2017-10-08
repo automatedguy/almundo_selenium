@@ -42,7 +42,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getAssertionInfo(){
@@ -67,9 +67,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -83,9 +83,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_MALE_NATIVE);
             dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_AMEX,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_AMEX,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -115,9 +115,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -131,9 +131,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_MALE_NATIVE);
             dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_VISA,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), DEPOSIT_VISA,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -163,9 +163,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -179,9 +179,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_MALE_NATIVE);
             dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, CASH_DEPOSIT,
-                                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), CASH_DEPOSIT,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -211,9 +211,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -227,9 +227,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_MALE_NATIVE);
             dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, CASH_TRANSFER,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), CASH_TRANSFER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -259,9 +259,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -275,9 +275,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_MALE_NATIVE);
             dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_VISA,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), TRANSFER_VISA,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -302,9 +302,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -318,9 +318,9 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_MALE_NATIVE);
             dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, AMEX_VISA_MASTER,
-                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), AMEX_VISA_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

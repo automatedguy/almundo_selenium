@@ -44,7 +44,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getAssertionInfo(){
@@ -81,9 +81,9 @@ public class FlowTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                    dataManagement.setBillingData(LOCAL_BILLING),
-                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                    dataManagement.getBillingData(LOCAL_BILLING),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
 
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -119,9 +119,9 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
-                                    dataManagement.setBillingData(LOCAL_BILLING),
-                                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), MASTER_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

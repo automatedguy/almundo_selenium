@@ -63,7 +63,7 @@ public class LoginTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getFlightsAssertionInfo(){
@@ -137,9 +137,9 @@ public class LoginTest extends TestBaseSetup {
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
             flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -155,9 +155,9 @@ public class LoginTest extends TestBaseSetup {
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                    REWARDS_VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
-                                    dataManagement.setContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
             getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -210,9 +210,9 @@ public class LoginTest extends TestBaseSetup {
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                                    REWARDS_VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
-                                    dataManagement.setContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
             getCarsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

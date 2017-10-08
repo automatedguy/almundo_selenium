@@ -33,9 +33,9 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject assistanceDataTripList = null;
     private JSONObject assistanceDataTripItinerary = null;
 
-    public JSONObject passengersList = null;
+    private JSONObject passengersList = null;
     private JSONObject passengerData = null;
-    public JSONArray passengerJsonList = new JSONArray();
+    private JSONArray passengerJsonList = new JSONArray();
 
     private JSONObject paymentList = null;
 
@@ -66,14 +66,14 @@ public class DataManagement extends TestBaseSetup {
     private int startDate3;
 
     public int endDate;
-    public int adults;
-    public int childs;
+    private int adults;
+    private int childs;
 
     public int rooms;
     public String tripType;
     public int persons;
-    public String childAgeRange;
-    public String flightClass;
+    private String childAgeRange;
+    private String flightClass;
     public String pickUpTime;
     public String dropOffTime;
     public String ageRange;
@@ -84,6 +84,18 @@ public class DataManagement extends TestBaseSetup {
     public String eventDescription;
 
     /******************* Getters *******************/
+
+    public JSONArray getPassengerJsonList() {
+        return passengerJsonList;
+    }
+
+    public String getFlightClass(){ return flightClass;}
+
+    public int getAdults(){ return adults;}
+
+    public int getChilds() {return childs;}
+
+    public String getChildAgeRange(){return childAgeRange;}
 
     public int getStartDate(){
         return startDate;
@@ -148,6 +160,9 @@ public class DataManagement extends TestBaseSetup {
 
     //------------------------- HOME PAGE -----------------------------
 
+    public void clearPassengerJsonList(){
+        passengerJsonList = new JSONArray();
+    }
     //VUELOS DATA TRIP
 
     public void setFlightsItineraryData(){
@@ -464,7 +479,7 @@ public class DataManagement extends TestBaseSetup {
         billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
     }
 
-    public JSONObject setBillingData(String dataSet)  {
+    public JSONObject getBillingData(String dataSet)  {
         if(countryPar.equals("COLOMBIA") &&
                 dataSet.equals("local_Billing_sucursales") && method.contains("Trips.") &&
                 (baseURL.contains("ccr.") || baseURL.contains("sucursales."))) {
@@ -480,7 +495,7 @@ public class DataManagement extends TestBaseSetup {
         contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
     }
 
-    public JSONObject setContactData(String dataSet)  {
+    public JSONObject getContactData(String dataSet)  {
         JSONObject contactData = JsonRead.getJsonDataObject(contactList, dataSet, countryPar.toLowerCase() + "_data.json");
         return contactData;
     }

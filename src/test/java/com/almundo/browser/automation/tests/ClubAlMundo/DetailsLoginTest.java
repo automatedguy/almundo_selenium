@@ -69,7 +69,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     @Test
@@ -84,7 +84,7 @@ public class DetailsLoginTest extends TestBaseSetup {
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
         hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-        hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
 
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
@@ -109,9 +109,9 @@ public class DetailsLoginTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
-                dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -133,7 +133,7 @@ public class DetailsLoginTest extends TestBaseSetup {
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
             hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
             hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.endDate);
-            hotelsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
 
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
@@ -161,9 +161,9 @@ public class DetailsLoginTest extends TestBaseSetup {
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                    REWARDS_VISA_1, dataManagement.setBillingData(LOCAL_BILLING),
-                    dataManagement.setContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+            checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
             getHotelsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
@@ -192,7 +192,7 @@ public class DetailsLoginTest extends TestBaseSetup {
         tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.getStartDate());
         tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
@@ -208,9 +208,9 @@ public class DetailsLoginTest extends TestBaseSetup {
         Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
-                MASTER_1, dataManagement.setBillingData(LOCAL_BILLING),
-                dataManagement.setContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(),
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());

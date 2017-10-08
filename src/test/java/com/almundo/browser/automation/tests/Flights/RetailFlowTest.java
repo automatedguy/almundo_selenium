@@ -42,7 +42,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getAssertionInfo(){
@@ -65,9 +65,9 @@ public class RetailFlowTest extends TestBaseSetup {
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -80,9 +80,9 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
         dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                    dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                                    dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM_RET);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM_RET);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -107,9 +107,9 @@ public class RetailFlowTest extends TestBaseSetup {
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
         flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -123,9 +123,9 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
-                                dataManagement.setBillingData(LOCAL_BILLING_SUCURSALES),
-                                dataManagement.setContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+        checkOutPageV3.populateCheckOutPageV3(dataManagement.getPassengerJsonList(), VISA_1,
+                                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
