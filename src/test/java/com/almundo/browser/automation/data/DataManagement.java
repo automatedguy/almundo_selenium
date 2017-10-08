@@ -69,7 +69,7 @@ public class DataManagement extends TestBaseSetup {
     private int adults;
     private int childs;
 
-    public int rooms;
+    private int rooms;
     public String tripType;
     public int persons;
     private String childAgeRange;
@@ -172,6 +172,8 @@ public class DataManagement extends TestBaseSetup {
     public String getAgeRange(){
         return ageRange;
     }
+
+    public int getRooms(){ return rooms;}
 
     //------------------------- HOME PAGE -----------------------------
 

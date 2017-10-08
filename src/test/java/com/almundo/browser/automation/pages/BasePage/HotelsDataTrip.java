@@ -24,13 +24,13 @@ public class HotelsDataTrip extends BasePage {
     //############################################### Locators ##############################################
 
     @FindBy(id = "destination-hotels")
-    public WebElement destinationHotelTxt;
+    private WebElement destinationHotelTxt;
 
     @FindBy(css = "input[name^='am-range-datepicker-from']")
-    public WebElement checkinCalendar;
+    private WebElement checkinCalendar;
 
     @FindBy(css = "input[name^='am-range-datepicker-to']")
-    public WebElement checkoutCalendar;
+    private WebElement checkoutCalendar;
 
     @FindBy(css = ".row-rooms>.sub")
     public WebElement subRoomBtn;
@@ -49,6 +49,12 @@ public class HotelsDataTrip extends BasePage {
 
     @FindBy(css = ".row-room-details>div:nth-of-type(2)>.add")
     public WebElement addChildBtn;
+
+    /******************************* Getters *******************************/
+
+    public WebElement getCheckinCalendar(){ return checkinCalendar;}
+
+    public WebElement getCheckoutCalendar(){return checkoutCalendar;}
 
     //############################################### Actions ###############################################
 

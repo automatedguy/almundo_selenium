@@ -48,7 +48,7 @@ public class FlowTest extends TestBaseSetup {
         packagesDataTrip.selectOrigin(dataManagement.getOriginFull());
         packagesDataTrip.setDestination(option);
         packagesDataTrip.selectSeason(season);
-        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
+        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         packagesResultsPage = packagesDataTrip.clickBuscarBtn();
         packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
 

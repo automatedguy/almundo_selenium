@@ -57,9 +57,9 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setHotelsDataTripItinerary(DOM02_20D_2A_1R);
 
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
-        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         setUrlParameter(driver, "&PAYMENT_METHOD=PREPAID");
@@ -88,9 +88,9 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setHotelsDataTripItinerary("miami_10days_2adults_1room");
 
         hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
-        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+        hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -122,9 +122,9 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
-            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -160,9 +160,9 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
-            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -198,9 +198,9 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
-            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(hotelsResultsPage.vacancy());
@@ -236,9 +236,9 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
 
             hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkinCalendar, dataManagement.getStartDate());
-            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.checkoutCalendar, dataManagement.getEndDate());
-            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.rooms);
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+            hotelsDataTrip.selectDateFromCalendar(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+            hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(hotelsResultsPage.vacancy());
