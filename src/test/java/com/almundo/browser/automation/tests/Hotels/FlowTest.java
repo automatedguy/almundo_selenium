@@ -57,6 +57,7 @@ public class FlowTest extends TestBaseSetup {
 
     /***************************** Test Cases *****************************/
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void int_Booking_Flow() {
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
@@ -94,6 +95,48 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
         Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void int_Booking_Flow2CreditCards() {
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
+
+        dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_2C_1R);
+
+        hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        hotelsDataTrip.setDate(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+        hotelsDataTrip.setDate(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(hotelsResultsPage.vacancy());
+
+        // hotelsResultsPage.clickPrePaid();
+
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+        PageUtils.switchToNewTab(driver);
+        hotelsDetailPage.clickVerHabitacionesBtn();
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
+
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);

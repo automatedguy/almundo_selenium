@@ -53,7 +53,7 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
+                VISA_1,
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
                 "TripsCheckOutPageInternationalV3");

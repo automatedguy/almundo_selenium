@@ -19,7 +19,7 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 public class FlowTest extends TestBaseSetup {
 
-    private final int option = 7;
+    private final int option = 5;
     private final int season = 1;
 
     private PackagesDataTrip packagesDataTrip = null;
