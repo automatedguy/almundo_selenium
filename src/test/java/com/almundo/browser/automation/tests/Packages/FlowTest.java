@@ -39,6 +39,7 @@ public class FlowTest extends TestBaseSetup {
         packagesDataTrip = basePage.clickPackagesBtn();
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void packagesBookingToSomePlace() {
         logTestTitle("Booking Packages To Some Place.");
@@ -59,6 +60,34 @@ public class FlowTest extends TestBaseSetup {
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                         dataManagement.getBillingData(LOCAL_BILLING),
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void packagesBookingToSomePlace2Cards() {
+        logTestTitle("Booking Packages To Some Place.");
+
+        dataManagement.setPackagesDataTripItinerary(PKG_10D_2A);
+
+        packagesDataTrip.selectOrigin(dataManagement.getOriginFull());
+        packagesDataTrip.setDestination(option);
+        packagesDataTrip.selectSeason(season);
+        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        packagesResultsPage = packagesDataTrip.clickBuscarBtn();
+        packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
+
+        PageUtils.switchToNewTab(driver);
+
+        checkOutPageV3 = packagesDetailPage.comprarClick();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_INT);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
