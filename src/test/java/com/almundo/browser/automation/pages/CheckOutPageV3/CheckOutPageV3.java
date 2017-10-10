@@ -233,18 +233,20 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
-        setInputDef();
-        dealWithPaymentForm(paymentData);
-        passengerSection().populatePassengerSection(passengerList);
-        emergencyContact().populateEmergencyContact(contactData);
-        if(!paymentData.contains(DESTINATION)) {
-            billingSection().populateBillingSection(billingData);
+        if(checkoutFill){
+            setInputDef();
+            dealWithPaymentForm(paymentData);
+            passengerSection().populatePassengerSection(passengerList);
+            emergencyContact().populateEmergencyContact(contactData);
+            if(!paymentData.contains(DESTINATION)) {
+                billingSection().populateBillingSection(billingData);
+            }
+            contactSection().populateContactSection(contactData);
+            if(isRetailChannel()){
+                agentSectionV3().setAgentEmail(AGENT_EMAIL);
+            }
+            acceptConditions();
         }
-        contactSection().populateContactSection(contactData);
-        if(isRetailChannel()){
-            agentSectionV3().setAgentEmail(AGENT_EMAIL);
-        }
-        acceptConditions();
         return this;
     }
 
@@ -259,31 +261,33 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
-        setInputDef();
+        if(checkoutFill) {
+            setInputDef();
 
-        if(paymentSelectorSvd){
-            paymentSelectorV3().selectTwoCreditCardsRdb();
-        } else if(paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
-                    paymentSelectorV3().selectTwoCreditCardsRdb();
+            if (paymentSelectorSvd) {
+                paymentSelectorV3().selectTwoCreditCardsRdb();
+            } else if (paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
+                paymentSelectorV3().selectTwoCreditCardsRdb();
+            }
+
+            if (creditCardComboSc) {
+                paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+                creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+                paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+                creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+            } else {
+                paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+                creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+                paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+                creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+            }
+
+            passengerSection().populatePassengerSection(passengerList);
+            emergencyContact().populateEmergencyContact(contactData);
+            billingSection().populateBillingSection(billingData);
+            contactSection().populateContactSection(contactData);
+            acceptConditions();
         }
-
-        if(creditCardComboSc){
-            paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
-            creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
-            paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
-            creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
-        } else{
-            paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
-            creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
-            paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
-            creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
-        }
-
-        passengerSection().populatePassengerSection(passengerList);
-        emergencyContact().populateEmergencyContact(contactData);
-        billingSection().populateBillingSection(billingData);
-        contactSection().populateContactSection(contactData);
-        acceptConditions();
         return this;
     }
 
