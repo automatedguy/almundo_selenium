@@ -109,6 +109,21 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = "div:nth-child(1) > label > a")
     private WebElement terminosCondiciones;
 
+    @FindBy(css = "#product-resume product-detail am-flights-cluster > div > div:nth-child(1) am-flight-choice .origin .iata.hint--top-right")
+    public WebElement originAirport;
+
+    @FindBy(css = "#product-resume product-detail am-flights-cluster > div > div:nth-child(2) am-flight-choice .origin .iata.hint--top-right")
+    public WebElement destinationAirport;
+
+    @FindBy(css = "#product-resume am-flights-cluster div:nth-child(1) > div > div > label am-flight-choice .airline > span")
+    public WebElement airlineName;
+
+    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(1) > h3 > span.date")
+    public WebElement startDate;
+
+    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(2) > h3 > span.date")
+    public WebElement endDate;
+
     //############################################### Actions ##############################################
 
     public ThanksPageV3 clickComprarBtn(){

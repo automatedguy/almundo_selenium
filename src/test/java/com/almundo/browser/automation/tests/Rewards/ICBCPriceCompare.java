@@ -1,12 +1,10 @@
 package com.almundo.browser.automation.tests.Rewards;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPage.PaymentSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionGridV3;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -21,7 +19,6 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
  */
 public class ICBCPriceCompare extends TestBaseSetup {
 
-    private CheckOutPage checkOutPage = null;
     private PaymentSection paymentSection = null;
 
     private CheckOutPageV3 checkOutPageV3 = null;
@@ -35,15 +32,13 @@ public class ICBCPriceCompare extends TestBaseSetup {
     int almundo_visa_1 = 0;
     int almundo_visa_6 = 0;
     int almundo_visa_12 = 0;
-
-    int icbc_visa_1 = 0;
-    int icbc_visa_6 = 0;
-    int icbc_visa_12 = 0;
-
     int almundo_master_1 = 0;
     int almundo_master_6 = 0;
     int almundo_master_12 = 0;
 
+    int icbc_visa_1 = 0;
+    int icbc_visa_6 = 0;
+    int icbc_visa_12 = 0;
     int icbc_master_1 = 0;
     int icbc_master_6 = 0;
     int icbc_master_12 = 0;
@@ -73,10 +68,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
 
-/*        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
-        almundo_master_1 = checkOutPageV3.getTotalPrice();
-        paymentSectionGridV3.clickChangeCardLink();*/
-
         selectPaymentV3("6",BANCO_ICBC, VISA);
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
@@ -92,58 +83,28 @@ public class ICBCPriceCompare extends TestBaseSetup {
         selectPaymentV3("12",BANCO_ICBC, MASTERCARD);
         almundo_master_12 = checkOutPageV3.getTotalPrice();
 
-//        paymentSectionGridV3.clickChangeCardLink();
-//
-//        selectPaymentV3("18","Visa", "Visa");
-//        almundo_visa_18 = checkOutPageV3.getTotalPrice();
-//
-//        paymentSectionGridV3.clickChangeCardLink();
-//
-//        selectPaymentV3("18","Mastercard", "Mastercard");
-//        almundo_master_18 = checkOutPageV3.getTotalPrice();
-
         /****************** ICBC ******************/
 
-        checkOutPage = openIcbcCart(cartIdICBC);
-        paymentSection = checkOutPage.paymentSection();
+        checkOutPageV3 = openIcbcCart(cartIdICBC);
 
-        paymentSection.selectPaymentQty("1 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_1 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("1",BANCO_ICBC, VISA);
+        icbc_visa_1 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("1 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_1 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("6",BANCO_ICBC, VISA);
+        icbc_visa_6 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_6 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("6",BANCO_ICBC, MASTERCARD);
+        icbc_master_6 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_6 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("12",BANCO_ICBC, VISA);
+        icbc_visa_12 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_12 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
-
-        paymentSection.selectPaymentQty("12 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_12 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
-
-//        paymentSection.selectPaymentQty("18 cuotas");
-//
-//        selectCardAndBank("VI", "ICBC");
-//        icbc_visa_18 = checkOutPage.getTotalPrice();
-//
-//        selectCardAndBank("CA", "ICBC");
-//        icbc_master_18 = checkOutPage.getTotalPrice();
+        selectPaymentV3("12",BANCO_ICBC, MASTERCARD);
+        icbc_master_12 = checkOutPageV3.getTotalPrice();
 
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
@@ -190,10 +151,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
 
-/*        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
-        almundo_master_1 = checkOutPageV3.getTotalPrice();
-        paymentSectionGridV3.clickChangeCardLink();*/
-
         selectPaymentV3("6",BANCO_ICBC, VISA);
         almundo_visa_6 = checkOutPageV3.getTotalPrice();
         paymentSectionGridV3.clickChangeCardLink();
@@ -211,38 +168,26 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         /****************** ICBC ******************/
 
-        checkOutPage = openIcbcCart(cartIdICBC);
-        paymentSection = checkOutPage.paymentSection();
+        checkOutPageV3 = openIcbcCart(cartIdICBC);
 
-        paymentSection.selectPaymentQty("1 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_1 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("1",BANCO_ICBC, VISA);
+        icbc_visa_1 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("1 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_1 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("6",BANCO_ICBC, VISA);
+        icbc_visa_6 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_6 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("6",BANCO_ICBC, MASTERCARD);
+        icbc_master_6 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_6 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("12",BANCO_ICBC, VISA);
+        icbc_visa_12 = checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_12 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
-
-        paymentSection.selectPaymentQty("12 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_12 = checkOutPage.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("12",BANCO_ICBC, MASTERCARD);
+        icbc_master_12 = checkOutPageV3.getTotalPrice();
 
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
@@ -274,7 +219,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void airCanada() {
         logTestTitle("ICBC Store - Air Canada - ");
-        checkOutPageV3 = openAlmundoCart(cartId);
+        checkOutPageV3 = openAlmundoCart("59dd1ae0e4b038bba656739e");
 
         paymentSectionGridV3 = initPaymentSectionGridV3();
 
@@ -303,37 +248,36 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         /****************** ICBC ******************/
 
-        checkOutPage = openIcbcCart(cartIdICBC);
-        paymentSection = checkOutPage.paymentSection();
+        checkOutPageV3 = openIcbcCart("59dd1af7e4b038bba65673a6");
 
         paymentSection.selectPaymentQty("1 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_1 = checkOutPage.getTotalPrice();
+        icbc_visa_1 = checkOutPageV3.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
         paymentSection.selectPaymentQty("1 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_1 = checkOutPage.getTotalPrice();
+        icbc_master_1 = checkOutPageV3.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
         paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_6 = checkOutPage.getTotalPrice();
+        icbc_visa_6 = checkOutPageV3.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
         paymentSection.selectPaymentQty("6 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_6 = checkOutPage.getTotalPrice();
+        icbc_master_6 = checkOutPageV3.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
         paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_12 = checkOutPage.getTotalPrice();
+        icbc_visa_12 = checkOutPageV3.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
         paymentSection.selectPaymentQty("12 cuota");
         selectCardAndBank(MASTERCARD, BANCO_ICBC);
-        icbc_master_12 = checkOutPage.getTotalPrice();
+        icbc_master_12 = checkOutPageV3.getTotalPrice();
         paymentSection.clickChangeCardLink();
 
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
@@ -367,7 +311,52 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     private CheckOutPageV3 openAlmundoCart(String cartId){
         driver.navigate().to("https://almundo.com.ar/" + "checkout/" + cartId + "?");
+        forceCheckout();
+        return initCheckOutPageV3();
+    }
 
+    private CheckOutPageV3 openIcbcCart(String cartId){
+        driver.navigate().to(ICBC_URL + "checkout/" + cartId + "?");
+        forceCheckout();
+        //PageUtils.waitElementForVisibility(driver, By.cssSelector(".description-container"), 40, "Payments rows");
+        return initCheckOutPageV3();
+    }
+
+    private void selectPaymentV3(String payment, String bankName, String cardName) {
+        paymentSectionGridV3.setPayment(payment, ".card-container-1");
+        paymentSectionGridV3.setBank(bankName, ".card-container-1");
+        paymentSectionGridV3.setCreditCard(cardName, ".card-container-1");
+    }
+
+    private void selectCardAndBank(String creditCard, String bankName) {
+        paymentSection.selectBank(bankName);
+        paymentSection.selectCreditCard(creditCard);
+    }
+
+    private void printItineraryData() {
+        logger.info("--------------------------------------------------------------------------");
+        logger.info("Aerolínea: [" + checkOutPageV3.airlineName.getText() + "]");
+        logger.info("Fecha Salida: [" + checkOutPageV3.startDate.getText() + "]");
+        logger.info("Fecha Vuelta: [" + checkOutPageV3.endDate.getText() + "]");
+        logger.info("Desde: [" + checkOutPageV3.originAirport.getText() + " - " + checkOutPageV3.originAirport.getAttribute("tooltip-template") + "]");
+        logger.info("Hacia: [" + checkOutPageV3.destinationAirport.getText() + " - " + checkOutPageV3.destinationAirport.getAttribute("tooltip-template") + "]");
+        logger.info("--------------------------------------------------------------------------");
+    }
+
+    private void printPriceData(String cardName, String paymentQty, int almundoPrice, int icbcStorePrice) {
+        logger.info(cardName + " - " + paymentQty + " Cuota/s - Almundo: [" + almundoPrice + "]");
+        logger.info(cardName + " - " + paymentQty + " Cuota/s - ICBC   : [" + icbcStorePrice + "]" + "\n");
+        difference = almundoPrice - icbcStorePrice;
+    }
+
+    private boolean checkComparison(boolean softAssertResult){
+        if(!softAssertResult && !failedTest){
+            failedTest = true;
+        }
+        return softAssertResult;
+    }
+
+    private void forceCheckout() {
         try{
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
 
@@ -391,47 +380,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         } catch(Exception time) {
             time.printStackTrace();
         }
-        return initCheckOutPageV3();
+
     }
 
-    private CheckOutPage openIcbcCart(String cartId){
-        logger.info("Navigating to: [" + ICBC_URL + "cart/v2/" + cartId + "]");
-        driver.navigate().to(ICBC_URL + "cart/v2/" + cartId);
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(".description-container"), 40, "Payments rows");
-        return initCheckOutPage();
-    }
-
-    private void selectPaymentV3(String payment, String bankName, String cardName) {
-        paymentSectionGridV3.setPayment(payment, ".card-container-1");
-        paymentSectionGridV3.setBank(bankName, ".card-container-1");
-        paymentSectionGridV3.setCreditCard(cardName, ".card-container-1");
-    }
-
-    private void selectCardAndBank(String creditCard, String bankName) {
-        paymentSection.selectBank(bankName);
-        paymentSection.selectCreditCard(creditCard);
-    }
-
-    private void printItineraryData() {
-        logger.info("--------------------------------------------------------------------------");
-        logger.info("Aerolínea: [" + checkOutPage.airlineName.getText() + "]");
-        logger.info("Fecha Salida: [" + checkOutPage.startDate.getText() + "]");
-        logger.info("Fecha Vuelta: [" + checkOutPage.endDate.getText() + "]");
-        logger.info("Desde: [" + checkOutPage.originAirport.getText() + " - " + checkOutPage.originAirport.getAttribute("tooltip-template") + "]");
-        logger.info("Hacia: [" + checkOutPage.destinationAirport.getText() + " - " + checkOutPage.destinationAirport.getAttribute("tooltip-template") + "]");
-        logger.info("--------------------------------------------------------------------------");
-    }
-
-    private void printPriceData(String cardName, String paymentQty, int almundoPrice, int icbcStorePrice) {
-        logger.info(cardName + " - " + paymentQty + " Cuota/s - Almundo: [" + almundoPrice + "]");
-        logger.info(cardName + " - " + paymentQty + " Cuota/s - ICBC   : [" + icbcStorePrice + "]" + "\n");
-        difference = almundoPrice - icbcStorePrice;
-    }
-
-    private boolean checkComparison(boolean softAssertResult){
-        if(!softAssertResult && !failedTest){
-            failedTest = true;
-        }
-        return softAssertResult;
-    }
 }
