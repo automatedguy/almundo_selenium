@@ -4,8 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 import static com.almundo.browser.automation.utils.Constants.MEXICO;
-import static com.almundo.browser.automation.utils.PageUtils.waitElementForVisibility;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 07/08/17.
@@ -35,6 +37,9 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
 
     @FindBy(css = "")
     public WebElement assuranceDetailContent;
+
+    @FindBy(css ="#healthcross-input")
+    public List<WebElement> insuranceRdb;
 
     /**************************** Actions **********************************/
 
@@ -76,5 +81,32 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
         logger.info("Retrieving Trips Details.");
         logger.info("[" + tripsDetailContent.getText() + "]");
         return tripsDetailContent.getText();
+    }
+
+    public BreakDownSectionV3 dealWithInsurance(Boolean selectInsurance){
+        if(selectInsurance){
+            clickAddInsurance();
+        }else{
+            clickRemoveInsurance();
+        }
+        return this;
+    }
+
+    public BreakDownSectionV3 clickAddInsurance(){
+        logger.info("Adding Insurance, looking for the radio button.");
+        scrollToTop(driver);
+        scrollToCoordinate(driver, 400);
+        logger.info("Clicking on [Add Insurance] radio button.");
+        insuranceRdb.get(0).click();
+        return this;
+    }
+
+    public BreakDownSectionV3 clickRemoveInsurance(){
+        logger.info("Removing Insurance, looking for the radio button.");
+        scrollToTop(driver);
+        scrollToCoordinate(driver, 400);
+        logger.info("Clicking on [Remove Insurance] radio button.");
+        insuranceRdb.get(1).click();
+        return this;
     }
 }

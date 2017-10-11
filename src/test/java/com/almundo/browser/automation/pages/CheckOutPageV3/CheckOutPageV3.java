@@ -186,6 +186,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setUrlParameter("&stc=1");
         paymentSelectorV3().selectTwoCreditCardsRdb();
         paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
+        breakDownSectionV3().dealWithInsurance(addInsurance);
+        if(addInsurance){
+            paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
+        }
     }
 
     private void dealWithGridAndCombos(String paymentData){
