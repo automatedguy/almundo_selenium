@@ -72,7 +72,7 @@ public class Flights extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void twoCards() {
-        logTestTitle("Grid With Todo Pago");
+        logTestTitle("Payment with two cards");
         checkOutPageV3 = openCart(cartId, "&stc=1",productURl);
 
         getPassengersData();
@@ -80,6 +80,24 @@ public class Flights extends TestBaseSetup {
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
                                 dataManagement.getBillingData(LOCAL_BILLING),
                                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void twoCardsAddingInsurance() {
+        logTestTitle("Payment with two cards adding insurance");
+        addInsurance = true;
+        checkOutPageV3 = openCart(cartId, "&stc=1",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
