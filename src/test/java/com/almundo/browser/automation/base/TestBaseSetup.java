@@ -394,6 +394,8 @@ public class TestBaseSetup {
             catch(Exception ex){
                 logger.error("Communication with Saucelabs went wrong :( ");
             }
+        }else{
+            logger.info("Test " + result + "!");
         }
     }
 
