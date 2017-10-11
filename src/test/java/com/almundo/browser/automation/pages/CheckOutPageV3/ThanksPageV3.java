@@ -14,6 +14,7 @@ import static com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage.
 import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_V3_MSG;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
+import static com.almundo.browser.automation.utils.PageUtils.printStarsSeparator;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 
@@ -70,9 +71,9 @@ public class ThanksPageV3 extends BasePage {
 
     private void printReservationCode(String reservationCode){
         logger.info("Reservation Confirmed!");
-        logger.info("**********************************************");
+        printStarsSeparator();
         logger.info("Reservation Code:" + reservationCode);
-        logger.info("**********************************************");
+        printStarsSeparator();
     }
 
     private String normalizeItineraryInfo(String itineraryInfo){
@@ -113,6 +114,7 @@ public class ThanksPageV3 extends BasePage {
 
             if (finalPricePaid.getText().toString().equals(checkoutFinalPrice)) {
                 logger.info("Amount Paid is Ok.");
+                printStarsSeparator();
                 return true;
             } else {
                 logger.error("Amount paid assertion failure.");
@@ -121,6 +123,7 @@ public class ThanksPageV3 extends BasePage {
             }
         } else{
             logger.info("Condition is not approved for Payment validation");
+            printStarsSeparator();
             return true;
         }
     }
@@ -130,10 +133,12 @@ public class ThanksPageV3 extends BasePage {
             logger.info("Asserting Contact Info [" + contactEmail + "]");
             if (contactInfo.getText().toString().equals(contactEmail)) {
                 logger.info("Contact Info is Ok.");
+                printStarsSeparator();
                 return true;
             } else {
                 logger.error("Contact Info assertion failure.");
                 setResultSauceLabs(FAILED);
+                printStarsSeparator();
                 return false;
             }
         }else {
@@ -147,9 +152,11 @@ public class ThanksPageV3 extends BasePage {
             logger.info("Asserting Flights Info: [" + flightDetailInfo + "]");
             if (normalizeItineraryInfo(flightDetailContent.getText()).equals(normalizeItineraryInfo(flightDetailInfo))) {
                 logger.info("Flight Detail Info is Ok.");
+                printStarsSeparator();
                 return true;
             } else {
                 logger.error("Flight Detail assertion failure.");
+                printStarsSeparator();
                 return false;
             }
         } else {
@@ -163,9 +170,11 @@ public class ThanksPageV3 extends BasePage {
             logger.info("Asserting Hotel Info: [" + hotelDetailInfo + "]");
             if (normalizeItineraryInfo(hotelDetailContent.getText()).equals(normalizeItineraryInfo(hotelDetailInfo))) {
                 logger.info("Hotel Detail Info is Ok.");
+                printStarsSeparator();
                 return true;
             } else {
                 logger.error("Hotel Detail assertion failure.");
+                printStarsSeparator();
                 return false;
             }
         }else {
@@ -179,9 +188,11 @@ public class ThanksPageV3 extends BasePage {
             logger.info("Asserting Cars Info: [" + carsDetailInfo + "]");
             if (normalizeItineraryInfo(carsDetailContent.getText()).equals(normalizeItineraryInfo(carsDetailInfo))) {
                 logger.info("Cars Info is Ok.");
+                printStarsSeparator();
                 return true;
             } else {
                 logger.error("Cars assertion failure.");
+                printStarsSeparator();
                 return false;
             }
         }else{
@@ -195,9 +206,11 @@ public class ThanksPageV3 extends BasePage {
             logger.info("Asserting Trips Info: [" + tripsDetailInfo + "]");
             if (normalizeItineraryInfo(tripsDetailContent.getText()).equals(normalizeItineraryInfo(tripsDetailInfo))) {
                 logger.info("Trips Cars Info is Ok.");
+                printStarsSeparator();
                 return true;
             } else {
                 logger.error("Trips Cars assertion failure.");
+                printStarsSeparator();
                 return false;
             }
         }else{
@@ -214,10 +227,12 @@ public class ThanksPageV3 extends BasePage {
                 return true;
             } else {
                 logger.error("Hotel Assurance assertion failure.");
+                printStarsSeparator();
                 return false;
             }
         }else{
             logger.info("Condition is not approved for validation");
+            printStarsSeparator();
             return true;
         }
     }
@@ -261,6 +276,7 @@ public class ThanksPageV3 extends BasePage {
             }
             if (passengersOk) {
                 logger.info("Passengers Info is Ok.");
+                printStarsSeparator();
             }
             return passengersOk;
         }else{

@@ -239,6 +239,10 @@ public class PageUtils {
         System.out.println("=======================================================================");
     }
 
+    public static void printStarsSeparator(){
+        logger.info("**********************************************");
+    }
+
     public static void scrollToTop(WebDriver driver){
         ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0)");
     }
