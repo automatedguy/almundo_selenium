@@ -11,7 +11,6 @@ import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.sevices.Trips;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -47,9 +46,9 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getUsersDataList();
-        dataManagement.getTrippersDataTripList();
-        userData = dataManagement.getUserData("email");
+        dataManagement.setUsersDataList();
+        dataManagement.setTrippersDataTripList();
+        userData = dataManagement.setUserData("email");
     }
 
     @BeforeMethod
@@ -63,7 +62,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     /***************************** Test Cases *****************************/
@@ -77,13 +76,13 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - createAlmundoTrip " + countryPar );
 
-        dataManagement.getAlmundoTripInfo("trip_111Days_NewYork");
+        dataManagement.setAlmundoTripInfo("trip_111Days_NewYork");
 
         createTrip = home.clickCreateTrip();
-        createTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        createTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         createTrip.setTripName(finalTripName = dataManagement.tripName + " " + randomString(7));
-        createTrip.selectDateFromCalendar(createTrip.tripStartDateCalendar, dataManagement.startDate);
-        createTrip.selectDateFromCalendar(createTrip.tripEndDateCalendar, dataManagement.endDate);
+        createTrip.setDate(createTrip.tripStartDateCalendar, dataManagement.getStartDate());
+        createTrip.setDate(createTrip.tripEndDateCalendar, dataManagement.getEndDate());
 
         tripConfirmation = createTrip.clickCreateTrip();
 
@@ -104,20 +103,20 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Custom Event " + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         addEvent = dashboard.clickAddEvent();
 
         addCustomEvent = addEvent.clickEventoPersonalizado();
         addCustomEvent.setNombreDeEvento(dataManagement.eventName);
-        addCustomEvent.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        addCustomEvent.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
+        addCustomEvent.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        addCustomEvent.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
         addCustomEvent.setDescription(dataManagement.eventDescription);
-        addCustomEvent.selectDateFromCalendar(addCustomEvent.checkinCalendar, dataManagement.startDate);
-        addCustomEvent.selectPickUpTime(dataManagement.pickUpTime);
-        addCustomEvent.selectDateFromCalendar(addCustomEvent.checkoutCalendar, dataManagement.endDate);
-        addCustomEvent.selectDropOffTime(dataManagement.dropOffTime);
+        addCustomEvent.setDate(addCustomEvent.checkinCalendar, dataManagement.getStartDate());
+        addCustomEvent.selectPickUpTime(dataManagement.getPickUpTime());
+        addCustomEvent.setDate(addCustomEvent.checkoutCalendar, dataManagement.getEndDate());
+        addCustomEvent.selectDropOffTime(dataManagement.getDropOffTime());
         addCustomEvent.clickAgregarBtn();
 
         Assert.assertTrue(dashboard.eventCreated(dataManagement.eventName));
@@ -132,7 +131,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Almundo Event Flight" + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         String tripName = dashboard.getTripTitle();
@@ -144,9 +143,9 @@ public class FlowTest extends TestBaseSetup {
         tripsFlightsData = initTripsFlightsData();
 
         tripsFlightsData.selectFlightType(ONE_WAY);
-        tripsFlightsData.setOrigin(dataManagement.originAuto,dataManagement.originFull);
-        tripsFlightsData.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        tripsFlightsData.selectDateFromCalendar(tripsFlightsData.checkinCalendarFlights, dataManagement.startDate);
+        tripsFlightsData.setOrigin(dataManagement.getOriginAuto(),dataManagement.getOriginFull());
+        tripsFlightsData.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        tripsFlightsData.setDate(tripsFlightsData.checkinCalendarFlights, dataManagement.getStartDate());
         flightsResultsPage = tripsFlightsData.clickBuscarVuelosBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -170,7 +169,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Almundo Event Hotel" + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         addEvent = dashboard.clickAddEvent();
@@ -180,9 +179,9 @@ public class FlowTest extends TestBaseSetup {
 
         tripsHotelsData = initTripsHotelsData();
 
-        tripsHotelsData.setDestination(dataManagement.destinationAuto,dataManagement.destinationFull);
-        tripsHotelsData.selectDateFromCalendar(tripsHotelsData.checkinCalendarHotels, dataManagement.startDate);
-        tripsHotelsData.selectDateFromCalendar(tripsHotelsData.checkinCalendarHotels, dataManagement.startDate);
+        tripsHotelsData.setDestination(dataManagement.getDestinationAuto(),dataManagement.getDestinationFull());
+        tripsHotelsData.setDate(tripsHotelsData.checkinCalendarHotels, dataManagement.getStartDate());
+        tripsHotelsData.setDate(tripsHotelsData.checkinCalendarHotels, dataManagement.getStartDate());
 
         hotelsResultsPage = tripsHotelsData.clickBuscarHotelesBtn();
         waitImplicitly(7000);
@@ -196,7 +195,7 @@ public class FlowTest extends TestBaseSetup {
 
         logTestTitle("Trips Flow - Add Almundo Event Car" + countryPar );
 
-        dataManagement.getAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setAlmundoDataTripsItinerary("miami_10days_2adults_2childs_1room");
 
         dashboard = home.selectTripFromList(FIRST_OPTION);
         addEvent = dashboard.clickAddEvent();
@@ -206,10 +205,10 @@ public class FlowTest extends TestBaseSetup {
 
         tripsCarsData = initTripsCarsData();
 
-        //searchInAlmundo.setOrigin(dataManagement.originAuto,dataManagement.originFull);
-        tripsCarsData.setDestination(dataManagement.destinationAuto,dataManagement.destinationFull);
-        tripsCarsData.selectDateFromCalendar(searchInAlmundo.checkinCalendarCars, dataManagement.startDate);
-        tripsCarsData.selectDateFromCalendar(searchInAlmundo.checkinCalendarCars, dataManagement.startDate);
+        //searchInAlmundo.setOrigin(dataManagement.getOriginAuto(),dataManagement.getOriginFull());
+        tripsCarsData.setDestination(dataManagement.getDestinationAuto(),dataManagement.getDestinationFull());
+        tripsCarsData.setDate(searchInAlmundo.checkinCalendarCars, dataManagement.getStartDate());
+        tripsCarsData.setDate(searchInAlmundo.checkinCalendarCars, dataManagement.getStartDate());
 
         carsResultsPage = tripsCarsData.clickBuscarAutosBtn();
         waitImplicitly(7000);

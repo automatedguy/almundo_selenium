@@ -29,10 +29,10 @@ public class TripsDataTrip extends BasePage {
     public WebElement destinationTripsTxt;
 
     @FindBy(id = "departure-trips")
-    public WebElement departureCalendar;
+    private WebElement departureCalendar;
 
     @FindBy(id = "arrival-trips")
-    public WebElement arrivalCalendar;
+    private WebElement arrivalCalendar;
 
     @FindBy(css = ".row-rooms>.sub")
     public WebElement subRoomBtn;
@@ -51,6 +51,12 @@ public class TripsDataTrip extends BasePage {
 
     @FindBy(css = ".row-room-details>div:nth-of-type(2)>.add")
     public WebElement addChildBtn;
+
+    /********************************* Getters ********************************/
+
+    public WebElement getDepartureCalendar(){ return departureCalendar;}
+
+    public WebElement getArrivalCalendar(){return arrivalCalendar;}
 
     //############################################### Actions ###############################################
 
@@ -72,7 +78,7 @@ public class TripsDataTrip extends BasePage {
         return this;
     }
 
-    public TripsDataTrip selectPassenger(int adults, int childs, int rooms) {
+    public TripsDataTrip setPassengers(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){

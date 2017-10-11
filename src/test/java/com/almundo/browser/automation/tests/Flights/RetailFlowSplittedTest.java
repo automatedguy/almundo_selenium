@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -32,7 +31,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getFlightsItineraryData();
+        dataManagement.setFlightsItineraryData();
     }
 
     @BeforeMethod
@@ -42,7 +41,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getAssertionInfo(){
@@ -59,17 +58,17 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - Splitted VISA_MASTER - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -80,10 +79,10 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_AMEX,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_AMEX,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
@@ -107,17 +106,17 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - DEPOSIT_VISA - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -128,10 +127,10 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, DEPOSIT_VISA,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DEPOSIT_VISA,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
@@ -155,17 +154,17 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - Splitted CASH_DEPOSIT - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -176,10 +175,10 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, CASH_DEPOSIT,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), CASH_DEPOSIT,
                                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
@@ -203,17 +202,17 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - Splitted CASH_TRANSFER - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -224,10 +223,10 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, CASH_TRANSFER,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), CASH_TRANSFER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();
@@ -251,17 +250,17 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - TRANSFER_VISA - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -272,10 +271,10 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, TRANSFER_VISA,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TRANSFER_VISA,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
@@ -294,17 +293,17 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
         logTestTitle("International - 3 Cards - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip = basePage.flightsDataTrip();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -315,10 +314,10 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-            dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, AMEX_VISA_MASTER,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), AMEX_VISA_MASTER,
                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
             getAssertionInfo();

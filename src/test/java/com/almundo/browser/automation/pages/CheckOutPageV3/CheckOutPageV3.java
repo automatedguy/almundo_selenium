@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -96,7 +97,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = ".button-buy")
+    @FindBy(css = "input.button-buy")
     public WebElement comprarBtn;
 
     @FindBy(css = ".price__amount")
@@ -129,6 +130,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
             PageUtils.waitElementForClickable(driver, comprarBtn, 5, "Comprar button");
             logger.info("Clicking on Comprar Button");
+            waitImplicitly(1000);
             comprarBtn.click();
         } else {
             logger.info("Condition is not approved to submit reservation");
@@ -238,65 +240,69 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/
 
-    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
-                                                 String paymentData,
-                                                 JSONObject billingData,
-                                                 JSONObject contactData,
-                                                 String productCheckOutPage) {
+    public CheckOutPageV3 setCheckOutInfo(JSONArray passengerList,
+                                          String paymentData,
+                                          JSONObject billingData,
+                                          JSONObject contactData,
+                                          String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
-        setInputDef();
-        dealWithPaymentForm(paymentData);
-        passengerSection().populatePassengerSection(passengerList);
-        emergencyContact().populateEmergencyContact(contactData);
-        if(!paymentData.contains(DESTINATION)) {
-            billingSection().populateBillingSection(billingData);
+        if(checkoutFill){
+            setInputDef();
+            dealWithPaymentForm(paymentData);
+            passengerSection().populatePassengerSection(passengerList);
+            emergencyContact().populateEmergencyContact(contactData);
+            if(!paymentData.contains(DESTINATION)) {
+                billingSection().populateBillingSection(billingData);
+            }
+            contactSection().populateContactSection(contactData);
+            if(isRetailChannel()){
+                agentSectionV3().setAgentEmail(AGENT_EMAIL);
+            }
+            acceptConditions();
         }
-        contactSection().populateContactSection(contactData);
-        if(isRetailChannel()){
-            agentSectionV3().setAgentEmail(AGENT_EMAIL);
-        }
-        acceptConditions();
         return this;
     }
 
     /*************** Checkout full Population Methods Calls (2 Cards - Trips) ***********/
 
-    public CheckOutPageV3 populateCheckOutPageV3(JSONArray passengerList,
-                                                 String paymentData1,
-                                                 String paymentData2,
-                                                 JSONObject billingData,
-                                                 JSONObject contactData,
-                                                 String productCheckOutPage) {
+    public CheckOutPageV3 setCheckOutInfo(JSONArray passengerList,
+                                          String paymentData1,
+                                          String paymentData2,
+                                          JSONObject billingData,
+                                          JSONObject contactData,
+                                          String productCheckOutPage) {
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
-        setInputDef();
+        if(checkoutFill) {
+            setInputDef();
 
-        if(paymentSelectorSvd){
-            paymentSelectorV3().selectTwoCreditCardsRdb();
-        } else if(paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
-                    paymentSelectorV3().selectTwoCreditCardsRdb();
+            if (paymentSelectorSvd) {
+                paymentSelectorV3().selectTwoCreditCardsRdb();
+            } else if (paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
+                paymentSelectorV3().selectTwoCreditCardsRdb();
+            }
+
+            if (creditCardComboSc) {
+                paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+                creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+                paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+                creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+            } else {
+                paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+                creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+                paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+                creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+            }
+
+            passengerSection().populatePassengerSection(passengerList);
+            emergencyContact().populateEmergencyContact(contactData);
+            billingSection().populateBillingSection(billingData);
+            contactSection().populateContactSection(contactData);
+            acceptConditions();
         }
-
-        if(creditCardComboSc){
-            paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
-            creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
-            paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
-            creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
-        } else{
-            paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
-            creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
-            paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
-            creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
-        }
-
-        passengerSection().populatePassengerSection(passengerList);
-        emergencyContact().populateEmergencyContact(contactData);
-        billingSection().populateBillingSection(billingData);
-        contactSection().populateContactSection(contactData);
-        acceptConditions();
         return this;
     }
 
@@ -313,7 +319,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public AgreementPage termAndConditionsClick(){
         logger.info("Clicking on Terms and Conditions Link...");
-        PageUtils.waitImplicitly(1000);
+        waitImplicitly(1000);
         if(countryPar.equals(COLOMBIA)){
             terminosCondiciones = driver.findElement(By.cssSelector("div:nth-child(1) > label > a:nth-child(3)"));
         }

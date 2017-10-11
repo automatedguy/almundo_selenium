@@ -1,8 +1,6 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -129,12 +127,12 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     public PaymentTwoCreditCardsV3 populateTwoCreditCards(List<String> paymentDataList, int totalPrice){
         int container = 0;
         int paymentAmount = totalPrice / paymentDataList.size();
-        dataManagement.getPaymentList();
+        dataManagement.setPaymentList();
         setImporteTarjeta(String.valueOf(paymentAmount));
         logger.info("Populating 2 Credit Cards Payments");
         for(String paymentData : paymentDataList) {
             logger.info("Populating credit card N°: [" + (container + 1) + "]");
-            paymentDataObject = dataManagement.getPaymentData(paymentData);
+            paymentDataObject = dataManagement.setPaymentData(paymentData);
             setNumeroTarjeta(paymentDataObject.get("card_number").toString(), container);
             selectTarjeta(paymentDataObject.get("credit_card_name").toString(), container);
             selectBanco(paymentDataObject.get("bank_name_two_cards").toString(), container);

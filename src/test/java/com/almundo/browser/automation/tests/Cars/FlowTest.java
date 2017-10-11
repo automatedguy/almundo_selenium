@@ -7,7 +7,6 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -32,7 +31,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getCarsItineraryData();
+        dataManagement.setCarsItineraryData();
     }
 
     @BeforeMethod
@@ -44,7 +43,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getAssertionInfo(){
@@ -62,26 +61,26 @@ public class FlowTest extends TestBaseSetup {
             logger.warn(NO_DOMESTIC_CARS_COLOMBIA);
             logger.warn(NO_DOMESTIC_CARS_COLOMBIA_TICKET);}
         else {
-            dataManagement.getCarsDataTripItinerary(CAP_10D_21_24);
+            dataManagement.setCarsDataTripItinerary(CAP_10D_21_24);
 
-            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-            carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-            carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-            carsDataTrip.selectAgeRange(dataManagement.ageRange);
+            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
+            carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
+            carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
 
             carsResultsPage = carsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(carsResultsPage.vacancy());
             Assert.assertTrue(carsResultsPage.processed());
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                     dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
 
@@ -100,26 +99,26 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void int_Booking_Flow() {
         logTestTitle("International - 10 days");
-        dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+        dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
-        carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
-        carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-        carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-        carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-        carsDataTrip.selectAgeRange(dataManagement.ageRange);
+        carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+        carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+        carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
+        carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
+        carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
 
         carsResultsPage = carsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(carsResultsPage.vacancy());
         Assert.assertTrue(carsResultsPage.processed());
 
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), MASTER_1,
                                     dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
         getAssertionInfo();

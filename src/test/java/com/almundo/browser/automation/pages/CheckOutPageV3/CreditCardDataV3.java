@@ -82,8 +82,8 @@ public class CreditCardDataV3 extends CheckOutPageV3 {
         }
 
         logger.info("Getting payment data for: " + "[" + paymentData + "]");
-        dataManagement.getPaymentList();
-        paymentDataObject = dataManagement.getPaymentData(paymentData);
+        dataManagement.setPaymentList();
+        paymentDataObject = dataManagement.setPaymentData(paymentData);
 
         logger.info("------------- Filling Payment Section -------------");
         if(inputDef.isRequired("payments","credit_card_number",0)){

@@ -8,7 +8,6 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -32,12 +31,12 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getTripsItineraryData();
+        dataManagement.setTripsItineraryData();
     }
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
@@ -47,14 +46,14 @@ public class RetailFlowTest extends TestBaseSetup {
         logTestTitle("Domestic - 20 days - 2 Adults/1 Child - 1 Room");
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-        dataManagement.getTripsDataTripItinerary(DOM02_20D_2A_1C_1R);
+        dataManagement.setTripsDataTripItinerary(DOM02_20D_2A_1C_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+        tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
@@ -65,11 +64,11 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),TRIPS_CHECKOUT_DOM_RET);
 
@@ -84,14 +83,14 @@ public class RetailFlowTest extends TestBaseSetup {
         logTestTitle("International - 20 days - 2 Adults - 1 Room");
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-        dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+        dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
         tripsDataTrip = basePage.clicksTripsBtn();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+        tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
@@ -102,10 +101,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, MASTER_1,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), MASTER_1,
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
@@ -122,14 +121,14 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-            tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(tripsResultsPage.vacancy());
@@ -140,10 +139,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                     VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
@@ -163,14 +162,14 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-            tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(tripsResultsPage.vacancy());
@@ -181,10 +180,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                     DEPOSIT_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
@@ -204,14 +203,14 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-            tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(tripsResultsPage.vacancy());
@@ -222,10 +221,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                     VISA_TRANSFER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
@@ -245,14 +244,14 @@ public class RetailFlowTest extends TestBaseSetup {
         if(!countryPar.equals(MEXICO)) {
             PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
-            dataManagement.getTripsDataTripItinerary(INT02_20D_2A_1R);
+            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
 
             tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-            tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-            tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(tripsResultsPage.vacancy());
@@ -263,10 +262,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                     AMEX_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 

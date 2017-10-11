@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.Random;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+import static com.almundo.browser.automation.utils.PageUtils.waitSelectContainsResults;
+
 public class PackagesDataTrip extends BasePage {
 
     public PackagesDataTrip(WebDriver driver) {
@@ -45,6 +48,7 @@ public class PackagesDataTrip extends BasePage {
     public PackagesDataTrip selectOrigin(String origin){
         logger.info("Selecting origin: [" + origin + "]");
         Select selectOriginSelect =  new Select(salgoDeDdl);
+        waitSelectContainsResults(selectOriginSelect, "Origin List", 5, 2);
         selectOriginSelect.selectByVisibleText(origin);
         return this;
     }
@@ -54,6 +58,7 @@ public class PackagesDataTrip extends BasePage {
         voyATxt.click();
         WebElement destinationTxt = driver.findElement(By.cssSelector("#search-pkg-dest_dropdown > div:nth-child(" + destination + ")"));
         logger.info("In this case going to: [" + destinationTxt.getText() + "]");
+        waitElementForClickable(driver, destinationTxt, 3, "Full Destination");
         destinationTxt.click();
         return this;
     }
@@ -62,6 +67,7 @@ public class PackagesDataTrip extends BasePage {
         Select selectSeasonSelect = new Select(temporadaDdl);
         logger.info("In this case selecting season: ["
                 + selectSeasonSelect.getOptions().get(season).getText() + "]");
+        waitSelectContainsResults(selectSeasonSelect, "Seasons List", 5, 2);
         selectSeasonSelect.selectByIndex(season);
         return this;
     }

@@ -54,6 +54,7 @@ public class TestBaseSetup {
     public static String cartIdICBC = null;
     public static Boolean submitReservation = false;
     public static Boolean retriesCount = false;
+    public static Boolean checkoutFill = true;
 
     public static String className;
     public static String method;
@@ -88,7 +89,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -552,6 +553,10 @@ public class TestBaseSetup {
     }
 
     protected PackagesResultsPage initPackagesResultsPage() { return PageFactory.initElements(driver, PackagesResultsPage.class); }
+
+    protected PackagesDetailPage initPackagesDetailPage() {
+        return PageFactory.initElements(driver, PackagesDetailPage.class);
+    }
 
     protected AssistanceResultsPage initAssistanceResultsPage(){
         return PageFactory.initElements(driver, AssistanceResultsPage.class);

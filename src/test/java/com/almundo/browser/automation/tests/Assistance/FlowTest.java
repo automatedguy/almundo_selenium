@@ -5,7 +5,6 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.AssistanceDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.ResultsPage.AssistanceResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -22,7 +21,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getAssistanceItineraryData();
+        dataManagement.setAssistanceItineraryData();
     }
 
     @BeforeMethod
@@ -34,7 +33,7 @@ public class FlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     /***************************** Test Cases *****************************/
@@ -42,11 +41,11 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void Int_Booking_Flow() {
         logTestTitle("International - 2 Persons");
-        dataManagement.getAssistanceDataTripItinerary("miami_10days_2persons_unique");
+        dataManagement.setAssistanceDataTripItinerary("miami_10days_2persons_unique");
         assistanceDataTrip.selectTipoDeViaje(dataManagement.tripType);
-        assistanceDataTrip.enterDestino(dataManagement.destinationAuto, dataManagement.destinationFull);
-        assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.departureAssistanceCalendar, dataManagement.startDate);
-        assistanceDataTrip.selectDateFromCalendar(assistanceDataTrip.arrivalAssistanceCalendar, dataManagement.endDate);
+        assistanceDataTrip.enterDestino(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        assistanceDataTrip.setDate(assistanceDataTrip.departureAssistanceCalendar, dataManagement.getStartDate());
+        assistanceDataTrip.setDate(assistanceDataTrip.arrivalAssistanceCalendar, dataManagement.getEndDate());
         assistanceDataTrip.selectPersonas(dataManagement.persons);
         assistanceResultsPage = assistanceDataTrip.clickBuscarBtn();
     }

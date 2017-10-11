@@ -4,7 +4,6 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -26,20 +25,20 @@ public class Hotels extends TestBaseSetup {
     @BeforeClass
     private void initDataLists() {
         retriesCount = true;
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+        dataManagement.setPassengersList();
+        dataManagement.setPaymentList();
+        dataManagement.setBillingList();
+        dataManagement.setContactList();
     }
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getPassengersData(){
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("adult_female_native");
+        dataManagement.setPassengerData("adult_female_native");
+        dataManagement.setPassengerData("adult_female_native");
     }
 
     /************************ Grid Test Area ************************/
@@ -51,7 +50,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -69,7 +68,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1, MASTER_1,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
                                                 dataManagement.getBillingData(LOCAL_BILLING),
                                                 dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
@@ -85,7 +84,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -103,7 +102,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -121,7 +120,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -139,7 +138,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -157,7 +156,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -175,7 +174,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -193,7 +192,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -211,7 +210,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -229,7 +228,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -249,7 +248,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -267,7 +266,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -285,7 +284,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -303,7 +302,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -321,7 +320,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -339,7 +338,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -357,7 +356,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -375,7 +374,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),
@@ -393,7 +392,7 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 "1_visa_visa",
                 dataManagement.getBillingData("local_Billing"),
                 dataManagement.getContactData("contact_cell_phone"),

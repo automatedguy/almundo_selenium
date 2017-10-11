@@ -62,7 +62,7 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
     //############################################### Actions ###############################################
 
     public PaymentSectionComboV3 populatePaymentSectionV3(String paymentData, String container) {
-        dataManagement.getPaymentList();
+        dataManagement.setPaymentList();
 
         WebElement creditCardDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo div:nth-child(1) > div > select"));
         WebElement bankDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo div:nth-child(2) > div > select"));
@@ -80,22 +80,22 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
 
             for (WebElement availableCard : availableCardsElements) {
                 if (availableCard.getText().equals("Visa")) {
-                    paymentDataObject = dataManagement.getPaymentData(VISA_1);
+                    paymentDataObject = dataManagement.setPaymentData(VISA_1);
                     setCreditCardCombo(creditCardSelect, "Visa");
                     break;
                 } else if (availableCard.getText().equals("Mastercard")) {
-                    paymentDataObject = dataManagement.getPaymentData(MASTER_1);
+                    paymentDataObject = dataManagement.setPaymentData(MASTER_1);
                     setCreditCardCombo(creditCardSelect, "Mastercard");
                     break;
                 } else if (availableCard.getText().equals("American Express")) {
-                    paymentDataObject = dataManagement.getPaymentData(AMEX_1);
+                    paymentDataObject = dataManagement.setPaymentData(AMEX_1);
                     setCreditCardCombo(creditCardSelect, "American Express");
                     break;
                 }
             }
             setBankCombo(bankSelect, "random");
         } else {
-            paymentDataObject = dataManagement.getPaymentData(paymentData);
+            paymentDataObject = dataManagement.setPaymentData(paymentData);
             setCreditCardCombo(creditCardSelect, paymentDataObject.get("credit_card_name").toString());
             setBankCombo(bankSelect, paymentDataObject.get("credit_card_code").toString());
         }

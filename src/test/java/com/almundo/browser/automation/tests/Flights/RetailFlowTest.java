@@ -6,7 +6,6 @@ import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -32,7 +31,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @BeforeClass
     private void initItineraryData() {
-        dataManagement.getFlightsItineraryData();
+        dataManagement.setFlightsItineraryData();
     }
 
     @BeforeMethod
@@ -42,7 +41,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getAssertionInfo(){
@@ -57,17 +56,17 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Dom_Booking_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults - All");
 
-        dataManagement.getRoundTripDataTripItinerary(DOMESTIC_30D_2A_ALL);
+        dataManagement.setRoundTripDataTripItinerary(DOMESTIC_30D_2A_ALL);
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
@@ -77,10 +76,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-        dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM_RET);
         getAssertionInfo();
@@ -99,17 +98,17 @@ public class RetailFlowTest extends TestBaseSetup {
     public void suc_Int_Booking_Flow() {
         logTestTitle("International - 20 days - 2 Adults - Tourist");
 
-        dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
         flightsDataTrip = basePage.flightsDataTrip();
         flightsDataTrip.selectFlightType(ROUND_TRIP);
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
@@ -120,10 +119,10 @@ public class RetailFlowTest extends TestBaseSetup {
 
         checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
-        dataManagement.getPassengerData(ADULT_MALE_NATIVE);
-        dataManagement.getPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-        checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList, VISA_1,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();

@@ -118,8 +118,8 @@ public class TodoPagoDataV3 extends CheckOutPageV3 {
 
     private JSONObject getPaymentData(String paymentData){
         logger.info("Getting payment data for: " + "[" + paymentData + "]");
-        dataManagement.getPaymentList();
-        return dataManagement.getPaymentData(paymentData);
+        dataManagement.setPaymentList();
+        return dataManagement.setPaymentData(paymentData);
     }
 
     public TodoPagoDataV3 populateTodoPagoData(String paymentData){

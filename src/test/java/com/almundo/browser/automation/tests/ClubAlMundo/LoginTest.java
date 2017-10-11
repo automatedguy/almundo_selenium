@@ -11,7 +11,6 @@ import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
 import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.PageUtils;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -53,7 +52,7 @@ public class LoginTest extends TestBaseSetup {
 
     @BeforeClass
     private void initUserList() {
-        dataManagement.getUsersDataList();
+        dataManagement.setUsersDataList();
     }
 
     @BeforeMethod
@@ -63,7 +62,7 @@ public class LoginTest extends TestBaseSetup {
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
     private void getFlightsAssertionInfo(){
@@ -82,7 +81,7 @@ public class LoginTest extends TestBaseSetup {
     public void login_email () {
         logTestTitle("Login with email and validate menu elements");
 
-        JSONObject userData = dataManagement.getUserData("email");
+        JSONObject userData = dataManagement.setUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
 
@@ -121,41 +120,41 @@ public class LoginTest extends TestBaseSetup {
         if(countryPar.equals(ARGENTINA)) {
             loginPopUp.clickCloseLoginBtn();
             loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
-            dataManagement.getUsersDataList();
-            userData = dataManagement.getUserData("email");
+            dataManagement.setUsersDataList();
+            userData = dataManagement.setUserData("email");
             loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
             basePage = loginPopUp.clickIngresarBtn();
 
             Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
-            dataManagement.getFlightsItineraryData();
-            dataManagement.getRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
+            dataManagement.setFlightsItineraryData();
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
             flightsDataTrip = basePage.clickFlightsBtn();
             flightsDataTrip.selectFlightType(ROUND_TRIP);
-            flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-            flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-            flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-            flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-            flightsDataTrip.selectClass(dataManagement.flightClass);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
 
             flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
             flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
             flightsResultsPage.clickTicketVuelta(FIRST_OPTION + 1);
 
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
-            dataManagement.getPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
             checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
             getFlightsAssertionInfo();
@@ -179,25 +178,25 @@ public class LoginTest extends TestBaseSetup {
         if(countryPar.equals(ARGENTINA)) {
             loginPopUp.clickCloseLoginBtn();
             loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
-            dataManagement.getUsersDataList();
-            userData = dataManagement.getUserData("email");
+            dataManagement.setUsersDataList();
+            userData = dataManagement.setUserData("email");
             loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
             basePage = loginPopUp.clickIngresarBtn();
 
             Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
-            dataManagement.getCarsItineraryData();
-            dataManagement.getCarsDataTripItinerary(MIA_10D_21_24);
+            dataManagement.setCarsItineraryData();
+            dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
             basePage.clickCarsBtn();
             carsDataTrip = basePage.carsDataTrip();
-            carsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-            carsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.pickUpDateCalendar, dataManagement.startDate);
-            carsDataTrip.selectDateFromCalendar(carsDataTrip.dropOffDateCalendar, dataManagement.endDate);
-            carsDataTrip.selectPickUpTime(dataManagement.pickUpTime);
-            carsDataTrip.selectDropOffTime(dataManagement.dropOffTime);
-            carsDataTrip.selectAgeRange(dataManagement.ageRange);
+            carsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            carsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            carsDataTrip.setDate(carsDataTrip.getPickUpDateCalendar(), dataManagement.getStartDate());
+            carsDataTrip.setDate(carsDataTrip.getDropOffDateCalendar(), dataManagement.getEndDate());
+            carsDataTrip.selectPickUpTime(dataManagement.getPickUpTime());
+            carsDataTrip.selectDropOffTime(dataManagement.getDropOffTime());
+            carsDataTrip.selectAgeRange(dataManagement.getAgeRange());
             carsResultsPage = carsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(carsResultsPage.vacancy());
@@ -206,11 +205,11 @@ public class LoginTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            dataManagement.getPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
-            checkOutPageV3.populateCheckOutPageV3(dataManagement.passengerJsonList,
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
             getCarsAssertionInfo();

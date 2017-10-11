@@ -42,8 +42,8 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
     /**************************** Actions **********************************/
 
     public void populatePaymentSectionV3(String paymentData, String container){
-        dataManagement.getPaymentList();
-        paymentDataObject = dataManagement.getPaymentData(paymentData);
+        dataManagement.setPaymentList();
+        paymentDataObject = dataManagement.setPaymentData(paymentData);
         selectPaymentQty(paymentDataObject.get("payment_qty").toString(), container);
         selectBankEntity(paymentDataObject.get("bank_name").toString(), container);
         selectCreditCard(paymentDataObject.get("credit_card_name").toString(), container);

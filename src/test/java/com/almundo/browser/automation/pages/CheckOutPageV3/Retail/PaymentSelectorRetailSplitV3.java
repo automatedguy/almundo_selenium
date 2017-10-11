@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.ADD_AMOUNT;
-import static com.almundo.browser.automation.utils.Constants.INCLUDE_AMOUNT;
 import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
@@ -220,10 +219,10 @@ public class PaymentSelectorRetailSplitV3 extends CheckOutPageV3 {
     public PaymentSelectorRetailSplitV3 populateSplittedPaymentInfo(List<String> paymentDataList, int  totalPrice){
         int container = 0;
         int paymentAmount = totalPrice / paymentDataList.size();
-        dataManagement.getPaymentList();
+        dataManagement.setPaymentList();
         for(String paymentData : paymentDataList) {
             isLastPayment = paymentDataList.size() <= (container+1);
-            paymentDataObject = dataManagement.getPaymentData(paymentData);
+            paymentDataObject = dataManagement.setPaymentData(paymentData);
             logger.info("------------- Filling Payment Section -------------");
             logger.info("Getting payment data for: " + "[" + paymentData + "]");
             switch(paymentData){

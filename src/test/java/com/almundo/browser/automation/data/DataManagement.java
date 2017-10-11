@@ -33,9 +33,9 @@ public class DataManagement extends TestBaseSetup {
     private JSONObject assistanceDataTripList = null;
     private JSONObject assistanceDataTripItinerary = null;
 
-    public JSONObject passengersList = null;
+    private JSONObject passengersList = null;
     private JSONObject passengerData = null;
-    public JSONArray passengerJsonList = new JSONArray();
+    private JSONArray passengerJsonList = new JSONArray();
 
     private JSONObject paymentList = null;
 
@@ -45,56 +45,157 @@ public class DataManagement extends TestBaseSetup {
 
     private static JSONObject usersDataList = null;
 
-    public String originAuto;
-    public String originFull;
-    public String originAuto2;
-    public String originFull2;
-    public String originAuto3;
-    public String originFull3;
-    public String destinationAuto;
-    public String destinationFull;
-    public String destinationAuto2;
-    public String destinationFull2;
-    public String destinationAuto3;
-    public String destinationFull3;
-    public int startDate;
-    public int startDate2;
-    public int startDate3;
-    public int endDate;
-    public int adults;
-    public int childs;
-    public int rooms;
+    private String originAuto;
+    private String originAuto2;
+    private String originAuto3;
+
+    private String originFull;
+    private String originFull2;
+    private String originFull3;
+
+    private String destinationAuto;
+    private String destinationAuto2;
+    private String destinationAuto3;
+
+    private String destinationFull;
+    private String destinationFull2;
+    private String destinationFull3;
+
+    private int startDate;
+    private int startDate2;
+    private int startDate3;
+
+    private int endDate;
+    private int adults;
+    private int childs;
+
+    private int rooms;
     public String tripType;
     public int persons;
-    public String childAgeRange;
-    public String flightClass;
-    public String pickUpTime;
-    public String dropOffTime;
-    public String ageRange;
+    private String childAgeRange;
+    private String flightClass;
+    private String pickUpTime;
+    private String dropOffTime;
+    private String ageRange;
 
     public String tripName;
 
     public String eventName;
     public String eventDescription;
 
-    //------------------------- HOME PAGE -----------------------------
+    /******************* Getters *******************/
 
-    //VUELOS DATA TRIP
-
-    public void getFlightsItineraryData(){
-        getFlightsDataTripList();
-        getPassengersList();
-        getPaymentList();
-        getBillingList();
-        getContactList();
-        getUsersDataList();
+    public JSONArray getPassengerJsonList() {
+        return passengerJsonList;
     }
 
-    public void getFlightsDataTripList() {
+    public String getFlightClass(){ return flightClass;}
+
+    public int getAdults(){ return adults;}
+
+    public int getChilds() {return childs;}
+
+    public String getChildAgeRange(){return childAgeRange;}
+
+    public int getStartDate(){
+        return startDate;
+    }
+
+    public int getEndDate(){
+        return endDate;
+    }
+
+    public int getStartDate2(){
+        return startDate2;
+    }
+
+    public int getStartDate3(){
+        return startDate3;
+    }
+
+     public String getOriginAuto(){
+         return originAuto;
+     }
+
+     public String getOriginAuto2(){
+         return originAuto2;
+     }
+
+    public String getOriginAuto3(){
+        return originAuto3;
+    }
+
+    public String getOriginFull(){
+        return originFull;
+    }
+
+    public String getOriginFull2(){
+        return originFull2;
+    }
+
+    public String getOriginFull3(){
+        return originFull3;
+    }
+
+    public String getDestinationAuto(){
+        return destinationAuto;
+    }
+
+    public String getDestinationAuto2(){
+        return destinationAuto2;
+    }
+
+    public String getDestinationAuto3(){
+        return destinationAuto3;
+    }
+
+    public String getDestinationFull(){
+        return destinationFull;
+    }
+
+    public String getDestinationFull2(){
+        return destinationFull2;
+    }
+
+    public String getDestinationFull3(){
+        return destinationFull3;
+    }
+
+    public String getPickUpTime(){
+        return pickUpTime;
+    }
+
+    public String getDropOffTime(){
+        return dropOffTime;
+    }
+
+    public String getAgeRange(){
+        return ageRange;
+    }
+
+    public int getRooms(){ return rooms;}
+
+    //------------------------- HOME PAGE -----------------------------
+
+    public void clearPassengerJsonList(){
+        passengerJsonList = new JSONArray();
+    }
+    //VUELOS DATA TRIP
+
+    public void setFlightsItineraryData(){
+        setFlightsDataTripList();
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
+        setUsersDataList();
+    }
+
+    public void setFlightsDataTripList() {
         vueloDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "flights", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getOneWayDataTripItinerary(String dataSet) {
+    public void setOneWayDataTripItinerary(String dataSet) {
         vueloDataTripItinerary = JsonRead.getJsonDataObject(vueloDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vueloDataTripItinerary.get("originAuto").toString();
@@ -112,7 +213,7 @@ public class DataManagement extends TestBaseSetup {
         flightClass = vueloDataTripItinerary.get("flightClass").toString();
     }
 
-    public void getRoundTripDataTripItinerary(String dataSet) {
+    public void setRoundTripDataTripItinerary(String dataSet) {
         vueloDataTripItinerary = JsonRead.getJsonDataObject(vueloDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vueloDataTripItinerary.get("originAuto").toString();
@@ -131,7 +232,7 @@ public class DataManagement extends TestBaseSetup {
         flightClass = vueloDataTripItinerary.get("flightClass").toString();
     }
 
-    public void getMultiDestDataTripItinerary(String dataSet) {
+    public void setMultiDestDataTripItinerary(String dataSet) {
         vueloDataTripItinerary = JsonRead.getJsonDataObject(vueloDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vueloDataTripItinerary.get("originAuto").toString();
@@ -163,40 +264,40 @@ public class DataManagement extends TestBaseSetup {
         flightClass = vueloDataTripItinerary.get("flightClass").toString();
     }
 
-    public void getPackagesInitneraryData(){
-        getPackagesDataTripList();
-        getPassengersList();
-        getPaymentList();
-        getBillingList();
-        getContactList();
-        getUsersDataList();
+    public void setPackagesInitneraryData(){
+        setPackagesDataTripList();
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
+        setUsersDataList();
     }
 
-    public void getAssistanceItineraryData(){
-        getAssistanceDataTripList();
-        getPassengersList();
-        getPaymentList();
-        getBillingList();
-        getContactList();
-        getUsersDataList();
+    public void setAssistanceItineraryData(){
+        setAssistanceDataTripList();
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
+        setUsersDataList();
     }
 
     //HOTELES DATA TRIP
 
-    public void getHotelsItineraryData(){
-        getHotelsDataTripList();
-        getPassengersList();
-        getPaymentList();
-        getBillingList();
-        getContactList();
-        getUsersDataList();
+    public void setHotelsItineraryData(){
+        setHotelsDataTripList();
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
+        setUsersDataList();
     }
 
-    public void getHotelsDataTripList() {
+    public void setHotelsDataTripList() {
         hotelesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "hotels", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getHotelsDataTripItinerary(String dataSet) {
+    public void setHotelsDataTripItinerary(String dataSet) {
         hotelDataTripItinerary = JsonRead.getJsonDataObject(hotelesDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         destinationAuto = hotelDataTripItinerary.get("destinationAuto").toString();
@@ -213,37 +314,37 @@ public class DataManagement extends TestBaseSetup {
 
     //VUELO+HOTEL DATA TRIP
 
-    public void getCarsItineraryData(){
-        getCarsDataTripList();
-        getPassengersList();
-        getPaymentList();
-        getBillingList();
-        getContactList();
+    public void setCarsItineraryData(){
+        setCarsDataTripList();
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
     }
 
-    public void getTripsItineraryData(){
-        getUsersDataList();
-        getTripsDataTripList();
-        getPassengersList();
-        getPaymentList();
-        getBillingList();
-        getContactList();
+    public void setTripsItineraryData(){
+        setUsersDataList();
+        setTripsDataTripList();
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
     }
 
-    public void getTrippersItineraryData(){
-        getUsersDataList();
-        getTripsDataTripList();
-        getPassengersList();
-        getPaymentList();
-        getBillingList();
-        getContactList();
+    public void setTrippersItineraryData(){
+        setUsersDataList();
+        setTripsDataTripList();
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
     }
 
-    public void getTripsDataTripList() {
+    public void setTripsDataTripList() {
         vueloHotelDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "trips", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getTripsDataTripItinerary(String dataSet) {
+    public void setTripsDataTripItinerary(String dataSet) {
         vueloHotelDataTripItinerary = JsonRead.getJsonDataObject(vueloHotelDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = vueloHotelDataTripItinerary.get("originAuto").toString();
@@ -261,11 +362,11 @@ public class DataManagement extends TestBaseSetup {
         rooms = Integer.parseInt(vueloHotelDataTripItinerary.get("rooms").toString());
     }
 
-    public void getTrippersDataTripList() {
+    public void setTrippersDataTripList() {
         trippersDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "trippers", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getAlmundoTripInfo(String dataSet){
+    public void setAlmundoTripInfo(String dataSet){
 
         almundoTripInfo = JsonRead.getJsonDataObject(trippersDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
@@ -276,7 +377,7 @@ public class DataManagement extends TestBaseSetup {
         endDate = Integer.parseInt(almundoTripInfo.get("endDate").toString());
     }
 
-    public void getAlmundoDataTripsItinerary(String dataSet) {
+    public void setAlmundoDataTripsItinerary(String dataSet) {
         trippersDataTripItinerary = JsonRead.getJsonDataObject(trippersDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         eventName = trippersDataTripItinerary.get("eventName").toString();
@@ -298,11 +399,11 @@ public class DataManagement extends TestBaseSetup {
 
     //AUTOS DATA TRIP
 
-    public void getCarsDataTripList() {
+    public void setCarsDataTripList() {
         autosDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "cars", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getCarsDataTripItinerary(String dataSet) {
+    public void setCarsDataTripItinerary(String dataSet) {
         autosDataTripItinerary = JsonRead.getJsonDataObject(autosDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originAuto = autosDataTripItinerary.get("originAuto").toString();
@@ -322,11 +423,11 @@ public class DataManagement extends TestBaseSetup {
 
 
     // PAQUETES DATA TRIP
-    public void getPackagesDataTripList() {
+    public void setPackagesDataTripList() {
         packagesDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "packages", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getPackagesDataTripItinerary(String dataSet){
+    public void setPackagesDataTripItinerary(String dataSet){
         packagesDataTripItinerary = JsonRead.getJsonDataObject(packagesDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         originFull = packagesDataTripItinerary.get("originFull").toString();
@@ -339,11 +440,11 @@ public class DataManagement extends TestBaseSetup {
 
     //ASSISTANCE DATA TRIP
 
-    public void getAssistanceDataTripList() {
+    public void setAssistanceDataTripList() {
         assistanceDataTripList = JsonRead.getJsonDataObject(jsonDataObject, "assistance", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getAssistanceDataTripItinerary(String dataSet) {
+    public void setAssistanceDataTripItinerary(String dataSet) {
         assistanceDataTripItinerary = JsonRead.getJsonDataObject(assistanceDataTripList, dataSet, countryPar.toLowerCase() + "_data.json");
 
         tripType = assistanceDataTripItinerary.get("tripType").toString();
@@ -359,11 +460,11 @@ public class DataManagement extends TestBaseSetup {
 
 
     //LOGIN
-    public void getUsersDataList() {
+    public void setUsersDataList() {
         usersDataList = JsonRead.getJsonDataObject(jsonDataObject, "users", countryPar.toLowerCase() + "_data.json");
     }
 
-    public JSONObject getUserData(String dataSet) {
+    public JSONObject setUserData(String dataSet) {
         JSONObject userData = JsonRead.getJsonDataObject(usersDataList, dataSet, countryPar.toLowerCase() + "_data.json");
         return userData;
     }
@@ -371,27 +472,27 @@ public class DataManagement extends TestBaseSetup {
     //------------------------- CHECKOUT -----------------------------
 
     //PASSENGER DATA
-    public void getPassengersList()  {
+    public void setPassengersList()  {
         passengersList = JsonRead.getJsonDataObject(jsonDataObject, "passengers", countryPar.toLowerCase() + "_data.json");
     }
 
-    public void getPassengerData(String dataSet)  {
+    public void setPassengerData(String dataSet)  {
         passengerData = JsonRead.getJsonDataObject(passengersList, dataSet, countryPar.toLowerCase() + "_data.json");
         passengerJsonList.add(passengerData);
     }
 
     //PAYMENT DATA
-    public void getPaymentList()  {
+    public void setPaymentList()  {
         paymentList = JsonRead.getJsonDataObject(jsonDataObject, "payment", countryPar.toLowerCase() + "_data.json");
     }
 
-    public JSONObject getPaymentData(String dataSet)  {
+    public JSONObject setPaymentData(String dataSet)  {
         JSONObject paymentData = JsonRead.getJsonDataObject(paymentList, dataSet, countryPar.toLowerCase() + "_data.json");
         return paymentData;
     }
 
     //BILLING DATA
-    public void getBillingList()  {
+    public void setBillingList()  {
         billingsList = JsonRead.getJsonDataObject(jsonDataObject, "billings", countryPar.toLowerCase() + "_data.json");
     }
 
@@ -407,7 +508,7 @@ public class DataManagement extends TestBaseSetup {
     }
 
     //CONTACT DATA
-    public void getContactList()  {
+    public void setContactList()  {
         contactList = JsonRead.getJsonDataObject(jsonDataObject, "contacts", countryPar.toLowerCase() + "_data.json");
     }
 
