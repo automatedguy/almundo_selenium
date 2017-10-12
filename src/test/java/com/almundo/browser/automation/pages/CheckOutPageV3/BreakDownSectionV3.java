@@ -84,10 +84,8 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     }
 
     public BreakDownSectionV3 dealWithInsurance(Boolean selectInsurance){
-        if(selectInsurance){
+        if(selectInsurance) {
             clickAddInsurance();
-        }else{
-            clickRemoveInsurance();
         }
         return this;
     }
