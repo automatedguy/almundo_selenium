@@ -10,6 +10,7 @@ import com.almundo.browser.automation.pages.ResultsPage.PackagesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.PackagesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,6 +38,11 @@ public class FlowTest extends TestBaseSetup {
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
         packagesDataTrip = basePage.clickPackagesBtn();
+    }
+
+    @AfterMethod
+    private void cleanPassengerJsonList() {
+        dataManagement.clearPassengerJsonList();
     }
 
     @SuppressWarnings("Duplicates")
