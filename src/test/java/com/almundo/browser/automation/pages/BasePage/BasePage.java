@@ -39,6 +39,10 @@ public class BasePage extends TestBaseSetup {
         return initPackagesDataTrip();
     }
 
+    public ExcursionsDataTrip excursionsDataTrip(){
+        return initExcursionsDataTrip();
+    }
+
     public AssistanceDataTrip assistanceDataTrip() {
         return initAssistanceDataTrip();
     }
@@ -147,6 +151,13 @@ public class BasePage extends TestBaseSetup {
         logger.info("Clicking on [Paquetes button]");
         packagesIcon.click();
         return packagesDataTrip();
+    }
+
+    public ExcursionsDataTrip clickExcursionsBtn(){
+        PageUtils.waitElementForClickable(driver, excursionsIcon, 10, "Actividades button");
+        logger.info("Clicking on [Actividades button]");
+        excursionsIcon.click();
+        return excursionsDataTrip();
     }
 
     public AssistanceDataTrip clickAssistanceBtn() {

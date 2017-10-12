@@ -439,9 +439,9 @@ public class TestBaseSetup {
 
     protected PackagesDataTrip initPackagesDataTrip(){ return PageFactory.initElements(driver, PackagesDataTrip.class); }
 
-    protected AssistanceDataTrip initAssistanceDataTrip(){
-        return PageFactory.initElements(driver, AssistanceDataTrip.class);
-    }
+    protected ExcursionsDataTrip initExcursionsDataTrip(){ return PageFactory.initElements(driver, ExcursionsDataTrip.class);}
+
+    protected AssistanceDataTrip initAssistanceDataTrip(){ return PageFactory.initElements(driver, AssistanceDataTrip.class); }
 
     protected CheckOutPage initCheckOutPage() {
         return PageFactory.initElements(driver, CheckOutPage.class);
@@ -451,9 +451,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CheckOutPageV3.class);
     }
 
-    protected ConfirmationPage initConfirmationPage() {
-        return PageFactory.initElements(driver, ConfirmationPage.class);
-    }
+    protected ConfirmationPage initConfirmationPage() { return PageFactory.initElements(driver, ConfirmationPage.class); }
 
     protected ThanksPageV3 initConfirmationPageV3() {
         return PageFactory.initElements(driver, ThanksPageV3.class);
