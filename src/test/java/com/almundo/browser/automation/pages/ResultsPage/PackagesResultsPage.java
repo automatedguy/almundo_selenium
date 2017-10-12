@@ -22,7 +22,7 @@ public class PackagesResultsPage extends TestBaseSetup {
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         logger.info("Clicking on: [Ver paquete] Selecting option N°: [" + option + "]");
         waitWithTryCatch(driver, verPaqueteLocator,"Ver paquete", 5).click();
-        waitImplicitly(2000);
+        waitImplicitly(4000);
         return initPackagesDetailPage();
     }
 

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 import static com.almundo.browser.automation.utils.PageUtils.waitSelectContainsResults;
 
 public class PackagesDataTrip extends BasePage {
@@ -56,6 +57,7 @@ public class PackagesDataTrip extends BasePage {
     public PackagesDataTrip setDestination(int  destination){
         logger.info("Clicking on: [Voy A]");
         voyATxt.click();
+        waitImplicitly(1000);
         WebElement destinationTxt = driver.findElement(By.cssSelector("#search-pkg-dest_dropdown > div:nth-child(" + destination + ")"));
         logger.info("In this case going to: [" + destinationTxt.getText() + "]");
         waitElementForClickable(driver, destinationTxt, 3, "Full Destination");
