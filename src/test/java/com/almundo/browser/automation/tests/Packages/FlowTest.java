@@ -48,14 +48,17 @@ public class FlowTest extends TestBaseSetup {
 
         packagesDataTrip.selectOrigin(dataManagement.getOriginFull());
         packagesDataTrip.setDestination(option);
-        packagesDataTrip.selectSeason(season);
-        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        packagesDataTrip.setSeason(season);
+        packagesDataTrip.setPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         packagesResultsPage = packagesDataTrip.clickBuscarBtn();
         packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
 
         PageUtils.switchToNewTab(driver);
 
         checkOutPageV3 = packagesDetailPage.comprarClick();
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                         dataManagement.getBillingData(LOCAL_BILLING),
@@ -76,14 +79,17 @@ public class FlowTest extends TestBaseSetup {
 
         packagesDataTrip.selectOrigin(dataManagement.getOriginFull());
         packagesDataTrip.setDestination(option);
-        packagesDataTrip.selectSeason(season);
-        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        packagesDataTrip.setSeason(season);
+        packagesDataTrip.setPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         packagesResultsPage = packagesDataTrip.clickBuscarBtn();
         packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
 
         PageUtils.switchToNewTab(driver);
 
         checkOutPageV3 = packagesDetailPage.comprarClick();
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
                 dataManagement.getBillingData(LOCAL_BILLING),

@@ -57,7 +57,7 @@ public class PackagesDataTrip extends BasePage {
     public PackagesDataTrip setDestination(int  destination){
         logger.info("Clicking on: [Voy A]");
         voyATxt.click();
-        waitImplicitly(1000);
+        waitImplicitly(3000);
         WebElement destinationTxt = driver.findElement(By.cssSelector("#search-pkg-dest_dropdown > div:nth-child(" + destination + ")"));
         logger.info("In this case going to: [" + destinationTxt.getText() + "]");
         waitElementForClickable(driver, destinationTxt, 3, "Full Destination");
@@ -65,7 +65,7 @@ public class PackagesDataTrip extends BasePage {
         return this;
     }
 
-    public PackagesDataTrip selectSeason(int season){
+    public PackagesDataTrip setSeason(int season){
         Select selectSeasonSelect = new Select(temporadaDdl);
         logger.info("In this case selecting season: ["
                 + selectSeasonSelect.getOptions().get(season).getText() + "]");
@@ -81,7 +81,7 @@ public class PackagesDataTrip extends BasePage {
     }
 
     @SuppressWarnings("Duplicates")
-    public PackagesDataTrip selectPassenger(int adults, int childs, int rooms) {
+    public PackagesDataTrip setPassenger(int adults, int childs, int rooms) {
         personasTxt.click();
 
         if (adults>2){
