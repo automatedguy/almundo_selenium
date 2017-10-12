@@ -269,7 +269,7 @@ public class ThanksPageV3 extends BasePage {
                         break;
                     }
                 }
-                if (!method.contains("Cars.")) {
+                if (!method.contains("Cars.") && !method.contains("cars")) {
                     passengerIndex = passengerIndex + 1;
                     clickNextPassenger();
                 }
