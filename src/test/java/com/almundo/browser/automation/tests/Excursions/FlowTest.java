@@ -9,6 +9,7 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.ExcursionsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.ExcursionsResultsPage;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -41,6 +42,11 @@ public class FlowTest extends TestBaseSetup{
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
         excursionsDataTrip = basePage.clickExcursionsBtn();
+    }
+
+    @AfterMethod
+    private void cleanPassengerJsonList() {
+        dataManagement.clearPassengerJsonList();
     }
 
     private void setExcursionAssertionInfo(){
