@@ -1,4 +1,4 @@
-package com.almundo.browser.automation.tests.Activities;
+package com.almundo.browser.automation.tests.Excursions;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
