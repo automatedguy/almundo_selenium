@@ -559,6 +559,14 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, PackagesDetailPage.class);
     }
 
+    protected ExcursionsResultsPage initExcursionsResultsPage(){
+        return PageFactory.initElements(driver, ExcursionsResultsPage.class);
+    }
+
+    protected ExcursionsDetailPage initExcursionsDetailPage(){
+        return PageFactory.initElements(driver, ExcursionsDetailPage.class);
+    }
+
     protected AssistanceResultsPage initAssistanceResultsPage(){
         return PageFactory.initElements(driver, AssistanceResultsPage.class);
     }

@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.BasePage;
 
+import com.almundo.browser.automation.pages.ResultsPage.ExcursionsResultsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,9 +25,9 @@ public class ExcursionsDataTrip extends BasePage {
         return this;
     }
 
-    public ExcursionsDataTrip clickBuscar(){
+    public ExcursionsResultsPage clickBuscar(){
         logger.info("Clicking on [Buscar] button:");
         buscarBtn.click();
-        return this;
+        return initExcursionsResultsPage();
     }
 }
