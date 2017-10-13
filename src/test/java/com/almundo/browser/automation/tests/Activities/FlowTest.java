@@ -16,8 +16,12 @@ import org.testng.annotations.Test;
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.FLIGHTS_CHECKOUT_INT;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.switchToNewTab;
 
 public class FlowTest extends TestBaseSetup{
+
+    private final String autoDestination = "Mia";
+    private final String fullDestination = "Miami, Estados Unidos de América";
 
     private ExcursionsDataTrip excursionsDataTrip = null;
     private ExcursionsResultsPage excursionsResultsPage = null;
@@ -39,12 +43,21 @@ public class FlowTest extends TestBaseSetup{
         excursionsDataTrip = basePage.clickExcursionsBtn();
     }
 
+    private void setExcursionAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
+    @SuppressWarnings("Duplicates")
     @Test
     public void activityBooking(){
         logTestTitle("Activity booking -  1 Adult");
-        excursionsDataTrip.setDestinationExcursions("Mia", "Miami, Estados Unidos de América");
+        excursionsDataTrip.setDestinationExcursions(autoDestination, fullDestination);
         excursionsResultsPage = excursionsDataTrip.clickBuscar();
         excursionsDetailPage = excursionsResultsPage.clickVerActividadBtn(FIRST_OPTION);
+
+        switchToNewTab(driver);
+
         excursionsDetailPage.clickElegirFechaBtn();
         checkOutPageV3 = excursionsDetailPage.clickComprarBtn();
 
@@ -53,7 +66,7 @@ public class FlowTest extends TestBaseSetup{
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
-
+        setExcursionAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -64,4 +77,32 @@ public class FlowTest extends TestBaseSetup{
         setResultSauceLabs(PASSED);
     }
 
+/*    @SuppressWarnings("Duplicates")
+    @Test
+    public void activityBooking2CreditCards(){
+        logTestTitle("Activity booking -  1 Adult - 2 Credit Cards");
+        excursionsDataTrip.setDestinationExcursions(autoDestination, fullDestination);
+        excursionsResultsPage = excursionsDataTrip.clickBuscar();
+        excursionsDetailPage = excursionsResultsPage.clickVerActividadBtn(FIRST_OPTION);
+
+        switchToNewTab(driver);
+
+        excursionsDetailPage.clickElegirFechaBtn();
+        checkOutPageV3 = excursionsDetailPage.clickComprarBtn();
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
+                                    dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT);
+        setExcursionAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }*/
 }

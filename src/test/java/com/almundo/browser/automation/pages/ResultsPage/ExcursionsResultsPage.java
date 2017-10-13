@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
+
 public class ExcursionsResultsPage extends TestBaseSetup {
 
     public ExcursionsResultsPage(WebDriver driver) {
@@ -21,6 +23,7 @@ public class ExcursionsResultsPage extends TestBaseSetup {
     /********************** Actions **********************/
 
     public ExcursionsDetailPage clickVerActividadBtn(int index){
+        waitWithTryCatch(driver, "#activityCluster .pricebox a", "Ver Actividad", 10);
         logger.info("Clicking on [Ver actividad] N°: [" + index + "]");
         verActividadBtnList.get(index).click();
         return initExcursionsDetailPage();
