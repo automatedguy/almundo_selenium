@@ -10,6 +10,7 @@ import com.almundo.browser.automation.pages.ResultsPage.PackagesDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.PackagesResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -39,6 +40,11 @@ public class FlowTest extends TestBaseSetup {
         packagesDataTrip = basePage.clickPackagesBtn();
     }
 
+    @AfterMethod
+    private void cleanPassengerJsonList() {
+        dataManagement.clearPassengerJsonList();
+    }
+
     @SuppressWarnings("Duplicates")
     @Test
     public void packagesBookingToSomePlace() {
@@ -48,14 +54,17 @@ public class FlowTest extends TestBaseSetup {
 
         packagesDataTrip.selectOrigin(dataManagement.getOriginFull());
         packagesDataTrip.setDestination(option);
-        packagesDataTrip.selectSeason(season);
-        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        packagesDataTrip.setSeason(season);
+        packagesDataTrip.setPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         packagesResultsPage = packagesDataTrip.clickBuscarBtn();
         packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
 
         PageUtils.switchToNewTab(driver);
 
         checkOutPageV3 = packagesDetailPage.comprarClick();
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                         dataManagement.getBillingData(LOCAL_BILLING),
@@ -76,14 +85,17 @@ public class FlowTest extends TestBaseSetup {
 
         packagesDataTrip.selectOrigin(dataManagement.getOriginFull());
         packagesDataTrip.setDestination(option);
-        packagesDataTrip.selectSeason(season);
-        packagesDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        packagesDataTrip.setSeason(season);
+        packagesDataTrip.setPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         packagesResultsPage = packagesDataTrip.clickBuscarBtn();
         packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
 
         PageUtils.switchToNewTab(driver);
 
         checkOutPageV3 = packagesDetailPage.comprarClick();
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
                 dataManagement.getBillingData(LOCAL_BILLING),

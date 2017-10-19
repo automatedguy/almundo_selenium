@@ -40,6 +40,7 @@ public class FlowTest extends TestBaseSetup {
 
     @BeforeMethod
     private void closeLoginPopUp(){
+        addInsurance = false;
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
         flightsDataTrip = basePage.clickFlightsBtn();
@@ -252,6 +253,51 @@ public class FlowTest extends TestBaseSetup {
             checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
                                                 dataManagement.getBillingData(LOCAL_BILLING),
                                                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
+            getFlightsAssertionInfo();
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+            Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+            Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        }else{
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
+        }
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void roundTrip_Int_Booking_2Credit_Cards_Insurance_Flow() {
+        logTestTitle("International - 10 days - 2 Adults - Tourist - With insurance");
+        if(countryPar.equals(ARGENTINA)) {
+            addInsurance = true;
+            dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+
+            flightsDataTrip.selectFlightType(ROUND_TRIP);
+            flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+            flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+            flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+            flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+            flightsDataTrip.selectClass(dataManagement.getFlightClass());
+            flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(flightsResultsPage.vacancy());
+            flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+            flightsResultsPage.clickTicketVuelta(FIRST_OPTION + 1);
+
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+
+            checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TWOCARDS_VISA_MASTER,
+                    dataManagement.getBillingData(LOCAL_BILLING),
+                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
+
             getFlightsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

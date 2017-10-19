@@ -438,6 +438,16 @@ public class DataManagement extends TestBaseSetup {
         rooms = Integer.parseInt(packagesDataTripItinerary.get("rooms").toString());
     }
 
+    // EXCURSIONS
+
+    public void setExcursionItinerary(){
+        setPassengersList();
+        setPaymentList();
+        setBillingList();
+        setContactList();
+        setUsersDataList();
+    }
+
     //ASSISTANCE DATA TRIP
 
     public void setAssistanceDataTripList() {

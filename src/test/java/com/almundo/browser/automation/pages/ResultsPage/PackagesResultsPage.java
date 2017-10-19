@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.ResultsPage;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import org.openqa.selenium.WebDriver;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
 
 public class PackagesResultsPage extends TestBaseSetup {
@@ -21,6 +22,7 @@ public class PackagesResultsPage extends TestBaseSetup {
         logger.info("Results URL: " + "[" + driver.getCurrentUrl() + "]");
         logger.info("Clicking on: [Ver paquete] Selecting option N°: [" + option + "]");
         waitWithTryCatch(driver, verPaqueteLocator,"Ver paquete", 5).click();
+        waitImplicitly(4000);
         return initPackagesDetailPage();
     }
 

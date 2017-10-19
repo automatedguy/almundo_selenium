@@ -239,6 +239,14 @@ public class PageUtils {
         System.out.println("=======================================================================");
     }
 
+    public static void printStarsSeparator(){
+        logger.info("**********************************************");
+    }
+
+    public static void scrollToTop(WebDriver driver){
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0)");
+    }
+
     /*** Analyze current results page URL***/
     public static String getHotelsResultsPageLayout(WebDriver driver) {
         String layout = null;

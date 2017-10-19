@@ -55,6 +55,7 @@ public class TestBaseSetup {
     public static Boolean submitReservation = false;
     public static Boolean retriesCount = false;
     public static Boolean checkoutFill = true;
+    public static Boolean addInsurance = false;
 
     public static String className;
     public static String method;
@@ -393,6 +394,8 @@ public class TestBaseSetup {
             catch(Exception ex){
                 logger.error("Communication with Saucelabs went wrong :( ");
             }
+        }else{
+            logger.info("Test " + result + "!");
         }
     }
 
@@ -436,9 +439,9 @@ public class TestBaseSetup {
 
     protected PackagesDataTrip initPackagesDataTrip(){ return PageFactory.initElements(driver, PackagesDataTrip.class); }
 
-    protected AssistanceDataTrip initAssistanceDataTrip(){
-        return PageFactory.initElements(driver, AssistanceDataTrip.class);
-    }
+    protected ExcursionsDataTrip initExcursionsDataTrip(){ return PageFactory.initElements(driver, ExcursionsDataTrip.class);}
+
+    protected AssistanceDataTrip initAssistanceDataTrip(){ return PageFactory.initElements(driver, AssistanceDataTrip.class); }
 
     protected CheckOutPage initCheckOutPage() {
         return PageFactory.initElements(driver, CheckOutPage.class);
@@ -448,9 +451,7 @@ public class TestBaseSetup {
         return PageFactory.initElements(driver, CheckOutPageV3.class);
     }
 
-    protected ConfirmationPage initConfirmationPage() {
-        return PageFactory.initElements(driver, ConfirmationPage.class);
-    }
+    protected ConfirmationPage initConfirmationPage() { return PageFactory.initElements(driver, ConfirmationPage.class); }
 
     protected ThanksPageV3 initConfirmationPageV3() {
         return PageFactory.initElements(driver, ThanksPageV3.class);
@@ -556,6 +557,14 @@ public class TestBaseSetup {
 
     protected PackagesDetailPage initPackagesDetailPage() {
         return PageFactory.initElements(driver, PackagesDetailPage.class);
+    }
+
+    protected ExcursionsResultsPage initExcursionsResultsPage(){
+        return PageFactory.initElements(driver, ExcursionsResultsPage.class);
+    }
+
+    protected ExcursionsDetailPage initExcursionsDetailPage(){
+        return PageFactory.initElements(driver, ExcursionsDetailPage.class);
     }
 
     protected AssistanceResultsPage initAssistanceResultsPage(){

@@ -99,7 +99,9 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
     }
 
     private PaymentTwoCreditCardsV3 setTitularTarjeta(String titularTarjeta, int indexTarjeta){
-        waitWithTryCatchList(driver, titularDeTarjetaListLocator, "Titular Tarjeta", 5 ).get(indexTarjeta).sendKeys(titularTarjeta);
+        WebElement titularTarjetaElement = waitWithTryCatchList(driver, titularDeTarjetaListLocator, "Titular Tarjeta", 5 ).get(indexTarjeta);
+        titularTarjetaElement.clear();
+        titularTarjetaElement.sendKeys(titularTarjeta);
         logger.info("Entered [Titular de tarjeta]: [" + titularTarjeta + "]");
         return this;
     }
@@ -120,6 +122,7 @@ public class PaymentTwoCreditCardsV3 extends CheckOutPageV3 {
 
     private PaymentTwoCreditCardsV3 setCodigoDeSeguridad(String codigoDeSeguridad, int indexTarjeta){
         logger.info("Entering [Código de seguridad]: [" + codigoDeSeguridad + "]");
+        codigoDeSeguridadList.get(indexTarjeta).clear();
         codigoDeSeguridadList.get(indexTarjeta).sendKeys(codigoDeSeguridad);
         return this;
     }
