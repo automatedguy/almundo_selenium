@@ -15,9 +15,7 @@ import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
  */
 public class BillingSectionV3 extends CheckOutPageV3 {
 
-    public BillingSectionV3(WebDriver driver) {
-        super(driver);
-    }
+    public BillingSectionV3(WebDriver driver) { super(driver); }
 
     //############################################### Locators ##############################################
 
