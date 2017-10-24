@@ -1,11 +1,14 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3.Retail;
 
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.almundo.browser.automation.utils.Constants.CUSTOMER_EMAIL;
+import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
 
 public class PaymentSelectorLinkV3 extends CheckOutPageV3 {
 
@@ -21,7 +24,8 @@ public class PaymentSelectorLinkV3 extends CheckOutPageV3 {
     @FindBy(css = "#am-split-payment form-client-payment .send-button-container > button")
     private WebElement enviarButton;
 
-    @FindBy(css = "#am-split-payment > div > div:nth-child(2) > div > form-client-payment > div > div > form > div:nth-child(2) > div > div")
+    private final String linkDePagoCss = "#am-split-payment > div > div:nth-child(2) > div > form-client-payment > div > div > form > div:nth-child(2) > div > div";
+    @FindBy(css = linkDePagoCss)
     private WebElement linkDePagoLnk;
 
 
@@ -39,15 +43,22 @@ public class PaymentSelectorLinkV3 extends CheckOutPageV3 {
         return this;
     }
 
-    private String retrieveLinkDePago(){
+    private String retrieveTinyURL(){
+        waitWithTryCatch(driver, linkDePagoCss,"Link de pago", 5);
         logger.info("Getting [Link de pago]");
-        String linkDePago = linkDePagoLnk.getText();
+        String linkDePago = linkDePagoLnk.getText().replace("Copy","");
         logger.info("[Link de pago] : " + linkDePago);
-        return linkDePago;
+        return linkDePago.replace("Link de pago: ","");
     }
 
-    public PaymentSelectorLinkV3 populateLinkDePagoInfo(){
 
-        return this;
+    public String populateLinkDePagoInfo(){
+        enterEmailDelCliente();
+        clickEnviarButton();
+        String actualCheckoutUrl = driver.getCurrentUrl();
+        driver.navigate().to(retrieveTinyURL());
+        return actualCheckoutUrl;
     }
+
+
 }

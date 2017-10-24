@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -196,8 +197,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
         else if (paymentData.contains("link_de_pago$")) {
             setUrlParameter("&slp=1");
+            String thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
             paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
-            paymentSelectorLinkV3().populateLinkDePagoInfo();
+            String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
+            paymentSelectorV3().selectOneCreditCardRdb();
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData.replace("link_de_pago$",""), ".card-container-1");
+            creditCardDataV3().populateCreditCardData(paymentData.replace("link_de_pago$",""), ".card-container-1");
+            acceptConditions();
+            clickComprarBtn();
+            waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+            driver.navigate().to(actualCheckoutUrl);
         }
         else {
             paymentSelectorRetailV3().selectCreditRbd();
