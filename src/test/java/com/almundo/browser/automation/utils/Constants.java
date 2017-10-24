@@ -120,7 +120,9 @@ public class Constants {
     public static final String DESTINATION = "destination";
     public static final String TODOPAGO = "todopago";
     public static final String PAGO_DIVIDIDO = "PAGO DIVIDIDO";
+    public static final String LINK_DE_PAGO = "LINK DE PAGO";
     public static final String REWARDS = "rewards";
+    public static final String CUSTOMER_EMAIL = "almundoturismo@gmail.com";
 
     public static final String VISA_1 = "1_visa_visa";
     public static final String VISA_3 = "3_visa_visa";
@@ -128,6 +130,7 @@ public class Constants {
     public static final String CABAL_3_TODOPAGO = "3_cabal_todopago";
     public static final String MASTER_1 = "1_master_master";
     public static final String DESTINATION_MASTER_1 = "destination$1_master_master";
+    public static final String LINK_VISA_1 = "link_de_pago$1_visa_visa";
     public static final String AMEX_1 = "1_amex_amex";
 
     public static final String REWARDS_VISA_1 = "rewards$1_visa_visa";

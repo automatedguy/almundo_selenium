@@ -50,6 +50,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initPaymentSelectorRetailSplitV3();
     }
 
+    public PaymentSelectorLinkV3 paymentSelectorLinkV3(){
+        return initPaymentSelectorLinkV3();
+    }
+
     public PaymentSelectorRetailV3 paymentSelectorRetailV3(){return initPaymentSelectorRetailV3();}
 
     public PaymentSectionComboV3 paymentSectionComboV3(){return initPaymentSectionComboV3();}
@@ -189,6 +193,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if(paymentData.contains("pago_dividido$")) {
             paymentSelectorRetailV3().selectPaymentMethod(PAGO_DIVIDIDO);
             paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
+        }
+        else if (paymentData.contains("link_de_pago$")) {
+            setUrlParameter("&slp=1");
+            paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
+            paymentSelectorLinkV3().populateLinkDePagoInfo();
         }
         else {
             paymentSelectorRetailV3().selectCreditRbd();
