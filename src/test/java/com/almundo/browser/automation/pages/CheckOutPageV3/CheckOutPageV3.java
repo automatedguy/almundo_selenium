@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
@@ -102,6 +103,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
+    @FindBy(css = "checkout-page club-almundo-login  button")
+    private WebElement ingresarBtn;
+
     @FindBy(css = "input.button-buy")
     public WebElement comprarBtn;
 
@@ -130,6 +134,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public WebElement endDate;
 
     //############################################### Actions ##############################################
+
+    public LoginPopUp clickIngresarBtn(){
+        logger.info("Clicking on [Ingresar] button.");
+        ingresarBtn.click();
+        return initLoginPopUp();
+    }
 
     public ThanksPageV3 clickComprarBtn(){
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
