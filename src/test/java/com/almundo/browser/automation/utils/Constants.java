@@ -131,6 +131,7 @@ public class Constants {
     public static final String MASTER_1 = "1_master_master";
     public static final String DESTINATION_MASTER_1 = "destination$1_master_master";
     public static final String LINK_VISA_1 = "link_de_pago$1_visa_visa";
+    public static final String LINK_TWO_CARDS_VISA_1_MASTER_1 = "link_de_pago$two_cards$1_visa_visa$1_master_master$";
     public static final String AMEX_1 = "1_amex_amex";
 
     public static final String REWARDS_VISA_1 = "rewards$1_visa_visa";

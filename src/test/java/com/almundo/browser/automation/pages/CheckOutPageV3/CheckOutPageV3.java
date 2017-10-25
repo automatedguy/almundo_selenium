@@ -200,9 +200,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
             String thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
             paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
             String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
-            paymentSelectorV3().selectOneCreditCardRdb();
-            paymentSectionGridV3().populatePaymentSectionV3(paymentData.replace("link_de_pago$",""), ".card-container-1");
-            creditCardDataV3().populateCreditCardData(paymentData.replace("link_de_pago$",""), ".card-container-1");
+
+            if(paymentData.contains("two_cards")) {
+                dealWithTwoCards(paymentData.replace("link_de_pago$", ""));
+            } else  {
+                paymentSelectorV3().selectOneCreditCardRdb();
+                paymentSectionGridV3().populatePaymentSectionV3(paymentData.replace("link_de_pago$", ""), ".card-container-1");
+                creditCardDataV3().populateCreditCardData(paymentData.replace("link_de_pago$", ""), ".card-container-1");
+            }
+
             acceptConditions();
             clickComprarBtn();
             waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
@@ -216,7 +222,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithTwoCards(String paymentData){
-        setUrlParameter("&stc=1");
         paymentSelectorV3().selectTwoCreditCardsRdb();
         paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
         breakDownSectionV3().dealWithInsurance(addInsurance);
@@ -254,10 +259,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithPaymentForm(String paymentData){
-        if(isRetailChannel()){ dealWithRetail(paymentData);
-        } else if (paymentData.contains(DEBIT)) { dealWithDebitCard(paymentData);
-            } else if (paymentData.contains(TWO_CARDS)){ dealWithTwoCards(paymentData);
-            } else { dealWithGridAndCombos(paymentData); }
+        if(isRetailChannel()){
+            dealWithRetail(paymentData);
+        } else if (paymentData.contains(DEBIT)) {
+            dealWithDebitCard(paymentData);
+        } else if (paymentData.contains(TWO_CARDS)){
+            setUrlParameter("&stc=1");
+            dealWithTwoCards(paymentData);
+        } else {
+            dealWithGridAndCombos(paymentData);
+        }
     }
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/

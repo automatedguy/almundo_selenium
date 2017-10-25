@@ -22,6 +22,7 @@ public class RetailFlights extends TestBaseSetup {
     private ThanksPageV3 thanksPageV3 = null;
     private final String productURl = "?product=flights&origin=flights";
 
+    @SuppressWarnings("Duplicates")
     @BeforeClass
     private void initDataLists() {
         retriesCount = true;
@@ -60,9 +61,34 @@ public class RetailFlights extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_VISA_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+
+        //TODO: there is a bug related to final amount paid.
+        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void payWithLinkTwoCards() {
+        logTestTitle("Grid With Todo Pago" + countryPar );
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_TWO_CARDS_VISA_1_MASTER_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
