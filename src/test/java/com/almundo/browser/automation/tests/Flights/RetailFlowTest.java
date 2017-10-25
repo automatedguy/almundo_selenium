@@ -137,7 +137,7 @@ public class RetailFlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-    @SuppressWarnings("Duplicates")
+/*    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Link_Flow() {
         logTestTitle("International - Pagalo vos - 20 days - 2 Adults - Tourist");
@@ -182,5 +182,5 @@ public class RetailFlowTest extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);
-    }
+    }*/
 }
