@@ -318,7 +318,6 @@ public class ICBCPriceCompare extends TestBaseSetup {
     private CheckOutPageV3 openIcbcCart(String cartId){
         driver.navigate().to(ICBC_URL + "checkout/" + cartId + "?");
         forceCheckout();
-        //PageUtils.waitElementForVisibility(driver, By.cssSelector(".description-container"), 40, "Payments rows");
         return initCheckOutPageV3();
     }
 

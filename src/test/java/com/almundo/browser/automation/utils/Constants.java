@@ -265,7 +265,7 @@ public class Constants {
     //LISTS
     public static final List<String> FLIGHT_TYPE_LIST = asList("Ida y vuelta", "Solo ida", "Varias ciudades");
     public static final List<String> FLIGHT_CLASS_LIST = asList("Todas", "Primera", "Business", "Premium", "Turista");
-    public static final List<String> CHILD_RANGE_LIST = asList("Menos de 2 años en brazos", "Menos de 2 años en asiento", "Entre 2 y 11 años", "Más de 11 años");
+    public static final List<String> CHILD_RANGE_LIST = asList("Menos de 2 años en brazos", "Entre 2 y 11 años", "Más de 11 años");
     public static final List<String> USER_MENU_LIST_AR = asList("Perfil", "Medios de pago", "Reservas", "Mis gustos", "Mis puntos", "Cerrar sesión");
     public static final List<String> USER_MENU_LIST_CO = asList("Perfil", "Medios de pago", "Reservas", "Cerrar sesión");
     public static final List<String> USER_MENU_LIST_MX = asList("Perfil", "Medios de pago", "Reservas", "Cerrar sesión");

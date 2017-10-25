@@ -26,7 +26,7 @@ public class FlightsDataTrip extends BasePage{
 
     //############################################### Locators ##############################################
 
-    @FindBy(name = "type-flights")
+    @FindBy(name = "class-flights")
     public WebElement flightTypeDdl;
 
     @FindBy(css = "#main-content div:nth-child(1) > label > input")
