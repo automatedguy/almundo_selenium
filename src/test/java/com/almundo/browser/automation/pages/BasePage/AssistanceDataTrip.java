@@ -59,7 +59,7 @@ public class AssistanceDataTrip extends BasePage  {
 
     public AssistanceResultsPage clickBuscarBtn(){
         logger.info("Clicking on button: [Buscar]" );
-        buscarBtn.click();
+        clickBuscar();
         return initAssistanceResultsPage();
     }
 }

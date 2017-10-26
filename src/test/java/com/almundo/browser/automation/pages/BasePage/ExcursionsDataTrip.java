@@ -25,9 +25,9 @@ public class ExcursionsDataTrip extends BasePage {
         return this;
     }
 
-    public ExcursionsResultsPage clickBuscar(){
+    public ExcursionsResultsPage clickBuscarBtn(){
         logger.info("Clicking on [Buscar] button:");
-        buscarBtn.click();
+        clickBuscar();
         return initExcursionsResultsPage();
     }
 }

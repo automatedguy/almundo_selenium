@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.BasePage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -100,7 +101,12 @@ public class HotelsDataTrip extends BasePage {
 
     public HotelsResultsPage clickBuscarBtn() {
         logger.info("Clicking on button: [Buscar]");
-        buscarBtn.click();
+        try {
+            buscarBtn.click();
+        }catch(NoSuchElementException ouch){
+            logger.info("Apparently new home here, trying to click buscarV3Btn");
+            buscarV3Btn.click();
+        }
         return initHotelsResultsPage();
     }
 }

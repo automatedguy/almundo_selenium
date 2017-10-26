@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -101,6 +102,9 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = ".button.button--secondary.button--lg.button-search.button--block.ellipsis.ng-binding")
     public WebElement buscarBtn;
 
+    @FindBy(css = "#main-content am-searchbox .form-container button")
+    public WebElement buscarV3Btn;
+
     //Banners
     @FindBy(css = ".banners-container .banner-first-container")
     public WebElement mainLeftBannerLnk;
@@ -179,6 +183,16 @@ public class BasePage extends TestBaseSetup {
         logger.info("Clicking on [Home Main right Banner]");
         mainRightBannerLnk.click();
         return initPromoPage();
+    }
+
+    public BasePage clickBuscar(){
+        try {
+            buscarBtn.click();
+        }catch(NoSuchElementException ouch){
+            logger.info("Apparently new home here, trying to click buscarV3Btn");
+            buscarV3Btn.click();
+        }
+        return this;
     }
 
     public PromoPage clickHomeMedioLeftBannerLnk() {

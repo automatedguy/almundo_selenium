@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -98,7 +99,7 @@ public class CarsDataTrip extends BasePage {
 
     public CarsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
-        buscarBtn.click();
+        clickBuscar();
         return initCarsResultsPage();
     }
 }

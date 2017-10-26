@@ -59,7 +59,7 @@ public class FlowTest extends TestBaseSetup{
     public void activityBooking(){
         logTestTitle("Activity booking -  1 Adult");
         excursionsDataTrip.setDestinationExcursions(autoDestination, fullDestination);
-        excursionsResultsPage = excursionsDataTrip.clickBuscar();
+        excursionsResultsPage = excursionsDataTrip.clickBuscarBtn();
         excursionsDetailPage = excursionsResultsPage.clickVerActividadBtn(FIRST_OPTION);
 
         switchToNewTab(driver);
