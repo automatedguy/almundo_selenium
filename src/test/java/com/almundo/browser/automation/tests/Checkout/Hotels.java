@@ -283,7 +283,7 @@ public class Hotels extends TestBaseSetup {
     }
 
     @Test
-    public void comboWithTodoPagoTwoCards() {
+    public void comboWithTwoCards() {
         logTestTitle("Hotels – Combo With Todo Pago TwoCards" + countryPar );
         checkOutPageV3 = openCart(cartId, "&sc=1", productURl);
 
