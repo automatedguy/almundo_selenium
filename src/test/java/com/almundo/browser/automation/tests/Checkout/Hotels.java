@@ -283,6 +283,22 @@ public class Hotels extends TestBaseSetup {
     }
 
     @Test
+    public void comboWithTodoPagoTwoCards() {
+        logTestTitle("Hotels – Combo With Todo Pago TwoCards" + countryPar );
+        checkOutPageV3 = openCart(cartId, "&sc=1", productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
     public void comboWithTodoPagoExplicit() {
         logTestTitle("Hotels – Combo With Todo Pago (explicit) " + countryPar );
         checkOutPageV3 = openCart(cartId, "&sc=1&stp=1", productURl);

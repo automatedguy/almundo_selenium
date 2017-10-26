@@ -329,10 +329,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
             }
 
             if (creditCardComboSc) {
-                paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
-                creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
-                paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
-                creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+                paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".credit-card-selector-1");
+                creditCardDataV3().populateCreditCardData(paymentData1, ".credit-card-selector-1");
+                paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".credit-card-selector-2");
+                creditCardDataV3().populateCreditCardData(paymentData2, ".credit-card-selector-2");
             } else {
                 paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
                 creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
