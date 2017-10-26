@@ -2,8 +2,10 @@ package com.almundo.browser.automation.tests.Checkout;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
+import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -50,6 +52,37 @@ public class Flights extends TestBaseSetup {
     }
     
     /************************ Grid Test Area ************************/
+
+
+    @Test
+    public void clubAlmundo() {
+        logTestTitle("Flights - Club Almundo");
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        dataManagement.setUsersDataList();
+        JSONObject userData = dataManagement.setUserData("email");
+        getPassengersData();
+
+        LoginPopUp loginPopUp  = checkOutPageV3.clickIngresarBtn();
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+        loginPopUp.ingresarBtn.click();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+
+        getFlightsAssertionInfo();
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
 
     @SuppressWarnings("Duplicates")
     @Test

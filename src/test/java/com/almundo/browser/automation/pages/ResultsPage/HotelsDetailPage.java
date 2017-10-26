@@ -11,9 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.MEXICO;
-import static com.almundo.browser.automation.utils.PageUtils.closeExpertsPopUp;
-import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
-import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by leandro.efron on 13/12/2016.
@@ -56,13 +54,13 @@ public class HotelsDetailPage extends TestBaseSetup {
     }
 
     public CheckOutPageV3 clickReservarAhoraV3Btn(int index) {
+        String reservarButtonCss = "detail-cluster:nth-child(" + (index+2) +") .price-box.col-3 > span > span";
         if(!countryPar.equals(MEXICO)){
         closeExpertsPopUp(driver);}
         assertHotelInfo = getCancelationPolicy();
-        List<WebElement> detailHotelButtonResults = driver.findElements(By.cssSelector("room-options .button.button--lg.button--secondary"));
-        PageUtils.waitElementForClickable(driver, detailHotelButtonResults.get(index), 20, "Reservar Ahora button");
+        WebElement reservarButton = waitWithTryCatch(driver, reservarButtonCss, "Reservar button", 7);
         logger.info("Clicking on Reservar button");
-        detailHotelButtonResults.get(index).click();
+        reservarButton.click();
         return initCheckOutPageV3();
     }
 
