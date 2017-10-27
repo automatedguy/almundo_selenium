@@ -211,6 +211,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
             paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
             String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
 
+            if(paymentData.contains("rewards$")){
+                dataManagement.setUsersDataList();
+                JSONObject userData = dataManagement.setUserData("email");
+                LoginPopUp loginPopUp  = clickIngresarBtn();
+                loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+                loginPopUp.ingresarBtn.click();
+                paymentData = clubAlmundoRewards().useRewardsYesClick(paymentData);
+            }
+
             if(paymentData.contains("two_cards")) {
                 dealWithTwoCards(paymentData.replace("link_de_pago$", ""));
             } else  {

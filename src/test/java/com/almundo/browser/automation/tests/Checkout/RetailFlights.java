@@ -2,8 +2,10 @@ package com.almundo.browser.automation.tests.Checkout;
 
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
+import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
+import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -113,8 +115,8 @@ public class RetailFlights extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_REWARDS_VISA_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

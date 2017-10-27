@@ -102,7 +102,7 @@ public class BasePage extends TestBaseSetup {
     @FindBy(css = ".button.button--secondary.button--lg.button-search.button--block.ellipsis.ng-binding")
     public WebElement buscarBtn;
 
-    @FindBy(css = "#main-content am-searchbox .form-container button")
+    @FindBy(css = "#main-content am-searchbox .form-container div > button")
     public WebElement buscarV3Btn;
 
     //Banners
