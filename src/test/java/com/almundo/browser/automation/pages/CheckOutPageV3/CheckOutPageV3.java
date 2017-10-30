@@ -260,7 +260,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 paymentSelectorV3().selectOneCreditCardRdb(); }
 
         if (creditCardComboSc && !paymentData.contains(DESTINATION)) {
-            paymentSectionComboV3().populatePaymentSectionV3(paymentData, "");
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData, ".card-container-1");
         } else if (!paymentData.contains(DESTINATION)){
             paymentSectionGridV3().populatePaymentSectionV3(paymentData, ".card-container-1"); }
 

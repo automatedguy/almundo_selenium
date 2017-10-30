@@ -64,9 +64,9 @@ public class PaymentSectionComboV3 extends CheckOutPageV3 {
     public PaymentSectionComboV3 populatePaymentSectionV3(String paymentData, String container) {
         dataManagement.setPaymentList();
 
-        WebElement creditCardDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo-ts div:nth-child(1) > div > select"));
-        WebElement bankDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo-ts div:nth-child(2) > div > select"));
-        WebElement paymentDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo-ts div:nth-child(3) > div > select"));
+        WebElement creditCardDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo div:nth-child(1) > div > select"));
+        WebElement bankDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo div:nth-child(2) > div > select"));
+        WebElement paymentDdl =  driver.findElement(By.cssSelector(container + " am-credit-cards-combo div:nth-child(3) > div > select"));
 
         Select creditCardSelect = new Select(creditCardDdl);
         Select bankSelect = new Select(bankDdl);
