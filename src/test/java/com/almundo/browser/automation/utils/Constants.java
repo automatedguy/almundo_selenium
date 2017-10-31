@@ -111,6 +111,9 @@ public class Constants {
         }
     }
 
+    // MISC
+    public static final String OTRO = "OTRO";
+
     //PAYMENTS
 
     public static final String RANDOM = "random";

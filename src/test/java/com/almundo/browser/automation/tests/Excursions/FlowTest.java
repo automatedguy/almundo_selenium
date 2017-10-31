@@ -65,6 +65,8 @@ public class FlowTest extends TestBaseSetup{
         switchToNewTab(driver);
 
         excursionsDetailPage.clickElegirFechaBtn();
+        excursionsDetailPage.setPuntoDePartida(OTRO);
+
         checkOutPageV3 = excursionsDetailPage.clickComprarBtn();
 
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);

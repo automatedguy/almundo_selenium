@@ -313,6 +313,50 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+/*    @SuppressWarnings("Duplicates")
+    @Test
+    public void roundTrip_Int_Booking_Insurance_Flow() {
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - Tourist");
+        addInsurance = true;
+
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
+
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
+        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                VISA_1,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }*/
+
     @Test
     public void roundTrip_Dom_Booking_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults - All");
