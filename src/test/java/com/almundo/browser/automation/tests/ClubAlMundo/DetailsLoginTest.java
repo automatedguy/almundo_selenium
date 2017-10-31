@@ -147,7 +147,7 @@ public class DetailsLoginTest extends TestBaseSetup {
 
             hotelsDetailPage = loginPopUp.clickIngresarOnHotelsDetailBtn();
 
-            Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
+            // Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
             hotelsDetailPage.clickVerHabitacionesBtn();
 
