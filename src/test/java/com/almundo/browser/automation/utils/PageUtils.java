@@ -272,7 +272,7 @@ public class PageUtils {
     public static void waitForUserNameDisplayed(WebDriver driver){
         PageUtils.waitImplicitly(10000);
         try {
-            PageUtils.waitElementForVisibility(driver, By.cssSelector("#account-header > am-account-logged div:nth-child(1) > span"), 5, "User Name");
+            PageUtils.waitElementForVisibility(driver, By.cssSelector("#account-header am-account-logged > div"), 5, "User Name");
         }
         catch(Exception ex){
             logger.error("The Login failed :( ");
