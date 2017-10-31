@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+
 /**
  * Created by gabrielcespedes on 02/01/17.
  */
@@ -47,7 +49,7 @@ public class LoginPopUp extends BasePage {
         logger.info("Closing Login Pop-Up");
         PageUtils.waitLoginPopup(driver, closeLoginBtn, 15, "Close Login button");
         closeLoginBtn.click();
-        PageUtils.waitImplicitly(2000);
+        waitImplicitly(2000);
         return initBasePage();
     }
 
@@ -84,6 +86,7 @@ public class LoginPopUp extends BasePage {
         logger.info("Clicking on [Ingresar] button");
         ingresarBtn.click();
         PageUtils.waitForUserNameDisplayed(driver);
+        waitImplicitly(4000);
         return initBasePage();
     }
 
@@ -140,7 +143,7 @@ public class LoginPopUp extends BasePage {
     public BasePage clickGoogleLoginBtn() {
         logger.info("Clicking on Facebook Login button");
         googleLoginBtn.click();
-        PageUtils.waitImplicitly(4000);
+        waitImplicitly(4000);
         return initGoogleLoginPopUpEmail();
     }
 }
