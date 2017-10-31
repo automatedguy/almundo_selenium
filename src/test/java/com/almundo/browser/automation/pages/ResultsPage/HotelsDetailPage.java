@@ -26,7 +26,8 @@ public class HotelsDetailPage extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "more-rooms")
+    private final String verHabitacionesLct = "#more-rooms";
+    @FindBy(css = verHabitacionesLct)
     public WebElement verHabitacionesBtn;
 
     @FindBy(css = ".choice.agreggate>span")
@@ -35,6 +36,7 @@ public class HotelsDetailPage extends TestBaseSetup {
     //############################################### Actions ###############################################
 
     public HotelsDetailPage clickVerHabitacionesBtn() {
+        waitWithTryCatch(driver, verHabitacionesLct, "Ver Habitaciones", 10);
         waitElementForClickable(driver, verHabitacionesBtn, 30, "Ver Habitaciones button");
         logger.info("Clicking on Ver Habitaciones button");
         scrollToElement(driver, verHabitacionesBtn);
