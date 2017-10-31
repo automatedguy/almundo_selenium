@@ -31,16 +31,16 @@ public class CarsDataTrip extends BasePage {
     @FindBy(css = "#dropOffDate")
     private WebElement dropOffDateCalendar;
 
-    @FindBy(css = "#main-content am-searchbox div:nth-child(2) .ng-scope.epp-cl-1-6--dt > div > select")
+    @FindBy(css = ".pickUpTime select")
     public WebElement pickUpTimeSelect;
 
-    @FindBy(css = "#main-content am-searchbox div:nth-child(2) .ng-scope.epp-cl-1-6 > div > select")
+    @FindBy(css = ".dropOffTime select")
     public WebElement dropOffTimeSelect;
 
-    @FindBy(css = "#main-content am-searchbox div:nth-child(2) > .ng-scope.epp-cl-1-3 > div > select")
+    @FindBy(css = ".ageRange select")
     public WebElement ageRangeSelect;
 
-    @FindBy(css = "#main-content am-searchbox div:nth-child(2) .epp-cl-1--tb.space-top-16 > div > input")
+    @FindBy(css = ".destinationCheckbox input")
     private WebElement droppOffInDestiny;
 
     /*****************************************  ***********************************************/
