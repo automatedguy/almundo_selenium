@@ -313,7 +313,7 @@ public class FlowTest extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
-/*    @SuppressWarnings("Duplicates")
+    @SuppressWarnings("Duplicates")
     @Test
     public void roundTrip_Int_Booking_Insurance_Flow() {
         logTestTitle("International - 10 days - 2 Adults/2 Childs - Tourist");
@@ -355,7 +355,7 @@ public class FlowTest extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);
-    }*/
+    }
 
     @Test
     public void roundTrip_Dom_Booking_Flow() {

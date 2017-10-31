@@ -250,13 +250,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithGridAndCombos(String paymentData){
-
+        breakDownSectionV3().dealWithInsurance(addInsurance);
         if(paymentData.contains(REWARDS)){
             paymentData = clubAlmundoRewards().useRewardsYesClick(paymentData);
         }
 
         if (paymentSelectorSvd && !countryPar.equals(COLOMBIA)) {
-            // breakDownSectionV3().dealWithInsurance(addInsurance);
             paymentSelectorV3().selectOneCreditCardRdb();
         } else if (paymentSelectorV3().selectOneCreditCardRdbIsDisplayed()) {
                 paymentSelectorV3().selectOneCreditCardRdb(); }
