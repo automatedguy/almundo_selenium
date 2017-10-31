@@ -139,8 +139,8 @@ public class BasePage extends TestBaseSetup {
     }
 
     public CarsDataTrip clickCarsBtn() {
+        waitImplicitly(2000);
         PageUtils.waitElementForClickable(driver, carsIcon, 10, "Autos button");
-        waitImplicitly(1000);
         PageUtils.scrollToElement(driver,carsIcon);
         logger.info("Clicking on [Autos button]");
         carsIcon.click();
