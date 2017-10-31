@@ -11,6 +11,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
+import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
+
 /**
  * Created by leandro.efron on 5/12/2016.
  */
@@ -137,6 +140,7 @@ public class BasePage extends TestBaseSetup {
 
     public CarsDataTrip clickCarsBtn() {
         PageUtils.waitElementForClickable(driver, carsIcon, 10, "Autos button");
+        waitImplicitly(1000);
         PageUtils.scrollToElement(driver,carsIcon);
         logger.info("Clicking on [Autos button]");
         carsIcon.click();
