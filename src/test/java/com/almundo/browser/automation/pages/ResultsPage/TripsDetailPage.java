@@ -11,8 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
-import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 14/12/16.
@@ -25,14 +24,16 @@ public class TripsDetailPage extends TestBaseSetup {
 
     //############################################### Locators ##############################################
 
-    @FindBy(css = ".button.button--lg.button--secondary")
+    private final String verHabitacionLct = ".button.button--lg.button--secondary";
+    @FindBy(css = verHabitacionLct)
     private WebElement verHabitacionBtn;
 
     //############################################### Actions ##############################################
 
     public TripsDetailPage clickVerHabitacionBtn() {
         logger.info("Detail URL: " + "[" + driver.getCurrentUrl() + "]");
-        PageUtils.waitElementForVisibility(driver,verHabitacionBtn,30, "Ver Habitacion Button");
+        waitWithTryCatch(driver, verHabitacionLct, "Ver Habitacion", 10);
+        waitImplicitly(3000);
         waitElementForClickable(driver,By.cssSelector(".button.button--lg.button--secondary"), 30, "Ver Habitacion Button");
         logger.info("Clicking on Ver Habitación button");
         verHabitacionBtn.click();

@@ -198,11 +198,13 @@ public class DetailsLoginTest extends TestBaseSetup {
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
+        tripsDetailPage = null;
 
         loginPopUp = basePage.headerSection().clickMyAccountMenuLnk();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
 
         tripsDetailPage = loginPopUp.clickIngresarOnTripsDetailBtn();
+        tripsDetailPage.clickVerHabitacionBtn();
 
         // Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
