@@ -36,6 +36,7 @@ public class HotelsDetailPage extends TestBaseSetup {
     //############################################### Actions ###############################################
 
     public HotelsDetailPage clickVerHabitacionesBtn() {
+        waitImplicitly(3000);
         waitWithTryCatch(driver, verHabitacionesLct, "Ver Habitaciones", 10);
         waitElementForClickable(driver, verHabitacionesBtn, 30, "Ver Habitaciones button");
         logger.info("Clicking on Ver Habitaciones button");
