@@ -319,7 +319,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
         logger.info("Validating trips (hotel) choices on results page are the same as before login.");
         Assert.assertTrue(tripsChoicesListFirst.size() == tripsResultsPage.getTripsChoices().size());
 
-        Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
+        // Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
