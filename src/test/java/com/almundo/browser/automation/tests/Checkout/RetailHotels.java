@@ -55,7 +55,7 @@ public class RetailHotels extends TestBaseSetup {
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                         LINK_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
-                                        dataManagement.getContactData(CONTACT_CELL_PHONE),HOTELS_CHECKOUT_INT);
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE),HOTELS_CHECKOUT_INT_RET);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -71,13 +71,10 @@ public class RetailHotels extends TestBaseSetup {
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 LINK_TWO_CARDS_VISA_1_MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
-                dataManagement.getContactData(CONTACT_CELL_PHONE),HOTELS_CHECKOUT_INT);
+                dataManagement.getContactData(CONTACT_CELL_PHONE),HOTELS_CHECKOUT_INT_RET);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
         setResultSauceLabs(PASSED);
     }
-
-
-
 }
