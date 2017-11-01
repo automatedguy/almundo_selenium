@@ -31,13 +31,17 @@ public class PaymentSelectorV3 extends BasePage {
     /**************************** Actions **********************************/
 
     public PaymentSelectorV3 selectOneCreditCardRdb(){
-        scrollToElement(driver, oneCreditCardRdb);
-        waitImplicitly(1000);
-        scrollToElement(driver, oneCreditCardRdb);
-        waitElementForClickable(driver, oneCreditCardRdb, 5 , "[One Credit Card Radio Button.");
-        logger.info("Selecting payment with one credit card");
-        oneCreditCardRdb.click();
-        waitImplicitly(4000);
+        try {
+            scrollToElement(driver, oneCreditCardRdb);
+            waitImplicitly(1000);
+            scrollToElement(driver, oneCreditCardRdb);
+            waitElementForClickable(driver, oneCreditCardRdb, 5, "[One Credit Card Radio Button.");
+            logger.info("Selecting payment with one credit card");
+            oneCreditCardRdb.click();
+            waitImplicitly(4000);
+        }catch (NoSuchElementException ouch){
+            logger.warn("One credit card selector not present, trying to continue anyway.");
+        }
         return this;
     }
 
