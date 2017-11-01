@@ -326,11 +326,23 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                           JSONObject billingData,
                                           JSONObject contactData,
                                           String productCheckOutPage) {
+        boolean payWithLink = false;
+        String thanksPageConfirmation = "";
+        String actualCheckoutUrl = "";
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
         if(checkoutFill) {
             setInputDef();
+
+            if(paymentData1.contains("link_de_pago$")){
+                setUrlParameter("&slp=1");
+                payWithLink = true;
+                thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
+                paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
+                actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
+                paymentData1 = paymentData1.replace("link_de_pago$","");
+            }
 
             if (paymentSelectorSvd) {
                 paymentSelectorV3().selectTwoCreditCardsRdb();
@@ -350,10 +362,20 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
             }
 
+            if(payWithLink){
+                acceptConditions();
+                clickComprarBtn();
+                waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+                driver.navigate().to(actualCheckoutUrl);
+            }
+
             passengerSection().populatePassengerSection(passengerList);
             emergencyContact().populateEmergencyContact(contactData);
             billingSection().populateBillingSection(billingData);
             contactSection().populateContactSection(contactData);
+            if(isRetailChannel()){
+                agentSectionV3().setAgentEmail(AGENT_EMAIL);
+            }
             acceptConditions();
         }
         return this;
