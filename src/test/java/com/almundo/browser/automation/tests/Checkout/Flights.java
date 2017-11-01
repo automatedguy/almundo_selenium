@@ -144,6 +144,24 @@ public class Flights extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void oneCardAddingInsurance() {
+        logTestTitle("Payment with one card adding insurance");
+        addInsurance = true;
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
     @Test
     public void gridExplicitWithTodoPago() {
         logTestTitle("Grid (explicit) With Todo Pago");
