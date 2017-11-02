@@ -81,7 +81,7 @@ public class ThanksPageV3 extends BasePage {
     }
 
     public boolean confirmationOk(){
-        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
+        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
             assertThanksPageElements = true;
             try {
                 PageUtils.waitElementForVisibility(driver, felicitacionesLbl, 70, "Reservation Confirmation");

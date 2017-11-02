@@ -142,7 +142,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public ThanksPageV3 clickComprarBtn(){
-        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
+        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
             PageUtils.waitElementForClickable(driver, comprarBtn, 5, "Comprar button");
             logger.info("Clicking on Comprar Button");
             waitImplicitly(1000);
