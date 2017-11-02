@@ -403,7 +403,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initTermsAndConditonsPage();
     }
 
-    private void setInputDef() {
+    public void setInputDef() {
         try {
              if(baseURL.contains("st.almundo")) {
                 inputDef = new InputDefinitions(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");

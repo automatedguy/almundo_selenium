@@ -20,7 +20,8 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
 
     /**************************** Locators **********************************/
 
-    @FindBy(css = "#product-resume span.price__amount")
+    final String finalPriceLct = "#product-resume span.price__amount";
+    @FindBy(css = finalPriceLct)
     public WebElement finalPrice;
 
     @FindBy(css = ".flight-detail-content")
@@ -44,7 +45,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     /**************************** Actions **********************************/
 
     public int getFinalPrice(){
-        logger.info("Getting Total Final Price.");
+        waitWithTryCatch(driver, "", "Final Price to Pay", 10);
         if(!countryPar.equals(MEXICO)) {
             return Integer.parseInt(finalPrice.getText().replace(".", "").replaceAll("\\s", ""));
         }
@@ -86,6 +87,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     public BreakDownSectionV3 dealWithInsurance(Boolean selectInsurance){
         if(selectInsurance) {
             clickAddInsurance();
+            setInputDef();
         }
         return this;
     }
@@ -96,6 +98,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
         scrollToCoordinate(driver, 400);
         logger.info("Clicking on [Add Insurance] radio button.");
         insuranceRdb.get(0).click();
+        breakDownSectionV3().getFinalPrice();
         return this;
     }
 
