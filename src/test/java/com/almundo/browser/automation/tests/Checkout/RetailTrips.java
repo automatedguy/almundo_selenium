@@ -45,6 +45,7 @@ public class RetailTrips extends TestBaseSetup {
     
     /************************ Grid Test Area ************************/
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void payWithLink() {
         logTestTitle("Trips Pay With Link");
@@ -54,6 +55,23 @@ public class RetailTrips extends TestBaseSetup {
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     LINK_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void payWithLinkTwoCards() {
+        logTestTitle("Trips Pay With Link With Two Cards");
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_VISA_1, MASTER_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
