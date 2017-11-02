@@ -90,7 +90,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(DEV_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -131,7 +131,7 @@ public class TestBaseSetup {
         }
 
         if(baseURL.equals(STG_URL) || baseURL.equals(RET_URL) || baseURL.equals(RET_STG_URL)
-                || baseURL.equals(CCR_URL) || baseURL.equals(CCR_STG_URL)) {
+                || baseURL.equals(CCR_URL) || baseURL.equals(CCR_STG_URL) || baseURL.equals(DEV_URL)) {
             switch (countryPar) {
                 case "ARGENTINA":
                     baseURL = baseURL.concat(".ar/");

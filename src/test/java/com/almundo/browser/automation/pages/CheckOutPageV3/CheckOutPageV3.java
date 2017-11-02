@@ -407,7 +407,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         try {
              if(baseURL.contains("st.almundo")) {
                 inputDef = new InputDefinitions(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
-            } else{
+            } else if (baseURL.contains("dv.almundo")) {
+                 inputDef = new InputDefinitions(DEV_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es"); }
+            else {
                 inputDef = new InputDefinitions(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
             }
         } catch (IOException e) {
