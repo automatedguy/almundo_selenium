@@ -45,13 +45,10 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     /**************************** Actions **********************************/
 
     public int getFinalPrice(){
-        waitWithTryCatch(driver, "", "Final Price to Pay", 10);
-        if(!countryPar.equals(MEXICO)) {
-            return Integer.parseInt(finalPrice.getText().replace(".", "").replaceAll("\\s", ""));
-        }
-        else{
-            return Integer.parseInt(finalPrice.getText().replace(",", "").replaceAll("\\s", ""));
-        }
+        waitWithTryCatch(driver, finalPriceLct, "Final Price to Pay", 10);
+        return Integer.parseInt(finalPrice.getText().replace(",", "").
+                                                    replace(".","").
+                                                    replaceAll("\\s", ""));
     }
 
     public String getFinalPriceString(){
