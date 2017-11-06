@@ -317,6 +317,7 @@ public class Flights extends TestBaseSetup {
 
     /************************ Combo Test Area ************************/
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void comboWithTodoPago() {
         logTestTitle("Combo With Todo Pago");
@@ -327,6 +328,32 @@ public class Flights extends TestBaseSetup {
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+        getFlightsAssertionInfo();
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void comboOneCardAddingInsurance() {
+        logTestTitle("Combo With One Card Adding Insurance");
+        addInsurance = true;
+
+        checkOutPageV3 = openCart(cartId, "&sc=1", productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
         getFlightsAssertionInfo();
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
