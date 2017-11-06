@@ -46,6 +46,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
 
     public int getFinalPrice(){
         waitWithTryCatch(driver, finalPriceLct, "Final Price to Pay", 10);
+        waitImplicitly(4000);
         return Integer.parseInt(finalPrice.getText().replace(",", "").
                                                     replace(".","").
                                                     replaceAll("\\s", ""));
