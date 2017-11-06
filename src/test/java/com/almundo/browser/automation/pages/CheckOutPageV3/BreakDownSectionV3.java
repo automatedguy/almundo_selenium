@@ -47,6 +47,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     public int getFinalPrice(){
         waitWithTryCatch(driver, finalPriceLct, "Final Price to Pay", 10);
         waitImplicitly(4000);
+        logger.info("Final price to pay now is :[" + finalPrice.getText() +"]");
         return Integer.parseInt(finalPrice.getText().replace(",", "").
                                                     replace(".","").
                                                     replaceAll("\\s", ""));
@@ -83,6 +84,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     }
 
     public BreakDownSectionV3 dealWithInsurance(Boolean selectInsurance){
+        getFinalPrice();
         if(selectInsurance) {
             clickAddInsurance();
             setInputDef();
