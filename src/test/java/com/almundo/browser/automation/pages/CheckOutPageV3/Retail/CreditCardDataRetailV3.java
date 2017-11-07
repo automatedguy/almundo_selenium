@@ -76,6 +76,10 @@ public class CreditCardDataRetailV3 extends CheckOutPageV3 {
     }
 
     public void populateCreditCardData(String paymentData, boolean retail){
+        if(paymentData.contains("destination")){
+            paymentData = paymentData.replace("destination$","");
+            logger.info("Entering Credit Card Data for [Payment at Destination]");
+        }
 
         logger.info("Getting payment data for: " + "[" + paymentData + "]");
         dataManagement.setPaymentList();

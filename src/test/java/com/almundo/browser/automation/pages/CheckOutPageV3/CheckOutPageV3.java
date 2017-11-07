@@ -234,8 +234,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
             driver.navigate().to(actualCheckoutUrl);
         }
         else {
-            paymentSelectorRetailV3().selectCreditRbd();
-            paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+            if(!paymentData.contains(DESTINATION)) {
+                paymentSelectorRetailV3().selectCreditRbd();
+                paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+            }
             creditCardDataRetailV3().populateCreditCardData(paymentData, true);
         }
     }

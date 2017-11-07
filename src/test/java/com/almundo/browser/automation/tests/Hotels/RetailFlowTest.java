@@ -47,6 +47,12 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.clearPassengerJsonList();
     }
 
+    private void getAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setHotelsDetailInfo(checkOutPageV3.breakDownSectionV3().getHotelDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
     /***************************** Test Cases *****************************/
 
     @Test
@@ -110,6 +116,49 @@ public class RetailFlowTest extends TestBaseSetup {
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void int_Booking_Flow_PayAtDestination() {
+        logTestTitle("International - Pay At Destination - 15 days - 2 Adults - 1 Room");
+
+        dataManagement.setHotelsDataTripItinerary(MIA_10D_2A_1R);
+
+        hotelsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        hotelsDataTrip.setDate(hotelsDataTrip.getCheckinCalendar(), dataManagement.getStartDate());
+        hotelsDataTrip.setDate(hotelsDataTrip.getCheckoutCalendar(), dataManagement.getEndDate());
+        hotelsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(hotelsResultsPage.vacancy());
+
+        hotelsResultsPage.clickPayAtDestination();
+
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+        PageUtils.switchToNewTab(driver);
+
+        hotelsDetailPage.clickPayAtDestination();
+        hotelsDetailPage.clickVerHabitacionesBtn();
+
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DESTINATION_MASTER_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING),
+                                    dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM_RET);
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 
