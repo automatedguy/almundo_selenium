@@ -202,6 +202,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     private void dealWithRetail(String paymentData){
         breakDownSectionV3().dealWithInsurance(addInsurance);
+        breakDownSectionV3().dealWithTransfer(addTransfer);
         if(paymentData.contains("pago_dividido$")) {
             paymentSelectorRetailV3().selectPaymentMethod(PAGO_DIVIDIDO);
             paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
