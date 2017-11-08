@@ -42,6 +42,9 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     @FindBy(css ="#healthcross-input")
     public List<WebElement> insuranceRdb;
 
+    @FindBy(css = "#radio-yes")
+    public WebElement addTransferRdb;
+
     /**************************** Actions **********************************/
 
     public int getFinalPrice(){
@@ -98,6 +101,16 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
         scrollToCoordinate(driver, 400);
         logger.info("Clicking on [Add Insurance] radio button.");
         insuranceRdb.get(0).click();
+        breakDownSectionV3().getFinalPrice();
+        return this;
+    }
+
+    public BreakDownSectionV3 clickAddTransfer(){
+        logger.info("Adding Transfer, looking for the radio button.");
+        scrollToTop(driver);
+        scrollToCoordinate(driver, 400);
+        logger.info("Clicking on [Add Transfer] radio button.");
+        addTransferRdb.click();
         breakDownSectionV3().getFinalPrice();
         return this;
     }
