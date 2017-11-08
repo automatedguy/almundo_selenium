@@ -144,6 +144,7 @@ public class Constants {
 
     public static final String DEPOSIT = "deposit";
     public static final String TRANSFER = "transfer";
+    public static final String CASH = "cash";
 
     public static final String VISA_MASTER = "pago_dividido$1_visa_visa$1_master_master$";
     public static final String MASTER_VISA = "pago_dividido$1_master_master$1_visa_visa$";
@@ -280,6 +281,8 @@ public class Constants {
     public final static int FIRST_OPTION = 0;
 
     public final static int FIRST_OPTION_O1 = 1;
+    public final static int SECOND_OPTION_O2 = 2;
+    public final static int THIRD_OPTION_O3 = 3;
 
     //INCONS
     public static final String TRIPS_ICO = "Vuelo+Hotel icon";

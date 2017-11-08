@@ -139,7 +139,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Insurance_Flow() {
+    public void IntBookingWithInsurance() {
         logTestTitle("International With Insurance  - 20 days - 2 Adults - Tourist");
         addInsurance = true;
 
@@ -168,8 +168,8 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -184,8 +184,53 @@ public class RetailFlowTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Deposit_Insurance_Flow() {
-        logTestTitle("International With Insurance  - 20 days - 2 Adults - Tourist");
+    public void IntBookingCashWithInsurance() {
+        logTestTitle("International Cash With Insurance  - 20 days - 2 Adults - Tourist");
+        addInsurance = true;
+
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+
+        flightsDataTrip = basePage.flightsDataTrip();
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
+
+        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), CASH,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void IntBookingDepositWithInsurance() {
+        logTestTitle("International Deposit With Insurance  - 20 days - 2 Adults - Tourist");
         addInsurance = true;
 
         dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
@@ -213,8 +258,8 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DEPOSIT,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -226,7 +271,52 @@ public class RetailFlowTest extends TestBaseSetup {
 
         setResultSauceLabs(PASSED);
     }
-    
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void IntBookingTransferWithInsurance() {
+        logTestTitle("International Transfer With Insurance  - 20 days - 2 Adults - Tourist");
+        addInsurance = true;
+
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
+
+        flightsDataTrip = basePage.flightsDataTrip();
+        flightsDataTrip.selectFlightType(ROUND_TRIP);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
+
+        flightsResultsPage = flightsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(flightsResultsPage.vacancy());
+
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
+
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TRANSFER,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
 /*    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Link_Flow() {

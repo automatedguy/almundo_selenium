@@ -201,6 +201,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     /************ For the different payment forms credit, combos, grid, etc ************/
 
     private void dealWithRetail(String paymentData){
+        breakDownSectionV3().dealWithInsurance(addInsurance);
         if(paymentData.contains("pago_dividido$")) {
             paymentSelectorRetailV3().selectPaymentMethod(PAGO_DIVIDIDO);
             paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
@@ -234,11 +235,19 @@ public class CheckOutPageV3 extends TestBaseSetup {
             driver.navigate().to(actualCheckoutUrl);
         }
         else {
-            if(!paymentData.contains(DESTINATION)) {
+            if(paymentData.contains(DEPOSIT)){
+                paymentSelectorRetailV3().selectDepositRdb();
+            } else if (paymentData.contains(TRANSFER)){
+                paymentSelectorRetailV3().selectTransferRdb();
+            } else if (paymentData.contains(CASH)){
+                paymentSelectorRetailV3().selectCashRdb();
+            } else if (!paymentData.contains(DESTINATION)){
                 paymentSelectorRetailV3().selectCreditRbd();
                 paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+                creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+            } else {
+                creditCardDataRetailV3().populateCreditCardData(paymentData, true);
             }
-            creditCardDataRetailV3().populateCreditCardData(paymentData, true);
         }
     }
 

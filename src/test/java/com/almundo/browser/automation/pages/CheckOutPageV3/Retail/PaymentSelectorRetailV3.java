@@ -21,9 +21,12 @@ public class PaymentSelectorRetailV3 extends BasePage {
     /**************************** Locators **********************************/
 
     @FindBy(css = "#am-split-payment div:nth-child(1) > label")
-    private WebElement deposit;
+    private WebElement cash;
 
     @FindBy(css = "#am-split-payment div:nth-child(2) > label")
+    private WebElement deposit;
+
+    @FindBy(css = "#am-split-payment div:nth-child(3) > label")
     private WebElement transfer;
 
     @FindBy(css ="#am-split-payment .credit-card > label")
@@ -42,6 +45,13 @@ public class PaymentSelectorRetailV3 extends BasePage {
             }
         }
         return initPaymentSelectorRetailSplitV3();
+    }
+
+    public PaymentSelectorRetailV3 selectCashRdb(){
+        logger.info("Selecting payment type: [Efectivo]" );
+        cash.click();
+        waitImplicitly(3000);
+        return this;
     }
 
     public PaymentSelectorRetailV3 selectDepositRdb(){
