@@ -56,6 +56,7 @@ public class TestBaseSetup {
     public static Boolean retriesCount = false;
     public static Boolean checkoutFill = true;
     public static Boolean addInsurance = false;
+    public static Boolean addTransfer = false;
 
     public static String className;
     public static String method;
@@ -90,7 +91,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,

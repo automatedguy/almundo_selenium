@@ -87,10 +87,12 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     }
 
     public BreakDownSectionV3 dealWithInsurance(Boolean selectInsurance){
-        getFinalPrice();
         if(selectInsurance) {
+            getFinalPrice();
             clickAddInsurance();
             setInputDef();
+        } else {
+          logger.info("Not adding insurance.");
         }
         return this;
     }
@@ -101,17 +103,26 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
         scrollToCoordinate(driver, 400);
         logger.info("Clicking on [Add Insurance] radio button.");
         insuranceRdb.get(0).click();
-        breakDownSectionV3().getFinalPrice();
+        getFinalPrice();
         return this;
     }
 
+    public BreakDownSectionV3 dealWithTransfer(Boolean selectTransfer){
+        if(selectTransfer) {
+            getFinalPrice();
+            clickAddTransfer();
+        } else {
+            logger.info("Not adding transfer.");
+        }
+        return this;
+    }
     public BreakDownSectionV3 clickAddTransfer(){
         logger.info("Adding Transfer, looking for the radio button.");
         scrollToTop(driver);
         scrollToCoordinate(driver, 400);
         logger.info("Clicking on [Add Transfer] radio button.");
         addTransferRdb.click();
-        breakDownSectionV3().getFinalPrice();
+        getFinalPrice();
         return this;
     }
 

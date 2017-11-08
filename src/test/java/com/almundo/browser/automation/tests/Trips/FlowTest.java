@@ -74,11 +74,50 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
-                                              dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                              dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+                                        dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void IntBookingWithTransfer(){
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
+        if(countryPar.equals(ARGENTINA)) {
+            addTransfer = true;
+
+            dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
+
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(tripsResultsPage.vacancy());
+            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+            tripsDetailPage.clickVerHabitacionBtn();
+
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_FEMALE_NAT_TRIPS);
+
+            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
+                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+            Assert.assertTrue(thanksPageV3.confirmationOk());
+        } else {
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
+        }
         setResultSauceLabs(PASSED);
     }
 
@@ -107,8 +146,8 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+                                        dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -140,8 +179,8 @@ public class FlowTest extends TestBaseSetup {
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), MASTER_1,
-                                              dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                              dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
+                                        dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
