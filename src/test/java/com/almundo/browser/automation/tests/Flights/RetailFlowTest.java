@@ -226,9 +226,7 @@ public class RetailFlowTest extends TestBaseSetup {
 
         setResultSauceLabs(PASSED);
     }
-
-
-
+    
 /*    @SuppressWarnings("Duplicates")
     @Test
     public void suc_Int_Booking_Link_Flow() {
