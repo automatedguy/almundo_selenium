@@ -58,7 +58,7 @@ public class PackagesDataTrip extends BasePage {
     public PackagesDataTrip setDestination(int  destination){
         logger.info("Clicking on: [Voy A]");
         voyATxt.click();
-        waitImplicitly(3000);
+        waitImplicitly(4000);
         WebElement destinationTxt = driver.findElement(By.cssSelector("#search-pkg-dest_dropdown > div:nth-child(" + destination + ")"));
         logger.info("In this case going to: [" + destinationTxt.getText() + "]");
         waitElementForClickable(driver, destinationTxt, 3, "Full Destination");

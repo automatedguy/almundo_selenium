@@ -57,7 +57,7 @@ public class FlowTest extends TestBaseSetup {
         packagesDataTrip.setSeason(season);
         packagesDataTrip.setPassenger(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         packagesResultsPage = packagesDataTrip.clickBuscarBtn();
-        packagesDetailPage = packagesResultsPage.verPaqueteClick(SECOND_OPTION_O2);
+        packagesDetailPage = packagesResultsPage.verPaqueteClick(FIRST_OPTION_O1);
 
         PageUtils.switchToNewTab(driver);
 
