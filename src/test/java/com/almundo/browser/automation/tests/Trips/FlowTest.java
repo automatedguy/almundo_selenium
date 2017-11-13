@@ -57,6 +57,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void int_Booking_Flow(){
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
+        addTransfer = false;
 
         dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
@@ -183,6 +184,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void int_Booking_Flow_with2Cards(){
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room - VISA_1 and MASTER_1");
+        addTransfer = false;
 
         dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
@@ -222,6 +224,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void dom_Booking_Flow(){
         logTestTitle("Domestic - 15 days - 2 Adults/1 Child - 1 Room");
+        addTransfer = false;
 
         dataManagement.setTripsDataTripItinerary(DOM01_15D_2A_1C_1R);
 

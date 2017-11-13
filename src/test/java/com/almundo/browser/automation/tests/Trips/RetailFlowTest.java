@@ -49,6 +49,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Dom_Booking_Flow() {
         logTestTitle("Domestic - 20 days - 2 Adults/1 Child - 1 Room");
+        addTransfer = false;
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
         dataManagement.setTripsDataTripItinerary(DOM02_20D_2A_1C_1R);
@@ -90,6 +91,7 @@ public class RetailFlowTest extends TestBaseSetup {
     @Test
     public void suc_Int_Booking_Flow() {
         logTestTitle("International - 20 days - 2 Adults - 1 Room");
+        addTransfer = false;
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
 
         dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
