@@ -81,8 +81,13 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM_RET);
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM_RET);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+
         setResultSauceLabs(PASSED);
     }
 
@@ -110,12 +115,12 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                AMEX_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_INT_RET);
+                                    AMEX_1, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_INT_RET);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
         setResultSauceLabs(PASSED);
     }
 
