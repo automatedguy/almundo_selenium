@@ -39,6 +39,11 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.clearPassengerJsonList();
     }
 
+    private void getTripsAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
@@ -69,11 +74,15 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE),TRIPS_CHECKOUT_DOM_RET);
-
+                                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                dataManagement.getContactData(CONTACT_CELL_PHONE),TRIPS_CHECKOUT_DOM_RET);
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);
     }
@@ -105,11 +114,15 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), MASTER_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
-
+                                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);
     }
@@ -143,11 +156,15 @@ public class RetailFlowTest extends TestBaseSetup {
             dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
             checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), MASTER_1,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
-
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
+            getTripsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
             Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         } else {
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }

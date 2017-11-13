@@ -81,7 +81,6 @@ public class FlowTest extends TestBaseSetup {
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                         dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
-
         getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
@@ -121,9 +120,9 @@ public class FlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
             checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
-
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+            getTripsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -165,9 +164,9 @@ public class FlowTest extends TestBaseSetup {
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
             checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
-                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
-
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+            getTripsAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
             Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -205,10 +204,11 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
                                         dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
-
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -246,7 +246,7 @@ public class FlowTest extends TestBaseSetup {
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), MASTER_1,
                                         dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
-
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
