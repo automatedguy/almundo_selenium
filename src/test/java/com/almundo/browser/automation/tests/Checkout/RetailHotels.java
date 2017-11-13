@@ -33,6 +33,12 @@ public class RetailHotels extends TestBaseSetup {
         dataManagement.setContactList();
     }
 
+    private void getAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setHotelsDetailInfo(checkOutPageV3.breakDownSectionV3().getHotelDetailContent());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
     @AfterMethod
     private void cleanPassengerJsonList() {
         dataManagement.clearPassengerJsonList();
@@ -56,9 +62,15 @@ public class RetailHotels extends TestBaseSetup {
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                         LINK_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                                         dataManagement.getContactData(CONTACT_CELL_PHONE),HOTELS_CHECKOUT_INT_RET);
-
+        getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -72,9 +84,15 @@ public class RetailHotels extends TestBaseSetup {
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_VISA_1, MASTER_1,
                                     dataManagement.getBillingData(LOCAL_BILLING),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT_RET);
-
+        getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 }
