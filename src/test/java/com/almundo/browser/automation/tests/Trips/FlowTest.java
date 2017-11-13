@@ -47,6 +47,11 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.clearPassengerJsonList();
     }
 
+    private void getTripsAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
+    }
+
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
@@ -77,8 +82,14 @@ public class FlowTest extends TestBaseSetup {
                                         dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -114,7 +125,12 @@ public class FlowTest extends TestBaseSetup {
                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
             Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         } else {
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
@@ -153,7 +169,12 @@ public class FlowTest extends TestBaseSetup {
                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
             Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         } else {
             logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
@@ -189,7 +210,12 @@ public class FlowTest extends TestBaseSetup {
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -222,7 +248,12 @@ public class FlowTest extends TestBaseSetup {
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         setResultSauceLabs(PASSED);
     }
 }

@@ -47,197 +47,199 @@ public class Trips extends TestBaseSetup {
 
     @Test
     public void gridWithTodoPago() {
-        logTestTitle("Trips – Grid With Todo Pago " + countryPar );
+        logTestTitle("Grid with one credit card");
         checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                VISA_1,
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void twoCards() {
-        logTestTitle("Trips – Grid With Todo Pago " + countryPar );
+        logTestTitle("Grid with two credit cards.");
         checkOutPageV3 = openCart(cartId, "&stc=1",productURl);
 
         getPassengersData();
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
-                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridExplicitWithTodoPago() {
-        logTestTitle("Trips – Grid (explicit) With Todo Pago " + countryPar );
+        logTestTitle("Trips – Grid (explicit) With Todo Pago");
         checkOutPageV3 = openCart(cartId, "&sc=0", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridExplicitWithTodoPagoExplicit() {
-        logTestTitle("Trips – Grid (explicit) With Todo Pago (explicit) " + countryPar );
+        logTestTitle("Trips – Grid (explicit) With Todo Pago (explicit)");
         checkOutPageV3 = openCart(cartId, "&sc=0&stp=1", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridWithoutTodoPagoExplicit() {
-        logTestTitle("Trips – Grid Without Todo Pago (explicit) " + countryPar );
+        logTestTitle("Trips – Grid Without Todo Pago (explicit)");
         checkOutPageV3 = openCart(cartId, "&stp=0", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridWithDebitExplicitWithTodoPago() {
-        logTestTitle("Trips – Grid With Debit (explicit)  With Todo Pago " + countryPar );
+        logTestTitle("Trips – Grid With Debit (explicit)  With Todo Pago");
         checkOutPageV3 = openCart(cartId, "&svd=1", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridExplicitWithDebitExplicitWithTodoPago() {
-        logTestTitle("Trips – Grid (explicit)  With Debit (explicit)  With Todo Pago " + countryPar );
+        logTestTitle("Trips – Grid (explicit)  With Debit (explicit)  With Todo Pago");
         checkOutPageV3 = openCart(cartId, "&sc=0&svd=1", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridExplicitWithDebitExplicitWithTodoPagoExplicit() {
-        logTestTitle("Trips – Grid (explicit)  With Debit (explicit)  With Todo Pago (explicit) " + countryPar );
+        logTestTitle("Trips – Grid (explicit)  With Debit (explicit)  With Todo Pago (explicit)");
         checkOutPageV3 = openCart(cartId, "&sc=0&svd=1&stp=1", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridWithDebitExplicitWithoutTodoPago() {
-        logTestTitle("Trips – Grid With Debit (explicit) Without Todo Pago " + countryPar );
+        logTestTitle("Trips – Grid With Debit (explicit) Without Todo Pago");
         checkOutPageV3 = openCart(cartId, "&svd=1&stp=0", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void  gridWithoutDebitExplicitWithTodoPago() {
-        logTestTitle("Trips – Grid Without Debit (explicit) Without Todo Pago " + countryPar );
+        logTestTitle("Trips – Grid Without Debit (explicit) Without Todo Pago");
         checkOutPageV3 = openCart(cartId, "&svd=0", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void gridWithoutDebitExplicitWithoutTodoPagoExplicit() {
-        logTestTitle("Trips – Grid Without Debit (explicit) Without Todo Pago (explicit) " + countryPar );
+        logTestTitle("Trips – Grid Without Debit (explicit) Without Todo Pago (explicit)");
         checkOutPageV3 = openCart(cartId, "&svd=0&stp=0", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -245,37 +247,37 @@ public class Trips extends TestBaseSetup {
 
     @Test
     public void comboWithTodoPago() {
-        logTestTitle("Trips – Combo With Todo Pago " + countryPar );
+        logTestTitle("Trips – Combo With Todo Pago");
         checkOutPageV3 = openCart(cartId, "&sc=1", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
     @Test
     public void comboWithTodoPagoExplicit() {
-        logTestTitle("Trips – Combo With Todo Pago (explicit) " + countryPar );
+        logTestTitle("Trips – Combo With Todo Pago (explicit)");
         checkOutPageV3 = openCart(cartId, "&sc=1&stp=1", productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -287,13 +289,13 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -305,13 +307,13 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -323,13 +325,13 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -341,13 +343,13 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -359,13 +361,13 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -377,13 +379,13 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 
@@ -395,13 +397,13 @@ public class Trips extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                "1_visa_visa",
-                dataManagement.getBillingData("local_Billing"),
-                dataManagement.getContactData("contact_cell_phone"),
-                "TripsCheckOutPageInternationalV3");
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
         Assert.assertTrue(thanksPageV3.confirmationOk());
+
         setResultSauceLabs(PASSED);
     }
 }
