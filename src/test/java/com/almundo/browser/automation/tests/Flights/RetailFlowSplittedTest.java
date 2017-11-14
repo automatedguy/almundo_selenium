@@ -54,7 +54,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Splitted_2cards() {
+    public void IntBookingSplitted2cards() {
         logTestTitle("International - Splitted VISA_MASTER - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
@@ -102,7 +102,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
+    public void IntBookingSplittedDepositCredit() {
         logTestTitle("International - DEPOSIT_VISA - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
@@ -150,7 +150,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Splitted_CashDeposit() {
+    public void IntBookingSplittedCashDeposit() {
         logTestTitle("International - Splitted CASH_DEPOSIT - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
@@ -198,7 +198,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Splitted_CashTransfer() {
+    public void IntBookingSplittedCashTransfer() {
         logTestTitle("International - Splitted CASH_TRANSFER - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
@@ -246,7 +246,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
+    public void IntBookingSplittedTransferCredit() {
         logTestTitle("International - TRANSFER_VISA - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
@@ -289,7 +289,7 @@ public class RetailFlowSplittedTest extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void suc_Int_Booking_Flow_Splitted_3cards() {
+    public void IntBookingSplitted3cards() {
         logTestTitle("International - 3 Cards - 20 days - 2 Adults - Tourist");
 
         if(countryPar.equals(ARGENTINA)) {
