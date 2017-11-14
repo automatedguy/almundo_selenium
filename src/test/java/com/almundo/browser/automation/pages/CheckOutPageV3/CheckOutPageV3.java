@@ -345,6 +345,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
+        breakDownSectionV3().dealWithTransfer(addTransfer);
         if(checkoutFill) {
             setInputDef();
 
