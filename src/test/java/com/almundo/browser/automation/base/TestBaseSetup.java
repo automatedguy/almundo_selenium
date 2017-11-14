@@ -86,7 +86,7 @@ public class TestBaseSetup {
 
     /************* Selenium Proxy *************/
     private static SeleniumProxy seleniumProxy = new SeleniumProxy();
-    private static Boolean initProxy = true;
+    private static Boolean initProxy = false;
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
