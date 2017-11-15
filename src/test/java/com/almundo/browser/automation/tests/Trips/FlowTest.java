@@ -69,6 +69,7 @@ public class FlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
+
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
@@ -79,6 +80,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEMALE_NAT_TRIPS);
 
         checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                         dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                         dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
@@ -110,6 +112,7 @@ public class FlowTest extends TestBaseSetup {
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(tripsResultsPage.vacancy());
+
             tripsResultsPage.clickElegirBtn(FIRST_OPTION);
             tripsDetailPage = tripsResultsPage.clickContinuarBtn();
             tripsDetailPage.clickVerHabitacionBtn();
@@ -120,6 +123,7 @@ public class FlowTest extends TestBaseSetup {
             dataManagement.setPassengerData(CHILD_FEMALE_NAT_TRIPS);
 
             checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+
             checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
@@ -154,6 +158,7 @@ public class FlowTest extends TestBaseSetup {
             tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
             Assert.assertTrue(tripsResultsPage.vacancy());
+
             tripsResultsPage.clickElegirBtn(FIRST_OPTION);
             tripsDetailPage = tripsResultsPage.clickContinuarBtn();
             tripsDetailPage.clickVerHabitacionBtn();
@@ -196,6 +201,7 @@ public class FlowTest extends TestBaseSetup {
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
+
         tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
