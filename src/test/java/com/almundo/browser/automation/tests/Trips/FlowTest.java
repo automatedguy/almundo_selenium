@@ -55,7 +55,7 @@ public class FlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void int_Booking_Flow(){
+    public void IntBooking(){
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
         addTransfer = false;
 
@@ -182,7 +182,7 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void int_Booking_Flow_with2Cards(){
+    public void IntBookingWith2Cards(){
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room - VISA_1 and MASTER_1");
         addTransfer = false;
 
@@ -222,7 +222,7 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void dom_Booking_Flow(){
+    public void DomBooking(){
         logTestTitle("Domestic - 15 days - 2 Adults/1 Child - 1 Room");
         addTransfer = false;
 

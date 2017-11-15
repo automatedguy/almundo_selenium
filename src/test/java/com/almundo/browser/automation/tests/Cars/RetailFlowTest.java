@@ -51,7 +51,7 @@ public class RetailFlowTest extends TestBaseSetup {
     /***************************** Test Cases *****************************/
 
     @Test
-    public void suc_Int_Booking_Flow() {
+    public void IntBooking() {
         logTestTitle("International - 10 days");
         dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
