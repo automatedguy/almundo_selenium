@@ -55,7 +55,7 @@ public class FlowTest extends TestBaseSetup {
     /***************************** Test Cases *****************************/
 
    @Test
-    public void dom_Booking_Flow() {
+    public void DomBooking() {
         logTestTitle("Domestic - 10 days");
         if(countryPar.equals(COLOMBIA)){
             logger.warn(NO_DOMESTIC_CARS_COLOMBIA);
@@ -86,8 +86,8 @@ public class FlowTest extends TestBaseSetup {
 
             getAssertionInfo();
             thanksPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(thanksPageV3.confirmationOk());
 
+            Assert.assertTrue(thanksPageV3.confirmationOk());
             Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
             Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
             Assert.assertTrue(thanksPageV3.isCarsDetailInfoOk(thanksPageAssertInfo.getCarsDetailInfo()));
@@ -97,7 +97,7 @@ public class FlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void int_Booking_Flow() {
+    public void IntBooking() {
         logTestTitle("International - 10 days");
         dataManagement.setCarsDataTripItinerary(MIA_10D_21_24);
 
@@ -123,8 +123,8 @@ public class FlowTest extends TestBaseSetup {
                                     dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
         getAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
-        Assert.assertTrue(thanksPageV3.confirmationOk());
 
+        Assert.assertTrue(thanksPageV3.confirmationOk());
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
         Assert.assertTrue(thanksPageV3.isCarsDetailInfoOk(thanksPageAssertInfo.getCarsDetailInfo()));
