@@ -175,7 +175,7 @@ public class AvailabilityLoginTest extends TestBaseSetup {
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
             checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                    REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                    MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
                     dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
             getFlightsAssertionInfo();
