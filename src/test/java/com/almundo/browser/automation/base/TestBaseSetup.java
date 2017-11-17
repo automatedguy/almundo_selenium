@@ -12,7 +12,6 @@ import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
 import com.almundo.browser.automation.utils.*;
-import com.gargoylesoftware.htmlunit.Page;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
@@ -91,11 +90,11 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional(CHROME) String browserType,
+                                        @Optional(FIREFOX) String browserType,
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
