@@ -142,6 +142,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public ThanksPageV3 clickComprarBtn(){
+        logger.info("Final breakdown when booking is:[" + breakDownSectionV3().getFinalPriceString() + "]");
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
             PageUtils.waitElementForClickable(driver, comprarBtn, 5, "Comprar button");
             logger.info("Clicking on Comprar Button");

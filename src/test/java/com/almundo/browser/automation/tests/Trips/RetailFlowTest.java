@@ -47,7 +47,7 @@ public class RetailFlowTest extends TestBaseSetup {
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void suc_Dom_Booking_Flow() {
+    public void DomBooking() {
         logTestTitle("Domestic - 20 days - 2 Adults/1 Child - 1 Room");
         addTransfer = false;
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
@@ -89,7 +89,7 @@ public class RetailFlowTest extends TestBaseSetup {
     }
 
     @Test
-    public void suc_Int_Booking_Flow() {
+    public void IntBooking() {
         logTestTitle("International - 20 days - 2 Adults - 1 Room");
         addTransfer = false;
         PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
@@ -172,168 +172,4 @@ public class RetailFlowTest extends TestBaseSetup {
         }
         setResultSauceLabs(PASSED);
     }
-
-/*    @SuppressWarnings("Duplicates")
-    @Test
-    public void suc_Int_Booking_Flow_Splitted_2cards() {
-        logTestTitle("International - VISA_MASTER - 20 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO)) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
-
-            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
-
-            tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
-            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
-            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
-            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
-            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
-
-            Assert.assertTrue(tripsResultsPage.vacancy());
-
-            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
-            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
-            tripsDetailPage.clickVerHabitacionBtn();
-
-            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-
-            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                    VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
-
-            thanksPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(thanksPageV3.confirmationOk());
-        }
-        else{
-            logger.warn(NOT_RUNNING_MEXICO);
-        }
-        setResultSauceLabs(PASSED);
-    }
-
-    @SuppressWarnings("Duplicates")
-    @Test
-    public void suc_Int_Booking_Flow_Splitted_DepositCredit() {
-        logTestTitle("International - DEPOSIT_MASTER - 20 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO)) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
-
-            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
-
-            tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
-            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
-            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
-            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
-            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
-
-            Assert.assertTrue(tripsResultsPage.vacancy());
-
-            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
-            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
-            tripsDetailPage.clickVerHabitacionBtn();
-
-            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-
-            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                    DEPOSIT_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
-
-            thanksPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(thanksPageV3.confirmationOk());
-        }
-        else{
-            logger.warn(NOT_RUNNING_MEXICO);
-        }
-        setResultSauceLabs(PASSED);
-    }
-
-    @SuppressWarnings("Duplicates")
-    @Test
-    public void suc_Int_Booking_Flow_Splitted_TransferCredit() {
-        logTestTitle("International - VISA_TRANSFER - 20 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO)) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
-
-            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
-
-            tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
-            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
-            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
-            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
-            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
-
-            Assert.assertTrue(tripsResultsPage.vacancy());
-
-            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
-            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
-            tripsDetailPage.clickVerHabitacionBtn();
-
-            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-
-            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                    VISA_TRANSFER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
-
-            thanksPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(thanksPageV3.confirmationOk());
-        }
-        else{
-            logger.warn(NOT_RUNNING_MEXICO);
-        }
-        setResultSauceLabs(PASSED);
-    }
-
-    @SuppressWarnings("Duplicates")
-    @Test
-    public void suc_Int_Booking_Flow_Splitted_3cards() {
-        logTestTitle("International - AMEX_VISA_MASTER - 20 days - 2 Adults - 1 Room");
-        if(!countryPar.equals(MEXICO)) {
-            PageUtils.waitElementForVisibility(driver, basePage.tripsIcon, 10, TRIPS_ICO);
-
-            dataManagement.setTripsDataTripItinerary(INT02_20D_2A_1R);
-
-            tripsDataTrip = basePage.clicksTripsBtn();
-            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
-            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
-            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
-            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
-            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
-            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
-
-            Assert.assertTrue(tripsResultsPage.vacancy());
-
-            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
-            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
-            tripsDetailPage.clickVerHabitacionBtn();
-
-            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
-
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-            dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
-
-            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                    AMEX_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOM_RET);
-
-            thanksPageV3 = checkOutPageV3.clickComprarBtn();
-            Assert.assertTrue(thanksPageV3.confirmationOk());
-        }
-        else{
-            logger.warn(NOT_RUNNING_MEXICO);
-        }
-        setResultSauceLabs(PASSED);
-    }*/
 }
