@@ -109,6 +109,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = "input.button-buy")
     public WebElement comprarBtn;
 
+    @FindBy(css = "body checkout-page .am-wizard-footer div button")
+    public WebElement comprarWizardBtn;
+
     @FindBy(css = ".price__amount")
     public WebElement totalPrice;
 
@@ -144,10 +147,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
     public ThanksPageV3 clickComprarBtn(){
         logger.info("Final breakdown when booking is:[" + breakDownSectionV3().getFinalPriceString() + "]");
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
-            PageUtils.waitElementForClickable(driver, comprarBtn, 5, "Comprar button");
             logger.info("Clicking on Comprar Button");
-            waitImplicitly(1000);
-            comprarBtn.click();
+            waitImplicitly(4000);
+            try {
+                comprarBtn.click();
+            }catch(NoSuchElementException ouch){
+                comprarWizardBtn.click();
+            }
         } else {
             logger.info("Condition is not approved to submit reservation");
         }
