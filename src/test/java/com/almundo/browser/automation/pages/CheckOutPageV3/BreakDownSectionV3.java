@@ -91,6 +91,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
             getFinalPrice();
             clickAddInsurance();
             setInputDef();
+            addInsurance = false;
         } else {
           logger.info("Not adding insurance.");
         }

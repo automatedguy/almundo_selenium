@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
 
@@ -136,12 +137,45 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(2) > h3 > span.date")
     public WebElement endDate;
 
+    @FindBy(css = ".am-wizard-footer button")
+    private WebElement siguienteBtn;
+
+    @FindBy(css = ".am-wizard-footer .button-next")
+    private WebElement siguienteBisBtn;
+
+    @FindBy(css = ".am-wizard-footer .button-next")
+    public WebElement comprarStepsBtn;
+
+    @FindBy(css = "checkout-page .button-before")
+    private WebElement anteriorBtn;
+
     //############################################### Actions ##############################################
 
     public LoginPopUp clickIngresarBtn(){
         logger.info("Clicking on [Ingresar] button.");
         ingresarBtn.click();
         return initLoginPopUp();
+    }
+
+    public CheckOutPageV3 clickSiguiente(){
+        scrollToElement(driver, siguienteBtn);
+        logger.info("Clicking on [Siguiente] button.");
+        siguienteBtn.click();
+        return this;
+    }
+
+    public CheckOutPageV3 clickSiguienteBis(){
+        scrollToElement(driver, siguienteBisBtn);
+        logger.info("Clicking on [Siguiente] (Bis) button.");
+        siguienteBisBtn.click();
+        return this;
+    }
+
+    public CheckOutPageV3 clickAnterior(){
+        scrollToElement(driver, anteriorBtn);
+        logger.info("Clicking on [Anterior] button.");
+        anteriorBtn.click();
+        return this;
     }
 
     public ThanksPageV3 clickComprarBtn(){
@@ -159,6 +193,20 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
         return initConfirmationPageV3();
     }
+
+    @SuppressWarnings("Duplicates")
+    public ThanksPageV3 clickComprarStepsBtn(){
+        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
+            PageUtils.waitElementForClickable(driver, comprarStepsBtn, 5, "Comprar button");
+            logger.info("Clicking on Comprar Button");
+            waitImplicitly(1000);
+            comprarStepsBtn.click();
+        } else {
+            logger.info("Condition is not approved to submit reservation");
+        }
+        return initConfirmationPageV3();
+    }
+
 
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
         boolean isRequiered = false;
@@ -304,7 +352,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         } else if (paymentData.contains(DEBIT)) {
             dealWithDebitCard(paymentData);
         } else if (paymentData.contains(TWO_CARDS)){
-            setUrlParameter("&stc=1");
+            // setUrlParameter("&stc=1");
             dealWithTwoCards(paymentData);
         } else {
             dealWithGridAndCombos(paymentData);
@@ -312,6 +360,24 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/
+
+    public CheckOutPageV3 setCheckoutWizardInfo(JSONArray passengerList,
+                                                String paymentData,
+                                                JSONObject billingData,
+                                                JSONObject contactData, String productCheckOutPage){
+        getCheckOutPageElements(productCheckOutPage);
+        setInputDef();
+        breakDownSectionV3().dealWithInsurance(addInsurance);
+        clickSiguiente();
+        passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
+        contactSection().populateContactSection(contactData);
+        clickSiguienteBis();
+        dealWithPaymentForm(paymentData);
+        billingSection().populateBillingSection(billingData);
+        acceptConditions();
+        return this;
+    }
 
     public CheckOutPageV3 setCheckOutInfo(JSONArray passengerList,
                                           String paymentData,
