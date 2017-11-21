@@ -137,16 +137,20 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(2) > h3 > span.date")
     public WebElement endDate;
 
-    @FindBy(css = ".am-wizard-footer button")
+    private final String siguienteBtnLct = ".am-wizard-footer button";
+    @FindBy(css = siguienteBtnLct)
     private WebElement siguienteBtn;
 
-    @FindBy(css = ".am-wizard-footer .button-next")
+    private final String siguienteBisBtnLct = ".am-wizard-footer .button-next";
+    @FindBy(css = siguienteBisBtnLct)
     private WebElement siguienteBisBtn;
 
-    @FindBy(css = ".am-wizard-footer .button-next")
+    private final String comprarStepsBtnLct = ".am-wizard-footer .button-next";
+    @FindBy(css = comprarStepsBtnLct)
     public WebElement comprarStepsBtn;
 
-    @FindBy(css = "checkout-page .button-before")
+    private final String anteriorBtnLct = "checkout-page .button-before";
+    @FindBy(css = anteriorBtnLct)
     private WebElement anteriorBtn;
 
     //############################################### Actions ##############################################
@@ -159,22 +163,28 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public CheckOutPageV3 clickSiguiente(){
         scrollToElement(driver, siguienteBtn);
+        waitWithTryCatch(driver, siguienteBtnLct, "Siguiente", 5);
         logger.info("Clicking on [Siguiente] button.");
         siguienteBtn.click();
+        waitImplicitly(2000);
         return this;
     }
 
     public CheckOutPageV3 clickSiguienteBis(){
         scrollToElement(driver, siguienteBisBtn);
+        waitWithTryCatch(driver, siguienteBisBtnLct, "Siguiente (Bis)", 5);
         logger.info("Clicking on [Siguiente] (Bis) button.");
         siguienteBisBtn.click();
+        waitImplicitly(2000);
         return this;
     }
 
     public CheckOutPageV3 clickAnterior(){
         scrollToElement(driver, anteriorBtn);
+        waitWithTryCatch(driver, anteriorBtnLct, "Anterior", 5);
         logger.info("Clicking on [Anterior] button.");
         anteriorBtn.click();
+        waitImplicitly(2000);
         return this;
     }
 
@@ -197,7 +207,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     public ThanksPageV3 clickComprarStepsBtn(){
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
-            PageUtils.waitElementForClickable(driver, comprarStepsBtn, 5, "Comprar button");
+            scrollToElement(driver, comprarStepsBtn);
+            waitWithTryCatch(driver, comprarStepsBtnLct, "Comprar button", 5);
             logger.info("Clicking on Comprar Button");
             waitImplicitly(1000);
             comprarStepsBtn.click();
