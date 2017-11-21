@@ -379,12 +379,44 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         setInputDef();
         breakDownSectionV3().dealWithInsurance(addInsurance);
-        clickSiguiente();
+        if(method.contains("Flights")) {
+            clickSiguiente();
+        }
         passengerSection().populatePassengerSection(passengerList);
         emergencyContact().populateEmergencyContact(contactData);
         contactSection().populateContactSection(contactData);
         clickSiguienteBis();
         dealWithPaymentForm(paymentData);
+        billingSection().populateBillingSection(billingData);
+        acceptConditions();
+        return this;
+    }
+
+    /*************** Checkout full Population Methods Calls (2 Cards - Trips) ***********/
+
+    public CheckOutPageV3 setCheckoutWizardInfo(JSONArray passengerList,
+                                                String paymentData1,
+                                                String paymentData2,
+                                                JSONObject billingData,
+                                                JSONObject contactData, String productCheckOutPage){
+        getCheckOutPageElements(productCheckOutPage);
+        setInputDef();
+        breakDownSectionV3().dealWithInsurance(addInsurance);
+        if(method.contains("Flights")) {
+            clickSiguiente();
+        }
+        passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
+        contactSection().populateContactSection(contactData);
+        clickSiguienteBis();
+
+        paymentSelectorV3().selectTwoCreditCardsRdb();
+
+        paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+        creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+        paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+        creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+
         billingSection().populateBillingSection(billingData);
         acceptConditions();
         return this;
