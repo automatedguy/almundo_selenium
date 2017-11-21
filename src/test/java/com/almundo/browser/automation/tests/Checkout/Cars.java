@@ -97,6 +97,30 @@ public class Cars extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void CheckoutWizard() {
+        logTestTitle("Checkout wizard one credit card.");
+        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckoutWizardInfo(dataManagement.getPassengerJsonList(),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), CARS_CHECKOUT);
+
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarStepsBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isCarsDetailInfoOk(thanksPageAssertInfo.getCarsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
     @Test
     public void gridExplicitWithTodoPago() {
         logTestTitle("Cars – Grid (explicit) With Todo Pago");
