@@ -139,6 +139,8 @@ public class Flights extends TestBaseSetup {
     public void twoCardsAddingInsurance() {
         logTestTitle("Payment with two cards adding insurance");
         addInsurance = true;
+        refillPaymentData = true;
+
         checkOutPageV3 = openCart(cartId, "&stc=1",productURl);
 
         getPassengersData();

@@ -55,6 +55,7 @@ public class TestBaseSetup {
     public static Boolean retriesCount = false;
     public static Boolean checkoutFill = true;
     public static Boolean addInsurance = false;
+    public static Boolean refillPaymentData = false;
     public static Boolean addTransfer = false;
 
     public static String className;

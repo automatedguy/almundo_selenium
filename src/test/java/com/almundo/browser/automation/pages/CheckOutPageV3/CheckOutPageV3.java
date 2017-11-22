@@ -322,7 +322,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         paymentSelectorV3().selectTwoCreditCardsRdb();
         paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
         breakDownSectionV3().dealWithInsurance(addInsurance);
-        if(addInsurance){
+        if(refillPaymentData){
             paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
         }
     }
