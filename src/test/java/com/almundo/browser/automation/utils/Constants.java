@@ -116,7 +116,7 @@ public class Constants {
     // MISC
     public static final String OTRO = "OTRO";
 
-    //PAYMENTS
+    //PAYMENTS FORMS
 
     public static final String RANDOM = "random";
 
@@ -293,5 +293,8 @@ public class Constants {
 
     //CSS ATTRIBUTES
     public static final String VALUE = "value";
+
+    //CHECKOUT PARAMETERS
+    public static final String SW = "&sw=cdp";
 
 }

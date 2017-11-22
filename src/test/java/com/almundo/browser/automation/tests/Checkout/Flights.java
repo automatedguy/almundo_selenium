@@ -191,7 +191,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void CheckoutWizard() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 
@@ -217,7 +217,7 @@ public class Flights extends TestBaseSetup {
     public void CheckoutWizardWithInsurance() {
         logTestTitle("Checkout Wizard");
         addInsurance = true;
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 
@@ -242,7 +242,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void CheckoutWizardTwoCards() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 
@@ -268,7 +268,7 @@ public class Flights extends TestBaseSetup {
     public void CheckoutWizardTwoCardsWithInsurance() {
         logTestTitle("Checkout Wizard");
         addInsurance = true;
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 
@@ -294,7 +294,7 @@ public class Flights extends TestBaseSetup {
     public void CheckoutWizardDoubleCheck() {
         logTestTitle("Checkout Wizard");
         addInsurance = true;
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId,  SW, productURl);
 
         getPassengersData();
 
