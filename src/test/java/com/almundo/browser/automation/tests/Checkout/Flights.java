@@ -191,6 +191,31 @@ public class Flights extends TestBaseSetup {
     @Test
     public void CheckoutWizard() {
         logTestTitle("Checkout Wizard");
+        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckoutWizardInfo(dataManagement.getPassengerJsonList(),
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),
+                FLIGHTS_CHECKOUT_INT);
+        getFlightsAssertionInfo();
+
+        thanksPageV3 = checkOutPageV3.clickComprarStepsBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void CheckoutWizardWithInsurance() {
+        logTestTitle("Checkout Wizard");
         addInsurance = true;
         checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
 
