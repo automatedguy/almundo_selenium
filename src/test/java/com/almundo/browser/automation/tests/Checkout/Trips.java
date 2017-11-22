@@ -144,7 +144,7 @@ public class Trips extends TestBaseSetup {
 
     @Test
     public void CheckoutWizard() { logTestTitle("Checkout wizard with one credit card");
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 
@@ -166,7 +166,7 @@ public class Trips extends TestBaseSetup {
     @Test
     public void CheckoutWizardTwoCards() {
         logTestTitle("Checkout wizard with two credit cards");
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 

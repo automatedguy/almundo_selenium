@@ -131,7 +131,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void CheckoutWizard() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 
@@ -155,7 +155,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void CheckoutWizardTwoCards() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId, "&stn=two_steps",productURl);
+        checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
 
