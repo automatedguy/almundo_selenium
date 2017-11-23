@@ -154,7 +154,7 @@ public class Hotels extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void CheckoutWizardTwoCards() {
-        logTestTitle("Checkout Wizard");
+        logTestTitle("Checkout Wizard Two Cards");
         checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();

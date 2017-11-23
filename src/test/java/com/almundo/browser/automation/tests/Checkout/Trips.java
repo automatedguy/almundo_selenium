@@ -143,7 +143,8 @@ public class Trips extends TestBaseSetup {
     }
 
     @Test
-    public void CheckoutWizard() { logTestTitle("Checkout wizard with one credit card");
+    public void CheckoutWizard() {
+        logTestTitle("Checkout wizard with one credit card");
         checkOutPageV3 = openCart(cartId, SW, productURl);
 
         getPassengersData();
