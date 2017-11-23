@@ -42,6 +42,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
+    private boolean checkoutWizard = false;
 
     public ClubAlmundoRewards clubAlmundoRewards() {return initclubAlmundoRewards();}
 
@@ -193,10 +194,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
             logger.info("Clicking on Comprar Button");
             waitImplicitly(4000);
-            try {
-                comprarBtn.click();
-            }catch(NoSuchElementException ouch){
+            if(checkoutWizard){
                 comprarWizardBtn.click();
+            }
+            else {
+                try {
+                    comprarBtn.click();
+                } catch (NoSuchElementException ouch) {
+                    comprarWizardBtn.click();
+                }
             }
         } else {
             logger.info("Condition is not approved to submit reservation");
@@ -402,7 +408,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         setInputDef();
         breakDownSectionV3().dealWithInsurance(addInsurance);
-        if(method.contains("Flights")) {
+        if(method.contains("Flights") || method.contains("Trips")) {
             clickSiguiente();
         }
         passengerSection().populatePassengerSection(passengerList);
@@ -427,19 +433,21 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                           JSONObject billingData,
                                           JSONObject contactData,
                                           String productCheckOutPage) {
-        getCheckOutPageElements(productCheckOutPage);
-        redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
-        if(checkoutFill){
+        if(checkoutWizard){
+            setCheckoutWizardInfo(passengerList, paymentData, billingData, contactData, productCheckOutPage);
+        }
+        else {
+            getCheckOutPageElements(productCheckOutPage);
             setInputDef();
             dealWithPaymentForm(paymentData);
             passengerSection().populatePassengerSection(passengerList);
             emergencyContact().populateEmergencyContact(contactData);
-            if(!paymentData.contains(DESTINATION)) {
+            if (!paymentData.contains(DESTINATION)) {
                 billingSection().populateBillingSection(billingData);
             }
             contactSection().populateContactSection(contactData);
-            if(isRetailChannel()){
+            if (isRetailChannel()) {
                 agentSectionV3().setAgentEmail(AGENT_EMAIL);
             }
             acceptConditions();
@@ -462,52 +470,49 @@ public class CheckOutPageV3 extends TestBaseSetup {
         redirectCheckout();
         setCheckOutSections(getCheckoutUrl());
         breakDownSectionV3().dealWithTransfer(addTransfer);
-        if(checkoutFill) {
-            setInputDef();
-
-            if(paymentData1.contains("link_de_pago$")){
-                setUrlParameter("&slp=1");
-                payWithLink = true;
-                thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
-                paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
-                actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
-                paymentData1 = paymentData1.replace("link_de_pago$","");
-            }
-
-            if (paymentSelectorSvd) {
-                paymentSelectorV3().selectTwoCreditCardsRdb();
-            } else if (paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
-                paymentSelectorV3().selectTwoCreditCardsRdb();
-            }
-
-            if (creditCardComboSc) {
-                paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".credit-card-selector-1");
-                creditCardDataV3().populateCreditCardData(paymentData1, ".credit-card-selector-1");
-                paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".credit-card-selector-2");
-                creditCardDataV3().populateCreditCardData(paymentData2, ".credit-card-selector-2");
-            } else {
-                paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
-                creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
-                paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
-                creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
-            }
-
-            if(payWithLink){
-                acceptConditions();
-                clickComprarBtn();
-                waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
-                driver.navigate().to(actualCheckoutUrl);
-            }
-
-            passengerSection().populatePassengerSection(passengerList);
-            emergencyContact().populateEmergencyContact(contactData);
-            billingSection().populateBillingSection(billingData);
-            contactSection().populateContactSection(contactData);
-            if(isRetailChannel()){
-                agentSectionV3().setAgentEmail(AGENT_EMAIL);
-            }
-            acceptConditions();
+        setInputDef();
+        if(paymentData1.contains("link_de_pago$")){
+            setUrlParameter("&slp=1");
+            payWithLink = true;
+            thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
+            paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
+            actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
+            paymentData1 = paymentData1.replace("link_de_pago$","");
         }
+
+        if (paymentSelectorSvd) {
+            paymentSelectorV3().selectTwoCreditCardsRdb();
+        } else if (paymentSelectorV3().selectTwoCreditCardsRdbIsDisplayed()) {
+            paymentSelectorV3().selectTwoCreditCardsRdb();
+        }
+
+        if (creditCardComboSc) {
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData1, ".credit-card-selector-1");
+            creditCardDataV3().populateCreditCardData(paymentData1, ".credit-card-selector-1");
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData2, ".credit-card-selector-2");
+            creditCardDataV3().populateCreditCardData(paymentData2, ".credit-card-selector-2");
+        } else {
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData1, ".card-container-1");
+            creditCardDataV3().populateCreditCardData(paymentData1, ".card-container-1");
+            paymentSectionGridV3().populatePaymentSectionV3(paymentData2, ".card-container-2");
+            creditCardDataV3().populateCreditCardData(paymentData2, ".card-container-2");
+        }
+
+        if(payWithLink){
+            acceptConditions();
+            clickComprarBtn();
+            waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+            driver.navigate().to(actualCheckoutUrl);
+        }
+
+        passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
+        billingSection().populateBillingSection(billingData);
+        contactSection().populateContactSection(contactData);
+        if(isRetailChannel()){
+            agentSectionV3().setAgentEmail(AGENT_EMAIL);
+        }
+        acceptConditions();
         return this;
     }
 
@@ -558,20 +563,32 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void setCheckOutSections(String checkoutUrl){
+        logger.info("Setting checkout configuration...");
         if(checkoutUrl.contains("svd=1")){
             logger.info("[svd=1] is enabled.");
             paymentSelectorSvd = true;
-        } else{ logger.info("[svd=1] is not enabled."); }
+        } else{
+            logger.info("[svd=1] is not enabled."); }
 
         if(checkoutUrl.contains("sc=1")){
             logger.info("[sc=1] is enabled.");
             creditCardComboSc =  true;
-        } else { logger.info("[sc=1] is not enabled."); }
+        } else {
+            logger.info("[sc=1] is not enabled."); }
 
         if(checkoutUrl.contains("vuelohotel")){
             logger.info("[Selector de pago] is enabled.");
             paymentSelectorSvd = true;
-        }else { logger.info("[Selector de pago] is not enabled.");}
+        }else {
+            logger.info("[Selector de pago] is not enabled.");}
+
+        if(checkoutUrl.contains("sw=cdp")){
+            logger.info("[Checkout Wizard] is enabled.");
+            checkoutWizard = true;
+        } else {
+            logger.info("[Checkout Wizard] is not enabled.");
+        }
+
     }
 
     public CheckOutPageV3 redirectCheckout(){
@@ -642,7 +659,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private String getCheckoutUrl(){
         String checkoutUrl = null;
         try{
-            PageUtils.waitElementForVisibility(driver, By.cssSelector("#first_name"),30, "Checkout Query String Parameters.");
+            // PageUtils.waitElementForVisibility(driver, By.cssSelector("#first_name"),30, "Checkout load completed...");
+            logger.info("Waiting for checkout load complete.");
+            breakDownSectionV3().getFinalPrice();
+            waitImplicitly(3000);
+            breakDownSectionV3().getFinalPrice();
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
             checkoutUrl =  driver.getCurrentUrl();
         } catch(Exception time) {

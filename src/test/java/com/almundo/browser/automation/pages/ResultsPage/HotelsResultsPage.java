@@ -95,7 +95,7 @@ public class HotelsResultsPage extends TestBaseSetup {
     public HotelsDetailPage clickVerHotelBtn(int option) {
         index = option;
         closeExpertsPopUp(driver);
-        displayHotelInfo();
+        // displayHotelInfo();
         logger.info("Clicking on button: [Ver Hotel]");
         verHotelButton = driver.findElement(By.cssSelector(verHotelButtonCssSelector));
         waitElementForClickable(driver, verHotelButton, 5, "[Ver Hotel] clickable." );
