@@ -110,11 +110,13 @@ public class ThanksPageV3 extends BasePage {
             checkoutFinalPrice = getCountryCurrency() + "  " + finalPrice;
         }
 
+        String thanksFinalPrice =  finalPricePaid.getText().toString();
+
         logger.info("Asserting Final Amount Paid: On Breakdown was:[" + checkoutFinalPrice + "]");
-        logger.info("Asserting Final Amount Paid: On Thanks is:[" + finalPrice + "]");
+        logger.info("Asserting Final Amount Paid: On Thanks is:[" + thanksFinalPrice + "]");
 
         if(assertThanksPageElements) {
-            if (finalPricePaid.getText().toString().equals(checkoutFinalPrice)) {
+            if (thanksFinalPrice.equals(checkoutFinalPrice)) {
                 logger.info("Amount Paid is Ok.");
                 printStarsSeparator();
                 return true;
