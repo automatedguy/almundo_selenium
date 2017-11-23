@@ -66,9 +66,9 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
     /*** When URL does not contain card=true is the old one. ***/
     private void setNormalLocators(int index){
         logger.info("Setting results page layout with no card=true parameter");
-        nameLocator = "section div:nth-child(" + (index + 1) + ") .hotel-description .hotel-name";
-        starsListLocator = "section div:nth-child(" + (index + 1) + ") article p.star-ctn > span";
-        priceBoxLocator = "section div:nth-child(" + (index + 1) + ") article .price-box-ctn.col-3.col-12--ph > div";
+        nameLocator = "body div:nth-child(5) div:nth-child(" + (index + 1) + ") > hotel > article .hotel-description > a > h3";
+        starsListLocator = "body div:nth-child(5) div:nth-child("+ (index + 1) +") > hotel > article .hotel-description p.star-ctn > span";
+        priceBoxLocator = "body div:nth-child(5) div:nth-child(" + (index + 1) + ") article .price-box-ctn.col-3.col-12--ph > div";
         amenitiesListLocator = "section div:nth-child(" + (index + 1) + ") article .amenities-ctn .list > li";
         verHotelButtonLocator = "section div:nth-child(" + (index + 1) + ") article .button-detail";
         hotelChoicesLocator =  "body .hotel-ctn.am-ctn";
