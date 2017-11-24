@@ -55,22 +55,22 @@ public class HotelsResultsPageLocators extends TestBaseSetup{
     /*** When URL contains card=true. ***/
     private void setCardLocators(int index){
         logger.info("Setting results page layout with card=true parameter");
-        nameLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.hotel-description > a > h1";
-        starsListLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.hotel-description > p.star-ctn > span";
-        priceBoxLocator = "div:nth-child(" + (index + 1) + ") > hotel-card > article > div > div.price-box-ctn";
-        amenitiesListLocator = "div:nth-child(" + (index+1) + ") > hotel-card > article > div > div.hotel-description > div.amenities-ctn.ng-scope > ul > li";
-        verHotelButtonLocator = "div:nth-child(" + (index + 1) + ") > hotel-card .price-box a";
+        nameLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .hotel-description a h3";
+        starsListLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .hotel-description .star-ctn > span";
+        priceBoxLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .price-box";
+        amenitiesListLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .hotel-description .amenities-ctn > ul > li";
+        verHotelButtonLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .price-box-ctn div.price-container > a";
         hotelChoicesLocator= "body section .content";
     }
 
     /*** When URL does not contain card=true is the old one. ***/
     private void setNormalLocators(int index){
         logger.info("Setting results page layout with no card=true parameter");
-        nameLocator = "body div:nth-child(5) div:nth-child(" + (index + 1) + ") > hotel > article .hotel-description > a > h3";
-        starsListLocator = "body div:nth-child(5) div:nth-child("+ (index + 1) +") > hotel > article .hotel-description p.star-ctn > span";
-        priceBoxLocator = "body div:nth-child(5) div:nth-child(" + (index + 1) + ") article .price-box-ctn.col-3.col-12--ph > div";
-        amenitiesListLocator = "section div:nth-child(" + (index + 1) + ") article .amenities-ctn .list > li";
-        verHotelButtonLocator = "section div:nth-child(" + (index + 1) + ") article .button-detail";
+        nameLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .hotel-description a h3";
+        starsListLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .hotel-description .star-ctn > span";
+        priceBoxLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .price-box";
+        amenitiesListLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .hotel-description .amenities-ctn > ul > li";
+        verHotelButtonLocator = "div:nth-child(5) div:nth-child(" + (index + 1) + ") hotel article .price-box-ctn div.price-container > a";
         hotelChoicesLocator =  "body .hotel-ctn.am-ctn";
     }
 }
