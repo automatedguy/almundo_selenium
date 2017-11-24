@@ -162,8 +162,21 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initLoginPopUp();
     }
 
+    @SuppressWarnings("Duplicates")
     public CheckOutPageV3 clickSiguiente(){
-        if(breakDownSectionV3().insuranceRdb.get(0).isDisplayed()) {
+        if(breakDownSectionV3().insuranceRdb.get(0).isDisplayed() || breakDownSectionV3().addTransferRdb.isDisplayed()) {
+            scrollToElement(driver, siguienteBtn);
+            waitWithTryCatch(driver, siguienteBtnLct, "Siguiente", 5);
+            logger.info("Clicking on [Siguiente] button.");
+            siguienteBtn.click();
+            waitImplicitly(2000);
+        }
+        return this;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public CheckOutPageV3 clickSiguienteTrips(){
+        if(breakDownSectionV3().addTransferRdb.isDisplayed()) {
             scrollToElement(driver, siguienteBtn);
             waitWithTryCatch(driver, siguienteBtnLct, "Siguiente", 5);
             logger.info("Clicking on [Siguiente] button.");
@@ -389,6 +402,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         breakDownSectionV3().dealWithInsurance(addInsurance);
         if(method.contains("Flights")) {
             clickSiguiente();
+        }
+        if(method.contains("Trips")) {
+            clickSiguienteTrips();
         }
         passengerSection().populatePassengerSection(passengerList);
         emergencyContact().populateEmergencyContact(contactData);
