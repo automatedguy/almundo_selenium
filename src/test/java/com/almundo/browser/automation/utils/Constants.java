@@ -13,6 +13,8 @@ public class Constants {
     public static final String CHROME = "chrome";
     public static final String FIREFOX = "firefox";
     public static final String CHROME_HEADLESS = "chrome-headless";
+    public static final String CHROME_HEADER = "chrome-header";
+
 
     //VERSIONS
     public static final String LATEST = "latest";

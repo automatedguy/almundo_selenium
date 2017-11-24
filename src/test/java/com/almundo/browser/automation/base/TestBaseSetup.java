@@ -30,6 +30,7 @@ import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -180,6 +181,21 @@ public class TestBaseSetup {
                         driver = new ChromeDriver(capabilities);
                         break;
 
+                    case "chrome-header":
+                        driver = new ChromeDriver(capabilities);
+                        driver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/settings.tmpl.html");
+
+                        ((JavascriptExecutor)driver).executeScript(
+                                "localStorage.setItem('profiles', JSON.stringify([{                " +
+                                        "  title: 'Selenium', hideComment: true, appendMode: '',           " +
+                                        "  headers: [                                                      " +
+                                        "    {enabled: true, name: 'X-AM-Provider', value: 'AMA', comment: ''}  " +
+                                        "  ],                                                              " +
+                                        "  respHeaders: [],                                                " +
+                                        "  filters: []                                                     " +
+                                        "}]));                                                             " );
+                        break;
+
                     case "firefox":
                         driver = new FirefoxDriver(capabilities);
                         break;
@@ -253,6 +269,27 @@ public class TestBaseSetup {
                     chromeHeadlessCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy.initSeleniumProxy());
                 }
                 return chromeHeadlessCapabilities;
+
+            case "chrome-header":
+                if (osName.toLowerCase().contains("windows")){
+                    System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
+                } else {
+                    System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver");
+                }
+                DesiredCapabilities chromeHeaderCapabilities = DesiredCapabilities.chrome();
+                chromeHeaderCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+
+                ChromeOptions optionsHeader = new ChromeOptions();
+                optionsHeader.addExtensions(new File(RESOURCES_PATH + "extension_2_1_2.crx"));
+
+                optionsHeader.addArguments("test-type", "start-maximized", "no-default-browser-check");
+                // optionsHeader.addArguments("--disable-extensions");
+
+                chromeHeaderCapabilities.setCapability(ChromeOptions.CAPABILITY, optionsHeader);
+                if(initProxy){
+                    chromeHeaderCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy.initSeleniumProxy());
+                }
+                return chromeHeaderCapabilities;
 
             case "firefox":
                 if (osName.toLowerCase().contains("windows")){
