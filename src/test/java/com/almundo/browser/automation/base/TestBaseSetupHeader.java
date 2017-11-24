@@ -24,7 +24,7 @@ public class TestBaseSetupHeader extends TestBaseSetup {
         }
 
         ChromeOptions options = new ChromeOptions();
-        options.addExtensions(new File("/home/gabrielcespedes/Downloads/extension_2_1_1.crx"));
+        options.addExtensions(new File(Constants.RESOURCES_PATH + "extension_2_1_1.crx"));
 
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
@@ -35,7 +35,7 @@ public class TestBaseSetupHeader extends TestBaseSetup {
                 "localStorage.setItem('profiles', JSON.stringify([{                " +
                         "  title: 'Selenium', hideComment: true, appendMode: '',           " +
                         "  headers: [                                                      " +
-                        "    {enabled: true, name: 'X-Debug', value: 'True', comment: ''}  " +
+                        "    {enabled: true, name: 'X-AM-Provider', value: 'AMA', comment: ''}  " +
                         "  ],                                                              " +
                         "  respHeaders: [],                                                " +
                         "  filters: []                                                     " +
