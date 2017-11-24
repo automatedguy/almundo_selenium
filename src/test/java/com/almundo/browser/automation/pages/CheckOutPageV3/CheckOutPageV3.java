@@ -395,7 +395,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         contactSection().populateContactSection(contactData);
         clickSiguienteBis();
         dealWithPaymentForm(paymentData);
-        billingSection().populateBillingSection(billingData);
+        if (!paymentData.contains(DESTINATION)) {
+            billingSection().populateBillingSection(billingData);
+        }
         acceptConditions();
         return this;
     }
@@ -661,9 +663,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private String getCheckoutUrl(){
         String checkoutUrl = null;
         try{
-            // PageUtils.waitElementForVisibility(driver, By.cssSelector("#first_name"),30, "Checkout load completed...");
             logger.info("Waiting for checkout load complete.");
             breakDownSectionV3().getFinalPrice();
+            logger.info("Waiting some second in case of redirection...");
             waitImplicitly(3000);
             breakDownSectionV3().getFinalPrice();
             PageUtils.waitUrlContains(driver, 10, "checkout", "Checkout V3");
