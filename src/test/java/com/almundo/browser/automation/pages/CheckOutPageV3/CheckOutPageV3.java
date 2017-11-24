@@ -111,7 +111,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = "input.button-buy")
     public WebElement comprarBtn;
 
-    @FindBy(css = "body checkout-page .am-wizard-footer div button")
+    @FindBy(css = "body checkout-page .am-wizard-footer div button.button-next")
     public WebElement comprarWizardBtn;
 
     @FindBy(css = ".price__amount")
