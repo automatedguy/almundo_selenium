@@ -283,7 +283,6 @@ public class TestBaseSetup {
                 optionsHeader.addExtensions(new File(RESOURCES_PATH + "extension_2_1_2.crx"));
 
                 optionsHeader.addArguments("test-type", "start-maximized", "no-default-browser-check");
-                // optionsHeader.addArguments("--disable-extensions");
 
                 chromeHeaderCapabilities.setCapability(ChromeOptions.CAPABILITY, optionsHeader);
                 if(initProxy){
