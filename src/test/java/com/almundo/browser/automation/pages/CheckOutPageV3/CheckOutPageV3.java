@@ -164,12 +164,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     public CheckOutPageV3 clickSiguiente(){
-        if(breakDownSectionV3().insuranceRdb.get(0).isDisplayed() || breakDownSectionV3().addTransferRdb.isDisplayed()) {
+        try{
+            if(breakDownSectionV3().insuranceRdb.get(0).isDisplayed()) {
             scrollToElement(driver, siguienteBtn);
             waitWithTryCatch(driver, siguienteBtnLct, "Siguiente", 5);
             logger.info("Clicking on [Siguiente] button.");
             siguienteBtn.click();
             waitImplicitly(2000);
+            }
+        }catch(IndexOutOfBoundsException ouch){
+            logger.warn("Insurance selection not available.");
         }
         return this;
     }

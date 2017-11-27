@@ -81,6 +81,7 @@ public class Hotels extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void gridWithTodoPago() {
         logTestTitle("Hotels – Grid With Todo Pago ");
