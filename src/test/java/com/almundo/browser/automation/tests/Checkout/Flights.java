@@ -111,6 +111,32 @@ public class Flights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void gridWithInsurance() {
+        logTestTitle("Grid With Todo Pago");
+        checkOutPageV3 = openCart(cartId, "",productURl);
+        addInsurance = true;
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
+
+        getFlightsAssertionInfo();
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void twoCards() {
         logTestTitle("Payment with two cards");
         checkOutPageV3 = openCart(cartId, "&stc=1",productURl);

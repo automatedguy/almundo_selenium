@@ -180,12 +180,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     public CheckOutPageV3 clickSiguienteTrips(){
-        if(breakDownSectionV3().addTransferRdb.isDisplayed()) {
-            scrollToElement(driver, siguienteBtn);
-            waitWithTryCatch(driver, siguienteBtnLct, "Siguiente", 5);
-            logger.info("Clicking on [Siguiente] button.");
-            siguienteBtn.click();
-            waitImplicitly(2000);
+        try{
+            if(breakDownSectionV3().addTransferRdb.isDisplayed()) {
+                scrollToElement(driver, siguienteBtn);
+                waitWithTryCatch(driver, siguienteBtnLct, "Siguiente", 5);
+                logger.info("Clicking on [Siguiente] button.");
+                siguienteBtn.click();
+                waitImplicitly(2000);
+        }
+        }catch (NoSuchElementException ouch){
+            logger.warn("Add transfer radio button.");
         }
         return this;
     }
