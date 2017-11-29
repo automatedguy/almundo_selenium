@@ -176,6 +176,30 @@ public class Hotels extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void Promocode() {
+        logTestTitle("Promocode and credit card.");
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                PROMOCODE_VISA, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
     @Test
     public void gridExplicitWithTodoPago() {
         logTestTitle("Hotels – Grid (explicit) With Todo Pago");

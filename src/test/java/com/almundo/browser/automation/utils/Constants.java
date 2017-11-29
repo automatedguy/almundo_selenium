@@ -142,6 +142,7 @@ public class Constants {
     public static final String LINK_REWARDS_VISA_1 = "link_de_pago$rewards$1_visa_visa$";
     public static final String AMEX_1 = "1_amex_amex";
     public static final String PROMOCODE_VISA = "promocode$1_visa_visa";
+    public static final String PROMOCODE_VISA_MASTER = "promocode$1_visa_visa$1_master_master";
     public static final String REWARDS_VISA_1 = "rewards$1_visa_visa";
 
     public static final String DEPOSIT = "deposit";

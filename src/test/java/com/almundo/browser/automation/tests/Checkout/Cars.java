@@ -122,6 +122,30 @@ public class Cars extends TestBaseSetup {
     }
 
     @Test
+    public void Promocode() {
+        logTestTitle("Promocode and credit card.");
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                PROMOCODE_VISA,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),
+                CARS_CHECKOUT);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isCarsDetailInfoOk(thanksPageAssertInfo.getCarsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
     public void gridExplicitWithTodoPago() {
         logTestTitle("Cars – Grid (explicit) With Todo Pago");
         checkOutPageV3 = openCart(cartId, "&sc=0", productURl);
