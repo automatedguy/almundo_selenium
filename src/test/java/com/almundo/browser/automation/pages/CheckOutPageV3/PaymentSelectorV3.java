@@ -28,6 +28,15 @@ public class PaymentSelectorV3 extends BasePage {
     @FindBy(css ="#lblPaymentOption2")
     private WebElement visaDebit;
 
+    @FindBy(css = "payment-promocode div:nth-child(1) input")
+    private WebElement tengoUnCupon;
+
+    @FindBy(css = "payment-promocode form div input")
+    private WebElement promocodeTxt;
+
+    @FindBy(css = "payment-promocode div button")
+    private WebElement aplicarBtn;
+
     /**************************** Actions **********************************/
 
     public PaymentSelectorV3 selectOneCreditCardRdb(){
@@ -88,5 +97,23 @@ public class PaymentSelectorV3 extends BasePage {
             doClick = false;
         }
         return doClick;
+    }
+
+    public String setPromocode(String paymentData){
+        if(paymentData.contains("promocode$")){
+            logger.info("Clicking on [Tengo un cupón de descuento]");
+            tengoUnCupon.click();
+            waitImplicitly(1000);
+            logger.info("Entering [Promocode]: [pacman]");
+            promocodeTxt.sendKeys("pacman");
+            logger.info("Clicking on [Aplicar]");
+            aplicarBtn.click();
+            paymentData = paymentData.replace("promocode$","");
+            waitImplicitly(4000);
+            initBreakDownSectionV3().getFinalPrice();
+        } else {
+            logger.info("Not entering promocode");
+        }
+        return paymentData;
     }
 }

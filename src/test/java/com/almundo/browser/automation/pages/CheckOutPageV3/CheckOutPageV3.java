@@ -387,6 +387,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithPaymentForm(String paymentData){
+        paymentData = paymentSelectorV3().setPromocode(paymentData);
         if(isRetailChannel()){
             dealWithRetail(paymentData);
         } else if (paymentData.contains(DEBIT)) {
