@@ -25,6 +25,7 @@ public class Constants {
 
     //URLS
     public static final String DEV_URL = "https://dv.almundo.com";
+    public static final String CCR_DEV_URL = "https://sucursales.dv.almundo.com.ar/";
     public static final String STG_URL = "https://st.almundo.com";
     public static final String PROD_URL = "http://almundo.com/";
     public static final String RET_URL = "https://sucursales.almundo.com";
@@ -139,7 +140,8 @@ public class Constants {
     public static final String DESTINATION_MASTER_1 = "destination$1_master_master";
     public static final String LINK_VISA_1 = "link_de_pago$1_visa_visa";
     public static final String LINK_TWO_CARDS_VISA_1_MASTER_1 = "link_de_pago$two_cards$1_visa_visa$1_master_master$";
-    public static final String LINK_REWARDS_VISA_1 = "link_de_pago$rewards$1_visa_visa$";
+    public static final String LINK_REWARDS_TWO_CARDS_VISA_1_MASTER_1 = "link_de_pago$rewards$two_cards$1_visa_visa$1_master_master$";
+    public static final String LINK_REWARDS_VISA_1 = "link_de_pago$rewards$1_visa_visa";
     public static final String AMEX_1 = "1_amex_amex";
     public static final String PROMOCODE_VISA = "promocode$1_visa_visa";
     public static final String PROMOCODE_VISA_MASTER = "promocode$1_visa_visa$1_master_master";
