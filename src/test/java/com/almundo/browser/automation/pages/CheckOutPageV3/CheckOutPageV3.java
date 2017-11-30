@@ -74,6 +74,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public TodoPagoDataV3 todoPagoDataV3(){return initDebitCardDataV3();}
 
+    public VisaDebitCardDataV3 visaDebitCardDataV3(){return initVisaDebitCardDataV3();}
+
     public PassengerSectionV3 passengerSection() {
         return initPassengerInfoSectionV3();
     }
@@ -386,10 +388,17 @@ public class CheckOutPageV3 extends TestBaseSetup {
         todoPagoDataV3().populateTodoPagoData(paymentData);
     }
 
+    private void dealWithVisaDebitCard(String paymentData){
+        paymentSelectorV3().selectVisaDebit();
+        visaDebitCardDataV3().populateDebitCardData(paymentData);
+    }
+
     private void dealWithPaymentForm(String paymentData){
         paymentData = paymentSelectorV3().setPromocode(paymentData);
         if(isRetailChannel()){
             dealWithRetail(paymentData);
+        } else if (paymentData.equals(VISA_DEBIT)) {
+            dealWithVisaDebitCard(paymentData);
         } else if (paymentData.contains(DEBIT)) {
             dealWithDebitCard(paymentData);
         } else if (paymentData.contains(TWO_CARDS)){
