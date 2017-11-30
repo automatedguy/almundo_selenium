@@ -299,5 +299,6 @@ public class Constants {
 
     //CHECKOUT PARAMETERS
     public static final String SW = "&sw=cdp";
+    public static final String SWS = "&sw=cdps";
 
 }
