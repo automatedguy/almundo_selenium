@@ -112,6 +112,34 @@ public class RetailFlights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void payWithLinkClubAlmundoWithInsurance() {
+        logTestTitle("Pay With Link With Club Almundo Rewards.");
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+        addInsurance = true;
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_REWARDS_VISA_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+
+        //TODO: there is a bug related to final amount paid.
+        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void payWithLinkClubAlmundo() {
         logTestTitle("Pay With Link With Club Almundo Rewards.");
 
@@ -120,8 +148,8 @@ public class RetailFlights extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_REWARDS_VISA_1,
-                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
-                                    dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 

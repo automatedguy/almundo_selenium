@@ -348,7 +348,7 @@ public class PageUtils {
             driver.findElement(By.cssSelector(closeButtonLocator)).click();
             logger.info("Closing [Contacta un Experto de Almundo] Pop-Up");
             waitImplicitly(1500);
-        }catch(ElementNotVisibleException ouch){
+        }catch(NoSuchElementException ouch){
             logger.info("The Experts Pop Up didn't showed up.");
         }
     }

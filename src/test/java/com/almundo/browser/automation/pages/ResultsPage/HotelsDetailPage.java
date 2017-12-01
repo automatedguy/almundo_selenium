@@ -59,7 +59,8 @@ public class HotelsDetailPage extends TestBaseSetup {
     public CheckOutPageV3 clickReservarAhoraV3Btn(int index) {
         String reservarButtonCss = "detail-cluster:nth-child(" + (index+2) +") .price-box.col-3 > span > span";
         if(!countryPar.equals(MEXICO)){
-        closeExpertsPopUp(driver);}
+            closeExpertsPopUp(driver);
+        }
         assertHotelInfo = getCancelationPolicy();
         WebElement reservarButton = waitWithTryCatch(driver, reservarButtonCss, "Reservar button", 7);
         logger.info("Clicking on Reservar button");
