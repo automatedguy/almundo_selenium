@@ -190,7 +190,7 @@ public class TestBaseSetup {
                                 "localStorage.setItem('profiles', JSON.stringify([{                " +
                                         "  title: 'Selenium', hideComment: true, appendMode: '',           " +
                                         "  headers: [                                                      " +
-                                        "    {enabled: true, name: 'X-AM-Provider', value: 'AMA', comment: ''}  " +
+                                        "    {enabled: true, name: 'X-AM-Provider', value: 'VVC', comment: ''}  " +
                                         "  ],                                                              " +
                                         "  respHeaders: [],                                                " +
                                         "  filters: []                                                     " +

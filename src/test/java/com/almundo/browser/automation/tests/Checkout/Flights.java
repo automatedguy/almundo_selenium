@@ -352,8 +352,9 @@ public class Flights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void SummaryDoubleCheck() {
+    public void SummaryUpdateData() {
         logTestTitle("Summary");
+
         checkOutPageV3 = openCart(cartId, SWS,productURl);
 
         getWrongPassengersData();

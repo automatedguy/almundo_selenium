@@ -154,6 +154,54 @@ public class Hotels extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void CheckoutWizardSummary() {
+        logTestTitle("Checkout Wizard Summary.");
+        checkOutPageV3 = openCart(cartId, SWS, productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarStepsBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void CheckoutWizardClubAlmundoSummary() {
+        logTestTitle("Checkout Wizard Summary.");
+        checkOutPageV3 = openCart(cartId, SWS, productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+                REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
+
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarStepsBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void CheckoutWizardTwoCards() {
         logTestTitle("Checkout Wizard Two Cards");
         checkOutPageV3 = openCart(cartId, SW, productURl);
