@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
+import com.almundo.browser.automation.pages.SummaryPage.SummaryPage;
 import com.almundo.browser.automation.utils.JsonRead;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.sevices.InputDefinitions;
@@ -156,6 +157,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = anteriorBtnLct)
     private WebElement anteriorBtn;
 
+    private final String siguienteSummaryBtnLct = "checkout-page .am-wizard-footer .button-next.ng-binding";
+    @FindBy(css = siguienteSummaryBtnLct)
+    private WebElement siguienteSummaryBtn;
+
     //############################################### Actions ##############################################
 
     public LoginPopUp clickIngresarBtn(){
@@ -195,6 +200,16 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
         return this;
     }
+
+    @SuppressWarnings("Duplicates")
+    public SummaryPage clickSiguienteSummary(){
+        scrollToElement(driver, siguienteSummaryBtn);
+        waitWithTryCatch(driver, siguienteSummaryBtnLct, "Siguiente (To Summary)", 5);
+        logger.info("Clicking on [Siguiente] (To Summary) button.");
+        siguienteSummaryBtn.click();
+        return initSummaryPage();
+    }
+
 
     public CheckOutPageV3 clickSiguienteBis(){
         scrollToElement(driver, siguienteBisBtn);
@@ -411,6 +426,34 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     /************* Checkout full Population Methods Calls (Dynamic Checkout) *************/
 
+    @SuppressWarnings("Duplicates")
+    public SummaryPage setCheckoutWizardInfoSummary(JSONArray passengerList,
+                                                String paymentData,
+                                                JSONObject billingData,
+                                                JSONObject contactData, String productCheckOutPage){
+        getCheckOutPageElements(productCheckOutPage);
+        setInputDef();
+        breakDownSectionV3().dealWithInsurance(addInsurance);
+        if(method.contains("Flights")) {
+            clickSiguiente();
+        }
+        if(method.contains("Trips")) {
+            clickSiguienteTrips();
+        }
+        passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
+        contactSection().populateContactSection(contactData);
+        clickSiguienteBis();
+        dealWithPaymentForm(paymentData);
+        if (!paymentData.contains(DESTINATION)) {
+            billingSection().populateBillingSection(billingData);
+        }
+        clickSiguienteSummary();
+        // acceptConditions();
+        return initSummaryPage();
+    }
+
+    @SuppressWarnings("Duplicates")
     public CheckOutPageV3 setCheckoutWizardInfo(JSONArray passengerList,
                                                 String paymentData,
                                                 JSONObject billingData,

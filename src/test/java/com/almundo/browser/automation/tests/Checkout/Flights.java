@@ -5,6 +5,7 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
+import com.almundo.browser.automation.pages.SummaryPage.SummaryPage;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -21,6 +22,7 @@ public class Flights extends TestBaseSetup {
 
     private DataManagement dataManagement = new DataManagement();
     private CheckOutPageV3 checkOutPageV3 = null;
+    private SummaryPage summaryPage = null;
     private ThanksPageV3 thanksPageV3 = null;
     private final String productURl = "?product=flights&origin=flights";
 
@@ -45,10 +47,17 @@ public class Flights extends TestBaseSetup {
     }
 
     private void getPassengersData(){
-        logger.info("Getting Passenger Data.");
+        logger.info("Getting Passengers Data.");
         dataManagement.setPassengerData("adult_male_native");
         dataManagement.setPassengerData("adult_female_native");
         dataManagement.setPassengerData("child_male_native");
+    }
+
+    private void getWrongPassengersData(){
+        logger.info("Getting New Passengers Data.");
+        dataManagement.setPassengerData("adult_male_native_wrong");
+        dataManagement.setPassengerData("adult_female_native_wrong");
+        dataManagement.setPassengerData("child_male_native_wrong");
     }
     
     /************************ Grid Test Area ************************/
@@ -320,12 +329,52 @@ public class Flights extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void Summary() {
-        logTestTitle("Summary");
+        logTestTitle("Summary Double Check");
         checkOutPageV3 = openCart(cartId, SWS,productURl);
 
         getPassengersData();
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
+
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void SummaryDoubleCheck() {
+        logTestTitle("Summary");
+        checkOutPageV3 = openCart(cartId, SWS,productURl);
+
+        getWrongPassengersData();
+
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE),  FLIGHTS_CHECKOUT_INT);
+
+        summaryPage.clickBeforeBtn();
+
+        checkOutPageV3.clickAnterior();
+        checkOutPageV3.clickAnterior();
+
+        dataManagement = new DataManagement();
+
+        initDataLists();
+        getPassengersData();
+
+        addInsurance = true;
+
+        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 
@@ -350,7 +399,7 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 TWOCARDS_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 
@@ -375,7 +424,7 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 VISA_DEBIT, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 

@@ -302,6 +302,18 @@
 				"nationality": "Argentina"
 			},
 
+			"adult_male_native_wrong": {
+				"first_name": "NewpassengerData",
+				"last_name": "NewpassengerData",
+				"documentType": "DNI",
+				"document_number": "26666666",
+				"document_emisor": "Alemania",
+				"document_expiration": "26/06/2019",
+				"birthday": "06/06/1976",
+				"gender": "Masculino",
+				"nationality": "Italia"
+			},
+
 			"adult_female_native": {
 				"first_name": "María Angélica",
 				"last_name": "D'Onofrio",
@@ -312,6 +324,18 @@
 				"birthday": "09/09/1979",
 				"gender": "Femenino",
 				"nationality": "Argentina"
+			},
+
+			"adult_female_native_wrong": {
+				"first_name": "NewpassengerData",
+				"last_name": "NewpassengerData",
+				"documentType": "DNI",
+				"document_number": "25555555",
+				"document_emisor": "Alemania",
+				"document_expiration": "26/06/2019",
+				"birthday": "06/06/1976",
+				"gender": "Femenino",
+				"nationality": "Austria"
 			},
 
 			"adult_female_foreign": {
@@ -336,6 +360,18 @@
 				"birthday": "09/09/2010",
 				"gender": "Masculino",
 				"nationality": "Argentina"
+			},
+
+			"child_male_native_wrong": {
+				"first_name": "Timmy",
+				"last_name": "O' Tool",
+				"documentType": "DNI",
+				"document_number": "24444444",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2018",
+				"birthday": "05/05/2015",
+				"gender": "Femenino",
+				"nationality": "Anguila"
 			},
 
 			"child_female_native": {

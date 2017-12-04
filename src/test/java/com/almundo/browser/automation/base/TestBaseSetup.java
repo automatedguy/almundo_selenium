@@ -11,6 +11,7 @@ import com.almundo.browser.automation.pages.CheckOutPageV3.Retail.*;
 import com.almundo.browser.automation.pages.LandingPage;
 import com.almundo.browser.automation.pages.PromoPage;
 import com.almundo.browser.automation.pages.ResultsPage.*;
+import com.almundo.browser.automation.pages.SummaryPage.SummaryPage;
 import com.almundo.browser.automation.utils.*;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
@@ -485,6 +486,10 @@ public class TestBaseSetup {
 
     protected CheckOutPageV3 initCheckOutPageV3() {
         return PageFactory.initElements(driver, CheckOutPageV3.class);
+    }
+
+    protected SummaryPage initSummaryPage() {
+        return PageFactory.initElements(driver, SummaryPage.class);
     }
 
     protected ConfirmationPage initConfirmationPage() { return PageFactory.initElements(driver, ConfirmationPage.class); }
