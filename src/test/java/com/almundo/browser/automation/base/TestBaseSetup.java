@@ -54,6 +54,7 @@ public class TestBaseSetup {
     public static String cartId = null;
     public static String cartIdICBC = null;
     public static Boolean submitReservation = false;
+    public static String providerHeader = null;
     public static Boolean retriesCount = false;
     public static Boolean addInsurance = false;
     public static Boolean refillPaymentData = false;
@@ -89,20 +90,21 @@ public class TestBaseSetup {
     private static SeleniumProxy seleniumProxy = new SeleniumProxy();
     private static Boolean initProxy = false;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "retries_Max_Count"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "provider_header","retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(PROD_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional(CHROME) String browserType,
+                                        @Optional(CHROME_HEADER) String browserType,
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
                                         @Optional(FALSE) Boolean submit_Reservation,
+                                        @Optional("") String provider_header,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -114,6 +116,7 @@ public class TestBaseSetup {
         this.cartId = cart_id;
         this.cartIdICBC = cart_id_icbc;
         this.submitReservation = submit_Reservation;
+        this.providerHeader = provider_header;
         this.retriesCount = retries_Max_Count;
 
         try {
@@ -184,17 +187,7 @@ public class TestBaseSetup {
 
                     case "chrome-header":
                         driver = new ChromeDriver(capabilities);
-                        driver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/settings.tmpl.html");
-
-                        ((JavascriptExecutor)driver).executeScript(
-                                "localStorage.setItem('profiles', JSON.stringify([{                " +
-                                        "  title: 'Selenium', hideComment: true, appendMode: '',           " +
-                                        "  headers: [                                                      " +
-                                        "    {enabled: true, name: 'X-AM-Provider', value: 'VVC', comment: ''}  " +
-                                        "  ],                                                              " +
-                                        "  respHeaders: [],                                                " +
-                                        "  filters: []                                                     " +
-                                        "}]));                                                             " );
+                        setModHeader();
                         break;
 
                     case "firefox":
@@ -231,6 +224,30 @@ public class TestBaseSetup {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private ChromeOptions setChromeHeaderOption(){
+        logger.info("Setting Chrome option for ModHeader");
+        ChromeOptions optionsHeader = new ChromeOptions();
+        optionsHeader.addExtensions(new File(RESOURCES_PATH + "extension_2_1_2.crx"));
+        optionsHeader.addArguments("test-type", "start-maximized", "no-default-browser-check");
+        return optionsHeader;
+    }
+
+    private void setModHeader(){
+        logger.info("Adding ModHeader Extension to Chrome");
+        driver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/settings.tmpl.html");
+
+        logger.info("Setting flight Provider HEADER: [" + providerHeader + "]");
+        ((JavascriptExecutor)driver).executeScript(
+                "localStorage.setItem('profiles', JSON.stringify([{                " +
+                        "  title: 'Selenium', hideComment: true, appendMode: '',           " +
+                        "  headers: [                                                      " +
+                        "    {enabled: true, name: 'X-AM-Provider', value: '" + providerHeader + "', comment: ''}  " +
+                        "  ],                                                              " +
+                        "  respHeaders: [],                                                " +
+                        "  filters: []                                                     " +
+                        "}]));                                                             " );
     }
 
     private DesiredCapabilities getCapabilities() throws Exception {
@@ -280,12 +297,7 @@ public class TestBaseSetup {
                 DesiredCapabilities chromeHeaderCapabilities = DesiredCapabilities.chrome();
                 chromeHeaderCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
-                ChromeOptions optionsHeader = new ChromeOptions();
-                optionsHeader.addExtensions(new File(RESOURCES_PATH + "extension_2_1_2.crx"));
-
-                optionsHeader.addArguments("test-type", "start-maximized", "no-default-browser-check");
-
-                chromeHeaderCapabilities.setCapability(ChromeOptions.CAPABILITY, optionsHeader);
+                chromeHeaderCapabilities.setCapability(ChromeOptions.CAPABILITY, setChromeHeaderOption());
                 if(initProxy){
                     chromeHeaderCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy.initSeleniumProxy());
                 }
@@ -331,6 +343,10 @@ public class TestBaseSetup {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
+        if(!providerHeader.isEmpty()){
+            capabilities.setCapability(ChromeOptions.CAPABILITY, setChromeHeaderOption());
+        }
+
         // set desired capabilities to launch appropriate browser on Sauce
         capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
         capabilities.setCapability(CapabilityType.PLATFORM, os);
@@ -351,6 +367,11 @@ public class TestBaseSetup {
 
         // set current sessionId
         driver = this.getWebDriver();
+
+        if(!providerHeader.isEmpty()){
+            setModHeader();
+        }
+
         String id = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
                 (((RemoteWebDriver) driver).getSessionId()).toString(), method);
         System.out.println("\n");
