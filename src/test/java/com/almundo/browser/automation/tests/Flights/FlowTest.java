@@ -229,7 +229,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void roundTrip_Int_Booking_2Credit_Cards_Flow() {
         logTestTitle("International - 10 days - 2 Adults - Tourist");
-        if(!countryPar.equals(MEXICO)) {
+        if(countryPar.equals(ARGENTINA)) {
             dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_TOURIST);
 
             flightsDataTrip.selectFlightType(ROUND_TRIP);
@@ -263,7 +263,7 @@ public class FlowTest extends TestBaseSetup {
             Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         }else{
-            logger.warn(NOT_RUNNING_MEXICO);
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
         setResultSauceLabs(PASSED);
     }
