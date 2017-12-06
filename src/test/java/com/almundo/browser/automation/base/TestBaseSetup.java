@@ -88,7 +88,7 @@ public class TestBaseSetup {
 
     /************* Selenium Proxy *************/
     private static SeleniumProxy seleniumProxy = new SeleniumProxy();
-    private static Boolean initProxy = false;
+    private static Boolean initProxy = true;
 
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "provider_header","retries_Max_Count"})
     @BeforeSuite
@@ -97,7 +97,7 @@ public class TestBaseSetup {
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional(CHROME_HEADER) String browserType,
+                                        @Optional(CHROME) String browserType,
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
@@ -187,6 +187,10 @@ public class TestBaseSetup {
 
                     case "chrome-header":
                         driver = new ChromeDriver(capabilities);
+                        if(initProxy){
+                            logger.info("Initizalizing Selenium Proxy.");
+                            seleniumProxy.setBrowserMobProxy();
+                        }
                         setModHeader();
                         break;
 
@@ -382,7 +386,8 @@ public class TestBaseSetup {
     @AfterMethod
     public void tearDown() {
         if(initProxy){
-            seleniumProxy.displayHarInfo();}
+            seleniumProxy.displayHarInfo();
+        }
         try {
             if(runningRemote){webDriver.get().quit();}
             else {

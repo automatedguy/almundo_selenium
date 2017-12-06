@@ -328,9 +328,11 @@ public class Flights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void Summary() {
+    public void SummaryWithInsurance() {
         logTestTitle("Summary Double Check");
         checkOutPageV3 = openCart(cartId, SWS,productURl);
+
+        addInsurance = true;
 
         getPassengersData();
 
@@ -368,6 +370,7 @@ public class Flights extends TestBaseSetup {
         checkOutPageV3.clickAnterior();
         checkOutPageV3.clickAnterior();
 
+        summaryPage = new SummaryPage(driver);
         dataManagement = new DataManagement();
 
         initDataLists();
@@ -375,7 +378,7 @@ public class Flights extends TestBaseSetup {
 
         addInsurance = true;
 
-        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 
@@ -473,6 +476,46 @@ public class Flights extends TestBaseSetup {
 
         setResultSauceLabs(PASSED);
     }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void CheckoutWizardUpdate() {
+        logTestTitle("Checkout Wizard");
+        checkOutPageV3 = openCart(cartId,  SW, productURl);
+
+        getWrongPassengersData();
+
+        checkOutPageV3.setCheckoutWizardInfo(dataManagement.getPassengerJsonList(),
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),
+                FLIGHTS_CHECKOUT_INT);
+
+        checkOutPageV3.clickAnterior();
+        checkOutPageV3.clickAnterior();
+
+        dataManagement = new DataManagement();
+
+        initDataLists();
+        getPassengersData();
+
+        addInsurance = true;
+
+        checkOutPageV3.setCheckoutWizardInfo(dataManagement.getPassengerJsonList(),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE),
+                FLIGHTS_CHECKOUT_INT);
+
+        getFlightsAssertionInfo();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
 
     @SuppressWarnings("Duplicates")
     @Test
