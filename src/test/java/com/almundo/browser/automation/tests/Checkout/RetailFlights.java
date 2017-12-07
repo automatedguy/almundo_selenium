@@ -74,8 +74,7 @@ public class RetailFlights extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.confirmationOk());
 
         //TODO: there is a bug related to final amount paid.
-        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
-
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
         Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
@@ -101,8 +100,7 @@ public class RetailFlights extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.confirmationOk());
 
         //TODO: there is a bug related to final amount paid.
-        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
-
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
         Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
