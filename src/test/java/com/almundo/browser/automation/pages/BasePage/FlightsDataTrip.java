@@ -1,6 +1,7 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
+import com.almundo.browser.automation.utils.Constants;
 import com.almundo.browser.automation.utils.Constants.FlightType;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
@@ -185,15 +187,9 @@ public class FlightsDataTrip extends BasePage{
     }
 
     public FlightsDataTrip selectFlightType(FlightType flightType) {
-        //PageUtils.waitElementForVisibility(driver, flightTypeDdl, 10, "Flight type drop down");
         waitImplicitly(1500);
         logger.info("Selecting Flight Type: [" + flightType + "]");
         try {
-            Select flightTypeSelect = new Select(flightTypeDdl);
-            flightTypeSelect.selectByVisibleText(flightType.toString());
-        }
-        catch(NoSuchElementException ouch){
-            logger.info("We Have Radio Buttons Here! :) ");
             switch (flightType.toString()){
                 case "Solo ida": oneWayRbn.click();
                     break;
@@ -202,6 +198,9 @@ public class FlightsDataTrip extends BasePage{
                 case "Varias ciudades": multiDestinationRbn.click();
                     break;
             }
+        }catch(NoSuchElementException ouch){
+            logger.info("Couldn't select flight type failing the test :( ");
+            setResultSauceLabs(FAILED);
         }
         return this;
     }
