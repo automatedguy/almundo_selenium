@@ -682,8 +682,8 @@
 
 	"contacts": {
 			"contact_cell_phone": {
-				"email": "almundoturismo@gmail.com",
-				"rep_email": "almundoturismo@gmail.com",
+				"email": "almundoturismo01@gmail.com",
+				"rep_email": "almundoturismo01@gmail.com",
 				"tel": "Celular",
 				"country_code": 54,
 				"area": "11",
@@ -691,8 +691,8 @@
 			},
 
 			"contact_phone": {
-				"email": "almundoturismo@gmail.com",
-				"rep_email": "almundoturismo@gmail.com",
+				"email": "almundoturismo01@gmail.com",
+				"rep_email": "almundoturismo01@gmail.com",
 				"tel": "Celular",
 				"country_code": 54,
 				"area": "011",
@@ -719,13 +719,13 @@
 		},
 
 		"google": {
-			"userEmail": "almundoturismo@gmail.com",
+			"userEmail": "almundoturismo01@gmail.com",
 			"password": "almundo12345",
 			"name": "Automation"
 		},
 
 		"facebook": {
-			"userEmail": "almundoturismo@gmail.com",
+			"userEmail": "almundoturismo01@gmail.com",
 			"password": "almundo12345",
 			"name": "Automation"
 		}
