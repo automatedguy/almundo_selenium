@@ -300,7 +300,7 @@ public class Constants {
     public static final String VALUE = "value";
 
     //CHECKOUT PARAMETERS
-    public static final String SW = "&sw=cdp";
-    public static final String SWS = "&sw=cdps";
-
+    public static final String SWCDP = "&sw=cdp";
+    public static final String SWCDPS = "&sw=cdps";
+    public static final String SWCPD = "&sw=cpd";
 }

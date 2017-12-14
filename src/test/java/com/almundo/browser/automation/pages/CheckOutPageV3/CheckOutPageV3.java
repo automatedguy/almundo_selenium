@@ -449,7 +449,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             billingSection().populateBillingSection(billingData);
         }
         clickSiguienteSummary();
-        // acceptConditions();
+        acceptConditions();
         return initSummaryPage();
     }
 

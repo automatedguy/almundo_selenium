@@ -228,7 +228,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void CheckoutWizard() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId, SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 
@@ -254,7 +254,7 @@ public class Flights extends TestBaseSetup {
     public void CheckoutWizardWithInsurance() {
         logTestTitle("Checkout Wizard");
         addInsurance = true;
-        checkOutPageV3 = openCart(cartId, SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 
@@ -279,7 +279,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void CheckoutWizardTwoCards() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId, SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 
@@ -305,7 +305,7 @@ public class Flights extends TestBaseSetup {
     public void CheckoutWizardTwoCardsWithInsurance() {
         logTestTitle("Checkout Wizard");
         addInsurance = true;
-        checkOutPageV3 = openCart(cartId, SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 
@@ -330,18 +330,18 @@ public class Flights extends TestBaseSetup {
     @Test
     public void SummaryWithInsurance() {
         logTestTitle("Summary Double Check");
-        checkOutPageV3 = openCart(cartId, SWS,productURl);
+        checkOutPageV3 = openCart(cartId, SWCDPS,productURl);
 
         addInsurance = true;
 
         getPassengersData();
 
-        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 
-
-        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        getFlightsAssertionInfo();
+        thanksPageV3 = summaryPage.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
@@ -357,7 +357,7 @@ public class Flights extends TestBaseSetup {
     public void SummaryUpdateData() {
         logTestTitle("Summary");
 
-        checkOutPageV3 = openCart(cartId, SWS,productURl);
+        checkOutPageV3 = openCart(cartId, SWCDPS,productURl);
 
         getWrongPassengersData();
 
@@ -399,7 +399,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void SummaryTwoCards() {
         logTestTitle("Summary");
-        checkOutPageV3 = openCart(cartId, SWS,productURl);
+        checkOutPageV3 = openCart(cartId, SWCDPS,productURl);
 
         getPassengersData();
 
@@ -424,7 +424,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void SummaryDebit() {
         logTestTitle("Summary");
-        checkOutPageV3 = openCart(cartId, SWS,productURl);
+        checkOutPageV3 = openCart(cartId, SWCDPS,productURl);
 
         getPassengersData();
 
@@ -450,7 +450,7 @@ public class Flights extends TestBaseSetup {
     public void CheckoutWizardDoubleCheck() {
         logTestTitle("Checkout Wizard");
         addInsurance = true;
-        checkOutPageV3 = openCart(cartId,  SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 
@@ -481,7 +481,7 @@ public class Flights extends TestBaseSetup {
     @Test
     public void CheckoutWizardUpdate() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId,  SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getWrongPassengersData();
 

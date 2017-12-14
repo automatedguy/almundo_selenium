@@ -132,7 +132,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void CheckoutWizard() {
         logTestTitle("Checkout Wizard");
-        checkOutPageV3 = openCart(cartId, SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 
@@ -156,7 +156,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void CheckoutWizardSummary() {
         logTestTitle("Checkout Wizard Summary.");
-        checkOutPageV3 = openCart(cartId, SWS, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDPS, productURl);
 
         getPassengersData();
 
@@ -180,7 +180,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void CheckoutWizardClubAlmundoSummary() {
         logTestTitle("Checkout Wizard Summary.");
-        checkOutPageV3 = openCart(cartId, SWS, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDPS, productURl);
 
         getPassengersData();
 
@@ -204,7 +204,7 @@ public class Hotels extends TestBaseSetup {
     @Test
     public void CheckoutWizardTwoCards() {
         logTestTitle("Checkout Wizard Two Cards");
-        checkOutPageV3 = openCart(cartId, SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 

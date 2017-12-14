@@ -101,7 +101,7 @@ public class Cars extends TestBaseSetup {
     @Test
     public void CheckoutWizard() {
         logTestTitle("Checkout wizard one credit card.");
-        checkOutPageV3 = openCart(cartId, SW, productURl);
+        checkOutPageV3 = openCart(cartId, SWCDP, productURl);
 
         getPassengersData();
 
