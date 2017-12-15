@@ -24,9 +24,7 @@ import java.util.regex.Pattern;
 
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
-import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
-import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
-import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
+import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -202,12 +200,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     @SuppressWarnings("Duplicates")
-    public SummaryPage clickSiguienteSummary(){
+    public CheckOutPageV3 clickSiguienteSummary(){
         scrollToElement(driver, siguienteSummaryBtn);
         waitWithTryCatch(driver, siguienteSummaryBtnLct, "Siguiente (To Summary)", 5);
         logger.info("Clicking on [Siguiente] (To Summary) button.");
         siguienteSummaryBtn.click();
-        return initSummaryPage();
+        waitImplicitly(2000);
+        return this;
     }
 
 
@@ -449,7 +448,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
             billingSection().populateBillingSection(billingData);
         }
         clickSiguienteSummary();
-        acceptConditions();
         return initSummaryPage();
     }
 
@@ -600,13 +598,14 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
-    private CheckOutPageV3 acceptConditions(){
+    public CheckOutPageV3 acceptConditions(){
         FooterSectionV3 footerSection = initFooterSectionV3();
         logger.info("---------- Checking options Footer Section ----------");
         footerSection.acceptTermsAndConditions();
         if(isElementRequiered(checkOutPageElements, "accepted")) {
             footerSection.acceptItinerary();
             footerSection.clickConfirmarBtn();
+            waitImplicitly(1500);
         }
         return this;
     }

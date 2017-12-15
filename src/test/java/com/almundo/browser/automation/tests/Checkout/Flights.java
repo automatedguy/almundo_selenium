@@ -341,6 +341,7 @@ public class Flights extends TestBaseSetup {
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 
         getFlightsAssertionInfo();
+        summaryPage.acceptConditions();
         thanksPageV3 = summaryPage.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
