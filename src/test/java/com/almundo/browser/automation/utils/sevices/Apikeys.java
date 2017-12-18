@@ -96,8 +96,12 @@ public class Apikeys extends TestBaseSetup {
         boolean apikeyFound = false;
         int index = -1;
         String name = getName(currentUrl);
-        do { index++; jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
-            if(JsonPath.read(jsonApikeySection, "$.name").equals(name)){ apikeyFound = true;}
+        do {
+            index++;
+            jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
+            if(JsonPath.read(jsonApikeySection, "$.name").equals(name)){
+                apikeyFound = true;
+            }
         }while(!apikeyFound);
         displayApikeyInfo(jsonApikeySection);
         return JsonPath.read(jsonApikeySection, "$.value");

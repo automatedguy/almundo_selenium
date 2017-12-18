@@ -6,6 +6,7 @@ import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.SummaryPage.SummaryPage;
+import com.almundo.browser.automation.utils.sevices.ArmStatus;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -24,6 +25,7 @@ public class Flights extends TestBaseSetup {
     private CheckOutPageV3 checkOutPageV3 = null;
     private SummaryPage summaryPage = null;
     private ThanksPageV3 thanksPageV3 = null;
+    private ArmStatus armStatus = null;
     private final String productURl = "?product=flights&origin=flights";
 
     @BeforeClass
@@ -114,6 +116,9 @@ public class Flights extends TestBaseSetup {
         Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
         Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        armStatus = new ArmStatus(thanksPageV3.reservationCode.getText());
+        Assert.assertTrue(armStatus.isReservationOk());
 
         setResultSauceLabs(PASSED);
     }
