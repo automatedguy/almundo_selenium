@@ -42,6 +42,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean creditCardComboSc = false;
     private boolean paymentSelectorSvd = false;
     private boolean checkoutWizard = false;
+    private boolean checkoutWizardSummary = false;
 
     public ClubAlmundoRewards clubAlmundoRewards() {return initclubAlmundoRewards();}
 
@@ -518,8 +519,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
         setCheckOutSections(getCheckoutUrl());
         if(checkoutWizard){
             setCheckoutWizardInfo(passengerList, paymentData, billingData, contactData, productCheckOutPage);
-        }
-        else {
+        } else if(checkoutWizardSummary) {
+            setCheckoutWizardInfoSummary(passengerList, paymentData, billingData, contactData, productCheckOutPage);
+        } else{
             getCheckOutPageElements(productCheckOutPage);
             setInputDef();
             dealWithPaymentForm(paymentData);
@@ -666,8 +668,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
             logger.info("[Selector de pago] is not enabled.");}
 
         if(checkoutUrl.contains("sw=cdp")){
-            logger.info("[Checkout Wizard] is enabled.");
-            checkoutWizard = true;
+            if(checkoutUrl.contains("sw=cdps")){
+                logger.info("[Checkout Wizard Summary] is enabled.");
+                checkoutWizardSummary = true;
+            }else {
+                logger.info("[Checkout Wizard] is enabled.");
+                checkoutWizard = true;
+            }
         } else {
             logger.info("[Checkout Wizard] is not enabled.");
         }
