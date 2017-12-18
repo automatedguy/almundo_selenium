@@ -57,9 +57,11 @@ public class Apikeys extends TestBaseSetup {
 
     private HttpResponse getHttpResponse() {
         HttpResponse httpResponse = null;
-        try { httpResponse = httpClient.execute(createHttpRequest());
-        } catch (IOException e) { e.printStackTrace();
-        } return httpResponse;
+        try {
+                httpResponse = httpClient.execute(createHttpRequest());
+            } catch (IOException e) { e.printStackTrace();
+        }
+        return httpResponse;
     }
 
     private JSONArray parseHttpResponse() throws IOException, ParseException {
@@ -72,10 +74,12 @@ public class Apikeys extends TestBaseSetup {
 
     private JSONArray getApikeysList(){
         JSONArray jsonArray = null;
-        try { jsonArray = parseHttpResponse();
-        } catch (IOException e) { e.printStackTrace();
-        } catch (ParseException e) { e.printStackTrace();
-        } return jsonArray;
+        try {
+                jsonArray = parseHttpResponse();
+            } catch (IOException e) { e.printStackTrace();
+            } catch (ParseException e) { e.printStackTrace();
+        }
+        return jsonArray;
     }
 
     private void displayApikeyInfo(JSONObject jsonApikeySection){
@@ -92,7 +96,7 @@ public class Apikeys extends TestBaseSetup {
         boolean apikeyFound = false;
         int index = -1;
         String name = getName(currentUrl);
-        do{ index++; jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
+        do { index++; jsonApikeySection = new JSONObject((Map) apikeyList.get(index));
             if(JsonPath.read(jsonApikeySection, "$.name").equals(name)){ apikeyFound = true;}
         }while(!apikeyFound);
         displayApikeyInfo(jsonApikeySection);

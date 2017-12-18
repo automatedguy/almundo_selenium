@@ -6,6 +6,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -25,6 +26,11 @@ public class Arm extends TestBaseSetup {
         apikey = apiKey;
         resCode = reservationCode;
         getJsonObject();
+    }
+
+    private JSONArray getReservationStatus(){
+
+        return null;
     }
 
     private void getJsonObject() throws IOException, ParseException {
@@ -47,7 +53,7 @@ public class Arm extends TestBaseSetup {
     }
 
     private HttpGet createHttpRequest() throws IOException {
-        HttpGet httpGetRequest = new HttpGet(url);
+        HttpGet httpGetRequest = new HttpGet(url + "/"+ resCode);
         httpGetRequest.setHeader("X-Apikey", apikey);
         httpGetRequest.setHeader("Version", "v3");
         return httpGetRequest;
