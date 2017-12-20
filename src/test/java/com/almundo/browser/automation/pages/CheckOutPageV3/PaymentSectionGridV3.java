@@ -4,6 +4,7 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,9 +45,14 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
     public void populatePaymentSectionV3(String paymentData, String container){
         dataManagement.setPaymentList();
         paymentDataObject = dataManagement.setPaymentData(paymentData);
-        selectPaymentQty(paymentDataObject.get("payment_qty").toString(), container);
-        selectBankEntity(paymentDataObject.get("bank_name").toString(), container);
-        selectCreditCard(paymentDataObject.get("credit_card_name").toString(), container);
+        try {
+            selectPaymentQty(paymentDataObject.get("payment_qty").toString(), container);
+            selectBankEntity(paymentDataObject.get("bank_name").toString(), container);
+            selectCreditCard(paymentDataObject.get("credit_card_name").toString(), container);
+        } catch (TimeoutException ouch){
+            logger.info("Grid not available, trying with combos.");
+            paymentSectionComboV3().populatePaymentSectionV3(paymentData, container);
+        }
     }
 
     public void selectCreditCard(String cardName, String container) {
