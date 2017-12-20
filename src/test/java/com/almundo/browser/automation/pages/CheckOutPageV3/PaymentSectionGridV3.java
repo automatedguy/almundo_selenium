@@ -96,6 +96,10 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
                 PageUtils.scrollToElement(driver, results.get(i));
                 PageUtils.waitImplicitly(2000);
                 scrollToElement(driver, results.get(i));
+                if(changeFop){
+                    results.get(1).click();
+                    changeFop = false;
+                }
                 results.get(i).click();
                 break;
             }

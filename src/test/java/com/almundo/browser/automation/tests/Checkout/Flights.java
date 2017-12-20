@@ -383,14 +383,60 @@ public class Flights extends TestBaseSetup {
         getPassengersData();
 
         addInsurance = true;
+        changeFop = true;
 
         summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 
         getFlightsAssertionInfo();
+        summaryPage.acceptConditions();
+        thanksPageV3 = summaryPage.clickComprarBtn();
 
-        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void SummaryUpdateDataWithTwoCards() {
+        logTestTitle("Summary");
+
+        checkOutPageV3 = openCart(cartId, SWCDPS,productURl);
+
+        getWrongPassengersData();
+
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE),  FLIGHTS_CHECKOUT_INT);
+
+        summaryPage.clickBeforeBtn();
+
+        checkOutPageV3.clickAnterior();
+        checkOutPageV3.clickAnterior();
+
+        summaryPage = new SummaryPage(driver);
+        dataManagement = new DataManagement();
+
+        initDataLists();
+        getPassengersData();
+
+        addInsurance = true;
+        changeFop =  true;
+
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+                TWOCARDS_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),
+                FLIGHTS_CHECKOUT_INT);
+
+        getFlightsAssertionInfo();
+        summaryPage.acceptConditions();
+        thanksPageV3 = summaryPage.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));

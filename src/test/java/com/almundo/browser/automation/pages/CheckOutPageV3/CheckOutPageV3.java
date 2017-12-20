@@ -376,6 +376,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private void dealWithGridAndCombos(String paymentData){
         breakDownSectionV3().dealWithInsurance(addInsurance);
         breakDownSectionV3().dealWithTransfer(addTransfer);
+        paymentSelectorV3().clickCambiarFopLnk();
         if(paymentData.contains(REWARDS)){
             paymentData = clubAlmundoRewards().useRewardsYesClick(paymentData);
         }
@@ -477,6 +478,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
         acceptConditions();
         return this;
     }
+
+
 
     /*************** Checkout full Population Methods Calls (2 Cards - Trips) ***********/
 

@@ -5,6 +5,7 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
+import com.almundo.browser.automation.pages.SummaryPage.SummaryPage;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -21,6 +22,7 @@ public class Hotels extends TestBaseSetup {
 
     private DataManagement dataManagement = new DataManagement();
     private CheckOutPageV3 checkOutPageV3 = null;
+    private SummaryPage summaryPage = null;
     private ThanksPageV3 thanksPageV3 = null;
     private final String productURl = "?product=hotel";
 
@@ -160,12 +162,14 @@ public class Hotels extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         getAssertionInfo();
-        thanksPageV3 = checkOutPageV3.clickComprarStepsBtn();
+
+        summaryPage.acceptConditions();
+        thanksPageV3 = summaryPage.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));

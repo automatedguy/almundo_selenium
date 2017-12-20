@@ -37,7 +37,18 @@ public class PaymentSelectorV3 extends BasePage {
     @FindBy(css = "payment-promocode div button")
     private WebElement aplicarBtn;
 
+    @FindBy(css = "#changeFOP")
+    private WebElement cambiarFopLnk;
+
     /**************************** Actions **********************************/
+
+    public PaymentSelectorV3 clickCambiarFopLnk(){
+        if(changeFop){
+            logger.info("Clicking on [Cambiar forma de Pago]");
+            cambiarFopLnk.click();
+        }
+        return this;
+    }
 
     public PaymentSelectorV3 selectOneCreditCardRdb(){
         try {
