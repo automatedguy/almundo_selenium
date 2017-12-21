@@ -360,6 +360,33 @@ public class Flights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void SummaryWithInsuranceClubAlmundo() {
+        logTestTitle("Summary Double Check");
+        checkOutPageV3 = openCart(cartId, SWCDPS,productURl);
+
+        addInsurance = true;
+
+        getPassengersData();
+
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+                REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
+
+        getFlightsAssertionInfo();
+        summaryPage.acceptConditions();
+        thanksPageV3 = summaryPage.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void SummaryUpdateData() {
         logTestTitle("Summary");
 

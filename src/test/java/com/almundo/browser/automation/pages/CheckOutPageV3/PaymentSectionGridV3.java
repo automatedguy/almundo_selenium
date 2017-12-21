@@ -114,7 +114,7 @@ public class PaymentSectionGridV3 extends CheckOutPageV3{
     }
 
     public void selectPaymentQty(String qty, String container) {
-        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " .payment .monthly-payment>strong"), 40, "Payments");
+        PageUtils.waitElementForVisibility(driver, By.cssSelector(container + " .payment .monthly-payment>strong"), 5, "Payments");
         List<WebElement> results = driver.findElements(By.cssSelector(container + " .payment .monthly-payment>strong"));
         List<WebElement> payments = driver.findElements(By.cssSelector(container + " .payment"));
         paymentSelected = findPaymentQty(results, payments, qty);
