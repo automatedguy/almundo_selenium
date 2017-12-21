@@ -482,13 +482,13 @@ public class Flights extends TestBaseSetup {
 
         getPassengersData();
 
-        checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
+        summaryPage = checkOutPageV3.setCheckoutWizardInfoSummary(dataManagement.getPassengerJsonList(),
                 TWOCARDS_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),  FLIGHTS_CHECKOUT_INT);
 
         getFlightsAssertionInfo();
-
-        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        summaryPage.acceptConditions();
+        thanksPageV3 = summaryPage.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
         Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
