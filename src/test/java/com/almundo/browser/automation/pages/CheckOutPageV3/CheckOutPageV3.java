@@ -224,7 +224,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         scrollToElement(driver, anteriorBtn);
         waitWithTryCatch(driver, anteriorBtnLct, "Anterior", 5);
         logger.info("Clicking on [Anterior] button.");
-        waitImplicitly(2000);
+        waitImplicitly(4000);
         anteriorBtn.click();
         waitImplicitly(2000);
         return this;
