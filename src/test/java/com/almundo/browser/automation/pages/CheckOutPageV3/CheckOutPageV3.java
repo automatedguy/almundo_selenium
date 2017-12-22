@@ -224,7 +224,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         scrollToElement(driver, anteriorBtn);
         waitWithTryCatch(driver, anteriorBtnLct, "Anterior", 5);
         logger.info("Clicking on [Anterior] button.");
-        waitImplicitly(4000);
+        waitImplicitly(7000);
         anteriorBtn.click();
         waitImplicitly(2000);
         return this;
@@ -234,7 +234,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         logger.info("Final breakdown when booking is:[" + breakDownSectionV3().getFinalPriceString() + "]");
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
             logger.info("Clicking on Comprar Button");
-            waitImplicitly(4000);
+            waitImplicitly(6000);
             if(checkoutWizard){
                 comprarWizardBtn.click();
             }
