@@ -2,7 +2,7 @@
 	"flights": {
 			"miami_10days_2adults_2childs_turista": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
 				"startDate": 25,
@@ -15,7 +15,7 @@
 
 			"miami_10days_2adults_turista": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
 				"startDate": 25,
@@ -28,7 +28,7 @@
 
 			"domestic_20days_2adults_todas": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Bar",
 				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
 				"startDate": 25,
@@ -54,7 +54,7 @@
 
 			"multiDest_3Flights_2adults_todas": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Estados Unidos de América",
 				"originAuto2": "Mia",
