@@ -72,7 +72,7 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
-        // hotelsResultsPage.clickPrePaid();
+        hotelsResultsPage.clickPrePaid();
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 

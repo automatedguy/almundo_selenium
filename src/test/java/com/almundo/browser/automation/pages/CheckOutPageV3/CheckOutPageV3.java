@@ -722,7 +722,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 checkoutWizardCpds = true;
             }
         } else {
-            logger.info("[Checkout Wizard] is not enabled.");
+            logger.info("[Checkout Wizard] (cpds) is not enabled.");
         }
 
     }

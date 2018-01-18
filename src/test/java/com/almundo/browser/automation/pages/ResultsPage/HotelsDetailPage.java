@@ -57,7 +57,7 @@ public class HotelsDetailPage extends TestBaseSetup {
     }
 
     public CheckOutPageV3 clickReservarAhoraV3Btn(int index) {
-        String reservarButtonCss = "detail-cluster:nth-child(" + (index+2) +") .price-box.col-3 > span > span";
+        String reservarButtonCss = "detail-cluster:nth-child(" + (index+1) +") .price-box.col-3 > span > span";
         if(!countryPar.equals(MEXICO)){
             closeExpertsPopUp(driver);
         }
