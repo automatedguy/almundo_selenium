@@ -204,13 +204,13 @@ public class FlowTest extends TestBaseSetup {
 
         PageUtils.switchToNewTab(driver);
 
-        hotelsDetailPage.clickPayAtDestination();
+        // hotelsDetailPage.clickPayAtDestination();
         hotelsDetailPage.clickVerHabitacionesBtn();
 
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION + 1);
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DESTINATION_MASTER_1,
                                         dataManagement.getBillingData(LOCAL_BILLING),
                                         dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
