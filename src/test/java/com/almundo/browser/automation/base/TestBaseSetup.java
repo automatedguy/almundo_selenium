@@ -102,9 +102,9 @@ public class TestBaseSetup {
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
-                                        @Optional("5a66531724aa9a000b8f599f") String cart_id,
+                                        @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional(TRUE) Boolean submit_Reservation,
+                                        @Optional(FALSE) Boolean submit_Reservation,
                                         @Optional("") String provider_header,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
 
