@@ -95,6 +95,36 @@ public class Flights extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @Test
+    public void fastCheckout() {
+        logTestTitle("Flights - Fast Checkout");
+        checkOutPageV3 = openCart(cartId, "&sfc=1",productURl);
+
+        dataManagement.setUsersDataList();
+        JSONObject userData = dataManagement.setUserData("argentinodv");
+        getPassengersData();
+
+        LoginPopUp loginPopUp  = checkOutPageV3.clickIngresarBtn();
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
+        loginPopUp.ingresarBtn.click();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
+
+        getFlightsAssertionInfo();
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        // Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isFlightDetailInfoOk(thanksPageAssertInfo.getFlightDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
     @SuppressWarnings("Duplicates")
     @Test
     public void gridWithTodoPago() {

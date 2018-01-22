@@ -94,7 +94,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "provider_header","retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(DEV_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -102,7 +102,7 @@ public class TestBaseSetup {
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
-                                        @Optional("") String cart_id,
+                                        @Optional("5a661f8524aa9a000b8f597c") String cart_id,
                                         @Optional("") String cart_id_icbc,
                                         @Optional(FALSE) Boolean submit_Reservation,
                                         @Optional("") String provider_header,

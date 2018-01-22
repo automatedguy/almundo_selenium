@@ -45,6 +45,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean checkoutWizardSummary = false;
     private boolean checkoutWizardCpds = false;
     private boolean checkoutWizardSummaryCpds = false;
+    private boolean checkoutWizardSummarySfc = false;
 
     public ClubAlmundoRewards clubAlmundoRewards() {return initclubAlmundoRewards();}
 
@@ -508,6 +509,32 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return this;
     }
 
+    @SuppressWarnings("Duplicates")
+    public CheckOutPageV3 setCheckoutWizardInfoSummarySfc(JSONArray passengerList,
+                                                String paymentData,
+                                                JSONObject billingData,
+                                                JSONObject contactData, String productCheckOutPage){
+        getCheckOutPageElements(productCheckOutPage);
+        setInputDef();
+        breakDownSectionV3().dealWithInsurance(addInsurance);
+        if(method.contains("Flights")) {
+            clickSiguiente();
+        }
+        if(method.contains("Trips")) {
+            clickSiguienteTrips();
+        }
+        passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
+        contactSection().populateContactSection(contactData);
+        clickSiguienteBis();
+        dealWithPaymentForm(paymentData);
+        if (!paymentData.contains(DESTINATION)) {
+            billingSection().populateBillingSection(billingData);
+        }
+        acceptConditions();
+        return this;
+    }
+
 
 
     /*************** Checkout full Population Methods Calls (2 Cards - Trips) ***********/
@@ -555,6 +582,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
             setCheckoutWizardInfoSummary(passengerList, paymentData, billingData, contactData, productCheckOutPage);
         } else if(checkoutWizardSummaryCpds) {
             setCheckoutWizardInfoSummaryCpds(passengerList, paymentData, billingData, contactData, productCheckOutPage);
+        } else if(checkoutWizardSummarySfc) {
+            setCheckoutWizardInfoSummarySfc(passengerList, paymentData, billingData, contactData, productCheckOutPage);
         } else{
             getCheckOutPageElements(productCheckOutPage);
             setInputDef();

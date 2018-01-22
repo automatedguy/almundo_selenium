@@ -718,6 +718,13 @@
 			"id_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG11bmRvYXJnZW50aW5hMnN0QGdtYWlsLmNvbSIsImF1dGgiOltdLCJjcmVhdGVkIjoxNDk4NjcyNDI5ODIyLCJleHAiOjE1MTQyMjI0MjksImp0aSI6IjUzOTc5NyJ9.vLXp-foiHhOUp8CHdzjYh2U_zeo5H-e4mJuNyZN7DaM"
 		},
 
+		"argentinodv": {
+			"userEmail": "argentina@mailinator.com",
+			"password": "12345678",
+			"name": "Argentino",
+			"externalUserId": "539797"
+		},
+
 		"google": {
 			"userEmail": "almundoturismo01@gmail.com",
 			"password": "almundo12345",
