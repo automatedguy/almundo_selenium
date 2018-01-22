@@ -510,27 +510,20 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     @SuppressWarnings("Duplicates")
-    public CheckOutPageV3 setCheckoutWizardInfoSummarySfc(JSONArray passengerList,
-                                                String paymentData,
-                                                JSONObject billingData,
-                                                JSONObject contactData, String productCheckOutPage){
+    public CheckOutPageV3 setCheckoutInfoSummarySfc(JSONArray passengerList,
+                                                    String paymentData,
+                                                    JSONObject billingData,
+                                                    JSONObject contactData, String productCheckOutPage){
         getCheckOutPageElements(productCheckOutPage);
         setInputDef();
         breakDownSectionV3().dealWithInsurance(addInsurance);
-        if(method.contains("Flights")) {
-            clickSiguiente();
-        }
-        if(method.contains("Trips")) {
-            clickSiguienteTrips();
-        }
+        dealWithPaymentForm(paymentData);
         passengerSection().populatePassengerSection(passengerList);
         emergencyContact().populateEmergencyContact(contactData);
-        contactSection().populateContactSection(contactData);
-        clickSiguienteBis();
-        dealWithPaymentForm(paymentData);
         if (!paymentData.contains(DESTINATION)) {
             billingSection().populateBillingSection(billingData);
         }
+        contactSection().populateContactSection(contactData);
         acceptConditions();
         return this;
     }
@@ -583,7 +576,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         } else if(checkoutWizardSummaryCpds) {
             setCheckoutWizardInfoSummaryCpds(passengerList, paymentData, billingData, contactData, productCheckOutPage);
         } else if(checkoutWizardSummarySfc) {
-            setCheckoutWizardInfoSummarySfc(passengerList, paymentData, billingData, contactData, productCheckOutPage);
+            setCheckoutInfoSummarySfc(passengerList, paymentData, billingData, contactData, productCheckOutPage);
         } else{
             getCheckOutPageElements(productCheckOutPage);
             setInputDef();
@@ -754,6 +747,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
             logger.info("[Checkout Wizard] (cpds) is not enabled.");
         }
 
+        if(checkoutUrl.contains("sfc=1")){
+            logger.info("[Fast Checkout] is enabled sfc=1");
+            checkoutWizardSummarySfc = true;
+        }else{
+            logger.info("[Fast Checkout] is not enabled sfc=1");
+        }
     }
 
     public CheckOutPageV3 redirectCheckout(){

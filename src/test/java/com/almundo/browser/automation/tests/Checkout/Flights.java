@@ -100,6 +100,8 @@ public class Flights extends TestBaseSetup {
         logTestTitle("Flights - Fast Checkout");
         checkOutPageV3 = openCart(cartId, "&sfc=1",productURl);
 
+        addInsurance = true;
+
         dataManagement.setUsersDataList();
         JSONObject userData = dataManagement.setUserData("argentinodv");
         getPassengersData();
@@ -108,8 +110,11 @@ public class Flights extends TestBaseSetup {
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         loginPopUp.ingresarBtn.click();
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
+        dataManagement.getPassengerJsonList().remove(2);
+        dataManagement.getPassengerJsonList().remove(1);
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList() ,
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
 
         getFlightsAssertionInfo();
