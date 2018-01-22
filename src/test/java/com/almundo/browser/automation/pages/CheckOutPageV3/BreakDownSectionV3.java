@@ -90,6 +90,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
         if(selectInsurance) {
             getFinalPrice();
             clickAddInsurance();
+            scrollToElement(driver, finalPrice);
             setInputDef();
             addInsurance = false;
         } else {
