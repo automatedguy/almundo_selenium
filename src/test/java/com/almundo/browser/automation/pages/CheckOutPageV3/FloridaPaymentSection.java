@@ -21,16 +21,16 @@ public class FloridaPaymentSection extends CheckOutPageV3 {
 
     public void tarjetaDeCreditoClick(){
         logger.info("Selecting: [Tarjeta De Crédito]");
-
+        tarjetaDeCredito.click();
     }
 
     public void tarjetaDeDebitoClick(){
         logger.info("Selecting: [Tarjeta De Débito]");
+        tarjetaDeDebito.click();
     }
 
     public void otroMedioDePagoClick(){
         logger.info("Selecting: [Otro medio de pago]");
+        otroMedioDePago.click();
     }
-
-
 }

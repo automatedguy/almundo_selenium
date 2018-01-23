@@ -65,6 +65,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public PaymentSectionComboV3 paymentSectionComboV3(){return initPaymentSectionComboV3();}
 
+    public FloridaPaymentSection floridaPaymentSection(){return initFloridaPaymentSection();}
+
+    public FloridaCreditCard floridaCreditCard(){return initFloridaCreditCard();}
+
     public PaymentTwoCreditCardsV3 paymentTwoCreditCardsV3(){return initPaymentTwoCreditCardsV3();}
 
     public PaymentSectionComboRetailV3 paymentSectionComboRetailV3(){return initPaymentSectionComboRetailV3();}
@@ -359,9 +363,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
             } else if (paymentData.contains(CASH)){
                 paymentSelectorRetailV3().selectCashRdb();
             } else if (!paymentData.contains(DESTINATION)){
-                paymentSelectorRetailV3().selectCreditRbd();
-                paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
-                creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+                if(!floridaHeader.isEmpty()){
+                    logger.info("Running Florida");
+                    floridaPaymentSection().tarjetaDeCreditoClick();
+                    floridaCreditCard().populateCreditCardInfo(paymentData);
+                } else {
+                    paymentSelectorRetailV3().selectCreditRbd();
+                    paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+                    creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+                }
             } else {
                 creditCardDataRetailV3().populateCreditCardData(paymentData, true);
             }
