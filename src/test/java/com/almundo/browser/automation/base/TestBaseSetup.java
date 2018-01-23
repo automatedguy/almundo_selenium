@@ -55,6 +55,7 @@ public class TestBaseSetup {
     public static String cartIdICBC = null;
     public static Boolean submitReservation = false;
     public static String providerHeader = null;
+    public static String floridaHeader = null;
     public static Boolean retriesCount = false;
     public static Boolean addInsurance = false;
     public static Boolean changeFop = false;
@@ -91,21 +92,22 @@ public class TestBaseSetup {
     private static SeleniumProxy seleniumProxy = new SeleniumProxy();
     private static Boolean initProxy = false;
 
-    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "provider_header","retries_Max_Count"})
+    @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "provider_header", "florida_header", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(DEV_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(RET_STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional(CHROME) String browserType,
+                                        @Optional(CHROME_HEADER) String browserType,
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
-                                        @Optional("") String cart_id,
+                                        @Optional("5a67450024aa9a000b5d78dc") String cart_id,
                                         @Optional("") String cart_id_icbc,
                                         @Optional(FALSE) Boolean submit_Reservation,
                                         @Optional("") String provider_header,
+                                        @Optional(TRUE) String florida_header,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -118,6 +120,7 @@ public class TestBaseSetup {
         this.cartIdICBC = cart_id_icbc;
         this.submitReservation = submit_Reservation;
         this.providerHeader = provider_header;
+        this.floridaHeader = florida_header;
         this.retriesCount = retries_Max_Count;
 
         try {
@@ -192,7 +195,12 @@ public class TestBaseSetup {
                             logger.info("Initizalizing Selenium Proxy.");
                             seleniumProxy.setBrowserMobProxy();
                         }
-                        setModHeader();
+                        if(!providerHeader.isEmpty()){
+                            setModHeader();
+                        }
+                        if(!floridaHeader.isEmpty()){
+                            setModHeaderFlorida();
+                        }
                         break;
 
                     case "firefox":
@@ -249,6 +257,22 @@ public class TestBaseSetup {
                         "  title: 'Selenium', hideComment: true, appendMode: '',           " +
                         "  headers: [                                                      " +
                         "    {enabled: true, name: 'X-AM-Provider', value: '" + providerHeader + "', comment: ''}  " +
+                        "  ],                                                              " +
+                        "  respHeaders: [],                                                " +
+                        "  filters: []                                                     " +
+                        "}]));                                                             " );
+    }
+
+    private void setModHeaderFlorida(){
+        logger.info("Adding ModHeader Extension to Chrome");
+        driver.get("chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/settings.tmpl.html");
+
+        logger.info("Setting Florida HEADER: [" + floridaHeader + "]");
+        ((JavascriptExecutor)driver).executeScript(
+                "localStorage.setItem('profiles', JSON.stringify([{                " +
+                        "  title: 'Selenium', hideComment: true, appendMode: '',           " +
+                        "  headers: [                                                      " +
+                        "    {enabled: true, name: 'x-am-florida', value: '" + floridaHeader + "', comment: ''}  " +
                         "  ],                                                              " +
                         "  respHeaders: [],                                                " +
                         "  filters: []                                                     " +
