@@ -365,8 +365,26 @@ public class CheckOutPageV3 extends TestBaseSetup {
             } else if (!paymentData.contains(DESTINATION)){
                 if(!floridaHeader.isEmpty()){
                     logger.info("Running Florida");
-                    floridaPaymentSection().tarjetaDeCreditoClick();
-                    floridaCreditCard().populateCreditCardInfo(paymentData);
+                    List<String> paymentDataList =  getPaymentDataList(paymentData);
+
+                    int priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
+                    int index = 0;
+
+                    boolean isLastPayment = false;
+
+                    for(String paymentFormData : paymentDataList) {
+
+                        if(paymentFormData.equals("deposit") || paymentFormData.equals("transfer") || paymentFormData.equals("cash")){
+                            floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
+                        } else if(paymentFormData.equals("debit")){
+                            floridaPaymentSection().tarjetaDeDebitoClick();
+                        } else {
+                            floridaPaymentSection().tarjetaDeCreditoClick();
+                            floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                        }
+                        index = ++index;
+                        isLastPayment = true;
+                    }
                 } else {
                     paymentSelectorRetailV3().selectCreditRbd();
                     paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);

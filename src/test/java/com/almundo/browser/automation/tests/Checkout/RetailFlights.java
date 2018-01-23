@@ -75,8 +75,28 @@ public class RetailFlights extends TestBaseSetup {
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
 
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void floridaTwoCards(){
+        logTestTitle("Florinda Thing");
 
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                VISA_1 + "$" +MASTER_1,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
     }
 
     @SuppressWarnings("Duplicates")

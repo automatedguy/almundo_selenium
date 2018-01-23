@@ -10,13 +10,13 @@ public class FloridaPaymentSection extends CheckOutPageV3 {
         super(driver);
     }
 
-    @FindBy(css ="#paymentOptionSection button:nth-child(1)")
+    @FindBy(css ="#paymentOptionSection am-retail-payment am-fops-multiple-payment .buttons-container button:nth-child(1)")
     private WebElement tarjetaDeCredito;
 
-    @FindBy(css ="#paymentOptionSection button:nth-child(2)")
+    @FindBy(css ="#paymentOptionSection am-retail-payment am-fops-multiple-payment .buttons-container button:nth-child(2)")
     private WebElement tarjetaDeDebito;
 
-    @FindBy(css ="#paymentOptionSection button:nth-child(3)")
+    @FindBy(css ="#paymentOptionSection am-retail-payment am-fops-multiple-payment .buttons-container button:nth-child(3)")
     private WebElement otroMedioDePago;
 
     public void tarjetaDeCreditoClick(){
@@ -29,8 +29,8 @@ public class FloridaPaymentSection extends CheckOutPageV3 {
         tarjetaDeDebito.click();
     }
 
-    public void otroMedioDePagoClick(){
-        logger.info("Selecting: [Otro medio de pago]");
+    public void otroMedioDePagoClick(String otro){
+        logger.info("Selecting: [Otro medio de pago]: [" + otro + "]");
         otroMedioDePago.click();
     }
 }

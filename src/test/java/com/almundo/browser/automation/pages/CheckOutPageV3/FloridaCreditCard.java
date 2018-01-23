@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
 import static com.almundo.browser.automation.utils.PageUtils.waitSelectContainsResults;
 import static com.almundo.browser.automation.utils.PageUtils.waitWithTryCatch;
@@ -24,28 +26,28 @@ public class FloridaCreditCard extends CheckOutPageV3 {
     private WebElement importeTarjetaInput;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(2) > input")
-    private WebElement numeroTarjetaInput;
+    private List<WebElement> numeroTarjetaInput;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(2) > div:nth-child(1) > select")
-    private WebElement tarjetaSelect;
+    private List<WebElement> tarjetaSelect;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(2) > div:nth-child(2) > select")
-    private WebElement bancoSelect;
+    private List<WebElement> bancoSelect;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(3) > div > select")
-    private WebElement cuotasSelect;
+    private List<WebElement> cuotasSelect;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(4) input")
-    private WebElement titularTarjetaInput;
+    private List<WebElement> titularTarjetaInput;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(4) > div:nth-child(2) > select")
-    private WebElement fechVencMesSelect;
+    private List<WebElement> fechVencMesSelect;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(4) > div:nth-child(3) > select")
-    private WebElement getFechVencAnoSelect;
+    private List<WebElement> getFechVencAnoSelect;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(5) input")
-    private WebElement codigoSeguridadInput;
+    private List<WebElement> codigoSeguridadInput;
 
     /********************* Actions *******************/
 
@@ -56,81 +58,84 @@ public class FloridaCreditCard extends CheckOutPageV3 {
         return this;
     }
 
-    private FloridaCreditCard setNumeroTarjeta(String numeroTarjeta){
+    private FloridaCreditCard setNumeroTarjeta(String numeroTarjeta, int index){
         logger.info("Setting [Número de tarjeta]: [" + numeroTarjeta + "]");
-        waitElementForClickable(driver, numeroTarjetaInput, 10, "Numero de tarjeta.");
-        numeroTarjetaInput.clear();
-        numeroTarjetaInput.sendKeys(numeroTarjeta);
+        waitElementForClickable(driver, numeroTarjetaInput.get(index), 10, "Numero de tarjeta.");
+        numeroTarjetaInput.get(index).clear();
+        numeroTarjetaInput.get(index).sendKeys(numeroTarjeta);
         return this;
     }
 
-    private FloridaCreditCard setTarjeta(String tarjeta){
+    private FloridaCreditCard setTarjeta(String tarjeta, int index){
         logger.info("Selecting [Tarjeta]: [" + tarjeta + "]");
-        Select tarjetaDdl = new Select(tarjetaSelect);
+        Select tarjetaDdl = new Select(tarjetaSelect.get(index));
         waitSelectContainsResults(tarjetaDdl, "Tarjeta Select", 10, 3 );
         tarjetaDdl.selectByVisibleText(tarjeta);
         return this;
     }
 
-    private FloridaCreditCard setBanco(String banco){
+    private FloridaCreditCard setBanco(String banco, int index){
         logger.info("Selecting [Banco]: [" + banco + "]");
-        Select bancoDdl =  new Select(bancoSelect);
+        Select bancoDdl =  new Select(bancoSelect.get(index));
         waitSelectContainsResults(bancoDdl, "Banco Select", 10, 3 );
         bancoDdl.selectByVisibleText(banco);
         return this;
     }
 
-    private FloridaCreditCard setCuotas(){
-        Select cuotasDdl =  new Select(cuotasSelect);
+    private FloridaCreditCard setCuotas(int index){
+        Select cuotasDdl =  new Select(cuotasSelect.get(index));
         waitSelectContainsResults(cuotasDdl, "Cuotas Select", 10, 3 );
-        logger.info("Selecting [Cuotas] first Option: [" + cuotasDdl.getOptions().get(0).getText() + "]");
+        logger.info("Selecting [Cuotas] first Option: [" + cuotasDdl.getOptions().get(1).getText() + "]");
         cuotasDdl.selectByIndex(1);
         return this;
     }
 
-    private FloridaCreditCard setTitularTarjeta(String titularTarjeta){
+    private FloridaCreditCard setTitularTarjeta(String titularTarjeta, int index){
         logger.info("Setting [Titular de tarjeta]: " + titularTarjeta + "]");
-        titularTarjetaInput.clear();
-        titularTarjetaInput.sendKeys(titularTarjeta);
+        titularTarjetaInput.get(index).clear();
+        titularTarjetaInput.get(index).sendKeys(titularTarjeta);
         return this;
     }
 
-    private FloridaCreditCard setFechVencMes(String vencMes){
+    private FloridaCreditCard setFechVencMes(String vencMes, int index){
         logger.info("Setting [Fecha de vencimiento -  Mes]: [" + vencMes + "]");
-        Select fechaVencMesDdl =  new Select(fechVencMesSelect);
+        Select fechaVencMesDdl =  new Select(fechVencMesSelect.get(index));
         fechaVencMesDdl.selectByVisibleText(vencMes);
         return this;
     }
 
-    private FloridaCreditCard setFechVencAno(String vencAno){
+    private FloridaCreditCard setFechVencAno(String vencAno, int index){
         logger.info("Setting [Fecha de vencimiento - Año]: [" + vencAno + "]");
-        Select fechaVencAnoDdl = new Select(getFechVencAnoSelect);
+        Select fechaVencAnoDdl = new Select(getFechVencAnoSelect.get(index));
         fechaVencAnoDdl.selectByVisibleText(vencAno);
         return this;
     }
 
-    private FloridaCreditCard setCodigoSeguridad(String codigoSeguridad){
+    private FloridaCreditCard setCodigoSeguridad(String codigoSeguridad, int index){
         logger.info("Setting [Código de seguridad]: [" + codigoSeguridad + "]");
-        codigoSeguridadInput.clear();
-        codigoSeguridadInput.sendKeys(codigoSeguridad);
+        codigoSeguridadInput.get(index).clear();
+        codigoSeguridadInput.get(index).sendKeys(codigoSeguridad);
         return this;
     }
 
-    public FloridaCreditCard populateCreditCardInfo(String paymentData){
+    public FloridaCreditCard populateCreditCardInfo(String paymentData, String priceToPay, int index, boolean isLastPayment){
         logger.info("Setting Credit Card Info...");
         dataManagement.setPaymentList();
 
         paymentDataObject = dataManagement.setPaymentData(paymentData);
 
         if(inputDef.isRequired("payments","credit_card_number",0)){
-            setNumeroTarjeta(paymentDataObject.get("card_number").toString());
-            setTarjeta(paymentDataObject.get("credit_card_name").toString());
-            setBanco(paymentDataObject.get("bank_name_two_cards").toString());
-            setCuotas();
-            setTitularTarjeta(paymentDataObject.get("Titular_de_la_tarjeta").toString());
-            setFechVencMes(paymentDataObject.get("Fecha_de_vencimiento_mes").toString());
-            setFechVencAno(paymentDataObject.get("year_card_expire").toString());
-            setCodigoSeguridad(paymentDataObject.get("security_code").toString());
+            if(!isLastPayment){
+                setImporteTarjeta(priceToPay);
+            }
+            setNumeroTarjeta(paymentDataObject.get("card_number").toString(), index);
+            setTarjeta(paymentDataObject.get("credit_card_name").toString(), index);
+            setBanco(paymentDataObject.get("bank_name_two_cards").toString(), index);
+            setCuotas(index);
+            setTitularTarjeta(paymentDataObject.get("card_holder").toString(), index);
+            setFechVencMes(paymentDataObject.get("month_card_expire").toString(), index);
+            setFechVencAno(paymentDataObject.get("year_card_expire").toString(), index);
+            setCodigoSeguridad(paymentDataObject.get("security_code").toString(), index);
         }
         return this;
     }
