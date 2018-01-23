@@ -58,6 +58,15 @@ public class RetailFlights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void floridaThing(){
+        logTestTitle("Florinda Thing");
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void payWithLink() {
         logTestTitle("Grid With Todo Pago" + countryPar );
 
