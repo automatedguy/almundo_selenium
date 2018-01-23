@@ -58,8 +58,10 @@ public class RetailFlights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void floridaThing(){
+    public void floridaOneCard(){
         logTestTitle("Florinda Thing");
+
+        addInsurance =  true;
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 
