@@ -91,7 +91,7 @@ public class FloridaCreditCard extends CheckOutPageV3 {
     }
 
     private FloridaCreditCard setTitularTarjeta(String titularTarjeta, int index){
-        logger.info("Setting [Titular de tarjeta]: " + titularTarjeta + "]");
+        logger.info("Setting [Titular de tarjeta]: [" + titularTarjeta + "]");
         titularTarjetaInput.get(index).clear();
         titularTarjetaInput.get(index).sendKeys(titularTarjeta);
         return this;
