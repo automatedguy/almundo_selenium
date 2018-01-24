@@ -151,6 +151,10 @@ public class Constants {
     public static final String TRANSFER = "transfer";
     public static final String CASH = "cash";
 
+    public static final String DEPOSITO = "Depósito";
+    public static final String TRANSFERENCIA = "Transferencia";
+    public static final String EFECTIVO = "Efectivo";
+
     public static final String VISA_MASTER = "pago_dividido$1_visa_visa$1_master_master$";
     public static final String MASTER_VISA = "pago_dividido$1_master_master$1_visa_visa$";
 

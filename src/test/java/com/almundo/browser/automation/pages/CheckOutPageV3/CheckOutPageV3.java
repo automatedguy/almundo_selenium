@@ -69,6 +69,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public FloridaCreditCard floridaCreditCard(){return initFloridaCreditCard();}
 
+    public FloridaOther floridaAnother(){return initFloridaAnother();}
+
+    public FloridaDebitCard floridaDebitCard(){return initFloridaDebitCard();}
+
     public PaymentTwoCreditCardsV3 paymentTwoCreditCardsV3(){return initPaymentTwoCreditCardsV3();}
 
     public PaymentSectionComboRetailV3 paymentSectionComboRetailV3(){return initPaymentSectionComboRetailV3();}
@@ -367,16 +371,22 @@ public class CheckOutPageV3 extends TestBaseSetup {
                     logger.info("Running Florida");
                     List<String> paymentDataList =  getPaymentDataList(paymentData);
 
-                    int priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
-                    int index = 0;
-
+                    int priceToPay = 0;
                     boolean isLastPayment = false;
 
+                    if(paymentDataList.size() > 1) {
+                        priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
+                    }else {
+                        isLastPayment = true;
+                    }
+
+                    int index = 0;
                     for(String paymentFormData : paymentDataList) {
 
-                        if(paymentFormData.equals("deposit") || paymentFormData.equals("transfer") || paymentFormData.equals("cash")){
+                        if(paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")){
                             floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
-                        } else if(paymentFormData.equals("debit")){
+                            floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                        } else if(paymentFormData.equals("Débito")){
                             floridaPaymentSection().tarjetaDeDebitoClick();
                         } else {
                             floridaPaymentSection().tarjetaDeCreditoClick();

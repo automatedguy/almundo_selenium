@@ -103,7 +103,7 @@ public class TestBaseSetup {
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
-                                        @Optional("5a679e0a24aa9a000b5d7946") String cart_id,
+                                        @Optional("5a6893db24aa9a000b5d7a7f") String cart_id,
                                         @Optional("") String cart_id_icbc,
                                         @Optional(TRUE) Boolean submit_Reservation,
                                         @Optional("") String provider_header,
@@ -579,6 +579,14 @@ public class TestBaseSetup {
 
     protected FloridaCreditCard initFloridaCreditCard(){
         return PageFactory.initElements(driver, FloridaCreditCard.class);
+    }
+
+    protected FloridaOther initFloridaAnother(){
+        return PageFactory.initElements(driver, FloridaOther.class);
+    }
+
+    protected FloridaDebitCard initFloridaDebitCard(){
+        return PageFactory.initElements(driver, FloridaDebitCard.class);
     }
 
     protected PaymentTwoCreditCardsV3 initPaymentTwoCreditCardsV3(){

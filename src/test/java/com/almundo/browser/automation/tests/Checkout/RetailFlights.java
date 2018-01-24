@@ -58,8 +58,8 @@ public class RetailFlights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void floridaOneCard(){
-        logTestTitle("Florinda Thing");
+    public void OneCard(){
+        logTestTitle("One Credit Card");
 
         addInsurance =  true;
 
@@ -79,8 +79,8 @@ public class RetailFlights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void floridaTwoCards(){
-        logTestTitle("Florinda Thing");
+    public void TwoCards(){
+        logTestTitle("Two Credit Cards");
 
         addInsurance =  true;
 
@@ -89,7 +89,73 @@ public class RetailFlights extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                VISA_1 + "$" +MASTER_1,
+                VISA_1 + "$" + MASTER_1,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void efectivo(){
+        logTestTitle("Efectivo");
+
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                EFECTIVO,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void transferencia(){
+        logTestTitle("Transferencia");
+
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                TRANSFERENCIA,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void deposito(){
+        logTestTitle("Transferencia");
+
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                DEPOSITO,
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
