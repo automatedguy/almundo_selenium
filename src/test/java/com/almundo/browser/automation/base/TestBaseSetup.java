@@ -95,19 +95,19 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "provider_header", "florida_header", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(RET_STG_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
-                                        @Optional(CHROME_HEADER) String browserType,
+                                        @Optional(CHROME) String browserType,
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
-                                        @Optional("5a6893db24aa9a000b5d7a7f") String cart_id,
+                                        @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional(TRUE) Boolean submit_Reservation,
+                                        @Optional(FALSE) Boolean submit_Reservation,
                                         @Optional("") String provider_header,
-                                        @Optional(TRUE) String florida_header,
+                                        @Optional(FALSE) String florida_header,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
