@@ -101,6 +101,28 @@ public class RetailFlights extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void CreditoEfectivo(){
+        logTestTitle("Two Credit Cards");
+
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                VISA_1 + "$" + EFECTIVO,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void efectivo(){
         logTestTitle("Efectivo");
 

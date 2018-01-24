@@ -32,16 +32,27 @@ public class FloridaOther extends CheckOutPageV3{
 
     private FloridaOther setMedioDePago(String paymentForm, int index){
         logger.info("Selecting [Medio de pago]: [" + paymentForm + "]");
-        Select medioDePagoDdl = new Select(medioDePago.get(index));
+        Select medioDePagoDdl =  null;
+        boolean elementFound =  false;
+        while(!elementFound) {
+            try {
+                medioDePagoDdl = new Select(medioDePago.get(index));
+                logger.info("Element located.");
+                elementFound = true;
+            } catch (IndexOutOfBoundsException ouch) {
+                --index;
+                logger.warn("Trying to locate the element by index.");
+            }
+        }
         medioDePagoDdl.selectByVisibleText(paymentForm);
         return this;
     }
 
     public FloridaOther setOtherInfo(String paymentForm, String priceToPay, int index, boolean isLastPayment){
-        setMedioDePago(paymentForm, index);
         if(!isLastPayment){
             setMontoInput(priceToPay);
         }
+        setMedioDePago(paymentForm, index);
         return this;
     }
 }
