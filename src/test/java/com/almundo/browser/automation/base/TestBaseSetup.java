@@ -55,7 +55,7 @@ public class TestBaseSetup {
     public static String cartIdICBC = null;
     public static Boolean submitReservation = false;
     public static String providerHeader = null;
-    public static String floridaHeader = null;
+    public static boolean floridaHeader = false;
     public static Boolean retriesCount = false;
     public static Boolean addInsurance = false;
     public static Boolean changeFop = false;
@@ -107,7 +107,7 @@ public class TestBaseSetup {
                                         @Optional("") String cart_id_icbc,
                                         @Optional(FALSE) Boolean submit_Reservation,
                                         @Optional("") String provider_header,
-                                        @Optional(FALSE) String florida_header,
+                                        @Optional(FALSE) Boolean florida_header,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
 
         this.baseURL = env_url;
@@ -198,7 +198,7 @@ public class TestBaseSetup {
                         if(!providerHeader.isEmpty()){
                             setModHeader();
                         }
-                        if(!floridaHeader.isEmpty()){
+                        if(floridaHeader){
                             setModHeaderFlorida();
                         }
                         break;
@@ -376,6 +376,10 @@ public class TestBaseSetup {
             capabilities.setCapability(ChromeOptions.CAPABILITY, setChromeHeaderOption());
         }
 
+        if(floridaHeader){
+            capabilities.setCapability(ChromeOptions.CAPABILITY, setChromeHeaderOption());
+        }
+
         // set desired capabilities to launch appropriate browser on Sauce
         capabilities.setCapability("build", System.getenv("JOB_NAME") + "__" + System.getenv("BUILD_NUMBER"));
         capabilities.setCapability(CapabilityType.PLATFORM, os);
@@ -401,8 +405,8 @@ public class TestBaseSetup {
             setModHeader();
         }
 
-        if(!floridaHeader.isEmpty()){
-            setModHeader();
+        if(floridaHeader){
+            setModHeaderFlorida();
         }
 
         String id = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",

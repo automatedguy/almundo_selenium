@@ -367,7 +367,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             } else if (paymentData.contains(CASH)){
                 paymentSelectorRetailV3().selectCashRdb();
             } else if (!paymentData.contains(DESTINATION)){
-                if(!floridaHeader.isEmpty()){
+                if(floridaHeader){
                     logger.info("Running Florida");
                     List<String> paymentDataList =  getPaymentDataList(paymentData);
 
