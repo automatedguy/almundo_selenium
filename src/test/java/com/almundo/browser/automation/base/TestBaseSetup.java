@@ -401,6 +401,10 @@ public class TestBaseSetup {
             setModHeader();
         }
 
+        if(!floridaHeader.isEmpty()){
+            setModHeader();
+        }
+
         String id = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
                 (((RemoteWebDriver) driver).getSessionId()).toString(), method);
         System.out.println("\n");
