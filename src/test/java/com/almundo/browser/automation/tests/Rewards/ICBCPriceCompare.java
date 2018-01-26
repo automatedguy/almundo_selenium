@@ -4,6 +4,7 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.pages.CheckOutPage.PaymentSection;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSectionGridV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.PaymentSelectorV3;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -23,6 +24,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
     private CheckOutPageV3 checkOutPageV3 = null;
     private PaymentSectionGridV3 paymentSectionGridV3 = null;
+    private PaymentSelectorV3 paymentSelectorV3 = null;
 
     private int difference = 0;
     private boolean failedTest = false;
@@ -63,6 +65,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
         checkOutPageV3 = openAlmundoCart(cartId);
 
         paymentSectionGridV3 = initPaymentSectionGridV3();
+        paymentSelectorV3 = initPaymentSelectorV3();
+        paymentSelectorV3.selectOneCreditCardRdb();
 
         selectPaymentV3("1",BANCO_ICBC, VISA);
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
@@ -90,6 +94,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         /****************** ICBC ******************/
 
         checkOutPageV3 = openIcbcCart(cartIdICBC);
+        paymentSelectorV3.selectOneCreditCardRdb();
 
         selectPaymentV3("1",BANCO_ICBC, VISA);
         icbc_visa_1 = checkOutPageV3.getTotalPrice();
@@ -154,6 +159,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
         checkOutPageV3 = openAlmundoCart(cartId);
 
         paymentSectionGridV3 = initPaymentSectionGridV3();
+        paymentSelectorV3 = initPaymentSelectorV3();
+        paymentSelectorV3.selectOneCreditCardRdb();
 
         selectPaymentV3("1",BANCO_ICBC, VISA);
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
@@ -181,6 +188,7 @@ public class ICBCPriceCompare extends TestBaseSetup {
         /****************** ICBC ******************/
 
         checkOutPageV3 = openIcbcCart(cartIdICBC);
+        paymentSelectorV3.selectOneCreditCardRdb();
 
         selectPaymentV3("1",BANCO_ICBC, VISA);
         icbc_visa_1 = checkOutPageV3.getTotalPrice();
