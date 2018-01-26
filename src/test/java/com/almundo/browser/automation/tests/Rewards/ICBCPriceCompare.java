@@ -281,41 +281,35 @@ public class ICBCPriceCompare extends TestBaseSetup {
         checkOutPageV3 = openIcbcCart(cartIdICBC);
         paymentSelectorV3.selectOneCreditCardRdb();
 
-        paymentSection.selectPaymentQty("1 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
+        selectPaymentV3("1",BANCO_ICBC, VISA);
         icbc_visa_1 = checkOutPageV3.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         paymentSectionGridV3.setPayment("1", ".card-container-1");
 
-        paymentSection.selectPaymentQty("1 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
+        selectPaymentV3("1",BANCO_ICBC, MASTERCARD);
         icbc_master_1 = checkOutPageV3.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("6 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
+        selectPaymentV3("6",BANCO_ICBC, VISA);
         icbc_visa_6 = checkOutPageV3.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         paymentSectionGridV3.setPayment("6", ".card-container-1");
 
-        paymentSection.selectPaymentQty("6 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
+        selectPaymentV3("6",BANCO_ICBC, MASTERCARD);
         icbc_master_6 = checkOutPageV3.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
-        paymentSection.selectPaymentQty("12 cuota");
-        selectCardAndBank(VISA, BANCO_ICBC);
-        icbc_visa_12 = checkOutPageV3.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        selectPaymentV3("12",BANCO_ICBC, VISA);
+        icbc_visa_12= checkOutPageV3.getTotalPrice();
+        paymentSectionGridV3.clickChangeCardLink();
 
         paymentSectionGridV3.setPayment("12", ".card-container-1");
 
-        paymentSection.selectPaymentQty("12 cuota");
-        selectCardAndBank(MASTERCARD, BANCO_ICBC);
+        selectPaymentV3("12",BANCO_ICBC, MASTERCARD);
         icbc_master_12 = checkOutPageV3.getTotalPrice();
-        paymentSection.clickChangeCardLink();
+        paymentSectionGridV3.clickChangeCardLink();
 
         logger.info("******************************************************** INICIO DE PRUEBAS ********************************************************");
         printItineraryData();
