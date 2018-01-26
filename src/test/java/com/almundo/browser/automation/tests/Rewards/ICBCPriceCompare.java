@@ -243,9 +243,11 @@ public class ICBCPriceCompare extends TestBaseSetup {
     @Test
     public void airCanada() {
         logTestTitle("ICBC Store - Air Canada - ");
-        checkOutPageV3 = openAlmundoCart("59dd1ae0e4b038bba656739e");
+        checkOutPageV3 = openAlmundoCart(cartId);
 
         paymentSectionGridV3 = initPaymentSectionGridV3();
+        paymentSelectorV3 = initPaymentSelectorV3();
+        paymentSelectorV3.selectOneCreditCardRdb();
 
         selectPaymentV3("1",BANCO_ICBC, VISA);
         almundo_visa_1 = checkOutPageV3.getTotalPrice();
@@ -276,7 +278,8 @@ public class ICBCPriceCompare extends TestBaseSetup {
 
         /****************** ICBC ******************/
 
-        checkOutPageV3 = openIcbcCart("59dd1af7e4b038bba65673a6");
+        checkOutPageV3 = openIcbcCart(cartIdICBC);
+        paymentSelectorV3.selectOneCreditCardRdb();
 
         paymentSection.selectPaymentQty("1 cuota");
         selectCardAndBank(VISA, BANCO_ICBC);
