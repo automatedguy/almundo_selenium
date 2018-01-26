@@ -78,7 +78,7 @@
 	"hotels": {
 			"miami_10days_2adults_2childs_1room": {
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 25,
 				"endDate": 10,
 				"adults": 2,
@@ -88,7 +88,7 @@
 
 		"miami_10days_2adults_1room": {
 			"destinationAuto": "Mia",
-			"destinationFull": "Miami, Estados Unidos de América",
+			"destinationFull": "Miami, Florida, Estados Unidos de América",
 			"startDate": 25,
 			"endDate": 10,
 			"adults": 2,
