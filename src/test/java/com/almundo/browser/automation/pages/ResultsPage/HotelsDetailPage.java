@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -30,10 +31,20 @@ public class HotelsDetailPage extends TestBaseSetup {
     @FindBy(css = verHabitacionesLct)
     public WebElement verHabitacionesBtn;
 
-    @FindBy(css = ".choice.agreggate>span")
+    @FindBy(css = "#pay_at_destination detail-cluster:nth-child(2) .price-box > span > span")
     public WebElement payAtDestination;
 
+    @FindBy(css = "#payment-method")
+    private WebElement paymentMethodSelect;
+
     //############################################### Actions ###############################################
+
+    public HotelsDetailPage selectPaymentMethod(String paymentMethod){
+        logger.info("Selecting payment method: [" + paymentMethod +"]");
+        Select paymentMethodDdl =  new Select(paymentMethodSelect);
+        paymentMethodDdl.selectByVisibleText(paymentMethod);
+        return this;
+    }
 
     public HotelsDetailPage clickVerHabitacionesBtn() {
         waitImplicitly(3000);

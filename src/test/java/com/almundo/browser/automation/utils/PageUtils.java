@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static com.almundo.browser.automation.base.TestBaseSetup.countryPar;
@@ -432,5 +434,22 @@ public class PageUtils {
             }
         }while((tryNumber <= attempts) && !elementShowedUp);
         return select;
+    }
+
+    public static String generateDate(int additionalDays){
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date currentDate =  new Date();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+
+        calendar.add(Calendar.DATE, additionalDays);
+
+        Date selectedDate = calendar.getTime();
+
+        logger.info("Selected date: [" + dateFormat.format(selectedDate).toString() + "]");
+        return dateFormat.format(selectedDate).toString();
     }
 }

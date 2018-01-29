@@ -5,15 +5,25 @@ import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
+import com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage;
+import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.pages.SummaryPage.SummaryPage;
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.generateDate;
 
 /**
  * Created by gabrielcespedes on 02/03/17.
@@ -52,6 +62,56 @@ public class Hotels extends TestBaseSetup {
     }
 
     /************************ Grid Test Area ************************/
+
+    @Test
+    public void PayAtDestination(){
+
+        try {
+            initLoginPopUp().clickCloseLoginBtn();
+        }catch(NoSuchElementException ouch){
+            logger.info("Login modal didn't show, will continue anyway...");
+        }
+
+        String searchUrl =  baseURL + "hotels/results/miami-1318535?date="
+                + generateDate(10) +","+ generateDate(20) + "&rooms=2&type=CITY";
+
+        driver.navigate().to(searchUrl);
+
+        HotelsResultsPage hotelsResultsPage = initHotelsResultsPage();
+        HotelsDetailPage hotelsDetailPage =  null;
+
+        Assert.assertTrue(hotelsResultsPage.vacancy());
+
+        hotelsResultsPage.clickPayAtDestination();
+
+        hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
+
+        PageUtils.switchToNewTab(driver);
+
+        hotelsDetailPage.clickVerHabitacionesBtn();
+        hotelsDetailPage.selectPaymentMethod("Pago en destino");
+        hotelsDetailPage.clickPayAtDestination();
+
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+
+        checkOutPageV3 = initCheckOutPageV3();
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DESTINATION_MASTER_1,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
+
+        getAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+
+    }
 
     @Test
     public void clubAlmundo() {
