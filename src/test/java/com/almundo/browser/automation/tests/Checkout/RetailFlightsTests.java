@@ -97,7 +97,7 @@ public class RetailFlightsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void CreditoEfectivo(){
+    public void CreditCash(){
         logTestTitle("Two Credit Cards");
 
         addInsurance =  true;
