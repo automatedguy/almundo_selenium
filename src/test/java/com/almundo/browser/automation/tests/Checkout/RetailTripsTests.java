@@ -15,14 +15,13 @@ import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 /**
  * Created by gabrielcespedes on 02/03/17.
  */
-public class RetailFlightsTests extends TestBaseSetup {
+public class RetailTripsTests extends TestBaseSetup {
 
     private DataManagement dataManagement = new DataManagement();
     private CheckOutPageV3 checkOutPageV3 = null;
     private ThanksPageV3 thanksPageV3 = null;
-    private final String productURl = "?product=flights&origin=flights";
+    private final String productURl = "?product=vuelohotel";
 
-    @SuppressWarnings("Duplicates")
     @BeforeClass
     private void initDataLists() {
         retriesCount = true;
@@ -37,17 +36,16 @@ public class RetailFlightsTests extends TestBaseSetup {
         dataManagement.clearPassengerJsonList();
     }
 
-    private void getFlightsAssertionInfo(){
-        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
-        thanksPageAssertInfo.setFlightsDetailInfo(checkOutPageV3.breakDownSectionV3().getFlightDetailContent());
-        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
-    }
-
     private void getPassengersData(){
         logger.info("Getting Passenger Data.");
         dataManagement.setPassengerData("adult_male_native");
         dataManagement.setPassengerData("adult_female_native");
         dataManagement.setPassengerData("child_male_native");
+    }
+
+    private void getTripsAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
     
     /************************ Grid Test Area ************************/
@@ -67,7 +65,7 @@ public class RetailFlightsTests extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        getFlightsAssertionInfo();
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -78,7 +76,7 @@ public class RetailFlightsTests extends TestBaseSetup {
     public void TwoCards(){
         logTestTitle("Two Credit Cards");
 
-        addInsurance =  true;
+        addTransfer =  true;
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 
@@ -89,7 +87,7 @@ public class RetailFlightsTests extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        getFlightsAssertionInfo();
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -100,8 +98,6 @@ public class RetailFlightsTests extends TestBaseSetup {
     public void CreditoEfectivo(){
         logTestTitle("Two Credit Cards");
 
-        addInsurance =  true;
-
         checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
@@ -111,7 +107,7 @@ public class RetailFlightsTests extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        getFlightsAssertionInfo();
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -122,8 +118,6 @@ public class RetailFlightsTests extends TestBaseSetup {
     public void efectivo(){
         logTestTitle("Efectivo");
 
-        addInsurance =  true;
-
         checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
@@ -133,7 +127,7 @@ public class RetailFlightsTests extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        getFlightsAssertionInfo();
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -144,8 +138,6 @@ public class RetailFlightsTests extends TestBaseSetup {
     public void transferencia(){
         logTestTitle("Transferencia");
 
-        addInsurance =  true;
-
         checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
@@ -155,7 +147,7 @@ public class RetailFlightsTests extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        getFlightsAssertionInfo();
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -166,8 +158,6 @@ public class RetailFlightsTests extends TestBaseSetup {
     public void deposito(){
         logTestTitle("Transferencia");
 
-        addInsurance =  true;
-
         checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
@@ -177,7 +167,7 @@ public class RetailFlightsTests extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        getFlightsAssertionInfo();
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -188,8 +178,6 @@ public class RetailFlightsTests extends TestBaseSetup {
     public void payWithLink(){
         logTestTitle("Transferencia");
 
-        addInsurance =  true;
-
         checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
@@ -199,9 +187,10 @@ public class RetailFlightsTests extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 
-        getFlightsAssertionInfo();
+        getTripsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());
     }
+
 }

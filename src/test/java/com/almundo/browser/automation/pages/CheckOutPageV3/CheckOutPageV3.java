@@ -332,7 +332,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             paymentSelectorRetailV3().selectPaymentMethod(PAGO_DIVIDIDO);
             paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
         }
-        else if (paymentData.contains("link_de_pago$")) {
+        else if (paymentData.contains("link_de_pago$") && retailCheckoutOld) {
             setUrlParameter("&slp=1");
             String thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
             paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
