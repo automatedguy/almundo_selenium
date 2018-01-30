@@ -61,6 +61,8 @@ public class RetailFlights extends TestBaseSetup {
     public void creditCard() {
         logTestTitle("Credit Card");
 
+        addInsurance =  true;
+
         checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();

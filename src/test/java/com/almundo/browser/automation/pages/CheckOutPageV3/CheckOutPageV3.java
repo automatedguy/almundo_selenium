@@ -46,6 +46,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean checkoutWizardCpds = false;
     private boolean checkoutWizardSummaryCpds = false;
     private boolean checkoutWizardSummarySfc = false;
+    private boolean retailCheckoutOld = false;
 
     public ClubAlmundoRewards clubAlmundoRewards() {return initclubAlmundoRewards();}
 
@@ -366,36 +367,42 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 paymentSelectorRetailV3().selectTransferRdb();
             } else if (paymentData.contains(CASH)){
                 paymentSelectorRetailV3().selectCashRdb();
-            } else if (!paymentData.contains(DESTINATION)){
-                logger.info("Running Retail New");
-                List<String> paymentDataList =  getPaymentDataList(paymentData);
-
-                int priceToPay = 0;
-                boolean isLastPayment = false;
-
-                if(paymentDataList.size() > 1) {
-                    priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
-                }else {
-                    isLastPayment = true;
-                }
-
-                int index = 0;
-                for(String paymentFormData : paymentDataList) {
-
-                if(paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")){
-                    floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
-                    floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                } else if(paymentFormData.equals("Débito")){
-                    floridaPaymentSection().tarjetaDeDebitoClick();
-                } else {
-                    floridaPaymentSection().tarjetaDeCreditoClick();
-                    floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                }
-                    index = ++index;
-                    isLastPayment = true;
-                }
-            } else {
+            } else if (retailCheckoutOld){
+                paymentSelectorRetailV3().selectCreditRbd();
+                paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
                 creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+            } else if (!paymentData.contains(DESTINATION)){
+                if (!retailCheckoutOld) {
+                    logger.info("Running Retail New");
+                    List<String> paymentDataList = getPaymentDataList(paymentData);
+
+                    int priceToPay = 0;
+                    boolean isLastPayment = false;
+
+                    if (paymentDataList.size() > 1) {
+                        priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
+                    } else {
+                        isLastPayment = true;
+                    }
+
+                    int index = 0;
+                    for (String paymentFormData : paymentDataList) {
+
+                        if (paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")) {
+                            floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
+                            floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                        } else if (paymentFormData.equals("Débito")) {
+                            floridaPaymentSection().tarjetaDeDebitoClick();
+                        } else {
+                            floridaPaymentSection().tarjetaDeCreditoClick();
+                            floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                        }
+                        index = ++index;
+                        isLastPayment = true;
+                    }
+                } else {
+                    creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+                }
             }
         }
     }
@@ -784,6 +791,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
             checkoutWizardSummarySfc = true;
         }else{
             logger.info("[Fast Checkout] is not enabled sfc=1");
+        }
+
+        if(checkoutUrl.contains("&ssp=1")){
+            logger.info("[Retail Old] Version is enabled ssp=1");
+            retailCheckoutOld = true;
+        } else {
+            logger.info("Retail Old Version not found ssp=1");
         }
     }
 
