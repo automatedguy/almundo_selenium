@@ -163,7 +163,7 @@ public class RetailFlightsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void Deposito(){
+    public void Deposit(){
         logTestTitle("Transferencia");
 
         addInsurance =  true;
