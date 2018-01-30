@@ -453,6 +453,7 @@
 			"1_amex_amex": {
 				"payment_qty" : "1",
 				"bank_name" : "American Express",
+				"bank_name_two_cards" : "Todos los bancos",
 				"credit_card_code" : "AX",
 				"credit_card_name" : "American Express",
 				"card_holder": "Titular Tarjeta",
