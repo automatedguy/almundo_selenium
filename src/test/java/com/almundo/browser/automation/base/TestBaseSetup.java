@@ -61,6 +61,7 @@ public class TestBaseSetup {
     public static Boolean changeFop = false;
     public static Boolean refillPaymentData = false;
     public static Boolean addTransfer = false;
+    public static boolean isRetailChannel = false;
 
     public static String className;
     public static String method;

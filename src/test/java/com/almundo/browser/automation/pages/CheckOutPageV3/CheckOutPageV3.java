@@ -626,7 +626,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                 billingSection().populateBillingSection(billingData);
             }
             contactSection().populateContactSection(contactData);
-            if (isRetailChannel()) {
+            if (isRetailChannel) {
                 agentSectionV3().setAgentEmail(AGENT_EMAIL);
             }
             acceptConditions();
@@ -835,9 +835,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     public Boolean isRetailChannel(){
         //TODO: Remove all the unnecessary parts here, retail apparently running against V3
-        boolean retailChannel = false;
         if(baseURL.contains("ccr") || baseURL.contains("sucursales")){
-            retailChannel = true;
+            isRetailChannel = true;
             if(!method.contains("Trips") && !method.contains("Hotels") && !method.contains("Flights") && !method.contains("Cars")) {
                 logger.info("Replacing [cart/v2] with [checkout]");
                 driver.navigate().to(getCartUrl().replace("cart/v2", "checkout"));
@@ -850,7 +849,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             }
             getCheckoutUrl();
         }
-        return retailChannel;
+        return isRetailChannel;
     }
 
     private String getCartUrl(){

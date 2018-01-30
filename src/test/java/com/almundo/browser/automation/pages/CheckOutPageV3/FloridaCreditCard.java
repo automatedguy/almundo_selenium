@@ -77,14 +77,14 @@ public class FloridaCreditCard extends CheckOutPageV3 {
     private FloridaCreditCard setBanco(String banco, int index){
         logger.info("Selecting [Banco]: [" + banco + "]");
         Select bancoDdl =  new Select(bancoSelect.get(index));
-        waitSelectContainsResults(bancoDdl, "Banco Select", 10, 3 );
+        waitSelectContainsResults(bancoDdl, "Banco Select", 10, 2 );
         bancoDdl.selectByVisibleText(banco);
         return this;
     }
 
     private FloridaCreditCard setCuotas(int index){
         Select cuotasDdl =  new Select(cuotasSelect.get(index));
-        waitSelectContainsResults(cuotasDdl, "Cuotas Select", 10, 3 );
+        waitSelectContainsResults(cuotasDdl, "Cuotas Select", 10, 2 );
         logger.info("Selecting [Cuotas] first Option: [" + cuotasDdl.getOptions().get(1).getText() + "]");
         cuotasDdl.selectByIndex(1);
         return this;
