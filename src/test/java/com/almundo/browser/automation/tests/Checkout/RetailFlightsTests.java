@@ -119,7 +119,7 @@ public class RetailFlightsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void efectivo(){
+    public void Cash(){
         logTestTitle("Efectivo");
 
         addInsurance =  true;
@@ -141,7 +141,7 @@ public class RetailFlightsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void transferencia(){
+    public void Transfer(){
         logTestTitle("Transferencia");
 
         addInsurance =  true;
@@ -163,7 +163,7 @@ public class RetailFlightsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void deposito(){
+    public void Deposito(){
         logTestTitle("Transferencia");
 
         addInsurance =  true;
