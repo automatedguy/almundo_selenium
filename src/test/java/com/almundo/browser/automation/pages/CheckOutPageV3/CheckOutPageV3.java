@@ -233,10 +233,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public CheckOutPageV3 clickAnterior(){
+        waitImplicitly(2000);
         scrollToElement(driver, anteriorBtn);
         waitWithTryCatch(driver, anteriorBtnLct, "Anterior", 5);
+        waitElementForClickable(driver, anteriorBtn, 10, "Anterior Clickable");
         logger.info("Clicking on [Anterior] button.");
-        waitImplicitly(7000);
         anteriorBtn.click();
         waitImplicitly(2000);
         return this;
