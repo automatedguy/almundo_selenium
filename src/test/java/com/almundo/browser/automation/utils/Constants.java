@@ -27,7 +27,7 @@ public class Constants {
     public static final String DEV_URL = "https://dv.almundo.com";
     public static final String CCR_DEV_URL = "https://sucursales.dv.almundo.com.ar/";
     public static final String STG_URL = "https://st.almundo.com";
-    public static final String PROD_URL = "http://almundo.com/";
+    public static final String PROD_URL = "https://almundo.com";
     public static final String RET_URL = "https://sucursales.almundo.com";
     public static final String RET_STG_URL = "https://sucursales.st.almundo.com";
     public static final String CCR_URL = "https://ccr.almundo.com";
@@ -268,6 +268,8 @@ public class Constants {
     public static final String MIA_10D_2A_1R = "miami_10days_2adults_1room";
     public static final String DOM02_20D_2A_1R = "domestic02_20days_2adults_1room";
     public static final String DOM03_20D_2A_1R = "domestic03_20days_2adults_1room";
+    public static final String PAY_AT_DESTINATION = "Pago en destino";
+    public static final String PREPAID = "Pago con tarjeta";
 
     //TRIPS
     public static final String INT02_20D_2A_1R = "int02_20days_2adults_1room";

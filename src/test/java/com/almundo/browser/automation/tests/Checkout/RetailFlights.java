@@ -87,7 +87,7 @@ public class RetailFlights extends TestBaseSetup {
     public void payWithLink() {
         logTestTitle("Grid With Todo Pago" + countryPar );
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -113,7 +113,7 @@ public class RetailFlights extends TestBaseSetup {
     public void payWithLinkTwoCards() {
         logTestTitle("Grid With Todo Pago" + countryPar );
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -139,7 +139,7 @@ public class RetailFlights extends TestBaseSetup {
     public void payWithLinkClubAlmundoWithInsurance() {
         logTestTitle("Pay With Link With Club Almundo Rewards.");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
         addInsurance = true;
 
         getPassengersData();
@@ -167,7 +167,7 @@ public class RetailFlights extends TestBaseSetup {
     public void payWithLinkClubAlmundo() {
         logTestTitle("Pay With Link With Club Almundo Rewards.");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -194,7 +194,7 @@ public class RetailFlights extends TestBaseSetup {
     public void payWithLinkClubAlmundoTwoCards() {
         logTestTitle("Pay With Link With Club Almundo Rewards.");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -221,7 +221,7 @@ public class RetailFlights extends TestBaseSetup {
     public void IntBookingSplitted2cards() {
         logTestTitle("International - Splitted VISA_MASTER - 20 days - 2 Adults - Tourist");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -246,7 +246,7 @@ public class RetailFlights extends TestBaseSetup {
     public void IntBookingSplittedDepositCredit() {
         logTestTitle("International - DEPOSIT_VISA - 20 days - 2 Adults - Tourist");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -271,7 +271,7 @@ public class RetailFlights extends TestBaseSetup {
     public void IntBookingSplittedCashDeposit() {
         logTestTitle("International - Splitted CASH_DEPOSIT - 20 days - 2 Adults - Tourist");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -296,7 +296,7 @@ public class RetailFlights extends TestBaseSetup {
     public void IntBookingSplittedCashTransfer() {
         logTestTitle("International - Splitted CASH_TRANSFER - 20 days - 2 Adults - Tourist");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -321,7 +321,7 @@ public class RetailFlights extends TestBaseSetup {
     public void IntBookingSplittedTransferCredit() {
         logTestTitle("International - TRANSFER_VISA - 2 Adults - Tourist");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
@@ -346,7 +346,7 @@ public class RetailFlights extends TestBaseSetup {
     public void IntBookingSplitted3cards() {
         logTestTitle("International - 3 Cards - 20 days - 2 Adults - Tourist");
 
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 

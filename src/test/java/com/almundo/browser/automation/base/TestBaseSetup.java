@@ -95,7 +95,7 @@ public class TestBaseSetup {
     @Parameters({"env", "osType", "browserType", "browserTypeVersion", "country", "landing", "cart_id", "cart_id_icbc", "submit_Reservation", "provider_header", "florida_header", "retries_Max_Count"})
     @BeforeSuite
 
-    public void initializeTestBaseSetup(@Optional(STG_URL) String env_url,
+    public void initializeTestBaseSetup(@Optional(RET_STG_URL) String env_url,
                                         @Optional() String osType,
 //                                        @Optional("OS X 10.11") String osType,
 //                                        @Optional("Windows 10") String osType,
@@ -103,9 +103,9 @@ public class TestBaseSetup {
                                         @Optional(LATEST) String browserTypeVersion,
                                         @Optional(ARGENTINA) String country,
                                         @Optional(TRUE) Boolean landing,
-                                        @Optional("") String cart_id,
+                                        @Optional("5a7082b924aa9a000b5d846d") String cart_id,
                                         @Optional("") String cart_id_icbc,
-                                        @Optional(FALSE) Boolean submit_Reservation,
+                                        @Optional(TRUE) Boolean submit_Reservation,
                                         @Optional("") String provider_header,
                                         @Optional(FALSE) Boolean florida_header,
                                         @Optional(FALSE) Boolean retries_Max_Count) {
@@ -139,7 +139,7 @@ public class TestBaseSetup {
             e.printStackTrace();
         }
 
-        if(baseURL.equals(STG_URL) || baseURL.equals(RET_URL) || baseURL.equals(RET_STG_URL)
+        if(baseURL.equals(STG_URL)|| baseURL.equals(PROD_URL) || baseURL.equals(RET_URL) || baseURL.equals(RET_STG_URL)
                 || baseURL.equals(CCR_URL) || baseURL.equals(CCR_STG_URL) || baseURL.equals(DEV_URL)) {
             switch (countryPar) {
                 case "ARGENTINA":

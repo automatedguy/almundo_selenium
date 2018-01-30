@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 import static com.almundo.browser.automation.utils.Constants.*;
 import static com.almundo.browser.automation.utils.Constants.FlightType.*;
 import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+import static com.almundo.browser.automation.utils.PageUtils.logCookie;
 
 
 /**
@@ -78,6 +79,7 @@ public class FlowTest extends TestBaseSetup {
         if(countryPar.equals(ARGENTINA)) {
             dataManagement.setOneWayDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
+            logCookie(driver);
             flightsDataTrip.selectFlightType(ONE_WAY);
             flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());

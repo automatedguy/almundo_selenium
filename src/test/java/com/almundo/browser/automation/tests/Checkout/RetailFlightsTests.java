@@ -57,7 +57,7 @@ public class RetailFlightsTests extends TestBaseSetup {
     public void OneCard(){
         logTestTitle("One Credit Card");
 
-        addInsurance =  true;
+        addInsurance =  false;
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 

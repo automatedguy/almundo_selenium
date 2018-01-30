@@ -436,6 +436,12 @@ public class PageUtils {
         return select;
     }
 
+    public static void logCookie(WebDriver driver){
+        Set<Cookie> allcookies = driver.manage().getCookies();
+        allcookies.toArray();
+
+    }
+
     public static String generateDate(int additionalDays){
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

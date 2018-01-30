@@ -75,6 +75,7 @@ public class Hotels extends TestBaseSetup {
         String searchUrl =  baseURL + "hotels/results/miami-1318535?date="
                 + generateDate(10) +","+ generateDate(20) + "&rooms=2&type=CITY";
 
+        logger.info("Navigating to: [" + searchUrl + "]");
         driver.navigate().to(searchUrl);
 
         HotelsResultsPage hotelsResultsPage = initHotelsResultsPage();
@@ -89,7 +90,7 @@ public class Hotels extends TestBaseSetup {
         PageUtils.switchToNewTab(driver);
 
         hotelsDetailPage.clickVerHabitacionesBtn();
-        hotelsDetailPage.selectPaymentMethod("Pago en destino");
+        hotelsDetailPage.selectPaymentMethod(PAY_AT_DESTINATION);
         hotelsDetailPage.clickPayAtDestination();
 
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);

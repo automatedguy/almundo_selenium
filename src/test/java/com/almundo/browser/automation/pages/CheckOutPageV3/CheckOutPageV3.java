@@ -367,38 +367,32 @@ public class CheckOutPageV3 extends TestBaseSetup {
             } else if (paymentData.contains(CASH)){
                 paymentSelectorRetailV3().selectCashRdb();
             } else if (!paymentData.contains(DESTINATION)){
-                if(floridaHeader){
-                    logger.info("Running Florida");
-                    List<String> paymentDataList =  getPaymentDataList(paymentData);
+                logger.info("Running Retail New");
+                List<String> paymentDataList =  getPaymentDataList(paymentData);
 
-                    int priceToPay = 0;
-                    boolean isLastPayment = false;
+                int priceToPay = 0;
+                boolean isLastPayment = false;
 
-                    if(paymentDataList.size() > 1) {
-                        priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
-                    }else {
-                        isLastPayment = true;
-                    }
+                if(paymentDataList.size() > 1) {
+                    priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
+                }else {
+                    isLastPayment = true;
+                }
 
-                    int index = 0;
-                    for(String paymentFormData : paymentDataList) {
+                int index = 0;
+                for(String paymentFormData : paymentDataList) {
 
-                        if(paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")){
-                            floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
-                            floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                        } else if(paymentFormData.equals("Débito")){
-                            floridaPaymentSection().tarjetaDeDebitoClick();
-                        } else {
-                            floridaPaymentSection().tarjetaDeCreditoClick();
-                            floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                        }
-                        index = ++index;
-                        isLastPayment = true;
-                    }
+                if(paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")){
+                    floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
+                    floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                } else if(paymentFormData.equals("Débito")){
+                    floridaPaymentSection().tarjetaDeDebitoClick();
                 } else {
-                    paymentSelectorRetailV3().selectCreditRbd();
-                    paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
-                    creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+                    floridaPaymentSection().tarjetaDeCreditoClick();
+                    floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                }
+                    index = ++index;
+                    isLastPayment = true;
                 }
             } else {
                 creditCardDataRetailV3().populateCreditCardData(paymentData, true);
