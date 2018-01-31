@@ -349,6 +349,7 @@
             "1_amex_amex": {
                 "payment_qty" : "1",
                 "bank_name" : "American Express",
+                "bank_name_two_cards" : "Todos los bancos",
                 "credit_card_code" : "AMEXMX",
                 "credit_card_name" : "American Express",
                 "card_holder": "Titular Tarjeta",
@@ -364,6 +365,7 @@
             "1_visa_visa": {
                 "payment_qty" : "1",
                 "bank_name" : "BBVA Bancomer",
+                "bank_name_two_cards" : "Todos los bancos",
                 "credit_card_code" : "BCMR",
                 "credit_card_name" : "Visa",
                 "card_holder": "Titular Tarjeta",
@@ -409,6 +411,7 @@
             "1_master_master": {
                 "payment_qty" : "1",
                 "bank_name" : "BBVA Bancomer",
+                "bank_name_two_cards" : "Todos los bancos",
                 "credit_card_code" : "BCMR",
                 "credit_card_name" : "Mastercard",
                 "card_holder": "Titular Tarjeta",

@@ -3,12 +3,14 @@ package com.almundo.browser.automation.pages.CheckOutPageV3;
 import com.almundo.browser.automation.pages.BasePage.BasePage;
 import com.almundo.browser.automation.utils.PageUtils;
 import com.almundo.browser.automation.utils.ThanksPageAssertInfo;
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage.getAssertHotelInfo;
 import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_V3_MSG;
@@ -87,6 +89,12 @@ public class ThanksPageV3 extends BasePage {
                 PageUtils.waitElementForVisibility(driver, felicitacionesLbl, 70, "Reservation Confirmation");
             }catch (TimeoutException ouch){
                 logger.info("Waited so long for the [Reservation Confirmation]");
+                try {
+                    String bookError = driver.findElement(By.cssSelector(".popeye-modal-container .modal-content label")).getText();
+                    logger.error("Booking ERROR: [" + bookError + "]");
+                } catch (NoSuchElementException ouchAgain){
+                    logger.error("Error Stack was not shown!");
+                }
                 setResultSauceLabs(FAILED);
             }
             if (felicitacionesLbl.getText().equals(FELICITACIONES_V3_MSG.toString())) {

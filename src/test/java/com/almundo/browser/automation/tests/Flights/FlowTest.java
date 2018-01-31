@@ -79,7 +79,6 @@ public class FlowTest extends TestBaseSetup {
         if(countryPar.equals(ARGENTINA)) {
             dataManagement.setOneWayDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
-            logCookie(driver);
             flightsDataTrip.selectFlightType(ONE_WAY);
             flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
             flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
@@ -191,6 +190,7 @@ public class FlowTest extends TestBaseSetup {
 
         dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
+        logCookie(driver);
         flightsDataTrip.selectFlightType(ROUND_TRIP);
         flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
         flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
@@ -202,6 +202,7 @@ public class FlowTest extends TestBaseSetup {
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
+        logCookie(driver);
         flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
         flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
 
@@ -216,6 +217,7 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData(LOCAL_BILLING),
                                                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
         getFlightsAssertionInfo();
+        logCookie(driver);
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
 
         Assert.assertTrue(thanksPageV3.confirmationOk());

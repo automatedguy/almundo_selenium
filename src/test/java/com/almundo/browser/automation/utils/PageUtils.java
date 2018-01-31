@@ -437,9 +437,19 @@ public class PageUtils {
     }
 
     public static void logCookie(WebDriver driver){
-        Set<Cookie> allcookies = driver.manage().getCookies();
-        allcookies.toArray();
+        List cookiesList = new ArrayList(driver.manage().getCookies());
 
+        boolean cookieFound =  false;
+        int i = 0;
+        int cookiesListSize = cookiesList.size();
+        while(!cookieFound && i <= cookiesListSize){
+            if(cookiesList.get(i).toString().contains("_ga=")){
+                logger.info("Cookie Found: [" + cookiesList.get(i).toString() +"]");
+                cookieFound =  true;
+            }else {
+                ++i;
+            }
+        }
     }
 
     public static String generateDate(int additionalDays){
@@ -458,4 +468,5 @@ public class PageUtils {
         logger.info("Selected date: [" + dateFormat.format(selectedDate).toString() + "]");
         return dateFormat.format(selectedDate).toString();
     }
+
 }
