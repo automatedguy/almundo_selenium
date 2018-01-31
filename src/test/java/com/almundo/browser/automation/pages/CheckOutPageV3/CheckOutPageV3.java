@@ -794,7 +794,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             logger.info("[Fast Checkout] is not enabled sfc=1");
         }
 
-        if(checkoutUrl.contains("&ssp=1")){
+        if(checkoutUrl.contains("ssp=1")){
             logger.info("[Retail Old] Version is enabled ssp=1");
             retailCheckoutOld = true;
         } else {
