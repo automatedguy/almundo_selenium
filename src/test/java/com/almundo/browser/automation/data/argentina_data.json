@@ -209,9 +209,9 @@
 
 			"miami_10days_entre_21_24": {
 				"originAuto": "Mia",
-				"originFull": "Miami, Estados Unidos de América",
+				"originFull": "Miami, Florida, Estados Unidos de América",
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 55,
 				"endDate": 30,
 				"pickUpTime": "12:00",
