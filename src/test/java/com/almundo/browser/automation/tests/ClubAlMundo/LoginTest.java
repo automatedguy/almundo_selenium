@@ -205,7 +205,7 @@ public class LoginTest extends TestBaseSetup {
 
             checkOutPageV3 = carsResultsPage.clickReservarAhoraBtn(FIRST_OPTION);
 
-            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            // dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
             thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
 
