@@ -369,9 +369,12 @@ public class CheckOutPageV3 extends TestBaseSetup {
             } else if (paymentData.contains(CASH)){
                 paymentSelectorRetailV3().selectCashRdb();
             } else if (retailCheckoutOld){
-                paymentSelectorRetailV3().selectCreditRbd();
-                paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+                if(!paymentData.contains(DESTINATION)) {
+                    paymentSelectorRetailV3().selectCreditRbd();
+                    paymentSectionComboRetailV3().populatePaymentSectionV3(paymentData);
+                }
                 creditCardDataRetailV3().populateCreditCardData(paymentData, true);
+
             } else if (!paymentData.contains(DESTINATION)){
                 if (!retailCheckoutOld) {
                     logger.info("Running Retail New");
@@ -401,8 +404,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
                         index = ++index;
                         isLastPayment = true;
                     }
-                } else {
-                    creditCardDataRetailV3().populateCreditCardData(paymentData, true);
                 }
             }
         }

@@ -146,8 +146,8 @@ public class RetailFlowTest extends TestBaseSetup {
 
         PageUtils.switchToNewTab(driver);
 
-        hotelsDetailPage.clickPayAtDestination();
         hotelsDetailPage.clickVerHabitacionesBtn();
+        hotelsDetailPage.selectPaymentMethod(PAY_AT_DESTINATION);
 
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
