@@ -72,19 +72,20 @@ public class FlowTest extends TestBaseSetup {
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
 
-        // hotelsResultsPage.clickPrePaid();
+        hotelsResultsPage.clickPrePaid();
 
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
-        hotelsDetailPage.clickVerHabitacionesBtn();
 
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
-        // hotelsDetailPage.selectPaymentMethod(PREPAID);
+        hotelsDetailPage.clickVerHabitacionesBtn();
+        hotelsDetailPage.selectPaymentMethod(PREPAID);
+
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                                dataManagement.getBillingData(LOCAL_BILLING),
@@ -205,15 +206,14 @@ public class FlowTest extends TestBaseSetup {
 
         PageUtils.switchToNewTab(driver);
 
-        hotelsDetailPage.selectPaymentMethod(PAY_AT_DESTINATION);
         hotelsDetailPage.clickVerHabitacionesBtn();
+        hotelsDetailPage.selectPaymentMethod(PAY_AT_DESTINATION);
 
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-        hotelsDetailPage.clickPayAtDestination();
+        checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
-        checkOutPageV3 = initCheckOutPageV3();
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DESTINATION_MASTER_1,
                                         dataManagement.getBillingData(LOCAL_BILLING),
                                         dataManagement.getContactData(CONTACT_PHONE), HOTELS_CHECKOUT_DOM);
