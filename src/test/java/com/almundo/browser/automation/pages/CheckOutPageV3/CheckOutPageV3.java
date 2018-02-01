@@ -701,9 +701,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
         logger.info("---------- Checking options Footer Section ----------");
         footerSection.acceptTermsAndConditions();
         if(isElementRequiered(checkOutPageElements, "accepted")) {
+            try {
             footerSection.acceptItinerary();
             footerSection.clickConfirmarBtn();
             waitImplicitly(1500);
+            }catch(NoSuchElementException ouch){
+                logger.info("Accept itinerary didn't show up.");
+            }
         }
         return this;
     }
