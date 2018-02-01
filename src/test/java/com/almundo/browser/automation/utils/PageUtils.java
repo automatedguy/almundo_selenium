@@ -249,6 +249,10 @@ public class PageUtils {
         ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0)");
     }
 
+    public static void scrollToBottom(WebDriver driver){
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,500)");
+    }
+
     /*** Analyze current results page URL***/
     public static String getHotelsResultsPageLayout(WebDriver driver) {
         String layout = null;
