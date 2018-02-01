@@ -45,7 +45,7 @@ public class RetailCars extends TestBaseSetup {
     @Test
     public void payWithLink() {
         logTestTitle("Cars Pay With Link");
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1&slp=1",productURl);
 
         getPassengersData();
 
