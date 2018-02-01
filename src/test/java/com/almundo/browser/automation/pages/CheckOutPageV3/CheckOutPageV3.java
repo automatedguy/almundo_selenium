@@ -504,6 +504,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         getCheckOutPageElements(productCheckOutPage);
         setInputDef();
         breakDownSectionV3().dealWithInsurance(addInsurance);
+        breakDownSectionV3().dealWithTransfer(addInsurance);
         if(method.contains("Flights") || method.contains("flights")) {
             clickSiguiente();
         }

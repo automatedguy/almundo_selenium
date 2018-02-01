@@ -120,8 +120,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     }
     public BreakDownSectionV3 clickAddTransfer(){
         logger.info("Adding Transfer, looking for the radio button.");
-        scrollToTop(driver);
-        scrollToCoordinate(driver, 400);
+        scrollToElement(driver, addTransferRdb);
         logger.info("Clicking on [Add Transfer] radio button.");
         addTransferRdb.click();
         getFinalPrice();
