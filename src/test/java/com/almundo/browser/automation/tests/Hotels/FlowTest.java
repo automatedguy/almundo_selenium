@@ -84,7 +84,7 @@ public class FlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
         dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
 
-        hotelsDetailPage.selectPaymentMethod(PREPAID);
+        // hotelsDetailPage.selectPaymentMethod(PREPAID);
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
                                                dataManagement.getBillingData(LOCAL_BILLING),
