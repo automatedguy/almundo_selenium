@@ -55,7 +55,7 @@ public class RetailHotels extends TestBaseSetup {
     @Test
     public void payWithLink() {
         logTestTitle("Hotels Pay With Link");
-        checkOutPageV3 = openCart(cartId, "",productURl);
+        checkOutPageV3 = openCart(cartId, "&ssp=1&slp=1",productURl);
 
         getPassengersData();
 
