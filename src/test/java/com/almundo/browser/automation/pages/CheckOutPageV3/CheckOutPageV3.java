@@ -712,7 +712,11 @@ public class CheckOutPageV3 extends TestBaseSetup {
         logger.info("Clicking on Terms and Conditions Link...");
         waitImplicitly(1000);
         if(countryPar.equals(COLOMBIA)){
-            terminosCondiciones = driver.findElement(By.cssSelector("div:nth-child(1) > label > a:nth-child(3)"));
+            try {
+                terminosCondiciones = driver.findElement(By.cssSelector("div:nth-child(1) > label > a:nth-child(3)"));
+            }catch(NoSuchElementException ouch){
+                logger.info("Terms and conditions didn't show up.");
+            }
         }
         terminosCondiciones.click();
         PageUtils.switchToNewTab(driver);
