@@ -150,7 +150,7 @@ public class DetailsLoginTest extends TestBaseSetup {
             // Assert.assertTrue(userNameOk(userData.get("name").toString(), basePage.headerSection().textLoggedIntLnk.getText()));
 
             hotelsDetailPage.clickVerHabitacionesBtn();
-            
+
             dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
             dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
             dataManagement.setPassengerData(CHILD_FEMALE_NATIVE);
