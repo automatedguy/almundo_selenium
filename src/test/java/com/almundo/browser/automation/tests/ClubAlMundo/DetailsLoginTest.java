@@ -170,7 +170,7 @@ public class DetailsLoginTest extends TestBaseSetup {
             //Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.finalAmountPaid));
             Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
             Assert.assertTrue(thanksPageV3.isHotelDetailInfoOk(thanksPageAssertInfo.getHotelsDetailInfo()));
-            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+            //Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
         }
         else {
             logger.info(NOT_RUNNING_MEXICO_COLOMBIA);
