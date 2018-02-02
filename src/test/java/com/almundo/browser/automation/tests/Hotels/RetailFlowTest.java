@@ -104,11 +104,15 @@ public class RetailFlowTest extends TestBaseSetup {
         hotelsResultsPage = hotelsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(hotelsResultsPage.vacancy());
+
+        hotelsResultsPage.clickPrePaid();
+
         hotelsDetailPage = hotelsResultsPage.clickVerHotelBtn(FIRST_OPTION);
 
         PageUtils.switchToNewTab(driver);
         hotelsDetailPage.clickVerHabitacionesBtn();
 
+        hotelsDetailPage.selectPaymentMethod(PREPAID);
         checkOutPageV3 = hotelsDetailPage.clickReservarAhoraV3Btn(FIRST_OPTION);
 
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
