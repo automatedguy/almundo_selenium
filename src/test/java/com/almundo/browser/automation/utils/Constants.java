@@ -242,6 +242,7 @@ public class Constants {
     public static final String ARGENTINA = "ARGENTINA";
     public static final String COLOMBIA = "COLOMBIA";
     public static final String MEXICO = "MEXICO";
+    public static final String BRASIL = "BRASIL";
 
     //MESSAGES
     public static final String NO_DOMESTIC_CARS_COLOMBIA = "Apparently, in Colombia they don't rent cars Domestic test is not running and we just set it passed";

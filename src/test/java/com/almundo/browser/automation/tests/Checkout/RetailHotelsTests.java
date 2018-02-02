@@ -110,7 +110,7 @@ public class RetailHotelsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void efectivo(){
+    public void Cash(){
         logTestTitle("Efectivo");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
@@ -130,7 +130,7 @@ public class RetailHotelsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void transferencia(){
+    public void Transfer(){
         logTestTitle("Transferencia");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
@@ -150,7 +150,7 @@ public class RetailHotelsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void deposito(){
+    public void Deposit(){
         logTestTitle("Transferencia");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
