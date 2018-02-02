@@ -250,7 +250,7 @@ public class PageUtils {
     }
 
     public static void scrollToBottom(WebDriver driver){
-        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,500)");
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0,500)");
     }
 
     /*** Analyze current results page URL***/

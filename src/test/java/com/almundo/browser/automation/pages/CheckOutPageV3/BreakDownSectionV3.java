@@ -1,6 +1,8 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -120,10 +122,16 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
     }
     public BreakDownSectionV3 clickAddTransfer(){
         logger.info("Adding Transfer, looking for the radio button.");
-        scrollToBottom(driver);
-        scrollToElement(driver, addTransferRdb);
-        logger.info("Clicking on [Add Transfer] radio button.");
-        addTransferRdb.click();
+        try{
+            scrollToElement(driver, addTransferRdb);
+            scrollToCoordinate(driver, -500);
+            addTransferRdb.click();
+        }catch(WebDriverException ouch){
+            scrollToBottom(driver);
+            scrollToElement(driver, addTransferRdb);
+            logger.info("Clicking on [Add Transfer] radio button.");
+            addTransferRdb.click();
+        }
         getFinalPrice();
         return this;
     }
