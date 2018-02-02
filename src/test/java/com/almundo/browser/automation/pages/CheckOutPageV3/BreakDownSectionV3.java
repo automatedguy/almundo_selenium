@@ -133,6 +133,7 @@ public class BreakDownSectionV3 extends CheckOutPageV3 {
             addTransferRdb.click();
         }
         getFinalPrice();
+        addTransfer = false;
         return this;
     }
 
