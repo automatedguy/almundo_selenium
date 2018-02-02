@@ -151,6 +151,8 @@ public class TestBaseSetup {
                     break;
                 case "MEXICO":
                     baseURL = baseURL.concat(".mx/");
+                case "BRASIL":
+                    baseURL = baseURL.concat(".br/");
                     break;
             }
             landingEnabled = false;
@@ -170,6 +172,8 @@ public class TestBaseSetup {
 
         if(baseURL.contains("st.almundo")) {
             method = method + " - STG";
+        } else if(baseURL.contains("dv.almundo")){
+            method = method + " - DEV";
         } else {
             method = method + " - PROD";
         }
