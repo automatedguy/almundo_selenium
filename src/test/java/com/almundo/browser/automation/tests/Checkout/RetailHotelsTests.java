@@ -90,8 +90,8 @@ public class RetailHotelsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void CreditoEfectivo(){
-        logTestTitle("Two Credit Cards");
+    public void CreditCash(){
+        logTestTitle("Credit and Cash");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 
@@ -111,7 +111,7 @@ public class RetailHotelsTests extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void Cash(){
-        logTestTitle("Efectivo");
+        logTestTitle("Cash");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 
@@ -131,7 +131,7 @@ public class RetailHotelsTests extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void Transfer(){
-        logTestTitle("Transferencia");
+        logTestTitle("Transfer");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 
@@ -151,7 +151,7 @@ public class RetailHotelsTests extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void Deposit(){
-        logTestTitle("Transferencia");
+        logTestTitle("Deposit");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 
@@ -171,7 +171,7 @@ public class RetailHotelsTests extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void payWithLink(){
-        logTestTitle("Transferencia");
+        logTestTitle("Pay With Link");
 
         checkOutPageV3 = openCart(cartId, "",productURl);
 
