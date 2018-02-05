@@ -146,10 +146,10 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = "#product-resume am-flights-cluster div:nth-child(1) > div > div > label am-flight-choice .airline > span")
     public WebElement airlineName;
 
-    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(1) > h3 > span.date")
+    @FindBy(css = ".flight-cluster > div:nth-child(1) .title > span.date")
     public WebElement startDate;
 
-    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(2) > h3 > span.date")
+    @FindBy(css = ".flight-cluster > div:nth-child(2) .title > span.date")
     public WebElement endDate;
 
     private final String siguienteBtnLct = ".am-wizard-footer button";
