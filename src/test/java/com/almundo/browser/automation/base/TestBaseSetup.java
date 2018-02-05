@@ -151,6 +151,7 @@ public class TestBaseSetup {
                     break;
                 case "MEXICO":
                     baseURL = baseURL.concat(".mx/");
+                    break;
                 case "BRASIL":
                     baseURL = baseURL.concat(".br/");
                     break;
