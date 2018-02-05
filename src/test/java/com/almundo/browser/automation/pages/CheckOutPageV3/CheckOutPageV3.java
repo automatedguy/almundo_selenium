@@ -143,7 +143,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = "#product-resume product-detail am-flights-cluster > div > div:nth-child(2) am-flight-choice .origin .iata.hint--top-right")
     public WebElement destinationAirport;
 
-    @FindBy(css = "#product-resume am-flights-cluster div:nth-child(1) > div > div > label am-flight-choice .airline > span")
+    @FindBy(css = ".flight-cluster > div:nth-child(1) .airline")
     public WebElement airlineName;
 
     @FindBy(css = ".flight-cluster > div:nth-child(1) .title > span.date")
