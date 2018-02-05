@@ -316,6 +316,8 @@ public class PageUtils {
                 break;
             case "MEXICO" : currency = "MXN";
                 break;
+            case "BRASIL" : currency = "BRL";
+                break;
             default:
                 logger.error("No currency found for: " + countryPar);
                 break;

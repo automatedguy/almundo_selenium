@@ -78,7 +78,7 @@
 	"hotels": {
 			"miami_10days_2adults_2childs_1room": {
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Florida, Estados Unidos de América",
+				"destinationFull": "Miami, Estados Unidos de América",
 				"startDate": 25,
 				"endDate": 10,
 				"adults": 2,
@@ -299,7 +299,7 @@
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/1979",
 				"gender": "Masculino",
-				"nationality": "Argentina"
+				"nationality": "Brasil"
 			},
 
 			"adult_male_native_wrong": {
@@ -323,7 +323,7 @@
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/1979",
 				"gender": "Femenino",
-				"nationality": "Argentina"
+				"nationality": "Brasil"
 			},
 
 			"adult_female_native_wrong": {
@@ -359,7 +359,7 @@
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/2010",
 				"gender": "Masculino",
-				"nationality": "Argentina"
+				"nationality": "Brasil"
 			},
 
 			"child_male_native_wrong": {
@@ -383,7 +383,7 @@
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/2010",
 				"gender": "Femenino",
-				"nationality": "Argentina"
+				"nationality": "Brasil"
 			},
 
 			"child_female_native_trips": {
@@ -395,7 +395,7 @@
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/2010",
 				"gender": "Femenino",
-				"nationality": "Argentina"
+				"nationality": "Brasil"
 			},
 
 			"child_female_native_trips_domestic": {
@@ -407,7 +407,7 @@
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/2010",
 				"gender": "Femenino",
-				"nationality": "Argentina"
+				"nationality": "Brasil"
 			},
 
 			"baby_male_passport_native": {
@@ -419,7 +419,7 @@
 				"document_expiration": "",
 				"birthday": "09/09/2015",
 				"gender": "Masculino",
-				"nationality": ""
+				"nationality": "Brasil"
 			},
 
 			"baby_female_passport_native": {
@@ -431,7 +431,7 @@
 				"document_expiration": "",
 				"birthday": "09/09/2015",
 				"gender": "Femenino",
-				"nationality": "Argentina"
+				"nationality": "Brasil"
 			}
 	},
 
@@ -654,7 +654,7 @@
 	"billings": {
 			"local_Billing": {
 				"fiscal_name":"Automation & Sarasa Associates Inc.",
-				"billing_fiscal_type":"Consumidor Final",
+				"billing_fiscal_type":"Persona Física",
 				"billing_document_type":"CUIL",
 				"billing_fiscal_document": "23281685589",
 				"billing_address": "Carlos Pellegrini",
@@ -662,13 +662,13 @@
 				"address_floor": 8,
 				"address_department": "A",
 				"address_postal_code": "C1009ABQ",
-				"address_state": "Buenos Aires",
+				"address_state": "Distrito Federal",
 				"address_city": "C.A.B.A."
 			},
 
 			"local_Billing_sucursales": {
 				"fiscal_name":"Sarasa and Automation Inc. & Associates",
-				"billing_fiscal_type":"Consumidor Final",
+				"billing_fiscal_type":"Persona Física",
 				"billing_document_type":"CUIL",
 				"billing_fiscal_document": "23281685589",
 				"billing_address": "Carlos Pellegrini",
@@ -676,7 +676,7 @@
 				"address_floor": 8,
 				"address_department": "A",
 				"address_postal_code": "C1009ABQ",
-				"address_state": "Buenos Aires",
+				"address_state": "Distrito Federal",
 				"address_city": "C.A.B.A."
 			}
 	},

@@ -56,7 +56,7 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     @FindBy(id = "document_emisor")
     private WebElement doc_emisor;
 
-    @FindBy(id = "birthday")
+    @FindBy(css = "#passengers-section passengers-form .container-day select")
     private WebElement birthday;
 
     @FindBy(id = "gender")
@@ -155,9 +155,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     }
 
     private void setBirthdayList() {
-        dayBirthdayList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de nacimiento'] .day"));
-        monthBirthdayList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de nacimiento'] .month"));
-        yearBirthdayList = driver.findElements(By.cssSelector("am-date-combo[label='Fecha de nacimiento'] .year"));
+        dayBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form .container-day select"));
+        monthBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form .container-month select"));
+        yearBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form .container-year select"));
     }
 
     private void setGenderList() {
