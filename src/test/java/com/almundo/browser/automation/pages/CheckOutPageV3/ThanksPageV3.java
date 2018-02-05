@@ -91,7 +91,9 @@ public class ThanksPageV3 extends BasePage {
                 logger.info("Waited so long for the [Reservation Confirmation]");
                 try {
                     String bookError = driver.findElement(By.cssSelector(".popeye-modal-container .modal-content label")).getText();
+                    printStarsSeparator();
                     logger.error("Booking ERROR: [" + bookError + "]");
+                    printStarsSeparator();
                 } catch (NoSuchElementException ouchAgain){
                     logger.error("Error Stack was not shown!");
                 }
