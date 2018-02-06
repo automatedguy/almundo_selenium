@@ -214,11 +214,15 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     public CheckOutPageV3 clickSiguienteSummary(){
-        scrollToElement(driver, siguienteSummaryBtn);
-        waitWithTryCatch(driver, siguienteSummaryBtnLct, "Siguiente (To Summary)", 5);
-        logger.info("Clicking on [Siguiente] (To Summary) button.");
-        siguienteSummaryBtn.click();
-        waitImplicitly(2000);
+        try {
+            scrollToElement(driver, siguienteSummaryBtn);
+            waitWithTryCatch(driver, siguienteSummaryBtnLct, "Siguiente (To Summary)", 5);
+            logger.info("Clicking on [Siguiente] (To Summary) button.");
+            siguienteSummaryBtn.click();
+            waitImplicitly(2000);
+        }catch(NoSuchElementException ouc){
+            waitWithTryCatch(driver, "checkout-page am-wizard-checkout .am-wizard-footer button.button-next", "Siguiente (To Summary)", 5).click();
+        }
         return this;
     }
 
