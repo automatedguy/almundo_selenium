@@ -160,6 +160,12 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         yearBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(3) > div:nth-child(1) .container-year select"));
     }
 
+    private void setBirthdayListTwo() {
+        dayBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(1) .container-day select"));
+        monthBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(1) .container-month select"));
+        yearBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(1) .container-year select"));
+    }
+
     private void setGenderList() {
         genderList = driver.findElements(By.id("gender"));
     }
@@ -255,8 +261,16 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
         String year = String.valueOf(birthday.charAt(6)) + String.valueOf(birthday.charAt(7)) + String.valueOf(birthday.charAt(8)) + String.valueOf(birthday.charAt(9));
 
+        Select dayBirthday =  null;
         logger.info("Entering Fecha de Nacimiento: [" + birthday + "]");
-        Select dayBirthday = new Select (dayBirthdayList.get(index));
+
+        try {
+            dayBirthday = new Select(dayBirthdayList.get(index));
+        }catch(IndexOutOfBoundsException ouch){
+            setBirthdayListTwo();
+            dayBirthday = new Select(dayBirthdayList.get(index));
+        }
+
         dayBirthday.selectByVisibleText(day);
 
         Select monthBirthday = new Select (monthBirthdayList.get(index));
