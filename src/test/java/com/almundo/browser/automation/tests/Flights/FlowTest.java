@@ -177,7 +177,7 @@ public class FlowTest extends TestBaseSetup {
                                                dataManagement.getBillingData(LOCAL_BILLING),
                                                dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_DOM);
 
-        validateTermsAndConditions();
+        // validateTermsAndConditions();
 
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
         Assert.assertTrue(thanksPageV3.confirmationOk());
@@ -389,7 +389,7 @@ public class FlowTest extends TestBaseSetup {
                 dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
 
-        validateTermsAndConditions();
+        // validateTermsAndConditions();
 
         getFlightsAssertionInfo();
         thanksPageV3 = checkOutPageV3.clickComprarBtn();
