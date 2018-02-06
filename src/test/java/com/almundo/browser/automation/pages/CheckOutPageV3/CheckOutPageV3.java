@@ -43,6 +43,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private boolean paymentSelectorSvd = false;
     private boolean checkoutWizard = false;
     private boolean checkoutWizardSummary = false;
+    private boolean checkoutWizardCpd =  false;
     private boolean checkoutWizardCpds = false;
     private boolean checkoutWizardSummaryCpds = false;
     private boolean checkoutWizardSummarySfc = false;
@@ -502,6 +503,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
         return initSummaryPage();
     }
 
+    @SuppressWarnings("Duplicates")
     public ThanksPageV3 setCheckoutWizardInfoSummaryCpds(JSONArray passengerList,
                                                     String paymentData,
                                                     JSONObject billingData,
@@ -525,6 +527,33 @@ public class CheckOutPageV3 extends TestBaseSetup {
         emergencyContact().populateEmergencyContact(contactData);
         contactSection().populateContactSection(contactData);
         clickSiguienteSummary();
+        acceptConditions();
+        return initConfirmationPageV3();
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ThanksPageV3 setCheckoutWizardInfoSummaryCpd(JSONArray passengerList,
+                                                         String paymentData,
+                                                         JSONObject billingData,
+                                                         JSONObject contactData, String productCheckOutPage){
+        getCheckOutPageElements(productCheckOutPage);
+        setInputDef();
+        breakDownSectionV3().dealWithInsurance(addInsurance);
+        breakDownSectionV3().dealWithTransfer(addTransfer);
+        if(method.contains("Flights") || method.contains("flights")) {
+            clickSiguiente();
+        }
+        if(method.contains("Trips")) {
+            clickSiguienteTrips();
+        }
+        dealWithPaymentForm(paymentData);
+        if (!paymentData.contains(DESTINATION)) {
+            billingSection().populateBillingSection(billingData);
+        }
+        clickSiguienteBis();
+        passengerSection().populatePassengerSection(passengerList);
+        emergencyContact().populateEmergencyContact(contactData);
+        contactSection().populateContactSection(contactData);
         acceptConditions();
         return initConfirmationPageV3();
     }
@@ -623,6 +652,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
             setCheckoutWizardInfoSummaryCpds(passengerList, paymentData, billingData, contactData, productCheckOutPage);
         } else if(checkoutWizardSummarySfc) {
             setCheckoutInfoSummarySfc(passengerList, paymentData, billingData, contactData, productCheckOutPage);
+        } else if (checkoutWizardCpd) {
+            setCheckoutWizardInfoSummaryCpd(passengerList, paymentData, billingData, contactData, productCheckOutPage);
         } else{
             getCheckOutPageElements(productCheckOutPage);
             setInputDef();
@@ -787,6 +818,13 @@ public class CheckOutPageV3 extends TestBaseSetup {
             }
         } else {
             logger.info("[Checkout Wizard] is not enabled.");
+        }
+
+        if(checkoutUrl.contains("sw=cpd")){
+            logger.info("[Checkout Wizard Cpd] is enabled.");
+            checkoutWizardCpd = true;
+        } else{
+            logger.info("[Checkout Wizard Cpd] is not enabled.");
         }
 
         if(checkoutUrl.contains("sw=cpd")){
