@@ -212,7 +212,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), CASH,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), EFECTIVO,
                                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();
@@ -257,7 +257,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DEPOSIT,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), DEPOSITO,
                                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();
@@ -302,7 +302,7 @@ public class RetailFlowTest extends TestBaseSetup {
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
         dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
 
-        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TRANSFER,
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), TRANSFERENCIA,
                                     dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                                     dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
         getAssertionInfo();
