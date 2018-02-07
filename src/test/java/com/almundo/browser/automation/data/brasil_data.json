@@ -446,7 +446,7 @@
 				"month_card_expire": "12",
 				"year_card_expire": "2022",
 				"security_code": "1234",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766"
 			},
 
@@ -462,7 +462,7 @@
 				"month_card_expire": "02",
 				"year_card_expire": "2018",
 				"security_code": "1234",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766"
 			},
 
@@ -478,7 +478,7 @@
 				"month_card_expire": "12",
 				"year_card_expire": "2018",
 				"security_code": "777",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766",
 
 				"Medio_de_pago" : "VISA",
@@ -487,7 +487,7 @@
 				"Titular_de_la_tarjeta" : "Titular Tarjeta",
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "18",
-				"Tipo_de_doc": "DNI",
+				"Tipo_de_doc": "CPF",
 				"Numero_de_doc": "30786876",
 				"E-mail": "almundoturismo@gmail.com"
 			},
@@ -503,7 +503,7 @@
 				"month_card_expire": "09",
 				"year_card_expire": "2018",
 				"security_code": "777",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766"
 			},
 
@@ -518,7 +518,7 @@
 				"month_card_expire": "12",
 				"year_card_expire": "2018",
 				"security_code": "123",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766",
 
 				"Medio_de_pago" : "Cabal",
@@ -527,7 +527,7 @@
 				"Titular_de_la_tarjeta" : "Titular Tarjeta",
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "18",
-				"Tipo_de_doc": "DNI",
+				"Tipo_de_doc": "CPF",
 				"Numero_de_doc": "30786876",
 				"E-mail": "almundoturismo@gmail.com"
 			},
@@ -543,7 +543,7 @@
 				"month_card_expire": "12",
 				"year_card_expire": "2018",
 				"security_code": "777",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766",
 
 				"Medio_de_pago" : "VISA",
@@ -552,7 +552,7 @@
 				"Titular_de_la_tarjeta" : "Titular Tarjeta",
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "18",
-				"Tipo_de_doc": "DNI",
+				"Tipo_de_doc": "CPF",
 				"Numero_de_doc": "30786876",
 				"E-mail": "almundoturismo@gmail.com"
 
@@ -565,7 +565,7 @@
 				"Titular_de_la_tarjeta" : "Titular Tarjeta",
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "2018",
-				"Tipo_de_doc": "DNI",
+				"Tipo_de_doc": "CPF",
 				"Numero_de_doc": "30786876",
 				"E-mail": "almundoturismo@gmail.com",
 				"codigo_seguridad": "999"
@@ -583,7 +583,7 @@
 				"month_card_expire": "12",
 				"year_card_expire": "2018",
 				"security_code": "617",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766"
 			},
 
@@ -598,7 +598,7 @@
 				"month_card_expire": "02",
 				"year_card_expire": "2018",
 				"security_code": "718",
-				"documentType": "DNI",
+				"documentType": "CPF",
 				"document_number": "29098766"
 			},
 
