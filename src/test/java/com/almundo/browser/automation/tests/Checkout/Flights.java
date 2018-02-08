@@ -133,7 +133,7 @@ public class Flights extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void gridWithTodoPago() {
-        logTestTitle("Grid With Todo Pago" + countryPar );
+        logTestTitle("Grid With Todo Pago " + countryPar );
         checkOutPageV3 = openCart(cartId, "",productURl);
 
         getPassengersData();
