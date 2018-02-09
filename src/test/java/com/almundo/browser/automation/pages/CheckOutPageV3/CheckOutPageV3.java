@@ -173,6 +173,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
     @FindBy(css = siguienteSummaryBtnLct)
     private WebElement siguienteSummaryBtn;
 
+    String thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
+
     //############################################### Actions ##############################################
 
     public LoginPopUp clickIngresarBtn(){
@@ -340,7 +342,6 @@ public class CheckOutPageV3 extends TestBaseSetup {
         }
         else if (paymentData.contains("link_de_pago$") && retailCheckoutOld) {
             setUrlParameter("&slp=1");
-            String thanksPageConfirmation = ".thanks-page-payment am-alert am-alert-title ng-transclude";
             paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
             String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
 
@@ -383,31 +384,55 @@ public class CheckOutPageV3 extends TestBaseSetup {
             } else if (!paymentData.contains(DESTINATION)){
                 if (!retailCheckoutOld) {
                     logger.info("Running Retail New");
-                    List<String> paymentDataList = getPaymentDataList(paymentData);
 
-                    int priceToPay = 0;
-                    boolean isLastPayment = false;
+                    if(paymentData.contains("link_de_pago$")){
+                        setUrlParameter("&slp=1");
+                        floridaPaymentSection().linkDePagoClick();
+                        floridaPaymentSection().enterEmailDelCliente(CUSTOMER_EMAIL);
+                        floridaPaymentSection().enviarBtnClick();
+                        paymentData = paymentData.replace("link_de_pago$","");
+                        String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePago();
 
-                    if (paymentDataList.size() > 1) {
-                        priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
-                    } else {
-                        isLastPayment = true;
-                    }
-
-                    int index = 0;
-                    for (String paymentFormData : paymentDataList) {
-
-                        if (paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")) {
-                            floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
-                            floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                        } else if (paymentFormData.equals("Débito")) {
-                            floridaPaymentSection().tarjetaDeDebitoClick();
-                        } else {
-                            floridaPaymentSection().tarjetaDeCreditoClick();
-                            floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                        if(paymentData.contains("two_cards")) {
+                            dealWithTwoCards(paymentData);
+                        } else  {
+                            paymentSelectorV3().selectOneCreditCardRdb();
+                            paymentSectionGridV3().populatePaymentSectionV3(paymentData.replace("link_de_pago$", ""), ".card-container-1");
+                            creditCardDataV3().populateCreditCardData(paymentData.replace("link_de_pago$", ""), ".card-container-1");
                         }
-                        index = ++index;
-                        isLastPayment = true;
+
+                        acceptConditions();
+                        clickComprarBtn();
+                        waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+                        driver.navigate().to(actualCheckoutUrl);
+
+                    } else {
+                        List<String> paymentDataList = getPaymentDataList(paymentData);
+
+                        int priceToPay = 0;
+                        boolean isLastPayment = false;
+
+                        if (paymentDataList.size() > 1) {
+                            priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
+                        } else {
+                            isLastPayment = true;
+                        }
+
+                        int index = 0;
+                        for (String paymentFormData : paymentDataList) {
+
+                            if (paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")) {
+                                floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
+                                floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                            } else if (paymentFormData.equals("Débito")) {
+                                floridaPaymentSection().tarjetaDeDebitoClick();
+                            } else {
+                                floridaPaymentSection().tarjetaDeCreditoClick();
+                                floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                            }
+                            index = ++index;
+                            isLastPayment = true;
+                        }
                     }
                 }
             }

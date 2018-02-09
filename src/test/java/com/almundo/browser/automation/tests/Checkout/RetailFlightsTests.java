@@ -54,6 +54,27 @@ public class RetailFlightsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void PayWithLink(){
+        logTestTitle("PayWithLink With One Credit Card");
+
+        addInsurance =  false;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), LINK_VISA_1,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void OneCard(){
         logTestTitle("One Credit Card");
 
@@ -86,6 +107,28 @@ public class RetailFlightsTests extends TestBaseSetup {
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 VISA_1 + "$" + MASTER_1,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void ThreeCards(){
+        logTestTitle("Three Credit Cards");
+
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                VISA_1 + "$" + MASTER_1 + "$" + AMEX_1,
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 

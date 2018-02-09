@@ -28,6 +28,10 @@ public class PaymentSelectorLinkV3 extends CheckOutPageV3 {
     @FindBy(css = linkDePagoCss)
     private WebElement linkDePagoLnk;
 
+    private final String linkDePagoNewCss = "#am-retail-payment form-client-payment-retail .link-container";
+    @FindBy(css = linkDePagoNewCss)
+    private WebElement linkDePagoNewLnk;
+
 
     /**************************** Actions **********************************/
 
@@ -43,6 +47,7 @@ public class PaymentSelectorLinkV3 extends CheckOutPageV3 {
         return this;
     }
 
+    @SuppressWarnings("Duplicates")
     private String retrieveTinyURL(){
         waitWithTryCatch(driver, linkDePagoCss,"Link de pago", 5);
         logger.info("Getting [Link de pago]");
@@ -51,12 +56,27 @@ public class PaymentSelectorLinkV3 extends CheckOutPageV3 {
         return linkDePago.replace("Link de pago: ","");
     }
 
+    @SuppressWarnings("Duplicates")
+    private String retrieveTinyNewURL(){
+        waitWithTryCatch(driver, linkDePagoNewCss,"Link de pago", 5);
+        logger.info("Getting [Link de pago]");
+        String linkDePagoNew = linkDePagoNewLnk.getText().replace("Copiar","");
+        logger.info("[Link de pago] : " + linkDePagoNew);
+        return linkDePagoNew.replace("Link de pago: ","");
+    }
+
 
     public String populateLinkDePagoInfo(){
         enterEmailDelCliente();
         clickEnviarButton();
         String actualCheckoutUrl = driver.getCurrentUrl();
         driver.navigate().to(retrieveTinyURL());
+        return actualCheckoutUrl;
+    }
+
+    public String populateLinkDePago(){
+        String actualCheckoutUrl = driver.getCurrentUrl();
+        driver.navigate().to(retrieveTinyNewURL());
         return actualCheckoutUrl;
     }
 
