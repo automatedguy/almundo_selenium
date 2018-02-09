@@ -136,6 +136,7 @@ public class Constants {
     public static final String VISA_3 = "3_visa_visa";
     public static final String VISA_3_TODOPAGO = "3_visa_todopago";
     public static final String CABAL_3_TODOPAGO = "3_cabal_todopago";
+    public static final String VISA_COMAFI = "1_visa_comafi";
     public static final String MASTER_1 = "1_master_master";
     public static final String DESTINATION_MASTER_1 = "destination$1_master_master";
     public static final String LINK_VISA_1 = "link_de_pago$1_visa_visa";

@@ -229,7 +229,7 @@ public class RetailFlightsTests extends TestBaseSetup {
     @SuppressWarnings("Duplicates")
     @Test
     public void payWithLink(){
-        logTestTitle("Transferencia");
+        logTestTitle("Pay with link");
 
         addInsurance =  true;
 
