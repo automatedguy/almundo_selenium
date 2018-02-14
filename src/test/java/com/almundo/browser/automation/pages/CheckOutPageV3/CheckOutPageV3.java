@@ -431,7 +431,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                 floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
                             }
                             index = ++index;
-                            isLastPayment = true;
+                            if((index + 1)  >= paymentDataList.size()){
+                                isLastPayment = true;
+                            }
                         }
                     }
                 }

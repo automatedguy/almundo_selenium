@@ -458,9 +458,9 @@
 				"credit_card_name" : "American Express",
 				"card_holder": "Titular Tarjeta",
 				"card_number": "371180303257522",
-				"card_expire": "02/18",
+				"card_expire": "02/19",
 				"month_card_expire": "02",
-				"year_card_expire": "2018",
+				"year_card_expire": "2019",
 				"security_code": "1234",
 				"documentType": "DNI",
 				"document_number": "29098766"
@@ -477,7 +477,7 @@
 				"card_expire": "12/18",
 				"month_card_expire": "12",
 				"year_card_expire": "2018",
-				"security_code": "777",
+				"security_code": "999",
 				"documentType": "DNI",
 				"document_number": "29098766",
 

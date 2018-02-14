@@ -22,8 +22,8 @@ public class FloridaCreditCard extends CheckOutPageV3 {
 
     /********************* Locators *******************/
 
-    @FindBy(css = "#paymentOptionSection div:nth-child(1) > label > input")
-    private WebElement importeTarjetaInput;
+    @FindBy(css = "#am-retail-payment am-fops-multiple-payment am-one-card-ts div:nth-child(1) > div:nth-child(1) > label > input")
+    private List<WebElement> importeTarjetaInput;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(2) > input")
     private List<WebElement> numeroTarjetaInput;
@@ -37,7 +37,7 @@ public class FloridaCreditCard extends CheckOutPageV3 {
     @FindBy(css = "#paymentOptionSection div:nth-child(3) > div > select")
     private List<WebElement> cuotasSelect;
 
-    @FindBy(css = "#paymentOptionSection div:nth-child(4) input")
+    @FindBy(css = "#am-retail-payment am-fops-multiple-payment am-one-card-ts div:nth-child(4) .container-field input")
     private List<WebElement> titularTarjetaInput;
 
     @FindBy(css = "#paymentOptionSection div:nth-child(4) > div:nth-child(2) > select")
@@ -51,10 +51,10 @@ public class FloridaCreditCard extends CheckOutPageV3 {
 
     /********************* Actions *******************/
 
-    private FloridaCreditCard setImporteTarjeta(String importeTarjeta){
+    private FloridaCreditCard setImporteTarjeta(String importeTarjeta, int index){
         logger.info("Setting [Importe a pagar con la tarjeta]: [" + importeTarjeta + "]");
-        importeTarjetaInput.clear();
-        importeTarjetaInput.sendKeys(importeTarjeta);
+        importeTarjetaInput.get(index).clear();
+        importeTarjetaInput.get(index).sendKeys(importeTarjeta);
         return this;
     }
 
@@ -126,7 +126,7 @@ public class FloridaCreditCard extends CheckOutPageV3 {
 
         if(inputDef.isRequired("payments","credit_card_number",0)){
             if(!isLastPayment){
-                setImporteTarjeta(priceToPay);
+                setImporteTarjeta(priceToPay, index);
             }
             setNumeroTarjeta(paymentDataObject.get("card_number").toString(), index);
             setTarjeta(paymentDataObject.get("credit_card_name").toString(), index);
