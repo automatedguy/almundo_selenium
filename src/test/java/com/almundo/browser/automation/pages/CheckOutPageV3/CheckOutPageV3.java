@@ -426,6 +426,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                                 floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
                             } else if (paymentFormData.equals("Débito")) {
                                 floridaPaymentSection().tarjetaDeDebitoClick();
+                                floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
                             } else {
                                 floridaPaymentSection().tarjetaDeCreditoClick();
                                 floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);

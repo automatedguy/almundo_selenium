@@ -510,6 +510,7 @@
 			"1_visa_comafi": {
 				"payment_qty" : "1",
 				"bank_name" : "Banco Comafi S.A",
+				"bank_name_two_cards" : "BANCO SANTANDER RIO S.A.",
 				"credit_card_code" : "VI",
 				"credit_card_name" : "Visa",
 				"card_holder": "Titular Tarjeta",
