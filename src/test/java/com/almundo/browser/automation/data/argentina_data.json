@@ -587,6 +587,58 @@
 				"codigo_seguridad": "999"
 		},
 
+		"Débito_electron_1": {
+			"payment_qty" : "1",
+			"bank_name" : "Visa",
+			"bank_name_two_cards" : "Todos los bancos",
+			"credit_card_code" : "VI",
+			"credit_card_name" : "Visa",
+			"card_holder": "Titular Tarjeta",
+			"card_number": "4913674220687149",
+			"card_expire": "12/18",
+			"month_card_expire": "12",
+			"year_card_expire": "2018",
+			"security_code": "999",
+			"documentType": "DNI",
+			"document_number": "29098766",
+
+			"Medio_de_pago" : "VISA",
+			"Banco" : "OTROS",
+			"Numero_de_tarjeta" : "4242424242424242",
+			"Titular_de_la_tarjeta" : "Titular Tarjeta",
+			"Fecha_de_vencimiento_mes": "12",
+			"Fecha_de_vencimiento_ano": "18",
+			"Tipo_de_doc": "DNI",
+			"Numero_de_doc": "30786876",
+			"E-mail": "almundoturismo@gmail.com"
+		},
+
+		"Débito_maestro_1": {
+			"payment_qty" : "1",
+			"bank_name" : "Visa",
+			"bank_name_two_cards" : "Todos los bancos",
+			"credit_card_code" : "VI",
+			"credit_card_name" : "Maestro",
+			"card_holder": "Titular Tarjeta",
+			"card_number": "5038165525576878",
+			"card_expire": "12/18",
+			"month_card_expire": "12",
+			"year_card_expire": "2018",
+			"security_code": "999",
+			"documentType": "DNI",
+			"document_number": "29098766",
+
+			"Medio_de_pago" : "VISA",
+			"Banco" : "OTROS",
+			"Numero_de_tarjeta" : "4242424242424242",
+			"Titular_de_la_tarjeta" : "Titular Tarjeta",
+			"Fecha_de_vencimiento_mes": "12",
+			"Fecha_de_vencimiento_ano": "18",
+			"Tipo_de_doc": "DNI",
+			"Numero_de_doc": "30786876",
+			"E-mail": "almundoturismo@gmail.com"
+		},
+
 			"1_master_master": {
 				"payment_qty" : "1",
 				"bank_name" : "Mastercard",

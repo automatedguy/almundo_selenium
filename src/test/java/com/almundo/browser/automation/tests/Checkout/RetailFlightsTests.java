@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.almundo.browser.automation.utils.Constants.*;
-import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by gabrielcespedes on 02/03/17.
@@ -54,7 +53,7 @@ public class RetailFlightsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
-    public void DebitCard(){
+    public void VisaElectronOne(){
         logTestTitle("Debit Card");
 
         addInsurance =  true;
@@ -64,7 +63,51 @@ public class RetailFlightsTests extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                DEBITO,
+                VISA_ELECTRON,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void MaestroOne(){
+        logTestTitle("Debit Card");
+
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                MAESTRO,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getFlightsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void DebitCreditCash(){
+        logTestTitle("Debit Card");
+
+        addInsurance =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                MAESTRO + "$" + VISA_1 + "$" + EFECTIVO,
                 dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
                 dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
 

@@ -424,7 +424,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
                             if (paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")) {
                                 floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
                                 floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                            } else if (paymentFormData.equals("Débito")) {
+                            } else if (paymentFormData.contains("Débito")) {
                                 floridaPaymentSection().tarjetaDeDebitoClick();
                                 floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
                             } else {

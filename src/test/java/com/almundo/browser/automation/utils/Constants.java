@@ -134,6 +134,8 @@ public class Constants {
 
     public static final String VISA_1 = "1_visa_visa";
     public static final String VISA_3 = "3_visa_visa";
+    public static final String VISA_ELECTRON = "Débito_electron_1";
+    public static final String MAESTRO = "Débito_maestro_1";
     public static final String VISA_3_TODOPAGO = "3_visa_todopago";
     public static final String CABAL_3_TODOPAGO = "3_cabal_todopago";
     public static final String VISA_COMAFI = "1_visa_comafi";
