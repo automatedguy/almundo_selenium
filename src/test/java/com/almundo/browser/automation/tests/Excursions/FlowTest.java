@@ -22,7 +22,7 @@ import static com.almundo.browser.automation.utils.PageUtils.switchToNewTab;
 public class FlowTest extends TestBaseSetup{
 
     private final String autoDestination = "Mia";
-    private final String fullDestination = "Miami, Estados Unidos de América";
+    private final String fullDestination = "Miami, Florida, Estados Unidos de América";
 
     private ExcursionsDataTrip excursionsDataTrip = null;
     private ExcursionsResultsPage excursionsResultsPage = null;
@@ -65,9 +65,12 @@ public class FlowTest extends TestBaseSetup{
         switchToNewTab(driver);
 
         excursionsDetailPage.clickElegirFechaBtn();
+
+        excursionsDetailPage.clickComprarBtn();
+
         excursionsDetailPage.setPuntoDePartida(OTRO);
 
-        checkOutPageV3 = excursionsDetailPage.clickComprarBtn();
+        checkOutPageV3 = excursionsDetailPage.clickContinuarBtn();
 
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 

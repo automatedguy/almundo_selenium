@@ -26,13 +26,16 @@ public class ExcursionsDetailPage extends TestBaseSetup {
     @FindBy(css = elegirFechaBtnLct)
     private WebElement elegirFechaBtn;
 
-    private final String puntoDePartidaLct = "#inputs-container .selectize-input input";
+    private final String puntoDePartidaLct = "body .am-activities-modal-dept-point .inputs-container .selectize-input > input";
     @FindBy(css = puntoDePartidaLct)
     private WebElement puntoDePartida;
 
-    private final String comprarBtnLct = "#activityDetails .second .pricebox .price a";
+    private final String comprarBtnLct = "#default .price-box-ctn.short-price a";
     @FindBy(css = comprarBtnLct)
     private WebElement comprarBtn;
+
+    @FindBy(css = "body .am-activities-modal-dept-point .button-modal.ng-binding")
+    private WebElement continuarButton;
 
     /********************** Actions **********************/
 
@@ -61,10 +64,15 @@ public class ExcursionsDetailPage extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPageV3 clickComprarBtn(){
+    public void clickComprarBtn(){
         waitWithTryCatch(driver, comprarBtnLct, "Comprar", 10);
         logger.info("Clicking on [Comprar] button");
         comprarBtn.click();
+    }
+
+    public CheckOutPageV3 clickContinuarBtn(){
+        logger.info("Clicking on: [Continuar] button.");
+        continuarButton.click();
         return initCheckOutPageV3();
     }
 }
