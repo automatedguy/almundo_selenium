@@ -57,11 +57,24 @@ public class PackagesDataTrip extends BasePage {
 
     public PackagesDataTrip setDestination(int  destination){
         logger.info("Clicking on: [Voy A]");
-        voyATxt.click();
         waitImplicitly(4000);
-        WebElement destinationTxt = driver.findElement(By.cssSelector("#search-pkg-dest_dropdown > div:nth-child(" + destination + ")"));
-        logger.info("In this case going to: [" + destinationTxt.getText() + "]");
-        waitElementForClickable(driver, destinationTxt, 3, "Full Destination");
+        voyATxt.click();
+        voyATxt.click();
+        WebElement destinationTxt =  null;
+        boolean destinationFound =  false;
+        int maxAttempts = 3;
+        int index = 0;
+        while(!destinationFound && (index <= maxAttempts)) {
+            try {
+                destinationTxt = driver.findElement(By.cssSelector("#search-pkg-dest_dropdown > div:nth-child(" + destination + ")"));
+                logger.info("In this case going to: [" + destinationTxt.getText() + "]");
+                waitElementForClickable(driver, destinationTxt, 3, "Full Destination");
+                destinationFound = true;
+            } catch (NoSuchElementException ouch) {
+                waitImplicitly(3000);
+                index = ++index;
+            }
+        }
         destinationTxt.click();
         return this;
     }

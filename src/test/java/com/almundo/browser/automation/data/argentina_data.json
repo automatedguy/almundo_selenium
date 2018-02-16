@@ -250,7 +250,7 @@
 	"packages": {
 		"10days_2adults_2childs": {
 			"originAuto": "Bue",
-			"originFull": "Buenos Aires, Buenos Aires, Argentina",
+			"originFull": "Buenos Aires, Argentina",
 			"destinationAuto": "Mia",
 			"destinationFull": "Miami, Estados Unidos de América",
 			"startDate": 25,
@@ -264,7 +264,7 @@
 
 		"10days_2adults": {
 			"originAuto": "Bue",
-			"originFull": "Buenos Aires, Buenos Aires, Argentina",
+			"originFull": "Buenos Aires, Argentina",
 			"destinationAuto": "Mia",
 			"destinationFull": "Miami, Estados Unidos de América",
 			"startDate": 25,
@@ -592,7 +592,7 @@
 			"bank_name" : "Visa",
 			"bank_name_two_cards" : "Todos los bancos",
 			"credit_card_code" : "VI",
-			"credit_card_name" : "Visa",
+			"credit_card_name" : "Visa Electron",
 			"card_holder": "Titular Tarjeta",
 			"card_number": "4913674220687149",
 			"card_expire": "12/18",
