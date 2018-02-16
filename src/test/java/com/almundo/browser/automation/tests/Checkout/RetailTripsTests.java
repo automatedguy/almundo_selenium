@@ -73,6 +73,27 @@ public class RetailTripsTests extends TestBaseSetup {
 
     @SuppressWarnings("Duplicates")
     @Test
+    public void DebitElectron(){
+        logTestTitle("Visa Electron");
+
+        addTransfer =  true;
+
+        checkOutPageV3 = openCart(cartId, "",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_ELECTRON,
+                dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_INT_RET);
+
+        getTripsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
     public void TwoCards(){
         logTestTitle("Two Credit Cards");
 
