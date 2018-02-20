@@ -301,7 +301,7 @@ public class Flights extends TestBaseSetup {
         getPassengersData();
 
         checkOutPageV3.setCheckoutWizardInfo(dataManagement.getPassengerJsonList(),
-                MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                VISA_1, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),
                 FLIGHTS_CHECKOUT_INT);
         getFlightsAssertionInfo();

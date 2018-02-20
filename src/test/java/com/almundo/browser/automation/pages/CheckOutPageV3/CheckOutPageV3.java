@@ -793,13 +793,20 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     public void setInputDef() {
+        String language = "es";
+        if (countryPar.equals(BRASIL)){
+            language = "pt";
+        }
         try {
              if(baseURL.contains("st.almundo")) {
-                inputDef = new InputDefinitions(API_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
+                inputDef = new InputDefinitions(API_STG_URL + "api/v3/cart/" +
+                        getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=" + language);
             } else if (baseURL.contains("dv.almundo")) {
-                 inputDef = new InputDefinitions(DEV_STG_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es"); }
+                 inputDef = new InputDefinitions(DEV_STG_URL + "api/v3/cart/" +
+                         getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=" + language); }
             else {
-                inputDef = new InputDefinitions(API_PROD_URL + "api/v3/cart/" + getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es");
+                inputDef = new InputDefinitions(API_PROD_URL + "api/v3/cart/" +
+                        getCartId() + "/input-definitions?site=" + countryPar.substring(0, 3) + "&language=es" + language);
             }
         } catch (IOException e) {
             e.printStackTrace();
