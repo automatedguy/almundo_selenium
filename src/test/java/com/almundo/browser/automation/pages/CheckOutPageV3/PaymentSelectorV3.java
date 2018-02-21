@@ -25,6 +25,9 @@ public class PaymentSelectorV3 extends BasePage {
     @FindBy(css = "#lblPaymentOption12")
     private WebElement twoCreditCardsRdb;
 
+    @FindBy(css = "#lblPaymentOption2")
+    private WebElement twoCreditCardsOtherRdb;
+
     @FindBy(css ="#lblPaymentOption2")
     private WebElement visaDebit;
 
@@ -66,12 +69,16 @@ public class PaymentSelectorV3 extends BasePage {
     }
 
     public PaymentSelectorV3 selectTwoCreditCardsRdb(){
-        scrollToElement(driver, twoCreditCardsRdb);
-        waitImplicitly(1000);
-        scrollToElement(driver, twoCreditCardsRdb);
-        waitElementForClickable(driver, twoCreditCardsRdb, 5 , "[Two Credit Card Radio Button.");
-        logger.info("Selecting payment with two credit cards");
-        twoCreditCardsRdb.click();
+        try {
+            scrollToElement(driver, twoCreditCardsRdb);
+            waitImplicitly(1000);
+            scrollToElement(driver, twoCreditCardsRdb);
+            waitElementForClickable(driver, twoCreditCardsRdb, 5, "[Two Credit Card Radio Button.");
+            logger.info("Selecting payment with two credit cards");
+            twoCreditCardsRdb.click();
+        }catch (NoSuchElementException ouch){
+            twoCreditCardsOtherRdb.click();
+        }
         waitImplicitly(4000);
         return this;
     }

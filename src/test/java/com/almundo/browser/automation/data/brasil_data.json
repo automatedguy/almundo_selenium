@@ -447,7 +447,7 @@
 				"year_card_expire": "2022",
 				"security_code": "1234",
 				"documentType": "CPF",
-				"document_number": "29098766"
+				"document_number": "77526888711"
 			},
 
 			"1_amex_amex": {
@@ -463,7 +463,7 @@
 				"year_card_expire": "2018",
 				"security_code": "1234",
 				"documentType": "CPF",
-				"document_number": "29098766"
+				"document_number": "77526888722"
 			},
 
 			"1_visa_visa": {
@@ -479,7 +479,7 @@
 				"year_card_expire": "2018",
 				"security_code": "777",
 				"documentType": "CPF",
-				"document_number": "29098766",
+				"document_number": "77526888733",
 
 				"Medio_de_pago" : "VISA",
 				"Banco" : "OTROS",
@@ -488,7 +488,7 @@
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "18",
 				"Tipo_de_doc": "CPF",
-				"Numero_de_doc": "30786876",
+				"Numero_de_doc": "77526888744",
 				"E-mail": "almundoturismo@gmail.com"
 			},
 
@@ -504,7 +504,7 @@
 				"year_card_expire": "2018",
 				"security_code": "777",
 				"documentType": "CPF",
-				"document_number": "29098766"
+				"document_number": "77526888755"
 			},
 
 			"3_cabal_todopago": {
@@ -519,7 +519,7 @@
 				"year_card_expire": "2018",
 				"security_code": "123",
 				"documentType": "CPF",
-				"document_number": "29098766",
+				"document_number": "77526888766",
 
 				"Medio_de_pago" : "Cabal",
 				"Banco" : "OTROS",
@@ -528,7 +528,7 @@
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "18",
 				"Tipo_de_doc": "CPF",
-				"Numero_de_doc": "30786876",
+				"Numero_de_doc": "77526888777",
 				"E-mail": "almundoturismo@gmail.com"
 			},
 
@@ -544,7 +544,7 @@
 				"year_card_expire": "2018",
 				"security_code": "777",
 				"documentType": "CPF",
-				"document_number": "29098766",
+				"document_number": "77526888788",
 
 				"Medio_de_pago" : "VISA",
 				"Banco" : "OTROS",
@@ -553,7 +553,7 @@
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "18",
 				"Tipo_de_doc": "CPF",
-				"Numero_de_doc": "30786876",
+				"Numero_de_doc": "77526888799",
 				"E-mail": "almundoturismo@gmail.com"
 
 			},
@@ -566,7 +566,7 @@
 				"Fecha_de_vencimiento_mes": "12",
 				"Fecha_de_vencimiento_ano": "2018",
 				"Tipo_de_doc": "CPF",
-				"Numero_de_doc": "30786876",
+				"Numero_de_doc": "77526888111",
 				"E-mail": "almundoturismo@gmail.com",
 				"codigo_seguridad": "999"
 		},
@@ -584,7 +584,7 @@
 				"year_card_expire": "2018",
 				"security_code": "617",
 				"documentType": "CPF",
-				"document_number": "29098766"
+				"document_number": "77526888222"
 			},
 
 			"6_visa_visa": {
@@ -599,7 +599,7 @@
 				"year_card_expire": "2018",
 				"security_code": "718",
 				"documentType": "CPF",
-				"document_number": "29098766"
+				"document_number": "77526888333"
 			},
 
 			"cash": {
