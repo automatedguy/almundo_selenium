@@ -16,6 +16,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -364,7 +365,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
             acceptConditions();
             clickComprarBtn();
-            waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+            WebElement paymentConfirmation = waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+            Assert.assertFalse(paymentConfirmation == null);
             driver.navigate().to(actualCheckoutUrl);
         }
         else {
@@ -403,7 +405,8 @@ public class CheckOutPageV3 extends TestBaseSetup {
 
                         acceptConditions();
                         clickComprarBtn();
-                        waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+                        WebElement paymentConfirmation = waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
+                        Assert.assertFalse(paymentConfirmation == null);
                         driver.navigate().to(actualCheckoutUrl);
 
                     } else {
