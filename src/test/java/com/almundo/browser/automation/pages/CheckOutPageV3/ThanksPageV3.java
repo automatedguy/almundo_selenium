@@ -83,11 +83,11 @@ public class ThanksPageV3 extends BasePage {
     }
 
     public boolean confirmationOk(){
-        logger.info("Thanks Page URL: [" + driver.getCurrentUrl() + "]");
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
             assertThanksPageElements = true;
             try {
                 PageUtils.waitElementForVisibility(driver, felicitacionesLbl, 70, "Reservation Confirmation");
+                logger.info("Thanks Page URL: [" + driver.getCurrentUrl() + "]");
             }catch (TimeoutException ouch){
                 logger.info("Waited so long for the [Reservation Confirmation]");
                 try {
