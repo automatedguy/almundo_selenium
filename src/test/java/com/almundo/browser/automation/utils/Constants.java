@@ -66,6 +66,7 @@ public class Constants {
         NO_DISPONIBILIDAD_MSG("Lo sentimos. No encontramos disponibilidad para tu búsqueda\nPor favor intentá una nueva busqueda"),
         FELICITACIONES_MSG("¡Felicitaciones, tu solicitud de compra fué exitosa!"),
         FELICITACIONES_V3_MSG("¡Felicitaciones, tu reserva fue exitosa!"),
+        FELICITACIONES_BRA_V3_MSG("Parabéns! Sua reserva foi feita com com sucesso!"),
         MANDATORY_FLD_MSG("Este campo es obligatorio."),
         LISTADO_DE_SUCURSALES_LNK("Ver listado de sucursales"),
         NO_PUDIMOS_PROCESAR("No pudimos procesar la consulta. Intentá más tarde."),

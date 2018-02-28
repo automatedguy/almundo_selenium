@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import static com.almundo.browser.automation.pages.ResultsPage.HotelsDetailPage.getAssertHotelInfo;
+import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_BRA_V3_MSG;
 import static com.almundo.browser.automation.utils.Constants.Messages.FELICITACIONES_V3_MSG;
 import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
 import static com.almundo.browser.automation.utils.PageUtils.getCountryCurrency;
@@ -100,7 +101,7 @@ public class ThanksPageV3 extends BasePage {
                 }
                 setResultSauceLabs(FAILED);
             }
-            if (felicitacionesLbl.getText().equals(FELICITACIONES_V3_MSG.toString())) {
+            if (felicitacionesLbl.getText().equals(FELICITACIONES_V3_MSG.toString()) || felicitacionesLbl.getText().equals(FELICITACIONES_BRA_V3_MSG.toString())) {
                 printReservationCode(reservationCode.getText());
                 return true;
             } else {
