@@ -99,7 +99,7 @@ public class FlowTest extends TestBaseSetup {
     @Test
     public void IntBookingWithTransfer(){
         logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
-        if(countryPar.equals(ARGENTINA)) {
+        if(countryPar.equals(BRASIL) || countryPar.equals(ARGENTINA)) {
             addTransfer = true;
 
             dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);

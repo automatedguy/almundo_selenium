@@ -275,7 +275,7 @@
                 "first_name": "Ñímis",
                 "last_name": "O' Tool",
                 "documentType": "Cédula de Ciudadanía",
-                "document_number": "29098757",
+                "document_number": "29098757899",
                 "document_emisor": "Colombia",
                 "document_expiration": "25/12/2017",
                 "birthday": "09/09/2010",
@@ -375,7 +375,7 @@
                 "year_card_expire": "2018",
                 "security_code": "123",
                 "documentType": "Cédula de Ciudadanía",
-                "document_number": "29098766"
+                "document_number": "290987667654"
             },
 
             "1_visa_todopago": {
@@ -405,7 +405,7 @@
                 "year_card_expire": "2018",
                 "security_code": "123",
                 "documentType": "Cédula de Ciudadanía",
-                "document_number": "29098766"
+                "document_number": "290987667213"
             },
 
             "1_master_master": {
@@ -421,7 +421,7 @@
                 "year_card_expire": "2018",
                 "security_code": "559",
                 "documentType": "Cédula de Ciudadanía",
-                "document_number": "29098766"
+                "document_number": "290987667111"
             },
 
             "6_visa_visa": {
@@ -436,7 +436,7 @@
                 "year_card_expire": "2018",
                 "security_code": "559",
                 "documentType": "Cédula de Ciudadanía",
-                "document_number": "29098766"
+                "document_number": "290987667654"
             },
 
             "cash": {

@@ -2,9 +2,9 @@
 	"flights": {
 			"miami_10days_2adults_2childs_turista": {
 				"originAuto": "San Pa",
-				"originFull": "San Pablo, San Pablo, Brasil",
+				"originFull": "San Pablo, São Paulo, Brasil",
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 25,
 				"endDate": 10,
 				"adults": 2,
@@ -14,8 +14,8 @@
 			},
 
 			"miami_10days_2adults_turista": {
-				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Argentina",
+				"originAuto": "San Pa",
+				"originFull": "San Pablo, São Paulo, Brasil",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 25,
@@ -27,8 +27,8 @@
 			},
 
 			"domestic_20days_2adults_todas": {
-				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Argentina",
+				"originAuto": "San Pa",
+				"originFull": "San Pablo, São Paulo, Brasil",
 				"destinationAuto": "Bar",
 				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
 				"startDate": 25,
@@ -53,8 +53,8 @@
 		    },
 
 			"multiDest_3Flights_2adults_todas": {
-				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Argentina",
+				"originAuto": "San Pa",
+				"originFull": "San Pablo, São Paulo, Brasil",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"originAuto2": "Mia",
@@ -129,8 +129,8 @@
 
 	"trips": {
 			"miami_10days_2adults_2childs_1room": {
-				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Argentina",
+				"originAuto": "San Pa",
+				"originFull": "San Pablo, São Paulo, Brasill",
 				"destinationAuto": "Mia",
 				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 25,
@@ -142,8 +142,8 @@
 			},
 
 			"domestic01_15days_2adults_1childs_1room": {
-				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Argentina",
+				"originAuto": "San Pa",
+				"originFull": "San Pablo, São Paulo, Brasil",
 				"destinationAuto": "Bar",
 				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
 				"startDate": 25,
@@ -168,8 +168,8 @@
 		},
 
 			"int02_20days_2adults_1childs_1room": {
-				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Argentina",
+				"originAuto": "San Pa",
+				"originFull": "San Pablo, São Paulo, Brasil",
 				"destinationAuto": "San",
 				"destinationFull": "Santiago de Chile, Chile",
 				"startDate": 25,
@@ -181,8 +181,8 @@
 			},
 
 		    "int02_20days_2adults_1room": {
-			"originAuto": "Bue",
-			"originFull": "Buenos Aires, Argentina",
+			"originAuto": "San Pa",
+			"originFull": "San Pablo, São Paulo, Brasil",
 			"destinationAuto": "Mia",
 			"destinationFull": "Miami, Florida, Estados Unidos de América",
 			"startDate": 25,
@@ -196,10 +196,10 @@
 
 	"cars": {
 			"capital_10days_entre_21_24": {
-				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
-				"destinationAuto": "Bue",
-				"destinationFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originAuto": "San Pa",
+				"originFull": "San Pablo, São Paulo, Brasil",
+				"destinationAuto": "San Pa",
+				"destinationFull": "San Pablo, São Paulo, Brasil",
 				"startDate": 55,
 				"endDate": 30,
 				"pickUpTime": "12:00",
