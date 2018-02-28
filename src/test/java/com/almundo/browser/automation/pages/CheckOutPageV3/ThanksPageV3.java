@@ -83,6 +83,7 @@ public class ThanksPageV3 extends BasePage {
     }
 
     public boolean confirmationOk(){
+        logger.info("Thanks Page URL: [" + driver.getCurrentUrl() + "]");
         if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo") || baseURL.contains("dv.almundo")) && submitReservation) {
             assertThanksPageElements = true;
             try {
