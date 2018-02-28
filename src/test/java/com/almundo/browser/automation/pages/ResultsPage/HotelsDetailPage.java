@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 import static com.almundo.browser.automation.utils.Constants.MEXICO;
+import static com.almundo.browser.automation.utils.Constants.PAY_AT_DESTINATION;
 import static com.almundo.browser.automation.utils.PageUtils.*;
 
 /**
@@ -42,7 +43,11 @@ public class HotelsDetailPage extends TestBaseSetup {
     public HotelsDetailPage selectPaymentMethod(String paymentMethod){
         logger.info("Selecting payment method: [" + paymentMethod +"]");
         Select paymentMethodDdl =  new Select(paymentMethodSelect);
-        paymentMethodDdl.selectByVisibleText(paymentMethod);
+        if(paymentMethod.equals(PAY_AT_DESTINATION)) {
+            paymentMethodDdl.selectByIndex(2);
+        }else {
+            paymentMethodDdl.selectByIndex(1);
+        }
         return this;
     }
 
