@@ -78,7 +78,7 @@
 	"hotels": {
 			"miami_10days_2adults_2childs_1room": {
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Flórida, Estados Unidos da América",
 				"startDate": 25,
 				"endDate": 10,
 				"adults": 2,
@@ -88,7 +88,7 @@
 
 		"miami_10days_2adults_1room": {
 			"destinationAuto": "Mia",
-			"destinationFull": "Miami, Florida, Estados Unidos de América",
+			"destinationFull": "Miami, Flórida, Estados Unidos da América",
 			"startDate": 25,
 			"endDate": 10,
 			"adults": 2,
@@ -107,8 +107,8 @@
 			},
 
 			"domestic02_20days_2adults_1room": {
-				"destinationAuto": "Bar",
-				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
+				"destinationAuto": "São",
+				"destinationFull": "São Paulo, São Paulo, Brasil",
 				"startDate": 25,
 				"endDate": 20,
 				"adults": 2,

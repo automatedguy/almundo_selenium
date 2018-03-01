@@ -90,7 +90,9 @@ public class ThanksPageV3 extends BasePage {
                 PageUtils.waitElementForVisibility(driver, felicitacionesLbl, 70, "Reservation Confirmation");
                 logger.info("Thanks Page URL: [" + driver.getCurrentUrl() + "]");
             }catch (TimeoutException ouch){
-                logger.info("Waited so long for the [Reservation Confirmation]");
+                logger.error("Waited so long for the [Reservation Confirmation]");
+                logger.error("Error URL: [" + driver.getCurrentUrl().toString() + "]");
+                logger.error("The failure displayed: " + driver.findElement(By.cssSelector("body > main > div")).getText());
                 try {
                     String bookError = driver.findElement(By.cssSelector(".popeye-modal-container .modal-content label")).getText();
                     printStarsSeparator();
