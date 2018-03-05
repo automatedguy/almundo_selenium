@@ -118,7 +118,7 @@ public class Constants {
     }
 
     // MISC
-    public static final String OTRO = "OTRO";
+    public static final String OTRO = "Otro";
 
     //PAYMENTS FORMS
 
