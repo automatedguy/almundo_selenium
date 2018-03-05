@@ -22,7 +22,7 @@ import static com.almundo.browser.automation.utils.PageUtils.switchToNewTab;
 public class FlowTest extends TestBaseSetup{
 
     private final String autoDestination = "Mia";
-    private final String fullDestination = "Miami, Flórida, Estados Unidos da América";
+    private final String fullDestination = "Miami, Florida, Estados Unidos de América";
 
     private ExcursionsDataTrip excursionsDataTrip = null;
     private ExcursionsResultsPage excursionsResultsPage = null;
