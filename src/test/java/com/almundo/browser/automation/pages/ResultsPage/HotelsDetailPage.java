@@ -86,7 +86,7 @@ public class HotelsDetailPage extends TestBaseSetup {
     }
 
     public HotelsDetailPage clickPayAtDestination(){
-        closeExpertsPopUp(driver);
+        // closeExpertsPopUp(driver);
         waitElementForClickable(driver, payAtDestination, 10, "Pago En Destino Tab");
         logger.info("Clicking on [Pago en destino] Tab");
         scrollToElement(driver, payAtDestination);
