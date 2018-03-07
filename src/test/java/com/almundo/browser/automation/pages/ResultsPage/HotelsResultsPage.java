@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.ResultsPage;
 import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -125,7 +126,8 @@ public class HotelsResultsPage extends TestBaseSetup {
     public HotelsResultsPage clickPayAtDestination(){
         waitElementForClickable(driver, payAtDestination, 5, "[Pago en destino] Checkbox");
         logger.info("Selecting [Pago en destino]");
-        scrollToElement(driver, payAtDestination);
+        JavascriptExecutor jse2 = (JavascriptExecutor)driver;
+        jse2.executeScript("arguments[0].scrollIntoView()", payAtDestination);
         payAtDestination.click();
         waitImplicitly(4000);
         return this;
