@@ -337,14 +337,14 @@ public class CheckOutPageV3 extends TestBaseSetup {
     private void dealWithRetail(String paymentData){
         breakDownSectionV3().dealWithInsurance(addInsurance);
         breakDownSectionV3().dealWithTransfer(addTransfer);
-        if(paymentData.contains("pago_dividido$")) {
-            paymentSelectorRetailV3().selectPaymentMethod(PAGO_DIVIDIDO);
-            paymentSelectorRetailSplitV3().populateSplittedPaymentInfo(getPaymentDataList(paymentData.replace("pago_dividido$","")), breakDownSectionV3().getFinalPrice());
-        }
-        else if (paymentData.contains("link_de_pago$") && retailCheckoutOld) {
+        logger.info("Running Retail New");
+        if(paymentData.contains("link_de_pago$")){
             setUrlParameter("&slp=1");
-            paymentSelectorRetailV3().selectPaymentMethod(LINK_DE_PAGO);
-            String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePagoInfo();
+            floridaPaymentSection().linkDePagoClick();
+            floridaPaymentSection().enterEmailDelCliente(CUSTOMER_EMAIL);
+            floridaPaymentSection().enviarBtnClick();
+            paymentData = paymentData.replace("link_de_pago$","");
+            String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePago();
 
             if(paymentData.contains("rewards$")){
                 dataManagement.setUsersDataList();
@@ -356,7 +356,7 @@ public class CheckOutPageV3 extends TestBaseSetup {
             }
 
             if(paymentData.contains("two_cards")) {
-                dealWithTwoCards(paymentData.replace("link_de_pago$", ""));
+                dealWithTwoCards(paymentData);
             } else  {
                 paymentSelectorV3().selectOneCreditCardRdb();
                 paymentSectionGridV3().populatePaymentSectionV3(paymentData.replace("link_de_pago$", ""), ".card-container-1");
@@ -368,70 +368,35 @@ public class CheckOutPageV3 extends TestBaseSetup {
             WebElement paymentConfirmation = waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
             Assert.assertFalse(paymentConfirmation == null);
             driver.navigate().to(actualCheckoutUrl);
-        }
-        else {
-            if(paymentData.contains(DEPOSIT)){
-                paymentSelectorRetailV3().selectDepositRdb();
-            } else if (paymentData.contains(TRANSFER)){
-                paymentSelectorRetailV3().selectTransferRdb();
-            } else if (paymentData.contains(CASH)){
-                paymentSelectorRetailV3().selectCashRdb();
-            } else if (!retailCheckoutOld) {
-                logger.info("Running Retail New");
 
-                if(paymentData.contains("link_de_pago$")){
-                    setUrlParameter("&slp=1");
-                    floridaPaymentSection().linkDePagoClick();
-                    floridaPaymentSection().enterEmailDelCliente(CUSTOMER_EMAIL);
-                    floridaPaymentSection().enviarBtnClick();
-                    paymentData = paymentData.replace("link_de_pago$","");
-                    String actualCheckoutUrl = paymentSelectorLinkV3().populateLinkDePago();
+        } else if(paymentData.contains(DESTINATION)) {
+            creditCardDataV3().populateCreditCardData(paymentData, "");
+        } else {
+            List<String> paymentDataList = getPaymentDataList(paymentData);
+            int priceToPay = 0;
+            boolean isLastPayment = false;
 
-                    if(paymentData.contains("two_cards")) {
-                        dealWithTwoCards(paymentData);
-                    } else  {
-                        paymentSelectorV3().selectOneCreditCardRdb();
-                        paymentSectionGridV3().populatePaymentSectionV3(paymentData.replace("link_de_pago$", ""), ".card-container-1");
-                        creditCardDataV3().populateCreditCardData(paymentData.replace("link_de_pago$", ""), ".card-container-1");
-                    }
+            if (paymentDataList.size() > 1) {
+                priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
+            } else {
+                isLastPayment = true;
+            }
 
-                    acceptConditions();
-                    clickComprarBtn();
-                    WebElement paymentConfirmation = waitWithTryCatch(driver, thanksPageConfirmation, "Payment confirmation", 10);
-                    Assert.assertFalse(paymentConfirmation == null);
-                    driver.navigate().to(actualCheckoutUrl);
-
-                } else if(paymentData.contains(DESTINATION)) {
-                    creditCardDataV3().populateCreditCardData(paymentData, "");
+            int index = 0;
+            for (String paymentFormData : paymentDataList) {
+                if (paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")) {
+                    floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
+                    floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                } else if (paymentFormData.contains("Débito")) {
+                    floridaPaymentSection().tarjetaDeDebitoClick();
+                    floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
                 } else {
-                    List<String> paymentDataList = getPaymentDataList(paymentData);
-
-                    int priceToPay = 0;
-                    boolean isLastPayment = false;
-
-                    if (paymentDataList.size() > 1) {
-                        priceToPay = breakDownSectionV3().getFinalPrice() / paymentDataList.size();
-                    } else {
-                        isLastPayment = true;
-                    }
-
-                    int index = 0;
-                    for (String paymentFormData : paymentDataList) {
-                        if (paymentFormData.equals("Depósito") || paymentFormData.equals("Transferencia") || paymentFormData.equals("Efectivo")) {
-                            floridaPaymentSection().otroMedioDePagoClick(paymentFormData);
-                            floridaAnother().setOtherInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                        } else if (paymentFormData.contains("Débito")) {
-                            floridaPaymentSection().tarjetaDeDebitoClick();
-                            floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                        } else {
-                            floridaPaymentSection().tarjetaDeCreditoClick();
-                            floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
-                        }
-                        index = ++index;
-                        if((index + 1)  >= paymentDataList.size()){
-                            isLastPayment = true;
-                        }
-                    }
+                    floridaPaymentSection().tarjetaDeCreditoClick();
+                    floridaCreditCard().populateCreditCardInfo(paymentFormData, String.valueOf(priceToPay), index, isLastPayment);
+                }
+                index = ++index;
+                if((index + 1)  >= paymentDataList.size()){
+                    isLastPayment = true;
                 }
             }
         }
