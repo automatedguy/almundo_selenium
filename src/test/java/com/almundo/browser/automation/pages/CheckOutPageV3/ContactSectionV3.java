@@ -1,5 +1,6 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
+import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,11 +52,13 @@ public class ContactSectionV3 extends CheckOutPageV3 {
     public ContactSectionV3 populateContactSection(JSONObject contactData) {
         logger.info("------------- Filling Contact Section -------------");
 
-        if(inputDef.isRequired("contacts","email",0)){
-            setEmail(contactData.get("email").toString());}
+        String contactEmail = PageUtils.randomString(7) + "@toggle.com";
 
         if(inputDef.isRequired("contacts","email",0)){
-            setRepEmail(contactData.get("rep_email").toString());}
+            setEmail(contactEmail);}
+
+        if(inputDef.isRequired("contacts","email",0)){
+            setRepEmail(contactEmail);}
 
         if(inputDef.isRequired("contacts", "telephones", "telephone_type",0)){
             setPhoneType(contactData.get("tel").toString());}

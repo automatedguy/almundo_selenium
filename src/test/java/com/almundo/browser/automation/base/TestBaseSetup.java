@@ -102,7 +102,7 @@ public class TestBaseSetup {
 //                                        @Optional("Windows 10") String osType,
                                         @Optional(CHROME) String browserType,
                                         @Optional(LATEST) String browserTypeVersion,
-                                        @Optional(ARGENTINA) String country,
+                                        @Optional(BRASIL) String country,
                                         @Optional(TRUE) Boolean landing,
                                         @Optional("") String cart_id,
                                         @Optional("") String cart_id_icbc,
