@@ -79,6 +79,7 @@ public class Cars extends TestBaseSetup {
         setResultSauceLabs(PASSED);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     public void gridWithTodoPago() {
         logTestTitle("Cars – Grid With Todo Pago");
@@ -88,6 +89,24 @@ public class Cars extends TestBaseSetup {
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                 VISA_1,
+                dataManagement.getBillingData(LOCAL_BILLING),
+                dataManagement.getContactData(CONTACT_CELL_PHONE),
+                CARS_CHECKOUT);
+
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
+    public void twoCards() {
+        logTestTitle("Two Cards");
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
+
+        getPassengersData();
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                TWOCARDS_VISA_MASTER,
                 dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE),
                 CARS_CHECKOUT);

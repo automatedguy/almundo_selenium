@@ -170,13 +170,13 @@ public class Hotels extends TestBaseSetup {
 
     @Test
     public void twoCards() {
-        logTestTitle("Hotels – Grid With Todo Pago ");
-        checkOutPageV3 = openCart(cartId, "&stc=1",productURl);
+        logTestTitle("Hotels – Two Cards");
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
-                VISA_1, MASTER_1, dataManagement.getBillingData(LOCAL_BILLING),
+                TWOCARDS_VISA_MASTER, dataManagement.getBillingData(LOCAL_BILLING),
                 dataManagement.getContactData(CONTACT_CELL_PHONE), HOTELS_CHECKOUT_INT);
 
         getAssertionInfo();
