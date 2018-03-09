@@ -403,9 +403,9 @@ public class CheckOutPageV3 extends TestBaseSetup {
     }
 
     private void dealWithTwoCards(String paymentData){
+        breakDownSectionV3().dealWithInsurance(addInsurance);
         paymentSelectorV3().selectTwoCreditCardsRdb();
         paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
-        // breakDownSectionV3().dealWithInsurance(addInsurance);
         if(refillPaymentData){
             paymentTwoCreditCardsV3().populateTwoCreditCards(getPaymentDataList(paymentData.replace("two_cards$","")), breakDownSectionV3().getFinalPrice());
         }
