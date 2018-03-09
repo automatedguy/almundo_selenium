@@ -169,7 +169,7 @@ public class RetailFlights extends TestBaseSetup {
     public void payWithLinkClubAlmundoWithInsurance() {
         logTestTitle("Pay With Link With Club Almundo Rewards.");
 
-        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
+        checkOutPageV3 = openCart(cartId, "&slp=1",productURl);
         addInsurance = true;
 
         getPassengersData();
