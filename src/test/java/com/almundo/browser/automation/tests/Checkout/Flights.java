@@ -216,7 +216,9 @@ public class Flights extends TestBaseSetup {
     @Test
     public void twoCards() {
         logTestTitle("Payment with two cards");
-        checkOutPageV3 = openCart(cartId, "&stc=1",productURl);
+
+        addInsurance = true;
+        checkOutPageV3 = openCart(cartId, "&ssp=1",productURl);
 
         getPassengersData();
 

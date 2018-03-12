@@ -88,18 +88,23 @@ public class FlowTest extends TestBaseSetup{
         setResultSauceLabs(PASSED);
     }
 
-/*    @SuppressWarnings("Duplicates")
+   @SuppressWarnings("Duplicates")
     @Test
     public void activityBooking2CreditCards(){
         logTestTitle("Activity booking -  1 Adult - 2 Credit Cards");
         excursionsDataTrip.setDestinationExcursions(autoDestination, fullDestination);
-        excursionsResultsPage = excursionsDataTrip.clickBuscar();
+        excursionsResultsPage = excursionsDataTrip.clickBuscarBtn();
         excursionsDetailPage = excursionsResultsPage.clickVerActividadBtn(FIRST_OPTION);
 
         switchToNewTab(driver);
 
         excursionsDetailPage.clickElegirFechaBtn();
-        checkOutPageV3 = excursionsDetailPage.clickComprarBtn();
+        excursionsDetailPage.clickComprarBtn();
+
+        excursionsDetailPage.setPuntoDePartida(OTRO);
+
+        checkOutPageV3 = excursionsDetailPage.clickContinuarBtn();
+
 
         dataManagement.setPassengerData(ADULT_MALE_NATIVE);
 
@@ -115,5 +120,5 @@ public class FlowTest extends TestBaseSetup{
         Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
 
         setResultSauceLabs(PASSED);
-    }*/
+    }
 }
