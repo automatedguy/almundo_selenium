@@ -76,7 +76,7 @@ public class Flights extends TestBaseSetup {
 
         LoginPopUp loginPopUp  = checkOutPageV3.clickIngresarBtn();
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
-        loginPopUp.ingresarBtn.click();
+        loginPopUp.clickIngresarBtn();
 
         checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
                                     REWARDS_VISA_1, dataManagement.getBillingData(LOCAL_BILLING),

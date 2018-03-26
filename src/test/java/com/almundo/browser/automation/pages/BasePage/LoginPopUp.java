@@ -31,7 +31,7 @@ public class LoginPopUp extends BasePage {
     @FindBy(id = "login_password")
     public WebElement loginPasswordTxt;
 
-    @FindBy(css = ".button.button--secondary.button--block.button--md.submit")
+    @FindBy(css = "#section div.login-content .button--md.submit")
     public WebElement ingresarBtn;
 
     @FindBy(css = "#section div:nth-child(4) > div.footer-login > span.link-button")
