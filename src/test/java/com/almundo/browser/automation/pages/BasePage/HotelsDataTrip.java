@@ -3,6 +3,7 @@ package com.almundo.browser.automation.pages.BasePage;
 import com.almundo.browser.automation.pages.ResultsPage.HotelsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,13 +25,13 @@ public class HotelsDataTrip extends BasePage {
     //############################################### Locators ##############################################
 
     @FindBy(id = "destination-hotels")
-    public WebElement destinationTxt;
+    private WebElement destinationHotelTxt;
 
-    @FindBy(id = "checkin-hotels")
-    public WebElement checkinCalendar;
+    @FindBy(css = "input[name^='am-range-datepicker-from']")
+    private WebElement checkinCalendar;
 
-    @FindBy(id = "checkout-hotels")
-    public WebElement checkoutCalendar;
+    @FindBy(css = "input[name^='am-range-datepicker-to']")
+    private WebElement checkoutCalendar;
 
     @FindBy(css = ".row-rooms>.sub")
     public WebElement subRoomBtn;
@@ -50,13 +51,19 @@ public class HotelsDataTrip extends BasePage {
     @FindBy(css = ".row-room-details>div:nth-of-type(2)>.add")
     public WebElement addChildBtn;
 
+    /******************************* Getters *******************************/
+
+    public WebElement getCheckinCalendar(){ return checkinCalendar;}
+
+    public WebElement getCheckoutCalendar(){return checkoutCalendar;}
+
     //############################################### Actions ###############################################
 
     public HotelsDataTrip setDestination(String destinationAuto, String destinationFull) {
-        PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Destination text field");
-        logger.info("Entering Destination: [" + destinationFull + "]");
-        destinationTxt.clear();
-        destinationTxt.sendKeys(destinationAuto);
+        PageUtils.waitElementForVisibility(driver, destinationHotelTxt, 10, "Destination text field");
+        logger.info("Entering Hotel Destination: [" + destinationFull + "]");
+        destinationHotelTxt.clear();
+        destinationHotelTxt.sendKeys(destinationAuto);
         selectAutoCompleteOption(destinationFull);
         return this;
     }
@@ -93,8 +100,13 @@ public class HotelsDataTrip extends BasePage {
     }
 
     public HotelsResultsPage clickBuscarBtn() {
-        logger.info("Clicking on Buscar Button");
-        buscarBtn.click();
-        return initHotelesResultsPage();
+        logger.info("Clicking on button: [Buscar]");
+        try {
+            buscarBtn.click();
+        }catch(NoSuchElementException ouch){
+            logger.info("Apparently new home here, trying to click buscarV3Btn");
+            buscarV3Btn.click();
+        }
+        return initHotelsResultsPage();
     }
 }

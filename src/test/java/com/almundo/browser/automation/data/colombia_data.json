@@ -4,12 +4,25 @@
                 "originAuto": "Bog",
                 "originFull": "Bogotá, Bogotá D.C., Colombia",
                 "destinationAuto": "Mia",
-                "destinationFull": "Miami, Estados Unidos de América",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
                 "startDate": 9,
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
                 "childAgeRange": "Entre 2 y 11 años",
+                "flightClass": "Turista"
+            },
+
+            "miami_10days_2adults_turista": {
+                "originAuto": "Bog",
+                "originFull": "Bogotá, Bogotá D.C., Colombia",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
+                "startDate": 9,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "childAgeRange": "",
                 "flightClass": "Turista"
             },
 
@@ -30,9 +43,9 @@
             "originAuto": "Bog",
             "originFull": "Bogotá, Bogotá D.C., Colombia",
             "destinationAuto": "Mia",
-            "destinationFull": "Miami, Estados Unidos de América",
+            "destinationFull": "Miami, Florida, Estados Unidos de América",
             "originAuto2": "Mia",
-            "originFull2": "Miami, Estados Unidos de América",
+            "originFull2": "Miami, Florida, Estados Unidos de América",
             "destinationAuto2": "Nue",
             "destinationFull2": "Nueva York, Nueva York, Estados Unidos de América",
             "originAuto3": "Nue",
@@ -65,11 +78,21 @@
     "hotels": {
             "miami_10days_2adults_2childs_1room": {
                 "destinationAuto": "Mia",
-                "destinationFull": "Miami, Estados Unidos de América",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
                 "startDate": 9,
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
+                "rooms": 1
+            },
+
+            "miami_10days_2adults_1room": {
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
+                "startDate": 9,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
                 "rooms": 1
             },
 
@@ -99,7 +122,7 @@
                 "originAuto": "Bog",
                 "originFull": "Bogotá, Bogotá D.C., Colombia",
                 "destinationAuto": "Mia",
-                "destinationFull": "Miami, Estados Unidos de América",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
                 "startDate": 10,
                 "endDate": 10,
                 "adults": 2,
@@ -134,7 +157,20 @@
                 "rooms": 1
             },
 
-        "domestic02_20days_2adults_1childs_1room": {
+            "int02_20days_2adults_1room": {
+            "originAuto": "Bog",
+            "originFull": "Bogotá, Bogotá D.C., Colombia",
+            "destinationAuto": "San",
+            "destinationFull": "Santiago de Chile, Chile",
+            "startDate": 30,
+            "endDate": 20,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "Entre 2 y 11 años",
+            "rooms": 1
+        },
+
+            "domestic02_20days_2adults_1childs_1room": {
             "originAuto": "Bog",
             "originFull": "Bogotá, Bogotá D.C., Colombia",
             "destinationAuto": "Car",
@@ -154,8 +190,8 @@
             "originFull": "Bogotá, Bogotá D.C., Colombia",
             "destinationAuto": "Bog",
             "destinationFull": "Bogotá, Bogotá D.C., Colombia",
-            "startDate": 10,
-            "endDate": 10,
+            "startDate": 25,
+            "endDate": 40,
             "pickUpTime": "12:00",
             "dropOffTime": "12:00",
             "ageRange": "Entre 21 y 24 años"
@@ -163,16 +199,27 @@
 
         "miami_10days_entre_21_24": {
             "originAuto": "Mia",
-            "originFull": "Miami, Estados Unidos de América",
+            "originFull": "Miami, Florida, Estados Unidos de América",
             "destinationAuto": "Mia",
-            "destinationFull": "Miami, Estados Unidos de América",
-            "startDate": 10,
-            "endDate": 10,
+            "destinationFull": "Miami, Florida, Estados Unidos de América",
+            "startDate": 25,
+            "endDate": 40,
             "pickUpTime": "12:00",
             "dropOffTime": "12:00",
             "ageRange": "Entre 21 y 24 años"
         }
 
+    },
+
+    "assistance": {
+        "miami_10days_2persons_unique": {
+            "tripType": "Único viaje",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Florida, Estados Unidos de América",
+            "startDate": 25,
+            "endDate": 10,
+            "persons": 2
+        }
     },
 
     "passengers":{
@@ -228,6 +275,30 @@
                 "first_name": "Ñímis",
                 "last_name": "O' Tool",
                 "documentType": "Cédula de Ciudadanía",
+                "document_number": "29098757899",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "Colombia"
+            },
+
+            "child_female_native_trips": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
+                "document_number": "29098757",
+                "document_emisor": "Colombia",
+                "document_expiration": "25/12/2017",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "Colombia"
+            },
+
+            "child_female_native_trips_domestic": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
                 "document_number": "29098757",
                 "document_emisor": "Colombia",
                 "document_expiration": "25/12/2017",
@@ -262,39 +333,165 @@
     },
 
     "payment":{
-            "1_amex_amex": {
-                "payment_qty" : "1",
-                "bank_name" : "American Express",
-                "credit_card_name" : "American Express",
-                "card_holder": "Dueño Dí L'Tarjüeta",
+            "random": {
+                "payment_qty" : "random",
+                "bank_name" : "random",
+                "credit_card_name" : "random",
+                "card_holder": "Titular Tarjeta",
                 "card_number": "4242424242424242",
                 "card_expire": "12/18",
                 "month_card_expire": "12",
                 "year_card_expire": "2022",
                 "security_code": "1234",
-                "documentType": "Cedula de ciudadania",
+                "documentType": "DNI",
                 "document_number": "29098766"
+            },
+
+            "1_amex_amex": {
+                "payment_qty" : "1",
+                "bank_name" : "American Express",
+                "credit_card_code" : "AX",
+                "credit_card_name" : "American Express",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "376411234531007",
+                "card_expire": "02/18",
+                "month_card_expire": "02",
+                "year_card_expire": "2018",
+                "security_code": "1234",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "1_visa_visa": {
+                "payment_qty" : "1",
+                "bank_name" : "Visa",
+                "bank_name_two_cards" : "Todos los bancos",
+                "credit_card_code" : "VI",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "123",
+                "documentType": "Cédula de Ciudadanía",
+                "document_number": "290987667654"
+            },
+
+            "1_visa_todopago": {
+                "payment_qty" : "1",
+                "bank_name" : "Visa",
+                "credit_card_code" : "VI",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4507990000000010",
+                "card_expire": "09/18",
+                "month_card_expire": "09",
+                "year_card_expire": "2018",
+                "security_code": "123",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "3_visa_visa": {
+                "payment_qty" : "3",
+                "bank_name" : "Visa",
+                "credit_card_code" : "VI",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "123",
+                "documentType": "Cédula de Ciudadanía",
+                "document_number": "290987667213"
+            },
+
+            "1_master_master": {
+                "payment_qty" : "1",
+                "bank_name" : "Mastercard",
+                "bank_name_two_cards" : "Todos los bancos",
+                "credit_card_code" : "CA",
+                "credit_card_name" : "Mastercard",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "5303710409428783",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "559",
+                "documentType": "Cédula de Ciudadanía",
+                "document_number": "290987667111"
             },
 
             "6_visa_visa": {
                 "payment_qty" : "6",
                 "bank_name" : "Visa",
+                "credit_card_code" : "VI",
                 "credit_card_name" : "Visa",
-                "card_holder": "Dueño Dí L'Tarjüeta",
-                "card_number": "4242424242424242",
-                "card_expire": "12/18",
-                "month_card_expire": "12",
-                "year_card_expire": "2022",
-                "security_code": "1234",
-                "documentType": "Cedula de ciudadania",
-                "document_number": "29098766"
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4559863683322976",
+                "card_expire": "08/18",
+                "month_card_expire": "08",
+                "year_card_expire": "2018",
+                "security_code": "559",
+                "documentType": "Cédula de Ciudadanía",
+                "document_number": "290987667654"
+            },
+
+            "cash": {
+                "credit_card_name" : "cash",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
+
+            "deposit": {
+                "credit_card_name" : "deposit",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
+
+            "transfer": {
+                "credit_card_name" : "transfer",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
+
+            "booking24": {
+                "credit_card_name" : "booking24",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
             }
     },
 
     "billings": {
         "local_Billing": {
             "fiscal_name":"Automation & Sarasa Associates Inc.",
-            "billing_fiscal_type":"Persona natural",
+            "billing_fiscal_type":"Persona Natural",
             "billing_document_type":"Cédula de Extranjería",
             "billing_fiscal_document": "23281685589",
             "billing_address": "Carlos Pellegrini",
@@ -306,12 +503,26 @@
             "address_city": "Bogotá"
         },
 
-        "local_Billing_v2": {
-            "fiscal_name":"Automation & Sarasa Associates Inc.",
+        "local_Billing_sucursales": {
+            "fiscal_name":"Sarasa and Automation Inc. & Associates",
             "billing_fiscal_type":"Persona Natural",
             "billing_document_type":"Cédula de Extranjería",
             "billing_fiscal_document": "23281685589",
-            "billing_address": "Carlos Pellegrini",
+            "billing_address": "Calle Falsa 123 11 C",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Bogotá D.C.",
+            "address_city": "Bogotá"
+        },
+
+        "local_Billing_sucursales_trips": {
+            "fiscal_name":"Sarasa and Automation Inc. & Associates",
+            "billing_fiscal_type":"Persona Natural",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "23281685589",
+            "billing_address": "Calle Falsa 123 11 C",
             "address_number": 887,
             "address_floor": 8,
             "address_department": "A",
@@ -334,7 +545,7 @@
         "contact_phone": {
             "email": "mock.of.arm@almundo.com",
             "rep_email": "mock.of.arm@almundo.com",
-            "tel": "Teléfono",
+            "tel": "Celular",
             "country_code": 54,
             "area": "011",
             "phone_number": "11112222"

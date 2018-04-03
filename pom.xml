@@ -10,8 +10,12 @@
 
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependencies>
 
+    <properties>
+        <jobDirectory>target</jobDirectory>
+    </properties>
+
+    <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -22,7 +26,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.0.1</version>
+            <version>3.4.0</version>
         </dependency>
 
         <dependency>
@@ -51,9 +55,41 @@
             <version>1.2.17</version>
         </dependency>
 
-    </dependencies>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.2.0</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.lightbody.bmp</groupId>
+            <artifactId>browsermob-core</artifactId>
+            <version>2.1.4</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
     <build>
+        <outputDirectory>${jobDirectory}/classes</outputDirectory>
+        <testOutputDirectory>${jobDirectory}/test-classes</testOutputDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -69,6 +105,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <!--<parallel>methods</parallel>-->
+                    <reportsDirectory>${jobDirectory}/reports</reportsDirectory>
                     <threadCount>20</threadCount>
                     <properties>
                         <property>

@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
+
 /**
  * Created by leandro.efron on 31/1/2017.
  */
@@ -27,11 +29,11 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         }
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /***************************** Test Cases *****************************/
 
     @Test
     public void openMainLeftBanner () {
-        logTestTitle("HomePage - Open Home Main left banner - " + countryPar );
+        logTestTitle("Open Home Main left banner");
         String promo_path = basePage.mainLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
         if(promo_path.contains("https://goo.")) {
             logger.info("Can't validate URL for: [" + promo_path + "]");
@@ -45,11 +47,12 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL item property is enabled");
             Assert.assertTrue(promoPage.urlItemProperty.isEnabled());
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
     public void openMainRightBanner () {
-        logTestTitle("HomePage - Open Home Main right banner - " + countryPar );
+        logTestTitle("Open Home Main right banner");
         String promoDisplayed_path = basePage.mainRightBannerLnk.findElement(By.cssSelector(" li[aria-hidden='false']>a")).getAttribute("href");
         String promoDisplayed_path_fix = promoDisplayed_path.replaceAll("\\s","");
 
@@ -63,11 +66,12 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promoDisplayed_path_fix + "]");
             Assert.assertTrue(driver.getCurrentUrl().contains(promoDisplayed_path_fix), "Current URL does not contain expected data");
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
     public void openPromoBox () {
-        logTestTitle("HomePage - Open Promotion box - " + countryPar );
+        logTestTitle("Open Promotion box");
         String promo_path = null;
         List<WebElement> promoBoxList = driver.findElements(By.cssSelector(".promo-section .promo-ctn"));
         for (WebElement promoBox: promoBoxList) {
@@ -84,22 +88,25 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
         PageUtils.waitImplicitly(2000);
         logger.info("Validating URL [" + driver.getCurrentUrl() + "] contains [" + promo_path + "]");
         Assert.assertTrue(driver.getCurrentUrl().contains(promo_path));
+        setResultSauceLabs(PASSED);
     }
 
-    @Test
+/*    @Test
     public void openHomeMedioLeftBanner () {
-        if (countryPar.equals("ARGENTINA")) {
-            logTestTitle("HomePage - Open Home Medio left banner - " + countryPar);
+        if (countryPar.equals(ARGENTINA)) {
+            logTestTitle("Open Home Medio left banner");
             String promo_path = basePage.homeMedioLeftBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
             promoPage = basePage.clickHomeMedioLeftBannerLnk();
             PageUtils.waitImplicitly(2000);
             logger.info("Validating URL [" + driver.getCurrentUrl() + "]");
             Assert.assertEquals(driver.getCurrentUrl(), promo_path, "Incorrect URL");
         }
-    }
+        setResultSauceLabs(PASSED);
+    }*/
 
-    @Test
+/*    @Test
     public void openHomeMedioRightBanner () {
+        logger.info("Wait");
         if (countryPar.equals("ARGENTINA")) {
             logTestTitle("HomePage - Open Home Medio right banner - " + countryPar);
             String promo_path = basePage.homeMedioRightBannerLnk.findElement(By.cssSelector("a")).getAttribute("href");
@@ -108,11 +115,11 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             logger.info("Validating URL [" + driver.getCurrentUrl() + "]");
             Assert.assertEquals(driver.getCurrentUrl(), promo_path, "Incorrect URL");
         }
-    }
+    }*/
 
     @Test
     public void validateCarouselBanners () {
-        logTestTitle("HomePage - Validate carousel banners are displayed - " + countryPar );
+        logTestTitle("Validate carousel banners are displayed");
         logger.info("Validating Home Principal carousel banners are displayed");
         List<WebElement> bannerNamesList = driver.findElements(By.cssSelector("#main-content .banner-list"));
         Assert.assertTrue(bannerNamesList.size()>0);
@@ -122,22 +129,24 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
             Assert.assertTrue(bannerName.findElements(By.cssSelector(".banner-item")).size()>0);
             logger.info("Banner Items: " + bannerName.findElements(By.cssSelector(".banner-item")).size());
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
     public void validateMainRightBannerDataLinks () {
-        logTestTitle("HomePage - Validate Main right banners contain data links in carousel - " + countryPar );
+        logTestTitle("Validate Main right banners contain data links in carousel");
         List <WebElement> elementList = driver.findElements(By.cssSelector("ul[name$='Home Principal Buscador Derecha'] a"));
         for (int i=1; i<=elementList.size(); i++) {
             String dataLinkBanner = elementList.get(i-1).getAttribute("href");
             Assert.assertFalse(dataLinkBanner.equals(""), "Data link banner [" + i + "] is empty");
             logger.info("Data link banner [" + i + "] - [" + dataLinkBanner + "]");
         }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
     public void validatePromoBoxesDisplayed () {
-        logTestTitle("HomePage - Validate promotion boxes are displayed - " + countryPar );
+        logTestTitle("Validate promotion boxes are displayed");
         logger.info("Validating promotion boxes are displayed");
         List<WebElement> promoBoxList = driver.findElements(By.cssSelector(".promo-section .promo-ctn"));
         Assert.assertTrue(promoBoxList.size()>0);
@@ -147,6 +156,6 @@ public class BannersAndPromoBoxesTest extends TestBaseSetup {
                 logger.info("Promo box: [" + promoBox.getAttribute("href") + "] is displayed");
             }
         }
+        setResultSauceLabs(PASSED);
     }
 }
-

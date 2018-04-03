@@ -1,8 +1,11 @@
 package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
+import com.almundo.browser.automation.utils.Constants;
+import com.almundo.browser.automation.utils.Constants.FlightType;
 import com.almundo.browser.automation.utils.PageUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +13,9 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.almundo.browser.automation.utils.Constants.Results.FAILED;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
  * Created by gabrielcespedes on 05/12/16.
@@ -22,8 +28,17 @@ public class FlightsDataTrip extends BasePage{
 
     //############################################### Locators ##############################################
 
-    @FindBy(name = "type-flights")
+    @FindBy(name = "class-flights")
     public WebElement flightTypeDdl;
+
+    @FindBy(css = "#main-content div:nth-child(1) > label > input")
+    private WebElement roundTripRbn;
+
+    @FindBy(css = "#main-content div:nth-child(2) > label > input")
+    private WebElement oneWayRbn;
+
+    @FindBy(css = "#main-content div:nth-child(3) > label > input")
+    private WebElement multiDestinationRbn;
 
     @FindBy(id = "origin-flights")
     public WebElement originFlightsTxt;
@@ -32,10 +47,10 @@ public class FlightsDataTrip extends BasePage{
     public WebElement destinationFlightsTxt;
 
     @FindBy(id = "departure-flights")
-    public WebElement departureFlightsCalendar;
+    private WebElement departureFlightsCalendar;
 
     @FindBy(id = "arrival-flights")
-    public WebElement arrivalFlightsCalendar;
+    private WebElement arrivalFlightsCalendar;
 
     @FindBy(name = "class-flights")
     public WebElement classFlightDdl;
@@ -78,10 +93,31 @@ public class FlightsDataTrip extends BasePage{
     public WebElement flightLegRow;
 
     @FindBy(id = "departure-flights-0")
-    public WebElement departureFlights0Calendar;
+    private WebElement departureFlights0Calendar;
 
     @FindBy(id = "departure-flights-1")
-    public WebElement departureFlights1Calendar;
+    private WebElement departureFlights1Calendar;
+
+
+    /********************************* Getters ********************************/
+
+    public WebElement getDepartureFlightsCalendar() {
+        return departureFlightsCalendar;
+    }
+
+    public WebElement getArrivalFlightsCalendar(){
+        return arrivalFlightsCalendar;
+    }
+
+    public WebElement getDepartureFlights2Calendar(){
+        return departureFlights0Calendar;
+    }
+
+    public WebElement getDepartureFlights3Calendar(){
+        return departureFlights1Calendar;
+    }
+
+
 
     //############################################### Actions ###############################################
 
@@ -99,14 +135,13 @@ public class FlightsDataTrip extends BasePage{
 
     public void clickAddHotelCbk() {
         PageUtils.waitElementForClickable(driver, addHotelCbx, 5, "Agregar hotel checkbox");
-        logger.info("Clicking on Agregar Hotel checkbox");
+        logger.info("Clicking on: [Agregar Hotel Checkbox]");
         addHotelCbx.click();
     }
 
     public FlightsResultsPage clickBuscarBtn() {
-        PageUtils.scrollToElement(driver, buscarBtn);
-        logger.info("Clicking on Buscar Button");
-        buscarBtn.click();
+        logger.info("Clicking on button: [Buscar]" );
+        clickBuscar();
         return initFlightsResultsPage();
     }
 
@@ -151,11 +186,22 @@ public class FlightsDataTrip extends BasePage{
         return elementList;
     }
 
-    public FlightsDataTrip selectFlightType(String flightType) {
-        PageUtils.waitElementForVisibility(driver, flightTypeDdl, 10, "Flight type drop down");
-        Select flightTypeSelect = new Select(flightTypeDdl);
+    public FlightsDataTrip selectFlightType(FlightType flightType) {
+        waitImplicitly(1500);
         logger.info("Selecting Flight Type: [" + flightType + "]");
-        flightTypeSelect.selectByVisibleText(flightType);
+        try {
+            switch (flightType.toString()){
+                case "Solo ida": oneWayRbn.click();
+                    break;
+                case "Ida y vuelta": roundTripRbn.click();
+                    break;
+                case "Varias ciudades": multiDestinationRbn.click();
+                    break;
+            }
+        }catch(NoSuchElementException ouch){
+            logger.info("Couldn't select flight type failing the test :( ");
+            setResultSauceLabs(FAILED);
+        }
         return this;
     }
 
@@ -173,7 +219,7 @@ public class FlightsDataTrip extends BasePage{
         logger.info("Entering Flight Origin: [" + origin + "]");
         originFlightsTxt.clear();
         originFlightsTxt.sendKeys(origin);
-        PageUtils.waitImplicitly(3000);
+        waitImplicitly(3000);
         return this;
     }
 
@@ -197,6 +243,7 @@ public class FlightsDataTrip extends BasePage{
     }
 
     public FlightsDataTrip selectPassenger(int adults, int childs) {
+        waitImplicitly(1000);
         personasTxt.click();
 
         if (adults>1){

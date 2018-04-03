@@ -1,6 +1,6 @@
 package com.almundo.browser.automation.pages.CheckOutPageV3;
 
-import com.almundo.browser.automation.utils.PageUtils;
+import com.almundo.browser.automation.utils.ThanksPageAssertInfo;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -9,7 +9,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.almundo.browser.automation.utils.PageUtils.randomString;
 
 /**
  * Created by gabrielcespedes on 12/12/16.
@@ -27,7 +30,9 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     private static List<WebElement> docTypeList = null;
     private static List<WebElement> docNumberList = null;
     private static List<WebElement> docEmisorList = null;
-    private static List<WebElement> docExpirationList = null;
+    private static List<WebElement> dayDocExpirationList = null;
+    private static List<WebElement> monthDocExpirationList = null;
+    private static List<WebElement> yearDocExpirationList = null;
     private static List<WebElement> dayBirthdayList = null;
     private static List<WebElement> monthBirthdayList = null;
     private static List<WebElement> yearBirthdayList = null;
@@ -48,7 +53,10 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
     @FindBy(css = "passengers-form #number")
     private WebElement doc_number;
 
-    @FindBy(id = "birthday")
+    @FindBy(id = "document_emisor")
+    private WebElement doc_emisor;
+
+    @FindBy(css = "#passengers-section passengers-form .container-day select")
     private WebElement birthday;
 
     @FindBy(id = "gender")
@@ -59,123 +67,182 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
     //############################################### Actions ###############################################
 
-    public PassengerSectionV3 populatePassengerSection(JSONArray passengerList){
+    public PassengerSectionV3 populatePassengerSection(JSONArray passengerList) {
         logger.info("------------- Filling Passenger Section -------------");
+
         JSONObject passengerInfo;
         setFirstNameList();
         setLastNameList();
         setDocTypeList();
         setDocNumberList();
+        setDocEmisorList();
+        setDocExpirationList();
         setBirthdayList();
         setGenderList();
         setNationalityList();
+
+        String randomFirstName = "";
+        String randomLastName = "";
+        String documentNumber = "";
+
+        logger.info("Initializing Passenger List Info for Assertions.");
+        thanksPageAssertInfo.initPassengerList();
+
         for(int passengerIndex = 0; passengerIndex <= passengerList.size()-1; passengerIndex++ ){
+
             logger.info("************ Filling Passenger [" + passengerIndex + "] ************");
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
-            setFirstName(passengerIndex, passengerInfo.get("first_name").toString());
-            setlastName(passengerIndex, passengerInfo.get("last_name").toString());
+            if(inputDef.isRequired("passengers","first_name",passengerIndex)) {
+                randomFirstName = randomString(15);
+                setFirstName(passengerIndex, randomFirstName);}
 
-            if(isElementRequiered(checkOutPageElements, "documentType0")) {
+            if(inputDef.isRequired("passengers","last_name",passengerIndex)){
+                randomLastName = randomString(15);
+                setlastName(passengerIndex, randomLastName);}
+
+            if(inputDef.isRequired("passengers","document", passengerIndex)) {
                 setDocumentType(passengerIndex, passengerInfo.get("documentType").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "document_number")){
-                setDocumentNumber(passengerIndex, passengerInfo.get("document_number").toString());}
+            if(inputDef.isRequired("passengers","document", passengerIndex)){
+                documentNumber = passengerInfo.get("document_number").toString();
+                setDocumentNumber(passengerIndex, documentNumber);}
 
-            if(isElementRequiered(checkOutPageElements, "document_emisor")) {
+            if(inputDef.isRequired("passengers","document_emisor",passengerIndex)) {
                 setDocumentEmisor(passengerIndex, passengerInfo.get("document_emisor").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "document_expiration")) {
+            if(inputDef.isRequired("passengers","document_expiration",passengerIndex)) {
                 setDocumentExpiration(passengerIndex, passengerInfo.get("document_expiration").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "birthday")) {
+            if(inputDef.isRequired("passengers","birthday",passengerIndex)) {
                 setBirthDay(passengerIndex, passengerInfo.get("birthday").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "gender")) {
+            if(inputDef.isRequired("passengers","gender",passengerIndex)) {
                 setGender(passengerIndex, passengerInfo.get("gender").toString());}
 
-            if(isElementRequiered(checkOutPageElements, "nationality")) {
+            if(inputDef.isRequired("passengers","nationality",passengerIndex)) {
                 setNationality(passengerIndex, passengerInfo.get("nationality").toString());}
+
+            thanksPageAssertInfo.passengersList.add(new ThanksPageAssertInfo.Passenger(randomFirstName + " " + randomLastName , documentNumber));
         }
         return this;
     }
 
-    public void setFirstNameList() {
+    private void setFirstNameList() {
         firstNameList = driver.findElements(By.id("first_name"));
     }
 
-    public void setLastNameList() {
+    private void setLastNameList() {
         lastNameList = driver.findElements(By.id("last_name"));
     }
 
-    public void setDocTypeList() {
+    private void setDocTypeList() {
         docTypeList = driver.findElements(By.cssSelector("passengers-form #document_type"));
     }
 
-    public void setDocNumberList() {
+    private void setDocNumberList() {
         docNumberList = driver.findElements(By.cssSelector("passengers-form #number"));
     }
 
-    public void setBirthdayList() {
-        dayBirthdayList = driver.findElements(By.cssSelector(".day"));
-        monthBirthdayList = driver.findElements(By.cssSelector(".month"));
-        yearBirthdayList = driver.findElements(By.cssSelector(".year"));
+    private void setDocEmisorList() {
+        docEmisorList = driver.findElements(By.id("document_emisor"));
     }
 
-    public void setGenderList() {
+    private void setDocExpirationList() {
+        dayDocExpirationList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(4) .container-day select"));
+        monthDocExpirationList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(4) .container-month select"));
+        yearDocExpirationList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(4) .container-year select"));
+    }
+
+    private void setBirthdayList() {
+        dayBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(3) > div:nth-child(1) .container-day select"));
+        monthBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(3) > div:nth-child(1) .container-month select"));
+        yearBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(3) > div:nth-child(1) .container-year select"));
+    }
+
+    private void setBirthdayListTwo() {
+        dayBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(1) .container-day select"));
+        monthBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(1) .container-month select"));
+        yearBirthdayList = driver.findElements(By.cssSelector("#passengers-section passengers-form div:nth-child(2) > div:nth-child(1) .container-year select"));
+    }
+
+    private void setGenderList() {
         genderList = driver.findElements(By.id("gender"));
     }
 
-    public void setNationalityList() {
+    private void setNationalityList() {
         nationalityList = driver.findElements(By.id("nationality"));
     }
 
-    public PassengerSectionV3 setFirstName(int index, String firstName){
-        PageUtils.waitElementForVisibility(driver, first_name, 45, "First Name text box");
+    private PassengerSectionV3 setFirstName(int index, String firstName){
         logger.info("Entering Nombre/s: [" + firstName + "]");
         firstNameList.get(index).clear();
         firstNameList.get(index).sendKeys(firstName);
         return this;
     }
 
-    public PassengerSectionV3 setlastName(int index, String lastName){
+    private PassengerSectionV3 setlastName(int index, String lastName){
         logger.info("Entering Apellido/s: [" + lastName + "]");
         lastNameList.get(index).clear();
         lastNameList.get(index).sendKeys(lastName);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentType(int index, String documentType){
+    private PassengerSectionV3 setDocumentType(int index, String documentType){
         logger.info("Selecting Tipo de documento: [" + documentType + "]");
         Select tipoDeDocumento = new Select(docTypeList.get(index));
         tipoDeDocumento.selectByVisibleText(documentType);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentNumber(int index, String docNumber){
+    private PassengerSectionV3 setDocumentNumber(int index, String docNumber){
         logger.info("Entering Número: [" + docNumber + "]");
         docNumberList.get(index).clear();
         docNumberList.get(index).sendKeys(docNumber);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentEmisor(int index, String documentEmisorPassenger){
-        List<WebElement> documentEmisorList = driver.findElements(By.id("documentEmisor"));
-        logger.info("Selecting País emisor del pasaporte: [" + documentEmisorPassenger + "]");
-        Select paisEmisorDelPasaporte = new Select(documentEmisorList.get(index));
-        paisEmisorDelPasaporte.selectByVisibleText(documentEmisorPassenger);
+    private PassengerSectionV3 setDocumentEmisor(int index, String country){
+        List<WebElement> documentEmisorList = driver.findElements(By.id("document_emisor"));
+        logger.info("Selecting País emisor del pasaporte: [" + country + "]");
+        Select countryIssuingPassport = new Select(documentEmisorList.get(index));
+        countryIssuingPassport.selectByVisibleText(country);
         return this;
     }
 
-    public PassengerSectionV3 setDocumentExpiration(int index, String documentExpirationPassenger){
-        List<WebElement> documentExpirationList = driver.findElements(By.id("documentExpiration"));
-        logger.info("Entering Fecha de venc. del documento: [" + documentExpirationPassenger + "]");
-        documentExpirationList.get(index).clear();
-        documentExpirationList.get(index).sendKeys(documentExpirationPassenger);
+    private PassengerSectionV3 setDocumentExpiration(int index, String docExpirationDay){
+
+        String day;
+        String month;
+
+        if(String.valueOf(docExpirationDay.charAt(0)).equals("0")) {
+            day = String.valueOf(docExpirationDay.charAt(1));
+        } else {
+            day = String.valueOf(docExpirationDay.charAt(0)) + String.valueOf(docExpirationDay.charAt(1));
+        }
+
+        if(String.valueOf(docExpirationDay.charAt(3)).equals("0")) {
+            month = String.valueOf(docExpirationDay.charAt(4));
+        } else {
+            month = String.valueOf(docExpirationDay.charAt(3)) + String.valueOf(docExpirationDay.charAt(4));
+        }
+
+        String year = String.valueOf(docExpirationDay.charAt(6)) + String.valueOf(docExpirationDay.charAt(7)) + String.valueOf(docExpirationDay.charAt(8)) + String.valueOf(docExpirationDay.charAt(9));
+
+        logger.info("Entering Fecha de venc. del documento: [" + docExpirationDay + "]");
+        Select dayExpiration = new Select (dayDocExpirationList.get(index));
+        dayExpiration.selectByVisibleText(day);
+
+        Select monthBirthday = new Select (monthDocExpirationList.get(index));
+        monthBirthday.selectByValue(month);
+
+        Select yearBirthday = new Select (yearDocExpirationList.get(index));
+        yearBirthday.selectByVisibleText(year);
+
         return this;
     }
 
-    public PassengerSectionV3 setBirthDay(int index, String birthday){
+    private PassengerSectionV3 setBirthDay(int index, String birthday){
 
         String day;
         String month;
@@ -194,8 +261,16 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
 
         String year = String.valueOf(birthday.charAt(6)) + String.valueOf(birthday.charAt(7)) + String.valueOf(birthday.charAt(8)) + String.valueOf(birthday.charAt(9));
 
+        Select dayBirthday =  null;
         logger.info("Entering Fecha de Nacimiento: [" + birthday + "]");
-        Select dayBirthday = new Select (dayBirthdayList.get(index));
+
+        try {
+            dayBirthday = new Select(dayBirthdayList.get(index));
+        }catch(IndexOutOfBoundsException ouch){
+            setBirthdayListTwo();
+            dayBirthday = new Select(dayBirthdayList.get(index));
+        }
+
         dayBirthday.selectByVisibleText(day);
 
         Select monthBirthday = new Select (monthBirthdayList.get(index));
@@ -207,14 +282,14 @@ public class PassengerSectionV3 extends CheckOutPageV3 {
         return this;
     }
 
-    public PassengerSectionV3 setGender(int index, String gender){
+    private PassengerSectionV3 setGender(int index, String gender){
         logger.info("Selecting Sexo: [" + gender + "]");
         Select sexo = new Select(genderList.get(index));
         sexo.selectByVisibleText(gender);
         return this;
     }
 
-    public PassengerSectionV3 setNationality(int index, String nationality){
+    private PassengerSectionV3 setNationality(int index, String nationality){
         logger.info("Selecting Nacionalidad: [" + nationality + "]");
         Select nacionalidad = new Select(nationalityList.get(index));
         nacionalidad.selectByVisibleText(nationality);

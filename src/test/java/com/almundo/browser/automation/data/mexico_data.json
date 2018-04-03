@@ -1,10 +1,10 @@
 {
     "flights": {
             "miami_10days_2adults_2childs_turista": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
-                "destinationFull": "Miami, Estados Unidos de América",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
                 "startDate": 10,
                 "endDate": 10,
                 "adults": 2,
@@ -13,10 +13,23 @@
                 "flightClass": "Turista"
             },
 
+            "miami_10days_2adults_turista": {
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
+                "destinationAuto": "Mia",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
+                "startDate": 10,
+                "endDate": 10,
+                "adults": 2,
+                "childs": 0,
+                "childAgeRange": "",
+                "flightClass": "Turista"
+            },
+
             "domestic_20days_2adults_todas": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
-                "destinationAuto": "Can",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
+                "destinationAuto": "Canc",
                 "destinationFull": "Cancún, Quintana Roo, México",
                 "startDate": 30,
                 "endDate": 20,
@@ -27,18 +40,18 @@
             },
 
             "multiDest_3Flights_2adults_todas": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
-                "destinationFull": "Miami, Estados Unidos de América",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
                 "originAuto2": "Mia",
-                "originFull2": "Miami, Estados Unidos de América",
+                "originFull2": "Miami, Florida, Estados Unidos de América",
                 "destinationAuto2": "Nue",
                 "destinationFull2": "Nueva York, Nueva York, Estados Unidos de América",
                 "originAuto3": "Nue",
                 "originFull3": "Nueva York, Nueva York, Estados Unidos de América",
-                "destinationAuto3": "Dis",
-                "destinationFull3": "Ciudad de México, Distrito Federal, México",
+                "destinationAuto3": "Ciu",
+                "destinationFull3": "Ciudad de México, Ciudad de México, México",
                 "startDate": 15,
                 "startDate2": 20,
                 "startDate3": 25,
@@ -48,10 +61,10 @@
                 "flightClass": "Todas"
             },
 
-        "domestic_30days_2adults_todas": {
-            "originAuto": "Dis",
-            "originFull": "Ciudad de México, Distrito Federal, México",
-            "destinationAuto": "Can",
+            "domestic_30days_2adults_todas": {
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
+            "destinationAuto": "Canc",
             "destinationFull": "Cancún, Quintana Roo, México",
             "startDate": 25,
             "endDate": 30,
@@ -65,13 +78,23 @@
     "hotels": {
             "miami_10days_2adults_2childs_1room": {
                 "destinationAuto": "Mia",
-                "destinationFull": "Miami, Estados Unidos de América",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
                 "startDate": 10,
                 "endDate": 10,
                 "adults": 2,
                 "childs": 2,
                 "rooms": 1
             },
+
+            "miami_10days_2adults_1room": {
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Florida, Estados Unidos de América",
+            "startDate": 10,
+            "endDate": 10,
+            "adults": 2,
+            "childs": 0,
+            "rooms": 1
+        },
 
             "domestic01_15days_2adults_1room": {
                 "destinationAuto": "Aca",
@@ -96,10 +119,10 @@
 
     "trips": {
             "miami_10days_2adults_2childs_1room": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "Mia",
-                "destinationFull": "Miami, Estados Unidos de América",
+                "destinationFull": "Miami, Florida, Estados Unidos de América",
                 "startDate": 10,
                 "endDate": 10,
                 "adults": 2,
@@ -109,9 +132,9 @@
             },
 
             "domestic01_15days_2adults_1childs_1room": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
-                "destinationAuto": "Can",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
+                "destinationAuto": "Canc",
                 "destinationFull": "Cancún, Quintana Roo, México",
                 "startDate": 20,
                 "endDate": 20,
@@ -122,8 +145,8 @@
             },
 
             "int02_20days_2adults_1childs_1room": {
-                "originAuto": "Dis",
-                "originFull": "Ciudad de México, Distrito Federal, México",
+                "originAuto": "Ciu",
+                "originFull": "Ciudad de México, México",
                 "destinationAuto": "San",
                 "destinationFull": "Santiago de Chile, Chile",
                 "startDate": 34,
@@ -133,10 +156,24 @@
                 "childAgeRange": "Entre 2 y 11 años",
                 "rooms": 1
             },
-        "domestic02_20days_2adults_1childs_1room": {
-            "originAuto": "Dis",
-            "originFull": "Ciudad de México, Distrito Federal, México",
-            "destinationAuto": "Can",
+
+            "int02_20days_2adults_1room": {
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Florida, Estados Unidos de América",
+            "startDate": 34,
+            "endDate": 5,
+            "adults": 2,
+            "childs": 0,
+            "childAgeRange": "Entre 2 y 11 años",
+            "rooms": 1
+        },
+
+            "domestic02_20days_2adults_1childs_1room": {
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
+            "destinationAuto": "Canc",
             "destinationFull": "Cancún, Quintana Roo, México",
             "startDate": 25,
             "endDate": 20,
@@ -149,12 +186,12 @@
 
     "cars": {
         "capital_10days_entre_21_24": {
-            "originAuto": "Dis",
-            "originFull": "Ciudad de México, Distrito Federal, México",
-            "destinationAuto": "Dis",
-            "destinationFull": "Ciudad de México, Distrito Federal, México",
-            "startDate": 10,
-            "endDate": 10,
+            "originAuto": "Ciu",
+            "originFull": "Ciudad de México, México",
+            "destinationAuto": "Ciu",
+            "destinationFull": "Ciudad de México, México",
+            "startDate": 25,
+            "endDate": 40,
             "pickUpTime": "12:00",
             "dropOffTime": "12:00",
             "ageRange": "Entre 21 y 24 años"
@@ -164,12 +201,23 @@
             "originAuto": "Mia",
             "originFull": "Miami, Estados Unidos de América",
             "destinationAuto": "Mia",
-            "destinationFull": "Miami, Estados Unidos de América",
-            "startDate": 10,
-            "endDate": 10,
+            "destinationFull": "Miami, Florida, Estados Unidos de América",
+            "startDate": 25,
+            "endDate": 40,
             "pickUpTime": "12:00",
             "dropOffTime": "12:00",
             "ageRange": "Entre 21 y 24 años"
+        }
+    },
+
+    "assistance": {
+        "miami_10days_2persons_unique": {
+            "tripType": "Único viaje",
+            "destinationAuto": "Mia",
+            "destinationFull": "Miami, Florida, Estados Unidos de América",
+            "startDate": 25,
+            "endDate": 10,
+            "persons": 2
         }
     },
 
@@ -180,7 +228,7 @@
                 "documentType": "Pasaporte",
                 "document_number": "29098765N",
                 "document_emisor": "México",
-                "document_expiration": "25/12/2017",
+                "document_expiration": "25/12/2019",
                 "birthday": "09/09/1979",
                 "gender": "Masculino",
                 "nationality": "México"
@@ -192,7 +240,7 @@
                 "documentType": "Pasaporte",
                 "document_number": "29098766",
                 "document_emisor": "México",
-                "document_expiration": "25/12/2017",
+                "document_expiration": "25/12/2019",
                 "birthday": "09/09/1979",
                 "gender": "Femenino",
                 "nationality": "México"
@@ -204,7 +252,7 @@
                 "documentType": "Pasaporte",
                 "document_number": "29098766",
                 "document_emisor": "Italia",
-                "document_expiration": "25/12/2017",
+                "document_expiration": "25/12/2019",
                 "birthday": "09/09/1979",
                 "gender": "Femenino",
                 "nationality": "Italia"
@@ -216,7 +264,7 @@
                 "documentType": "Pasaporte",
                 "document_number": "290987567N",
                 "document_emisor": "México",
-                "document_expiration": "25/12/2017",
+                "document_expiration": "25/12/2019",
                 "birthday": "09/09/2010",
                 "gender": "Masculino",
                 "nationality": "México"
@@ -225,10 +273,34 @@
             "child_female_native": {
                 "first_name": "Ñímis",
                 "last_name": "O' Tool",
-                "documentType": "DNI",
+                "documentType": "Pasaporte",
                 "document_number": "29098757",
                 "document_emisor": "México",
-                "document_expiration": "25/12/2017",
+                "document_expiration": "25/12/2019",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "México"
+            },
+
+            "child_female_native_trips": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
+                "document_number": "29098757",
+                "document_emisor": "México",
+                "document_expiration": "25/12/2019",
+                "birthday": "09/09/2010",
+                "gender": "Femenino",
+                "nationality": "México"
+            },
+
+            "child_female_native_trips_domestic": {
+                "first_name": "Ñímis",
+                "last_name": "O' Tool",
+                "documentType": "Pasaporte",
+                "document_number": "29098757",
+                "document_emisor": "México",
+                "document_expiration": "25/12/2019",
                 "birthday": "09/09/2010",
                 "gender": "Femenino",
                 "nationality": "México"
@@ -260,47 +332,189 @@
     },
 
     "payment":{
-        "1_amex_amex": {
-            "payment_qty" : "1",
-            "bank_name" : "American Express",
-            "credit_card_name" : "American Express",
-            "card_holder": "Dueño Dí L'Tarjüeta",
-            "card_number": "4242424242424242",
-            "card_expire": "12/18",
-            "month_card_expire": "12",
-            "year_card_expire": "2022",
-            "security_code": "1234",
-            "documentType": "DNI",
-            "document_number": "29098766"
-        },
-        "6_visa_visa": {
-            "payment_qty" : "6",
-            "bank_name" : "Visa",
-            "credit_card_name" : "Visa",
-            "card_holder": "Dueño Dí L'Tarjüeta",
-            "card_number": "4242424242424242",
-            "card_expire": "12/18",
-            "month_card_expire": "12",
-            "year_card_expire": "2022",
-            "security_code": "1234",
-            "documentType": "DNI",
-            "document_number": "29098766"
-        }
+            "random": {
+                "payment_qty" : "random",
+                "bank_name" :"random",
+                "credit_card_name" : "random",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "1_amex_amex": {
+                "payment_qty" : "1",
+                "bank_name" : "American Express",
+                "bank_name_two_cards" : "Todos los bancos",
+                "credit_card_code" : "AMEXMX",
+                "credit_card_name" : "American Express",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "376636212881194",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2022",
+                "security_code": "1234",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "1_visa_visa": {
+                "payment_qty" : "1",
+                "bank_name" : "BBVA Bancomer",
+                "bank_name_two_cards" : "Todos los bancos",
+                "credit_card_code" : "BCMR",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "999",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "1_visa_todopago": {
+                "payment_qty" : "1",
+                "bank_name" : "Visa",
+                "credit_card_code" : "VI",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4507990000000010",
+                "card_expire": "09/18",
+                "month_card_expire": "09",
+                "year_card_expire": "2018",
+                "security_code": "123",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "3_visa_visa": {
+                "payment_qty" : "3",
+                "bank_name" : "BCMR",
+                "credit_card_code" : "VI",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4242424242424242",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "123",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "1_master_master": {
+                "payment_qty" : "1",
+                "bank_name" : "BBVA Bancomer",
+                "bank_name_two_cards" : "Todos los bancos",
+                "credit_card_code" : "BCMR",
+                "credit_card_name" : "Mastercard",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "5425233430109903",
+                "card_expire": "12/18",
+                "month_card_expire": "12",
+                "year_card_expire": "2018",
+                "security_code": "617",
+                "documentType": "Cédula de Ciudadanía",
+                "document_number": "29098766"
+            },
+
+            "6_visa_visa": {
+                "payment_qty" : "6",
+                "bank_name" : "Visa",
+                "credit_card_code" : "BCMR",
+                "credit_card_name" : "Visa",
+                "card_holder": "Titular Tarjeta",
+                "card_number": "4263982640269299",
+                "card_expire": "02/18",
+                "month_card_expire": "02",
+                "year_card_expire": "2018",
+                "security_code": "775",
+                "documentType": "DNI",
+                "document_number": "29098766"
+            },
+
+            "cash": {
+                "credit_card_name" : "cash",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
+
+            "deposit": {
+                "credit_card_name" : "deposit",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
+
+            "transfer": {
+                "credit_card_name" : "transfer",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            },
+
+            "booking24": {
+                "credit_card_name" : "booking24",
+                "card_holder": "",
+                "card_number": "",
+                "card_expire": "",
+                "month_card_expire": "",
+                "year_card_expire": "",
+                "security_code": "",
+                "documentType": "",
+                "document_number": ""
+            }
     },
 
     "billings": {
         "local_Billing": {
-            "fiscal_name":"",
-            "billing_fiscal_type":"",
-            "billing_document_type":"",
-            "billing_fiscal_document": "",
-            "billing_address": "",
-            "address_number": "",
-            "address_floor": "",
-            "address_department": "",
-            "address_postal_code": "",
-            "address_state": "",
-            "address_city": ""
+            "fiscal_name":"Automation & Sarasa Associates Inc.",
+            "billing_fiscal_type":"Persona Física",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "RICA800925PL7",
+            "billing_address": "Requete Chanfle",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Baja California",
+            "address_city": "Mexico D.F."
+        },
+
+        "local_Billing_sucursales": {
+            "fiscal_name":"Automation & Sarasa Associates Inc.",
+            "billing_fiscal_type":"Persona Física",
+            "billing_document_type":"Cédula de Extranjería",
+            "billing_fiscal_document": "RICA800925PL7",
+            "billing_address": "Requete Chanfle",
+            "address_number": 887,
+            "address_floor": 8,
+            "address_department": "A",
+            "address_postal_code": "C1009ABQ",
+            "address_state": "Baja California",
+            "address_city": "Mexico D.F."
         }
     },
 
@@ -317,7 +531,7 @@
         "contact_phone": {
             "email": "mock.of.arm@almundo.com",
             "rep_email": "mock.of.arm@almundo.com",
-            "tel": "Teléfono",
+            "tel": "Celular",
             "country_code": 54,
             "area": "011",
             "phone_number": "11112222"

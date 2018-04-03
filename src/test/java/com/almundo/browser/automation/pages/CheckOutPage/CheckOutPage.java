@@ -44,22 +44,51 @@ public class CheckOutPage extends TestBaseSetup {
     @FindBy(css = ".button.button--lg.button--secondary")
     public WebElement comprarBtn;
 
+    @FindBy(css = ".price__amount")
+    public WebElement totalPrice;
+
+    @FindBy(css = "#product-resume product-detail am-flights-cluster > div > div:nth-child(1) am-flight-choice .origin .iata.hint--top-right")
+    public WebElement originAirport;
+
+    @FindBy(css = "#product-resume product-detail am-flights-cluster > div > div:nth-child(2) am-flight-choice .origin .iata.hint--top-right")
+    public WebElement destinationAirport;
+
+    @FindBy(css = "#product-resume am-flights-cluster div:nth-child(1) > div > div > label am-flight-choice .airline > span")
+    public WebElement airlineName;
+
+    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(1) > h3 > span.date")
+    public WebElement startDate;
+
+    @FindBy(css = "#product-resume section > div:nth-child(2) > product-detail am-flights-cluster > div > div:nth-child(2) > h3 > span.date")
+    public WebElement endDate;
+
     @FindBy(id = "assistance_yes")
     public WebElement assistanceRdb;
 
     //############################################### Actions ##############################################
 
     public ConfirmationPage clickComprarBtn(){
-        logger.info("Clicking on Comprar Button.");
-        comprarBtn.click();
+        if((baseURL.contains("st.almundo") || baseURL.contains("staging.almundo")) && submitReservation) {
+            logger.info("Clicking on Comprar Button");
+            comprarBtn.click();
+        } else {
+            logger.info("Condition is not approved to submit reservation");
+        }
         return initConfirmationPage();
     }
 
     public CheckOutPage selectAssistanceRdb(){
         PageUtils.waitElementForVisibility(driver, By.id("assistance_yes"), 45, "Include Insurance Radio Button.");
-        logger.info("Clicking on Insurance.");
+        logger.info("Clicking on Insurance Assistance");
         assistanceRdb.click();
         return this;
+    }
+
+    public int getTotalPrice() {
+        logger.info("Total Price: [" + totalPrice.getText() + "]");
+        String price = (totalPrice.getText().replace(".", ""));
+        price = price.replaceAll("\\s","");
+        return Integer.parseInt(price);
     }
 
     public static boolean isElementRequiered(JSONObject JSONElementsRead, String element){
@@ -80,9 +109,12 @@ public class CheckOutPage extends TestBaseSetup {
                                              JSONObject paymentData,
                                              JSONObject billingData,
                                              JSONObject contactData,
-                                             String productCheckOutPage)
+                                             String productCheckOutPage,
+                                             boolean includeAssistance)
     {
         getCheckOutPageElements(productCheckOutPage);
+        waitForCheckoutLoad();
+        if(includeAssistance){selectAssistanceRdb();}
         passengerSection().populatePassengerSection(passengerList);
         pickUpLocationSection().populatePickUpLocationSection();
         paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
@@ -92,22 +124,9 @@ public class CheckOutPage extends TestBaseSetup {
         return this;
     }
 
-    public CheckOutPage populateCheckOutPage(JSONArray passengerList,
-                                             JSONObject paymentData,
-                                             JSONObject billingData,
-                                             JSONObject contactData,
-                                             String productCheckOutPage,
-                                             boolean includeAssistance)
-    {
-        getCheckOutPageElements(productCheckOutPage);
-        if(includeAssistance){selectAssistanceRdb();}
-        passengerSection().populatePassengerSection(passengerList);
-        pickUpLocationSection().populatePickUpLocationSection();
-        paymentSection().selectPaymentOption(paymentData, productCheckOutPage);
-        billingSection().populateBillingSection(billingData);
-        contactSection().populateContactSection(contactData);
-        acceptConditions();
-        return this;
+    public void waitForCheckoutLoad(){
+        PageUtils.waitElementForVisibility(driver, By.id("first_name0"), 45, "Checkout Page");
+        logger.info("Checkout URL: " + "[" + driver.getCurrentUrl() + "]");
     }
 
     private CheckOutPage acceptConditions(){

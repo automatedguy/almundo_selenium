@@ -7,8 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.List;
+
+import static com.almundo.browser.automation.utils.PageUtils.waitElementForClickable;
+import static com.almundo.browser.automation.utils.PageUtils.waitImplicitly;
 
 /**
  * Created by leandro.efron on 25/11/2016.
@@ -18,6 +22,9 @@ public class PaymentSection extends CheckOutPage {
     public PaymentSection(WebDriver driver) {
         super(driver);
     }
+
+    private static WebElement paymentQtySelected = null;
+    private static WebElement creditCardSelected = null;
 
     //############################################### Locators ##############################################
 
@@ -45,11 +52,21 @@ public class PaymentSection extends CheckOutPage {
     @FindBy(id = "document_number")
     private WebElement document_number;
 
+    @FindBy(id = "cardselect")
+    public WebElement creditCardDdl;
+
+    @FindBy(id = "cantselect")
+    public WebElement paymentQtyDdl;
+
+    @FindBy(css = "#changeFOP")
+    public WebElement changeCardLnk;
+
     //############################################### Actions ###############################################
 
     public PaymentSection populatePaymentSection(JSONObject paymentData, String product){
-        selectPaymentQtyOption(0);
-        selectBankOption(paymentData.get("credit_card_name").toString());
+        selectPaymentQty(paymentData.get("payment_qty").toString());
+        selectCreditCard(paymentData.get("credit_card_code").toString());
+        selectBank(paymentData.get("credit_card_name").toString());
         setCardHolder(paymentData.get("card_holder").toString());
         setCardNumber(paymentData.get("card_number").toString());
         if(product.contains("Hotels") || product.contains("Cars") || product.contains("Flights")) {
@@ -68,27 +85,51 @@ public class PaymentSection extends CheckOutPage {
         return this;
     }
 
-    private void selectPaymentQtyOption(int index) {
-        List<WebElement> results = driver.findElements(By.cssSelector(".cards__definition__header>div:nth-of-type(1)>.display-table>p:nth-of-type(1)"));
-        PageUtils.scrollToElement(driver, results.get(0));
-        PageUtils.scrollToCoordinate(driver, -230);
-        results.get(index).click();
-    }
+    public void selectPaymentQty(String qty) {
+        List<WebElement> paymentList = driver.findElements(By.cssSelector(".payment"));
+        boolean found = false;
 
-    private void selectBankOption(String cardName) {
-        List<WebElement> cardNames = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>label>span"));
-        List<WebElement> radioButtons = driver.findElements(By.cssSelector(".cards__definition__banks>div>p>input"));
-        for (int i = 0; i < cardNames.size(); ++i) {
-            WebElement cardNameElement = cardNames.get(i);
-            WebElement radioButtonElement = radioButtons.get(i);
-            if (cardNameElement.getText().equals(cardName)) {
-                logger.info("Selecting card name: [" + cardName + "]");
-                while (!radioButtonElement.isSelected()){
-                    radioButtonElement.click();
-                }
+        for (WebElement payment : paymentList) {
+            if(payment.getText().replace("\n", " ").contains(qty)) {
+                PageUtils.scrollToElement(driver, payment);
+                PageUtils.scrollToCoordinate(driver, -230);
+                logger.info("Selecting [" + qty + "] payment/s option");
+                payment.click();
+                found = true;
+                paymentQtySelected = payment;
                 break;
             }
         }
+        Assert.assertTrue(found, "Payment [" + qty + "] " + "is not displayed");
+    }
+
+    public void selectCreditCard(String creditCardCode) {
+        List<WebElement> creditCardList = driver.findElements(By.cssSelector(".payment-method-info .logo"));
+        boolean found = false;
+        for (WebElement creditCard : creditCardList) {
+            if(creditCard.getAttribute("alt").equals(creditCardCode)) {
+                logger.info("Getting [" + creditCard.getAttribute("alt").toString() + "] credit card row");
+                creditCard.click();
+                found = true;
+                break;
+            }
+        }
+        Assert.assertTrue(found, "Credit Card [" + creditCardCode + "] " + "is not displayed");
+    }
+
+    public void selectBank(String bankName) {
+        List<WebElement> bankList = driver.findElements(By.cssSelector(".bank .header-bank .logo-banks"));
+        boolean found = false;
+
+        for (WebElement bank : bankList) {
+            if(bank.getAttribute("alt").toString().equals(bankName)) {
+                logger.info("Selecting [" + bank.getAttribute("alt").toString() + "] bank option");
+                bank.click();
+                found = true;
+                break;
+            }
+        }
+        Assert.assertTrue(found, "Bank [" + bankName + "] " + "is not displayed");
     }
 
     private void setCardHolder(String cardHolder) {
@@ -139,6 +180,16 @@ public class PaymentSection extends CheckOutPage {
         document_number.sendKeys(documentNumber);
     }
 
+    public void selectOtherPayment(String creditCardName, String paymentQty) {
+        logger.info("Selecting Credit Card: [" + creditCardName + "]");
+        Select selectCreditCard = new Select (creditCardDdl);
+        selectCreditCard.selectByVisibleText(creditCardName);
+
+        logger.info("Selecting Payment Quantity: [" + paymentQty + "]");
+        Select selectPaymentQty = new Select (paymentQtyDdl);
+        selectPaymentQty.selectByVisibleText(paymentQty);
+    }
+
     public PaymentSection selectPaymentOption(JSONObject paymentData, String product) {
         switch(paymentData.get("credit_card_name").toString()){
             case "cash":
@@ -172,6 +223,15 @@ public class PaymentSection extends CheckOutPage {
                 break;
             }
         }
+        return this;
+    }
+
+    public PaymentSection clickChangeCardLink(){
+        waitElementForClickable(driver, changeCardLnk, 10, "Cambiar Forma de Pago link");
+        waitImplicitly(1000);
+        PageUtils.scrollToElement(driver, changeCardLnk);
+        logger.info("Clicking on Cambiar Forma de Pago link");
+        changeCardLnk.click();
         return this;
     }
 }

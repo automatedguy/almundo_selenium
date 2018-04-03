@@ -2,6 +2,7 @@ package com.almundo.browser.automation.pages.BasePage;
 
 import com.almundo.browser.automation.pages.ResultsPage.CarsResultsPage;
 import com.almundo.browser.automation.utils.PageUtils;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,26 +19,35 @@ public class CarsDataTrip extends BasePage {
 
     //############################################### Locators ##############################################
 
-    @FindBy(id = "origin")
+    @FindBy(css = "#origin")
     public WebElement originTxt;
 
-    @FindBy(id = "destination")
+    @FindBy(css = "#destination")
     public WebElement destinationTxt;
 
-    @FindBy(id = "pickUpDate")
-    public WebElement pickUpDateCalendar;
+    @FindBy(css = "#pickUpDate")
+    private WebElement pickUpDateCalendar;
 
-    @FindBy(id = "dropOffDate")
-    public WebElement dropOffDateCalendar;
+    @FindBy(css = "#dropOffDate")
+    private WebElement dropOffDateCalendar;
 
-    @FindBy(css = "div:nth-child(2)>div:nth-child(3)>div>select")
+    @FindBy(css = ".pickUpTime select")
     public WebElement pickUpTimeSelect;
 
-    @FindBy(css = "div:nth-child(2)>div:nth-child(6)>div>select")
+    @FindBy(css = ".dropOffTime select")
     public WebElement dropOffTimeSelect;
 
-    @FindBy(css = "div:nth-child(2)>div:nth-child(7)>div>select")
+    @FindBy(css = ".ageRange select")
     public WebElement ageRangeSelect;
+
+    @FindBy(css = ".destinationCheckbox input")
+    private WebElement droppOffInDestiny;
+
+    /*****************************************  ***********************************************/
+
+    public WebElement getPickUpDateCalendar(){return pickUpDateCalendar;}
+
+    public WebElement getDropOffDateCalendar(){return dropOffDateCalendar;}
 
     //############################################### Actions ###############################################
 
@@ -51,6 +61,7 @@ public class CarsDataTrip extends BasePage {
     }
 
     public CarsDataTrip setDestination(String destination, String destinationFull) {
+        clickDropOffInDestiny();
         PageUtils.waitElementForVisibility(driver, destinationTxt, 10, "Drop Off Destination text field");
         logger.info("Entering Drop Off Destination: [" + destinationFull + "]");
         destinationTxt.clear();
@@ -80,9 +91,15 @@ public class CarsDataTrip extends BasePage {
         return this;
     }
 
+    public CarsDataTrip clickDropOffInDestiny(){
+        logger.info("Clicking on [Devolverlo en otro destino]");
+        droppOffInDestiny.click();
+        return this;
+    }
+
     public CarsResultsPage clickBuscarBtn() {
         logger.info("Clicking on Buscar Button");
-        buscarBtn.click();
+        clickBuscar();
         return initCarsResultsPage();
     }
 }

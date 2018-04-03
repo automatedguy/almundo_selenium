@@ -4,17 +4,18 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
-import com.almundo.browser.automation.pages.CheckOutPage.ConfirmationPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
+import com.almundo.browser.automation.pages.CheckOutPageV3.ThanksPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
-import org.json.simple.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static com.almundo.browser.automation.utils.Constants.*;
+import static com.almundo.browser.automation.utils.Constants.Results.PASSED;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -22,117 +23,246 @@ import org.testng.annotations.Test;
 
 public class FlowTest extends TestBaseSetup {
 
+    private DataManagement dataManagement = new DataManagement();
+    private TripsDataTrip tripsDataTrip = null;
     private TripsResultsPage tripsResultsPage = null;
     private TripsDetailPage tripsDetailPage = null;
-    private CheckOutPage checkOutPage = null;
-    private ConfirmationPage confirmationPage = null;
-
-    private TripsDataTrip tripsDataTrip = null;
-    private DataManagement dataManagement = new DataManagement();
+    private CheckOutPageV3 checkOutPageV3 = null;
+    private ThanksPageV3 thanksPageV3 = null;
 
     @BeforeClass
-    private void initDataLists() {
-        dataManagement.getTripsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+    private void initItineraryData() {
+        dataManagement.setTripsItineraryData();
     }
 
     @BeforeMethod
     private void closeLoginPopUp(){
         LoginPopUp loginPopUp = initLoginPopUp();
         loginPopUp.clickCloseLoginBtn();
-        basePage.clicksTripsBtn();
+        tripsDataTrip = basePage.clicksTripsBtn();
     }
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
+    }
+
+    private void getTripsAssertionInfo(){
+        thanksPageAssertInfo.setFinalAmountPaid(checkOutPageV3.breakDownSectionV3().getFinalPriceString());
+        thanksPageAssertInfo.setContactEmailEntered(checkOutPageV3.contactSection().getContactEmail());
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
-    public void int_Booking_Flow() {
-        logTestTitle("Trips Flow - Int - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+    public void IntBooking(){
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
+        addTransfer = false;
 
-        dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
+        dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
-        tripsDataTrip = basePage.tripsDataTrip();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+        tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPage = tripsDetailPage.clickComprarBtn(0);
 
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_FEMALE_NAT_TRIPS);
 
-        if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
-            replaceUrl();
-            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                                dataManagement.getPaymentData("1_amex_amex"),
-                                                dataManagement.getBillingData("local_Billing"),
-                                                dataManagement.getContactData("contact_cell_phone"),
-                                                "TripsCheckOutPageInternationalV3");
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
+                                        dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+        getTripsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void IntBookingWithTransfer(){
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
+        if(countryPar.equals(BRASIL) || countryPar.equals(ARGENTINA)) {
+            addTransfer = true;
+
+            dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
+
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(tripsResultsPage.vacancy());
+
+            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+            tripsDetailPage.clickVerHabitacionBtn();
+
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_FEMALE_NAT_TRIPS);
+
+            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+            getTripsAssertionInfo();
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+            Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
         } else {
-            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_amex_amex"),
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_cell_phone"),
-                                              "TripsCheckOutPageInternational");
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
         }
+        setResultSauceLabs(PASSED);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void IntBookingWithTransferWithTwoCards(){
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
+        if(countryPar.equals(ARGENTINA)) {
+            addTransfer = true;
+
+            dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
+
+            tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+            tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+            tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+            tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+            tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+            tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+            Assert.assertTrue(tripsResultsPage.vacancy());
+
+            tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+            tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+            tripsDetailPage.clickVerHabitacionBtn();
+
+            dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+            dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+            dataManagement.setPassengerData(CHILD_FEMALE_NAT_TRIPS);
+
+            checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+            checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
+                                    dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                    dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+            getTripsAssertionInfo();
+            thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+            Assert.assertTrue(thanksPageV3.confirmationOk());
+            Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+            Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+            Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        } else {
+            logger.warn(NOT_RUNNING_MEXICO_COLOMBIA);
+        }
+        setResultSauceLabs(PASSED);
     }
 
     @Test
-    public void dom_Booking_Flow() {
-        logTestTitle("Trips Flow - Domestic - 15 days - 2 Adults/1 Child - 1 Room - " + countryPar );
+    public void IntBookingWith2Cards(){
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room - VISA_1 and MASTER_1");
+        addTransfer = false;
 
-        dataManagement.getTripsDataTripItinerary("domestic01_15days_2adults_1childs_1room");
+        dataManagement.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
-        tripsDataTrip = basePage.tripsDataTrip();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+        tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPage = tripsDetailPage.clickComprarBtn(0);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native");
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
-        if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
-            replaceUrl();
-            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                                dataManagement.getPaymentData("1_amex_amex"),
-                                                dataManagement.getBillingData("local_Billing"),
-                                                dataManagement.getContactData("contact_cell_phone"),
-                                                "TripsCheckOutPageDomesticlV3");
-        } else {
-            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_amex_amex"),
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_cell_phone"),
-                                              "TripsCheckOutPageDomestic");
-        }
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), VISA_1, MASTER_1,
+                                        dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
+        getTripsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
+    }
+
+    @Test
+    public void DomBooking(){
+        logTestTitle("Domestic - 15 days - 2 Adults/1 Child - 1 Room");
+        addTransfer = false;
+
+        dataManagement.setTripsDataTripItinerary(DOM01_15D_2A_1C_1R);
+
+        tripsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        tripsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), dataManagement.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), dataManagement.getEndDate());
+        tripsDataTrip.setPassengers(dataManagement.getAdults(), dataManagement.getChilds(), dataManagement.getRooms());
+        tripsResultsPage = tripsDataTrip.clickBuscarBtn();
+
+        Assert.assertTrue(tripsResultsPage.vacancy());
+
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
+        tripsDetailPage = tripsResultsPage.clickContinuarBtn();
+        tripsDetailPage.clickVerHabitacionBtn();
+
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(CHILD_FEM_NAT_TRIPS_DOM);
+
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(), MASTER_1,
+                                        dataManagement.getBillingData(LOCAL_BILLING_SUCURSALES),
+                                        dataManagement.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
+        getTripsAssertionInfo();
+        thanksPageV3 = checkOutPageV3.clickComprarBtn();
+
+        Assert.assertTrue(thanksPageV3.confirmationOk());
+        Assert.assertTrue(thanksPageV3.isPaymentInfoOk(thanksPageAssertInfo.getFinalAmountPaid()));
+        Assert.assertTrue(thanksPageV3.isContactInfoOk(thanksPageAssertInfo.getContactEmailEntered()));
+        Assert.assertTrue(thanksPageV3.isPassengersInfoOk());
+
+        setResultSauceLabs(PASSED);
     }
 }

@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static com.almundo.browser.automation.utils.PageUtils.scrollToElement;
+
 /**
  * Created by gabrielcespedes on 06/12/16.
  */
@@ -23,28 +25,30 @@ public class FooterSectionV3 extends CheckOutPage {
     @FindBy(id = "accept")
     private WebElement readCbx;
 
-    @FindBy(id = "accepted")
+    @FindBy(id = "acceptItinerary")
     private WebElement acceptedCbx;
 
-    @FindBy(id = ".button.button--secondary.button--md")
+    @FindBy(css = ".error-modal .accept-button")
     private WebElement confirmar;
 
     //############################################### Actions ##############################################
 
     public FooterSectionV3 acceptTermsAndConditions() {
         logger.info("Checking Terms and Conditions Check Box...");
+        scrollToElement(driver, readCbx);
         readCbx.click();
         return this;
     }
 
     public FooterSectionV3 acceptItinerary() {
-        logger.info("Checking Itinerary Check Box...");
+        logger.info("Checking Accept Itinerary Check Box...");
         acceptedCbx.click();
         return this;
     }
 
     public FooterSectionV3 clickConfirmarBtn() {
         PageUtils.waitElementForVisibility(driver, confirmar, 10, "Confirmar Button");
+        PageUtils.waitImplicitly(500);
         logger.info("Clicking on Confirmar button...");
         confirmar.click();
         return this;

@@ -2,9 +2,9 @@
 	"flights": {
 			"miami_10days_2adults_2childs_turista": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 25,
 				"endDate": 10,
 				"adults": 2,
@@ -13,9 +13,22 @@
 				"flightClass": "Turista"
 			},
 
+			"miami_10days_2adults_turista": {
+				"originAuto": "Bue",
+				"originFull": "Buenos Aires, Argentina",
+				"destinationAuto": "Mia",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
+				"startDate": 25,
+				"endDate": 10,
+				"adults": 2,
+				"childs": 0,
+				"childAgeRange": "Entre 2 y 11 años",
+				"flightClass": "Turista"
+			},
+
 			"domestic_20days_2adults_todas": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Bar",
 				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
 				"startDate": 25,
@@ -31,8 +44,8 @@
 				"originFull": "Córdoba, Córdoba, Argentina",
 				"destinationAuto": "Sal",
 				"destinationFull": "Salta, Salta, Argentina",
-				"startDate": 25,
-				"endDate": 30,
+				"startDate": 15,
+				"endDate": 25,
 				"adults": 2,
 				"childs": 0,
 				"childAgeRange": "",
@@ -41,11 +54,11 @@
 
 			"multiDest_3Flights_2adults_todas": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"originAuto2": "Mia",
-				"originFull2": "Miami, Estados Unidos de América",
+				"originFull2": "Miami, Florida, Estados Unidos de América",
 				"destinationAuto2": "Nue",
 				"destinationFull2": "Nueva York, Nueva York, Estados Unidos de América",
 				"originAuto3": "Nue",
@@ -65,13 +78,23 @@
 	"hotels": {
 			"miami_10days_2adults_2childs_1room": {
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 25,
 				"endDate": 10,
 				"adults": 2,
 				"childs": 2,
 				"rooms": 1
 			},
+
+		"miami_10days_2adults_1room": {
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Florida, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 10,
+			"adults": 2,
+			"childs": 0,
+			"rooms": 1
+		},
 
 			"domestic01_15days_2adults_1room": {
 				"destinationAuto": "Bar",
@@ -84,6 +107,16 @@
 			},
 
 			"domestic02_20days_2adults_1room": {
+				"destinationAuto": "Bar",
+				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
+				"startDate": 25,
+				"endDate": 20,
+				"adults": 2,
+				"childs": 0,
+				"rooms": 1
+			},
+
+			"domestic03_20days_2adults_1room":{
 				"destinationAuto": "Sal",
 				"destinationFull": "Salta, Salta, Argentina",
 				"startDate": 25,
@@ -97,9 +130,9 @@
 	"trips": {
 			"miami_10days_2adults_2childs_1room": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
 				"startDate": 25,
 				"endDate": 10,
 				"adults": 2,
@@ -110,7 +143,7 @@
 
 			"domestic01_15days_2adults_1childs_1room": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "Bar",
 				"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
 				"startDate": 25,
@@ -124,8 +157,8 @@
 			"domestic02_20days_2adults_1childs_1room": {
 			"originAuto": "Cór",
 			"originFull": "Córdoba, Córdoba, Argentina",
-			"destinationAuto": "Sal",
-			"destinationFull": "Salta, Salta, Argentina",
+			"destinationAuto": "Bar",
+			"destinationFull": "San Carlos de Bariloche, Río Negro, Argentina",
 			"startDate": 25,
 			"endDate": 20,
 			"adults": 2,
@@ -136,7 +169,7 @@
 
 			"int02_20days_2adults_1childs_1room": {
 				"originAuto": "Bue",
-				"originFull": "Buenos Aires, Buenos Aires, Argentina",
+				"originFull": "Buenos Aires, Argentina",
 				"destinationAuto": "San",
 				"destinationFull": "Santiago de Chile, Chile",
 				"startDate": 25,
@@ -145,7 +178,20 @@
 				"childs": 1,
 				"childAgeRange": "Entre 2 y 11 años",
 				"rooms": 1
-			}
+			},
+
+		    "int02_20days_2adults_1room": {
+			"originAuto": "Bue",
+			"originFull": "Buenos Aires, Argentina",
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Florida, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 20,
+			"adults": 2,
+			"childs": 0,
+			"childAgeRange": "Entre 2 y 11 años",
+			"rooms": 1
+		}
 	},
 
 	"cars": {
@@ -154,8 +200,8 @@
 				"originFull": "Buenos Aires, Buenos Aires, Argentina",
 				"destinationAuto": "Bue",
 				"destinationFull": "Buenos Aires, Buenos Aires, Argentina",
-				"startDate": 25,
-				"endDate": 10,
+				"startDate": 55,
+				"endDate": 30,
 				"pickUpTime": "12:00",
 				"dropOffTime": "12:00",
 				"ageRange": "Entre 21 y 24 años"
@@ -163,28 +209,109 @@
 
 			"miami_10days_entre_21_24": {
 				"originAuto": "Mia",
-				"originFull": "Miami, Estados Unidos de América",
+				"originFull": "Miami, Florida, Estados Unidos de América",
 				"destinationAuto": "Mia",
-				"destinationFull": "Miami, Estados Unidos de América",
-				"startDate": 25,
-				"endDate": 10,
+				"destinationFull": "Miami, Florida, Estados Unidos de América",
+				"startDate": 55,
+				"endDate": 30,
 				"pickUpTime": "12:00",
 				"dropOffTime": "12:00",
 				"ageRange": "Entre 21 y 24 años"
 			}
 	},
 
+	"trippers": {
+		"trip_111Days_NewYork": {
+			"destinationAuto": "Nue",
+			"destinationFull": "Nueva York, Nueva York, Estados Unidos de América",
+			"tripName": "Automation Trip NYC",
+			"startDate": 20,
+			"endDate": 110
+		},
+
+		"miami_10days_2adults_2childs_1room": {
+			"eventName": "Automation Custom Event",
+			"eventDescription": "Frutas y mas Frutas",
+			"originAuto": "Bue",
+			"originFull": "Buenos Aires, Buenos Aires, Argentina",
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 10,
+			"pickUpTime": "10:00",
+			"dropOffTime": "10:00",
+			"adults": 2,
+			"childs": 2,
+			"childAgeRange": "Entre 2 y 11 años",
+			"rooms": 1
+		}
+	},
+
+	"packages": {
+		"10days_2adults_2childs": {
+			"originAuto": "Bue",
+			"originFull": "Buenos Aires, Argentina",
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 10,
+			"adults": 2,
+			"childs": 2,
+			"childAgeRange": "Entre 2 y 11 años",
+			"flightClass": "Turista",
+			"rooms": 1
+		},
+
+		"10days_2adults": {
+			"originAuto": "Bue",
+			"originFull": "Buenos Aires, Argentina",
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 10,
+			"adults": 2,
+			"childs": 0,
+			"childAgeRange": "Entre 2 y 11 años",
+			"flightClass": "Turista",
+			"rooms": 1
+		}
+
+	},
+
+	"assistance": {
+		"miami_10days_2persons_unique": {
+			"tripType": "Único viaje",
+			"destinationAuto": "Mia",
+			"destinationFull": "Miami, Estados Unidos de América",
+			"startDate": 25,
+			"endDate": 10,
+			"persons": 2
+		}
+	},
+
 	"passengers":{
 			"adult_male_native": {
-				"first_name": "José Ñoqui",
-				"last_name": "O'Higgins Lingüístico",
+				"first_name": "Pepe",
+				"last_name": "Peroncho",
 				"documentType": "Pasaporte",
-				"document_number": "29098765N",
+				"document_number": "29777777N",
 				"document_emisor": "Argentina",
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/1979",
 				"gender": "Masculino",
 				"nationality": "Argentina"
+			},
+
+			"adult_male_native_wrong": {
+				"first_name": "NewpassengerData",
+				"last_name": "NewpassengerData",
+				"documentType": "DNI",
+				"document_number": "26666666",
+				"document_emisor": "Alemania",
+				"document_expiration": "26/06/2019",
+				"birthday": "06/06/1976",
+				"gender": "Masculino",
+				"nationality": "Italia"
 			},
 
 			"adult_female_native": {
@@ -197,6 +324,18 @@
 				"birthday": "09/09/1979",
 				"gender": "Femenino",
 				"nationality": "Argentina"
+			},
+
+			"adult_female_native_wrong": {
+				"first_name": "NewpassengerData",
+				"last_name": "NewpassengerData",
+				"documentType": "DNI",
+				"document_number": "25555555",
+				"document_emisor": "Alemania",
+				"document_expiration": "26/06/2019",
+				"birthday": "06/06/1976",
+				"gender": "Femenino",
+				"nationality": "Austria"
 			},
 
 			"adult_female_foreign": {
@@ -223,11 +362,47 @@
 				"nationality": "Argentina"
 			},
 
+			"child_male_native_wrong": {
+				"first_name": "Timmy",
+				"last_name": "O' Tool",
+				"documentType": "DNI",
+				"document_number": "24444444",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2018",
+				"birthday": "05/05/2015",
+				"gender": "Femenino",
+				"nationality": "Anguila"
+			},
+
 			"child_female_native": {
 				"first_name": "Ñímis",
 				"last_name": "O' Tool",
+				"documentType": "Pasaporte",
+				"document_number": "29098666N",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/2010",
+				"gender": "Femenino",
+				"nationality": "Argentina"
+			},
+
+			"child_female_native_trips": {
+				"first_name": "Ñímis",
+				"last_name": "O' Tool",
+				"documentType": "Pasaporte",
+				"document_number": "29777777N",
+				"document_emisor": "Argentina",
+				"document_expiration": "25/12/2017",
+				"birthday": "09/09/2010",
+				"gender": "Femenino",
+				"nationality": "Argentina"
+			},
+
+			"child_female_native_trips_domestic": {
+				"first_name": "Ñímis",
+				"last_name": "O' Tool",
 				"documentType": "DNI",
-				"document_number": "29098757",
+				"document_number": "29777777",
 				"document_emisor": "Argentina",
 				"document_expiration": "25/12/2017",
 				"birthday": "09/09/2010",
@@ -261,11 +436,11 @@
 	},
 
 	"payment":{
-			"1_amex_amex": {
-				"payment_qty" : "1",
-				"bank_name" : "American Express",
-				"credit_card_name" : "American Express",
-				"card_holder": "Dueño Dí L'Tarjüeta",
+			"random": {
+				"payment_qty" : "random",
+				"bank_name" :"random",
+				"credit_card_name" : "random",
+				"card_holder": "Titular Tarjeta",
 				"card_number": "4242424242424242",
 				"card_expire": "12/18",
 				"month_card_expire": "12",
@@ -275,16 +450,222 @@
 				"document_number": "29098766"
 			},
 
-			"6_visa_visa": {
-				"payment_qty" : "6",
+			"1_amex_amex": {
+				"payment_qty" : "1",
+				"bank_name" : "American Express",
+				"bank_name_two_cards" : "Todos los bancos",
+				"credit_card_code" : "AX",
+				"credit_card_name" : "American Express",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "371180303257522",
+				"card_expire": "02/19",
+				"month_card_expire": "02",
+				"year_card_expire": "2019",
+				"security_code": "1234",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
+			"1_visa_visa": {
+				"payment_qty" : "1",
 				"bank_name" : "Visa",
+				"bank_name_two_cards" : "Todos los bancos",
+				"credit_card_code" : "VI",
 				"credit_card_name" : "Visa",
-				"card_holder": "Dueño Dí L'Tarjüeta",
+				"card_holder": "Titular Tarjeta",
 				"card_number": "4242424242424242",
 				"card_expire": "12/18",
 				"month_card_expire": "12",
-				"year_card_expire": "2022",
-				"security_code": "1234",
+				"year_card_expire": "2018",
+				"security_code": "999",
+				"documentType": "DNI",
+				"document_number": "29098766",
+
+				"Medio_de_pago" : "VISA",
+				"Banco" : "OTROS",
+				"Numero_de_tarjeta" : "4242424242424242",
+				"Titular_de_la_tarjeta" : "Titular Tarjeta",
+				"Fecha_de_vencimiento_mes": "12",
+				"Fecha_de_vencimiento_ano": "18",
+				"Tipo_de_doc": "DNI",
+				"Numero_de_doc": "30786876",
+				"E-mail": "almundoturismo@gmail.com"
+			},
+
+			"1_visa_todopago": {
+				"payment_qty" : "1",
+				"bank_name" : "Visa",
+				"credit_card_code" : "VI",
+				"credit_card_name" : "Visa",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "4507990000000010",
+				"card_expire": "09/18",
+				"month_card_expire": "09",
+				"year_card_expire": "2018",
+				"security_code": "777",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
+			"1_visa_comafi": {
+				"payment_qty" : "1",
+				"bank_name" : "Banco Comafi S.A",
+				"bank_name_two_cards" : "BANCO SANTANDER RIO S.A.",
+				"credit_card_code" : "VI",
+				"credit_card_name" : "Visa",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "4343511204842300",
+				"card_expire": "09/19",
+				"month_card_expire": "09",
+				"year_card_expire": "2019",
+				"security_code": "777",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
+			"3_cabal_todopago": {
+				"payment_qty" : "3",
+				"bank_name" : "Cabal",
+				"credit_card_code" : "VI",
+				"credit_card_name" : "Cabal",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "5896570000000008",
+				"card_expire": "12/18",
+				"month_card_expire": "12",
+				"year_card_expire": "2018",
+				"security_code": "123",
+				"documentType": "DNI",
+				"document_number": "29098766",
+
+				"Medio_de_pago" : "Cabal",
+				"Banco" : "OTROS",
+				"Numero_de_tarjeta" : "5896570000000008",
+				"Titular_de_la_tarjeta" : "Titular Tarjeta",
+				"Fecha_de_vencimiento_mes": "12",
+				"Fecha_de_vencimiento_ano": "18",
+				"Tipo_de_doc": "DNI",
+				"Numero_de_doc": "30786876",
+				"E-mail": "almundoturismo@gmail.com"
+			},
+
+		"3_visa_visa": {
+				"payment_qty" : "3",
+				"bank_name" : "BANCO SANTANDER RIO S.A.",
+				"credit_card_code" : "VI",
+				"credit_card_name" : "Visa",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "4242424242424242",
+				"card_expire": "12/18",
+				"month_card_expire": "12",
+				"year_card_expire": "2018",
+				"security_code": "777",
+				"documentType": "DNI",
+				"document_number": "29098766",
+
+				"Medio_de_pago" : "VISA",
+				"Banco" : "OTROS",
+				"Numero_de_tarjeta" : "4242424242424242",
+				"Titular_de_la_tarjeta" : "Titular Tarjeta",
+				"Fecha_de_vencimiento_mes": "12",
+				"Fecha_de_vencimiento_ano": "18",
+				"Tipo_de_doc": "DNI",
+				"Numero_de_doc": "30786876",
+				"E-mail": "almundoturismo@gmail.com"
+
+			},
+
+			"visa_debit": {
+				"Medio_de_pago" : "VISA DEBITO",
+				"Banco" : "SANTANDER RIO",
+				"Numero_de_tarjeta" : "1111222233334444",
+				"Titular_de_la_tarjeta" : "Titular Tarjeta",
+				"Fecha_de_vencimiento_mes": "12",
+				"Fecha_de_vencimiento_ano": "2018",
+				"Tipo_de_doc": "DNI",
+				"Numero_de_doc": "30786876",
+				"E-mail": "almundoturismo@gmail.com",
+				"codigo_seguridad": "999"
+		},
+
+		"Débito_electron_1": {
+			"payment_qty" : "1",
+			"bank_name" : "Visa",
+			"bank_name_two_cards" : "Todos los bancos",
+			"credit_card_code" : "VI",
+			"credit_card_name" : "Visa Electron",
+			"card_holder": "Titular Tarjeta",
+			"card_number": "4913674220687149",
+			"card_expire": "12/18",
+			"month_card_expire": "12",
+			"year_card_expire": "2018",
+			"security_code": "999",
+			"documentType": "DNI",
+			"document_number": "29098766",
+
+			"Medio_de_pago" : "VISA",
+			"Banco" : "OTROS",
+			"Numero_de_tarjeta" : "4242424242424242",
+			"Titular_de_la_tarjeta" : "Titular Tarjeta",
+			"Fecha_de_vencimiento_mes": "12",
+			"Fecha_de_vencimiento_ano": "18",
+			"Tipo_de_doc": "DNI",
+			"Numero_de_doc": "30786876",
+			"E-mail": "almundoturismo@gmail.com"
+		},
+
+		"Débito_maestro_1": {
+			"payment_qty" : "1",
+			"bank_name" : "Visa",
+			"bank_name_two_cards" : "Todos los bancos",
+			"credit_card_code" : "VI",
+			"credit_card_name" : "Maestro",
+			"card_holder": "Titular Tarjeta",
+			"card_number": "5038165525576878",
+			"card_expire": "12/18",
+			"month_card_expire": "12",
+			"year_card_expire": "2018",
+			"security_code": "999",
+			"documentType": "DNI",
+			"document_number": "29098766",
+
+			"Medio_de_pago" : "VISA",
+			"Banco" : "OTROS",
+			"Numero_de_tarjeta" : "4242424242424242",
+			"Titular_de_la_tarjeta" : "Titular Tarjeta",
+			"Fecha_de_vencimiento_mes": "12",
+			"Fecha_de_vencimiento_ano": "18",
+			"Tipo_de_doc": "DNI",
+			"Numero_de_doc": "30786876",
+			"E-mail": "almundoturismo@gmail.com"
+		},
+
+			"1_master_master": {
+				"payment_qty" : "1",
+				"bank_name" : "Mastercard",
+				"bank_name_two_cards" : "Todos los bancos",
+				"credit_card_code" : "CA",
+				"credit_card_name" : "Mastercard",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "5174648696309702",
+				"card_expire": "12/18",
+				"month_card_expire": "12",
+				"year_card_expire": "2018",
+				"security_code": "617",
+				"documentType": "DNI",
+				"document_number": "29098766"
+			},
+
+			"6_visa_visa": {
+				"payment_qty" : "6",
+				"bank_name" : "Visa",
+				"credit_card_code" : "VI",
+				"credit_card_name" : "Visa",
+				"card_holder": "Titular Tarjeta",
+				"card_number": "4507990000000010",
+				"card_expire": "02/18",
+				"month_card_expire": "02",
+				"year_card_expire": "2018",
+				"security_code": "718",
 				"documentType": "DNI",
 				"document_number": "29098766"
 			},
@@ -340,23 +721,9 @@
 
 	"billings": {
 			"local_Billing": {
-				"fiscal_name":"",
-				"billing_fiscal_type":"",
-				"billing_document_type":"",
-				"billing_fiscal_document": "23281685589",
-				"billing_address": "Carlos Pellegrini",
-				"address_number": 887,
-				"address_floor": 8,
-				"address_department": "A",
-				"address_postal_code": "C1009ABQ",
-				"address_state": "Buenos Aires",
-				"address_city": "C.A.B.A."
-			},
-
-			"local_Billing_v2": {
-				"fiscal_name":"Sarasa and Automation Inc. & Associates",
-				"billing_fiscal_type":"",
-				"billing_document_type":"",
+				"fiscal_name":"Automation & Sarasa Associates Inc.",
+				"billing_fiscal_type":"Consumidor Final",
+				"billing_document_type":"CUIL",
 				"billing_fiscal_document": "23281685589",
 				"billing_address": "Carlos Pellegrini",
 				"address_number": 887,
@@ -369,8 +736,8 @@
 
 			"local_Billing_sucursales": {
 				"fiscal_name":"Sarasa and Automation Inc. & Associates",
-				"billing_fiscal_type":"",
-				"billing_document_type":"",
+				"billing_fiscal_type":"Consumidor Final",
+				"billing_document_type":"CUIL",
 				"billing_fiscal_document": "23281685589",
 				"billing_address": "Carlos Pellegrini",
 				"address_number": 887,
@@ -384,18 +751,18 @@
 
 	"contacts": {
 			"contact_cell_phone": {
-				"email": "automationthings@gmail.com",
-				"rep_email": "automationthings@gmail.com",
+				"email": "almundoturismo01@gmail.com",
+				"rep_email": "almundoturismo01@gmail.com",
 				"tel": "Celular",
 				"country_code": 54,
-				"area": "911",
-				"phone_number": "11112222"
+				"area": "11",
+				"phone_number": "35468765"
 			},
 
 			"contact_phone": {
-				"email": "automationthings@gmail.com",
-				"rep_email": "automationthings@gmail.com",
-				"tel": "Teléfono",
+				"email": "almundoturismo01@gmail.com",
+				"rep_email": "almundoturismo01@gmail.com",
+				"tel": "Celular",
 				"country_code": 54,
 				"area": "011",
 				"phone_number": "11112222"
@@ -415,17 +782,26 @@
 		"email": {
 			"userEmail": "almundoargentina2@gmail.com",
 			"password": "almundo12345",
-			"name": "Automation"
+			"name": "Automation",
+			"externalUserId": "539797",
+			"id_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG11bmRvYXJnZW50aW5hMnN0QGdtYWlsLmNvbSIsImF1dGgiOltdLCJjcmVhdGVkIjoxNDk4NjcyNDI5ODIyLCJleHAiOjE1MTQyMjI0MjksImp0aSI6IjUzOTc5NyJ9.vLXp-foiHhOUp8CHdzjYh2U_zeo5H-e4mJuNyZN7DaM"
+		},
+
+		"argentinodv": {
+			"userEmail": "argentina@mailinator.com",
+			"password": "12345678",
+			"name": "Argentino",
+			"externalUserId": "539797"
 		},
 
 		"google": {
-			"userEmail": "almundoargentina2@gmail.com",
+			"userEmail": "almundoturismo01@gmail.com",
 			"password": "almundo12345",
 			"name": "Automation"
 		},
 
 		"facebook": {
-			"userEmail": "almundoargentina2@gmail.com",
+			"userEmail": "almundoturismo01@gmail.com",
 			"password": "almundo12345",
 			"name": "Automation"
 		}

@@ -24,7 +24,7 @@ public class LandingPage extends TestBaseSetup {
     @FindBy(linkText = "Colombia")
     private WebElement colombiaLnk;
 
-    @FindBy(linkText = "Mexico")
+    @FindBy(linkText = "México")
     private WebElement mexicoLnk;
 
     //############################################### Actions ###############################################

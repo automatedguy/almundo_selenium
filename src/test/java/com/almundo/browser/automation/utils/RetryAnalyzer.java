@@ -4,23 +4,25 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-public class RetryAnalyzer implements IRetryAnalyzer {
-    private int count = 0;
+import static com.almundo.browser.automation.base.TestBaseSetup.retriesCount;
 
-    public int getMaxount() {
+public class RetryAnalyzer implements IRetryAnalyzer {
+    private int count;
+
+    public int getMaxCount() {
         String env_path = System.getenv("PATH");
         int maxCount = 0;
-
         if(env_path.contains("jenkins")) {
-            maxCount = 3;
+            maxCount = 1;
         }
+        if (retriesCount) {maxCount = 0;}
         return maxCount;
     }
 
     @Override
     public boolean retry(ITestResult result) {
         if (!result.isSuccess()) {
-            if (count < getMaxount()) {
+            if (count < getMaxCount()) {
                 count++;
                 result.setStatus(ITestResult.SUCCESS_PERCENTAGE_FAILURE);
                 String message = Thread.currentThread().getName() +
@@ -29,7 +31,6 @@ public class RetryAnalyzer implements IRetryAnalyzer {
                         " Retrying " + count + " times";
                 System.out.println(message);
                 Reporter.log(message);
-
                 return true;
             }
         }

@@ -19,11 +19,9 @@ public class JsonRead extends TestBaseSetup {
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = null;
         try {
-
             Object data = parser.parse(new FileReader(Constants.DATA_PATH + jsonFileName));
             logger.info("Getting JSON file: [" + jsonFileName + "]");
             jsonObject = (JSONObject) data;
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             logger.error("Error reading: [" + jsonFileName + "]");

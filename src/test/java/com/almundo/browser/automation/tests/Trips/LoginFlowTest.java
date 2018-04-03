@@ -4,17 +4,20 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
 import com.almundo.browser.automation.pages.BasePage.TripsDataTrip;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
 import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.TripsDetailPage;
 import com.almundo.browser.automation.pages.ResultsPage.TripsResultsPage;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+
+import static com.almundo.browser.automation.utils.Constants.*;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -22,119 +25,87 @@ import org.testng.annotations.Test;
 
 public class LoginFlowTest extends TestBaseSetup {
 
+    private DataManagement itineraryData = new DataManagement();
+    private TripsDataTrip tripsDataTrip = null;
     private TripsResultsPage tripsResultsPage = null;
     private TripsDetailPage tripsDetailPage = null;
-    private CheckOutPage checkOutPage = null;
-
-    private TripsDataTrip tripsDataTrip = null;
-    private DataManagement dataManagement = new DataManagement();
+    private CheckOutPageV3 checkOutPageV3 = null;
 
     @BeforeClass
-    private void initDataLists() {
-        dataManagement.getUsersDataList();
-        dataManagement.getTripsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+    private void initItineraryData() {
+        itineraryData.setTripsItineraryData();
     }
 
     @BeforeMethod
     private void doLogin(){
         LoginPopUp loginPopUp = initLoginPopUp();
-        JSONObject userData = dataManagement.getUserData("email");
+        JSONObject userData = itineraryData.setUserData("email");
         loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
-        basePage.clicksTripsBtn();
+        tripsDataTrip = basePage.clicksTripsBtn();
     }
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        itineraryData.clearPassengerJsonList();
     }
 
     /////////////////////////////////// TEST CASES ///////////////////////////////////
 
     @Test
     public void login_Int_Booking_Flow() {
-        logTestTitle("Login Trips Flow - International - 10 days - 2 Adults/2 Childs - 1 Room - " + countryPar );
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - 1 Room");
 
-        dataManagement.getTripsDataTripItinerary("miami_10days_2adults_2childs_1room");
+        itineraryData.setTripsDataTripItinerary(MIA_10D_2A_2C_1R);
 
-        tripsDataTrip = basePage.tripsDataTrip();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.setOrigin(itineraryData.getOriginAuto(), itineraryData.getOriginFull());
+        tripsDataTrip.setDestination(itineraryData.getDestinationAuto(), itineraryData.getDestinationFull());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), itineraryData.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), itineraryData.getEndDate());
+        tripsDataTrip.setPassengers(itineraryData.getAdults(), itineraryData.getChilds(), itineraryData.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPage = tripsDetailPage.clickComprarBtn(0);
 
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
+        itineraryData.setPassengerData(ADULT_MALE_NATIVE);
+        itineraryData.setPassengerData(ADULT_MALE_NATIVE);
+        itineraryData.setPassengerData(CHILD_MALE_NATIVE);
+        itineraryData.setPassengerData(CHILD_MALE_NATIVE);
 
-        if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
-            replaceUrl();
-            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                    dataManagement.getPaymentData("1_amex_amex"),
-                    dataManagement.getBillingData("local_Billing"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageInternationalV3");
-        } else {
-            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                    dataManagement.getPaymentData("1_amex_amex"),
-                    dataManagement.getBillingData("local_Billing"),
-                    dataManagement.getContactData("contact_cell_phone"),
-                    "TripsCheckOutPageInternational");
-        }
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.setCheckOutInfo(itineraryData.getPassengerJsonList(),
+                                             RANDOM, itineraryData.getBillingData(LOCAL_BILLING),
+                                              itineraryData.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_INTV3);
     }
 
     @Test
-    public void login_Dom_Booking_Flow() {
-        logTestTitle("Login Trips Flow - Domestic - 15 days - 2 Adults/1 Child - 1 Room - " + countryPar );
+    public void login_Dom_Booking_Flow() throws IOException, ParseException {
+        logTestTitle("Domestic - 15 days - 2 Adults/1 Child - 1 Room");
 
-        dataManagement.getTripsDataTripItinerary("domestic01_15days_2adults_1childs_1room");
+        itineraryData.setTripsDataTripItinerary(DOM01_15D_2A_1C_1R);
 
-        tripsDataTrip = basePage.tripsDataTrip();
-        tripsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        tripsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.departureCalendar, dataManagement.startDate);
-        tripsDataTrip.selectDateFromCalendar(tripsDataTrip.arrivalCalendar, dataManagement.endDate);
-        tripsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs, dataManagement.rooms);
+        tripsDataTrip.setOrigin(itineraryData.getOriginAuto(), itineraryData.getOriginFull());
+        tripsDataTrip.setDestination(itineraryData.getDestinationAuto(), itineraryData.getDestinationFull());
+        tripsDataTrip.setDate(tripsDataTrip.getDepartureCalendar(), itineraryData.getStartDate());
+        tripsDataTrip.setDate(tripsDataTrip.getArrivalCalendar(), itineraryData.getEndDate());
+        tripsDataTrip.setPassengers(itineraryData.getAdults(), itineraryData.getChilds(), itineraryData.getRooms());
         tripsResultsPage = tripsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(tripsResultsPage.vacancy());
-        tripsResultsPage.clickElegirBtn(0);
+        tripsResultsPage.clickElegirBtn(FIRST_OPTION);
         tripsDetailPage = tripsResultsPage.clickContinuarBtn();
         tripsDetailPage.clickVerHabitacionBtn();
-        checkOutPage = tripsDetailPage.clickComprarBtn(0);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("child_female_native");
+        itineraryData.setPassengerData(ADULT_FEMALE_FOREIGN);
+        itineraryData.setPassengerData(ADULT_FEMALE_FOREIGN);
+        itineraryData.setPassengerData(CHILD_FEMALE_NATIVE);
 
-        if(countryPar.equals("ARGENTINA")) {
-            CheckOutPageV3 checkOutPageV3 = initCheckOutPageV3();
-            replaceUrl();
-            checkOutPageV3.populateCheckOutPage(dataManagement.passengerJsonList,
-                                                dataManagement.getPaymentData("1_amex_amex"),
-                                                dataManagement.getBillingData("local_Billing"),
-                                                dataManagement.getContactData("contact_cell_phone"),
-                                                "VueloHotelCheckOutPageDomesticV3");
-        } else {
-            checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                              dataManagement.getPaymentData("1_amex_amex"),
-                                              dataManagement.getBillingData("local_Billing"),
-                                              dataManagement.getContactData("contact_cell_phone"),
-                                              "VueloHotelCheckOutPageDomestic");
-        }
+        checkOutPageV3 = tripsDetailPage.clickComprarBtnV3(FIRST_OPTION);
+        checkOutPageV3.setCheckOutInfo(itineraryData.getPassengerJsonList(),
+                                             RANDOM, itineraryData.getBillingData(LOCAL_BILLING),
+                                              itineraryData.getContactData(CONTACT_CELL_PHONE), TRIPS_CHECKOUT_DOMV3);
     }
 }

@@ -4,14 +4,16 @@ import com.almundo.browser.automation.base.TestBaseSetup;
 import com.almundo.browser.automation.data.DataManagement;
 import com.almundo.browser.automation.pages.BasePage.FlightsDataTrip;
 import com.almundo.browser.automation.pages.BasePage.LoginPopUp;
-import com.almundo.browser.automation.pages.CheckOutPage.CheckOutPage;
+import com.almundo.browser.automation.pages.CheckOutPageV3.CheckOutPageV3;
 import com.almundo.browser.automation.pages.ResultsPage.FlightsResultsPage;
-import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static com.almundo.browser.automation.utils.Constants.*;
 
 /**
  * Created by gabrielcespedes on 04/11/16.
@@ -20,97 +22,87 @@ import org.testng.annotations.Test;
 public class LoginFlowTest extends TestBaseSetup {
 
     private FlightsResultsPage flightsResultsPage = null;
-    private CheckOutPage checkOutPage = null;
+    private CheckOutPageV3 checkOutPageV3 = null;
 
     private FlightsDataTrip flightsDataTrip = null;
     private DataManagement dataManagement = new DataManagement();
 
     @BeforeClass
-    private void initDataLists() {
-        dataManagement.getFlightsDataTripList();
-        dataManagement.getPassengersList();
-        dataManagement.getPaymentList();
-        dataManagement.getBillingList();
-        dataManagement.getContactList();
+    private void initItineraryData() {
+        dataManagement.setFlightsItineraryData();
     }
 
     @BeforeMethod
     private void doLogin(){
+        JSONObject userData = dataManagement.setUserData("email");
         LoginPopUp loginPopUp = initLoginPopUp();
-        loginPopUp.setLoginEmailTxt("automationthings@gmail.com");
-        loginPopUp.setLoginPasswordTxt("gabi1981ce");
+        loginPopUp.loginUser(userData.get("userEmail").toString(), userData.get("password").toString());
         basePage = loginPopUp.clickIngresarBtn();
-        basePage.clickFlightsBtn();
+        flightsDataTrip = basePage.clickFlightsBtn();
     }
 
     @AfterMethod
     private void cleanPassengerJsonList() {
-        dataManagement.passengerJsonList = new JSONArray();
+        dataManagement.clearPassengerJsonList();
     }
 
-    /////////////////////////////////// TEST CASES ///////////////////////////////////
+    /***************************** Test Cases *****************************/
 
     @Test
     public void login_Int_Booking_Flow() {
-        logTestTitle("Login Flight Flow - Int - 10 days - 2 Adults/2 Childs - Turista - " + countryPar );
+        logTestTitle("International - 10 days - 2 Adults/2 Childs - Tourist");
 
-        dataManagement.getRoundTripDataTripItinerary("miami_10days_2adults_2childs_turista");
+        dataManagement.setRoundTripDataTripItinerary(MIAMI_10D_2A_2C_TOURIST);
 
-        flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        flightsResultsPage.clickTicketVuelta();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
 
-        dataManagement.getPassengerData("adult_male_native");
-        dataManagement.getPassengerData("adult_female_native");
-        dataManagement.getPassengerData("child_male_native");
-        dataManagement.getPassengerData("child_male_native");
+        dataManagement.setPassengerData(ADULT_MALE_NATIVE);
+        dataManagement.setPassengerData(ADULT_FEMALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
+        dataManagement.setPassengerData(CHILD_MALE_NATIVE);
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_cell_phone"),
-                                          "FlightsCheckOutPageInternational");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                                              RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_CELL_PHONE), FLIGHTS_CHECKOUT_INT);
     }
 
     @Test
     public void login_Dom_Booking_Flow() {
-        logTestTitle("Login Flight Flow - Dom - 20 days - 2 Adults - Todas - " + countryPar );
+        logTestTitle("Domestic - 20 days - 2 Adults - All");
 
-        dataManagement.getRoundTripDataTripItinerary("domestic_20days_2adults_todas");
+        dataManagement.setRoundTripDataTripItinerary(DOMESTIC_20D_2A_ALL);
 
-        flightsDataTrip = basePage.flightsDataTrip();
-        flightsDataTrip.setOrigin(dataManagement.originAuto, dataManagement.originFull);
-        flightsDataTrip.setDestination(dataManagement.destinationAuto, dataManagement.destinationFull);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.departureFlightsCalendar, dataManagement.startDate);
-        flightsDataTrip.selectDateFromCalendar(flightsDataTrip.arrivalFlightsCalendar, dataManagement.endDate);
-        flightsDataTrip.selectPassenger(dataManagement.adults, dataManagement.childs);
-        flightsDataTrip.selectChildAgeRange(dataManagement.childAgeRange, dataManagement.childs);
-        flightsDataTrip.selectClass(dataManagement.flightClass);
+        flightsDataTrip.setOrigin(dataManagement.getOriginAuto(), dataManagement.getOriginFull());
+        flightsDataTrip.setDestination(dataManagement.getDestinationAuto(), dataManagement.getDestinationFull());
+        flightsDataTrip.setDate(flightsDataTrip.getDepartureFlightsCalendar(), dataManagement.getStartDate());
+        flightsDataTrip.setDate(flightsDataTrip.getArrivalFlightsCalendar(), dataManagement.getEndDate());
+        flightsDataTrip.selectPassenger(dataManagement.getAdults(), dataManagement.getChilds());
+        flightsDataTrip.selectChildAgeRange(dataManagement.getChildAgeRange(), dataManagement.getChilds());
+        flightsDataTrip.selectClass(dataManagement.getFlightClass());
         flightsResultsPage = flightsDataTrip.clickBuscarBtn();
 
         Assert.assertTrue(flightsResultsPage.vacancy());
-        flightsResultsPage.clickTicketIdaRdb();
-        flightsResultsPage.clickTicketVuelta();
-        checkOutPage = flightsResultsPage.clickComprarBtn(0);
+        flightsResultsPage.clickTicketIdaRdb(FIRST_OPTION);
+        flightsResultsPage.clickTicketVuelta(FIRST_OPTION+1);
 
-        dataManagement.getPassengerData("adult_female_foreign");
-        dataManagement.getPassengerData("adult_female_foreign");
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
+        dataManagement.setPassengerData(ADULT_FEMALE_FOREIGN);
 
-        checkOutPage.populateCheckOutPage(dataManagement.passengerJsonList,
-                                          dataManagement.getPaymentData("1_amex_amex"),
-                                          dataManagement.getBillingData("local_Billing_v2"),
-                                          dataManagement.getContactData("contact_phone"),
-                                          "FlightsCheckOutPageDomestic");
+        checkOutPageV3 = flightsResultsPage.clickComprarV3Btn(FIRST_OPTION);
+        checkOutPageV3.setCheckOutInfo(dataManagement.getPassengerJsonList(),
+                                              RANDOM, dataManagement.getBillingData(LOCAL_BILLING),
+                                               dataManagement.getContactData(CONTACT_PHONE), FLIGHTS_CHECKOUT_DOM);
     }
 }

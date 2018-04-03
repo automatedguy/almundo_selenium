@@ -60,7 +60,6 @@ public class BillingSection extends CheckOutPage {
             if (isElementRequiered(checkOutPageElements, "fiscal_name")) {
                 setBillingFiscalName(billingData.get("fiscal_name").toString());
             }
-
             if (isElementRequiered(checkOutPageElements, "billing_fiscal_type")){
                 selectBillingFiscalType(billingData.get("billing_fiscal_type").toString());
             }
@@ -74,7 +73,6 @@ public class BillingSection extends CheckOutPage {
             if (isElementRequiered(checkOutPageElements, "address_number")){
                 setAddressNumber(billingData.get("address_number").toString());
             }
-
             if (isElementRequiered(checkOutPageElements, "address_floor")) {
                 setAddressFloor(billingData.get("address_floor").toString());
             }

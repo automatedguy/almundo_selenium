@@ -1,6 +1,5 @@
 package com.almundo.browser.automation.pages.CheckOutPage;
 
-import com.almundo.browser.automation.utils.PageUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -9,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
+
+import static com.almundo.browser.automation.utils.PageUtils.randomString;
 
 /**
  * Created by gabrielcespedes on 12/12/16.
@@ -45,9 +46,11 @@ public class PassengerSection extends CheckOutPage {
 
             passengerInfo = (JSONObject) passengerList.get(passengerIndex);
 
-            setFirstName(passengerId.firstName, passengerInfo.get("first_name").toString());
+            // setFirstName(passengerId.firstName, passengerInfo.get("first_name").toString());
+            setFirstName(passengerId.firstName, randomString(15));
 
-            setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
+            // setlastName(passengerId.lastName, passengerInfo.get("last_name").toString());
+            setlastName(passengerId.lastName, randomString(15));
 
             if(isElementRequiered(checkOutPageElements, "documentType0")) {
                 setDocumentType(passengerId.documentType, passengerInfo.get("documentType").toString());
@@ -82,7 +85,6 @@ public class PassengerSection extends CheckOutPage {
     }
 
     private PassengerSection setFirstName(String firstName, String firstNamePassenger){
-        PageUtils.waitElementForVisibility(driver, By.id(firstName), 45, "First Name text box");
         WebElement elementToPopulate = driver.findElement(By.id(firstName));
         logger.info("Entering Nombre/s: [" + firstNamePassenger + "]");
         elementToPopulate.clear();
